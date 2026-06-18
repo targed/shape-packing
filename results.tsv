@@ -59,3 +59,6 @@ b8cba9b	2.42195	0.0	discard	7_4_in_5	400k worse than 2.42163; discard
 ddf4712	2.1855	0.0	keep	6_4_in_5	baseline (Rust, Adam optimizer)
 469d4be	2.18552	0.0	keep	6_4_in_5	increase RUST_ATTEMPTS to 250k
 c1ac877	2.185518	0.0	keep	6_4_in_5	increase RUST_ATTEMPTS to 400k
+88187a5	2.18554	0.0	discard	6_4_in_5	baseline test with Adam optimizer
+a1ba205	1.613517	0.0	keep	6_3_in_5	baseline test with Adam optimizer
+43e2453	1.613517	0.0	discard	6_3_in_5	increase RUST_ATTEMPTS to 600k
