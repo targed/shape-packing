@@ -57,3 +57,4 @@ c061654	2.4218	0.0	keep	7_4_in_5	baseline (Rust, 150k)
 b8cba9b	2.42195	0.0	discard	7_4_in_5	400k worse than 2.42163; discard
 	2.42163	0.0	keep	7_4_in_5	700k match but no improve; done
 ddf4712	2.1855	0.0	keep	6_4_in_5	baseline (Rust, Adam optimizer)
+469d4be	2.18552	0.0	keep	6_4_in_5	increase RUST_ATTEMPTS to 250k
