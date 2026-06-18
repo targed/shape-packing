@@ -38,7 +38,7 @@ EXTRA_PACKER_ARGS = [
     "--attempts", "2000",
 ]
 
-RUST_ATTEMPTS = 250000
+RUST_ATTEMPTS = 400000
 RUST_TIME_LIMIT = 290
 
 # ---------------------------------------------------------------------------
@@ -257,11 +257,13 @@ def run_experiment():
                 solution_json,
                 png_out,
             ]
-            subprocess.run(render_cmd, timeout=30, check=False, capture_output=True)
+            res = subprocess.run(render_cmd, timeout=30, check=False, capture_output=True)
             if os.path.exists(png_out):
                 print(f"image:          {png_out}")
-        except Exception:
-            pass
+            else:
+                print(f"render failed! stdout: {res.stdout.decode()} stderr: {res.stderr.decode()}")
+        except Exception as e:
+            print(f"render exception: {e}")
 
     print(f"score:            {score if score is not None else 0.0}")
     print(f"training_seconds: {training_seconds:.1f}")
