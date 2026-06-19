@@ -22,7 +22,7 @@ from datetime import datetime
 # CONFIG: edit this section to choose/switch problems
 # ---------------------------------------------------------------------------
 
-CURRENT_PROBLEM = "8_4_in_6"
+CURRENT_PROBLEM = "6_5_in_4"
 
 TIME_BUDGET = 300
 
