@@ -22,7 +22,7 @@ from datetime import datetime
 # CONFIG: edit this section to choose/switch problems
 # ---------------------------------------------------------------------------
 
-CURRENT_PROBLEM = "6_3_in_5"
+CURRENT_PROBLEM = "12_3_in_5"
 
 TIME_BUDGET = 300
 
@@ -38,7 +38,7 @@ EXTRA_PACKER_ARGS = [
     "--attempts", "2000",
 ]
 
-RUST_ATTEMPTS = 300000
+RUST_ATTEMPTS = 150000
 RUST_TIME_LIMIT = 290
 RUST_TOLERANCE = "1e-25"
 

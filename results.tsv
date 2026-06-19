@@ -76,4 +76,6 @@ e84778f	2.1539806	0.0	discard	8_4_in_6	increase RUST_ATTEMPTS to 500k
 53aa473	3.8830304	0.0	discard	6_5_in_4	increase RUST_ATTEMPTS to 300k
 f9e407a	1.6129894	0.0	keep	6_3_in_5	baseline with analytical gradient optimizer
 bd12299	1.6127718	0.0	keep	6_3_in_5	increase RUST_ATTEMPTS to 300k
+8bbdbe8	1.6127718	0.0	discard	6_3_in_5	increase RUST_ATTEMPTS to 400k
+1ed90dd	2.2802589	0.0	keep	12_3_in_5	baseline with analytical gradient optimizer
 
