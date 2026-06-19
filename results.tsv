@@ -63,3 +63,4 @@ c1ac877	2.185518	0.0	keep	6_4_in_5	increase RUST_ATTEMPTS to 400k
 a1ba205	1.613517	0.0	keep	6_3_in_5	baseline test with Adam optimizer
 43e2453	1.613517	0.0	discard	6_3_in_5	increase RUST_ATTEMPTS to 600k
 9470194	1.7563012	0.0	keep	4_6_in_8	baseline with analytical gradient optimizer
+bf16567	1.7563008	0.0	keep	4_6_in_8	increase RUST_ATTEMPTS to 250k
