@@ -22,7 +22,7 @@ from datetime import datetime
 # CONFIG: edit this section to choose/switch problems
 # ---------------------------------------------------------------------------
 
-CURRENT_PROBLEM = "12_3_in_CIRCLE"
+CURRENT_PROBLEM = "4_6_in_8"
 
 TIME_BUDGET = 300
 
@@ -38,8 +38,9 @@ EXTRA_PACKER_ARGS = [
     "--attempts", "2000",
 ]
 
-RUST_ATTEMPTS = 400000
+RUST_ATTEMPTS = 150000
 RUST_TIME_LIMIT = 290
+RUST_TOLERANCE = "1e-25"
 
 # ---------------------------------------------------------------------------
 # END CONFIG
@@ -104,6 +105,7 @@ def timestamp():
 
 def build_command(N, inner, container):
     out_dir = ensure_problem_output_dir(CURRENT_PROBLEM)
+    run_id = os.path.basename(out_dir)
 
     use_rust = (SOLVER_BACKEND == "rust")
 
@@ -124,6 +126,7 @@ def build_command(N, inner, container):
             str(container_sides),
             "--attempts", str(RUST_ATTEMPTS),
             "--time-limit", str(RUST_TIME_LIMIT),
+            "--tolerance", RUST_TOLERANCE,
             "--solution-file", solution_json,
         ]
 
@@ -264,6 +267,21 @@ def run_experiment():
                 print(f"render failed! stdout: {res.stdout.decode()} stderr: {res.stderr.decode()}")
         except Exception as e:
             print(f"render exception: {e}")
+
+    # Auto-verify the solution if JSON exists
+    if use_rust_render and solution_json and os.path.exists(solution_json):
+        try:
+            verify_cmd = [
+                sys.executable,
+                "verify_solution.py",
+                solution_json,
+                CURRENT_PROBLEM,
+            ]
+            vres = subprocess.run(verify_cmd, timeout=30, check=False, capture_output=True, text=True)
+            for vline in vres.stdout.strip().splitlines():
+                print(f"verify:           {vline}")
+        except Exception as e:
+            print(f"verify exception: {e}")
 
     print(f"score:            {score if score is not None else 0.0}")
     print(f"training_seconds: {training_seconds:.1f}")
