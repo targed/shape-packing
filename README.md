@@ -41,6 +41,20 @@ Adapted from Karpathy's autoresearch concept: an LLM-driven agent iteratively im
    - Open program.md
    - Let the agent (Cline) follow the experiment loop autonomously.
 
+## Knowledge graph (graphify)
+
+This repo includes a graphify knowledge graph for fast architectural queries.
+
+- graphify-out/ contains the graph, HTML viewer, and report.
+- graphify_query.py is a thin CLI wrapper.
+- See GRAPHIFY_USAGE.md for details, commands, and Cline system-prompt snippet.
+
+Quick examples:
+
+- python3 graphify_query.py query "How is the gradient computed?"
+- python3 graphify_query.py explain "penalty_and_gradient"
+- python3 graphify_query.py path "train" "render"
+
 ## Usage with Cline (in VS Code)
 
 - Open this repo in VS Code.
