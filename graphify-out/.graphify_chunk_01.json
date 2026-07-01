@@ -1,0 +1,511 @@
+{
+  "nodes": [
+    {
+      "id": "readme_autoresearchpacking",
+      "label": "Autoresearch Packing System",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme_autonomous_loop",
+      "label": "Autonomous Experiment Loop",
+      "file_type": "rationale",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme_no_ml_pure_opt",
+      "label": "No-ML Pure Optimization Constraint",
+      "file_type": "rationale",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme_cline_agent",
+      "label": "Cline as Experiment Agent",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme_polygon_packer_core",
+      "label": "polygon_packer.py Core Role",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme_train_py_runner",
+      "label": "train.py Experiment Runner",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme_verify_solution",
+      "label": "verify_solution.py Geometric Verifier",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "source_url": null,
+      "author": null,
+      "contributor": null,
+      "source_location": null
+    },
+    {
+      "id": "readme_sat_verifier",
+      "label": "Separating Axis Theorem (SAT) Verification",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programmd_experiment_loop_spec",
+      "label": "Experiment Loop Specification",
+      "file_type": "rationale",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programmd_minimize_container",
+      "label": "Minimize Container Objective",
+      "file_type": "rationale",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programmd_problem_selection_rules",
+      "label": "Reference-Aware Problem Selection Rules",
+      "file_type": "rationale",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programmd_packing_reference",
+      "label": "PACKING_REFERENCE.tsv Knowledge Base",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programmd_naming_convention",
+      "label": "Problem Naming Convention",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programmd_diversity_rules",
+      "label": "Diversity and Anti-Stuck Rules",
+      "file_type": "rationale",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programmd_simplicity_criterion",
+      "label": "Simplicity Criterion",
+      "file_type": "rationale",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programmd_shape_tokens",
+      "label": "Shape Token Catalog",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "programmd_erich_friedman_reference",
+      "label": "Erich Friedman Packing Reference",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "shapepackingsummary_shape_packing_domain",
+      "label": "Shape Packing Domain Overview",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/ShapePackingSummary.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "shapepackingsummary_efficient_heuristics",
+      "label": "Efficient Heuristic Design Goal",
+      "file_type": "rationale",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/ShapePackingSummary.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "polygon_packer_readme_polygon_packer_library",
+      "label": "polygon-packer Library Purpose",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/polygon-packer/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "polygon_packer_readme_optimization_api",
+      "label": "Optimization API Design",
+      "file_type": "concept",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/polygon-packer/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "image_5_3_in_4_example",
+      "label": "5 triangles in square packing example",
+      "file_type": "image",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/5_3_in_4.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "image_test_packing_result",
+      "label": "Test packing visualization",
+      "file_type": "image",
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/test.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "readme_autoresearchpacking",
+      "target": "readme_autonomous_loop",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_autoresearchpacking",
+      "target": "readme_no_ml_pure_opt",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_autoresearchpacking",
+      "target": "readme_cline_agent",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_autoresearchpacking",
+      "target": "readme_polygon_packer_core",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_autoresearchpacking",
+      "target": "readme_train_py_runner",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_autoresearchpacking",
+      "target": "readme_verify_solution",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_verify_solution",
+      "target": "readme_sat_verifier",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_autonomous_loop",
+      "target": "programmd_experiment_loop_spec",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "weight": 0.95
+    },
+    {
+      "source": "programmd_experiment_loop_spec",
+      "target": "programmd_minimize_container",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programmd_experiment_loop_spec",
+      "target": "programmd_problem_selection_rules",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programmd_problem_selection_rules",
+      "target": "programmd_packing_reference",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programmd_packing_reference",
+      "target": "programmd_erich_friedman_reference",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programmd_experiment_loop_spec",
+      "target": "programmd_naming_convention",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programmd_naming_convention",
+      "target": "programmd_shape_tokens",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programmd_experiment_loop_spec",
+      "target": "programmd_diversity_rules",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "programmd_experiment_loop_spec",
+      "target": "programmd_simplicity_criterion",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "shapepackingsummary_shape_packing_domain",
+      "target": "programmd_minimize_container",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/ShapePackingSummary.md",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "shapepackingsummary_efficient_heuristics",
+      "target": "readme_no_ml_pure_opt",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/ShapePackingSummary.md",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "polygon_packer_readme_polygon_packer_library",
+      "target": "readme_polygon_packer_core",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/polygon-packer/README.md",
+      "source_location": null,
+      "weight": 0.95
+    },
+    {
+      "source": "polygon_packer_readme_polygon_packer_library",
+      "target": "polygon_packer_readme_optimization_api",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/polygon-packer/README.md",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "image_5_3_in_4_example",
+      "target": "programmd_shape_tokens",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/5_3_in_4.png",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "image_5_3_in_4_example",
+      "target": "programmd_minimize_container",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/5_3_in_4.png",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "image_test_packing_result",
+      "target": "readme_autoresearchpacking",
+      "relation": "conceptually_related_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.2,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/test.png",
+      "source_location": null,
+      "weight": 0.5
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "autoresearch_loop_components",
+      "label": "Autoresearch Loop Components",
+      "nodes": ["readme_autoresearchpacking", "readme_cline_agent", "readme_train_py_runner", "readme_polygon_packer_core", "readme_verify_solution"],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/README.md"
+    },
+    {
+      "id": "problem_selection_ecosystem",
+      "label": "Problem Selection Ecosystem",
+      "nodes": ["programmd_problem_selection_rules", "programmd_packing_reference", "programmd_erich_friedman_reference", "programmd_diversity_rules"],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/Users/kaiserluke/Documents/Git/shape-packing/program.md"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
