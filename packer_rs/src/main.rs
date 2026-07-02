@@ -168,6 +168,29 @@ fn serde_json_to_string(
     buf
 }
 
+// NOTE: Module alignment with Python optimization.py and geometry.py (design only)
+//
+// This Rust crate currently keeps optimization+geometry in one file.
+// As optimization logic deepens, align structure to the Python modules:
+//
+// - geometry.py:
+//   - regular_polygon          -> regular_polygon_vertices
+//   - regular_polygon_vectors  -> regular_polygon_outward_normals
+//   - transform + penalty internals
+//                             -> _transform_polygon_nb, _rotate_vectors_nb, _poking_penalty_nb, bh_objective
+//
+// - optimization.py:
+//   - PackingProblem              -> (inner_polygons, inner_sides, container_sides)
+//   - OptConfig                   -> (attempts, tolerance, finalstep, time_limit)
+//   - build_objective(problem)    -> objective + geometry constants
+//   - run_single_attempt(...)     -> run_attempt(...)
+//   - run_all_attempts(...)       -> parallel loop in main + best-S/x tracking
+//
+// For future unification, keep:
+// - same formulas
+// - same tolerance/SAT approach (see sat_check_overlap in geometry.py)
+// - same semantic meaning of S, N, nsi, nsc
+
 fn regular_polygon(radius: f64, sides: usize) -> Vec<(f64, f64)> {
     (0..sides)
         .map(|i| {

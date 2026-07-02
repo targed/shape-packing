@@ -18,6 +18,9 @@ import time
 import os
 from datetime import datetime
 
+# ProblemModule: single source of truth for problem names, tokens, and validation.
+from problems import parse_problem, shape_token_to_sides, is_special_shape
+
 # ---------------------------------------------------------------------------
 # CONFIG: edit this section to choose/switch problems
 # ---------------------------------------------------------------------------
@@ -46,42 +49,8 @@ RUST_TOLERANCE = "1e-25"
 # END CONFIG
 # ---------------------------------------------------------------------------
 
-CIRCLE_SIDES = 32
-
-SHAPE_TO_SIDES = {
-    "3": 3,
-    "4": 4,
-    "5": 5,
-    "6": 6,
-    "8": 8,
-    "CIRCLE": CIRCLE_SIDES,
-}
-
-SPECIAL_SHAPES = {"TAN", "DOMINO", "L"}
-
-
-def parse_problem(problem: str):
-    m = re.match(r"^(\d+)_(.+)_(in)_(.+)$", problem)
-    if not m:
-        raise ValueError(f"Invalid problem format: {problem!r}")
-    N = int(m.group(1))
-    inner = m.group(2)
-    container = m.group(4)
-    return N, inner, container
-
-
-def to_sides(token: str) -> int:
-    if token in SPECIAL_SHAPES:
-        return None
-    if token in SHAPE_TO_SIDES:
-        return SHAPE_TO_SIDES[token]
-    try:
-        s = int(token)
-        if s >= 3:
-            return s
-    except ValueError:
-        pass
-    raise ValueError(f"Cannot map shape token to sides: {token!r}")
+# Re-export for backward compatibility where needed
+from problems import Problem
 
 
 def ensure_problem_output_dir(problem: str) -> str:
@@ -109,8 +78,8 @@ def build_command(N, inner, container):
 
     use_rust = (SOLVER_BACKEND == "rust")
 
-    inner_sides = to_sides(inner)
-    container_sides = to_sides(container)
+    inner_sides = shape_token_to_sides(inner)
+    container_sides = shape_token_to_sides(container)
     if use_rust and (inner_sides is None or container_sides is None):
         use_rust = False
 
@@ -165,11 +134,16 @@ def build_command(N, inner, container):
 def run_experiment():
     t_start = time.time()
 
+    # Use the central ProblemModule to parse the problem.
     try:
-        N, inner, container = parse_problem(CURRENT_PROBLEM)
+        p = parse_problem(CURRENT_PROBLEM)
     except ValueError as e:
         print(f"FATAL: {e}", file=sys.stderr)
         sys.exit(1)
+
+    N = p.N
+    inner = p.inner_token
+    container = p.container_token
 
     built = build_command(N, inner, container)
     if isinstance(built, tuple):
