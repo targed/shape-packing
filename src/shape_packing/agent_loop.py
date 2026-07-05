@@ -279,6 +279,7 @@ def choose_problem(
     history: List[ExperimentResult],
     queue_path: str = "priority_queue.json",
     prefer_different: bool = False,
+    filters: dict = None
 ) -> str:
     queue = load_priority_queue(queue_path)
     if not queue:
@@ -286,23 +287,68 @@ def choose_problem(
         return "8_3_in_5"
         
     recent = recent_problems(history, last=10)
-    
-    # Calculate stagnation: number of times a problem appears in the last 10 attempts
-    # If it has been run a lot recently and hasn't improved, we heavily penalize it.
     best = current_best_scores(history)
     
     scored_candidates = []
     
+    from .problems import parse_problem, shape_token_to_sides
+    
     for item in queue:
-        p = item["problem"]
+        p_str = item["problem"]
         base_density = item["density"]
         
-        # Penalize if it's very recent
-        stagnation = sum(1 for r in recent if r == p)
+        # Apply filters
+        if filters:
+            try:
+                p_obj = parse_problem(p_str)
+                n = p_obj.N
+                inner_token = p_obj.inner_token
+                container_token = p_obj.container_token
+                inner_sides = shape_token_to_sides(inner_token)
+                container_sides = shape_token_to_sides(container_token)
+                
+                if filters.get("min_n") is not None and n < filters["min_n"]:
+                    continue
+                if filters.get("max_n") is not None and n > filters["max_n"]:
+                    continue
+                if filters.get("equal_n") is not None and n != filters["equal_n"]:
+                    continue
+                    
+                if filters.get("include_inner"):
+                    if inner_token not in filters["include_inner"]:
+                        continue
+                if filters.get("exclude_inner"):
+                    if inner_token in filters["exclude_inner"]:
+                        continue
+                        
+                if filters.get("include_container"):
+                    if container_token not in filters["include_container"]:
+                        continue
+                if filters.get("exclude_container"):
+                    if container_token in filters["exclude_container"]:
+                        continue
+                        
+                if filters.get("min_inner_sides") is not None and inner_sides < filters["min_inner_sides"]:
+                    continue
+                if filters.get("max_inner_sides") is not None and inner_sides > filters["max_inner_sides"]:
+                    continue
+                if filters.get("min_container_sides") is not None and container_sides < filters["min_container_sides"]:
+                    continue
+                if filters.get("max_container_sides") is not None and container_sides > filters["max_container_sides"]:
+                    continue
+                    
+            except Exception:
+                # If parse fails, we might just skip it if filters are on
+                continue
         
+        # Penalize if it's very recent
+        stagnation = sum(1 for r in recent if r == p_str)
         penalty = stagnation * 0.05
         
-        scored_candidates.append((p, base_density + penalty))
+        scored_candidates.append((p_str, base_density + penalty))
+        
+    if not scored_candidates:
+        return "8_3_in_5"
         
     scored_candidates.sort(key=lambda x: x[1])
     return scored_candidates[0][0]
