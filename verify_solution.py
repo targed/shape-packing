@@ -7,7 +7,7 @@ Delegates all logic to solution_tools.verify_solution.
 
 import sys
 
-from solution_tools import verify_solution
+from shape_packing.solution_tools import verify_solution
 
 
 def main() -> None:

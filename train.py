@@ -19,7 +19,7 @@ import os
 from datetime import datetime
 
 # ProblemModule: single source of truth for problem names, tokens, and validation.
-from problems import parse_problem, shape_token_to_sides, is_special_shape
+from shape_packing.problems import parse_problem, shape_token_to_sides, is_special_shape
 
 # ---------------------------------------------------------------------------
 # CONFIG: edit this section to choose/switch problems
@@ -50,7 +50,7 @@ RUST_TOLERANCE = "1e-25"
 # ---------------------------------------------------------------------------
 
 # Re-export for backward compatibility where needed
-from problems import Problem
+from shape_packing.problems import Problem
 
 
 def ensure_problem_output_dir(problem: str) -> str:

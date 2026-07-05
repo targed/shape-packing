@@ -7,7 +7,7 @@ Delegates all logic to solution_tools.render_solution.
 
 import sys
 
-from solution_tools import render_solution
+from shape_packing.solution_tools import render_solution
 
 
 def main() -> None:

@@ -1,0 +1,37 @@
+{
+  "shape_packing/__init__.py": {
+    "mtime": 1783220084.411312,
+    "ast_hash": "9710df559b6a796662fb81ccf914fca0",
+    "semantic_hash": "9710df559b6a796662fb81ccf914fca0"
+  },
+  "shape_packing/agent_loop.py": {
+    "mtime": 1783220084.411312,
+    "ast_hash": "a0160ee9983198901c4d1342c70000c6",
+    "semantic_hash": "a0160ee9983198901c4d1342c70000c6"
+  },
+  "shape_packing/geometry.py": {
+    "mtime": 1783220084.4123116,
+    "ast_hash": "d5f58840f1444a49f6d23c04f807d704",
+    "semantic_hash": "d5f58840f1444a49f6d23c04f807d704"
+  },
+  "shape_packing/optimization.py": {
+    "mtime": 1783220084.4123116,
+    "ast_hash": "63d9a3fd5a839ff2d3909c96b4eacea4",
+    "semantic_hash": "63d9a3fd5a839ff2d3909c96b4eacea4"
+  },
+  "shape_packing/packing_config.py": {
+    "mtime": 1783220084.4133132,
+    "ast_hash": "51bed03b39ed32f6f160ad678c827fc3",
+    "semantic_hash": "51bed03b39ed32f6f160ad678c827fc3"
+  },
+  "shape_packing/problems.py": {
+    "mtime": 1783220084.414313,
+    "ast_hash": "45b31532575b7bead208fb7eaf2ff468",
+    "semantic_hash": "45b31532575b7bead208fb7eaf2ff468"
+  },
+  "shape_packing/solution_tools.py": {
+    "mtime": 1783220084.414313,
+    "ast_hash": "c768798928c37648ad83ca0585d50368",
+    "semantic_hash": "c768798928c37648ad83ca0585d50368"
+  }
+}

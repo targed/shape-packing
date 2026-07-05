@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+src/shape_packing/__init__.py
+src/shape_packing/agent_loop.py
+src/shape_packing/cli.py
+src/shape_packing/geometry.py
+src/shape_packing/optimization.py
+src/shape_packing/packing_config.py
+src/shape_packing/problems.py
+src/shape_packing/solution_tools.py
+src/shape_packing.egg-info/PKG-INFO
+src/shape_packing.egg-info/SOURCES.txt
+src/shape_packing.egg-info/dependency_links.txt
+src/shape_packing.egg-info/requires.txt
+src/shape_packing.egg-info/top_level.txt
+tests/test_smoke.py

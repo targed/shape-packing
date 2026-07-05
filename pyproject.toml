@@ -1,9 +1,13 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "autoresearch-packing"
+name = "shape_packing"
 version = "0.1.0"
 description = "Autonomous 2D shape packing research loop (no ML)"
 readme = "README.md"
-requires-python = ">=3.10,<3.14"
+requires-python = ">=3.10"
 dependencies = [
     "numpy",
     "scipy",
@@ -11,3 +15,6 @@ dependencies = [
     "numba",
     "joblib",
 ]
+
+[tool.setuptools.packages.find]
+where = ["src"]

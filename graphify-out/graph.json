@@ -41,9 +41,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "packer_rs_src_main",
-      "community": 0,
-      "norm_label": "main.rs"
+      "community": 4,
+      "norm_label": "main.rs",
+      "id": "packer_rs_src_main"
     },
     {
       "label": "Args",
@@ -51,9 +51,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L14",
       "_origin": "ast",
-      "id": "packer_rs_src_main_args",
-      "community": 0,
-      "norm_label": "args"
+      "community": 4,
+      "norm_label": "args",
+      "id": "packer_rs_src_main_args"
     },
     {
       "label": "Option",
@@ -61,9 +61,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "option",
-      "community": 0,
-      "norm_label": "option"
+      "community": 4,
+      "norm_label": "option",
+      "id": "option"
     },
     {
       "label": "String",
@@ -71,9 +71,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "string",
-      "community": 0,
-      "norm_label": "string"
+      "community": 4,
+      "norm_label": "string",
+      "id": "string"
     },
     {
       "label": "main()",
@@ -81,9 +81,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L36",
       "_origin": "ast",
-      "id": "packer_rs_src_main_main",
-      "community": 0,
-      "norm_label": "main()"
+      "community": 4,
+      "norm_label": "main()",
+      "id": "packer_rs_src_main_main"
     },
     {
       "label": "serde_json_to_string()",
@@ -91,9 +91,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L143",
       "_origin": "ast",
-      "id": "packer_rs_src_main_serde_json_to_string",
-      "community": 0,
-      "norm_label": "serde_json_to_string()"
+      "community": 4,
+      "norm_label": "serde_json_to_string()",
+      "id": "packer_rs_src_main_serde_json_to_string"
     },
     {
       "label": "regular_polygon()",
@@ -101,9 +101,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L171",
       "_origin": "ast",
-      "id": "packer_rs_src_main_regular_polygon",
-      "community": 0,
-      "norm_label": "regular_polygon()"
+      "community": 4,
+      "norm_label": "regular_polygon()",
+      "id": "packer_rs_src_main_regular_polygon"
     },
     {
       "label": "Vec",
@@ -111,9 +111,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "vec",
-      "community": 0,
-      "norm_label": "vec"
+      "community": 4,
+      "norm_label": "vec",
+      "id": "vec"
     },
     {
       "label": "regular_polygon_vectors()",
@@ -121,9 +121,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L180",
       "_origin": "ast",
-      "id": "packer_rs_src_main_regular_polygon_vectors",
-      "community": 0,
-      "norm_label": "regular_polygon_vectors()"
+      "community": 4,
+      "norm_label": "regular_polygon_vectors()",
+      "id": "packer_rs_src_main_regular_polygon_vectors"
     },
     {
       "label": "run_attempt()",
@@ -131,9 +131,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L189",
       "_origin": "ast",
-      "id": "packer_rs_src_main_run_attempt",
-      "community": 0,
-      "norm_label": "run_attempt()"
+      "community": 4,
+      "norm_label": "run_attempt()",
+      "id": "packer_rs_src_main_run_attempt"
     },
     {
       "label": "R",
@@ -141,9 +141,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "r",
-      "community": 0,
-      "norm_label": "r"
+      "community": 4,
+      "norm_label": "r",
+      "id": "r"
     },
     {
       "label": "Instant",
@@ -151,9 +151,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "instant",
-      "community": 0,
-      "norm_label": "instant"
+      "community": 4,
+      "norm_label": "instant",
+      "id": "instant"
     },
     {
       "label": "AtomicBool",
@@ -161,9 +161,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "atomicbool",
-      "community": 0,
-      "norm_label": "atomicbool"
+      "community": 4,
+      "norm_label": "atomicbool",
+      "id": "atomicbool"
     },
     {
       "label": "OptResult",
@@ -171,9 +171,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L314",
       "_origin": "ast",
-      "id": "packer_rs_src_main_optresult",
-      "community": 0,
-      "norm_label": "optresult"
+      "community": 4,
+      "norm_label": "optresult",
+      "id": "packer_rs_src_main_optresult"
     },
     {
       "label": "minimize_gradient()",
@@ -181,9 +181,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L319",
       "_origin": "ast",
-      "id": "packer_rs_src_main_minimize_gradient",
-      "community": 0,
-      "norm_label": "minimize_gradient()"
+      "community": 4,
+      "norm_label": "minimize_gradient()",
+      "id": "packer_rs_src_main_minimize_gradient"
     },
     {
       "label": "penalty_and_gradient()",
@@ -191,9 +191,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L375",
       "_origin": "ast",
-      "id": "packer_rs_src_main_penalty_and_gradient",
-      "community": 0,
-      "norm_label": "penalty_and_gradient()"
+      "community": 4,
+      "norm_label": "penalty_and_gradient()",
+      "id": "packer_rs_src_main_penalty_and_gradient"
     },
     {
       "label": "packing_config.py",
@@ -201,9 +201,9 @@
       "source_file": "packing_config.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "packing_config",
-      "community": 7,
-      "norm_label": "packing_config.py"
+      "community": 11,
+      "norm_label": "packing_config.py",
+      "id": "packing_config"
     },
     {
       "label": "packing_config.py  Helper configuration for the packing autoresearch loop. The a",
@@ -211,9 +211,9 @@
       "source_file": "packing_config.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "packing_config_rationale_1",
-      "community": 7,
-      "norm_label": "packing_config.py  helper configuration for the packing autoresearch loop. the a"
+      "community": 11,
+      "norm_label": "packing_config.py  helper configuration for the packing autoresearch loop. the a",
+      "id": "packing_config_rationale_1"
     },
     {
       "label": "polygon_packer.py",
@@ -221,9 +221,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "polygon_packer_polygon_packer",
-      "community": 5,
-      "norm_label": "polygon_packer.py"
+      "community": 8,
+      "norm_label": "polygon_packer.py",
+      "id": "polygon_packer_polygon_packer"
     },
     {
       "label": "transform_polygon()",
@@ -231,9 +231,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L44",
       "_origin": "ast",
-      "id": "polygon_packer_polygon_packer_transform_polygon",
-      "community": 5,
-      "norm_label": "transform_polygon()"
+      "community": 8,
+      "norm_label": "transform_polygon()",
+      "id": "polygon_packer_polygon_packer_transform_polygon"
     },
     {
       "label": "rotate_vectors()",
@@ -241,9 +241,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L57",
       "_origin": "ast",
-      "id": "polygon_packer_polygon_packer_rotate_vectors",
-      "community": 5,
-      "norm_label": "rotate_vectors()"
+      "community": 8,
+      "norm_label": "rotate_vectors()",
+      "id": "polygon_packer_polygon_packer_rotate_vectors"
     },
     {
       "label": "poking_penalty()",
@@ -251,9 +251,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L70",
       "_origin": "ast",
-      "id": "polygon_packer_polygon_packer_poking_penalty",
-      "community": 5,
-      "norm_label": "poking_penalty()"
+      "community": 8,
+      "norm_label": "poking_penalty()",
+      "id": "polygon_packer_polygon_packer_poking_penalty"
     },
     {
       "label": "bh_function()",
@@ -261,9 +261,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L84",
       "_origin": "ast",
-      "id": "polygon_packer_polygon_packer_bh_function",
-      "community": 5,
-      "norm_label": "bh_function()"
+      "community": 8,
+      "norm_label": "bh_function()",
+      "id": "polygon_packer_polygon_packer_bh_function"
     },
     {
       "label": "repetition()",
@@ -271,9 +271,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L142",
       "_origin": "ast",
-      "id": "polygon_packer_polygon_packer_repetition",
-      "community": 5,
-      "norm_label": "repetition()"
+      "community": 8,
+      "norm_label": "repetition()",
+      "id": "polygon_packer_polygon_packer_repetition"
     },
     {
       "label": "prepare.py",
@@ -281,9 +281,9 @@
       "source_file": "prepare.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "prepare",
-      "community": 8,
-      "norm_label": "prepare.py"
+      "community": 12,
+      "norm_label": "prepare.py",
+      "id": "prepare"
     },
     {
       "label": "prepare.py: no longer used. This repo is now a packing-only autoresearch environ",
@@ -291,9 +291,9 @@
       "source_file": "prepare.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "prepare_rationale_1",
-      "community": 8,
-      "norm_label": "prepare.py: no longer used. this repo is now a packing-only autoresearch environ"
+      "community": 12,
+      "norm_label": "prepare.py: no longer used. this repo is now a packing-only autoresearch environ",
+      "id": "prepare_rationale_1"
     },
     {
       "label": "autoresearch-packing",
@@ -304,9 +304,9 @@
       "source_location": "L1",
       "version": "0.1.0",
       "_origin": "ast",
-      "id": "pkg_autoresearch_packing",
-      "community": 9,
-      "norm_label": "autoresearch-packing"
+      "community": 14,
+      "norm_label": "autoresearch-packing",
+      "id": "pkg_autoresearch_packing"
     },
     {
       "label": "render_solution.py",
@@ -314,9 +314,9 @@
       "source_file": "render_solution.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "render_solution",
-      "community": 1,
-      "norm_label": "render_solution.py"
+      "community": 5,
+      "norm_label": "render_solution.py",
+      "id": "render_solution"
     },
     {
       "label": "load_solution()",
@@ -324,9 +324,9 @@
       "source_file": "render_solution.py",
       "source_location": "L18",
       "_origin": "ast",
-      "id": "render_solution_load_solution",
-      "community": 1,
-      "norm_label": "load_solution()"
+      "community": 5,
+      "norm_label": "load_solution()",
+      "id": "render_solution_load_solution"
     },
     {
       "label": "render()",
@@ -334,9 +334,9 @@
       "source_file": "render_solution.py",
       "source_location": "L23",
       "_origin": "ast",
-      "id": "render_solution_render",
-      "community": 1,
-      "norm_label": "render()"
+      "community": 5,
+      "norm_label": "render()",
+      "id": "render_solution_render"
     },
     {
       "label": "main()",
@@ -344,9 +344,9 @@
       "source_file": "render_solution.py",
       "source_location": "L91",
       "_origin": "ast",
-      "id": "render_solution_main",
-      "community": 1,
-      "norm_label": "main()"
+      "community": 5,
+      "norm_label": "main()",
+      "id": "render_solution_main"
     },
     {
       "label": "patch_rust.py",
@@ -354,9 +354,9 @@
       "source_file": "scratch/patch_rust.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "scratch_patch_rust",
-      "community": 10,
-      "norm_label": "patch_rust.py"
+      "community": 15,
+      "norm_label": "patch_rust.py",
+      "id": "scratch_patch_rust"
     },
     {
       "label": "parse_erich_friedman.py",
@@ -364,9 +364,9 @@
       "source_file": "scripts/parse_erich_friedman.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "scripts_parse_erich_friedman",
-      "community": 6,
-      "norm_label": "parse_erich_friedman.py"
+      "community": 9,
+      "norm_label": "parse_erich_friedman.py",
+      "id": "scripts_parse_erich_friedman"
     },
     {
       "label": "extract_float()",
@@ -374,9 +374,9 @@
       "source_file": "scripts/parse_erich_friedman.py",
       "source_location": "L101",
       "_origin": "ast",
-      "id": "scripts_parse_erich_friedman_extract_float",
-      "community": 6,
-      "norm_label": "extract_float()"
+      "community": 9,
+      "norm_label": "extract_float()",
+      "id": "scripts_parse_erich_friedman_extract_float"
     },
     {
       "label": "parse_html()",
@@ -384,9 +384,9 @@
       "source_file": "scripts/parse_erich_friedman.py",
       "source_location": "L105",
       "_origin": "ast",
-      "id": "scripts_parse_erich_friedman_parse_html",
-      "community": 6,
-      "norm_label": "parse_html()"
+      "community": 9,
+      "norm_label": "parse_html()",
+      "id": "scripts_parse_erich_friedman_parse_html"
     },
     {
       "label": "main()",
@@ -394,9 +394,9 @@
       "source_file": "scripts/parse_erich_friedman.py",
       "source_location": "L164",
       "_origin": "ast",
-      "id": "scripts_parse_erich_friedman_main",
-      "community": 6,
-      "norm_label": "main()"
+      "community": 9,
+      "norm_label": "main()",
+      "id": "scripts_parse_erich_friedman_main"
     },
     {
       "label": "train.py",
@@ -404,9 +404,9 @@
       "source_file": "train.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "train",
-      "community": 4,
-      "norm_label": "train.py"
+      "community": 7,
+      "norm_label": "train.py",
+      "id": "train"
     },
     {
       "label": "parse_problem()",
@@ -414,9 +414,9 @@
       "source_file": "train.py",
       "source_location": "L63",
       "_origin": "ast",
-      "id": "train_parse_problem",
-      "community": 4,
-      "norm_label": "parse_problem()"
+      "community": 7,
+      "norm_label": "parse_problem()",
+      "id": "train_parse_problem"
     },
     {
       "label": "to_sides()",
@@ -424,9 +424,9 @@
       "source_file": "train.py",
       "source_location": "L73",
       "_origin": "ast",
-      "id": "train_to_sides",
-      "community": 4,
-      "norm_label": "to_sides()"
+      "community": 7,
+      "norm_label": "to_sides()",
+      "id": "train_to_sides"
     },
     {
       "label": "ensure_problem_output_dir()",
@@ -434,9 +434,9 @@
       "source_file": "train.py",
       "source_location": "L87",
       "_origin": "ast",
-      "id": "train_ensure_problem_output_dir",
-      "community": 4,
-      "norm_label": "ensure_problem_output_dir()"
+      "community": 7,
+      "norm_label": "ensure_problem_output_dir()",
+      "id": "train_ensure_problem_output_dir"
     },
     {
       "label": "timestamp()",
@@ -444,9 +444,9 @@
       "source_file": "train.py",
       "source_location": "L102",
       "_origin": "ast",
-      "id": "train_timestamp",
-      "community": 4,
-      "norm_label": "timestamp()"
+      "community": 7,
+      "norm_label": "timestamp()",
+      "id": "train_timestamp"
     },
     {
       "label": "build_command()",
@@ -454,9 +454,9 @@
       "source_file": "train.py",
       "source_location": "L106",
       "_origin": "ast",
-      "id": "train_build_command",
-      "community": 4,
-      "norm_label": "build_command()"
+      "community": 7,
+      "norm_label": "build_command()",
+      "id": "train_build_command"
     },
     {
       "label": "run_experiment()",
@@ -464,9 +464,9 @@
       "source_file": "train.py",
       "source_location": "L165",
       "_origin": "ast",
-      "id": "train_run_experiment",
-      "community": 4,
-      "norm_label": "run_experiment()"
+      "community": 7,
+      "norm_label": "run_experiment()",
+      "id": "train_run_experiment"
     },
     {
       "label": "Packing autoresearch experiment runner. Single purpose: run polygon_packer.py fo",
@@ -474,9 +474,9 @@
       "source_file": "train.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "train_rationale_1",
-      "community": 4,
-      "norm_label": "packing autoresearch experiment runner. single purpose: run polygon_packer.py fo"
+      "community": 7,
+      "norm_label": "packing autoresearch experiment runner. single purpose: run polygon_packer.py fo",
+      "id": "train_rationale_1"
     },
     {
       "label": "verify_solution.py",
@@ -484,9 +484,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "verify_solution",
-      "community": 1,
-      "norm_label": "verify_solution.py"
+      "community": 5,
+      "norm_label": "verify_solution.py",
+      "id": "verify_solution"
     },
     {
       "label": "regular_vertices()",
@@ -494,9 +494,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "verify_solution_regular_vertices",
-      "community": 1,
-      "norm_label": "regular_vertices()"
+      "community": 5,
+      "norm_label": "regular_vertices()",
+      "id": "verify_solution_regular_vertices"
     },
     {
       "label": "regular_normals()",
@@ -504,9 +504,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L15",
       "_origin": "ast",
-      "id": "verify_solution_regular_normals",
-      "community": 1,
-      "norm_label": "regular_normals()"
+      "community": 5,
+      "norm_label": "regular_normals()",
+      "id": "verify_solution_regular_normals"
     },
     {
       "label": "transform()",
@@ -514,9 +514,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "verify_solution_transform",
-      "community": 1,
-      "norm_label": "transform()"
+      "community": 5,
+      "norm_label": "transform()",
+      "id": "verify_solution_transform"
     },
     {
       "label": "get_normals_of_polygon()",
@@ -524,9 +524,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L32",
       "_origin": "ast",
-      "id": "verify_solution_get_normals_of_polygon",
-      "community": 1,
-      "norm_label": "get_normals_of_polygon()"
+      "community": 5,
+      "norm_label": "get_normals_of_polygon()",
+      "id": "verify_solution_get_normals_of_polygon"
     },
     {
       "label": "project_polygon()",
@@ -534,9 +534,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L44",
       "_origin": "ast",
-      "id": "verify_solution_project_polygon",
-      "community": 1,
-      "norm_label": "project_polygon()"
+      "community": 5,
+      "norm_label": "project_polygon()",
+      "id": "verify_solution_project_polygon"
     },
     {
       "label": "sat_overlap()",
@@ -544,9 +544,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L53",
       "_origin": "ast",
-      "id": "verify_solution_sat_overlap",
-      "community": 1,
-      "norm_label": "sat_overlap()"
+      "community": 5,
+      "norm_label": "sat_overlap()",
+      "id": "verify_solution_sat_overlap"
     },
     {
       "label": "load_best_value()",
@@ -554,9 +554,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L72",
       "_origin": "ast",
-      "id": "verify_solution_load_best_value",
-      "community": 1,
-      "norm_label": "load_best_value()"
+      "community": 5,
+      "norm_label": "load_best_value()",
+      "id": "verify_solution_load_best_value"
     },
     {
       "label": "verify()",
@@ -564,9 +564,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L88",
       "_origin": "ast",
-      "id": "verify_solution_verify",
-      "community": 1,
-      "norm_label": "verify()"
+      "community": 5,
+      "norm_label": "verify()",
+      "id": "verify_solution_verify"
     },
     {
       "label": "Autoresearch Packing System",
@@ -577,9 +577,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_autoresearchpacking",
       "community": 2,
-      "norm_label": "autoresearch packing system"
+      "norm_label": "autoresearch packing system",
+      "id": "readme_autoresearchpacking"
     },
     {
       "label": "Autonomous Experiment Loop",
@@ -590,9 +590,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_autonomous_loop",
       "community": 2,
-      "norm_label": "autonomous experiment loop"
+      "norm_label": "autonomous experiment loop",
+      "id": "readme_autonomous_loop"
     },
     {
       "label": "No-ML Pure Optimization Constraint",
@@ -603,9 +603,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_no_ml_pure_opt",
       "community": 2,
-      "norm_label": "no-ml pure optimization constraint"
+      "norm_label": "no-ml pure optimization constraint",
+      "id": "readme_no_ml_pure_opt"
     },
     {
       "label": "Cline as Experiment Agent",
@@ -616,9 +616,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_cline_agent",
       "community": 2,
-      "norm_label": "cline as experiment agent"
+      "norm_label": "cline as experiment agent",
+      "id": "readme_cline_agent"
     },
     {
       "label": "polygon_packer.py Core Role",
@@ -629,9 +629,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_polygon_packer_core",
       "community": 2,
-      "norm_label": "polygon_packer.py core role"
+      "norm_label": "polygon_packer.py core role",
+      "id": "readme_polygon_packer_core"
     },
     {
       "label": "train.py Experiment Runner",
@@ -642,9 +642,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_train_py_runner",
       "community": 2,
-      "norm_label": "train.py experiment runner"
+      "norm_label": "train.py experiment runner",
+      "id": "readme_train_py_runner"
     },
     {
       "label": "verify_solution.py Geometric Verifier",
@@ -654,9 +654,9 @@
       "source_url": null,
       "author": null,
       "contributor": null,
-      "id": "readme_verify_solution",
       "community": 2,
-      "norm_label": "verify_solution.py geometric verifier"
+      "norm_label": "verify_solution.py geometric verifier",
+      "id": "readme_verify_solution"
     },
     {
       "label": "Separating Axis Theorem (SAT) Verification",
@@ -667,9 +667,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_sat_verifier",
       "community": 2,
-      "norm_label": "separating axis theorem (sat) verification"
+      "norm_label": "separating axis theorem (sat) verification",
+      "id": "readme_sat_verifier"
     },
     {
       "label": "Experiment Loop Specification",
@@ -680,9 +680,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "programmd_experiment_loop_spec",
-      "community": 3,
-      "norm_label": "experiment loop specification"
+      "community": 2,
+      "norm_label": "experiment loop specification",
+      "id": "programmd_experiment_loop_spec"
     },
     {
       "label": "Minimize Container Objective",
@@ -693,9 +693,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "programmd_minimize_container",
-      "community": 3,
-      "norm_label": "minimize container objective"
+      "community": 2,
+      "norm_label": "minimize container objective",
+      "id": "programmd_minimize_container"
     },
     {
       "label": "Reference-Aware Problem Selection Rules",
@@ -706,9 +706,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "programmd_problem_selection_rules",
-      "community": 3,
-      "norm_label": "reference-aware problem selection rules"
+      "community": 2,
+      "norm_label": "reference-aware problem selection rules",
+      "id": "programmd_problem_selection_rules"
     },
     {
       "label": "PACKING_REFERENCE.tsv Knowledge Base",
@@ -719,9 +719,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "programmd_packing_reference",
-      "community": 3,
-      "norm_label": "packing_reference.tsv knowledge base"
+      "community": 2,
+      "norm_label": "packing_reference.tsv knowledge base",
+      "id": "programmd_packing_reference"
     },
     {
       "label": "Problem Naming Convention",
@@ -732,9 +732,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "programmd_naming_convention",
-      "community": 3,
-      "norm_label": "problem naming convention"
+      "community": 2,
+      "norm_label": "problem naming convention",
+      "id": "programmd_naming_convention"
     },
     {
       "label": "Diversity and Anti-Stuck Rules",
@@ -745,9 +745,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "programmd_diversity_rules",
-      "community": 3,
-      "norm_label": "diversity and anti-stuck rules"
+      "community": 2,
+      "norm_label": "diversity and anti-stuck rules",
+      "id": "programmd_diversity_rules"
     },
     {
       "label": "Simplicity Criterion",
@@ -758,9 +758,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "programmd_simplicity_criterion",
-      "community": 3,
-      "norm_label": "simplicity criterion"
+      "community": 2,
+      "norm_label": "simplicity criterion",
+      "id": "programmd_simplicity_criterion"
     },
     {
       "label": "Shape Token Catalog",
@@ -771,9 +771,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "programmd_shape_tokens",
-      "community": 3,
-      "norm_label": "shape token catalog"
+      "community": 2,
+      "norm_label": "shape token catalog",
+      "id": "programmd_shape_tokens"
     },
     {
       "label": "Erich Friedman Packing Reference",
@@ -784,9 +784,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "programmd_erich_friedman_reference",
-      "community": 3,
-      "norm_label": "erich friedman packing reference"
+      "community": 2,
+      "norm_label": "erich friedman packing reference",
+      "id": "programmd_erich_friedman_reference"
     },
     {
       "label": "Shape Packing Domain Overview",
@@ -797,9 +797,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "shapepackingsummary_shape_packing_domain",
-      "community": 3,
-      "norm_label": "shape packing domain overview"
+      "community": 2,
+      "norm_label": "shape packing domain overview",
+      "id": "shapepackingsummary_shape_packing_domain"
     },
     {
       "label": "Efficient Heuristic Design Goal",
@@ -810,9 +810,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "shapepackingsummary_efficient_heuristics",
       "community": 2,
-      "norm_label": "efficient heuristic design goal"
+      "norm_label": "efficient heuristic design goal",
+      "id": "shapepackingsummary_efficient_heuristics"
     },
     {
       "label": "polygon-packer Library Purpose",
@@ -823,9 +823,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "polygon_packer_readme_polygon_packer_library",
       "community": 2,
-      "norm_label": "polygon-packer library purpose"
+      "norm_label": "polygon-packer library purpose",
+      "id": "polygon_packer_readme_polygon_packer_library"
     },
     {
       "label": "Optimization API Design",
@@ -836,9 +836,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "polygon_packer_readme_optimization_api",
       "community": 2,
-      "norm_label": "optimization api design"
+      "norm_label": "optimization api design",
+      "id": "polygon_packer_readme_optimization_api"
     },
     {
       "label": "5 triangles in square packing example",
@@ -849,9 +849,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "image_5_3_in_4_example",
-      "community": 3,
-      "norm_label": "5 triangles in square packing example"
+      "community": 2,
+      "norm_label": "5 triangles in square packing example",
+      "id": "image_5_3_in_4_example"
     },
     {
       "label": "Test packing visualization",
@@ -862,9 +862,1099 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "image_test_packing_result",
       "community": 2,
-      "norm_label": "test packing visualization"
+      "norm_label": "test packing visualization",
+      "id": "image_test_packing_result"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "shape_packing/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_init",
+      "community": 13,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "shape_packing  Core library for 2D shape packing: - geometry - optimization",
+      "file_type": "rationale",
+      "source_file": "shape_packing/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_init_rationale_1",
+      "community": 13,
+      "norm_label": "shape_packing  core library for 2d shape packing: - geometry - optimization"
+    },
+    {
+      "label": "agent_loop.py",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop",
+      "community": 1,
+      "norm_label": "agent_loop.py"
+    },
+    {
+      "label": "ExperimentResult",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_experimentresult",
+      "community": 1,
+      "norm_label": "experimentresult"
+    },
+    {
+      "label": "load_history()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_load_history",
+      "community": 1,
+      "norm_label": "load_history()"
+    },
+    {
+      "label": "append_result()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_append_result",
+      "community": 1,
+      "norm_label": "append_result()"
+    },
+    {
+      "label": "load_packing_reference()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L132",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_load_packing_reference",
+      "community": 1,
+      "norm_label": "load_packing_reference()"
+    },
+    {
+      "label": "is_reference_blocked()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_is_reference_blocked",
+      "community": 1,
+      "norm_label": "is_reference_blocked()"
+    },
+    {
+      "label": "is_preferred_reference()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L177",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_is_preferred_reference",
+      "community": 1,
+      "norm_label": "is_preferred_reference()"
+    },
+    {
+      "label": "current_best_scores()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L199",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_current_best_scores",
+      "community": 1,
+      "norm_label": "current_best_scores()"
+    },
+    {
+      "label": "extract_problem_family()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L213",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_extract_problem_family",
+      "community": 1,
+      "norm_label": "extract_problem_family()"
+    },
+    {
+      "label": "recent_problems()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L228",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_recent_problems",
+      "community": 1,
+      "norm_label": "recent_problems()"
+    },
+    {
+      "label": "last_experiments_for()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L236",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_last_experiments_for",
+      "community": 1,
+      "norm_label": "last_experiments_for()"
+    },
+    {
+      "label": "has_improved()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L248",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_has_improved",
+      "community": 1,
+      "norm_label": "has_improved()"
+    },
+    {
+      "label": "choose_problem()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L268",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_choose_problem",
+      "community": 1,
+      "norm_label": "choose_problem()"
+    },
+    {
+      "label": "is_stuck()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L353",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_is_stuck",
+      "community": 1,
+      "norm_label": "is_stuck()"
+    },
+    {
+      "label": "should_switch_radically()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L377",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_should_switch_radically",
+      "community": 1,
+      "norm_label": "should_switch_radically()"
+    },
+    {
+      "label": "log_result()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L404",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_log_result",
+      "community": 1,
+      "norm_label": "log_result()"
+    },
+    {
+      "label": "make_loop_candidate()",
+      "file_type": "code",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L454",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_make_loop_candidate",
+      "community": 1,
+      "norm_label": "make_loop_candidate()"
+    },
+    {
+      "label": "AgentLoopModule: deep module for the experiment loop.  Responsibilities: - Lo",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_1",
+      "community": 1,
+      "norm_label": "agentloopmodule: deep module for the experiment loop.  responsibilities: - lo"
+    },
+    {
+      "label": "Load results.tsv into a list of ExperimentResult.     Skips malformed rows.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_76",
+      "community": 1,
+      "norm_label": "load results.tsv into a list of experimentresult.     skips malformed rows."
+    },
+    {
+      "label": "Append a single ExperimentResult to results.tsv.     Creates file with header i",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_108",
+      "community": 1,
+      "norm_label": "append a single experimentresult to results.tsv.     creates file with header i"
+    },
+    {
+      "label": "Load PACKING_REFERENCE.tsv as list of dicts.     Fields: problem_family, n, bes",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L133",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_133",
+      "community": 1,
+      "norm_label": "load packing_reference.tsv as list of dicts.     fields: problem_family, n, bes"
+    },
+    {
+      "label": "Decide if a problem is blocked by reference metadata.      Blocked if:     -",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L155",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_155",
+      "community": 1,
+      "norm_label": "decide if a problem is blocked by reference metadata.      blocked if:     -"
+    },
+    {
+      "label": "Soft signal: problem is aligned with 'best_known' or human-found source.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L181",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_181",
+      "community": 1,
+      "norm_label": "soft signal: problem is aligned with 'best_known' or human-found source."
+    },
+    {
+      "label": "For each problem, return the best (lowest) score we have achieved.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L200",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_200",
+      "community": 1,
+      "norm_label": "for each problem, return the best (lowest) score we have achieved."
+    },
+    {
+      "label": "Given problem like '12_5_in_8', return family like '5_in_8'.     If not parseab",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L214",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_214",
+      "community": 1,
+      "norm_label": "given problem like '12_5_in_8', return family like '5_in_8'.     if not parseab"
+    },
+    {
+      "label": "Return list of problems from the last `last` experiments.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L229",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_229",
+      "community": 1,
+      "norm_label": "return list of problems from the last `last` experiments."
+    },
+    {
+      "label": "Last N experiments for a given problem.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L237",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_237",
+      "community": 1,
+      "norm_label": "last n experiments for a given problem."
+    },
+    {
+      "label": "Check if there was any strict improvement (lower score) in this window.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L249",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_249",
+      "community": 1,
+      "norm_label": "check if there was any strict improvement (lower score) in this window."
+    },
+    {
+      "label": "Choose next problem to run.      High-level policy (matches program.md):",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L274",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_274",
+      "community": 1,
+      "norm_label": "choose next problem to run.      high-level policy (matches program.md):"
+    },
+    {
+      "label": "Consider a problem 'stuck' if the last threshold_no_improve experiments     on",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L358",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_358",
+      "community": 1,
+      "norm_label": "consider a problem 'stuck' if the last threshold_no_improve experiments     on"
+    },
+    {
+      "label": "Signal that it is time to try something more radical:     - Every ~20-30 total",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L382",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_382",
+      "community": 1,
+      "norm_label": "signal that it is time to try something more radical:     - every ~20-30 total"
+    },
+    {
+      "label": "Log result to results.tsv and decide status:     - \"keep\"     if improved best",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L414",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_414",
+      "community": 1,
+      "norm_label": "log result to results.tsv and decide status:     - \"keep\"     if improved best"
+    },
+    {
+      "label": "Given current context, suggest:     - which problem to run next     - whether",
+      "file_type": "rationale",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L459",
+      "_origin": "ast",
+      "id": "shape_packing_agent_loop_rationale_459",
+      "community": 1,
+      "norm_label": "given current context, suggest:     - which problem to run next     - whether"
+    },
+    {
+      "label": "geometry.py",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_geometry",
+      "community": 0,
+      "norm_label": "geometry.py"
+    },
+    {
+      "label": "_ensure_array()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_ensure_array",
+      "community": 0,
+      "norm_label": "_ensure_array()"
+    },
+    {
+      "label": "regular_polygon_vertices()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_regular_polygon_vertices",
+      "community": 0,
+      "norm_label": "regular_polygon_vertices()"
+    },
+    {
+      "label": "regular_polygon_outward_normals()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_regular_polygon_outward_normals",
+      "community": 0,
+      "norm_label": "regular_polygon_outward_normals()"
+    },
+    {
+      "label": "transform_polygon()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_transform_polygon",
+      "community": 0,
+      "norm_label": "transform_polygon()"
+    },
+    {
+      "label": "GeoConfig",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_geoconfig",
+      "community": 10,
+      "norm_label": "geoconfig"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L90",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_geoconfig_init",
+      "community": 10,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "ndarray",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_py_ndarray",
+      "community": 10,
+      "norm_label": "ndarray"
+    },
+    {
+      "label": "_transform_polygon_nb()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_transform_polygon_nb",
+      "community": 0,
+      "norm_label": "_transform_polygon_nb()"
+    },
+    {
+      "label": "_rotate_vectors_nb()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rotate_vectors_nb",
+      "community": 0,
+      "norm_label": "_rotate_vectors_nb()"
+    },
+    {
+      "label": "_poking_penalty_nb()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L140",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_poking_penalty_nb",
+      "community": 0,
+      "norm_label": "_poking_penalty_nb()"
+    },
+    {
+      "label": "bh_objective()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L155",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_bh_objective",
+      "community": 0,
+      "norm_label": "bh_objective()"
+    },
+    {
+      "label": "project_polygon()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L232",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_project_polygon",
+      "community": 0,
+      "norm_label": "project_polygon()"
+    },
+    {
+      "label": "polygon_normals()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L249",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_polygon_normals",
+      "community": 0,
+      "norm_label": "polygon_normals()"
+    },
+    {
+      "label": "sat_check_overlap()",
+      "file_type": "code",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L268",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_sat_check_overlap",
+      "community": 0,
+      "norm_label": "sat_check_overlap()"
+    },
+    {
+      "label": "geometry.py  Single, deep module for all low-level geometry used in this packi",
+      "file_type": "rationale",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rationale_1",
+      "community": 0,
+      "norm_label": "geometry.py  single, deep module for all low-level geometry used in this packi"
+    },
+    {
+      "label": "Vertices of a regular polygon centered at origin.     If called with numpy inpu",
+      "file_type": "rationale",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rationale_36",
+      "community": 0,
+      "norm_label": "vertices of a regular polygon centered at origin.     if called with numpy inpu"
+    },
+    {
+      "label": "Outward normals (one per edge), for a regular polygon.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rationale_46",
+      "community": 0,
+      "norm_label": "outward normals (one per edge), for a regular polygon."
+    },
+    {
+      "label": "Rotate vertices by angle a about origin, then translate by (cx, cy).     Accept",
+      "file_type": "rationale",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rationale_55",
+      "community": 0,
+      "norm_label": "rotate vertices by angle a about origin, then translate by (cx, cy).     accept"
+    },
+    {
+      "label": "Bundles geometry constants used by bh_objective.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rationale_77",
+      "community": 10,
+      "norm_label": "bundles geometry constants used by bh_objective."
+    },
+    {
+      "label": "Core objective: penalty for container overflow + overlaps (SAT-style).     Mirr",
+      "file_type": "rationale",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rationale_165",
+      "community": 0,
+      "norm_label": "core objective: penalty for container overflow + overlaps (sat-style).     mirr"
+    },
+    {
+      "label": "Project polygon onto a given axis.     Returns (min_proj, max_proj).",
+      "file_type": "rationale",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L233",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rationale_233",
+      "community": 0,
+      "norm_label": "project polygon onto a given axis.     returns (min_proj, max_proj)."
+    },
+    {
+      "label": "Compute outward normals of each edge of a (possibly irregular) polygon.     Acc",
+      "file_type": "rationale",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L250",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rationale_250",
+      "community": 0,
+      "norm_label": "compute outward normals of each edge of a (possibly irregular) polygon.     acc"
+    },
+    {
+      "label": "Separating Axis Theorem check between two convex polygons.     Returns:",
+      "file_type": "rationale",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L270",
+      "_origin": "ast",
+      "id": "shape_packing_geometry_rationale_270",
+      "community": 0,
+      "norm_label": "separating axis theorem check between two convex polygons.     returns:"
+    },
+    {
+      "label": "optimization.py",
+      "file_type": "code",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_optimization",
+      "community": 6,
+      "norm_label": "optimization.py"
+    },
+    {
+      "label": "PackingProblem",
+      "file_type": "code",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_packingproblem",
+      "community": 6,
+      "norm_label": "packingproblem"
+    },
+    {
+      "label": "OptConfig",
+      "file_type": "code",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_optconfig",
+      "community": 6,
+      "norm_label": "optconfig"
+    },
+    {
+      "label": "build_objective()",
+      "file_type": "code",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_build_objective",
+      "community": 0,
+      "norm_label": "build_objective()"
+    },
+    {
+      "label": "run_single_attempt()",
+      "file_type": "code",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_run_single_attempt",
+      "community": 6,
+      "norm_label": "run_single_attempt()"
+    },
+    {
+      "label": "ndarray",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_py_ndarray",
+      "community": 6,
+      "norm_label": "ndarray"
+    },
+    {
+      "label": "run_all_attempts()",
+      "file_type": "code",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L212",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_run_all_attempts",
+      "community": 6,
+      "norm_label": "run_all_attempts()"
+    },
+    {
+      "label": "optimization.py  Deep module for optimization + objective orchestration in thi",
+      "file_type": "rationale",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_rationale_1",
+      "community": 6,
+      "norm_label": "optimization.py  deep module for optimization + objective orchestration in thi"
+    },
+    {
+      "label": "Describes a packing problem: N inner polygons (each with nsi sides)     inside",
+      "file_type": "rationale",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_rationale_35",
+      "community": 6,
+      "norm_label": "describes a packing problem: n inner polygons (each with nsi sides)     inside"
+    },
+    {
+      "label": "High-level knobs for optimization behavior.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_rationale_46",
+      "community": 6,
+      "norm_label": "high-level knobs for optimization behavior."
+    },
+    {
+      "label": "Build a callable objective(values) using geometry.py.     Returns:         obj",
+      "file_type": "rationale",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L61",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_rationale_61",
+      "community": 0,
+      "norm_label": "build a callable objective(values) using geometry.py.     returns:         obj"
+    },
+    {
+      "label": "Run a single optimization attempt (with shrink + L-BFGS-B + basin-hopping).",
+      "file_type": "rationale",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_rationale_109",
+      "community": 6,
+      "norm_label": "run a single optimization attempt (with shrink + l-bfgs-b + basin-hopping)."
+    },
+    {
+      "label": "Run many optimization attempts in parallel and return the best (S, values).",
+      "file_type": "rationale",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L218",
+      "_origin": "ast",
+      "id": "shape_packing_optimization_rationale_218",
+      "community": 6,
+      "norm_label": "run many optimization attempts in parallel and return the best (s, values)."
+    },
+    {
+      "label": "packing_config.py",
+      "file_type": "code",
+      "source_file": "shape_packing/packing_config.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_packing_config",
+      "community": 3,
+      "norm_label": "packing_config.py"
+    },
+    {
+      "label": "packing_config.py  Helper configuration for the packing autoresearch loop. Th",
+      "file_type": "rationale",
+      "source_file": "shape_packing/packing_config.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_packing_config_rationale_1",
+      "community": 3,
+      "norm_label": "packing_config.py  helper configuration for the packing autoresearch loop. th"
+    },
+    {
+      "label": "problems.py",
+      "file_type": "code",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_problems",
+      "community": 3,
+      "norm_label": "problems.py"
+    },
+    {
+      "label": "Problem",
+      "file_type": "code",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "shape_packing_problems_problem",
+      "community": 3,
+      "norm_label": "problem"
+    },
+    {
+      "label": "parse_problem()",
+      "file_type": "code",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "shape_packing_problems_parse_problem",
+      "community": 3,
+      "norm_label": "parse_problem()"
+    },
+    {
+      "label": "shape_token_to_sides()",
+      "file_type": "code",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "shape_packing_problems_shape_token_to_sides",
+      "community": 3,
+      "norm_label": "shape_token_to_sides()"
+    },
+    {
+      "label": "is_special_shape()",
+      "file_type": "code",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "shape_packing_problems_is_special_shape",
+      "community": 3,
+      "norm_label": "is_special_shape()"
+    },
+    {
+      "label": "validate_problem()",
+      "file_type": "code",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L117",
+      "_origin": "ast",
+      "id": "shape_packing_problems_validate_problem",
+      "community": 3,
+      "norm_label": "validate_problem()"
+    },
+    {
+      "label": "_validate_token()",
+      "file_type": "code",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L140",
+      "_origin": "ast",
+      "id": "shape_packing_problems_validate_token",
+      "community": 3,
+      "norm_label": "_validate_token()"
+    },
+    {
+      "label": "problem_to_packer_args()",
+      "file_type": "code",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "shape_packing_problems_problem_to_packer_args",
+      "community": 3,
+      "norm_label": "problem_to_packer_args()"
+    },
+    {
+      "label": "list_problem_families()",
+      "file_type": "code",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L183",
+      "_origin": "ast",
+      "id": "shape_packing_problems_list_problem_families",
+      "community": 3,
+      "norm_label": "list_problem_families()"
+    },
+    {
+      "label": "problems.py  ProblemModule: deep module for \"what is a packing problem?\"  Si",
+      "file_type": "rationale",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_problems_rationale_1",
+      "community": 3,
+      "norm_label": "problems.py  problemmodule: deep module for \"what is a packing problem?\"  si"
+    },
+    {
+      "label": "Represents one packing problem, e.g. '8_3_in_5' means:     8 triangles packed i",
+      "file_type": "rationale",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "shape_packing_problems_rationale_33",
+      "community": 3,
+      "norm_label": "represents one packing problem, e.g. '8_3_in_5' means:     8 triangles packed i"
+    },
+    {
+      "label": "Parse a problem name in the canonical format:          {N}_{inner}_in_{contain",
+      "file_type": "rationale",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "shape_packing_problems_rationale_53",
+      "community": 3,
+      "norm_label": "parse a problem name in the canonical format:          {n}_{inner}_in_{contain"
+    },
+    {
+      "label": "Map a shape token to the number of sides of a regular polygon.      - For know",
+      "file_type": "rationale",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "shape_packing_problems_rationale_82",
+      "community": 3,
+      "norm_label": "map a shape token to the number of sides of a regular polygon.      - for know"
+    },
+    {
+      "label": "True if token corresponds to a special (non-regular-polygon) shape     requirin",
+      "file_type": "rationale",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "shape_packing_problems_rationale_108",
+      "community": 3,
+      "norm_label": "true if token corresponds to a special (non-regular-polygon) shape     requirin"
+    },
+    {
+      "label": "Validate that a Problem is well-formed according to current conventions.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L118",
+      "_origin": "ast",
+      "id": "shape_packing_problems_rationale_118",
+      "community": 3,
+      "norm_label": "validate that a problem is well-formed according to current conventions."
+    },
+    {
+      "label": "Helper for validate_problem to check a single token.     role is 'inner' or 'co",
+      "file_type": "rationale",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L141",
+      "_origin": "ast",
+      "id": "shape_packing_problems_rationale_141",
+      "community": 3,
+      "norm_label": "helper for validate_problem to check a single token.     role is 'inner' or 'co"
+    },
+    {
+      "label": "Convert a Problem to arguments suitable for calling the packer.      Returns:",
+      "file_type": "rationale",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L166",
+      "_origin": "ast",
+      "id": "shape_packing_problems_rationale_166",
+      "community": 3,
+      "norm_label": "convert a problem to arguments suitable for calling the packer.      returns:"
+    },
+    {
+      "label": "Return the catalog of problem families (e.g. 'Triangles in Circles').      Del",
+      "file_type": "rationale",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L184",
+      "_origin": "ast",
+      "id": "shape_packing_problems_rationale_184",
+      "community": 3,
+      "norm_label": "return the catalog of problem families (e.g. 'triangles in circles').      del"
+    },
+    {
+      "label": "solution_tools.py",
+      "file_type": "code",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools",
+      "community": 0,
+      "norm_label": "solution_tools.py"
+    },
+    {
+      "label": "Solution",
+      "file_type": "code",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_solution",
+      "community": 0,
+      "norm_label": "solution"
+    },
+    {
+      "label": "VerifyResult",
+      "file_type": "code",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_verifyresult",
+      "community": 0,
+      "norm_label": "verifyresult"
+    },
+    {
+      "label": "load_solution()",
+      "file_type": "code",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_load_solution",
+      "community": 0,
+      "norm_label": "load_solution()"
+    },
+    {
+      "label": "build_polygons()",
+      "file_type": "code",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L129",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_build_polygons",
+      "community": 0,
+      "norm_label": "build_polygons()"
+    },
+    {
+      "label": "load_best_value()",
+      "file_type": "code",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L153",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_load_best_value",
+      "community": 0,
+      "norm_label": "load_best_value()"
+    },
+    {
+      "label": "verify_solution()",
+      "file_type": "code",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L181",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_verify_solution",
+      "community": 0,
+      "norm_label": "verify_solution()"
+    },
+    {
+      "label": "to_plot_data()",
+      "file_type": "code",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L275",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_to_plot_data",
+      "community": 0,
+      "norm_label": "to_plot_data()"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "any",
+      "community": 0,
+      "norm_label": "any"
+    },
+    {
+      "label": "render_solution()",
+      "file_type": "code",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L305",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_render_solution",
+      "community": 0,
+      "norm_label": "render_solution()"
+    },
+    {
+      "label": "solution_tools.py (ToolsModule)  Single module for: - loading a solution JSON",
+      "file_type": "rationale",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_rationale_1",
+      "community": 0,
+      "norm_label": "solution_tools.py (toolsmodule)  single module for: - loading a solution json"
+    },
+    {
+      "label": "Load solution JSON into a typed Solution.      Supports two JSON shapes used i",
+      "file_type": "rationale",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_rationale_60",
+      "community": 0,
+      "norm_label": "load solution json into a typed solution.      supports two json shapes used i"
+    },
+    {
+      "label": "Build all inner polygons from a Solution:     Each polygon is a list of (x, y)",
+      "file_type": "rationale",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L130",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_rationale_130",
+      "community": 0,
+      "norm_label": "build all inner polygons from a solution:     each polygon is a list of (x, y)"
+    },
+    {
+      "label": "Load best known value for a problem from PACKING_REFERENCE.tsv.     Returns Non",
+      "file_type": "rationale",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L157",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_rationale_157",
+      "community": 0,
+      "norm_label": "load best known value for a problem from packing_reference.tsv.     returns non"
+    },
+    {
+      "label": "Verify a solution JSON:       - metric scaling consistency       - container b",
+      "file_type": "rationale",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L188",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_rationale_188",
+      "community": 0,
+      "norm_label": "verify a solution json:       - metric scaling consistency       - container b"
+    },
+    {
+      "label": "Prepare geometry for plotting from a Solution.      Returns dict with:",
+      "file_type": "rationale",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L276",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_rationale_276",
+      "community": 0,
+      "norm_label": "prepare geometry for plotting from a solution.      returns dict with:"
+    },
+    {
+      "label": "Render a solution JSON to a PNG.",
+      "file_type": "rationale",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L312",
+      "_origin": "ast",
+      "id": "shape_packing_solution_tools_rationale_312",
+      "community": 0,
+      "norm_label": "render a solution json to a png."
     }
   ],
   "links": [
@@ -874,9 +1964,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main",
-      "target": "packer_rs_src_main_args",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_args"
     },
     {
       "relation": "contains",
@@ -884,9 +1974,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main",
-      "target": "packer_rs_src_main_main",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_main"
     },
     {
       "relation": "contains",
@@ -894,9 +1984,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L319",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main",
-      "target": "packer_rs_src_main_minimize_gradient",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_minimize_gradient"
     },
     {
       "relation": "contains",
@@ -904,9 +1994,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L314",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main",
-      "target": "packer_rs_src_main_optresult",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_optresult"
     },
     {
       "relation": "contains",
@@ -914,9 +2004,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L375",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main",
-      "target": "packer_rs_src_main_penalty_and_gradient",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_penalty_and_gradient"
     },
     {
       "relation": "contains",
@@ -924,9 +2014,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L171",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main",
-      "target": "packer_rs_src_main_regular_polygon",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_regular_polygon"
     },
     {
       "relation": "contains",
@@ -934,9 +2024,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L180",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main",
-      "target": "packer_rs_src_main_regular_polygon_vectors",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_regular_polygon_vectors"
     },
     {
       "relation": "contains",
@@ -944,9 +2034,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L189",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main",
-      "target": "packer_rs_src_main_run_attempt",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_run_attempt"
     },
     {
       "relation": "contains",
@@ -954,9 +2044,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L143",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main",
-      "target": "packer_rs_src_main_serde_json_to_string",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_serde_json_to_string"
     },
     {
       "relation": "references",
@@ -965,9 +2055,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_args",
-      "target": "option",
-      "confidence_score": 1.0
+      "target": "option"
     },
     {
       "relation": "references",
@@ -976,9 +2066,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_args",
-      "target": "string",
-      "confidence_score": 1.0
+      "target": "string"
     },
     {
       "relation": "references",
@@ -987,9 +2077,9 @@
       "source_location": "L189",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_run_attempt",
-      "target": "option",
-      "confidence_score": 1.0
+      "target": "option"
     },
     {
       "relation": "references",
@@ -998,9 +2088,9 @@
       "source_location": "L143",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_serde_json_to_string",
-      "target": "string",
-      "confidence_score": 1.0
+      "target": "string"
     },
     {
       "relation": "calls",
@@ -1009,9 +2099,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_main",
-      "target": "packer_rs_src_main_regular_polygon",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_regular_polygon"
     },
     {
       "relation": "calls",
@@ -1020,9 +2110,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_main",
-      "target": "packer_rs_src_main_regular_polygon_vectors",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_regular_polygon_vectors"
     },
     {
       "relation": "calls",
@@ -1031,9 +2121,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_main",
-      "target": "packer_rs_src_main_run_attempt",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_run_attempt"
     },
     {
       "relation": "calls",
@@ -1042,9 +2132,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L133",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_main",
-      "target": "packer_rs_src_main_serde_json_to_string",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_serde_json_to_string"
     },
     {
       "relation": "references",
@@ -1053,9 +2143,9 @@
       "source_location": "L171",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_regular_polygon",
-      "target": "vec",
-      "confidence_score": 1.0
+      "target": "vec"
     },
     {
       "relation": "references",
@@ -1064,9 +2154,9 @@
       "source_location": "L315",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_optresult",
-      "target": "vec",
-      "confidence_score": 1.0
+      "target": "vec"
     },
     {
       "relation": "references",
@@ -1075,9 +2165,9 @@
       "source_location": "L375",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_penalty_and_gradient",
-      "target": "vec",
-      "confidence_score": 1.0
+      "target": "vec"
     },
     {
       "relation": "references",
@@ -1086,9 +2176,9 @@
       "source_location": "L180",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_regular_polygon_vectors",
-      "target": "vec",
-      "confidence_score": 1.0
+      "target": "vec"
     },
     {
       "relation": "references",
@@ -1097,9 +2187,9 @@
       "source_location": "L189",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_run_attempt",
-      "target": "vec",
-      "confidence_score": 1.0
+      "target": "vec"
     },
     {
       "relation": "references",
@@ -1108,9 +2198,9 @@
       "source_location": "L189",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_run_attempt",
-      "target": "atomicbool",
-      "confidence_score": 1.0
+      "target": "atomicbool"
     },
     {
       "relation": "references",
@@ -1119,9 +2209,9 @@
       "source_location": "L189",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_run_attempt",
-      "target": "instant",
-      "confidence_score": 1.0
+      "target": "instant"
     },
     {
       "relation": "calls",
@@ -1130,9 +2220,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L255",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_run_attempt",
-      "target": "packer_rs_src_main_minimize_gradient",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_minimize_gradient"
     },
     {
       "relation": "references",
@@ -1141,9 +2231,9 @@
       "source_location": "L189",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_run_attempt",
-      "target": "r",
-      "confidence_score": 1.0
+      "target": "r"
     },
     {
       "relation": "references",
@@ -1152,9 +2242,9 @@
       "source_location": "L319",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_minimize_gradient",
-      "target": "packer_rs_src_main_optresult",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_optresult"
     },
     {
       "relation": "calls",
@@ -1163,9 +2253,9 @@
       "source_file": "packer_rs/src/main.rs",
       "source_location": "L333",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packer_rs_src_main_minimize_gradient",
-      "target": "packer_rs_src_main_penalty_and_gradient",
-      "confidence_score": 1.0
+      "target": "packer_rs_src_main_penalty_and_gradient"
     },
     {
       "relation": "rationale_for",
@@ -1173,9 +2263,9 @@
       "source_file": "packing_config.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "packing_config_rationale_1",
-      "target": "packing_config",
-      "confidence_score": 1.0
+      "target": "packing_config"
     },
     {
       "relation": "contains",
@@ -1183,9 +2273,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L350",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "polygon_packer_polygon_packer",
-      "target": "polygon_packer_polygon_packer_bh_function",
-      "confidence_score": 1.0
+      "target": "polygon_packer_polygon_packer_bh_function"
     },
     {
       "relation": "contains",
@@ -1193,9 +2283,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L336",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "polygon_packer_polygon_packer",
-      "target": "polygon_packer_polygon_packer_poking_penalty",
-      "confidence_score": 1.0
+      "target": "polygon_packer_polygon_packer_poking_penalty"
     },
     {
       "relation": "contains",
@@ -1203,9 +2293,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L408",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "polygon_packer_polygon_packer",
-      "target": "polygon_packer_polygon_packer_repetition",
-      "confidence_score": 1.0
+      "target": "polygon_packer_polygon_packer_repetition"
     },
     {
       "relation": "contains",
@@ -1213,9 +2303,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L323",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "polygon_packer_polygon_packer",
-      "target": "polygon_packer_polygon_packer_rotate_vectors",
-      "confidence_score": 1.0
+      "target": "polygon_packer_polygon_packer_rotate_vectors"
     },
     {
       "relation": "contains",
@@ -1223,9 +2313,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L310",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "polygon_packer_polygon_packer",
-      "target": "polygon_packer_polygon_packer_transform_polygon",
-      "confidence_score": 1.0
+      "target": "polygon_packer_polygon_packer_transform_polygon"
     },
     {
       "relation": "calls",
@@ -1234,9 +2324,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "polygon_packer_polygon_packer_bh_function",
-      "target": "polygon_packer_polygon_packer_transform_polygon",
-      "confidence_score": 1.0
+      "target": "polygon_packer_polygon_packer_transform_polygon"
     },
     {
       "relation": "calls",
@@ -1245,9 +2335,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "polygon_packer_polygon_packer_bh_function",
-      "target": "polygon_packer_polygon_packer_rotate_vectors",
-      "confidence_score": 1.0
+      "target": "polygon_packer_polygon_packer_rotate_vectors"
     },
     {
       "relation": "calls",
@@ -1256,9 +2346,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "polygon_packer_polygon_packer_bh_function",
-      "target": "polygon_packer_polygon_packer_poking_penalty",
-      "confidence_score": 1.0
+      "target": "polygon_packer_polygon_packer_poking_penalty"
     },
     {
       "relation": "indirect_call",
@@ -1267,9 +2357,9 @@
       "source_file": "polygon-packer/polygon_packer.py",
       "source_location": "L176",
       "weight": 1.0,
+      "confidence_score": 0.5,
       "source": "polygon_packer_polygon_packer_repetition",
-      "target": "polygon_packer_polygon_packer_bh_function",
-      "confidence_score": 0.5
+      "target": "polygon_packer_polygon_packer_bh_function"
     },
     {
       "relation": "rationale_for",
@@ -1277,9 +2367,9 @@
       "source_file": "prepare.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prepare_rationale_1",
-      "target": "prepare",
-      "confidence_score": 1.0
+      "target": "prepare"
     },
     {
       "relation": "contains",
@@ -1287,9 +2377,9 @@
       "source_file": "render_solution.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "render_solution",
-      "target": "render_solution_load_solution",
-      "confidence_score": 1.0
+      "target": "render_solution_load_solution"
     },
     {
       "relation": "contains",
@@ -1297,9 +2387,9 @@
       "source_file": "render_solution.py",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "render_solution",
-      "target": "render_solution_main",
-      "confidence_score": 1.0
+      "target": "render_solution_main"
     },
     {
       "relation": "contains",
@@ -1307,9 +2397,9 @@
       "source_file": "render_solution.py",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "render_solution",
-      "target": "render_solution_render",
-      "confidence_score": 1.0
+      "target": "render_solution_render"
     },
     {
       "relation": "calls",
@@ -1318,9 +2408,9 @@
       "source_file": "render_solution.py",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "render_solution_main",
-      "target": "render_solution_load_solution",
-      "confidence_score": 1.0
+      "target": "render_solution_load_solution"
     },
     {
       "relation": "calls",
@@ -1329,9 +2419,9 @@
       "source_file": "render_solution.py",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "render_solution_main",
-      "target": "render_solution_render",
-      "confidence_score": 1.0
+      "target": "render_solution_render"
     },
     {
       "relation": "calls",
@@ -1361,9 +2451,9 @@
       "source_file": "scripts/parse_erich_friedman.py",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_parse_erich_friedman",
-      "target": "scripts_parse_erich_friedman_extract_float",
-      "confidence_score": 1.0
+      "target": "scripts_parse_erich_friedman_extract_float"
     },
     {
       "relation": "contains",
@@ -1371,9 +2461,9 @@
       "source_file": "scripts/parse_erich_friedman.py",
       "source_location": "L164",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_parse_erich_friedman",
-      "target": "scripts_parse_erich_friedman_main",
-      "confidence_score": 1.0
+      "target": "scripts_parse_erich_friedman_main"
     },
     {
       "relation": "contains",
@@ -1381,9 +2471,9 @@
       "source_file": "scripts/parse_erich_friedman.py",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_parse_erich_friedman",
-      "target": "scripts_parse_erich_friedman_parse_html",
-      "confidence_score": 1.0
+      "target": "scripts_parse_erich_friedman_parse_html"
     },
     {
       "relation": "calls",
@@ -1392,9 +2482,9 @@
       "source_file": "scripts/parse_erich_friedman.py",
       "source_location": "L128",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_parse_erich_friedman_parse_html",
-      "target": "scripts_parse_erich_friedman_extract_float",
-      "confidence_score": 1.0
+      "target": "scripts_parse_erich_friedman_extract_float"
     },
     {
       "relation": "calls",
@@ -1403,9 +2493,9 @@
       "source_file": "scripts/parse_erich_friedman.py",
       "source_location": "L188",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_parse_erich_friedman_main",
-      "target": "scripts_parse_erich_friedman_parse_html",
-      "confidence_score": 1.0
+      "target": "scripts_parse_erich_friedman_parse_html"
     },
     {
       "relation": "contains",
@@ -1413,9 +2503,9 @@
       "source_file": "train.py",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train",
-      "target": "train_build_command",
-      "confidence_score": 1.0
+      "target": "train_build_command"
     },
     {
       "relation": "contains",
@@ -1423,9 +2513,9 @@
       "source_file": "train.py",
       "source_location": "L87",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train",
-      "target": "train_ensure_problem_output_dir",
-      "confidence_score": 1.0
+      "target": "train_ensure_problem_output_dir"
     },
     {
       "relation": "contains",
@@ -1433,9 +2523,9 @@
       "source_file": "train.py",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train",
-      "target": "train_parse_problem",
-      "confidence_score": 1.0
+      "target": "train_parse_problem"
     },
     {
       "relation": "contains",
@@ -1443,9 +2533,9 @@
       "source_file": "train.py",
       "source_location": "L165",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train",
-      "target": "train_run_experiment",
-      "confidence_score": 1.0
+      "target": "train_run_experiment"
     },
     {
       "relation": "contains",
@@ -1453,9 +2543,9 @@
       "source_file": "train.py",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train",
-      "target": "train_timestamp",
-      "confidence_score": 1.0
+      "target": "train_timestamp"
     },
     {
       "relation": "contains",
@@ -1463,9 +2553,9 @@
       "source_file": "train.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train",
-      "target": "train_to_sides",
-      "confidence_score": 1.0
+      "target": "train_to_sides"
     },
     {
       "relation": "rationale_for",
@@ -1473,9 +2563,9 @@
       "source_file": "train.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train_rationale_1",
-      "target": "train",
-      "confidence_score": 1.0
+      "target": "train"
     },
     {
       "relation": "calls",
@@ -1484,9 +2574,9 @@
       "source_file": "train.py",
       "source_location": "L169",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train_run_experiment",
-      "target": "train_parse_problem",
-      "confidence_score": 1.0
+      "target": "train_parse_problem"
     },
     {
       "relation": "calls",
@@ -1495,9 +2585,9 @@
       "source_file": "train.py",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train_build_command",
-      "target": "train_to_sides",
-      "confidence_score": 1.0
+      "target": "train_to_sides"
     },
     {
       "relation": "calls",
@@ -1506,9 +2596,9 @@
       "source_file": "train.py",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train_build_command",
-      "target": "train_ensure_problem_output_dir",
-      "confidence_score": 1.0
+      "target": "train_ensure_problem_output_dir"
     },
     {
       "relation": "calls",
@@ -1517,9 +2607,9 @@
       "source_file": "train.py",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train_ensure_problem_output_dir",
-      "target": "train_timestamp",
-      "confidence_score": 1.0
+      "target": "train_timestamp"
     },
     {
       "relation": "calls",
@@ -1528,9 +2618,9 @@
       "source_file": "train.py",
       "source_location": "L174",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "train_run_experiment",
-      "target": "train_build_command",
-      "confidence_score": 1.0
+      "target": "train_build_command"
     },
     {
       "relation": "contains",
@@ -1538,9 +2628,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution",
-      "target": "verify_solution_get_normals_of_polygon",
-      "confidence_score": 1.0
+      "target": "verify_solution_get_normals_of_polygon"
     },
     {
       "relation": "contains",
@@ -1548,9 +2638,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution",
-      "target": "verify_solution_load_best_value",
-      "confidence_score": 1.0
+      "target": "verify_solution_load_best_value"
     },
     {
       "relation": "contains",
@@ -1558,9 +2648,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution",
-      "target": "verify_solution_project_polygon",
-      "confidence_score": 1.0
+      "target": "verify_solution_project_polygon"
     },
     {
       "relation": "contains",
@@ -1568,9 +2658,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution",
-      "target": "verify_solution_regular_normals",
-      "confidence_score": 1.0
+      "target": "verify_solution_regular_normals"
     },
     {
       "relation": "contains",
@@ -1578,9 +2668,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution",
-      "target": "verify_solution_regular_vertices",
-      "confidence_score": 1.0
+      "target": "verify_solution_regular_vertices"
     },
     {
       "relation": "contains",
@@ -1588,9 +2678,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution",
-      "target": "verify_solution_sat_overlap",
-      "confidence_score": 1.0
+      "target": "verify_solution_sat_overlap"
     },
     {
       "relation": "contains",
@@ -1598,9 +2688,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution",
-      "target": "verify_solution_transform",
-      "confidence_score": 1.0
+      "target": "verify_solution_transform"
     },
     {
       "relation": "contains",
@@ -1608,9 +2698,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L88",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution",
-      "target": "verify_solution_verify",
-      "confidence_score": 1.0
+      "target": "verify_solution_verify"
     },
     {
       "relation": "calls",
@@ -1619,9 +2709,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution_verify",
-      "target": "verify_solution_regular_vertices",
-      "confidence_score": 1.0
+      "target": "verify_solution_regular_vertices"
     },
     {
       "relation": "calls",
@@ -1630,9 +2720,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution_verify",
-      "target": "verify_solution_regular_normals",
-      "confidence_score": 1.0
+      "target": "verify_solution_regular_normals"
     },
     {
       "relation": "calls",
@@ -1641,9 +2731,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution_verify",
-      "target": "verify_solution_transform",
-      "confidence_score": 1.0
+      "target": "verify_solution_transform"
     },
     {
       "relation": "calls",
@@ -1652,9 +2742,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L128",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution_verify",
-      "target": "verify_solution_get_normals_of_polygon",
-      "confidence_score": 1.0
+      "target": "verify_solution_get_normals_of_polygon"
     },
     {
       "relation": "calls",
@@ -1663,9 +2753,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution_sat_overlap",
-      "target": "verify_solution_project_polygon",
-      "confidence_score": 1.0
+      "target": "verify_solution_project_polygon"
     },
     {
       "relation": "calls",
@@ -1674,9 +2764,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L131",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution_verify",
-      "target": "verify_solution_sat_overlap",
-      "confidence_score": 1.0
+      "target": "verify_solution_sat_overlap"
     },
     {
       "relation": "calls",
@@ -1685,9 +2775,9 @@
       "source_file": "verify_solution.py",
       "source_location": "L141",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "verify_solution_verify",
-      "target": "verify_solution_load_best_value",
-      "confidence_score": 1.0
+      "target": "verify_solution_load_best_value"
     },
     {
       "relation": "conceptually_related_to",
@@ -1918,6 +3008,1821 @@
       "weight": 0.85,
       "source": "polygon_packer_readme_polygon_packer_library",
       "target": "polygon_packer_readme_optimization_api"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "shape_packing_init_rationale_1",
+      "target": "shape_packing_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_append_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L268",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_choose_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L199",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_current_best_scores",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L213",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_extract_problem_family",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L248",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_has_improved",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_is_preferred_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_is_reference_blocked",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L353",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_is_stuck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L236",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_last_experiments_for",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_load_history",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_load_packing_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L404",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_log_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L454",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_make_loop_candidate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_recent_problems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L377",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop",
+      "target": "shape_packing_agent_loop_should_switch_radically",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_1",
+      "target": "shape_packing_agent_loop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_append_result",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L268",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_choose_problem",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L199",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_current_best_scores",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L248",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_has_improved",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L353",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_is_stuck",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L236",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_last_experiments_for",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_load_history",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L404",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_log_result",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L454",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_make_loop_candidate",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_recent_problems",
+      "target": "shape_packing_agent_loop_experimentresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L423",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_log_result",
+      "target": "shape_packing_agent_loop_load_history",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L467",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_make_loop_candidate",
+      "target": "shape_packing_agent_loop_load_history",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_76",
+      "target": "shape_packing_agent_loop_load_history",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L446",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_log_result",
+      "target": "shape_packing_agent_loop_append_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_108",
+      "target": "shape_packing_agent_loop_append_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L293",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_choose_problem",
+      "target": "shape_packing_agent_loop_load_packing_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_133",
+      "target": "shape_packing_agent_loop_load_packing_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L303",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_choose_problem",
+      "target": "shape_packing_agent_loop_is_reference_blocked",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L155",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_155",
+      "target": "shape_packing_agent_loop_is_reference_blocked",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L330",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_choose_problem",
+      "target": "shape_packing_agent_loop_is_preferred_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L181",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_181",
+      "target": "shape_packing_agent_loop_is_preferred_reference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L425",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_log_result",
+      "target": "shape_packing_agent_loop_current_best_scores",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_200",
+      "target": "shape_packing_agent_loop_current_best_scores",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L316",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_choose_problem",
+      "target": "shape_packing_agent_loop_extract_problem_family",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L214",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_214",
+      "target": "shape_packing_agent_loop_extract_problem_family",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L294",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_choose_problem",
+      "target": "shape_packing_agent_loop_recent_problems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L229",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_229",
+      "target": "shape_packing_agent_loop_recent_problems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L362",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_is_stuck",
+      "target": "shape_packing_agent_loop_last_experiments_for",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L237",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_237",
+      "target": "shape_packing_agent_loop_last_experiments_for",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L371",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_is_stuck",
+      "target": "shape_packing_agent_loop_has_improved",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L249",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_249",
+      "target": "shape_packing_agent_loop_has_improved",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L474",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_make_loop_candidate",
+      "target": "shape_packing_agent_loop_choose_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L274",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_274",
+      "target": "shape_packing_agent_loop_choose_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L475",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_make_loop_candidate",
+      "target": "shape_packing_agent_loop_is_stuck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L358",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_358",
+      "target": "shape_packing_agent_loop_is_stuck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L470",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_make_loop_candidate",
+      "target": "shape_packing_agent_loop_should_switch_radically",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L382",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_382",
+      "target": "shape_packing_agent_loop_should_switch_radically",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L414",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_414",
+      "target": "shape_packing_agent_loop_log_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/agent_loop.py",
+      "source_location": "L459",
+      "weight": 1.0,
+      "source": "shape_packing_agent_loop_rationale_459",
+      "target": "shape_packing_agent_loop_make_loop_candidate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L155",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_bh_objective",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_ensure_array",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_geoconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_poking_penalty_nb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L249",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_polygon_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_project_polygon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_regular_polygon_outward_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_regular_polygon_vertices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_rotate_vectors_nb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L268",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_sat_check_overlap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_transform_polygon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "shape_packing_geometry",
+      "target": "shape_packing_geometry_transform_polygon_nb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_rationale_1",
+      "target": "shape_packing_geometry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "shape_packing_optimization",
+      "target": "shape_packing_geometry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_geometry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L255",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_polygon_normals",
+      "target": "shape_packing_geometry_ensure_array",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_transform_polygon",
+      "target": "shape_packing_geometry_ensure_array",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_rationale_36",
+      "target": "shape_packing_geometry_regular_polygon_vertices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "shape_packing_optimization",
+      "target": "shape_packing_geometry_regular_polygon_vertices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_build_objective",
+      "target": "shape_packing_geometry_regular_polygon_vertices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_geometry_regular_polygon_vertices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_build_polygons",
+      "target": "shape_packing_geometry_regular_polygon_vertices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L284",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_to_plot_data",
+      "target": "shape_packing_geometry_regular_polygon_vertices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_rationale_46",
+      "target": "shape_packing_geometry_regular_polygon_outward_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "shape_packing_optimization",
+      "target": "shape_packing_geometry_regular_polygon_outward_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_build_objective",
+      "target": "shape_packing_geometry_regular_polygon_outward_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_geometry_regular_polygon_outward_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L216",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_verify_solution",
+      "target": "shape_packing_geometry_regular_polygon_outward_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_rationale_55",
+      "target": "shape_packing_geometry_transform_polygon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_geometry_transform_polygon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_build_polygons",
+      "target": "shape_packing_geometry_transform_polygon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_geoconfig",
+      "target": "shape_packing_geometry_geoconfig_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_rationale_77",
+      "target": "shape_packing_geometry_geoconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_geoconfig_init",
+      "target": "shape_packing_geometry_py_ndarray",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_bh_objective",
+      "target": "shape_packing_geometry_transform_polygon_nb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L178",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_bh_objective",
+      "target": "shape_packing_geometry_rotate_vectors_nb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L179",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_bh_objective",
+      "target": "shape_packing_geometry_poking_penalty_nb",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L165",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_rationale_165",
+      "target": "shape_packing_geometry_bh_objective",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "shape_packing_optimization",
+      "target": "shape_packing_geometry_bh_objective",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_build_objective",
+      "target": "shape_packing_geometry_bh_objective",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L233",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_rationale_233",
+      "target": "shape_packing_geometry_project_polygon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L280",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_sat_check_overlap",
+      "target": "shape_packing_geometry_project_polygon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L250",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_rationale_250",
+      "target": "shape_packing_geometry_polygon_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_geometry_polygon_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_verify_solution",
+      "target": "shape_packing_geometry_polygon_normals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/geometry.py",
+      "source_location": "L270",
+      "weight": 1.0,
+      "source": "shape_packing_geometry_rationale_270",
+      "target": "shape_packing_geometry_sat_check_overlap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_geometry_sat_check_overlap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L235",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_verify_solution",
+      "target": "shape_packing_geometry_sat_check_overlap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "shape_packing_optimization",
+      "target": "shape_packing_optimization_build_objective",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "shape_packing_optimization",
+      "target": "shape_packing_optimization_optconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "shape_packing_optimization",
+      "target": "shape_packing_optimization_packingproblem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L212",
+      "weight": 1.0,
+      "source": "shape_packing_optimization",
+      "target": "shape_packing_optimization_run_all_attempts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "shape_packing_optimization",
+      "target": "shape_packing_optimization_run_single_attempt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_rationale_1",
+      "target": "shape_packing_optimization",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_build_objective",
+      "target": "shape_packing_optimization_packingproblem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_rationale_35",
+      "target": "shape_packing_optimization_packingproblem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L212",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_run_all_attempts",
+      "target": "shape_packing_optimization_packingproblem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_run_single_attempt",
+      "target": "shape_packing_optimization_packingproblem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_rationale_46",
+      "target": "shape_packing_optimization_optconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L212",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_run_all_attempts",
+      "target": "shape_packing_optimization_optconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_run_single_attempt",
+      "target": "shape_packing_optimization_optconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_rationale_61",
+      "target": "shape_packing_optimization_build_objective",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_rationale_109",
+      "target": "shape_packing_optimization_run_single_attempt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "indirect_call",
+      "context": "argument",
+      "confidence": "INFERRED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L227",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_run_all_attempts",
+      "target": "shape_packing_optimization_run_single_attempt",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_run_single_attempt",
+      "target": "shape_packing_optimization_py_ndarray",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L212",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_run_all_attempts",
+      "target": "shape_packing_optimization_py_ndarray",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/optimization.py",
+      "source_location": "L218",
+      "weight": 1.0,
+      "source": "shape_packing_optimization_rationale_218",
+      "target": "shape_packing_optimization_run_all_attempts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/packing_config.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "shape_packing_packing_config_rationale_1",
+      "target": "shape_packing_packing_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "shape_packing_problems",
+      "target": "shape_packing_packing_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "shape_packing_problems",
+      "target": "shape_packing_problems_is_special_shape",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "shape_packing_problems",
+      "target": "shape_packing_problems_list_problem_families",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "shape_packing_problems",
+      "target": "shape_packing_problems_parse_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "shape_packing_problems",
+      "target": "shape_packing_problems_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L165",
+      "weight": 1.0,
+      "source": "shape_packing_problems",
+      "target": "shape_packing_problems_problem_to_packer_args",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "shape_packing_problems",
+      "target": "shape_packing_problems_shape_token_to_sides",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "shape_packing_problems",
+      "target": "shape_packing_problems_validate_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "shape_packing_problems",
+      "target": "shape_packing_problems_validate_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "shape_packing_problems_rationale_1",
+      "target": "shape_packing_problems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "shape_packing_problems_parse_problem",
+      "target": "shape_packing_problems_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L165",
+      "weight": 1.0,
+      "source": "shape_packing_problems_problem_to_packer_args",
+      "target": "shape_packing_problems_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "shape_packing_problems_rationale_33",
+      "target": "shape_packing_problems_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "shape_packing_problems_validate_problem",
+      "target": "shape_packing_problems_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "shape_packing_problems_rationale_53",
+      "target": "shape_packing_problems_parse_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L178",
+      "weight": 1.0,
+      "source": "shape_packing_problems_problem_to_packer_args",
+      "target": "shape_packing_problems_shape_token_to_sides",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "shape_packing_problems_rationale_82",
+      "target": "shape_packing_problems_shape_token_to_sides",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "shape_packing_problems_shape_token_to_sides",
+      "target": "shape_packing_problems_is_special_shape",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "shape_packing_problems_rationale_108",
+      "target": "shape_packing_problems_is_special_shape",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "shape_packing_problems_validate_token",
+      "target": "shape_packing_problems_is_special_shape",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "shape_packing_problems_rationale_118",
+      "target": "shape_packing_problems_validate_problem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "shape_packing_problems_validate_problem",
+      "target": "shape_packing_problems_validate_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "shape_packing_problems_rationale_141",
+      "target": "shape_packing_problems_validate_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L166",
+      "weight": 1.0,
+      "source": "shape_packing_problems_rationale_166",
+      "target": "shape_packing_problems_problem_to_packer_args",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/problems.py",
+      "source_location": "L184",
+      "weight": 1.0,
+      "source": "shape_packing_problems_rationale_184",
+      "target": "shape_packing_problems_list_problem_families",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_solution_tools_build_polygons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L153",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_solution_tools_load_best_value",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_solution_tools_load_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L305",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_solution_tools_render_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_solution_tools_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L275",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_solution_tools_to_plot_data",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L181",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_solution_tools_verify_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools",
+      "target": "shape_packing_solution_tools_verifyresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_rationale_1",
+      "target": "shape_packing_solution_tools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_load_solution",
+      "target": "shape_packing_solution_tools_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L263",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_verify_solution",
+      "target": "shape_packing_solution_tools_verifyresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_rationale_60",
+      "target": "shape_packing_solution_tools_load_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L319",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_render_solution",
+      "target": "shape_packing_solution_tools_load_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_verify_solution",
+      "target": "shape_packing_solution_tools_load_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_rationale_130",
+      "target": "shape_packing_solution_tools_build_polygons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L285",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_to_plot_data",
+      "target": "shape_packing_solution_tools_build_polygons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L219",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_verify_solution",
+      "target": "shape_packing_solution_tools_build_polygons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L157",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_rationale_157",
+      "target": "shape_packing_solution_tools_load_best_value",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L250",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_verify_solution",
+      "target": "shape_packing_solution_tools_load_best_value",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L188",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_rationale_188",
+      "target": "shape_packing_solution_tools_verify_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L276",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_rationale_276",
+      "target": "shape_packing_solution_tools_to_plot_data",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L320",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_render_solution",
+      "target": "shape_packing_solution_tools_to_plot_data",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L275",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_to_plot_data",
+      "target": "any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "shape_packing/solution_tools.py",
+      "source_location": "L312",
+      "weight": 1.0,
+      "source": "shape_packing_solution_tools_rationale_312",
+      "target": "shape_packing_solution_tools_render_solution",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": [
@@ -1951,5 +4856,5 @@
       "source_file": "program.md"
     }
   ],
-  "built_at_commit": "e40020067b831296fcba160f2586df17a984e9bc"
+  "built_at_commit": "06ba296378451a4b972433708e4508a3775b04dd"
 }
