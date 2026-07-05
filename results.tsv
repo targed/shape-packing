@@ -82,3 +82,4 @@ c67b1b3	2.2807284	0.0	discard	12_3_in_5	increase RUST_ATTEMPTS to 300k
 f8fb4e4	1.8629983	0.0	keep	8_3_in_5	baseline with analytical gradient optimizer
 auto	0.9999184350601231	0.0	keep	1_3_in_3	Auto run attempts=1000
 auto	3.0151615489897288	0.0	keep	4_6_in_5	Auto run attempts=2000
+auto	3.0151615489897288	0.0	discard	4_6_in_5	Auto run attempts=2000
