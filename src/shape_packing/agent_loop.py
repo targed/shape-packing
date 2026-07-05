@@ -47,6 +47,7 @@ Usage examples:
 from __future__ import annotations
 
 import csv
+import json
 import os
 from dataclasses import dataclass, asdict
 from typing import List, Dict, Optional, Tuple
@@ -265,89 +266,46 @@ def has_improved(window: List[ExperimentResult]) -> bool:
 # --------------- Loop policies ---------------
 
 
+def load_priority_queue(path: str = "priority_queue.json") -> List[Dict[str, float]]:
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
 def choose_problem(
     history: List[ExperimentResult],
-    reference_path: str = "PACKING_REFERENCE.tsv",
-    exclude_recent: int = 5,
+    queue_path: str = "priority_queue.json",
     prefer_different: bool = False,
 ) -> str:
-    """
-    Choose next problem to run.
-
-    High-level policy (matches program.md):
-    - Prefer problems that:
-      - appear in reference as best_known or human-found.
-      - are not trivial / proved_optimal.
-      - are not heavily saturated with recent attempts.
-    - Promote diversity across families.
-    - Avoid repeating the very last problems if possible.
-
-    For now, this is a conservative heuristic that:
-    - falls back to a default problem if reference/history give no clear candidate.
-    """
-
-    if not history:
-        # default starting problem if nothing known
+    queue = load_priority_queue(queue_path)
+    if not queue:
+        # Fallback if queue missing
         return "8_3_in_5"
-
-    reference_rows = load_packing_reference(reference_path)
-    recent = recent_problems(history, last=max(exclude_recent, 5))
-    recent_set = set(recent)
-
-    # Collect candidate problems from reference or history.
-    candidates: List[str] = []
-    for row in reference_rows:
-        our = (row.get("our_problem") or "").strip()
-        if not our:
-            continue
-        if is_reference_blocked(reference_rows, our):
-            continue
-        candidates.append(our)
-
-    # If we have no good reference candidates, fall back to unique problems from history.
-    if not candidates:
-        seen: set[str] = set()
-        for r in history:
-            if r.problem and r.problem not in seen:
-                seen.add(r.problem)
-                candidates.append(r.problem)
-
-    # Prefer problems not run very recently, and prefer different families if requested.
-    recent_families = {extract_problem_family(p) for p in recent}
-    best = None
-    best_score = -1.0
-
-    for c in candidates:
-        # Avoid exact last few unless we must.
-        if c in recent_set and len(candidates) > 1:
-            continue
-
-        # If prefer_different, try to avoid same family as last 5.
-        if prefer_different and extract_problem_family(c) in recent_families:
-            continue
-
-        # Prefer if reference marks it as interesting.
-        pref = 1.0 if is_preferred_reference(reference_rows, c) else 0.0
-
-        # Slight preference for diversity in N: avoid same problem too often.
-        count = sum(1 for r in history if r.problem == c)
-        diversity_bonus = 1.0 / (1.0 + 0.1 * count)
-
-        score = pref * 10.0 + diversity_bonus
-        if score > best_score:
-            best_score = score
-            best = c
-
-    # Fallback: pick first candidate, or a safe default.
-    if best:
-        return best
-    if candidates:
-        # pick first not in very recent if possible
-        for c in candidates:
-            if c not in recent_set:
-                return c
-        return candidates[0]
-    return "8_3_in_5"
+        
+    recent = recent_problems(history, last=10)
+    
+    # Calculate stagnation: number of times a problem appears in the last 10 attempts
+    # If it has been run a lot recently and hasn't improved, we heavily penalize it.
+    best = current_best_scores(history)
+    
+    scored_candidates = []
+    
+    for item in queue:
+        p = item["problem"]
+        base_density = item["density"]
+        
+        # Penalize if it's very recent
+        stagnation = sum(1 for r in recent if r == p)
+        
+        penalty = stagnation * 0.05
+        
+        scored_candidates.append((p, base_density + penalty))
+        
+    scored_candidates.sort(key=lambda x: x[1])
+    return scored_candidates[0][0]
 
 
 def is_stuck(
