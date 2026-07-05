@@ -42,11 +42,16 @@ def handle_run(args):
     inner = shape_token_to_sides(p.inner_token)
     container = shape_token_to_sides(p.container_token)
     
+    import os
+    os.makedirs("results", exist_ok=True)
+    solution_file = f"results/{args.problem}_best.json"
+    
     # 3. Call Rust solver
     cmd = [
         "packer_rs/target/release/packer_rs",
         str(N), str(inner), str(container),
         "--attempts", str(args.attempts),
+        "--solution-file", solution_file
     ]
     if init_json_path:
         cmd.extend(["--initial-positions", init_json_path])
@@ -58,12 +63,20 @@ def handle_run(args):
         if "Final side length:" in line:
             score = float(line.split(":")[1].strip())
             
+    # Verify and render
+    if os.path.exists(solution_file):
+        verify_cmd = [sys.executable, "verify_solution.py", solution_file]
+        subprocess.run(verify_cmd)
+        
+        render_cmd = [sys.executable, "render_solution.py", solution_file, f"results/{args.problem}_best.png"]
+        subprocess.run(render_cmd)
+            
     # 4. Log to TSV
     from .agent_loop import log_result
     log_result(None, args.problem, score, 0.0, f"Auto run attempts={args.attempts}", commit="auto")
     
     # 5. Git commit
-    subprocess.run(["git", "add", "results.tsv"])
+    subprocess.run(["git", "add", "results.tsv", "results/"])
     subprocess.run(["git", "commit", "-m", f"auto: run {args.problem} score {score}"])
     
     print(json.dumps({"score": score}))
