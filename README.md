@@ -51,6 +51,27 @@ Never relax these tolerances to claim a record. Any record that cannot mathemati
    - Open program.md
    - Let the agent (Cline) follow the experiment loop autonomously.
 
+## Problem Filtering (`filter.json`)
+
+When running the autonomous agent (`auto_agent.py`), you can dynamically restrict the search space by placing a `filter.json` file in the root directory. The agent continuously watches this file and will immediately apply the filters to its problem selection queue.
+
+Available JSON keys:
+- `min_n` / `max_n` / `equal_n` (int): Filter by the number of items being packed.
+- `include_inner` / `exclude_inner` (string): Comma-separated list of inner shapes to include/exclude (e.g., `"3,4"` or `"TRIANGLE,SQUARE"`).
+- `include_container` / `exclude_container` (string): Comma-separated list of container shapes.
+- `min_inner_sides` / `max_inner_sides` (int): Filter by the number of sides on the inner polygons.
+- `min_container_sides` / `max_container_sides` (int): Filter by the number of sides on the container polygon.
+
+**Example `filter.json`**:
+```json
+{
+  "min_n": 5,
+  "max_n": 10,
+  "include_inner": "HEXAGON",
+  "exclude_container": "CIRCLE"
+}
+```
+
 ## Knowledge graph (graphify)
 
 This repo includes a graphify knowledge graph for fast architectural queries.

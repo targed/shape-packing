@@ -1,1 +1,4 @@
-{"include_container": "CIRCLE"}
+{
+    "min_n": 3,
+    "exclude_container": "CIRCLE"
+}
