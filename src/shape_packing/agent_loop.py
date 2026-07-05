@@ -341,15 +341,24 @@ def choose_problem(
                 # If parse fails, we might just skip it if filters are on
                 continue
         
-        # Penalize if it's very recent
+        # Penalize if it's very recent (short term diversity)
         stagnation = sum(1 for r in recent if r == p_str)
         penalty = stagnation * 0.05
         
+        # Penalize for total runs (long term diversity)
+        total_runs = sum(1 for r in history if r.problem == p_str)
+        penalty += total_runs * 0.01
+        
+        # Massive penalty if it's completely stuck
+        if is_stuck(history, p_str, threshold_no_improve=5):
+            penalty += 10.0
+            
         scored_candidates.append((p_str, base_density + penalty))
         
     if not scored_candidates:
         return "8_3_in_5"
         
+    # Sort by the new penalized density score
     scored_candidates.sort(key=lambda x: x[1])
     return scored_candidates[0][0]
 
