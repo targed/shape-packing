@@ -121,13 +121,19 @@ def parse_html(html, family, inner_token, container_token):
         # find the numeric value
         val = None
         
-        # Grab the very first metric line which usually follows <font size=+1>
-        # e.g., <font size=+1>s = 35/12 = 2.917+<br>
-        # or <font size=+1>13/8 + 3&radic;13/8 = 2.977+<br>
-        metric_match = re.search(r'<font\s+size=\+?1\s*>(.*?)(?:<br>|$)', tok, re.IGNORECASE)
+        # Grab everything between <font size=+1> and 'Found by', 'Trivial', 'proved', or table cell endings
+        # This handles multi-line math derivations where the evaluated float is on the second line.
+        metric_match = re.search(r'<font\s+size=\+?1\s*>(.*?)(?:Found by|Trivial|proved|<td|<\/td)', tok, re.IGNORECASE | re.DOTALL)
         if metric_match:
             metric_str = metric_match.group(1)
             val = extract_float(metric_str)
+        
+        # Fallback if the first method didn't match anything
+        if not val:
+            metric_match = re.search(r'<font\s+size=\+?1\s*>(.*?)(?:<br>|$)', tok, re.IGNORECASE)
+            if metric_match:
+                metric_str = metric_match.group(1)
+                val = extract_float(metric_str)
 
         # source / trivial / status
         status = "unknown"

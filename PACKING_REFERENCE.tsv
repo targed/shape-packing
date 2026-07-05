@@ -85,7 +85,7 @@ problem_family	n	best_value	source	status	our_problem
 3_in_4	48	4.82632	Thomas Schadt	best_known	48_3_in_4
 3_in_5	1			best_known	1_3_in_5
 3_in_5	2			best_known	2_3_in_5
-3_in_5	3	18.0	Maurizio Morandi	trivial	3_3_in_5
+3_in_5	3	0.781	Maurizio Morandi	trivial	3_3_in_5
 3_in_5	4			best_known	4_3_in_5
 3_in_5	5			best_known	5_3_in_5
 3_in_5	6	1.199	Maurizio Morandi	best_known	6_3_in_5
@@ -339,13 +339,13 @@ problem_family	n	best_value	source	status	our_problem
 4_in_3	40	10.46426	Nathan Roll	best_known	40_4_in_3
 4_in_5	1			best_known	1_4_in_5
 4_in_5	2			best_known	2_4_in_5
-4_in_5	3	18.0	Erich Friedman	trivial	3_4_in_5
+4_in_5	3	0.936	Erich Friedman	trivial	3_4_in_5
 4_in_5	4			best_known	4_4_in_5
 4_in_5	5			best_known	5_4_in_5
 4_in_5	6	1.861	Maurizio Morandi	best_known	6_4_in_5
 4_in_5	7			best_known	7_4_in_5
 4_in_5	8			best_known	8_4_in_5
-4_in_5	9	4.0	Erich Friedman	best_known	9_4_in_5
+4_in_5	9	2.421	Erich Friedman	best_known	9_4_in_5
 4_in_5	10			best_known	10_4_in_5
 4_in_5	11			best_known	11_4_in_5
 4_in_5	12	2.793	Timo Berthold et al	best_known	12_4_in_5
@@ -1847,28 +1847,28 @@ cirincir	19			best_known
 cirincir	20	4.863		proved_optimal	
 cirinel	1			best_known	
 cirinel	2			best_known	
-cirinel	3		James Buddenhagen	trivial	
+cirinel	3	1.0	James Buddenhagen	trivial	
 cirinel	4			best_known	
 cirinel	5			best_known	
-cirinel	6		David W. Cantrell	best_known	
+cirinel	6	2.0	David W. Cantrell	best_known	
 cirinel	7			best_known	
 cirinel	8			best_known	
-cirinel	9		David W. Cantrell	best_known	
+cirinel	9	3.0	David W. Cantrell	best_known	
 cirinel	10			best_known	
 cirinel	11			best_known	
-cirinel	12		David W. Cantrell	best_known	
+cirinel	12	3.115	David W. Cantrell	best_known	
 cirinel	13			best_known	
 cirinel	14			best_known	
-cirinel	15		David W. Cantrell	best_known	
+cirinel	15	3.291	David W. Cantrell	best_known	
 cirinel	16			best_known	
 cirinel	17			best_known	
-cirinel	18		David W. Cantrell	best_known	
+cirinel	18	2.847	David W. Cantrell	best_known	
 cirinel	19			best_known	
 cirinel	20			best_known	
-cirinel	21		David W. Cantrell	best_known	
+cirinel	21	6.0	David W. Cantrell	best_known	
 cirinel	22			best_known	
 cirinel	23			best_known	
-cirinel	24		David W. Cantrell	best_known	
+cirinel	24	4.146	David W. Cantrell	best_known	
 cirinhex	1			best_known	
 cirinhex	2			best_known	
 cirinhex	3	1.154		trivial	
@@ -1909,7 +1909,7 @@ cirinl	15			best_known
 cirinl	16	9.085	David W. Cantrell	best_known	
 cirinpen	1			best_known	
 cirinpen	2			best_known	
-cirinpen	3	36.0	George Sicherman	trivial	
+cirinpen	3	1.453	George Sicherman	trivial	
 cirinpen	4			best_known	
 cirinpen	5			best_known	
 cirinpen	6	3.314	George Sicherman	trivial	
@@ -1993,16 +1993,16 @@ cirintri	14			best_known
 cirintri	15	11.406	Melissen in 1993. <TD><td align=center><font size=+1>s = 8 + 2&radic;3 = 11.464+	proved_optimal	
 cirinttt	2			best_known	
 cirinttt	4			best_known	
-cirinttt	7		David W. Cantrell in June 2007 <TD><td align=center><font size=+1> A = 9 + 6&radic;3 = 19.392+	best_known	
+cirinttt	7	2.0	David W. Cantrell in June 2007 <TD><td align=center><font size=+1> A = 9 + 6&radic;3 = 19.392+	best_known	
 cirinttt	8			best_known	
 cirinttt	11			best_known	
-cirinttt	12		David W. Cantrell in June 2007 <TD><td align=center><font size=+1> A = 47.003+	best_known	
+cirinttt	12	11.27	David W. Cantrell in June 2007 <TD><td align=center><font size=+1> A = 47.003+	best_known	
 cirinttt	13			best_known	
 cirinttt	16			best_known	
-cirinttt	17		David W. Cantrell in June 2007 <TD><td align=center><font size=+1> A = 21 + 26&radic;3 = 66.033+	best_known	
+cirinttt	17	11.922	David W. Cantrell in June 2007 <TD><td align=center><font size=+1> A = 21 + 26&radic;3 = 66.033+	best_known	
 cirinttt	18			best_known	
 cirinttt	19			best_known	
-cirinttt	22		David W. Cantrell in June 2007 <TD><td align=center><font size=+1> A = 77.346+	best_known	
+cirinttt	22	13.577	David W. Cantrell in June 2007 <TD><td align=center><font size=+1> A = 77.346+	best_known	
 minrect	1			trivial	
 minrect	2			best_known	
 minrect	3			best_known	
