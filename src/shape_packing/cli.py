@@ -7,7 +7,21 @@ from .agent_loop import load_history, choose_problem, current_best_scores
 def handle_suggest(args):
     history = load_history("results.tsv")
     best = current_best_scores(history)
-    problem = choose_problem(history, prefer_different=True)
+    
+    filters = {}
+    if args.min_n is not None: filters["min_n"] = args.min_n
+    if args.max_n is not None: filters["max_n"] = args.max_n
+    if args.equal_n is not None: filters["equal_n"] = args.equal_n
+    if args.include_inner is not None: filters["include_inner"] = args.include_inner.split(",")
+    if args.exclude_inner is not None: filters["exclude_inner"] = args.exclude_inner.split(",")
+    if args.include_container is not None: filters["include_container"] = args.include_container.split(",")
+    if args.exclude_container is not None: filters["exclude_container"] = args.exclude_container.split(",")
+    if args.min_inner_sides is not None: filters["min_inner_sides"] = args.min_inner_sides
+    if args.max_inner_sides is not None: filters["max_inner_sides"] = args.max_inner_sides
+    if args.min_container_sides is not None: filters["min_container_sides"] = args.min_container_sides
+    if args.max_container_sides is not None: filters["max_container_sides"] = args.max_container_sides
+    
+    problem = choose_problem(history, prefer_different=True, filters=filters)
     best_score = best.get(problem, "None")
     print(json.dumps({"problem": problem, "best_score": best_score}))
 
@@ -59,6 +73,17 @@ def main():
     subparsers = parser.add_subparsers(dest="command")
     
     suggest_parser = subparsers.add_parser("suggest")
+    suggest_parser.add_argument("--min-n", type=int)
+    suggest_parser.add_argument("--max-n", type=int)
+    suggest_parser.add_argument("--equal-n", type=int)
+    suggest_parser.add_argument("--include-inner", type=str)
+    suggest_parser.add_argument("--exclude-inner", type=str)
+    suggest_parser.add_argument("--include-container", type=str)
+    suggest_parser.add_argument("--exclude-container", type=str)
+    suggest_parser.add_argument("--min-inner-sides", type=int)
+    suggest_parser.add_argument("--max-inner-sides", type=int)
+    suggest_parser.add_argument("--min-container-sides", type=int)
+    suggest_parser.add_argument("--max-container-sides", type=int)
     
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("--problem", required=True)
