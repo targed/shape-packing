@@ -7,7 +7,7 @@ import sys
 import os
 
 def get_state():
-    cmd = [sys.executable, "-m", "shape_packing.cli", "suggest"]
+    cmd = [sys.executable, "-m", "src.shape_packing.cli", "suggest"]
     
     if os.path.exists("filter.json"):
         try:
@@ -87,7 +87,7 @@ Respond with a JSON object containing:
         attempts = decision.get("attempts", 1000)
         script_code = decision.get("init_script")
         
-        cmd = [sys.executable, "-m", "shape_packing.cli", "run", "--problem", state['problem'], "--attempts", str(attempts)]
+        cmd = [sys.executable, "-m", "src.shape_packing.cli", "run", "--problem", state['problem'], "--attempts", str(attempts)]
         
         if script_code:
             with open("temp_init.py", "w") as f:

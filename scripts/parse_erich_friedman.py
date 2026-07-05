@@ -99,17 +99,16 @@ FOLDER_MAP = {
 }
 
 def extract_float(s):
-    m = re.search(r"([0-9]+(?:\.[0-9]+)?)", (s or ""))
-    return m.group(1) if m else None
+    # s is the string before <br>
+    # Find all floats/ints in the string
+    nums = re.findall(r"(\d*\.\d+|\d+)", (s or ""))
+    if nums:
+        # Return the last number found (which is usually the evaluated float)
+        return str(float(nums[-1]))
+    return None
 
 def parse_html(html, family, inner_token, container_token):
     rows = []
-    # We'll look for patterns like:
-    # N.
-    # r = ...
-    # or "side length" or similar
-    # and author lines.
-
     # Split into chunks per N based on "<font size=+3>N."
     tokens = re.split(r'<font\s+size=?\+?3\s*>', html)
     for tok in tokens:
@@ -120,18 +119,15 @@ def parse_html(html, family, inner_token, container_token):
         n = int(m.group(1))
 
         # find the numeric value
-        # try r = ...
         val = None
-        # r = ...
-        rm = re.search(r'r\s*=\s*([0-9]+(?:\.[0-9]+)?(?:\+|[+-][0-9]+(?:\.[0-9]+)?)?)', tok)
-        if rm:
-            val = extract_float(rm.group(1))
-        # If no r, try generic numbers after '=' that look like metrics
-        if val is None:
-            # e.g. "s = 1.234+"
-            sm = re.search(r'[s]\s*=\s*([0-9]+(?:\.[0-9]+)?(?:\+|[+-][0-9]+(?:\.[0-9]+)?)?)', tok)
-            if sm:
-                val = extract_float(sm.group(1))
+        
+        # Grab the very first metric line which usually follows <font size=+1>
+        # e.g., <font size=+1>s = 35/12 = 2.917+<br>
+        # or <font size=+1>13/8 + 3&radic;13/8 = 2.977+<br>
+        metric_match = re.search(r'<font\s+size=\+?1\s*>(.*?)(?:<br>|$)', tok, re.IGNORECASE)
+        if metric_match:
+            metric_str = metric_match.group(1)
+            val = extract_float(metric_str)
 
         # source / trivial / status
         status = "unknown"
