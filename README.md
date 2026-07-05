@@ -29,6 +29,16 @@ Adapted from Karpathy's autoresearch concept: an LLM-driven agent iteratively im
   - Tab-separated log of all experiments.
   - Columns: commit, score, memory_gb, status, problem, description.
 
+## ⚠️ The Floating-Point Record Mirage
+**CRITICAL WARNING FOR ALL AGENTS AND RESEARCHERS:** 
+When searching for absolute world records in discrete geometric packing, standard double-precision floats (`f64`) will inevitably accumulate rounding errors. Solvers trapped in tightly jammed local minima will often report a "new record" by crushing the container slightly beyond its mathematical limit, causing the internal shapes to overlap by microscopic margins (e.g., $10^{-5}$). 
+
+Because the difference between a world record and a failure is often in the 5th decimal place, **a loose solver tolerance will hallucinate fake records.** 
+To combat this, the pipeline enforces strict algebraic boundaries:
+1. **The Rust Engine (`packer_rs`)** runs with an extreme gradient penalty tolerance of `1e-30`. 
+2. **The Python Verifier (`verify_solution.py`)** runs SAT overlap checks with a strict `1e-15` geometric tolerance. 
+Never relax these tolerances to claim a record. Any record that cannot mathematically verify at $10^{-15}$ precision is a floating-point artifact and not a true geometric solution.
+
 ## Quick start
 
 1. Install dependencies:

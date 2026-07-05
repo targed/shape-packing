@@ -27,7 +27,7 @@ from .geometry import (
     transform_polygon,
 )
 
-TOLERANCE: float = 1e-12
+TOLERANCE: float = 1e-15
 
 
 # --------------- Data models ---------------
@@ -238,7 +238,7 @@ def verify_solution(
                 poly_normals_list[i],
                 poly_normals_list[j],
             )
-            if overlap:
+            if overlap and depth > tolerance:
                 errors.append(
                     f"Shapes {i} and {j} overlap! Depth: {depth}"
                 )

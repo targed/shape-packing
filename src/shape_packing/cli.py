@@ -43,8 +43,12 @@ def handle_run(args):
     container = shape_token_to_sides(p.container_token)
     
     import os
-    os.makedirs("results", exist_ok=True)
-    solution_file = f"results/{args.problem}_best.json"
+    from datetime import datetime
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    result_dir = os.path.join("results", args.problem, timestamp)
+    os.makedirs(result_dir, exist_ok=True)
+    solution_file = os.path.join(result_dir, "solution.json")
     
     # 3. Call Rust solver
     cmd = [
@@ -68,7 +72,7 @@ def handle_run(args):
         verify_cmd = [sys.executable, "verify_solution.py", solution_file]
         subprocess.run(verify_cmd)
         
-        render_cmd = [sys.executable, "render_solution.py", solution_file, f"results/{args.problem}_best.png"]
+        render_cmd = [sys.executable, "render_solution.py", solution_file, os.path.join(result_dir, "solution.png")]
         subprocess.run(render_cmd)
             
     # 4. Log to TSV

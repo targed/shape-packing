@@ -19,7 +19,7 @@ struct Args {
     #[arg(long, default_value_t = 1000)]
     attempts: usize,
 
-    #[arg(long, default_value_t = 1e-8)]
+    #[arg(long, default_value_t = 1e-30)]
     tolerance: f64,
 
     #[arg(long, default_value_t = 0.0001)]
