@@ -4,9 +4,37 @@ import time
 import urllib.request
 import sys
 
+import os
+
 def get_state():
-    res = subprocess.run([sys.executable, "-m", "shape_packing.cli", "suggest"], capture_output=True, text=True)
-    return json.loads(res.stdout)
+    cmd = [sys.executable, "-m", "shape_packing.cli", "suggest"]
+    
+    if os.path.exists("filter.json"):
+        try:
+            with open("filter.json", "r") as f:
+                filters = json.load(f)
+            
+            # Map json keys to CLI args
+            mapping = {
+                "min_n": "--min-n", "max_n": "--max-n", "equal_n": "--equal-n",
+                "include_inner": "--include-inner", "exclude_inner": "--exclude-inner",
+                "include_container": "--include-container", "exclude_container": "--exclude-container",
+                "min_inner_sides": "--min-inner-sides", "max_inner_sides": "--max-inner-sides",
+                "min_container_sides": "--min-container-sides", "max_container_sides": "--max-container-sides"
+            }
+            
+            for k, v in filters.items():
+                if k in mapping and v is not None:
+                    cmd.extend([mapping[k], str(v)])
+        except Exception as e:
+            print(f"Error reading filter.json: {e}")
+            
+    res = subprocess.run(cmd, capture_output=True, text=True)
+    try:
+        return json.loads(res.stdout)
+    except json.JSONDecodeError:
+        print(f"Error parsing CLI output: {res.stdout}")
+        return {"problem": "8_3_in_5", "best_score": "None"}
 
 def call_llm(prompt):
     data = {
