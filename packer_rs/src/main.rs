@@ -31,6 +31,10 @@ struct Args {
     /// If provided, write best solution (S, values) as JSON to this path.
     #[arg(long)]
     solution_file: Option<String>,
+
+    /// If provided, use these initial positions for optimization
+    #[arg(long)]
+    initial_positions: Option<String>,
 }
 
 fn main() {
@@ -63,6 +67,14 @@ fn main() {
 
     let N_f64 = args.inner_polygons as f64;
 
+    let initial_positions = if let Some(path) = &args.initial_positions {
+        let contents = fs::read_to_string(path).expect("Failed to read initial positions file");
+        let positions: Vec<f64> = serde_json::from_str(&contents).expect("Invalid JSON in initial positions");
+        Some(positions)
+    } else {
+        None
+    };
+
     (0..attempts)
         .into_par_iter()
         .for_each_with(
@@ -76,8 +88,9 @@ fn main() {
                 &best_s,
                 &best_x,
                 N_f64,
+                &initial_positions,
             ),
-            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64), seed| {
+            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions), seed| {
                 let mut rng = ChaCha8Rng::seed_from_u64(seed as u64);
                 let (s, x) = run_attempt(
                     &mut rng,
@@ -93,6 +106,7 @@ fn main() {
                     start,
                     stop,
                     args.time_limit,
+                    (*initial_positions).as_ref(),
                 );
                 if s.is_finite() && x.is_some() {
                     loop {
@@ -223,6 +237,7 @@ fn run_attempt<R: Rng>(
     start: &Instant,
     stop_flag: &AtomicBool,
     time_limit: Option<f64>,
+    initial_positions: Option<&Vec<f64>>,
 ) -> (f64, Option<Vec<f64>>) {
     if stop_flag.load(Ordering::Relaxed) {
         return (f64::INFINITY, None);
@@ -234,7 +249,9 @@ fn run_attempt<R: Rng>(
 
     let N = N_f64 as usize;
 
-    let mut x0: Vec<f64> = if rng.gen_bool(0.5) {
+    let mut x0: Vec<f64> = if let Some(init_pos) = initial_positions {
+        init_pos.iter().map(|&v| v + (rng.gen::<f64>() - 0.5) * 1e-5).collect()
+    } else if rng.gen_bool(0.5) {
         (0..(N * 3))
             .map(|_| {
                 let lo = -dynamic_s / 2.0;
