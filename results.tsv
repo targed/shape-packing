@@ -148,3 +148,4 @@ auto	4.34440516599146	0.0	keep	9_6_in_5	Auto run attempts=10000
 auto	6.295140264885341	0.0	keep	10_8_in_5	Auto run attempts=10000
 auto	5.256554068205588	0.0	keep	7_8_in_5	Auto run attempts=5000
 auto	5.620301379188071	0.0	keep	8_8_in_5	Auto run attempts=10000
+auto	4.157344301738447	0.0	discard	8_6_in_5	Auto run attempts=10000
