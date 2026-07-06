@@ -127,3 +127,4 @@ auto	2.742826175682922	0.0	discard	3_6_in_5	Auto run attempts=5000
 auto	4.1012610892265275	0.0	discard	4_8_in_5	Auto run attempts=5000
 auto	4.1492118237956745	0.0	keep	8_6_in_5	Auto run attempts=10000
 auto	0.0	0.0	crash	9_6_in_8	Auto run attempts=10000
+auto	0.0	0.0	crash	5_6_in_6	Auto run attempts=500
