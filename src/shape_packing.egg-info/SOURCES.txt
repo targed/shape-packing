@@ -8,6 +8,7 @@ src/shape_packing/geometry.py
 src/shape_packing/optimization.py
 src/shape_packing/packing_config.py
 src/shape_packing/problems.py
+src/shape_packing/ranker.py
 src/shape_packing/solution_tools.py
 src/shape_packing.egg-info/PKG-INFO
 src/shape_packing.egg-info/SOURCES.txt

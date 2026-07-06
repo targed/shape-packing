@@ -43,6 +43,16 @@ Adapted from Karpathy's autoresearch concept: an LLM-driven agent iteratively im
   - Tab-separated log of all experiments.
   - Columns: commit, score, memory_gb, status, problem, description.
 
+## ⚠️ The Floating-Point Record Mirage
+**CRITICAL WARNING FOR ALL AGENTS AND RESEARCHERS:** 
+When searching for absolute world records in discrete geometric packing, standard double-precision floats (`f64`) will inevitably accumulate rounding errors. Solvers trapped in tightly jammed local minima will often report a "new record" by crushing the container slightly beyond its mathematical limit, causing the internal shapes to overlap by microscopic margins (e.g., $10^{-5}$). 
+
+Because the difference between a world record and a failure is often in the 5th decimal place, **a loose solver tolerance will hallucinate fake records.** 
+To combat this, the pipeline enforces strict algebraic boundaries:
+1. **The Rust Engine (`packer_rs`)** runs with an extreme gradient penalty tolerance of `1e-30`. 
+2. **The Python Verifier (`verify_solution.py`)** runs SAT overlap checks with a strict `1e-15` geometric tolerance. 
+Never relax these tolerances to claim a record. Any record that cannot mathematically verify at $10^{-15}$ precision is a floating-point artifact and not a true geometric solution.
+
 ## Quick start
 
 1. Install dependencies:
@@ -54,6 +64,27 @@ Adapted from Karpathy's autoresearch concept: an LLM-driven agent iteratively im
 3. Then:
    - Open program.md
    - Let the agent (Cline) follow the experiment loop autonomously.
+
+## Problem Filtering (`filter.json`)
+
+When running the autonomous agent (`auto_agent.py`), you can dynamically restrict the search space by placing a `filter.json` file in the root directory. The agent continuously watches this file and will immediately apply the filters to its problem selection queue.
+
+Available JSON keys:
+- `min_n` / `max_n` / `equal_n` (int): Filter by the number of items being packed.
+- `include_inner` / `exclude_inner` (string): Comma-separated list of inner shapes to include/exclude (e.g., `"3,4"` or `"TRIANGLE,SQUARE"`).
+- `include_container` / `exclude_container` (string): Comma-separated list of container shapes.
+- `min_inner_sides` / `max_inner_sides` (int): Filter by the number of sides on the inner polygons.
+- `min_container_sides` / `max_container_sides` (int): Filter by the number of sides on the container polygon.
+
+**Example `filter.json`**:
+```json
+{
+  "min_n": 5,
+  "max_n": 10,
+  "include_inner": "HEXAGON",
+  "exclude_container": "CIRCLE"
+}
+```
 
 ## Knowledge graph (graphify)
 
