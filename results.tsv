@@ -134,3 +134,4 @@ auto	0.0	0.0	crash	7_8_in_5	Auto run attempts=50
 auto	0.0	0.0	crash	8_8_in_5	Auto run attempts=50
 auto	0.0	0.0	crash	9_6_in_6	Auto run attempts=50
 auto	3.9430750834645236	0.0	keep	11_6_in_6	Auto run attempts=10000
+auto	2.767933702382454	0.0	keep	10_6_in_8	Auto run attempts=10000
