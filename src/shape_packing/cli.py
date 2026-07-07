@@ -51,6 +51,14 @@ def handle_run(args):
     solution_file = os.path.join(result_dir, "solution.json")
     
     # 3. Call Rust solver
+    print("Compiling Rust solver...")
+    subprocess.run(
+        ["cargo", "build", "--release"],
+        cwd="packer_rs",
+        check=True,
+        stdout=subprocess.DEVNULL,
+    )
+    
     cmd = [
         "packer_rs/target/release/packer_rs",
         str(N), str(inner), str(container),
