@@ -72,13 +72,14 @@ def run_loop():
         logging.info(f"Target Problem: {state['problem']} (Best score: {state['best_score']})")
         
         prompt = f"""
-Current problem: {state['problem']}
+Current problem: {state['problem']} (Format is N_inner_in_container, so N is the first number, e.g. for '9_6_in_6', N=9)
 Best score so far: {state['best_score']}
 
 Respond with a JSON object containing:
 - "action": either "run_experiment" or "request_architectural_change"
-- "attempts": integer (if run_experiment)
-- "init_script": optional string containing python code. If provided, the code should write an array of floats to 'initial_positions.json'. The script will receive the output file path as sys.argv[1].
+- "attempts": integer (if run_experiment, e.g. 100-1000)
+- "init_script": optional string containing python code. If provided, the code MUST write a JSON array of exactly N * 3 floats to the output file path given in `sys.argv[1]`.
+  CRITICAL: The array MUST contain exactly [x, y, theta] for EACH of the N shapes sequentially. For example, if N=9, the array MUST contain exactly 27 floats. If the length is wrong, the solver will instantly CRASH.
 - "reasoning": string explaining your choice
 """
         logging.info("Querying LLM for decision...")
