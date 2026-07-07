@@ -62,6 +62,10 @@ def handle_run(args):
         
     proc = subprocess.run(cmd, capture_output=True, text=True)
     
+    if proc.returncode != 0:
+        print(f"Rust solver failed with exit code {proc.returncode}")
+        print(proc.stderr)
+        sys.exit(1)
     score = 0.0
     for line in proc.stdout.splitlines():
         if "Final side length:" in line:

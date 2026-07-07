@@ -70,6 +70,9 @@ fn main() {
     let initial_positions = if let Some(path) = &args.initial_positions {
         let contents = fs::read_to_string(path).expect("Failed to read initial positions file");
         let positions: Vec<f64> = serde_json::from_str(&contents).expect("Invalid JSON in initial positions");
+        if positions.len() != args.inner_polygons * 3 {
+            panic!("initial_positions must have length N * 3 (expected {}, got {})", args.inner_polygons * 3, positions.len());
+        }
         Some(positions)
     } else {
         None
@@ -308,7 +311,7 @@ fn run_attempt<R: Rng>(
             - final_step_size
             - (current_s - lowest_s) * (0.01 - final_step_size) / range_val;
 
-        if minimized.fun < penalty_tolerance {
+        if minimized.max_violation <= 1e-15 {
             let new_x = minimized.x;
             last_valid_x = new_x.clone();
             last_valid_s = current_s;
@@ -333,7 +336,7 @@ fn run_attempt<R: Rng>(
                 unit_container_vectors,
                 unit_container_apothem,
             );
-            if bh_res.fun < penalty_tolerance {
+            if bh_res.max_violation <= 1e-15 {
                 let new_x = bh_res.x;
                 last_valid_x = new_x.clone();
                 last_valid_s = current_s;
@@ -354,6 +357,7 @@ fn run_attempt<R: Rng>(
 struct OptResult {
     x: Vec<f64>,
     fun: f64,
+    max_violation: f64,
 }
 
 fn minimize_gradient(
@@ -370,7 +374,7 @@ fn minimize_gradient(
     let n = x0.len();
     let mut x = x0.to_vec();
     let mut best_x = x.clone();
-    let (mut best_fun, _) = penalty_and_gradient(
+    let (mut best_fun, _, mut best_max_violation) = penalty_and_gradient(
         &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, false
     );
 
@@ -382,7 +386,7 @@ fn minimize_gradient(
     let alpha = 0.02f64; // learning rate
 
     for iter in 1..=800 {
-        let (_, grad) = penalty_and_gradient(
+        let (_, grad, _) = penalty_and_gradient(
             &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, true
         );
 
@@ -397,7 +401,7 @@ fn minimize_gradient(
             new_x[i] = x[i] - alpha * m_hat / (v_hat.sqrt() + epsilon);
         }
 
-        let (new_fx, _) = penalty_and_gradient(
+        let (new_fx, _, new_max_violation) = penalty_and_gradient(
             &new_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, false
         );
 
@@ -405,10 +409,11 @@ fn minimize_gradient(
         if new_fx < best_fun {
             best_fun = new_fx;
             best_x = x.clone();
+            best_max_violation = new_max_violation;
         }
     }
 
-    OptResult { x: best_x, fun: best_fun }
+    OptResult { x: best_x, fun: best_fun, max_violation: best_max_violation }
 }
 
 
@@ -423,9 +428,10 @@ fn penalty_and_gradient(
     unit_container_vectors: &[(f64, f64)],
     unit_container_apothem: f64,
     compute_grad: bool,
-) -> (f64, Vec<f64>) {
+) -> (f64, Vec<f64>, f64) {
     let mut penalty = 0.0f64;
     let mut grad = if compute_grad { vec![0.0f64; values.len()] } else { vec![] };
+    let mut max_violation = 0.0f64;
 
     let mut polygon_array = vec![(0.0, 0.0); N * nsi];
     let mut vector_array = vec![(0.0, 0.0); N * nsi];
@@ -460,6 +466,9 @@ fn penalty_and_gradient(
                 if dist > limit {
                     let diff = dist - limit;
                     penalty += diff * diff;
+                    if diff > max_violation {
+                        max_violation = diff;
+                    }
 
                     if compute_grad {
                         let ddist_dposx = cx;
@@ -532,6 +541,9 @@ fn penalty_and_gradient(
 
             if collision {
                 penalty += min_overlap * min_overlap;
+                if min_overlap > max_violation {
+                    max_violation = min_overlap;
+                }
 
                 if compute_grad {
                     let term = 2.0 * min_overlap;
@@ -587,5 +599,5 @@ fn penalty_and_gradient(
         }
     }
 
-    (penalty, grad)
+    (penalty, grad, max_violation)
 }
