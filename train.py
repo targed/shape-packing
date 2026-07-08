@@ -8,6 +8,7 @@ New behavior (integrated with PACKING_REFERENCE verification):
 - Refuses any target that is directly contradicted by the reference.
 - Optionally auto-selects next problem from PACKING_REFERENCE.tsv,
   prioritizing NOT_FOUND (best_known) candidates.
+- Auto-select only considers problems with supported polygon shapes.
 
 Usage:
     uv run train.py                     # use CURRENT_PROBLEM
@@ -54,6 +55,9 @@ EXTRA_PACKER_ARGS = [
 RUST_ATTEMPTS = 300000
 RUST_TIME_LIMIT = 290
 RUST_TOLERANCE = "1e-25"
+
+# Supported tokens for auto-select (only regular polygons + circle for now).
+SUPPORTED_TOKENS = {"3", "4", "5", "6", "8", "CIRCLE"}
 
 # ---------------------------------------------------------------------------
 # END CONFIG
@@ -118,10 +122,19 @@ def problem_from_tsv_row(row: Dict[str, str]) -> Optional[str]:
     return f"{n}_{pf}"
 
 
+def is_supported_problem_family(pf: str) -> bool:
+    parts = pf.split("_in_")
+    if len(parts) != 2:
+        return False
+    inner, container = parts
+    return (inner in SUPPORTED_TOKENS) and (container in SUPPORTED_TOKENS)
+
+
 def select_auto_target() -> Tuple[str, str]:
     """
     Auto-select a target from PACKING_REFERENCE.tsv:
     - Exclude proved_optimal.
+    - Exclude unsupported shape families.
     - Prioritize best_known entries that are NOT_FOUND in HTML.
     """
     rows = load_packing_reference()
@@ -160,6 +173,9 @@ def select_auto_target() -> Tuple[str, str]:
             continue
 
         pf = (row.get("problem_family") or "").strip()
+        if not is_supported_problem_family(pf):
+            continue
+
         n = (row.get("n") or "").strip()
 
         is_nf = (pf, n) in not_found_set
@@ -176,6 +192,22 @@ def select_auto_target() -> Tuple[str, str]:
 
     # Sort by priority descending; tie-break by problem name.
     candidates.sort(key=lambda x: (-x[2], x[0]))
+
+    # Filter out problems that already have at least one result directory.
+    existing_problems = set()
+    if os.path.isdir("results"):
+        for d in os.listdir("results"):
+            if d.startswith("_") or d.startswith("."):
+                continue
+            if "/" in d:
+                continue
+            existing_problems.add(d)
+
+    for problem, reason, _ in candidates:
+        if problem not in existing_problems:
+            return problem, reason
+
+    # Fallback: allow reusing if all have results; caller can deduplicate later.
     problem, reason, _ = candidates[0]
     return problem, reason
 
@@ -221,6 +253,9 @@ def list_auto_targets() -> Tuple[List[str], List[str]]:
             continue
 
         pf = (row.get("problem_family") or "").strip()
+        if not is_supported_problem_family(pf):
+            continue
+
         n = (row.get("n") or "").strip()
 
         is_nf = (pf, n) in not_found_set
