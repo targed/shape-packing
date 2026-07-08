@@ -25,7 +25,7 @@ from shape_packing.problems import parse_problem, shape_token_to_sides, is_speci
 # CONFIG: edit this section to choose/switch problems
 # ---------------------------------------------------------------------------
 
-CURRENT_PROBLEM = "8_3_in_5"
+CURRENT_PROBLEM = "15_6_in_8"
 
 TIME_BUDGET = 300
 
