@@ -1,22 +1,29 @@
 """
 Packing autoresearch experiment runner.
 Single purpose: run polygon_packer.py for a chosen problem,
-enforce a 5-minute time budget, parse score, print summary.
+enforce a time budget, parse score, print summary.
 
-This file contains:
-- A small config section at the top (you can edit this).
-- A fixed harness below (do not change unless necessary).
+New behavior (integrated with PACKING_REFERENCE verification):
+- Before training, verifies the target problem against Erich Friedman HTML.
+- Refuses any target that is directly contradicted by the reference.
+- Optionally auto-selects next problem from PACKING_REFERENCE.tsv,
+  prioritizing NOT_FOUND (best_known) candidates.
 
 Usage:
-    uv run train.py
+    uv run train.py                     # use CURRENT_PROBLEM
+    uv run train.py --auto-select       # pick next target from TSV
+    uv run train.py --list-targets      # list candidate targets (no run)
 """
 
+import argparse
+import csv
 import re
 import subprocess
 import sys
 import time
 import os
 from datetime import datetime
+from typing import Dict, List, Optional, Tuple
 
 # ProblemModule: single source of truth for problem names, tokens, and validation.
 from shape_packing.problems import parse_problem, shape_token_to_sides, is_special_shape
@@ -26,6 +33,9 @@ from shape_packing.problems import parse_problem, shape_token_to_sides, is_speci
 # ---------------------------------------------------------------------------
 
 CURRENT_PROBLEM = "13_6_in_8"
+
+# If "auto" is used, --auto-select will pick a target from PACKING_REFERENCE.
+AUTO_MODE = False
 
 TIME_BUDGET = 300
 
@@ -51,6 +61,190 @@ RUST_TOLERANCE = "1e-25"
 
 # Re-export for backward compatibility where needed
 from shape_packing.problems import Problem
+
+
+# ---------------------------------------------------------------------------
+# Verification helpers (integrated from scripts/verify_packing_reference)
+# ---------------------------------------------------------------------------
+
+VERIFY_SCRIPT = "scripts/verify_packing_reference.py"
+
+
+def run_verification_for(problem: str) -> Tuple[bool, str]:
+    """
+    Runs verify_packing_reference.py focused on a single problem.
+    Returns (ok, message):
+      - ok=False if contradicted by HTML.
+      - ok=True otherwise (including not_found / no info).
+    """
+    try:
+        res = subprocess.run(
+            [sys.executable, VERIFY_SCRIPT, "--problem", problem],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        out = (res.stdout or "") + (res.stderr or "")
+        mismatch = [l for l in out.splitlines() if l.startswith("MISMATCH:")]
+        if mismatch:
+            return False, "CONTRADICTED by HTML: " + "; ".join(mismatch[:5])
+        not_found = [l for l in out.splitlines() if l.startswith("NOT_FOUND:")]
+        if not_found:
+            return True, "OK (NOT_FOUND in HTML; candidate to improve): " + "; ".join(not_found[:3])
+        return True, "OK (no contradiction; no issues)"
+    except Exception as e:
+        # On error, allow run but warn.
+        return True, f"WARNING: verification failed; continuing: {e}"
+
+
+def load_packing_reference() -> List[Dict[str, str]]:
+    rows: List[Dict[str, str]] = []
+    path = "PACKING_REFERENCE.tsv"
+    if not os.path.exists(path):
+        return rows
+    with open(path, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f, delimiter="\t")
+        for row in reader:
+            rows.append(row)
+    return rows
+
+
+def problem_from_tsv_row(row: Dict[str, str]) -> Optional[str]:
+    pf = (row.get("problem_family") or "").strip()
+    n = (row.get("n") or "").strip()
+    bv = (row.get("best_value") or "").strip()
+    if not pf or not n or not bv:
+        return None
+    return f"{n}_{pf}"
+
+
+def select_auto_target() -> Tuple[str, str]:
+    """
+    Auto-select a target from PACKING_REFERENCE.tsv:
+    - Exclude proved_optimal.
+    - Prioritize best_known entries that are NOT_FOUND in HTML.
+    """
+    rows = load_packing_reference()
+    if not rows:
+        raise RuntimeError("No rows in PACKING_REFERENCE.tsv")
+
+    candidates: List[Tuple[str, str, int]] = []
+    not_found_set: set = set()
+
+    # First pass: detect NOT_FOUND via verification script in batch.
+    batch_out = ""
+    try:
+        r = subprocess.run(
+            [sys.executable, VERIFY_SCRIPT],
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+        batch_out = (r.stdout or "") + (r.stderr or "")
+    except Exception:
+        batch_out = ""
+
+    for line in batch_out.splitlines():
+        if line.startswith("NOT_FOUND:"):
+            m = re.search(r"NOT_FOUND:\s+(\S+)\s+n=(\d+)", line)
+            if m:
+                not_found_set.add((m.group(1), m.group(2)))
+
+    for row in rows:
+        status = (row.get("status") or "").strip()
+        if status == "proved_optimal":
+            continue
+
+        problem = problem_from_tsv_row(row)
+        if not problem:
+            continue
+
+        pf = (row.get("problem_family") or "").strip()
+        n = (row.get("n") or "").strip()
+
+        is_nf = (pf, n) in not_found_set
+        priority = 0
+        reason = "best_known in reference"
+        if is_nf:
+            priority = 1
+            reason = "NOT_FOUND in HTML (priority target)"
+
+        candidates.append((problem, reason, priority))
+
+    if not candidates:
+        raise RuntimeError("No candidate targets in PACKING_REFERENCE.tsv")
+
+    # Sort by priority descending; tie-break by problem name.
+    candidates.sort(key=lambda x: (-x[2], x[0]))
+    problem, reason, _ = candidates[0]
+    return problem, reason
+
+
+def list_auto_targets() -> Tuple[List[str], List[str]]:
+    """
+    List candidate targets from PACKING_REFERENCE.tsv, same logic as select_auto_target.
+    Returns (targets, reasons) sorted by priority.
+    """
+    rows = load_packing_reference()
+    if not rows:
+        raise RuntimeError("No rows in PACKING_REFERENCE.tsv")
+
+    candidates: List[Tuple[str, str, int]] = []
+    not_found_set: set = set()
+
+    # First pass: detect NOT_FOUND via verification script in batch.
+    batch_out = ""
+    try:
+        r = subprocess.run(
+            [sys.executable, VERIFY_SCRIPT],
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+        batch_out = (r.stdout or "") + (r.stderr or "")
+    except Exception:
+        batch_out = ""
+
+    for line in batch_out.splitlines():
+        if line.startswith("NOT_FOUND:"):
+            m = re.search(r"NOT_FOUND:\s+(\S+)\s+n=(\d+)", line)
+            if m:
+                not_found_set.add((m.group(1), m.group(2)))
+
+    for row in rows:
+        status = (row.get("status") or "").strip()
+        if status == "proved_optimal":
+            continue
+
+        problem = problem_from_tsv_row(row)
+        if not problem:
+            continue
+
+        pf = (row.get("problem_family") or "").strip()
+        n = (row.get("n") or "").strip()
+
+        is_nf = (pf, n) in not_found_set
+        priority = 0
+        reason = "best_known in reference"
+        if is_nf:
+            priority = 1
+            reason = "NOT_FOUND in HTML (priority target)"
+
+        candidates.append((problem, reason, priority))
+
+    if not candidates:
+        raise RuntimeError("No candidate targets in PACKING_REFERENCE.tsv")
+
+    # Sort by priority descending; tie-break by problem name.
+    candidates.sort(key=lambda x: (-x[2], x[0]))
+    targets = [c[0] for c in candidates]
+    reasons = [c[1] for c in candidates]
+    return targets, reasons
+
+
+# ---------------------------------------------------------------------------
+# END Verification helpers
+# ---------------------------------------------------------------------------
 
 
 def ensure_problem_output_dir(problem: str) -> str:
@@ -264,4 +458,30 @@ def run_experiment():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Packing autoresearch experiment runner")
+    parser.add_argument("--auto-select", action="store_true", help="Auto-select a target from PACKING_REFERENCE.tsv")
+    parser.add_argument("--list-targets", action="store_true", help="List candidate targets (no run)")
+    args = parser.parse_args()
+
+    if args.list_targets:
+        targets, reasons = list_auto_targets()
+        for t, r in zip(targets, reasons):
+            print(f"{t}\t{r}")
+        sys.exit(0)
+
+    if args.auto_select:
+        problem, reason = select_auto_target()
+        print(f"[auto-select] chosen problem: {problem}  reason: {reason}")
+        CURRENT_PROBLEM = problem
+        AUTO_MODE = True
+    else:
+        problem = CURRENT_PROBLEM
+
+    # Pre-run verification: refuse if contradicted.
+    ok, msg = run_verification_for(problem)
+    print(f"[verify] problem={problem}  {msg}")
+    if not ok:
+        print(f"[verify] FATAL: problem {problem} contradicted by reference HTML. Aborting.", file=sys.stderr)
+        sys.exit(1)
+
     run_experiment()
