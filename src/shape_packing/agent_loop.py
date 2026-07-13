@@ -291,12 +291,36 @@ def choose_problem(
     
     scored_candidates = []
     
-    from .problems import parse_problem, shape_token_to_sides
-    
+    from .problems import parse_problem, shape_token_to_sides, is_special_shape
+
+    # By default, skip special (non-polygon) shapes not yet wired into the Rust solver.
+    # To allow them, explicitly list them in include_inner / include_container.
+    def is_unsupported(token: str, filters: dict) -> bool:
+        if is_special_shape(token):
+            if filters.get("include_inner") or filters.get("include_container"):
+                return False
+            return True
+        # Only regular polygons + CIRCLE/SQUARE are considered safe for now.
+        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE"}
+        if token not in allowed:
+            return True
+        return False
+
     for item in queue:
         p_str = item["problem"]
         base_density = item["density"]
-        
+
+        # Basic pre-filter: skip clearly unsupported problems unless explicitly allowed.
+        try:
+            p0 = parse_problem(p_str)
+            if is_unsupported(p0.inner_token, filters or {}):
+                continue
+            if is_unsupported(p0.container_token, filters or {}):
+                continue
+        except Exception:
+            # If we can't parse, skip.
+            continue
+
         # Apply filters
         if filters:
             try:

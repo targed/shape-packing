@@ -24,6 +24,7 @@ SHAPE_TO_SIDES = {
     "6": 6,
     "8": 8,
     "CIRCLE": CIRCLE_SIDES,
+    "SQUARE": 4,
 }
 
 # Non-regular or composite shapes that require custom logic in polygon_packer.py.

@@ -21,7 +21,10 @@ import os
 #
 # No LLM, no external services. Pure automated search.
 
-SLEEP_BETWEEN_RUNS = 2  # seconds
+SLEEP_BETWEEN_RUNS = 2  # seconds between successful runs
+MAX_CONSECUTIVE_FAILURES = 5  # after this many failures, we back off longer
+BASE_BACKOFF = 5  # seconds for first backoff
+MAX_BACKOFF = 120  # seconds cap
 
 
 def get_suggest_command():
@@ -62,15 +65,25 @@ def get_suggest_command():
 def get_state():
     # Ask the suggest command to pick a target problem.
     cmd = get_suggest_command()
-    res = subprocess.run(cmd, capture_output=True, text=True)
+    try:
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+    except subprocess.TimeoutExpired:
+        print("[Loop] suggest timed out.")
+        return None
+    except Exception as e:
+        print(f"[Loop] suggest failed (runtime error): {e}")
+        return None
+
     if res.returncode != 0:
-        print(f"[Loop] suggest failed (exit {res.returncode}):\n{res.stderr.strip()}")
+        print(f"[Loop] suggest failed (exit {res.returncode}):")
+        print(res.stderr.strip()[:1200])
         return None
 
     try:
         out = json.loads(res.stdout)
     except json.JSONDecodeError:
-        print(f"[Loop] suggest returned invalid JSON:\n{res.stdout.strip()}")
+        print("[Loop] suggest returned invalid JSON.")
+        print(res.stdout.strip()[:1200])
         return None
 
     return out
@@ -93,11 +106,27 @@ def run_loop():
     print("[Loop] Starting pure-code autoresearch loop (no LLM).")
     print("[Loop] Press Ctrl+C to stop.")
 
+    consecutive_failures = 0
+
     while True:
-        state = get_state()
+        try:
+            state = get_state()
+        except KeyboardInterrupt:
+            print("[Loop] Interrupted (Ctrl+C). Exiting loop.")
+            sys.exit(0)
+        except Exception as e:
+            print(f"[Loop] Unexpected error calling suggest: {e}")
+            consecutive_failures += 1
+            sleep = min(MAX_BACKOFF, BASE_BACKOFF * (2 ** (min(consecutive_failures - 1, 4))))
+            print(f"[Loop] Suggest error. Backing off {sleep}s.")
+            time.sleep(sleep)
+            continue
+
         if not state or "problem" not in state:
-            print("[Loop] Suggestion engine returned invalid state. Waiting 5s...")
-            time.sleep(5)
+            consecutive_failures += 1
+            sleep = min(MAX_BACKOFF, BASE_BACKOFF * (2 ** (min(consecutive_failures - 1, 4))))
+            print(f"[Loop] Invalid state from suggest (failure {consecutive_failures}). Backing off {sleep}s...")
+            time.sleep(sleep)
             continue
 
         problem = state["problem"]
@@ -118,15 +147,28 @@ def run_loop():
             str(attempts),
         ]
 
-        # Run the command synchronously; output is streamed to console.
         try:
-            subprocess.run(cmd)
+            res = subprocess.run(cmd)
         except KeyboardInterrupt:
             print("[Loop] Interrupted (Ctrl+C). Exiting loop.")
             sys.exit(0)
+        except Exception as e:
+            print(f"[Loop] Runtime error running solver: {e}")
+            consecutive_failures += 1
+            sleep = min(MAX_BACKOFF, BASE_BACKOFF * (2 ** (min(consecutive_failures - 1, 4))))
+            print(f"[Loop] Solver error. Backing off {sleep}s.")
+            time.sleep(sleep)
+            continue
 
-        print("[Loop] Execution complete. Sleeping", SLEEP_BETWEEN_RUNS, "seconds...")
-        time.sleep(SLEEP_BETWEEN_RUNS)
+        if res.returncode != 0:
+            consecutive_failures += 1
+            sleep = min(MAX_BACKOFF, BASE_BACKOFF * (2 ** (min(consecutive_failures - 1, 4))))
+            print(f"[Loop] Solver failed (exit {res.returncode}, failure {consecutive_failures}). Backing off {sleep}s...")
+            time.sleep(sleep)
+        else:
+            consecutive_failures = 0
+            print(f"[Loop] Execution complete. Sleeping {SLEEP_BETWEEN_RUNS}s...")
+            time.sleep(SLEEP_BETWEEN_RUNS)
 
 
 if __name__ == "__main__":

@@ -1,18 +1,17 @@
 """
-Packing autoresearch experiment runner.
-Single purpose: run polygon_packer.py for a chosen problem,
-enforce a time budget, parse score, print summary.
+Packing autoresearch experiment runner (Mode 2).
 
-New behavior (integrated with PACKING_REFERENCE verification):
-- Before training, verifies the target problem against Erich Friedman HTML.
-- Refuses any target that is directly contradicted by the reference.
-- Optionally auto-selects next problem from PACKING_REFERENCE.tsv,
-  prioritizing NOT_FOUND (best_known) candidates.
-- Auto-select only considers problems with supported polygon shapes.
+Used in the LLM-assisted interactive research loop:
+- An AI agent (Cline/Cursor/etc) or a human follows program.md.
+- This script is the experiment harness: run it after each code change.
+- It:
+  - Enforces a time budget.
+  - Calls the solver (Rust or Python).
+  - Prints score and timing for the agent to analyze.
 
 Usage:
     uv run train.py                     # use CURRENT_PROBLEM
-    uv run train.py --auto-select       # pick next target from TSV
+    uv run train.py --auto-select       # pick next target from PACKING_REFERENCE
     uv run train.py --list-targets      # list candidate targets (no run)
 """
 

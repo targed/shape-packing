@@ -82,16 +82,18 @@ def shape_token_to_sides(token: str) -> Optional[int]:
     """
     Map a shape token to the number of sides of a regular polygon.
 
-    - For known tokens in SHAPE_TO_SIDES: use that.
+    - For known tokens in SHAPE_TO_SIDES: use that (case-insensitive).
     - For special shapes (TAN, DOMINO, L): return None (handled separately).
     - For numeric tokens >= 3: treat as that many sides.
     - Otherwise: raise ValueError.
     """
-    if is_special_shape(token):
+    t = token.strip().upper()
+
+    if is_special_shape(t):
         return None
 
-    if token in SHAPE_TO_SIDES:
-        return SHAPE_TO_SIDES[token]
+    if t in SHAPE_TO_SIDES:
+        return SHAPE_TO_SIDES[t]
 
     # Support arbitrary numeric tokens like "7" or "12"
     try:
