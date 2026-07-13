@@ -1,3 +1,6 @@
+> Archived reference: High-level architecture / module design notes.
+> Not required to run or use the current system; kept for context.
+
 # Architecture & Module Design
 
 This doc tracks the deepening of this repo into focused, testable modules with stable interfaces.

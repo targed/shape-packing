@@ -283,75 +283,76 @@ def choose_problem(
 ) -> str:
     queue = load_priority_queue(queue_path)
     if not queue:
-        # Fallback if queue missing
         return "8_3_in_5"
-        
+
     recent = recent_problems(history, last=10)
-    best = current_best_scores(history)
-    
-    scored_candidates = []
-    
+    our_best = current_best_scores(history)
+    reference_rows = load_packing_reference()
+
+    # Index reference by our_problem for fast lookup.
+    ref_by_problem: Dict[str, Dict[str, str]] = {}
+    for row in reference_rows:
+        our = (row.get("our_problem") or "").strip()
+        if our:
+            ref_by_problem[our] = row
+
     from .problems import parse_problem, shape_token_to_sides, is_special_shape
 
-    # By default, skip special (non-polygon) shapes not yet wired into the Rust solver.
+    # By default, skip special (non-polygon) shapes not wired into the Rust solver.
     # To allow them, explicitly list them in include_inner / include_container.
-    def is_unsupported(token: str, filters: dict) -> bool:
+    def is_unsupported(token: str, f: dict) -> bool:
         if is_special_shape(token):
-            if filters.get("include_inner") or filters.get("include_container"):
+            if f.get("include_inner") or f.get("include_container"):
                 return False
             return True
-        # Only regular polygons + CIRCLE/SQUARE are considered safe for now.
         allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE"}
         if token not in allowed:
             return True
         return False
 
+    scored_candidates = []
+
     for item in queue:
         p_str = item["problem"]
         base_density = item["density"]
 
-        # Basic pre-filter: skip clearly unsupported problems unless explicitly allowed.
+        # Parse and basic pre-filter.
         try:
             p0 = parse_problem(p_str)
-            if is_unsupported(p0.inner_token, filters or {}):
-                continue
-            if is_unsupported(p0.container_token, filters or {}):
-                continue
         except Exception:
-            # If we can't parse, skip.
             continue
 
-        # Apply filters
+        if is_unsupported(p0.inner_token, filters or {}):
+            continue
+        if is_unsupported(p0.container_token, filters or {}):
+            continue
+
+        # External filters (filter.json style).
         if filters:
             try:
-                p_obj = parse_problem(p_str)
-                n = p_obj.N
-                inner_token = p_obj.inner_token
-                container_token = p_obj.container_token
+                n = p0.N
+                inner_token = p0.inner_token
+                container_token = p0.container_token
                 inner_sides = shape_token_to_sides(inner_token)
                 container_sides = shape_token_to_sides(container_token)
-                
+
                 if filters.get("min_n") is not None and n < filters["min_n"]:
                     continue
                 if filters.get("max_n") is not None and n > filters["max_n"]:
                     continue
                 if filters.get("equal_n") is not None and n != filters["equal_n"]:
                     continue
-                    
-                if filters.get("include_inner"):
-                    if inner_token not in filters["include_inner"]:
-                        continue
-                if filters.get("exclude_inner"):
-                    if inner_token in filters["exclude_inner"]:
-                        continue
-                        
-                if filters.get("include_container"):
-                    if container_token not in filters["include_container"]:
-                        continue
-                if filters.get("exclude_container"):
-                    if container_token in filters["exclude_container"]:
-                        continue
-                        
+
+                if filters.get("include_inner") and inner_token not in filters["include_inner"]:
+                    continue
+                if filters.get("exclude_inner") and inner_token in filters["exclude_inner"]:
+                    continue
+
+                if filters.get("include_container") and container_token not in filters["include_container"]:
+                    continue
+                if filters.get("exclude_container") and container_token in filters["exclude_container"]:
+                    continue
+
                 if filters.get("min_inner_sides") is not None and inner_sides < filters["min_inner_sides"]:
                     continue
                 if filters.get("max_inner_sides") is not None and inner_sides > filters["max_inner_sides"]:
@@ -360,29 +361,70 @@ def choose_problem(
                     continue
                 if filters.get("max_container_sides") is not None and container_sides > filters["max_container_sides"]:
                     continue
-                    
             except Exception:
-                # If parse fails, we might just skip it if filters are on
                 continue
-        
-        # Penalize if it's very recent (short term diversity)
+
+        # Reference-based decisions.
+        ref_row = ref_by_problem.get(p_str)
+        ref_status = ""
+        best_value = None
+        if ref_row:
+            ref_status = (ref_row.get("status") or "").strip().lower()
+            bv = (ref_row.get("best_value") or "").strip()
+            if bv:
+                try:
+                    best_value = float(bv)
+                except Exception:
+                    best_value = None
+
+        # Massive penalty for trivial / proved_optimal: essentially block.
+        if ref_status in ("trivial", "proved_optimal"):
+            continue
+
+        # Diversity / history-based penalties.
         stagnation = sum(1 for r in recent if r == p_str)
         penalty = stagnation * 0.05
-        
-        # Penalize for total runs (long term diversity)
+
         total_runs = sum(1 for r in history if r.problem == p_str)
         penalty += total_runs * 0.01
-        
-        # Massive penalty if it's completely stuck
+
+        # If stuck: strong penalty.
         if is_stuck(history, p_str, threshold_no_improve=5):
             penalty += 10.0
-            
+
+        # Our-best vs reference-best_value: prefer problems with room to improve.
+        our = our_best.get(p_str, float("inf"))
+        if best_value is not None and our != float("inf"):
+            # If we are already within 0.2% of the reference best_value,
+            # likely diminishing returns; downrank.
+            rel_gap = (our - best_value) / best_value if best_value > 0 else 0.0
+            if rel_gap < 0.002:
+                # Near reference; add penalty.
+                penalty += 5.0
+            # If we have never reached close (gap > 10%), slight bonus by reducing effective density (making it more attractive).
+            # We do this by a small negative penalty (i.e., a bonus).
+            if rel_gap > 0.10:
+                penalty -= 1.0  # bonus: prioritize under-achieved problems
+
+        # Soft preference: best_known or human-found problems are interesting.
+        if ref_status == "best_known":
+            penalty -= 0.5  # mild bonus
+        else:
+            source = (ref_row.get("source") or "").strip().lower() if ref_row else ""
+            if "found by" in source:
+                penalty -= 0.3  # mild bonus
+
+        # Prefer_different: heavier penalty on recent problems.
+        if prefer_different:
+            if p_str in recent:
+                penalty += 3.0
+
         scored_candidates.append((p_str, base_density + penalty))
-        
+
     if not scored_candidates:
         return "8_3_in_5"
-        
-    # Sort by the new penalized density score
+
+    # Lower is better: density + penalties
     scored_candidates.sort(key=lambda x: x[1])
     return scored_candidates[0][0]
 

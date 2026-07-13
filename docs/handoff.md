@@ -1,3 +1,7 @@
+> Archived: This doc was part of an earlier restructuring handoff.
+> The current layout is stable; treat this as background context only.
+> For how to use the repo today, see README.md.
+
 # Handoff: shape-packing codebase restructuring (src layout)
 
 Project: /Users/kaiserluke/Documents/Git/shape-packing

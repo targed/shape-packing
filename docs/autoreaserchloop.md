@@ -1,41 +1,46 @@
-# Autonomous Shape Packing Search Loop
+# Autoresearch loop (concise reference)
 
-Last updated: 2026-07-13
+This doc is a short reference. For full usage, see README.md.
 
-This repo has two modes for running experiments:
+## Modes (canonical)
 
-1) Pure code loop (recommended default)
-
-- File: run_autoresearch_loop.py
-- Behavior:
-  - No LLM.
-  - Infinite loop:
-    - Reads filter.json (if present) and maps it to CLI flags.
-    - Calls: python -m src.shape_packing.cli suggest [flags]
+- Mode 1 (pure code, recommended):
+  - Script: run_autoresearch_loop.py
+  - No LLM. Infinite loop:
+    - Reads filter.json (optional).
+    - Calls: python -m src.shape_packing.cli suggest
     - Calls: python -m src.shape_packing.cli run --problem <X> --attempts <Y>
   - Logs to results.tsv, commits with git.
-- Use this for hands-off, continuous research.
+  - Run:
+    - uv run run_autoresearch_loop.py
 
-Command:
+- Mode 2 (LLM-assisted interactive research):
+  - Files:
+    - program.md: instructions for agent/human.
+    - train.py: experiment runner.
+  - Use when you want deep algorithmic exploration.
+  - Typical:
+    - Agent/human follows program.md.
+    - Edits polygon-packer/polygon_packer.py and/or train.py.
+    - Runs: uv run train.py
 
-- uv run run_autoresearch_loop.py
+## Problem selection
 
-2) LLM-assisted interactive loop (research mode)
+- Managed by:
+  - src/shape_packing/agent_loop.py (choose_problem)
+- Uses:
+  - priority_queue.json (density)
+  - results.tsv (history)
+  - PACKING_REFERENCE.tsv (status, best_value)
+- Avoids:
+  - Trivial/proved_optimal problems
+  - Unsupported special shapes by default
+- Prefers:
+  - Problems where current best is far from best_value
+  - Best_known problems with improvement room
+  - Diverse families and N
 
-- File: program.md (instructions) + train.py (runner)
-- Use this when:
-  - You want a smart agent (Cline, Cursor, etc.) to:
-    - Read context.
-    - Modify polygon_packer.py or train.py configs.
-    - Try new algorithms/strategies.
-- This is for deeper, reasoning-heavy exploration.
+## Prior loop (auto_agent.py)
 
-Usage:
-
-- Tell the agent: "Follow program.md and start the packing autoresearch loop."
-
-Prior loop (auto_agent.py):
-
-- Previously there was an LLM-in-the-loop script using strict JSON responses.
-- It was brittle and underperforming.
-- It has been removed; its useful concepts were merged into the current modes.
+- Old JSON-mode LLM loop was brittle.
+- Removed; concepts merged into the two modes above.

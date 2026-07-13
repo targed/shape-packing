@@ -1,3 +1,6 @@
+> Archived: Historical debug report (2026-07-06).
+> Kept for reference on tolerance/verification behavior; not part of the active workflow.
+
 # Debug Report: Autoresearch Loop Verification Failures
 
 Date: 2026-07-06

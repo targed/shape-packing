@@ -1,3 +1,6 @@
+> Archived: Historical design/planning docs.
+> Not part of the current workflow; kept for context only.
+
 # Geometric Ranker & Priority Queue Design
 
 ## Goal
