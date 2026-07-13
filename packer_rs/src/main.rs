@@ -1,3 +1,5 @@
+#![allow(non_snake_case)]
+
 use clap::Parser;
 use rand::Rng;
 use rand_chacha::{ChaCha8Rng, rand_core::SeedableRng};
@@ -42,7 +44,7 @@ fn main() {
     let nsi = args.inner_sides;
     let nsc = args.container_sides;
     let attempts = args.attempts;
-    let penalty_tolerance = args.tolerance;
+    let _penalty_tolerance = args.tolerance;
     let final_step_size = args.finalstep;
     let solution_file = args.solution_file.clone();
 
@@ -104,7 +106,7 @@ fn main() {
                     upvectors,
                     ucv,
                     **uap,
-                    penalty_tolerance,
+                    _penalty_tolerance,
                     final_step_size,
                     start,
                     stop,
@@ -235,7 +237,7 @@ fn run_attempt<R: Rng>(
     unit_polygon_vectors: &[(f64, f64)],
     unit_container_vectors: &[(f64, f64)],
     unit_container_apothem: f64,
-    penalty_tolerance: f64,
+    _penalty_tolerance: f64,
     final_step_size: f64,
     start: &Instant,
     stop_flag: &AtomicBool,
@@ -356,7 +358,7 @@ fn run_attempt<R: Rng>(
 
 struct OptResult {
     x: Vec<f64>,
-    fun: f64,
+    _fun: f64,
     max_violation: f64,
 }
 
@@ -413,7 +415,7 @@ fn minimize_gradient(
         }
     }
 
-    OptResult { x: best_x, fun: best_fun, max_violation: best_max_violation }
+    OptResult { x: best_x, _fun: best_fun, max_violation: best_max_violation }
 }
 
 
@@ -562,13 +564,13 @@ fn penalty_and_gradient(
                     let p2_min = polygon_array[j * nsi + best_v2_min];
                     let min_2 = p2_min.0 * x_axis + p2_min.1 * y_axis;
 
-                    let (p_upper, v_upper_idx, upper_poly_idx) = if max_1 < max_2 {
+                    let (p_upper, _v_upper_idx, upper_poly_idx) = if max_1 < max_2 {
                         (p1_max, best_v1_max, i)
                     } else {
                         (p2_max, best_v2_max, j)
                     };
 
-                    let (p_lower, v_lower_idx, lower_poly_idx) = if min_1 > min_2 {
+                    let (p_lower, _v_lower_idx, lower_poly_idx) = if min_1 > min_2 {
                         (p1_min, best_v1_min, i)
                     } else {
                         (p2_min, best_v2_min, j)
