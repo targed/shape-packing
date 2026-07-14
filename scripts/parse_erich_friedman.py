@@ -1,20 +1,36 @@
 #!/usr/bin/env python3
 """
-Parse Erich Friedman's packing pages into a single reference TSV.
+Parse Erich Friedman's packing pages (local HTML) into a structured JSON reference.
+
+Input:
+- erich-friedman.github.io/packing/<folder>/index.html
+
+Output:
+- PACKING_REFERENCE.json: list of entries with:
+    id, problem_family, N, inner_shape, container_shape,
+    best_value (float|null), status, source_url, source_note, our_problem
+
+Status values:
+- trivial
+- proved_optimal
+- best_known
+- unknown (if unclear)
 
 Usage:
-    uv run scripts/parse_erich_friedman.py
+- uv run scripts/parse_erich_friedman.py
+- python3 scripts/parse_erich_friedman.py
 """
-import os
+
+import json
 import re
 import sys
-import csv
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent / "erich-friedman.github.io" / "packing"
-OUT = Path(__file__).resolve().parent.parent / "PACKING_REFERENCE.tsv"
+OUT = Path(__file__).resolve().parent.parent / "PACKING_REFERENCE.json"
+BASE_URL = "https://erich-friedman.github.io/packing"
 
-# Mapping from folder names to our (inner, container) tokens
+# Mapping from folder names to (inner_token, container_token)
 FOLDER_MAP = {
     # Triangles in ...
     "triincir": ("3", "CIRCLE"),
@@ -98,77 +114,97 @@ FOLDER_MAP = {
     "Lindom":   ("L", "DOMINO"),
 }
 
-def extract_float(s):
-    # s is the string before <br>
-    # Find all floats/ints in the string
-    nums = re.findall(r"(\d*\.\d+|\d+)", (s or ""))
-    if nums:
-        # Return the last number found (which is usually the evaluated float)
-        return str(float(nums[-1]))
-    return None
 
-def parse_html(html, family, inner_token, container_token):
+def extract_float(s: str):
+    nums = re.findall(r"(\d+\.\d+|\d+)", (s or ""))
+    if not nums:
+        return None
+    try:
+        return float(nums[-1])
+    except ValueError:
+        return None
+
+
+def parse_status(tok: str):
+    lower = tok.lower()
+
+    # "Trivial" explicitly stated
+    if "trivial" in lower:
+        return "trivial"
+
+    # "proved" / "proof" / "optimal" with clear meaning
+    # Use this only when it really looks like an optimality claim.
+    if "proved optimal" in lower or "proof" in lower:
+        return "proved_optimal"
+
+    # "best known" / "best_known" / "best-known"
+    if "best known" in lower or "best_known" in lower:
+        return "best_known"
+
+    # Default: best_known (Erich often lists best known without extra label)
+    return "best_known"
+
+
+def parse_html(html: str, family: str, inner_token: str, container_token: str):
     rows = []
-    # Split into chunks per N based on "<font size=+3>N."
+    # Split into sections by N: look for "<font size=+3>N."
     tokens = re.split(r'<font\s+size=?\+?3\s*>', html)
+
     for tok in tokens:
-        # first token before any N is header
+        # Try to match N at start
         m = re.match(r'^(\d+)\.', tok)
         if not m:
             continue
         n = int(m.group(1))
 
-        # find the numeric value
+        # Extract metric value from <font size=+1> or <font size=1> block.
+        # The HTML often contains things like "s = 8.37807+<br>Found by ..."
+        # so we must handle '+' and other trailing symbols.
         val = None
-        
-        # Grab everything between <font size=+1> and 'Found by', 'Trivial', 'proved', or table cell endings
-        # This handles multi-line math derivations where the evaluated float is on the second line.
-        metric_match = re.search(r'<font\s+size=\+?1\s*>(.*?)(?:Found by|Trivial|proved|<td|<\/td)', tok, re.IGNORECASE | re.DOTALL)
+        metric_match = re.search(
+            r'<font\s+size=\+?1\s*>(.*?)(?:Found by|Trivial|proved|<td|</td>)',
+            tok,
+            re.IGNORECASE | re.DOTALL,
+        )
         if metric_match:
-            metric_str = metric_match.group(1)
-            val = extract_float(metric_str)
-        
-        # Fallback if the first method didn't match anything
-        if not val:
-            metric_match = re.search(r'<font\s+size=\+?1\s*>(.*?)(?:<br>|$)', tok, re.IGNORECASE)
+            val = extract_float(metric_match.group(1))
+        if val is None:
+            metric_match = re.search(
+                r'<font\s+size=\+?1\s*>(.*?)(?:<br>|$)',
+                tok,
+                re.IGNORECASE,
+            )
             if metric_match:
-                metric_str = metric_match.group(1)
-                val = extract_float(metric_str)
+                val = extract_float(metric_match.group(1))
 
-        # source / trivial / status
-        status = "unknown"
-        source = ""
-        if "Trivial" in tok:
-            status = "trivial"
-        elif "proved" in tok.lower():
-            status = "proved_optimal"
-        elif "best known" in tok.lower():
-            status = "best_known"
-        else:
-            status = "best_known"  # default assumption for non-trivial
+        status = parse_status(tok)
 
-        # extract author
+        # Extract author note
+        source_note = ""
         am = re.search(r'Found by (.+?)<br>', tok, re.IGNORECASE | re.DOTALL)
         if am:
-            source = am.group(1).strip().replace('\n', ' ')
+            source_note = " ".join(am.group(1).split()).strip()
 
         rows.append({
             "problem_family": family,
-            "n": n,
-            "best_value": val or "",
-            "source": source,
+            "N": n,
+            "inner_shape": inner_token,
+            "container_shape": container_token,
+            "best_value": val,
             "status": status,
-            "our_problem": f"{n}_{inner_token}_in_{container_token}"
+            "source_note": source_note,
+            "our_problem": f"{n}_{inner_token}_in_{container_token}",
         })
 
     return rows
+
 
 def main():
     if not ROOT.exists():
         print(f"Error: root not found: {ROOT}", file=sys.stderr)
         sys.exit(1)
 
-    all_rows = []
+    all_entries = []
 
     for folder in sorted(ROOT.iterdir()):
         if not folder.is_dir():
@@ -182,36 +218,39 @@ def main():
             continue
 
         html = html_file.read_text(encoding="utf-8", errors="ignore")
+        source_url = f"{BASE_URL}/{name}/index.html"
 
-        # if mapping known, use it
         if name in FOLDER_MAP:
             inner_token, container_token = FOLDER_MAP[name]
             family = f"{inner_token}_in_{container_token}"
-            rows = parse_html(html, family, inner_token, container_token)
-            all_rows.extend(rows)
+            entries = parse_html(html, family, inner_token, container_token)
         else:
-            # Unknown folder: parse as-is but mark family as folder name
+            # Unknown folder: parse but mark as unknown shapes
             family = name
-            rows = parse_html(html, family, "?", "?")
-            for r in rows:
-                r["our_problem"] = None
-            all_rows.extend(rows)
+            entries = parse_html(html, family, "?", "?")
+            # For unknown mapping, our_problem becomes None
+            for e in entries:
+                e["our_problem"] = None
 
-    # Write TSV
-    with open(OUT, "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f, delimiter="\t")
-        w.writerow(["problem_family", "n", "best_value", "source", "status", "our_problem"])
-        for r in sorted(all_rows, key=lambda x: (x["problem_family"], x["n"])):
-            w.writerow([
-                r["problem_family"],
-                r["n"],
-                r["best_value"],
-                r["source"],
-                r["status"],
-                r["our_problem"]
-            ])
+        # Attach source_url, id
+        for e in entries:
+            if e["our_problem"]:
+                e["id"] = f"{family}_{e['N']}"
+            else:
+                e["id"] = f"{family}_{e['N']}"
+            e["source_url"] = source_url
 
-    print(f"Written PACKING_REFERENCE.tsv with {len(all_rows)} entries to {OUT}")
+        all_entries.extend(entries)
+
+    # Sort by problem_family, N
+    all_entries.sort(key=lambda x: (x["problem_family"], x["N"]))
+
+    # Write JSON
+    with open(OUT, "w", encoding="utf-8") as f:
+        json.dump(all_entries, f, indent=2, ensure_ascii=False)
+
+    print(f"Written PACKING_REFERENCE.json with {len(all_entries)} entries to {OUT}")
+
 
 if __name__ == "__main__":
     main()

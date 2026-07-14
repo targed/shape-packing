@@ -50,7 +50,7 @@ import csv
 import json
 import os
 from dataclasses import dataclass, asdict
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Any
 
 
 # --------------- Data types ---------------
@@ -130,67 +130,63 @@ def append_result(path: str, result: ExperimentResult) -> None:
 # --------------- Reference utilities ---------------
 
 
-def load_packing_reference(path: str = "PACKING_REFERENCE.tsv") -> List[Dict[str, str]]:
+def load_packing_reference(path: str = "PACKING_REFERENCE.json") -> List[Dict[str, any]]:
     """
-    Load PACKING_REFERENCE.tsv as list of dicts.
-    Fields: problem_family, n, best_value, source, status, our_problem.
+    Load PACKING_REFERENCE.json as list of dicts.
+    Fields per entry:
+      id, problem_family, N, inner_shape, container_shape,
+      best_value (float|null), status, source_url, source_note, our_problem.
     """
     if not os.path.exists(path):
         return []
 
-    rows: List[Dict[str, str]] = []
     try:
         with open(path, "r", encoding="utf-8") as f:
-            reader = csv.DictReader(f, delimiter="\t")
-            for row in reader:
-                rows.append(row)
+            data = json.load(f)
+        if isinstance(data, list):
+            return data
+        return []
     except Exception:
         return []
-    return rows
 
 
 def is_reference_blocked(
-    reference_rows: List[Dict[str, str]],
+    reference_rows: List[Dict[str, any]],
     problem: str,
 ) -> bool:
     """
     Decide if a problem is blocked by reference metadata.
 
-    Blocked if:
-    - status == "trivial"
-    - status == "proved_optimal"
-
-    In the future, we can map our internal problem name to the reference
-    via problem_family/n/etc. For now, if 'our_problem' in row matches
-    the problem, we use its status.
+    Blocked if status in ('trivial', 'proved_optimal') and our_problem matches.
     """
     for row in reference_rows:
-        our = row.get("our_problem", "").strip()
-        if not our:
+        our = row.get("our_problem")
+        if not our or str(our).strip() != problem:
             continue
-        if our == problem:
-            status = (row.get("status") or "").strip().lower()
-            if status in ("trivial", "proved_optimal"):
-                return True
+        status = str(row.get("status") or "").strip().lower()
+        if status in ("trivial", "proved_optimal"):
+            return True
     return False
 
 
 def is_preferred_reference(
-    reference_rows: List[Dict[str, str]],
+    reference_rows: List[Dict[str, any]],
     problem: str,
 ) -> bool:
     """
     Soft signal: problem is aligned with 'best_known' or human-found source.
+    Uses status and source_note from PACKING_REFERENCE.json.
     """
     for row in reference_rows:
-        our = row.get("our_problem", "").strip()
-        if our == problem:
-            status = (row.get("status") or "").strip().lower()
-            source = (row.get("source") or "").strip().lower()
-            if status == "best_known":
-                return True
-            if "found by" in source:
-                return True
+        our = row.get("our_problem")
+        if not our or str(our).strip() != problem:
+            continue
+        status = str(row.get("status") or "").strip().lower()
+        note = str(row.get("source_note") or "").strip().lower()
+        if status == "best_known":
+            return True
+        if "found by" in note or "erich friedman" in note:
+            return True
     return False
 
 
@@ -369,12 +365,12 @@ def choose_problem(
         ref_status = ""
         best_value = None
         if ref_row:
-            ref_status = (ref_row.get("status") or "").strip().lower()
-            bv = (ref_row.get("best_value") or "").strip()
-            if bv:
+            ref_status = str(ref_row.get("status") or "").strip().lower()
+            bv = ref_row.get("best_value")
+            if bv is not None:
                 try:
                     best_value = float(bv)
-                except Exception:
+                except (ValueError, TypeError):
                     best_value = None
 
         # Massive penalty for trivial / proved_optimal: essentially block.
@@ -410,8 +406,8 @@ def choose_problem(
         if ref_status == "best_known":
             penalty -= 0.5  # mild bonus
         else:
-            source = (ref_row.get("source") or "").strip().lower() if ref_row else ""
-            if "found by" in source:
+            source_note = (ref_row.get("source_note") or "").strip().lower() if ref_row else ""
+            if "found by" in source_note or "erich friedman" in source_note:
                 penalty -= 0.3  # mild bonus
 
         # Prefer_different: heavier penalty on recent problems.
