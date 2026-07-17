@@ -26,13 +26,18 @@ def handle_suggest(args):
     print(json.dumps({"problem": problem, "best_score": best_score}))
 
 def handle_run(args):
+    def eprint(*a, **kw):
+        if args.json_out:
+            kw["file"] = sys.stderr
+        print(*a, **kw)
+
     # 1. Run init script if provided
     init_json_path = None
     if args.init_script:
         init_json_path = "initial_positions.json"
         res = subprocess.run([sys.executable, args.init_script, init_json_path], capture_output=True, text=True)
         if res.returncode != 0:
-            print("Init script failed:\n" + res.stderr)
+            eprint("Init script failed:\n" + res.stderr)
             sys.exit(1)
             
     # 2. Extract problem parts
@@ -51,7 +56,7 @@ def handle_run(args):
     solution_file = os.path.join(result_dir, "solution.json")
     
     # 3. Call Rust solver
-    print("Compiling Rust solver...")
+    eprint("Compiling Rust solver...")
     subprocess.run(
         ["cargo", "build", "--release"],
         cwd="packer_rs",
@@ -71,8 +76,8 @@ def handle_run(args):
     proc = subprocess.run(cmd, capture_output=True, text=True)
     
     if proc.returncode != 0:
-        print(f"Rust solver failed with exit code {proc.returncode}")
-        print(proc.stderr)
+        eprint(f"Rust solver failed with exit code {proc.returncode}")
+        eprint(proc.stderr)
         sys.exit(1)
     score = 0.0
     for line in proc.stdout.splitlines():
@@ -88,12 +93,13 @@ def handle_run(args):
         subprocess.run(render_cmd)
             
     # 4. Log to TSV
-    from .agent_loop import log_result
-    log_result(None, args.problem, score, 0.0, f"Auto run attempts={args.attempts}", commit="auto")
-    
-    # 5. Git commit
-    subprocess.run(["git", "add", "results.tsv", "results/"])
-    subprocess.run(["git", "commit", "-m", f"auto: run {args.problem} score {score}"])
+    if not args.no_commit:
+        from .agent_loop import log_result
+        log_result(None, args.problem, score, 0.0, f"Auto run attempts={args.attempts}", commit="auto")
+        
+        # 5. Git commit
+        subprocess.run(["git", "add", "results.tsv", "results/"])
+        subprocess.run(["git", "commit", "-m", f"auto: run {args.problem} score {score}"])
     
     print(json.dumps({"score": score}))
 
@@ -118,6 +124,8 @@ def main():
     run_parser.add_argument("--problem", required=True)
     run_parser.add_argument("--attempts", type=int, default=1000)
     run_parser.add_argument("--init-script", type=str)
+    run_parser.add_argument("--no-commit", action="store_true")
+    run_parser.add_argument("--json-out", action="store_true")
     
     args = parser.parse_args()
     if args.command == "suggest":
