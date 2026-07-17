@@ -1,159 +1,79 @@
-# autoresearch-packing
+# Shape Packing Auto-Researcher (Cluster Ready)
 
-Autonomous 2D shape packing research loop (no ML training).
+This repository contains an autonomous research loop for discovering mathematically dense shape packings. It pairs a fast Rust backend with a Python-based intelligent orchestrator. 
 
-This repo implements a Karpathy-style autoresearch workflow for packing problems:
-- Iterative experiments
-- A fixed experiment harness
-- Logging to results.tsv
-- Strict geometric verification
+As of July 2026, the orchestrator has been upgraded to safely and efficiently run on high-performance computing clusters (like the Missouri S&T "Mill" supercomputer) utilizing massive single-node multiprocessing.
 
-No neural training. No MLX. Pure optimization.
+---
 
-## Two modes (pick one)
+## 🚀 The Cluster Upgrade (July 2026)
 
-Only these two modes are live and maintained.
+### What Changed?
+Previously, the orchestrator (`run_autoresearch_loop.py`) ran sequentially. It would ask the recommender for a problem, run the solver, write the files, commit to git, and repeat. 
 
-- Mode 1: Pure-code autonomous loop (recommended)
-  - Fully automatic, no LLM, set-and-forget.
-  - Script: run_autoresearch_loop.py
-  - Uses:
-    - src.shape_packing.cli suggest → choose next problem
-    - src.shape_packing.cli run → run solver, verify, render, log, commit
-  - Usage:
-    - uv run run_autoresearch_loop.py
+Running a sequential loop on a 128-core supercomputer node wastes 127 cores. 
 
-- Mode 2: LLM-assisted interactive research
-  - Used with an AI agent (Cline, Cursor, etc.) or a human researcher.
-  - Instruction file: program.md
-  - Experiment harness: train.py
-  - Typical flow:
-    - Agent/human follows program.md
-    - Edits polygon-packer/polygon_packer.py and/or train.py configs
-    - Runs: uv run train.py
-    - Analyzes logs and updates results.tsv
-  - Use this when you want deep, reasoning-heavy algorithmic exploration.
+We built a new parallel orchestrator (`run_parallel_loop.py`) designed specifically for SLURM-based clusters. 
 
-Prior auto_agent.py (JSON-mode LLM loop) has been removed; its useful concepts are merged into these two modes.
+### How It Works
+1. **Node Discovery**: The script reads the `$SLURM_CPUS_ON_NODE` environment variable to determine exactly how many cores it has been allocated.
+2. **Process Pool**: It spins up a Python `ProcessPoolExecutor` utilizing every available core.
+3. **Smart Dispatching**: The main thread tracks which problems are currently "in-flight". It asks the recommender for a batch of problems, explicitly telling the recommender *not* to suggest problems that are already running on other cores.
+4. **Dynamic Scaling & Swarming**:
+   * *Normal Problems*: Gets a standard 5,000 attempts on 1 core.
+   * *Hard Problems ($N \ge 8$)*: Gets 50,000 attempts.
+   * *Stuck Problems*: Gets 500,000 attempts AND is assigned to 20 cores simultaneously ("Swarm mode"). Because the Rust solver uses randomized initialization, throwing 20 concurrent threads at a deep local minimum drastically increases the chances of breaking out.
+5. **Thread-Safe I/O**: Worker cores **do not** write to disk. They run the solver entirely in memory/stdout and return a clean JSON payload back to the main thread. The main single thread handles all updates to `PACKING_REFERENCE.json`, TSV files, and `git commit` actions. This perfectly prevents race conditions and corrupted JSON files.
 
-## Quick start
+---
 
-1) Install:
+## 🛠 How to Use It on the Mill
 
-   - uv sync
+### 1. Uploading the Code
+The Mill requires you to connect using standard tools (like Globus, `scp`, or `rsync`).
+1. Connect to the Mill via Globus (Endpoint: "Missouri S&T Mill").
+2. Transfer this entire repository directory to your Scratch space (`/share/ceph/scratch/$USER/`) or your Home directory.
 
-2) Run Mode 1 (recommended):
+### 2. Submitting the Job
+We have included a pre-configured SLURM batch file: `mill_runner.sub`.
 
-   - uv run run_autoresearch_loop.py
+1. SSH into the Mill login node: `ssh username@mill.mst.edu`
+2. Navigate to your uploaded project directory.
+3. Submit the batch script to the SLURM scheduler:
+   ```bash
+   sbatch mill_runner.sub
+   ```
 
-   It will:
-   - Choose problems
-   - Run the Rust solver
-   - Verify solutions
-   - Log results and commit
+**What `mill_runner.sub` does:**
+- Requests 1 full node.
+- Requests a 2-day execution limit (the max for the `general` partition).
+- Loads the necessary Anaconda and GCC modules.
+- Executes `python run_parallel_loop.py`.
 
-3) Run Mode 2 (interactive):
+### 3. Monitoring the Job
+You can check the status of your running job:
+```bash
+squeue -u $USER
+```
+To watch the live logs as the orchestrator dispatches tasks to the 128 cores:
+```bash
+tail -f results/mill-<JOB_ID>.out
+```
 
-   - Open program.md.
-   - Tell your AI agent: "Follow program.md and start the packing autoresearch loop."
+### 4. Retrieving the Results
+Because the orchestrator writes the results safely to the disk on the cluster, you simply pull the data back down when the job finishes (or while it's running).
+1. Open Globus.
+2. Transfer `PACKING_REFERENCE.json` and the `results/` folder back to your local laptop.
 
-## Key files and responsibilities
+---
 
-Canonical files (use these):
+## 📂 Core Files
+- `run_parallel_loop.py`: The new cluster-aware multiprocess orchestrator.
+- `mill_runner.sub`: The SLURM job submission script.
+- `src/shape_packing/cli.py`: The command-line interface. (Updated with `--no-commit` and `--json-out` flags to support silent worker isolation).
+- `packer_rs/`: The compiled Rust solver that actually does the heavy lifting.
 
-- run_autoresearch_loop.py: Mode 1 (pure-code autonomous loop).
-- program.md: Mode 2 instructions for agent/human.
-- train.py: Mode 2 experiment runner (Rust/Python backend).
-- priority_queue.json: Problem priority list (density-based).
-- filter.json: (optional) Constrain Mode 1 problem selection.
-- results.tsv: Experiment log (commit, score, memory_gb, status, problem, description).
+---
 
-Core modules (src/shape_packing):
-
-- cli.py: CLI entry (suggest, run, etc.).
-- agent_loop.py: Problem selection, stuck detection, history, logging.
-- problems.py: Problem parsing, validation, token mapping.
-- packing_config.py: Shape/config data used by problems.py.
-- optimization.py: Optimization/orchestration (Python backend).
-- solution_tools.py: Verification (SAT) and rendering helpers.
-
-Solver backends:
-
-- packer_rs/: Rust solver (primary, production).
-- polygon-packer/polygon_packer.py: Python packing algorithm (legacy/alternative).
-
-Verification and rendering:
-
-- verify_solution.py: SAT-based verification CLI (uses solution_tools.py).
-- render_solution.py: Render solution JSON to PNG (uses solution_tools.py).
-
-## The floating-point record mirage
-
-CRITICAL:
-
-Double-precision floats can produce false "world records" by exploiting rounding errors.
-We enforce strict tolerances to prevent hallucinated solutions.
-
-Current standards:
-
-- Rust solver:
-  - Uses extreme gradient penalty tolerance: 1e-30.
-- Verification:
-  - Uses SAT overlap/bounds checks with tolerance: 1e-15.
-
-Do not relax these tolerances to claim a record.
-Any solution that cannot verify at 1e-15 is a floating-point artifact, not a real solution.
-
-## Problem filtering (Mode 1)
-
-Optionally create filter.json to constrain problems for run_autoresearch_loop.py.
-
-Keys:
-
-- min_n / max_n / equal_n: Filter by number of items.
-- include_inner / exclude_inner: Comma-separated inner shape tokens.
-- include_container / exclude_container: Comma-separated container tokens.
-- min_inner_sides / max_inner_sides: Filter by inner polygon sides.
-- min_container_sides / max_container_sides: Filter by container polygon sides.
-
-Example:
-
-{
-  "min_n": 5,
-  "max_n": 10,
-  "include_inner": "HEXAGON",
-  "exclude_container": "CIRCLE"
-}
-
-The loop re-reads filter.json each iteration.
-
-## Problem selection
-
-Problem selection is handled by:
-
-- src/shape_packing/agent_loop.py: choose_problem()
-- Uses:
-  - priority_queue.json (density-based priorities)
-  - results.tsv (history, stagnation, diversity)
-  - PACKING_REFERENCE.tsv (status, best_value)
-- Avoids:
-  - Unsupported/special shapes (TAN, DOMINO, L) unless explicitly allowed
-  - Trivial and proved_optimal problems (via reference)
-- Prefers:
-  - Problems where our best is still far from known best_value
-  - Best_known problems with room for improvement
-  - Diverse problem families and N values
-
-## Knowledge graph (optional)
-
-For architectural questions, a graphify knowledge graph is available.
-
-- graphify-out/ contains the graph, HTML viewer, and report.
-- graphify_query.py is a CLI wrapper.
-- See graphify-out/GRAPHIFY_USAGE.md.
-
-Examples:
-
-- python3 graphify_query.py query "How is the gradient computed?"
-- python3 graphify_query.py explain "penalty_and_gradient"
-- python3 graphify_query.py path "train" "render"
+## Graceful Shutdowns
+The Mill enforces hard time limits. If the 2-day limit is reached, SLURM will send a `SIGTERM` signal shortly before killing the job forcefully. `run_parallel_loop.py` traps this signal, stops dispatching new tasks, waits a few seconds for pending disk writes to finish, and exits cleanly so no JSON files are corrupted mid-write.
