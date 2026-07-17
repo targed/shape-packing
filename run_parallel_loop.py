@@ -5,6 +5,7 @@ import sys
 import os
 import signal
 import concurrent.futures
+from src.shape_packing.agent_loop import log_result
 
 # Configuration
 MAX_CONSECUTIVE_FAILURES = 5
@@ -135,12 +136,14 @@ def process_result(result):
     try:
         # Assume the CLI outputs a specific JSON payload on success when --json-out is passed
         data = json.loads(result["stdout"])
-        # TODO: integrate with actual file writing/git committing logic
-        # For now, just print success
         score = data.get("score", "unknown")
         print(f"[Main] Worker finished {prob} with score {score}")
+        # Centralized logging and committing
+        log_result(None, prob, score, 0.0, "Parallel run loop", commit="auto")
     except json.JSONDecodeError:
         print(f"[Main] Failed to parse JSON from {prob} output.")
+    except Exception as e:
+        print(f"[Main] Error during log_result on {prob}: {e}")
 
 def run_loop():
     global _SHUTDOWN
