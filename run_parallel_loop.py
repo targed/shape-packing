@@ -95,18 +95,76 @@ def worker_task(problem, attempts):
         print(f"[{problem}] Search failed/completed without new best.")
         return problem, False
 
+def process_result(result):
+    """Safely process a completed worker result on the main thread."""
+    prob = result.get("problem", "unknown")
+    if not result.get("success"):
+        err = result.get("error", result.get("stderr", "Unknown error"))
+        print(f"[Main] Worker failed on {prob}: {err[:200]}")
+        return
+
+    try:
+        # Assume the CLI outputs a specific JSON payload on success when --json-out is passed
+        data = json.loads(result["stdout"])
+        # TODO: integrate with actual file writing/git committing logic
+        # For now, just print success
+        score = data.get("score", "unknown")
+        print(f"[Main] Worker finished {prob} with score {score}")
+    except json.JSONDecodeError:
+        print(f"[Main] Failed to parse JSON from {prob} output.")
+
 def run_loop():
     global _SHUTDOWN
-    # Trap termination signals
     signal.signal(signal.SIGTERM, handle_sigterm)
     signal.signal(signal.SIGINT, handle_sigterm)
     
     num_cores = get_available_cores()
     print(f"[Main] Starting parallel loop on {num_cores} cores.")
     
+    in_flight = {} # Map of Future -> problem_name
+    
     with concurrent.futures.ProcessPoolExecutor(max_workers=num_cores) as executor:
-        # Loop will be fleshed out in next tasks
-        pass
+        while not _SHUTDOWN:
+            # Fill the pool
+            while len(in_flight) < num_cores and not _SHUTDOWN:
+                state = get_state(list(in_flight.values()))
+                if not state or "problem" not in state:
+                    print("[Main] Failed to get valid state. Backing off 5s.")
+                    time.sleep(5)
+                    break # Break inner loop, wait for existing futures
+                
+                attempts, swarm_count = analyze_difficulty(state)
+                prob = state["problem"]
+                
+                for _ in range(swarm_count):
+                    if len(in_flight) >= num_cores:
+                        break
+                    future = executor.submit(worker_task, prob, attempts)
+                    in_flight[future] = prob
+            
+            if _SHUTDOWN:
+                break
+                
+            # Wait for at least one future to complete
+            if in_flight:
+                done, _ = concurrent.futures.wait(
+                    in_flight.keys(), 
+                    return_when=concurrent.futures.FIRST_COMPLETED,
+                    timeout=5.0
+                )
+                
+                for future in done:
+                    prob = in_flight.pop(future)
+                    try:
+                        result = future.result()
+                        process_result(result)
+                    except Exception as e:
+                        print(f"[Main] Future for {prob} raised exception: {e}")
+            else:
+                time.sleep(1)
+                
+        print("[Main] Shutting down. Waiting for pending workers to finish...")
+        # Executor context manager will automatically wait for running futures to finish
 
 if __name__ == "__main__":
     run_loop()
