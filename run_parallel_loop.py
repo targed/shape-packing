@@ -75,6 +75,35 @@ def get_state(in_flight=None):
         print("[Main] suggest returned invalid JSON.")
         return None
 
+def analyze_difficulty(problem_state):
+    """
+    Returns (attempts, swarm_count) based on difficulty.
+    """
+    problem = problem_state.get("problem", "")
+    
+    # Try to extract N
+    try:
+        n = int(problem.split("_")[0])
+    except Exception:
+        n = 5
+        
+    attempts = 5000
+    if n >= 8:
+        attempts = 50000  # Harder problems get more attempts
+        
+    # Heuristic based on state (e.g., if CLI flagged it as 'stuck')
+    status = problem_state.get("status", "normal")
+    swarm_count = 1
+    
+    if status == "stuck":
+        attempts = 500000
+        swarm_count = 20 # Swarm it!
+    elif status == "hard":
+        attempts = 50000
+        swarm_count = 5
+        
+    return attempts, swarm_count
+
 def worker_task(problem, attempts):
     print(f"[{problem}] Starting ({attempts} attempts)")
     cmd = [sys.executable, "-m", "src.shape_packing.cli", "search", "--problem", problem, "--attempts", str(attempts)]
