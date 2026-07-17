@@ -75,6 +75,26 @@ def get_state(in_flight=None):
         print("[Main] suggest returned invalid JSON.")
         return None
 
+def worker_task(problem, attempts):
+    print(f"[{problem}] Starting ({attempts} attempts)")
+    cmd = [sys.executable, "-m", "src.shape_packing.cli", "search", "--problem", problem, "--attempts", str(attempts)]
+    
+    try:
+        res = subprocess.run(cmd, capture_output=True, text=True)
+    except Exception as e:
+        print(f"[{problem}] Worker error: {e}")
+        return problem, False
+        
+    if res.returncode == 0:
+        print(f"[{problem}] Success!")
+        return problem, True
+    elif res.returncode == 42:
+        print(f"[{problem}] Solution valid but NOT an improvement.")
+        return problem, False
+    else:
+        print(f"[{problem}] Search failed/completed without new best.")
+        return problem, False
+
 def run_loop():
     global _SHUTDOWN
     # Trap termination signals
