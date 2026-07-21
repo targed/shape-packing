@@ -1,0 +1,110 @@
+[
+  {
+    "problem_family": "circovtri",
+    "N": 1,
+    "inner_shape": "triangle",
+    "container_shape": "circle (covering)",
+    "best_value": 1.732,
+    "status": "trivial",
+    "source_note": "Trivial.",
+    "our_problem": "1_circovtri",
+    "id": "circovtri_1",
+    "source_url": "https://erich-friedman.github.io/packing/circovtri/index.html"
+  },
+  {
+    "problem_family": "circovtri",
+    "N": 2,
+    "inner_shape": "triangle",
+    "container_shape": "circle (covering)",
+    "best_value": 2,
+    "status": "trivial",
+    "source_note": "Trivial.",
+    "our_problem": "2_circovtri",
+    "id": "circovtri_2",
+    "source_url": "https://erich-friedman.github.io/packing/circovtri/index.html"
+  },
+  {
+    "problem_family": "circovtri",
+    "N": 3,
+    "inner_shape": "triangle",
+    "container_shape": "circle (covering)",
+    "best_value": 3.464,
+    "status": "trivial",
+    "source_note": "Trivial.",
+    "our_problem": "3_circovtri",
+    "id": "circovtri_3",
+    "source_url": "https://erich-friedman.github.io/packing/circovtri/index.html"
+  },
+  {
+    "problem_family": "circovtri",
+    "N": 4,
+    "inner_shape": "triangle",
+    "container_shape": "circle (covering)",
+    "best_value": 3.732,
+    "status": "best_known",
+    "source_note": "Proved by Hans Melissen in 1997.",
+    "our_problem": "4_circovtri",
+    "id": "circovtri_4",
+    "source_url": "https://erich-friedman.github.io/packing/circovtri/index.html"
+  },
+  {
+    "problem_family": "circovtri",
+    "N": 5,
+    "inner_shape": "triangle",
+    "container_shape": "circle (covering)",
+    "best_value": 4,
+    "status": "best_known",
+    "source_note": "Proved by Hans Melissen in 1997.",
+    "our_problem": "5_circovtri",
+    "id": "circovtri_5",
+    "source_url": "https://erich-friedman.github.io/packing/circovtri/index.html"
+  },
+  {
+    "problem_family": "circovtri",
+    "N": 6,
+    "inner_shape": "triangle",
+    "container_shape": "circle (covering)",
+    "best_value": 5.196,
+    "status": "best_known",
+    "source_note": "Proved by Hans Melissen in 1997.",
+    "our_problem": "6_circovtri",
+    "id": "circovtri_6",
+    "source_url": "https://erich-friedman.github.io/packing/circovtri/index.html"
+  },
+  {
+    "problem_family": "circovtri",
+    "N": 7,
+    "inner_shape": "triangle",
+    "container_shape": "circle (covering)",
+    "best_value": 5.398,
+    "status": "best_known",
+    "source_note": "Found by P. Schuur in 1997.",
+    "our_problem": "7_circovtri",
+    "id": "circovtri_7",
+    "source_url": "https://erich-friedman.github.io/packing/circovtri/index.html"
+  },
+  {
+    "problem_family": "circovtri",
+    "N": 8,
+    "inner_shape": "triangle",
+    "container_shape": "circle (covering)",
+    "best_value": 5.649,
+    "status": "best_known",
+    "source_note": "Found by P. Schuur in 1997.",
+    "our_problem": "8_circovtri",
+    "id": "circovtri_8",
+    "source_url": "https://erich-friedman.github.io/packing/circovtri/index.html"
+  },
+  {
+    "problem_family": "circovtri",
+    "N": 9,
+    "inner_shape": "triangle",
+    "container_shape": "circle (covering)",
+    "best_value": 6,
+    "status": "best_known",
+    "source_note": "Proved by Hans Melissen in 1997.",
+    "our_problem": "9_circovtri",
+    "id": "circovtri_9",
+    "source_url": "https://erich-friedman.github.io/packing/circovtri/index.html"
+  }
+]

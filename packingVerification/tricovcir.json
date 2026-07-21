@@ -1,0 +1,182 @@
+[
+  {
+    "problem_family": "tricovcir",
+    "N": 1,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "1_tricovcir",
+    "id": "tricovcir_1"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 2,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "2_tricovcir",
+    "id": "tricovcir_2"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 3,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "3_tricovcir",
+    "id": "tricovcir_3"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 4,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "4_tricovcir",
+    "id": "tricovcir_4"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 5,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "5_tricovcir",
+    "id": "tricovcir_5"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 6,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "6_tricovcir",
+    "id": "tricovcir_6"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 7,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": ".892+",
+    "status": "best_known",
+    "our_problem": "7_tricovcir",
+    "id": "tricovcir_7"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 8,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": ".892+",
+    "status": "best_known",
+    "our_problem": "8_tricovcir",
+    "id": "tricovcir_8"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 9,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": ".892+",
+    "status": "best_known",
+    "our_problem": "9_tricovcir",
+    "id": "tricovcir_9"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 10,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "10_tricovcir",
+    "id": "tricovcir_10"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 11,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "11_tricovcir",
+    "id": "tricovcir_11"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 12,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "12_tricovcir",
+    "id": "tricovcir_12"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 13,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": "1.290+",
+    "status": "best_known",
+    "our_problem": "13_tricovcir",
+    "id": "tricovcir_13"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 14,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": "1.290+",
+    "status": "best_known",
+    "our_problem": "14_tricovcir",
+    "id": "tricovcir_14"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 15,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": "1.290+",
+    "status": "best_known",
+    "our_problem": "15_tricovcir",
+    "id": "tricovcir_15"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 16,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": "1.392+",
+    "status": "best_known",
+    "our_problem": "16_tricovcir",
+    "id": "tricovcir_16"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 17,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": "1.392+",
+    "status": "best_known",
+    "our_problem": "17_tricovcir",
+    "id": "tricovcir_17"
+  },
+  {
+    "problem_family": "tricovcir",
+    "N": 18,
+    "inner_shape": "triangle",
+    "container_shape": "circle",
+    "best_value": "1.392+",
+    "status": "best_known",
+    "our_problem": "18_tricovcir",
+    "id": "tricovcir_18"
+  }
+]

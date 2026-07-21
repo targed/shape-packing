@@ -1,0 +1,502 @@
+[
+  {
+    "problem_family": "squindom",
+    "N": 1,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "1",
+    "status": "trivial",
+    "our_problem": "1_squindom",
+    "id": "squindom_1"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 2,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "1",
+    "status": "trivial",
+    "our_problem": "2_squindom",
+    "id": "squindom_2"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 3,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "1.930+",
+    "status": "trivial",
+    "our_problem": "3_squindom",
+    "id": "squindom_3"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 4,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "1.930+",
+    "status": "best_known",
+    "our_problem": "4_squindom",
+    "id": "squindom_4"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 5,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "2",
+    "status": "trivial",
+    "our_problem": "5_squindom",
+    "id": "squindom_5"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 6,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "2",
+    "status": "trivial",
+    "our_problem": "6_squindom",
+    "id": "squindom_6"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 7,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "2",
+    "status": "trivial",
+    "our_problem": "7_squindom",
+    "id": "squindom_7"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 8,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "2",
+    "status": "trivial",
+    "our_problem": "8_squindom",
+    "id": "squindom_8"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 9,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "9_squindom",
+    "id": "squindom_9"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 10,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "10_squindom",
+    "id": "squindom_10"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 11,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "2.779+",
+    "status": "best_known",
+    "our_problem": "11_squindom",
+    "id": "squindom_11"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 12,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "2.976+",
+    "status": "best_known",
+    "our_problem": "12_squindom",
+    "id": "squindom_12"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 13,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "2.976+",
+    "status": "best_known",
+    "our_problem": "13_squindom",
+    "id": "squindom_13"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 14,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3",
+    "status": "trivial",
+    "our_problem": "14_squindom",
+    "id": "squindom_14"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 15,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3",
+    "status": "trivial",
+    "our_problem": "15_squindom",
+    "id": "squindom_15"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 16,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3",
+    "status": "trivial",
+    "our_problem": "16_squindom",
+    "id": "squindom_16"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 17,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3",
+    "status": "trivial",
+    "our_problem": "17_squindom",
+    "id": "squindom_17"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 18,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3",
+    "status": "trivial",
+    "our_problem": "18_squindom",
+    "id": "squindom_18"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 19,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "19_squindom",
+    "id": "squindom_19"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 20,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "20_squindom",
+    "id": "squindom_20"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 21,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "21_squindom",
+    "id": "squindom_21"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 22,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3.745+",
+    "status": "best_known",
+    "our_problem": "22_squindom",
+    "id": "squindom_22"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 23,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3.83525+",
+    "status": "best_known",
+    "our_problem": "23_squindom",
+    "id": "squindom_23"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 24,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3.882+",
+    "status": "best_known",
+    "our_problem": "24_squindom",
+    "id": "squindom_24"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 25,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3.939+",
+    "status": "trivial",
+    "our_problem": "25_squindom",
+    "id": "squindom_25"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 26,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "3.981+",
+    "status": "trivial",
+    "our_problem": "26_squindom",
+    "id": "squindom_26"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 27,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4",
+    "status": "trivial",
+    "our_problem": "27_squindom",
+    "id": "squindom_27"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 28,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4",
+    "status": "trivial",
+    "our_problem": "28_squindom",
+    "id": "squindom_28"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 29,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4",
+    "status": "trivial",
+    "our_problem": "29_squindom",
+    "id": "squindom_29"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 30,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4",
+    "status": "trivial",
+    "our_problem": "30_squindom",
+    "id": "squindom_30"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 31,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4",
+    "status": "trivial",
+    "our_problem": "31_squindom",
+    "id": "squindom_31"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 32,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4",
+    "status": "trivial",
+    "our_problem": "32_squindom",
+    "id": "squindom_32"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 33,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "33_squindom",
+    "id": "squindom_33"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 34,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "34_squindom",
+    "id": "squindom_34"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 35,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "35_squindom",
+    "id": "squindom_35"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 36,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "36_squindom",
+    "id": "squindom_36"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 37,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4.839+",
+    "status": "best_known",
+    "our_problem": "37_squindom",
+    "id": "squindom_37"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 38,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4.839+",
+    "status": "best_known",
+    "our_problem": "38_squindom",
+    "id": "squindom_38"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 39,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4.839+",
+    "status": "best_known",
+    "our_problem": "39_squindom",
+    "id": "squindom_39"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 40,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4.895+",
+    "status": "best_known",
+    "our_problem": "40_squindom",
+    "id": "squindom_40"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 41,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4.927+",
+    "status": "best_known",
+    "our_problem": "41_squindom",
+    "id": "squindom_41"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 42,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "4.989+",
+    "status": "best_known",
+    "our_problem": "42_squindom",
+    "id": "squindom_42"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 43,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "5",
+    "status": "trivial",
+    "our_problem": "43_squindom",
+    "id": "squindom_43"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 44,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "5",
+    "status": "trivial",
+    "our_problem": "44_squindom",
+    "id": "squindom_44"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 45,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "5",
+    "status": "trivial",
+    "our_problem": "45_squindom",
+    "id": "squindom_45"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 46,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "5",
+    "status": "trivial",
+    "our_problem": "46_squindom",
+    "id": "squindom_46"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 47,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "5",
+    "status": "trivial",
+    "our_problem": "47_squindom",
+    "id": "squindom_47"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 48,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "5",
+    "status": "trivial",
+    "our_problem": "48_squindom",
+    "id": "squindom_48"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 49,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "5",
+    "status": "trivial",
+    "our_problem": "49_squindom",
+    "id": "squindom_49"
+  },
+  {
+    "problem_family": "squindom",
+    "N": 50,
+    "inner_shape": "square",
+    "container_shape": "domino",
+    "best_value": "5",
+    "status": "trivial",
+    "our_problem": "50_squindom",
+    "id": "squindom_50"
+  }
+]

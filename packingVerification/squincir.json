@@ -1,0 +1,352 @@
+[
+  {
+    "problem_family": "squincir",
+    "N": 1,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "1_squincir",
+    "id": "squincir_1"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 2,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "2_squincir",
+    "id": "squincir_2"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 3,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "3_squincir",
+    "id": "squincir_3"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 4,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "4_squincir",
+    "id": "squincir_4"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 5,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "5_squincir",
+    "id": "squincir_5"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 6,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "6_squincir",
+    "id": "squincir_6"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 7,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "7_squincir",
+    "id": "squincir_7"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 8,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "8_squincir",
+    "id": "squincir_8"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 9,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "9_squincir",
+    "id": "squincir_9"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 10,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.21386+",
+    "status": "best_known",
+    "our_problem": "10_squincir",
+    "id": "squincir_10"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 11,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.21386+",
+    "status": "best_known",
+    "our_problem": "11_squincir",
+    "id": "squincir_11"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 12,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.21386+",
+    "status": "best_known",
+    "our_problem": "12_squincir",
+    "id": "squincir_12"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 13,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.3607+",
+    "status": "best_known",
+    "our_problem": "13_squincir",
+    "id": "squincir_13"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 14,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.3607+",
+    "status": "best_known",
+    "our_problem": "14_squincir",
+    "id": "squincir_14"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 15,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.3607+",
+    "status": "best_known",
+    "our_problem": "15_squincir",
+    "id": "squincir_15"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 16,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.67687+",
+    "status": "best_known",
+    "our_problem": "16_squincir",
+    "id": "squincir_16"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 17,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.67687+",
+    "status": "best_known",
+    "our_problem": "17_squincir",
+    "id": "squincir_17"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 18,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.67687+",
+    "status": "best_known",
+    "our_problem": "18_squincir",
+    "id": "squincir_18"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 19,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.80150+",
+    "status": "best_known",
+    "our_problem": "19_squincir",
+    "id": "squincir_19"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 20,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.80150+",
+    "status": "best_known",
+    "our_problem": "20_squincir",
+    "id": "squincir_20"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 21,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "2.80150+",
+    "status": "best_known",
+    "our_problem": "21_squincir",
+    "id": "squincir_21"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 22,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.03274+",
+    "status": "best_known",
+    "our_problem": "22_squincir",
+    "id": "squincir_22"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 23,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.03274+",
+    "status": "best_known",
+    "our_problem": "23_squincir",
+    "id": "squincir_23"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 24,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.03274+",
+    "status": "best_known",
+    "our_problem": "24_squincir",
+    "id": "squincir_24"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 25,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.26050+",
+    "status": "best_known",
+    "our_problem": "25_squincir",
+    "id": "squincir_25"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 26,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.26050+",
+    "status": "best_known",
+    "our_problem": "26_squincir",
+    "id": "squincir_26"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 27,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.26050+",
+    "status": "best_known",
+    "our_problem": "27_squincir",
+    "id": "squincir_27"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 28,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.33147+",
+    "status": "best_known",
+    "our_problem": "28_squincir",
+    "id": "squincir_28"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 29,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.33147+",
+    "status": "best_known",
+    "our_problem": "29_squincir",
+    "id": "squincir_29"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 30,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.33147+",
+    "status": "best_known",
+    "our_problem": "30_squincir",
+    "id": "squincir_30"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 31,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.53381+",
+    "status": "best_known",
+    "our_problem": "31_squincir",
+    "id": "squincir_31"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 32,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.53381+",
+    "status": "best_known",
+    "our_problem": "32_squincir",
+    "id": "squincir_32"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 33,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.53381+",
+    "status": "best_known",
+    "our_problem": "33_squincir",
+    "id": "squincir_33"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 34,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.629+",
+    "status": "best_known",
+    "our_problem": "34_squincir",
+    "id": "squincir_34"
+  },
+  {
+    "problem_family": "squincir",
+    "N": 35,
+    "inner_shape": "square",
+    "container_shape": "circle",
+    "best_value": "3.629+",
+    "status": "best_known",
+    "our_problem": "35_squincir",
+    "id": "squincir_35"
+  }
+]

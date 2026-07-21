@@ -1,0 +1,6 @@
+[
+  {"problem_family":"squcosqu","N":2,"best_value":0.5,"status":"best_known","source_note":"Found by Erich Friedman.","our_problem":"2_squcosqu","id":"squcosqu_2","source_url":"https://erich-friedman.github.io/packing/squcosqu/index.html"},
+  {"problem_family":"squcosqu","N":3,"best_value":0.666,"status":"best_known","source_note":"Found by Erich Friedman.","our_problem":"3_squcosqu","id":"squcosqu_3","source_url":"https://erich-friedman.github.io/packing/squcosqu/index.html"},
+  {"problem_family":"squcosqu","N":4,"best_value":0.75,"status":"best_known","source_note":"Found by Erich Friedman.","our_problem":"4_squcosqu","id":"squcosqu_4","source_url":"https://erich-friedman.github.io/packing/squcosqu/index.html"},
+  {"problem_family":"squcosqu","N":5,"best_value":0.83,"status":"best_known","source_note":"Found by Erich Friedman.","our_problem":"5_squcosqu","id":"squcosqu_5","source_url":"https://erich-friedman.github.io/packing/squcosqu/index.html"}
+]

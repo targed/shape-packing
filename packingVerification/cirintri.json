@@ -1,0 +1,74 @@
+[
+  {
+    "problem_family": "cirintri",
+    "N": 1,
+    "inner_shape": "circle",
+    "container_shape": "triangle",
+    "best_value": 3.464,
+    "status": "trivial",
+    "source_note": "Trivial.",
+    "our_problem": "1_cirintri",
+    "id": "cirintri_1",
+    "source_url": "https://erich-friedman.github.io/packing/cirintri/index.html"
+  },
+  {
+    "problem_family": "cirintri",
+    "N": 2,
+    "inner_shape": "circle",
+    "container_shape": "triangle",
+    "best_value": 5.464,
+    "status": "trivial",
+    "source_note": "Trivial.",
+    "our_problem": "2_cirintri",
+    "id": "cirintri_2",
+    "source_url": "https://erich-friedman.github.io/packing/cirintri/index.html"
+  },
+  {
+    "problem_family": "cirintri",
+    "N": 3,
+    "inner_shape": "circle",
+    "container_shape": "triangle",
+    "best_value": 5.464,
+    "status": "trivial",
+    "source_note": "Trivial.",
+    "our_problem": "3_cirintri",
+    "id": "cirintri_3",
+    "source_url": "https://erich-friedman.github.io/packing/cirintri/index.html"
+  },
+  {
+    "problem_family": "cirintri",
+    "N": 4,
+    "inner_shape": "circle",
+    "container_shape": "triangle",
+    "best_value": 6.928,
+    "status": "best_known",
+    "source_note": "Proved by Milano in 1987.",
+    "our_problem": "4_cirintri",
+    "id": "cirintri_4",
+    "source_url": "https://erich-friedman.github.io/packing/cirintri/index.html"
+  },
+  {
+    "problem_family": "cirintri",
+    "N": 5,
+    "inner_shape": "circle",
+    "container_shape": "triangle",
+    "best_value": 7.464,
+    "status": "best_known",
+    "source_note": "Proved by Milano in 1987.",
+    "our_problem": "5_cirintri",
+    "id": "cirintri_5",
+    "source_url": "https://erich-friedman.github.io/packing/cirintri/index.html"
+  },
+  {
+    "problem_family": "cirintri",
+    "N": 6,
+    "inner_shape": "circle",
+    "container_shape": "triangle",
+    "best_value": 7.464,
+    "status": "best_known",
+    "source_note": "Proved by Oler/Groemer in 1961.",
+    "our_problem": "6_cirintri",
+    "id": "cirintri_6",
+    "source_url": "https://erich-friedman.github.io/packing/cirintri/index.html"
+  }
+]

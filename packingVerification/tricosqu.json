@@ -1,0 +1,122 @@
+[
+  {
+    "problem_family": "tricosqu",
+    "N": 1,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "1_tricosqu",
+    "id": "tricosqu_1"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 2,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "2_tricosqu",
+    "id": "tricosqu_2"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 3,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "trivial",
+    "our_problem": "3_tricosqu",
+    "id": "tricosqu_3"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 4,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "4_tricosqu",
+    "id": "tricosqu_4"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 5,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "5_tricosqu",
+    "id": "tricosqu_5"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 6,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "6_tricosqu",
+    "id": "tricosqu_6"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 7,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "7_tricosqu",
+    "id": "tricosqu_7"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 8,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "8_tricosqu",
+    "id": "tricosqu_8"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 9,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "9_tricosqu",
+    "id": "tricosqu_9"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 10,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "10_tricosqu",
+    "id": "tricosqu_10"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 11,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "11_tricosqu",
+    "id": "tricosqu_11"
+  },
+  {
+    "problem_family": "tricosqu",
+    "N": 12,
+    "inner_shape": "triangle",
+    "container_shape": "square",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "12_tricosqu",
+    "id": "tricosqu_12"
+  }
+]

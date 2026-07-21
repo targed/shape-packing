@@ -1,0 +1,122 @@
+[
+  {
+    "problem_family": "tricovtri",
+    "N": 1,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": "1",
+    "status": "trivial",
+    "our_problem": "1_tricovtri",
+    "id": "tricovtri_1"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 3,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": "1",
+    "status": "trivial",
+    "our_problem": "3_tricovtri",
+    "id": "tricovtri_3"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 4,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": "1",
+    "status": "trivial",
+    "our_problem": "4_tricovtri",
+    "id": "tricovtri_4"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 6,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "6_tricovtri",
+    "id": "tricovtri_6"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 7,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "7_tricovtri",
+    "id": "tricovtri_7"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 8,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "8_tricovtri",
+    "id": "tricovtri_8"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 9,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": "3",
+    "status": "trivial",
+    "our_problem": "9_tricovtri",
+    "id": "tricovtri_9"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 11,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": "3",
+    "status": "trivial",
+    "our_problem": "11_tricovtri",
+    "id": "tricovtri_11"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 12,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": "3",
+    "status": "trivial",
+    "our_problem": "12_tricovtri",
+    "id": "tricovtri_12"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 13,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "13_tricovtri",
+    "id": "tricovtri_13"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 14,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "14_tricovtri",
+    "id": "tricovtri_14"
+  },
+  {
+    "problem_family": "tricovtri",
+    "N": 15,
+    "inner_shape": "triangle",
+    "container_shape": "triangle",
+    "best_value": null,
+    "status": "best_known",
+    "our_problem": "15_tricovtri",
+    "id": "tricovtri_15"
+  }
+]
