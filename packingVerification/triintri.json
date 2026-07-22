@@ -508,7 +508,7 @@
     "N": 43,
     "inner_shape": "3",
     "container_shape": "3",
-    "best_value": 6.8,
+    "best_value": 6.833,
     "status": "best_known",
     "source_note": "Found by Emerson Connelly in May 2026.",
     "our_problem": "43_3_in_3",
