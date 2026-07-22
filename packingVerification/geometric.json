@@ -1,7 +1,54 @@
 [
-  {"problem_family":"geometric","shape":"square","best_value":0.83,"status":"best_known","source_note":"Only real positive root of 1+r=r^2+r^4+r^5+r^7; proposed by Erich Friedman.","our_problem":"geometric_squares","id":"geometric_squares","source_url":"https://erich-friedman.github.io/packing/geometric/index.html"},
-  {"problem_family":"geometric","shape":"triangle","best_value":0.828,"status":"best_known","source_note":"Positive root of 1+r=r^2+r^3+r^5+r^9; improved by Maurizio Morandi in 2011.","our_problem":"geometric_triangles","id":"geometric_triangles","source_url":"https://erich-friedman.github.io/packing/geometric/index.html"},
-  {"problem_family":"geometric","shape":"hexagon","best_value":0.807,"status":"best_known","source_note":"Proposed by Erich Friedman.","our_problem":"geometric_hexagons","id":"geometric_hexagons","source_url":"https://erich-friedman.github.io/packing/geometric/index.html"},
-  {"problem_family":"geometric","shape":"square","count_type":"multiple","best_value":0.618,"status":"trivial","source_note":"1 of r^1, 2 of r^2, 3 of r^3... Largest r is golden ratio conjugate; no wasted space.","our_problem":"geometric_squares_multiple","id":"geometric_squares_multiple","source_url":"https://erich-friedman.github.io/packing/geometric/index.html"},
-  {"problem_family":"geometric","shape":"triangle","count_type":"multiple","best_value":0.618,"status":"trivial","source_note":"Same as squares; golden ratio conjugate; no wasted space.","our_problem":"geometric_triangles_multiple","id":"geometric_triangles_multiple","source_url":"https://erich-friedman.github.io/packing/geometric/index.html"}
+  {
+    "problem_family": "geometric",
+    "shape": "square",
+    "best_value": 0.83,
+    "status": "best_known",
+    "source_note": "Only real positive root of 1+r=r^2+r^4+r^5+r^7; proposed by Erich Friedman.",
+    "our_problem": "geometric_squares",
+    "id": "geometric_squares",
+    "source_url": "https://erich-friedman.github.io/packing/geometric/index.html"
+  },
+  {
+    "problem_family": "geometric",
+    "shape": "triangle",
+    "best_value": 0.828,
+    "status": "best_known",
+    "source_note": "Positive root of 1+r=r^2+r^3+r^5+r^9; improved by Maurizio Morandi in 2011.",
+    "our_problem": "geometric_triangles",
+    "id": "geometric_triangles",
+    "source_url": "https://erich-friedman.github.io/packing/geometric/index.html"
+  },
+  {
+    "problem_family": "geometric",
+    "shape": "hexagon",
+    "best_value": 0.807,
+    "status": "best_known",
+    "source_note": "Proposed by Erich Friedman.",
+    "our_problem": "geometric_hexagons",
+    "id": "geometric_hexagons",
+    "source_url": "https://erich-friedman.github.io/packing/geometric/index.html"
+  },
+  {
+    "problem_family": "geometric",
+    "shape": "square",
+    "count_type": "multiple",
+    "best_value": 0.618,
+    "status": "trivial",
+    "source_note": "1 of r^1, 2 of r^2, 3 of r^3... Largest r is golden ratio conjugate; no wasted space.",
+    "our_problem": "geometric_squares_multiple",
+    "id": "geometric_squares_multiple",
+    "source_url": "https://erich-friedman.github.io/packing/geometric/index.html"
+  },
+  {
+    "problem_family": "geometric",
+    "shape": "triangle",
+    "count_type": "multiple",
+    "best_value": 0.618,
+    "status": "trivial",
+    "source_note": "Same as squares; golden ratio conjugate; no wasted space.",
+    "our_problem": "geometric_triangles_multiple",
+    "id": "geometric_triangles_multiple",
+    "source_url": "https://erich-friedman.github.io/packing/geometric/index.html"
+  }
 ]

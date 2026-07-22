@@ -1,5 +1,34 @@
 [
-  {"problem_family":"harmonic","shape":"square","best_value":{"container_side":"5/6"},"status":"best_known","source_note":"Answered yes: squares of sides 1/2,1/3,1/4,... pack into a square of side 5/6.","our_problem":"harmonic_squares","id":"harmonic_squares","source_url":"https://erich-friedman.github.io/packing/harmonic/index.html"},
-  {"problem_family":"harmonic","shape":"triangle","best_value":{},"status":"best_known","source_note":"Same sort of packing can be done for triangles.","our_problem":"harmonic_triangles","id":"harmonic_triangles","source_url":"https://erich-friedman.github.io/packing/harmonic/index.html"},
-  {"problem_family":"harmonic","shape":"hexagon","best_value":{},"status":"best_known","source_note":"Can be done for hexagons; triangles stand for infinite regress of hexagons.","our_problem":"harmonic_hexagons","id":"harmonic_hexagons","source_url":"https://erich-friedman.github.io/packing/harmonic/index.html"}
+  {
+    "problem_family": "harmonic",
+    "shape": "square",
+    "best_value": {
+      "container_side": "5/6"
+    },
+    "status": "best_known",
+    "source_note": "Answered yes: squares of sides 1/2,1/3,1/4,... pack into a square of side 5/6.",
+    "our_problem": "harmonic_squares",
+    "id": "harmonic_squares",
+    "source_url": "https://erich-friedman.github.io/packing/harmonic/index.html"
+  },
+  {
+    "problem_family": "harmonic",
+    "shape": "triangle",
+    "best_value": {},
+    "status": "best_known",
+    "source_note": "Same sort of packing can be done for triangles.",
+    "our_problem": "harmonic_triangles",
+    "id": "harmonic_triangles",
+    "source_url": "https://erich-friedman.github.io/packing/harmonic/index.html"
+  },
+  {
+    "problem_family": "harmonic",
+    "shape": "hexagon",
+    "best_value": {},
+    "status": "best_known",
+    "source_note": "Can be done for hexagons; triangles stand for infinite regress of hexagons.",
+    "our_problem": "harmonic_hexagons",
+    "id": "harmonic_hexagons",
+    "source_url": "https://erich-friedman.github.io/packing/harmonic/index.html"
+  }
 ]

@@ -1,20 +1,254 @@
 [
-  {"problem_family":"minrect","N":1,"best_value":{"r":"any","s":1,"p":1},"status":"trivial","source_note":"Trivial.","our_problem":"1_minrect","id":"minrect_1","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":2,"best_value":{"r":"1+sqrt(2)","s":"1+sqrt(2)","p":0.857},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"2_minrect","id":"minrect_2","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":3,"best_value":{"r":"sqrt(15)/3","s":"sqrt(15)","p":0.933},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"3_minrect","id":"minrect_3","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":4,"best_value":{"r":"(3+sqrt(73))/8","s":"(3+sqrt(73))/2","p":0.9},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"4_minrect","id":"minrect_4","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":5,"best_value":{"r":"2sqrt(15)/5","s":"2sqrt(15)","p":0.916},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"5_minrect","id":"minrect_5","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":6,"best_value":{"r":"(sqrt(273)-3)/12","s":"(3+sqrt(273))/2","p":0.955},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"6_minrect","id":"minrect_6","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":7,"best_value":{"r":2,"s":12,"p":0.972},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"7_minrect","id":"minrect_7","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":8,"best_value":{"r":"sqrt(210)/14","s":"sqrt(210)","p":0.971},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"8_minrect","id":"minrect_8","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":9,"best_value":{"r":"(15+sqrt(365))/14","s":"(15+sqrt(365))/2","p":0.98},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"9_minrect","id":"minrect_9","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":10,"best_value":{"r":"sqrt(391)/17","s":"sqrt(391)","p":0.984},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"10_minrect","id":"minrect_10","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":11,"best_value":{"r":"3sqrt(57)/19","s":"3sqrt(57)","p":0.986},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"11_minrect","id":"minrect_11","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":12,"best_value":{"r":"sqrt(165)/11","s":"2sqrt(165)","p":0.984},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"12_minrect","id":"minrect_12","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":13,"best_value":{"r":"5/sqrt(19)","s":"7+5sqrt(19)","p":0.987},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"13_minrect","id":"minrect_13","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":14,"best_value":{"r":"3/2","s":32,"p":0.991},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"14_minrect","id":"minrect_14","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":15,"best_value":{"r":"3sqrt(66)/11-1","s":"11+3sqrt(66)","p":0.991},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"15_minrect","id":"minrect_15","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":16,"best_value":{"r":"2sqrt(42)/9","s":"6sqrt(42)","p":0.989},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"16_minrect","id":"minrect_16","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":17,"best_value":{"r":"sqrt(1794)/39","s":"sqrt(1794)","p":0.994},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"17_minrect","id":"minrect_17","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"},
-  {"problem_family":"minrect","N":18,"best_value":{"r":"sqrt(2135)/35","s":"sqrt(2135)","p":0.987},"status":"best_known","source_note":"Found by Maurizio Morandi in June 2015.","our_problem":"18_minrect","id":"minrect_18","source_url":"https://erich-friedman.github.io/packing/minrect/index.html"}
+  {
+    "problem_family": "minrect",
+    "N": 1,
+    "best_value": {
+      "r": "any",
+      "s": 1,
+      "p": 1
+    },
+    "status": "trivial",
+    "source_note": "Trivial.",
+    "our_problem": "1_minrect",
+    "id": "minrect_1",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 2,
+    "best_value": {
+      "r": "1+sqrt(2)",
+      "s": "1+sqrt(2)",
+      "p": 0.857
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "2_minrect",
+    "id": "minrect_2",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 3,
+    "best_value": {
+      "r": "sqrt(15)/3",
+      "s": "sqrt(15)",
+      "p": 0.933
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "3_minrect",
+    "id": "minrect_3",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 4,
+    "best_value": {
+      "r": "(3+sqrt(73))/8",
+      "s": "(3+sqrt(73))/2",
+      "p": 0.9
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "4_minrect",
+    "id": "minrect_4",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 5,
+    "best_value": {
+      "r": "2sqrt(15)/5",
+      "s": "2sqrt(15)",
+      "p": 0.916
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "5_minrect",
+    "id": "minrect_5",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 6,
+    "best_value": {
+      "r": "(sqrt(273)-3)/12",
+      "s": "(3+sqrt(273))/2",
+      "p": 0.955
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "6_minrect",
+    "id": "minrect_6",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 7,
+    "best_value": {
+      "r": 2,
+      "s": 12,
+      "p": 0.972
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "7_minrect",
+    "id": "minrect_7",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 8,
+    "best_value": {
+      "r": "sqrt(210)/14",
+      "s": "sqrt(210)",
+      "p": 0.971
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "8_minrect",
+    "id": "minrect_8",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 9,
+    "best_value": {
+      "r": "(15+sqrt(365))/14",
+      "s": "(15+sqrt(365))/2",
+      "p": 0.98
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "9_minrect",
+    "id": "minrect_9",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 10,
+    "best_value": {
+      "r": "sqrt(391)/17",
+      "s": "sqrt(391)",
+      "p": 0.984
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "10_minrect",
+    "id": "minrect_10",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 11,
+    "best_value": {
+      "r": "3sqrt(57)/19",
+      "s": "3sqrt(57)",
+      "p": 0.986
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "11_minrect",
+    "id": "minrect_11",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 12,
+    "best_value": {
+      "r": "sqrt(165)/11",
+      "s": "2sqrt(165)",
+      "p": 0.984
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "12_minrect",
+    "id": "minrect_12",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 13,
+    "best_value": {
+      "r": "5/sqrt(19)",
+      "s": "7+5sqrt(19)",
+      "p": 0.987
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "13_minrect",
+    "id": "minrect_13",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 14,
+    "best_value": {
+      "r": "3/2",
+      "s": 32,
+      "p": 0.991
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "14_minrect",
+    "id": "minrect_14",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 15,
+    "best_value": {
+      "r": "3sqrt(66)/11-1",
+      "s": "11+3sqrt(66)",
+      "p": 0.991
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "15_minrect",
+    "id": "minrect_15",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 16,
+    "best_value": {
+      "r": "2sqrt(42)/9",
+      "s": "6sqrt(42)",
+      "p": 0.989
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "16_minrect",
+    "id": "minrect_16",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 17,
+    "best_value": {
+      "r": "sqrt(1794)/39",
+      "s": "sqrt(1794)",
+      "p": 0.994
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "17_minrect",
+    "id": "minrect_17",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  },
+  {
+    "problem_family": "minrect",
+    "N": 18,
+    "best_value": {
+      "r": "sqrt(2135)/35",
+      "s": "sqrt(2135)",
+      "p": 0.987
+    },
+    "status": "best_known",
+    "source_note": "Found by Maurizio Morandi in June 2015.",
+    "our_problem": "18_minrect",
+    "id": "minrect_18",
+    "source_url": "https://erich-friedman.github.io/packing/minrect/index.html"
+  }
 ]
