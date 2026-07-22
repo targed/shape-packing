@@ -57,7 +57,7 @@ penindom
 peninhex
 peninoct
 peninpen
-~~peninsqu~~
+peninsqu
 penintan
 penintri
 rigid
@@ -88,7 +88,7 @@ triincir
 triindom
 triinhex
 triinoct
-~~triinpen~~
-~~triinsqu~~
-~~triintan~~
+triinpen
+triinsqu
+triintan
 ~~triintri~~
