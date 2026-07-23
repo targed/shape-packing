@@ -90,5 +90,5 @@ squinhex
 90|~~triinoct~~
 triinpen
 triinsqu
-triintan
+~~triintan~~
 ~~triintri~~
