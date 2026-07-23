@@ -88,7 +88,7 @@ squinhex
 88|~~triindom~~
 89|~~triinhex~~
 90|~~triinoct~~
-~~triinpen~~
-~~triinsqu~~
-~~triintan~~
+triinpen
+triinsqu
+triintan
 ~~triintri~~
