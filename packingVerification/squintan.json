@@ -1,218 +1,326 @@
 [
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 1,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 2,
     "status": "trivial",
-    "our_problem": "1_squintan",
-    "id": "squintan_1"
+    "source_note": "Trivial.",
+    "our_problem": "1_4_in_tan",
+    "id": "4_in_tan_1",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 2,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 2.828,
     "status": "trivial",
-    "our_problem": "2_squintan",
-    "id": "squintan_2"
+    "source_note": "Trivial.",
+    "our_problem": "2_4_in_tan",
+    "id": "4_in_tan_2",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 3,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 3,
     "status": "trivial",
-    "our_problem": "3_squintan",
-    "id": "squintan_3"
+    "source_note": "Trivial.",
+    "our_problem": "3_4_in_tan",
+    "id": "4_in_tan_3",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 4,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 3.535,
     "status": "best_known",
-    "our_problem": "4_squintan",
-    "id": "squintan_4"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "4_4_in_tan",
+    "id": "4_in_tan_4",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 5,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 4,
     "status": "best_known",
-    "our_problem": "5_squintan",
-    "id": "squintan_5"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "5_4_in_tan",
+    "id": "4_in_tan_5",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 6,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 4,
     "status": "trivial",
-    "our_problem": "6_squintan",
-    "id": "squintan_6"
+    "source_note": "Trivial.",
+    "our_problem": "6_4_in_tan",
+    "id": "4_in_tan_6",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 7,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 4.414,
     "status": "best_known",
-    "our_problem": "7_squintan",
-    "id": "squintan_7"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "7_4_in_tan",
+    "id": "4_in_tan_7",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 8,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 4.828,
     "status": "best_known",
-    "our_problem": "8_squintan",
-    "id": "squintan_8"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "8_4_in_tan",
+    "id": "4_in_tan_8",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 9,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 4.949,
     "status": "best_known",
-    "our_problem": "9_squintan",
-    "id": "squintan_9"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "9_4_in_tan",
+    "id": "4_in_tan_9",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 10,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 5,
     "status": "trivial",
-    "our_problem": "10_squintan",
-    "id": "squintan_10"
+    "source_note": "Trivial.",
+    "our_problem": "10_4_in_tan",
+    "id": "4_in_tan_10",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 11,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 5.414,
     "status": "best_known",
-    "our_problem": "11_squintan",
-    "id": "squintan_11"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "11_4_in_tan",
+    "id": "4_in_tan_11",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 12,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 5.656,
     "status": "best_known",
-    "our_problem": "12_squintan",
-    "id": "squintan_12"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "12_4_in_tan",
+    "id": "4_in_tan_12",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 13,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 5.828,
     "status": "best_known",
-    "our_problem": "13_squintan",
-    "id": "squintan_13"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "13_4_in_tan",
+    "id": "4_in_tan_13",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 14,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 6,
     "status": "best_known",
-    "our_problem": "14_squintan",
-    "id": "squintan_14"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "14_4_in_tan",
+    "id": "4_in_tan_14",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 15,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 6,
     "status": "trivial",
-    "our_problem": "15_squintan",
-    "id": "squintan_15"
+    "source_note": "Trivial.",
+    "our_problem": "15_4_in_tan",
+    "id": "4_in_tan_15",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 16,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 6.363,
     "status": "best_known",
-    "our_problem": "16_squintan",
-    "id": "squintan_16"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "16_4_in_tan",
+    "id": "4_in_tan_16",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 17,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 6.414,
     "status": "best_known",
-    "our_problem": "17_squintan",
-    "id": "squintan_17"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "17_4_in_tan",
+    "id": "4_in_tan_17",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 18,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 6.828,
     "status": "best_known",
-    "our_problem": "18_squintan",
-    "id": "squintan_18"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "18_4_in_tan",
+    "id": "4_in_tan_18",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 19,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 6.949,
     "status": "best_known",
-    "our_problem": "19_squintan",
-    "id": "squintan_19"
+    "source_note": "Found by David W. Cantrell in May 2005.",
+    "our_problem": "19_4_in_tan",
+    "id": "4_in_tan_19",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 20,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 7,
     "status": "best_known",
-    "our_problem": "20_squintan",
-    "id": "squintan_20"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "20_4_in_tan",
+    "id": "4_in_tan_20",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 21,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 7,
     "status": "trivial",
-    "our_problem": "21_squintan",
-    "id": "squintan_21"
+    "source_note": "Trivial.",
+    "our_problem": "21_4_in_tan",
+    "id": "4_in_tan_21",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 22,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 7.363,
     "status": "best_known",
-    "our_problem": "22_squintan",
-    "id": "squintan_22"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "22_4_in_tan",
+    "id": "4_in_tan_22",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 23,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 7.414,
     "status": "best_known",
-    "our_problem": "23_squintan",
-    "id": "squintan_23"
+    "source_note": "Found by Erich Friedman in March 2005.",
+    "our_problem": "23_4_in_tan",
+    "id": "4_in_tan_23",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 24,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 7.707,
     "status": "best_known",
-    "our_problem": "24_squintan",
-    "id": "squintan_24"
+    "source_note": "Found by David W. Cantrell in May 2005.",
+    "our_problem": "24_4_in_tan",
+    "id": "4_in_tan_24",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 25,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 7.778,
     "status": "trivial",
-    "our_problem": "25_squintan",
-    "id": "squintan_25"
+    "source_note": "Trivial.",
+    "our_problem": "25_4_in_tan",
+    "id": "4_in_tan_25",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 26,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 7.828,
     "status": "best_known",
-    "our_problem": "26_squintan",
-    "id": "squintan_26"
+    "source_note": "Found by Erich Friedman in March 2026.",
+    "our_problem": "26_4_in_tan",
+    "id": "4_in_tan_26",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   },
   {
-    "problem_family": "squintan",
+    "problem_family": "4_in_tan",
     "N": 28,
+    "inner_shape": "4",
+    "container_shape": "tan",
     "best_value": 8,
     "status": "trivial",
-    "our_problem": "28_squintan",
-    "id": "squintan_28"
+    "source_note": "Trivial.",
+    "our_problem": "28_4_in_tan",
+    "id": "4_in_tan_28",
+    "source_url": "https://erich-friedman.github.io/packing/squintan/index.html"
   }
 ]
