@@ -88,7 +88,7 @@ triincir
 triindom
 triinhex
 triinoct
-triinpen
+~~triinpen~~
 ~~triinsqu~~
 ~~triintan~~
 ~~triintri~~
