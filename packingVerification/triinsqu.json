@@ -76,7 +76,7 @@
     "N": 7,
     "inner_shape": "3",
     "container_shape": "4",
-    "best_value": 2,
+    "best_value": 2.0,
     "status": "best_known",
     "source_note": "Found by Erich Friedman in 1996.",
     "our_problem": "7_3_in_4",
@@ -124,7 +124,7 @@
     "N": 11,
     "inner_shape": "3",
     "container_shape": "4",
-    "best_value": 2.490,
+    "best_value": 2.49,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in June 2008.",
     "our_problem": "11_3_in_4",
@@ -184,7 +184,7 @@
     "N": 16,
     "inner_shape": "3",
     "container_shape": "4",
-    "best_value": 2.9000,
+    "best_value": 2.9,
     "status": "best_known",
     "source_note": "Found by Ian Watson in April 2026.",
     "our_problem": "16_3_in_4",
@@ -258,7 +258,7 @@
     "container_shape": "4",
     "best_value": 3.3757,
     "status": "best_known",
-    "source_note": "Found by Ian Watson in April 2026.",
+    "source_note": "Found by Ian Watson in April 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n23.",
     "our_problem": "22_3_in_4",
     "id": "3_in_4_22",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -270,7 +270,7 @@
     "container_shape": "4",
     "best_value": 3.4311,
     "status": "best_known",
-    "source_note": "Found by Ian Watson in April 2026.",
+    "source_note": "Found by Ian Watson in April 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n24.",
     "our_problem": "23_3_in_4",
     "id": "3_in_4_23",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -280,7 +280,7 @@
     "N": 24,
     "inner_shape": "3",
     "container_shape": "4",
-    "best_value": 3.46780,
+    "best_value": 3.4678,
     "status": "best_known",
     "source_note": "Found by Thomas Schadt in June 2026.",
     "our_problem": "24_3_in_4",
@@ -294,7 +294,7 @@
     "container_shape": "4",
     "best_value": 3.537,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in August 2012.",
+    "source_note": "Found by David W. Cantrell in August 2012.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n26.",
     "our_problem": "25_3_in_4",
     "id": "3_in_4_25",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -306,7 +306,7 @@
     "container_shape": "4",
     "best_value": 3.575,
     "status": "best_known",
-    "source_note": "Found by Maurizio Morandi in September 2008.",
+    "source_note": "Found by Maurizio Morandi in September 2008.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n27.",
     "our_problem": "26_3_in_4",
     "id": "3_in_4_26",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -330,7 +330,7 @@
     "container_shape": "4",
     "best_value": 3.75707,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n29.",
     "our_problem": "28_3_in_4",
     "id": "3_in_4_28",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -342,7 +342,7 @@
     "container_shape": "4",
     "best_value": 3.81711,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n30.",
     "our_problem": "29_3_in_4",
     "id": "3_in_4_29",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -366,7 +366,7 @@
     "container_shape": "4",
     "best_value": 3.93107,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n32.",
     "our_problem": "31_3_in_4",
     "id": "3_in_4_31",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -376,9 +376,9 @@
     "N": 32,
     "inner_shape": "3",
     "container_shape": "4",
-    "best_value": 3.97880,
+    "best_value": 3.9788,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n33.",
     "our_problem": "32_3_in_4",
     "id": "3_in_4_32",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -402,7 +402,7 @@
     "container_shape": "4",
     "best_value": 4.09088,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n35.",
     "our_problem": "34_3_in_4",
     "id": "3_in_4_34",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -414,7 +414,7 @@
     "container_shape": "4",
     "best_value": 4.14123,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n36.",
     "our_problem": "35_3_in_4",
     "id": "3_in_4_35",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -436,9 +436,9 @@
     "N": 37,
     "inner_shape": "3",
     "container_shape": "4",
-    "best_value": 4.26880,
+    "best_value": 4.2688,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n38.",
     "our_problem": "37_3_in_4",
     "id": "3_in_4_37",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -450,7 +450,7 @@
     "container_shape": "4",
     "best_value": 4.32018,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n39.",
     "our_problem": "38_3_in_4",
     "id": "3_in_4_38",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -474,7 +474,7 @@
     "container_shape": "4",
     "best_value": 4.41058,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n41.",
     "our_problem": "40_3_in_4",
     "id": "3_in_4_40",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -486,7 +486,7 @@
     "container_shape": "4",
     "best_value": 4.46446,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "Found by Jake Loyd in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n42.",
     "our_problem": "41_3_in_4",
     "id": "3_in_4_41",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -510,7 +510,7 @@
     "container_shape": "4",
     "best_value": 4.55035,
     "status": "best_known",
-    "source_note": "Found by Thomas Schadt in June 2026.",
+    "source_note": "Found by Thomas Schadt in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n44.",
     "our_problem": "43_3_in_4",
     "id": "3_in_4_43",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -522,7 +522,7 @@
     "container_shape": "4",
     "best_value": 4.60023,
     "status": "best_known",
-    "source_note": "Found by Thomas Schadt in June 2026.",
+    "source_note": "Found by Thomas Schadt in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n45.",
     "our_problem": "44_3_in_4",
     "id": "3_in_4_44",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -546,7 +546,7 @@
     "container_shape": "4",
     "best_value": 4.72965,
     "status": "best_known",
-    "source_note": "Found by Thomas Schadt in June 2026.",
+    "source_note": "Found by Thomas Schadt in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n47.",
     "our_problem": "46_3_in_4",
     "id": "3_in_4_46",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
@@ -558,7 +558,7 @@
     "container_shape": "4",
     "best_value": 4.78204,
     "status": "best_known",
-    "source_note": "Found by Thomas Schadt in June 2026.",
+    "source_note": "Found by Thomas Schadt in June 2026.\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n48.",
     "our_problem": "47_3_in_4",
     "id": "3_in_4_47",
     "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html"
