@@ -69,7 +69,7 @@ squinhex
 squinl
 squinoct
 squinpen
-squintan
+~~squintan~~
 ~~squintri~~
 ~~taninL~~
 ~~tanincir~~
