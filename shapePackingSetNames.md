@@ -39,7 +39,7 @@ hexinpen
 hexinsqu
 hexintan
 hexintri
-lincir
+~~lincir~~
 ~~linsqu~~
 ~~minrect~~
 ~~octinL~~

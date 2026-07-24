@@ -2,11 +2,11 @@
   {
     "problem_family": "lincir",
     "N": 1,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 1.414,
+    "best_value": 1.4142,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "r = √2 = 1.414+ Trivial.",
     "our_problem": "1_lincir",
     "id": "lincir_1",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -14,11 +14,11 @@
   {
     "problem_family": "lincir",
     "N": 2,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 1.802,
+    "best_value": 1.8028,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2005.",
+    "source_note": "r = √13/2 = 1.802+ Found by David W. Cantrell in June 2005.",
     "our_problem": "2_lincir",
     "id": "lincir_2",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -26,11 +26,11 @@
   {
     "problem_family": "lincir",
     "N": 3,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
     "best_value": 2.183,
     "status": "best_known",
-    "source_note": "Found by Maurizio Morandi in August 2007.",
+    "source_note": "r = √305/8 = 2.183+ Found by Maurizio Morandi in August 2007.",
     "our_problem": "3_lincir",
     "id": "lincir_3",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -38,11 +38,11 @@
   {
     "problem_family": "lincir",
     "N": 4,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 2.236,
+    "best_value": 2.2361,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in June 2005.",
+    "source_note": "r = √5 = 2.236+ Found by Erich Friedman in June 2005.",
     "our_problem": "4_lincir",
     "id": "lincir_4",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -50,11 +50,11 @@
   {
     "problem_family": "lincir",
     "N": 5,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 2.569,
+    "best_value": 2.5686,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "r = 2.56858+ Found by Jake Loyd in June 2026.",
     "our_problem": "5_lincir",
     "id": "lincir_5",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -62,11 +62,11 @@
   {
     "problem_family": "lincir",
     "N": 6,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 2.838,
+    "best_value": 2.8383,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in June 2005.",
+    "source_note": "r = √8249/32 = 2.838+ Found by Erich Friedman in June 2005.",
     "our_problem": "6_lincir",
     "id": "lincir_6",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -74,11 +74,11 @@
   {
     "problem_family": "lincir",
     "N": 7,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 2.915,
+    "best_value": 2.9155,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in June 2005.",
+    "source_note": "r = √34/2 = 2.915+ Found by Erich Friedman in June 2005.",
     "our_problem": "7_lincir",
     "id": "lincir_7",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -86,11 +86,11 @@
   {
     "problem_family": "lincir",
     "N": 8,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 3.162,
+    "best_value": 3.1623,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in June 2005.",
+    "source_note": "r = √10 = 3.162+ Found by Erich Friedman in June 2005.",
     "our_problem": "8_lincir",
     "id": "lincir_8",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -98,11 +98,11 @@
   {
     "problem_family": "lincir",
     "N": 9,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 3.365,
+    "best_value": 3.3648,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "r = 3.36482+ Found by Jake Loyd in June 2026.",
     "our_problem": "9_lincir",
     "id": "lincir_9",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -110,11 +110,11 @@
   {
     "problem_family": "lincir",
     "N": 10,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
     "best_value": 3.49,
     "status": "best_known",
-    "source_note": "Found by Maurizio Morandi in June 2026.",
+    "source_note": "r = 3.490+ Found by Maurizio Morandi in June 2026.",
     "our_problem": "10_lincir",
     "id": "lincir_10",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -122,11 +122,11 @@
   {
     "problem_family": "lincir",
     "N": 11,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 3.682,
+    "best_value": 3.6816,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "r = 3.68165+ Found by Jake Loyd in June 2026.",
     "our_problem": "11_lincir",
     "id": "lincir_11",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -134,11 +134,11 @@
   {
     "problem_family": "lincir",
     "N": 12,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 3.803,
+    "best_value": 3.8027,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "r = 3.80266+ Found by Jake Loyd in June 2026.",
     "our_problem": "12_lincir",
     "id": "lincir_12",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -146,11 +146,11 @@
   {
     "problem_family": "lincir",
     "N": 13,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 3.95,
+    "best_value": 3.9496,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "r = 3.94961+ Found by Jake Loyd in June 2026.",
     "our_problem": "13_lincir",
     "id": "lincir_13",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -158,11 +158,11 @@
   {
     "problem_family": "lincir",
     "N": 14,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 4.123,
+    "best_value": 4.1231,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in August 2007.",
+    "source_note": "r = √17 = 4.123+ Found by David W. Cantrell in August 2007.",
     "our_problem": "14_lincir",
     "id": "lincir_14",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -170,11 +170,11 @@
   {
     "problem_family": "lincir",
     "N": 15,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
     "best_value": 4.214,
     "status": "best_known",
-    "source_note": "Found by Maurizio Morandi in August 2007.",
+    "source_note": "r = 4.214+ Found by Maurizio Morandi in August 2007.",
     "our_problem": "15_lincir",
     "id": "lincir_15",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -182,11 +182,11 @@
   {
     "problem_family": "lincir",
     "N": 16,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 4.301,
+    "best_value": 4.3012,
     "status": "best_known",
-    "source_note": "Found by Maurizio Morandi in September 2008.",
+    "source_note": "r = √74/2 = 4.301+ Found by Maurizio Morandi in September 2008.",
     "our_problem": "16_lincir",
     "id": "lincir_16",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -194,11 +194,11 @@
   {
     "problem_family": "lincir",
     "N": 17,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 4.472,
+    "best_value": 4.4721,
     "status": "best_known",
-    "source_note": "Found by Maurizio Morandi in September 2008.",
+    "source_note": "r = 2√5 = 4.472+ Found by Maurizio Morandi in September 2008.",
     "our_problem": "17_lincir",
     "id": "lincir_17",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -206,11 +206,11 @@
   {
     "problem_family": "lincir",
     "N": 18,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 4.598,
+    "best_value": 4.5983,
     "status": "best_known",
-    "source_note": "Found by Maurizio Morandi in September 2008.",
+    "source_note": "r = √86609/64 = 4.598+ Found by Maurizio Morandi in September 2008.",
     "our_problem": "18_lincir",
     "id": "lincir_18",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -218,11 +218,11 @@
   {
     "problem_family": "lincir",
     "N": 19,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 4.705,
+    "best_value": 4.7055,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "r = 4.70546+ Found by Jake Loyd in June 2026.",
     "our_problem": "19_lincir",
     "id": "lincir_19",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
@@ -230,11 +230,11 @@
   {
     "problem_family": "lincir",
     "N": 20,
-    "inner_shape": "L",
+    "inner_shape": "l",
     "container_shape": "circle",
-    "best_value": 4.773,
+    "best_value": 4.7726,
     "status": "best_known",
-    "source_note": "Found by Jake Loyd in June 2026.",
+    "source_note": "r = 4.77260+ Found by Jake Loyd in June 2026.",
     "our_problem": "20_lincir",
     "id": "lincir_20",
     "source_url": "https://erich-friedman.github.io/packing/lincir/index.html"
