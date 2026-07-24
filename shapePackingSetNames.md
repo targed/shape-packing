@@ -62,7 +62,7 @@ penintan
 penintri
 rigid
 ~~squRcir~~
-squcosqu
+~~squcosqu~~
 ~~squincir~~
 ~~squindom~~
 ~~squinhex~~
