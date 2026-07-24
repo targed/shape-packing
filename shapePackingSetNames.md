@@ -81,7 +81,7 @@ taninsqu
 tanintan
 tanintri
 tricosqu
-tricovcir
+~~tricovcir~~
 tricovtri
 ~~triinL~~
 ~~triincir~~

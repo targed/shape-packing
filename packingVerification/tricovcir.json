@@ -3,180 +3,216 @@
     "problem_family": "tricovcir",
     "N": 1,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": null,
+    "container_shape": "circle (covering)",
+    "best_value": 0.2887,
     "status": "trivial",
+    "source_note": "r = \u221a3/6 = .288+",
     "our_problem": "1_tricovcir",
-    "id": "tricovcir_1"
+    "id": "tricovcir_1",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 2,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": null,
-    "status": "trivial",
+    "container_shape": "circle (covering)",
+    "best_value": 0.433,
+    "status": "best_known",
+    "source_note": "r = \u221a3/4 = .433+ Found by Erich Friedman in 1997.",
     "our_problem": "2_tricovcir",
-    "id": "tricovcir_2"
+    "id": "tricovcir_2",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 3,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": null,
-    "status": "trivial",
+    "container_shape": "circle (covering)",
+    "best_value": 0.521,
+    "status": "best_known",
+    "source_note": "r = (38\u221a3 - 9) / 109 = .521+ Found by Maurizio Morandi in June 2009.",
     "our_problem": "3_tricovcir",
-    "id": "tricovcir_3"
+    "id": "tricovcir_3",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 4,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": null,
-    "status": "trivial",
+    "container_shape": "circle (covering)",
+    "best_value": 0.62,
+    "status": "best_known",
+    "source_note": "r = (9\u221a3 - 2\u221a22) / 10 = .620+ Found by Trevor Green in July 1999.",
     "our_problem": "4_tricovcir",
-    "id": "tricovcir_4"
+    "id": "tricovcir_4",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 5,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": null,
-    "status": "trivial",
+    "container_shape": "circle (covering)",
+    "best_value": 0.724,
+    "status": "best_known",
+    "source_note": "r = (79\u221a3 - 3\u221a79) / 152 = .724+ Found by Maurizio Morandi in June 2009.",
     "our_problem": "5_tricovcir",
-    "id": "tricovcir_5"
+    "id": "tricovcir_5",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 6,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": null,
+    "container_shape": "circle (covering)",
+    "best_value": 0.866,
     "status": "trivial",
+    "source_note": "r = \u221a3/2 = .866+",
     "our_problem": "6_tricovcir",
-    "id": "tricovcir_6"
+    "id": "tricovcir_6",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 7,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": ".892+",
+    "container_shape": "circle (covering)",
+    "best_value": 0.892,
     "status": "best_known",
+    "source_note": "r = .892+ Found by Maurizio Morandi in July 2009.",
     "our_problem": "7_tricovcir",
-    "id": "tricovcir_7"
+    "id": "tricovcir_7",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 8,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": ".892+",
+    "container_shape": "circle (covering)",
+    "best_value": 0.969,
     "status": "best_known",
+    "source_note": "r = (453\u221a3 - 3\u221a347) / 752 = .969+ Found by Maurizio Morandi in June 2009.",
     "our_problem": "8_tricovcir",
-    "id": "tricovcir_8"
+    "id": "tricovcir_8",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 9,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": ".892+",
+    "container_shape": "circle (covering)",
+    "best_value": 1.013,
     "status": "best_known",
+    "source_note": "r = (81\u221a3 - 6\u221a30) / 106 = 1.013+ Found by David Cantrell in July 2005.",
     "our_problem": "9_tricovcir",
-    "id": "tricovcir_9"
+    "id": "tricovcir_9",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 10,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": null,
+    "container_shape": "circle (covering)",
+    "best_value": 1.088,
     "status": "best_known",
+    "source_note": "r = (31\u221a3 - \u221a103) / 40 = 1.088+ Found by David Cantrell in July 2005.",
     "our_problem": "10_tricovcir",
-    "id": "tricovcir_10"
+    "id": "tricovcir_10",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 11,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": null,
+    "container_shape": "circle (covering)",
+    "best_value": 1.142,
     "status": "best_known",
+    "source_note": "r = (177\u221a3 - 2\u221a586) / 226 = 1.142+ Found by David Cantrell in July 2005.",
     "our_problem": "11_tricovcir",
-    "id": "tricovcir_11"
+    "id": "tricovcir_11",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 12,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": null,
+    "container_shape": "circle (covering)",
+    "best_value": 1.184,
     "status": "best_known",
+    "source_note": "r = (7\u221a3 - \u221a7) / 8 = 1.184+ Found by David Cantrell in July 2005.",
     "our_problem": "12_tricovcir",
-    "id": "tricovcir_12"
+    "id": "tricovcir_12",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 13,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": "1.290+",
+    "container_shape": "circle (covering)",
+    "best_value": 1.254,
     "status": "best_known",
+    "source_note": "r = (40\u221a3 - \u221a165) / 45 = 1.254+ Found by Maurizio Morandi in August 2009.",
     "our_problem": "13_tricovcir",
-    "id": "tricovcir_13"
+    "id": "tricovcir_13",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 14,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": "1.290+",
+    "container_shape": "circle (covering)",
+    "best_value": 1.29,
     "status": "best_known",
+    "source_note": "r = 1.290+ Found by Maurizio Morandi in August 2009.",
     "our_problem": "14_tricovcir",
-    "id": "tricovcir_14"
+    "id": "tricovcir_14",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 15,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": "1.290+",
+    "container_shape": "circle (covering)",
+    "best_value": 1.343,
     "status": "best_known",
+    "source_note": "r = 1.343+ Found by Maurizio Morandi in August 2009.",
     "our_problem": "15_tricovcir",
-    "id": "tricovcir_15"
+    "id": "tricovcir_15",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 16,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": "1.392+",
+    "container_shape": "circle (covering)",
+    "best_value": 1.392,
     "status": "best_known",
+    "source_note": "r = 1.392+ Found by Maurizio Morandi in August 2009.",
     "our_problem": "16_tricovcir",
-    "id": "tricovcir_16"
+    "id": "tricovcir_16",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 17,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": "1.392+",
+    "container_shape": "circle (covering)",
+    "best_value": 1.434,
     "status": "best_known",
+    "source_note": "r = 1.434+ Found by Maurizio Morandi in August 2009.",
     "our_problem": "17_tricovcir",
-    "id": "tricovcir_17"
+    "id": "tricovcir_17",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   },
   {
     "problem_family": "tricovcir",
     "N": 18,
     "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": "1.392+",
+    "container_shape": "circle (covering)",
+    "best_value": 1.475,
     "status": "best_known",
+    "source_note": "r = 1.475+ Found by Maurizio Morandi in August 2009.",
     "our_problem": "18_tricovcir",
-    "id": "tricovcir_18"
+    "id": "tricovcir_18",
+    "source_url": "https://erich-friedman.github.io/packing/tricovcir/index.html"
   }
 ]
