@@ -50,7 +50,7 @@ octinoct
 octinpen
 octinsqu
 octintan
-octintri
+~~octintri~~
 ~~peninL~~
 ~~penincir~~
 ~~penindom~~
