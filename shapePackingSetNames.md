@@ -43,9 +43,9 @@ lincir
 linsqu
 minrect
 octinL
-octincir
+~~octincir~~
 ~~octindom~~
-octinhex
+~~octinhex~~
 ~~octinoct~~
 ~~octinpen~~
 ~~octinsqu~~
