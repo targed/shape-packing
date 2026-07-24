@@ -49,7 +49,7 @@ octinhex
 octinoct
 octinpen
 octinsqu
-octintan
+~~octintan~~
 ~~octintri~~
 ~~peninL~~
 ~~penincir~~
