@@ -28,7 +28,8 @@ dominhex
 dominoct
 dominpen
 dominsqu
-domintan
+~~domintan~~
+~~domintri~~
 ~~hexinL~~
 ~~hexincir~~
 ~~hexindom~~
