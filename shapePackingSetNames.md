@@ -42,7 +42,7 @@ hexintri
 lincir
 linsqu
 minrect
-octinL
+~~octinL~~
 ~~octincir~~
 ~~octindom~~
 ~~octinhex~~
