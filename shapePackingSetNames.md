@@ -65,7 +65,7 @@ squRcir
 squcosqu
 squincir
 6squindom
-squinhex
+~~squinhex~~
 ~~squinl~~
 ~~squinoct~~
 squinpen
