@@ -56,7 +56,7 @@ penincir
 penindom
 peninhex
 peninoct
-peninpen
+~~peninpen~~
 peninsqu
 ~~penintan~~
 ~~penintri~~
