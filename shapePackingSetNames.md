@@ -25,8 +25,8 @@ dominL
 domincir
 domindom
 dominhex
-dominoct
-~~dominpen~~
+~~dominoct~~
+dominpen
 ~~dominsqu~~
 ~~domintan~~
 ~~domintri~~
