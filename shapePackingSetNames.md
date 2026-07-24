@@ -12,7 +12,7 @@ cirRsqu
 cirRtri
 circovsqu
 circovtri
-cirincir
+~~cirincir~~
 cirinel
 ~~cirinhex~~
 ~~cirinoct~~
