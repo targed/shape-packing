@@ -79,7 +79,7 @@ taninoct
 taninpen
 taninsqu
 tanintan
-tanintri
+~~tanintri~~
 ~~tricosqu~~
 ~~tricovcir~~
 tricovtri
