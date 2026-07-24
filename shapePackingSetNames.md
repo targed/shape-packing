@@ -71,8 +71,8 @@ squinoct
 squinpen
 squintan
 squintri
-taninL
-tanincir
+~~taninL~~
+~~tanincir~~
 ~~tanindom~~
 ~~taninhex~~
 ~~taninoct~~
