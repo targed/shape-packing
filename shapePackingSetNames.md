@@ -46,8 +46,8 @@ octinL
 octincir
 octindom
 octinhex
-octinoct
-octinpen
+~~octinoct~~
+~~octinsqu~~
 octinsqu
 ~~octintan~~
 ~~octintri~~
