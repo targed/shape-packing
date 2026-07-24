@@ -3,120 +3,144 @@
     "problem_family": "tricosqu",
     "N": 1,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 0.4641,
     "status": "trivial",
+    "source_note": "s = 2\u221a3 - 3= .464+",
     "our_problem": "1_tricosqu",
-    "id": "tricosqu_1"
+    "id": "tricosqu_1",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 2,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
-    "status": "trivial",
+    "container_shape": "square (covering)",
+    "best_value": 0.7321,
+    "status": "best_known",
+    "source_note": "s = \u221a3 - 1 = .732+ Found by David Cantrell in August 2002.",
     "our_problem": "2_tricosqu",
-    "id": "tricosqu_2"
+    "id": "tricosqu_2",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 3,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
-    "status": "trivial",
+    "container_shape": "square (covering)",
+    "best_value": 0.9282,
+    "status": "best_known",
+    "source_note": "s = 4\u221a3 - 6 = .928+ Found by David Cantrell in August 2002.",
     "our_problem": "3_tricosqu",
-    "id": "tricosqu_3"
+    "id": "tricosqu_3",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 4,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 1.0981,
     "status": "best_known",
+    "source_note": "s = (3\u221a3 - 3) / 2 = 1.098+ Found by Erich Friedman in August 2002.",
     "our_problem": "4_tricosqu",
-    "id": "tricosqu_4"
+    "id": "tricosqu_4",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 5,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 1.2452,
     "status": "best_known",
+    "source_note": "s = (15\u221a3 - 21) / 4 = 1.245+ Found by David Cantrell in July 2005.",
     "our_problem": "5_tricosqu",
-    "id": "tricosqu_5"
+    "id": "tricosqu_5",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 6,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 1.4131,
     "status": "best_known",
+    "source_note": "s = (107\u221a3 - 85) / 71 = 1.413+ Found by Maurizio Morandi in April 2009.",
     "our_problem": "6_tricosqu",
-    "id": "tricosqu_6"
+    "id": "tricosqu_6",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 7,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 1.5311,
     "status": "best_known",
+    "source_note": "s = (7\u221a3 - 6) / 4 = 1.531+ Found by Maurizio Morandi in April 2009.",
     "our_problem": "7_tricosqu",
-    "id": "tricosqu_7"
+    "id": "tricosqu_7",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 8,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 1.6699,
     "status": "best_known",
+    "source_note": "s = (12 - 5\u221a3) / 2 = 1.669+ Found by Maurizio Morandi in April 2009.",
     "our_problem": "8_tricosqu",
-    "id": "tricosqu_8"
+    "id": "tricosqu_8",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 9,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 1.7717,
     "status": "best_known",
+    "source_note": "s = (139 - 69\u221a3) / 11 = 1.771+ Found by Maurizio Morandi in April 2009.",
     "our_problem": "9_tricosqu",
-    "id": "tricosqu_9"
+    "id": "tricosqu_9",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 10,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 1.8868,
     "status": "best_known",
+    "source_note": "s = 5 / \u221a3 - 1 = 1.886+ Found by Maurizio Morandi in April 2009.",
     "our_problem": "10_tricosqu",
-    "id": "tricosqu_10"
+    "id": "tricosqu_10",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 11,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 1.9821,
     "status": "best_known",
+    "source_note": "s = \u221a3 + 1/4 = 1.982+ Found by Maurizio Morandi in April 2009.",
     "our_problem": "11_tricosqu",
-    "id": "tricosqu_11"
+    "id": "tricosqu_11",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   },
   {
     "problem_family": "tricosqu",
     "N": 12,
     "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": null,
+    "container_shape": "square (covering)",
+    "best_value": 2.0865,
     "status": "best_known",
+    "source_note": "s = (7\u221a3 + 15) / 13 = 2.086+ Found by Maurizio Morandi in April 2009.",
     "our_problem": "12_tricosqu",
-    "id": "tricosqu_12"
+    "id": "tricosqu_12",
+    "source_url": "https://erich-friedman.github.io/packing/tricosqu/index.html"
   }
 ]

@@ -80,7 +80,7 @@ taninpen
 taninsqu
 tanintan
 tanintri
-tricosqu
+~~tricosqu~~
 ~~tricovcir~~
 tricovtri
 ~~triinL~~
