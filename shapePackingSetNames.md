@@ -73,7 +73,7 @@ squintan
 squintri
 taninL
 tanincir
-tanindom
+~~tanindom~~
 ~~taninhex~~
 ~~taninoct~~
 ~~taninpen~~
