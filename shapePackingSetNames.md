@@ -58,8 +58,8 @@ peninhex
 peninoct
 peninpen
 peninsqu
-penintan
-penintri
+~~penintan~~
+~~penintri~~
 ~~rigid~~
 squRcir
 ~~squcosqu~~
