@@ -4,22 +4,24 @@
     "N": 1,
     "inner_shape": "triangle",
     "container_shape": "domino",
-    "best_value": 0.866,
+    "best_value": 0.86603,
     "status": "trivial",
     "source_note": "Trivial.",
     "our_problem": "1_triindom",
-    "id": "triindom_1"
+    "id": "triindom_1",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
     "N": 2,
     "inner_shape": "triangle",
     "container_shape": "domino",
-    "best_value": 0.866,
+    "best_value": 0.86603,
     "status": "trivial",
     "source_note": "Trivial.",
     "our_problem": "2_triindom",
-    "id": "triindom_2"
+    "id": "triindom_2",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -28,9 +30,10 @@
     "container_shape": "domino",
     "best_value": 0.96796,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "3_triindom",
-    "id": "triindom_3"
+    "id": "triindom_3",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -39,9 +42,10 @@
     "container_shape": "domino",
     "best_value": 1.12036,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "4_triindom",
-    "id": "triindom_4"
+    "id": "triindom_4",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -50,9 +54,10 @@
     "container_shape": "domino",
     "best_value": 1.26315,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "5_triindom",
-    "id": "triindom_5"
+    "id": "triindom_5",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -61,9 +66,10 @@
     "container_shape": "domino",
     "best_value": 1.37629,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "6_triindom",
-    "id": "triindom_6"
+    "id": "triindom_6",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -72,9 +78,10 @@
     "container_shape": "domino",
     "best_value": 1.49076,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "7_triindom",
-    "id": "triindom_7"
+    "id": "triindom_7",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -83,20 +90,22 @@
     "container_shape": "domino",
     "best_value": 1.56293,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "8_triindom",
-    "id": "triindom_8"
+    "id": "triindom_8",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
     "N": 9,
     "inner_shape": "triangle",
     "container_shape": "domino",
-    "best_value": 1.64908,
+    "best_value": 1.64882,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Bhavithran Ananthan in July 2026",
     "our_problem": "9_triindom",
-    "id": "triindom_9"
+    "id": "triindom_9",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -105,9 +114,10 @@
     "container_shape": "domino",
     "best_value": 1.68303,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "10_triindom",
-    "id": "triindom_10"
+    "id": "triindom_10",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -116,9 +126,10 @@
     "container_shape": "domino",
     "best_value": 1.73049,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Bhavithran Ananthan in July 2026",
     "our_problem": "11_triindom",
-    "id": "triindom_11"
+    "id": "triindom_11",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -127,9 +138,10 @@
     "container_shape": "domino",
     "best_value": 1.74024,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Aapo Lipponen in July 2026",
     "our_problem": "12_triindom",
-    "id": "triindom_12"
+    "id": "triindom_12",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -138,9 +150,10 @@
     "container_shape": "domino",
     "best_value": 1.85319,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "13_triindom",
-    "id": "triindom_13"
+    "id": "triindom_13",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -149,31 +162,34 @@
     "container_shape": "domino",
     "best_value": 1.90192,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "14_triindom",
-    "id": "triindom_14"
+    "id": "triindom_14",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
     "N": 15,
     "inner_shape": "triangle",
     "container_shape": "domino",
-    "best_value": 1.97950,
+    "best_value": 1.9795,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "15_triindom",
-    "id": "triindom_15"
+    "id": "triindom_15",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
     "N": 16,
     "inner_shape": "triangle",
     "container_shape": "domino",
-    "best_value": 2,
+    "best_value": 2.0,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "16_triindom",
-    "id": "triindom_16"
+    "id": "triindom_16",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -182,9 +198,10 @@
     "container_shape": "domino",
     "best_value": 2.10306,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "17_triindom",
-    "id": "triindom_17"
+    "id": "triindom_17",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -193,9 +210,10 @@
     "container_shape": "domino",
     "best_value": 2.14913,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Jonathan Viquerat in April 2026",
     "our_problem": "18_triindom",
-    "id": "triindom_18"
+    "id": "triindom_18",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -204,9 +222,10 @@
     "container_shape": "domino",
     "best_value": 2.24322,
     "status": "best_known",
-    "source_note": "Found by Thomas Greenleaf in June 2026.",
+    "source_note": "Found by Thomas Greenleaf in June 2026",
     "our_problem": "19_triindom",
-    "id": "triindom_19"
+    "id": "triindom_19",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -215,9 +234,10 @@
     "container_shape": "domino",
     "best_value": 2.29729,
     "status": "best_known",
-    "source_note": "Found by Jonathan Viquerat in April 2026.",
+    "source_note": "Found by Aapo Lipponen in July 2026",
     "our_problem": "20_triindom",
-    "id": "triindom_20"
+    "id": "triindom_20",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -226,9 +246,10 @@
     "container_shape": "domino",
     "best_value": 2.36328,
     "status": "best_known",
-    "source_note": "Found by Thomas Greenleaf in June 2026.",
+    "source_note": "Found by Thomas Greenleaf in June 2026",
     "our_problem": "21_triindom",
-    "id": "triindom_21"
+    "id": "triindom_21",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   },
   {
     "problem_family": "triindom",
@@ -237,8 +258,9 @@
     "container_shape": "domino",
     "best_value": 2.42212,
     "status": "best_known",
-    "source_note": "Found by Thomas Greenleaf in June 2026.",
+    "source_note": "Found by Bhavithran Ananthan in July 2026",
     "our_problem": "22_triindom",
-    "id": "triindom_22"
+    "id": "triindom_22",
+    "source_url": "https://erich-friedman.github.io/packing/triindom/index.html"
   }
 ]

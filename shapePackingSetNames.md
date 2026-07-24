@@ -85,8 +85,8 @@ tricovcir
 tricovtri
 triinL
 triincir
-triindom
-triinhex
+~~triindom~~
+~~triinhex~~
 ~~triinoct~~
 ~~triinpen~~
 ~~triinsqu~~
