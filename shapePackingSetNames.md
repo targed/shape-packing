@@ -70,7 +70,7 @@ squinl
 squinoct
 squinpen
 squintan
-squintri
+~~squintri~~
 ~~taninL~~
 ~~tanincir~~
 ~~tanindom~~

@@ -6,7 +6,7 @@
     "container_shape": "3",
     "best_value": 2.154,
     "status": "trivial",
-    "source_note": "Trivial. s = 2 + 2 / &radic;3 = 3.154+ Trivial. s = 3 / 2 + &radic;3 = 3.232+ Found by Erich Friedman in 1997.",
+    "source_note": "Trivial.",
     "our_problem": "1_4_in_3",
     "id": "4_in_3_1",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -18,7 +18,7 @@
     "container_shape": "3",
     "best_value": 3.154,
     "status": "trivial",
-    "source_note": "Trivial. s = 3 / 2 + &radic;3 = 3.232+ Found by Erich Friedman in 1997.",
+    "source_note": "Trivial.",
     "our_problem": "2_4_in_3",
     "id": "4_in_3_2",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -42,7 +42,7 @@
     "container_shape": "3",
     "best_value": 4.154,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 2 + 4 / &radic;3 = 4.309+ Found by Erich Friedman in 1997. s = 4 + 2 / &radic;3 = 5.154+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "4_4_in_3",
     "id": "4_in_3_4",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -54,7 +54,7 @@
     "container_shape": "3",
     "best_value": 4.309,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 4 + 2 / &radic;3 = 5.154+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "5_4_in_3",
     "id": "4_in_3_5",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -66,7 +66,7 @@
     "container_shape": "3",
     "best_value": 4.309,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 4 + 2 / &radic;3 = 5.154+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "6_4_in_3",
     "id": "4_in_3_6",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -90,7 +90,7 @@
     "container_shape": "3",
     "best_value": 5.301,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2002. s = 3 + 4 / &radic;3 = 5.309+ Found by Erich Friedman in 1997. s = 2 + 2 &radic;3 = 5.464+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by David W. Cantrell in July 2002.",
     "our_problem": "8_4_in_3",
     "id": "4_in_3_8",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -102,7 +102,7 @@
     "container_shape": "3",
     "best_value": 5.309,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 2 + 2 &radic;3 = 5.464+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "9_4_in_3",
     "id": "4_in_3_9",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -126,7 +126,7 @@
     "container_shape": "3",
     "best_value": 6.154,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 6.301+ Found by David W. Cantrell in July 2002. s = 4 + 4 / &radic;3 = 6.309+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "11_4_in_3",
     "id": "4_in_3_11",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -138,7 +138,7 @@
     "container_shape": "3",
     "best_value": 6.301,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2002. s = 4 + 4 / &radic;3 = 6.309+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by David W. Cantrell in July 2002.",
     "our_problem": "12_4_in_3",
     "id": "4_in_3_12",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -162,7 +162,7 @@
     "container_shape": "3",
     "best_value": 6.464,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 6 + 2 / &radic;3 = 7.154+ Found by Erich Friedman in 1997. s = 7.301+ Found by David W. Cantrell in July 2002.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "14_4_in_3",
     "id": "4_in_3_14",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -174,7 +174,7 @@
     "container_shape": "3",
     "best_value": 6.464,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 6 + 2 / &radic;3 = 7.154+ Found by Erich Friedman in 1997. s = 7.301+ Found by David W. Cantrell in July 2002.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "15_4_in_3",
     "id": "4_in_3_15",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -186,7 +186,7 @@
     "container_shape": "3",
     "best_value": 7.154,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 7.301+ Found by David W. Cantrell in July 2002.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "16_4_in_3",
     "id": "4_in_3_16",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -210,7 +210,7 @@
     "container_shape": "3",
     "best_value": 7.309,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 4 + 2 &radic;3 = 7.464+ Found by Erich Friedman in 1997. s = 3 + 8 / &radic;3 = 7.618+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "18_4_in_3",
     "id": "4_in_3_18",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -222,7 +222,7 @@
     "container_shape": "3",
     "best_value": 7.464,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 3 + 8 / &radic;3 = 7.618+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "19_4_in_3",
     "id": "4_in_3_19",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -232,9 +232,9 @@
     "N": 20,
     "inner_shape": "4",
     "container_shape": "3",
-    "best_value": 7.618,
+    "best_value": 7.61695,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997.",
+    "source_note": "Found by Haowei Lin in July 2026.",
     "our_problem": "20_4_in_3",
     "id": "4_in_3_20",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -258,7 +258,7 @@
     "container_shape": "3",
     "best_value": 8.15259,
     "status": "best_known",
-    "source_note": "Found by Markus Vesterinen in May 2026. s = 8.301+ Found by David W. Cantrell in July 2002. s = 6 + 4 / &radic;3 = 8.309+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Markus Vesterinen in May 2026.",
     "our_problem": "22_4_in_3",
     "id": "4_in_3_22",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -270,7 +270,7 @@
     "container_shape": "3",
     "best_value": 8.301,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2002. s = 6 + 4 / &radic;3 = 8.309+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by David W. Cantrell in July 2002.",
     "our_problem": "23_4_in_3",
     "id": "4_in_3_23",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -294,7 +294,7 @@
     "container_shape": "3",
     "best_value": 8.464,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 4 + 8 / &radic;3 = 8.618+ Found by Erich Friedman in 1997. s = 3 + 10 / &radic;3 = 8.773+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "25_4_in_3",
     "id": "4_in_3_25",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -306,7 +306,7 @@
     "container_shape": "3",
     "best_value": 8.618,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 3 + 10 / &radic;3 = 8.773+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "26_4_in_3",
     "id": "4_in_3_26",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -318,7 +318,7 @@
     "container_shape": "3",
     "best_value": 8.618,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 3 + 10 / &radic;3 = 8.773+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "27_4_in_3",
     "id": "4_in_3_27",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -342,7 +342,7 @@
     "container_shape": "3",
     "best_value": 9.154,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 9.301+ Found by David W. Cantrell in July 2002. s = 7 + 4 / &radic;3 = 9.309+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "29_4_in_3",
     "id": "4_in_3_29",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -354,7 +354,7 @@
     "container_shape": "3",
     "best_value": 9.301,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2002. s = 7 + 4 / &radic;3 = 9.309+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by David W. Cantrell in July 2002.",
     "our_problem": "30_4_in_3",
     "id": "4_in_3_30",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -378,7 +378,7 @@
     "container_shape": "3",
     "best_value": 9.464,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 5 + 8 / &radic;3 = 9.618+ Found by Erich Friedman in 1997. s = 4 + 10 / &radic;3 = 9.773+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "32_4_in_3",
     "id": "4_in_3_32",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -390,7 +390,7 @@
     "container_shape": "3",
     "best_value": 9.618,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 4 + 10 / &radic;3 = 9.773+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "33_4_in_3",
     "id": "4_in_3_33",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -402,7 +402,7 @@
     "container_shape": "3",
     "best_value": 9.618,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in 1997. s = 4 + 10 / &radic;3 = 9.773+ Found by Erich Friedman in 1997.",
+    "source_note": "Found by Erich Friedman in 1997.",
     "our_problem": "34_4_in_3",
     "id": "4_in_3_34",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -438,7 +438,7 @@
     "container_shape": "3",
     "best_value": 10.15299,
     "status": "best_known",
-    "source_note": "Found by Gianluca Costantino in May 2026. s = 10.304+ Found by Gianluca Costantino in April 2026. s = 10.310+ Found by Emerson Connelly in April 2026.",
+    "source_note": "Found by Gianluca Costantino in May 2026.",
     "our_problem": "37_4_in_3",
     "id": "4_in_3_37",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -450,7 +450,7 @@
     "container_shape": "3",
     "best_value": 10.304,
     "status": "best_known",
-    "source_note": "Found by Gianluca Costantino in April 2026. s = 10.310+ Found by Emerson Connelly in April 2026.",
+    "source_note": "Found by Gianluca Costantino in April 2026.",
     "our_problem": "38_4_in_3",
     "id": "4_in_3_38",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -460,9 +460,9 @@
     "N": 39,
     "inner_shape": "4",
     "container_shape": "3",
-    "best_value": 10.31,
+    "best_value": 10.3094,
     "status": "best_known",
-    "source_note": "Found by Emerson Connelly in April 2026.",
+    "source_note": "Found by Bhavithran Ananthan in July 2026.",
     "our_problem": "39_4_in_3",
     "id": "4_in_3_39",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
@@ -472,11 +472,47 @@
     "N": 40,
     "inner_shape": "4",
     "container_shape": "3",
-    "best_value": 10.46426,
+    "best_value": 10.4641,
     "status": "best_known",
-    "source_note": "Found by Nathan Roll in April 2026.",
+    "source_note": "Found by Bhavithran Ananthan in July 2026.",
     "our_problem": "40_4_in_3",
     "id": "4_in_3_40",
+    "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
+  },
+  {
+    "problem_family": "4_in_3",
+    "N": 41,
+    "inner_shape": "4",
+    "container_shape": "3",
+    "best_value": 10.6188,
+    "status": "best_known",
+    "source_note": "Found by Aristotle Papowitz in July 2026.",
+    "our_problem": "41_4_in_3",
+    "id": "4_in_3_41",
+    "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
+  },
+  {
+    "problem_family": "4_in_3",
+    "N": 42,
+    "inner_shape": "4",
+    "container_shape": "3",
+    "best_value": 10.6188,
+    "status": "best_known",
+    "source_note": "Found by Aristotle Papowitz in July 2026.",
+    "our_problem": "42_4_in_3",
+    "id": "4_in_3_42",
+    "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
+  },
+  {
+    "problem_family": "4_in_3",
+    "N": 43,
+    "inner_shape": "4",
+    "container_shape": "3",
+    "best_value": 10.7735,
+    "status": "best_known",
+    "source_note": "Found by Aristotle Papowitz in July 2026.",
+    "our_problem": "43_4_in_3",
+    "id": "4_in_3_43",
     "source_url": "https://erich-friedman.github.io/packing/squintri/index.html"
   }
 ]
