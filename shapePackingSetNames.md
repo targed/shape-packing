@@ -78,7 +78,7 @@ taninhex
 taninoct
 taninpen
 taninsqu
-tanintan
+~~tanintan~~
 ~~tanintri~~
 ~~tricosqu~~
 ~~tricovcir~~
