@@ -63,7 +63,7 @@ penintri
 rigid
 squRcir
 squcosqu
-squincir
+~~squincir~~
 ~~squindom~~
 ~~squinhex~~
 ~~squinl~~
