@@ -67,7 +67,7 @@ squincir
 6squindom
 squinhex
 squinl
-squinoct
+~~squinoct~~
 squinpen
 ~~squintan~~
 ~~squintri~~
