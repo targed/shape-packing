@@ -29,7 +29,7 @@ dominoct
 dominpen
 dominsqu
 domintan
-hexinL
+~~hexinL~~
 ~~hexincir~~
 ~~hexindom~~
 ~~hexinhex~~
