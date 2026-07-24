@@ -24,7 +24,7 @@ cirinttt
 dominL
 domincir
 domindom
-dominhex
+~~dominhex~~
 ~~dominoct~~
 dominpen
 ~~dominsqu~~
