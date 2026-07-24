@@ -64,7 +64,7 @@ rigid
 squRcir
 squcosqu
 squincir
-6squindom
+~~squindom~~
 ~~squinhex~~
 ~~squinl~~
 ~~squinoct~~
