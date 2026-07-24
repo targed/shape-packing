@@ -41,7 +41,7 @@ hexintan
 hexintri
 lincir
 linsqu
-minrect
+~~minrect~~
 ~~octinL~~
 ~~octincir~~
 ~~octindom~~
