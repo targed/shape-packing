@@ -74,7 +74,7 @@ squintri
 taninL
 tanincir
 tanindom
-taninhex
+~~taninhex~~
 ~~taninoct~~
 ~~taninpen~~
 taninsqu
