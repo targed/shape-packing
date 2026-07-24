@@ -19,7 +19,7 @@ cirinl
 cirinpen
 cirinsqu
 cirintan
-cirintri
+~~cirintri~~
 ~~cirinttt~~
 ~~dominL~~
 ~~domincir~~
