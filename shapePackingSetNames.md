@@ -18,7 +18,7 @@ cirinhex
 cirinl
 cirinpen
 cirinsqu
-cirintan
+~~cirintan~~
 ~~cirintri~~
 ~~cirinttt~~
 ~~dominL~~
