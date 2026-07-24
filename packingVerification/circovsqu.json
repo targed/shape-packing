@@ -6,7 +6,7 @@
     "container_shape": "circle (covering)",
     "best_value": 1.414,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "s = \u221a2 = 1.414+ Trivial.",
     "our_problem": "1_circovsqu",
     "id": "circovsqu_1",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -18,7 +18,7 @@
     "container_shape": "circle (covering)",
     "best_value": 1.788,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "s = 4 / \u221a5 = 1.788+ Trivial.",
     "our_problem": "2_circovsqu",
     "id": "circovsqu_2",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -29,8 +29,8 @@
     "inner_shape": "square",
     "container_shape": "circle (covering)",
     "best_value": 1.984,
-    "status": "best_known",
-    "source_note": "Proved by Denes Nagy in 1974.",
+    "status": "proved_optimal",
+    "source_note": "s = 16 / \u221a65 = 1.984+ Proved by Denes Nagy in 1974.",
     "our_problem": "3_circovsqu",
     "id": "circovsqu_3",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -41,8 +41,8 @@
     "inner_shape": "square",
     "container_shape": "circle (covering)",
     "best_value": 2.828,
-    "status": "best_known",
-    "source_note": "Proved by Denes Nagy in 1974.",
+    "status": "proved_optimal",
+    "source_note": "s = 2\u221a2 = 2.828+ Proved by Denes Nagy in 1974.",
     "our_problem": "4_circovsqu",
     "id": "circovsqu_4",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -53,8 +53,8 @@
     "inner_shape": "square",
     "container_shape": "circle (covering)",
     "best_value": 3.065,
-    "status": "best_known",
-    "source_note": "Proved by Hans Melissen in 1997.",
+    "status": "proved_optimal",
+    "source_note": "s = 3.065+ Proved by Hans Melissen in 1997.",
     "our_problem": "5_circovsqu",
     "id": "circovsqu_5",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -66,7 +66,7 @@
     "container_shape": "circle (covering)",
     "best_value": 3.347,
     "status": "best_known",
-    "source_note": "Found by Hans Melissen in 1997.",
+    "source_note": "s = 3.347+ Found by Hans Melissen in 1997.",
     "our_problem": "6_circovsqu",
     "id": "circovsqu_6",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -77,8 +77,8 @@
     "inner_shape": "square",
     "container_shape": "circle (covering)",
     "best_value": 3.645,
-    "status": "best_known",
-    "source_note": "Proved by Hans Melissen in 1997.",
+    "status": "proved_optimal",
+    "source_note": "s = 1 + \u221a7 = 3.645+ Proved by Hans Melissen in 1997.",
     "our_problem": "7_circovsqu",
     "id": "circovsqu_7",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -90,7 +90,7 @@
     "container_shape": "circle (covering)",
     "best_value": 3.841,
     "status": "best_known",
-    "source_note": "Found by Hans Melissen and P. Schuur in 1997.",
+    "source_note": "s = 3.841+ Found by Hans Melissen and P. Schuur in 1997.",
     "our_problem": "8_circovsqu",
     "id": "circovsqu_8",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -102,7 +102,7 @@
     "container_shape": "circle (covering)",
     "best_value": 4.335,
     "status": "best_known",
-    "source_note": "Found by Kari Nurmela and Patric Ostergard in 2000.",
+    "source_note": "s = 4.335+ Found by Kari Nurmela and Patric \u00d6sterg\u00e5rd in 2000.",
     "our_problem": "9_circovsqu",
     "id": "circovsqu_9",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -114,7 +114,7 @@
     "container_shape": "circle (covering)",
     "best_value": 4.582,
     "status": "best_known",
-    "source_note": "Found by T. Tarnai and Z Gaspar in 1995.",
+    "source_note": "s = (18 + 24\u221a3) / 13 = 4.582+ Found by T. Tarnai and Z G\u00e1sp\u00e1r in 1995.",
     "our_problem": "10_circovsqu",
     "id": "circovsqu_10",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -126,7 +126,7 @@
     "container_shape": "circle (covering)",
     "best_value": 4.705,
     "status": "best_known",
-    "source_note": "Found by Hans Melissen and P. Schuur in 1997.",
+    "source_note": "s = 4.705+ Found by Hans Melissen and P. Schuur in 1997.",
     "our_problem": "11_circovsqu",
     "id": "circovsqu_11",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"
@@ -138,7 +138,7 @@
     "container_shape": "circle (covering)",
     "best_value": 4.943,
     "status": "best_known",
-    "source_note": "Found by Kari Nurmela and Patric Ostergard in 2000.",
+    "source_note": "s = 4.943+ Found by Kari Nurmela and Patric \u00d6sterg\u00e5rd in 2000.",
     "our_problem": "12_circovsqu",
     "id": "circovsqu_12",
     "source_url": "https://erich-friedman.github.io/packing/circovsqu/index.html"

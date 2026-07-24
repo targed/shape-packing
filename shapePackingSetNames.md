@@ -10,7 +10,7 @@ cirRell
 cirRrec
 cirRsqu
 cirRtri
-circovsqu
+~~circovsqu~~
 circovtri
 ~~circohex~~
 ~~circocir~~
