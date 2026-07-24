@@ -4,189 +4,239 @@
     "N": 1,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": ".92423+",
+    "best_value": 0.61237,
     "status": "trivial",
+    "source_note": "Trivial.",
     "our_problem": "1_triinL",
-    "id": "triinL_1"
+    "id": "triinL_1",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 2,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": ".92423+",
+    "best_value": 0.86602,
     "status": "trivial",
+    "source_note": "Trivial.",
     "our_problem": "2_triinL",
-    "id": "triinL_2"
+    "id": "triinL_2",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
+  },
+  {
+    "problem_family": "triinL",
+    "N": 3,
+    "inner_shape": "triangle",
+    "container_shape": "L",
+    "best_value": 0.86602,
+    "status": "trivial",
+    "source_note": "Trivial.",
+    "our_problem": "3_triinL",
+    "id": "triinL_3",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 4,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": ".92423+",
-    "status": "trivial",
+    "best_value": 0.92423,
+    "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "4_triinL",
-    "id": "triinL_4"
+    "id": "triinL_4",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 5,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1",
+    "best_value": 1.0,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "5_triinL",
-    "id": "triinL_5"
+    "id": "triinL_5",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 6,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1",
+    "best_value": 1.12037,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "6_triinL",
-    "id": "triinL_6"
+    "id": "triinL_6",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 7,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1",
+    "best_value": 1.17127,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "7_triinL",
-    "id": "triinL_7"
+    "id": "triinL_7",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 8,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.27527+",
+    "best_value": 1.27527,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "8_triinL",
-    "id": "triinL_8"
+    "id": "triinL_8",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 9,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.27527+",
+    "best_value": 1.32893,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "9_triinL",
-    "id": "triinL_9"
+    "id": "triinL_9",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 10,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.27527+",
+    "best_value": 1.3937,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "10_triinL",
-    "id": "triinL_10"
+    "id": "triinL_10",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 11,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.46116+",
+    "best_value": 1.46116,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "11_triinL",
-    "id": "triinL_11"
+    "id": "triinL_11",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 12,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.46116+",
+    "best_value": 1.5,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "12_triinL",
-    "id": "triinL_12"
+    "id": "triinL_12",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 13,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.46116+",
+    "best_value": 1.56571,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "13_triinL",
-    "id": "triinL_13"
+    "id": "triinL_13",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 14,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.62225+",
+    "best_value": 1.62225,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "14_triinL",
-    "id": "triinL_14"
+    "id": "triinL_14",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 15,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.62225+",
+    "best_value": 1.68012,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "15_triinL",
-    "id": "triinL_15"
+    "id": "triinL_15",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 16,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.62225+",
+    "best_value": 1.72307,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "16_triinL",
-    "id": "triinL_16"
+    "id": "triinL_16",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 17,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.73204+",
+    "best_value": 1.73204,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "17_triinL",
-    "id": "triinL_17"
+    "id": "triinL_17",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 18,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.73204+",
+    "best_value": 1.75029,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "18_triinL",
-    "id": "triinL_18"
+    "id": "triinL_18",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 19,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.73204+",
+    "best_value": 1.82181,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "19_triinL",
-    "id": "triinL_19"
+    "id": "triinL_19",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
   {
     "problem_family": "triinL",
     "N": 20,
     "inner_shape": "triangle",
     "container_shape": "L",
-    "best_value": "1.86706+",
+    "best_value": 1.86706,
     "status": "best_known",
+    "source_note": "Found by Jonathan Viquerat in June 2026.",
     "our_problem": "20_triinL",
-    "id": "triinL_20"
+    "id": "triinL_20",
+    "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   }
 ]

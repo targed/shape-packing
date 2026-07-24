@@ -83,7 +83,7 @@ tanintri
 tricosqu
 tricovcir
 tricovtri
-triinL
+~~triinL~~
 ~~triincir~~
 ~~triindom~~
 ~~triinhex~~
