@@ -15,7 +15,7 @@ circovtri
 cirincir
 cirinel
 cirinhex
-cirinl
+~~cirinl~~
 ~~cirinpen~~
 ~~cirinsqu~~
 ~~cirintan~~
