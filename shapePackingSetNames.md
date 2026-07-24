@@ -76,7 +76,7 @@ tanincir
 tanindom
 taninhex
 taninoct
-taninpen
+~~taninpen~~
 taninsqu
 ~~tanintan~~
 ~~tanintri~~
