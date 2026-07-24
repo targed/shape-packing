@@ -100,9 +100,9 @@
     "N": 9,
     "inner_shape": "L",
     "container_shape": "square",
-    "best_value": 5.828,
+    "best_value": 5.819,
     "status": "best_known",
-    "source_note": "Found by Erich Friedman in June 2005.",
+    "source_note": "Found by Aapo Lipponen in July 2026.",
     "our_problem": "9_linsqu",
     "id": "linsqu_9",
     "source_url": "https://erich-friedman.github.io/packing/linsqu/index.html"

@@ -40,7 +40,7 @@ hexinsqu
 hexintan
 hexintri
 lincir
-linsqu
+~~linsqu~~
 ~~minrect~~
 ~~octinL~~
 ~~octincir~~
