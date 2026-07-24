@@ -37,7 +37,7 @@ hexinL
 hexinoct
 hexinpen
 hexinsqu
-hexintan
+~~hexintan~~
 hexintri
 ~~lincir~~
 ~~linsqu~~
