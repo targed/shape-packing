@@ -60,8 +60,8 @@ peninpen
 peninsqu
 penintan
 penintri
-rigid
-~~squRcir~~
+~~rigid~~
+squRcir
 ~~squcosqu~~
 ~~squincir~~
 ~~squindom~~
