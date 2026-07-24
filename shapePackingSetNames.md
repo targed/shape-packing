@@ -22,7 +22,7 @@ cirintan
 cirintri
 cirinttt
 dominL
-domincir
+~~domincir~~
 domindom
 ~~dominhex~~
 ~~dominoct~~
