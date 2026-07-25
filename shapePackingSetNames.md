@@ -1,4 +1,5 @@
 ~~boxes~~
+~~3insqu~~
 LinL
 Lindom
 Linhex
