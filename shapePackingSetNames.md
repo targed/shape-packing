@@ -7,7 +7,7 @@
 ~~Linpen~~
 ~~3inpen~~
 ~~Lintan~~
-Lintri
+~~Lintri~~
 cirRcir
 cirRell
 cirRrec
