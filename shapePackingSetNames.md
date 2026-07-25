@@ -1,7 +1,7 @@
 ~~boxes~~
 ~~3insqu~~
 LinL
-Lindom
+~~Lindom~~
 Linhex
 Linoct
 ~~3inpen~~
