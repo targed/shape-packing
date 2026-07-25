@@ -81,7 +81,7 @@ squRcir
 ~~squinhex~~
 ~~squinl~~
 ~~squinoct~~
-squinpen
+~~squinpen~~
 ~~squintan~~
 ~~squintri~~
 ~~taninL~~
