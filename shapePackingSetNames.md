@@ -95,7 +95,7 @@ squRcir
 ~~tanintri~~
 ~~tricosqu~~
 ~~tricovcir~~
-tricovtri
+~~tricovtri~~
 ~~triinL~~
 ~~triincir~~
 ~~triindom~~

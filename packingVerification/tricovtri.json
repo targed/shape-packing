@@ -3,120 +3,144 @@
     "problem_family": "tricovtri",
     "N": 1,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": "1",
+    "container_shape": "triangle (covering)",
+    "best_value": 1.0,
     "status": "trivial",
+    "source_note": "s = 1 Trivial.",
     "our_problem": "1_tricovtri",
-    "id": "tricovtri_1"
+    "id": "tricovtri_1",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 3,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": "1",
+    "container_shape": "triangle (covering)",
+    "best_value": 1.5,
     "status": "trivial",
+    "source_note": "s = 3/2 = 1.5 Trivial.",
     "our_problem": "3_tricovtri",
-    "id": "tricovtri_3"
+    "id": "tricovtri_3",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 4,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": "1",
+    "container_shape": "triangle (covering)",
+    "best_value": 2.0,
     "status": "trivial",
+    "source_note": "s = 2 Trivial.",
     "our_problem": "4_tricovtri",
-    "id": "tricovtri_4"
+    "id": "tricovtri_4",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 6,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": null,
+    "container_shape": "triangle (covering)",
+    "best_value": 2.333,
     "status": "best_known",
+    "source_note": "s =7/3 = 2.333+ Found by David Cantrell in August 2002.",
     "our_problem": "6_tricovtri",
-    "id": "tricovtri_6"
+    "id": "tricovtri_6",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 7,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": null,
+    "container_shape": "triangle (covering)",
+    "best_value": 2.5,
     "status": "best_known",
+    "source_note": "s = 5/2 = 2.5 Found by Erich Friedman in 1999.",
     "our_problem": "7_tricovtri",
-    "id": "tricovtri_7"
+    "id": "tricovtri_7",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 8,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": null,
+    "container_shape": "triangle (covering)",
+    "best_value": 2.666,
     "status": "best_known",
+    "source_note": "s = 8/3 = 2.666+ Found by David Cantrell in August 2002.",
     "our_problem": "8_tricovtri",
-    "id": "tricovtri_8"
+    "id": "tricovtri_8",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 9,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": "3",
+    "container_shape": "triangle (covering)",
+    "best_value": 3.0,
     "status": "trivial",
+    "source_note": "s = 3 Trivial.",
     "our_problem": "9_tricovtri",
-    "id": "tricovtri_9"
+    "id": "tricovtri_9",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 11,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": "3",
-    "status": "trivial",
+    "container_shape": "triangle (covering)",
+    "best_value": 3.25,
+    "status": "best_known",
+    "source_note": "s = 13/4 = 3.25 Found by Erich Friedman in 1999.",
     "our_problem": "11_tricovtri",
-    "id": "tricovtri_11"
+    "id": "tricovtri_11",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 12,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": "3",
-    "status": "trivial",
+    "container_shape": "triangle (covering)",
+    "best_value": 3.333,
+    "status": "best_known",
+    "source_note": "s = 10/3 = 3.333+ Found by Erich Friedman in 1999.",
     "our_problem": "12_tricovtri",
-    "id": "tricovtri_12"
+    "id": "tricovtri_12",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 13,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": null,
+    "container_shape": "triangle (covering)",
+    "best_value": 3.5,
     "status": "best_known",
+    "source_note": "s = 7/2 = 3.5 Found by Erich Friedman in 1999.",
     "our_problem": "13_tricovtri",
-    "id": "tricovtri_13"
+    "id": "tricovtri_13",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 14,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": null,
+    "container_shape": "triangle (covering)",
+    "best_value": 3.666,
     "status": "best_known",
+    "source_note": "s = 11/3 = 3.666+ Found by David Cantrell in August 2002.",
     "our_problem": "14_tricovtri",
-    "id": "tricovtri_14"
+    "id": "tricovtri_14",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   },
   {
     "problem_family": "tricovtri",
     "N": 15,
     "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": null,
+    "container_shape": "triangle (covering)",
+    "best_value": 3.75,
     "status": "best_known",
+    "source_note": "s = 15/4 = 3.75 Found by Erich Friedman in 1999.",
     "our_problem": "15_tricovtri",
-    "id": "tricovtri_15"
+    "id": "tricovtri_15",
+    "source_url": "https://erich-friedman.github.io/packing/tricovtri/index.html"
   }
 ]
