@@ -18,7 +18,7 @@
     "container_shape": "pentagon",
     "best_value": 1.535,
     "status": "best_known",
-    "source_note": "s = 4√(1-2/√5)+√5-2 s = 1.535+ Found by Erich Friedman in March 2012.",
+    "source_note": "s = 4√(1–2/√5)+√5–2 s = 1.535+ Found by Erich Friedman in March 2012.",
     "our_problem": "2_squinpen",
     "id": "squinpen_2",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
@@ -66,7 +66,7 @@
     "container_shape": "pentagon",
     "best_value": 2.185,
     "status": "best_known",
-    "source_note": "s = 6√(1-2/√5)+√5-2 s = 2.185+ Found by Erich Friedman in March 2012.",
+    "source_note": "s = 6√(1–2/√5)+√5–2 s = 2.185+ Found by Erich Friedman in March 2012.",
     "our_problem": "6_squinpen",
     "id": "squinpen_6",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
@@ -78,7 +78,7 @@
     "container_shape": "pentagon",
     "best_value": 2.421,
     "status": "best_known",
-    "source_note": "s = 6√(1-2/√5)+2√5-4 s = 2.421+ Found by Erich Friedman in July 2012.",
+    "source_note": "s = 6√(1–2/√5)+2√5–4 s = 2.421+ Found by Erich Friedman in July 2012.",
     "our_problem": "7_squinpen",
     "id": "squinpen_7",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
@@ -174,7 +174,7 @@
     "container_shape": "pentagon",
     "best_value": 3.284,
     "status": "best_known",
-    "source_note": "s = (√(125-38√5)+8-2√5)/3 s = 3.284+ Found by David W. Cantrell in July 2012.",
+    "source_note": "s = (√(125–38√5)+8–2√5)/3 s = 3.284+ Found by David W. Cantrell in July 2012.",
     "our_problem": "15_squinpen",
     "id": "squinpen_15",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
