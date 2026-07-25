@@ -18,6 +18,8 @@ circovtri
 ~~circocir~~
 ~~circopen~~
 ~~circotan~~
+~~circodom~~
+~~circoL~~
 ~~cirincir~~
 cirinel
 ~~cirinhex~~
