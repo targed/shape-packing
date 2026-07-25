@@ -10,7 +10,7 @@
 ~~Lintri~~
 ~~cirRcir~~
 ~~cirRell~~
-cirRrec
+~~cirRrec~~
 cirRsqu
 cirRtri
 ~~circovsqu~~

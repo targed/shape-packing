@@ -6,7 +6,7 @@
     "container_shape": "rectangle",
     "best_value": 0.5,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "Σ r = 1/2 = .500 Trivial.",
     "our_problem": "1_cirRrec",
     "id": "cirRrec_1",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -18,7 +18,7 @@
     "container_shape": "rectangle",
     "best_value": 0.666,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "Σ r = 2/3 = .666+ Trivial.",
     "our_problem": "2_cirRrec",
     "id": "cirRrec_2",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -30,7 +30,7 @@
     "container_shape": "rectangle",
     "best_value": 0.813,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 8(7 – 2√2) / 41 = .813+ Found by David W. Cantrell in July 2011.",
     "our_problem": "3_cirRrec",
     "id": "cirRrec_3",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -42,7 +42,7 @@
     "container_shape": "rectangle",
     "best_value": 1.006,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 6–2√2–2√(4–2√2) = 1.006+ Found by David W. Cantrell in July 2011.",
     "our_problem": "4_cirRrec",
     "id": "cirRrec_4",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -54,7 +54,7 @@
     "container_shape": "rectangle",
     "best_value": 1.112,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.112+ Found by David W. Cantrell in July 2011.",
     "our_problem": "5_cirRrec",
     "id": "cirRrec_5",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -66,7 +66,7 @@
     "container_shape": "rectangle",
     "best_value": 1.525,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.525+ Found by David W. Cantrell in July 2011.",
     "our_problem": "6_cirRrec",
     "id": "cirRrec_6",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -78,7 +78,7 @@
     "container_shape": "rectangle",
     "best_value": 1.324,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.324+ Found by David W. Cantrell in July 2011.",
     "our_problem": "7_cirRrec",
     "id": "cirRrec_7",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -88,9 +88,9 @@
     "N": 8,
     "inner_shape": "circle",
     "container_shape": "rectangle",
-    "best_value": 1.430,
+    "best_value": 1.43,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.430+ Found by David W. Cantrell in July 2011.",
     "our_problem": "8_cirRrec",
     "id": "cirRrec_8",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -102,7 +102,7 @@
     "container_shape": "rectangle",
     "best_value": 1.528,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.528+ Found by David W. Cantrell in July 2011.",
     "our_problem": "9_cirRrec",
     "id": "cirRrec_9",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -112,9 +112,9 @@
     "N": 10,
     "inner_shape": "circle",
     "container_shape": "rectangle",
-    "best_value": 1.610,
+    "best_value": 1.61,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.610+ Found by David W. Cantrell in July 2011.",
     "our_problem": "10_cirRrec",
     "id": "cirRrec_10",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -126,7 +126,7 @@
     "container_shape": "rectangle",
     "best_value": 1.685,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.685+ Found by David W. Cantrell in July 2011.",
     "our_problem": "11_cirRrec",
     "id": "cirRrec_11",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -138,7 +138,7 @@
     "container_shape": "rectangle",
     "best_value": 1.765,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.765+ Found by David W. Cantrell in July 2011.",
     "our_problem": "12_cirRrec",
     "id": "cirRrec_12",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -150,7 +150,7 @@
     "container_shape": "rectangle",
     "best_value": 1.835,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.835+ Found by David W. Cantrell in July 2011.",
     "our_problem": "13_cirRrec",
     "id": "cirRrec_13",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -162,7 +162,7 @@
     "container_shape": "rectangle",
     "best_value": 1.916,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.916+ Found by David W. Cantrell in July 2011.",
     "our_problem": "14_cirRrec",
     "id": "cirRrec_14",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -174,7 +174,7 @@
     "container_shape": "rectangle",
     "best_value": 1.985,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.985+ Found by David W. Cantrell in July 2011.",
     "our_problem": "15_cirRrec",
     "id": "cirRrec_15",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -186,7 +186,7 @@
     "container_shape": "rectangle",
     "best_value": 2.059,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.059+ Found by David W. Cantrell in July 2011.",
     "our_problem": "16_cirRrec",
     "id": "cirRrec_16",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -198,7 +198,7 @@
     "container_shape": "rectangle",
     "best_value": 2.117,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.117+ Found by David W. Cantrell in July 2011.",
     "our_problem": "17_cirRrec",
     "id": "cirRrec_17",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -208,9 +208,9 @@
     "N": 18,
     "inner_shape": "circle",
     "container_shape": "rectangle",
-    "best_value": 2.180,
+    "best_value": 2.18,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.180+ Found by David W. Cantrell in July 2011.",
     "our_problem": "18_cirRrec",
     "id": "cirRrec_18",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -222,7 +222,7 @@
     "container_shape": "rectangle",
     "best_value": 2.241,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.241+ Found by David W. Cantrell in July 2011.",
     "our_problem": "19_cirRrec",
     "id": "cirRrec_19",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -234,7 +234,7 @@
     "container_shape": "rectangle",
     "best_value": 2.305,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.305+ Found by David W. Cantrell in July 2011.",
     "our_problem": "20_cirRrec",
     "id": "cirRrec_20",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -246,7 +246,7 @@
     "container_shape": "rectangle",
     "best_value": 2.365,
     "status": "best_known",
-    "source_note": "Found by Timo Berthold et al in January 2026.",
+    "source_note": "Σ r = 2.365+ Found by Timo Berthold et al in January 2026.",
     "our_problem": "21_cirRrec",
     "id": "cirRrec_21",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -258,7 +258,7 @@
     "container_shape": "rectangle",
     "best_value": 2.425,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.425+ Found by David W. Cantrell in July 2011.",
     "our_problem": "22_cirRrec",
     "id": "cirRrec_22",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -270,7 +270,7 @@
     "container_shape": "rectangle",
     "best_value": 2.484,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.484+ Found by David W. Cantrell in July 2011.",
     "our_problem": "23_cirRrec",
     "id": "cirRrec_23",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -282,7 +282,7 @@
     "container_shape": "rectangle",
     "best_value": 2.535,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.535+ Found by David W. Cantrell in July 2011.",
     "our_problem": "24_cirRrec",
     "id": "cirRrec_24",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -294,7 +294,7 @@
     "container_shape": "rectangle",
     "best_value": 2.592,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.592+ Found by David W. Cantrell in July 2011.",
     "our_problem": "25_cirRrec",
     "id": "cirRrec_25",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -304,9 +304,9 @@
     "N": 26,
     "inner_shape": "circle",
     "container_shape": "rectangle",
-    "best_value": 2.638,
+    "best_value": 2.63931,
     "status": "best_known",
-    "source_note": "Found by Timo Berthold et al in January 2026.",
+    "source_note": "Σ r = 2.63931+ Found by Aaden Abraham in July 2026.",
     "our_problem": "26_cirRrec",
     "id": "cirRrec_26",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -316,9 +316,9 @@
     "N": 27,
     "inner_shape": "circle",
     "container_shape": "rectangle",
-    "best_value": 2.690,
+    "best_value": 2.69,
     "status": "best_known",
-    "source_note": "Found by Timo Berthold et al in January 2026.",
+    "source_note": "Σ r = 2.690+ Found by Timo Berthold et al in January 2026.",
     "our_problem": "27_cirRrec",
     "id": "cirRrec_27",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -328,9 +328,9 @@
     "N": 28,
     "inner_shape": "circle",
     "container_shape": "rectangle",
-    "best_value": 2.740,
+    "best_value": 2.74,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.740+ Found by David W. Cantrell in July 2011.",
     "our_problem": "28_cirRrec",
     "id": "cirRrec_28",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -342,7 +342,7 @@
     "container_shape": "rectangle",
     "best_value": 2.792,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.792+ Found by David W. Cantrell in July 2011.",
     "our_problem": "29_cirRrec",
     "id": "cirRrec_29",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
@@ -354,7 +354,7 @@
     "container_shape": "rectangle",
     "best_value": 2.844,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 2.844+ Found by David W. Cantrell in July 2011.",
     "our_problem": "30_cirRrec",
     "id": "cirRrec_30",
     "source_url": "https://erich-friedman.github.io/packing/cirRrec/index.html"
