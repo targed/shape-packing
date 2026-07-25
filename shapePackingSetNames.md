@@ -6,7 +6,7 @@
 ~~Linoct~~
 ~~Linpen~~
 ~~3inpen~~
-Lintan
+~~Lintan~~
 Lintri
 cirRcir
 cirRell
