@@ -1,3 +1,4 @@
+~~boxes~~
 LinL
 Lindom
 Linhex
@@ -103,3 +104,4 @@ tricovtri
 ~~triinsqu~~
 ~~triintan~~
 ~~triintri~~
+~~3in3~~
