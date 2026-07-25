@@ -104,4 +104,5 @@ tricovtri
 ~~triinsqu~~
 ~~triintan~~
 ~~triintri~~
+~~3intan~~
 ~~3in3~~
