@@ -62,7 +62,6 @@ dominpen
 ~~octinoct~~
 ~~octinpen~~
 ~~octinsqu~~
-octinsqu
 ~~octintan~~
 ~~octintri~~
 ~~peninL~~
