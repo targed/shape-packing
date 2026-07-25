@@ -1,0 +1,64 @@
+commit	score	memory_gb	status	problem	description
+6c7eb19	1.8035	2.0	keep	5_3_in_4	baseline: 5 triangles in square, 30 attempts, time_limit=280, CIRCLE_SIDES=32
+6748b08	1.80349	2.0	keep	5_3_in_4	tune basinhopping (niter=30, T=0.2, stepsize=0.12)
+d8e38da	2.770	2.0	keep	5_4_in_4	baseline: 5 squares in square, 30 attempts
+49bfe39	2.707	2.0	keep	5_4_in_4	increase attempts to 300
+1538805	2.7071	2.0	keep	5_4_in_4	increase attempts to 2000 (marginal)
+3c7832e	1.2527	2.0	keep	5_3_in_6	baseline: 5 triangles in hexagon, 300 attempts
+035f452	1.373	0.0	discard	6_3_in_6	trivial problem (best_value=1); switch problem
+0fbdcf9	1.7320269	0.0	keep	5_4_in_6	baseline 5 squares in hexagon (Rust, 3000 attempts, 280s)
+15a6c6b	1.7319968	0.0	keep	5_4_in_6	increase RUST_ATTEMPTS to 5000; beat previous 1.7320269
+84e4225	1.7319937	0.0	keep	5_4_in_6	increase RUST_ATTEMPTS to 10000; slight improvement over 1.7319968
+78cc406	1.8031153	0.0	keep	5_3_in_4	Rust baseline 10000 attempts; beat 1.80349 + image render integrated
+0057990	1.8031153	0.0	discard	5_3_in_4	double attempts (20000) no improvement; switch problem
+4f60726	1.2558855	0.0	keep	5_3_in_6	Rust baseline 20000 attempts; image OK
+04b97f1	1.2531508	0.0	keep	5_3_in_6	RUST_ATTEMPTS=40000; beat 1.2558855
+12beec1	1.2523728	0.0	keep	5_3_in_6	RUST_ATTEMPTS=60000; beat 1.2531508
+41e05b9	0.9591986	0.0	keep	5_3_in_8	Rust 60000 baseline
+a5c8b91	1.1344415	0.0	keep	7_3_in_8	Rust 60000 baseline
+6883a97	1.1342611	0.0	keep	7_3_in_8	Rust 80000; beat 1.1344415
+17cd434	1.1208521	0.0	keep	4_3_in_6	Rust 80000 baseline
+a028f0a	1.6869273	0.0	keep	9_3_in_6	Rust 80000 baseline
+653d6fe	1.6835087	0.0	keep	9_3_in_6	Rust 100000; beat 1.6869273
+d43252b	1.6802344	0.0	keep	9_3_in_6	Rust 150000; beat 1.6835087
+59aa866	1.1444471	0.0	keep	3_3_in_5	Rust 80000 baseline
+	0.8570982	2.0	keep	4_3_in_8	baseline 4 triangles in octagon (Rust, 80000)
+dca1853	0.8583033	2.0	discard	4_3_in_8	increase RUST_ATTEMPTS to 100000; no improvement
+860ac5c	4.3856	0.0	keep	8_5_in_4	baseline (Rust, 150k attempts)
+ebcedb0	4.3851	0.0	keep	8_5_in_4	increase attempts to 250k; slight improvement
+081d785	4.3884	0.0	discard	8_5_in_4	400k attempts worse than 4.3851; discard
+6395a56	2.3983	0.0	keep	12_5_in_8	baseline (Rust, 150k attempts)
+52f5379	2.4064	0.0	discard	12_5_in_8	250k worse than 2.3983; discard
+4039eb9	1.9870	0.0	keep	5_6_in_8	baseline (Rust, 150k attempts)
+b865092	1.9870	0.0	discard	5_6_in_8	250k no improvement; discard
+9aef728	1.9405	0.0	keep	6_3_in_4	baseline (Rust, 150k attempts)
+603bee0	1.9408	0.0	discard	6_3_in_4	250k worse than 1.9405; discard
+704f9f3	1.3432	0.0	keep	6_4_in_8	baseline (Rust, 150k attempts)
+0e3e58b	1.3433	0.0	discard	6_4_in_8	250k worse than 1.3432; discard
+1f8109c	1.5749	0.0	keep	8_4_in_8	baseline (Rust, 150k attempts)
+15aab5d	1.5719	0.0	keep	8_4_in_8	250k improved vs 150k (1.5719 < 1.5749)
+0c8f28e	1.5740	0.0	discard	8_4_in_8	400k worse than 1.5719; switch problem
+c94b24e	2.4092	0.0	keep	8_6_in_8	baseline (Rust, 150k attempts)
+ebab9ed	2.4092	0.0	discard	8_6_in_8	250k no improvement; discard
+4775c0a	1.2857	0.0	keep	9_3_in_8	baseline (Rust, 150k attempts)
+b78e35b	2.1572	0.0	keep	8_4_in_6	baseline (Rust, 150k attempts)
+0c3aa2d	2.155278	0.0	keep	8_4_in_6	250k attempts improved vs 150k
+5a15b27	2.1569	0.0	discard	8_4_in_6	400k worse than 2.155278; switch problem
+f8e9942	1.7707	0.0	keep	10_3_in_6	baseline (Rust, 150k)
+7b47a50	1.7746	0.0	discard	10_3_in_6	250k worse than 1.7707; discard
+f0c90ed	1.7719	0.0	discard	10_3_in_6	400k worse than 1.7707; discard
+ba0968b	1.7729	0.0	discard	10_3_in_6	700k worse than 1.7707; discard
+767fb25	1.7718	0.0	discard	10_3_in_6	1M worse than 1.7707; 5x no improve; switch problem
+51d58a9	1.9513	0.0	keep	5_4_in_5	baseline (Rust, 150k)
+9bc6681	1.9513	0.0	discard	5_4_in_5	250k no improve; discard
+3b6f49f	1.9517	0.0	discard	5_4_in_5	400k worse than 1.9513; switch problem
+c061654	2.4218	0.0	keep	7_4_in_5	baseline (Rust, 150k)
+508656a	2.42163	0.0	keep	7_4_in_5	250k improved vs baseline
+b8cba9b	2.42195	0.0	discard	7_4_in_5	400k worse than 2.42163; discard
+	2.42163	0.0	keep	7_4_in_5	700k match but no improve; done
+ddf4712	2.1855	0.0	keep	6_4_in_5	baseline (Rust, Adam optimizer)
+469d4be	2.18552	0.0	keep	6_4_in_5	increase RUST_ATTEMPTS to 250k
+c1ac877	2.185518	0.0	keep	6_4_in_5	increase RUST_ATTEMPTS to 400k
+88187a5	2.18554	0.0	discard	6_4_in_5	baseline test with Adam optimizer
+a1ba205	1.613517	0.0	keep	6_3_in_5	baseline test with Adam optimizer
+43e2453	1.613517	0.0	discard	6_3_in_5	increase RUST_ATTEMPTS to 600k
