@@ -4,7 +4,7 @@ LinL
 Lindom
 Linhex
 Linoct
-Linpen
+~~3inpen~~
 Lintan
 Lintri
 cirRcir
