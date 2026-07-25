@@ -6,7 +6,7 @@
     "container_shape": "square",
     "best_value": 0.5,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "\u03a3 r = 1/2 = .500 Trivial.",
     "our_problem": "1_cirRsqu",
     "id": "cirRsqu_1",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -18,7 +18,7 @@
     "container_shape": "square",
     "best_value": 0.585,
     "status": "trivial",
-    "source_note": "Trivial. A continuum of solutions.",
+    "source_note": "\u03a3 r = 2 - \u221a2 = .585+ Trivial. A continuum of solutions.",
     "our_problem": "2_cirRsqu",
     "id": "cirRsqu_2",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -30,7 +30,7 @@
     "container_shape": "square",
     "best_value": 0.796,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 4 - 3/\u221a2 - \u221a(4-2\u221a2) = .796+ Found by David W. Cantrell in April 2011.",
     "our_problem": "3_cirRsqu",
     "id": "cirRsqu_3",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -42,7 +42,7 @@
     "container_shape": "square",
     "best_value": 1.006,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 6 - 2\u221a2 - 2\u221a(4-2\u221a2) = 1.006+ Found by David W. Cantrell in April 2011.",
     "our_problem": "4_cirRsqu",
     "id": "cirRsqu_4",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -54,7 +54,7 @@
     "container_shape": "square",
     "best_value": 1.103,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = (3 + \u221a2)/4 = 1.103+ Found by David W. Cantrell in April 2011.",
     "our_problem": "5_cirRsqu",
     "id": "cirRsqu_5",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -66,7 +66,7 @@
     "container_shape": "square",
     "best_value": 1.202,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 1.202+ Found by David W. Cantrell in April 2011.",
     "our_problem": "6_cirRsqu",
     "id": "cirRsqu_6",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -78,7 +78,7 @@
     "container_shape": "square",
     "best_value": 1.306,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 1.306+ Found by David W. Cantrell in April 2011.",
     "our_problem": "7_cirRsqu",
     "id": "cirRsqu_7",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -90,7 +90,7 @@
     "container_shape": "square",
     "best_value": 1.423,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 6\u221a2 - 4 - 4\u221a(2-\u221a2) = 1.423+ Found by David W. Cantrell in April 2011.",
     "our_problem": "8_cirRsqu",
     "id": "cirRsqu_8",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -102,7 +102,7 @@
     "container_shape": "square",
     "best_value": 1.524,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 1.524+ Found by David W. Cantrell in April 2011.",
     "our_problem": "9_cirRsqu",
     "id": "cirRsqu_9",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -114,7 +114,7 @@
     "container_shape": "square",
     "best_value": 1.591,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 1.591+ Found by David W. Cantrell in April 2011.",
     "our_problem": "10_cirRsqu",
     "id": "cirRsqu_10",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -124,9 +124,9 @@
     "N": 11,
     "inner_shape": "circle",
     "container_shape": "square",
-    "best_value": 1.680,
+    "best_value": 1.68,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 1.680+ Found by David W. Cantrell in April 2011.",
     "our_problem": "11_cirRsqu",
     "id": "cirRsqu_11",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -138,7 +138,7 @@
     "container_shape": "square",
     "best_value": 1.765,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 1.765+ Found by David W. Cantrell in April 2011.",
     "our_problem": "12_cirRsqu",
     "id": "cirRsqu_12",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -150,7 +150,7 @@
     "container_shape": "square",
     "best_value": 1.829,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 1.829+ Found by David W. Cantrell in April 2011.",
     "our_problem": "13_cirRsqu",
     "id": "cirRsqu_13",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -162,7 +162,7 @@
     "container_shape": "square",
     "best_value": 1.905,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 1.905+ Found by David W. Cantrell in April 2011.",
     "our_problem": "14_cirRsqu",
     "id": "cirRsqu_14",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -172,9 +172,9 @@
     "N": 15,
     "inner_shape": "circle",
     "container_shape": "square",
-    "best_value": 1.980,
+    "best_value": 1.98,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 1.980+ Found by David W. Cantrell in April 2011.",
     "our_problem": "15_cirRsqu",
     "id": "cirRsqu_15",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -186,7 +186,7 @@
     "container_shape": "square",
     "best_value": 2.053,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 2.053+ Found by David W. Cantrell in April 2011.",
     "our_problem": "16_cirRsqu",
     "id": "cirRsqu_16",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -198,7 +198,7 @@
     "container_shape": "square",
     "best_value": 2.111,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 2.111+ Found by David W. Cantrell in April 2011.",
     "our_problem": "17_cirRsqu",
     "id": "cirRsqu_17",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -210,7 +210,7 @@
     "container_shape": "square",
     "best_value": 2.178,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 2.178+ Found by David W. Cantrell in April 2011.",
     "our_problem": "18_cirRsqu",
     "id": "cirRsqu_18",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -222,7 +222,7 @@
     "container_shape": "square",
     "best_value": 2.236,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in April 2011.",
+    "source_note": "\u03a3 r = 2.236+ Found by David W. Cantrell in April 2011.",
     "our_problem": "19_cirRsqu",
     "id": "cirRsqu_19",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -234,7 +234,7 @@
     "container_shape": "square",
     "best_value": 2.301,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "\u03a3 r = 2.301+ Found by David W. Cantrell in July 2011.",
     "our_problem": "20_cirRsqu",
     "id": "cirRsqu_20",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -246,7 +246,7 @@
     "container_shape": "square",
     "best_value": 2.362,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "\u03a3 r = 2.362+ Found by David W. Cantrell in July 2011.",
     "our_problem": "21_cirRsqu",
     "id": "cirRsqu_21",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -256,9 +256,9 @@
     "N": 22,
     "inner_shape": "circle",
     "container_shape": "square",
-    "best_value": 2.420,
+    "best_value": 2.42,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "\u03a3 r = 2.420+ Found by David W. Cantrell in July 2011.",
     "our_problem": "22_cirRsqu",
     "id": "cirRsqu_22",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -270,7 +270,7 @@
     "container_shape": "square",
     "best_value": 2.478,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "\u03a3 r = 2.478+ Found by David W. Cantrell in July 2011.",
     "our_problem": "23_cirRsqu",
     "id": "cirRsqu_23",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -280,9 +280,9 @@
     "N": 24,
     "inner_shape": "circle",
     "container_shape": "square",
-    "best_value": 2.530,
+    "best_value": 2.53,
     "status": "best_known",
-    "source_note": "Found by Eckard Specht in January 2012.",
+    "source_note": "\u03a3 r = 2.530+ Found by Eckard Specht in January 2012.",
     "our_problem": "24_cirRsqu",
     "id": "cirRsqu_24",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -294,7 +294,7 @@
     "container_shape": "square",
     "best_value": 2.587,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in January 2012.",
+    "source_note": "\u03a3 r = 2.587+ Found by David W. Cantrell in January 2012.",
     "our_problem": "25_cirRsqu",
     "id": "cirRsqu_25",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -304,9 +304,9 @@
     "N": 26,
     "inner_shape": "circle",
     "container_shape": "square",
-    "best_value": 2.634,
+    "best_value": 2.63598,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "\u03a3 r = 2.63598+ Found by Haowei Lin in July 2026.",
     "our_problem": "26_cirRsqu",
     "id": "cirRsqu_26",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -318,7 +318,7 @@
     "container_shape": "square",
     "best_value": 2.685,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in January 2012.",
+    "source_note": "\u03a3 r = 2.685+ Found by David W. Cantrell in January 2012.",
     "our_problem": "27_cirRsqu",
     "id": "cirRsqu_27",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -330,7 +330,7 @@
     "container_shape": "square",
     "best_value": 2.737,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "\u03a3 r = 2.737+ Found by David W. Cantrell in July 2011.",
     "our_problem": "28_cirRsqu",
     "id": "cirRsqu_28",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -340,9 +340,9 @@
     "N": 29,
     "inner_shape": "circle",
     "container_shape": "square",
-    "best_value": 2.790,
+    "best_value": 2.79,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "\u03a3 r = 2.790+ Found by David W. Cantrell in July 2011.",
     "our_problem": "29_cirRsqu",
     "id": "cirRsqu_29",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -354,7 +354,7 @@
     "container_shape": "square",
     "best_value": 2.842,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "\u03a3 r = 2.842+ Found by David W. Cantrell in July 2011.",
     "our_problem": "30_cirRsqu",
     "id": "cirRsqu_30",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -366,7 +366,7 @@
     "container_shape": "square",
     "best_value": 2.889,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "\u03a3 r = 2.889+ Found by David W. Cantrell in July 2011.",
     "our_problem": "31_cirRsqu",
     "id": "cirRsqu_31",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
@@ -378,9 +378,105 @@
     "container_shape": "square",
     "best_value": 2.939,
     "status": "best_known",
-    "source_note": "Found by Timo Berthold et al in January 2026.",
+    "source_note": "\u03a3 r = 2.939+ Found by Timo Berthold et al in January 2026.",
     "our_problem": "32_cirRsqu",
     "id": "cirRsqu_32",
+    "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
+  },
+  {
+    "problem_family": "cirRsqu",
+    "N": 33,
+    "inner_shape": "circle",
+    "container_shape": "square",
+    "best_value": 2.98728,
+    "status": "best_known",
+    "source_note": "\u03a3 r = 2.98728+ Found by Haowei Lin in July 2026.",
+    "our_problem": "33_cirRsqu",
+    "id": "cirRsqu_33",
+    "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
+  },
+  {
+    "problem_family": "cirRsqu",
+    "N": 34,
+    "inner_shape": "circle",
+    "container_shape": "square",
+    "best_value": 3.02979,
+    "status": "best_known",
+    "source_note": "\u03a3 r = 3.02979+ Found by Haowei Lin in July 2026.",
+    "our_problem": "34_cirRsqu",
+    "id": "cirRsqu_34",
+    "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
+  },
+  {
+    "problem_family": "cirRsqu",
+    "N": 35,
+    "inner_shape": "circle",
+    "container_shape": "square",
+    "best_value": 3.07403,
+    "status": "best_known",
+    "source_note": "\u03a3 r = 3.07403+ Found by Haowei Lin in July 2026.",
+    "our_problem": "35_cirRsqu",
+    "id": "cirRsqu_35",
+    "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
+  },
+  {
+    "problem_family": "cirRsqu",
+    "N": 36,
+    "inner_shape": "circle",
+    "container_shape": "square",
+    "best_value": 3.12175,
+    "status": "best_known",
+    "source_note": "\u03a3 r = 3.12175+ Found by Haowei Lin in July 2026.",
+    "our_problem": "36_cirRsqu",
+    "id": "cirRsqu_36",
+    "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
+  },
+  {
+    "problem_family": "cirRsqu",
+    "N": 37,
+    "inner_shape": "circle",
+    "container_shape": "square",
+    "best_value": 3.16149,
+    "status": "best_known",
+    "source_note": "\u03a3 r = 3.16149+ Found by Haowei Lin in July 2026.",
+    "our_problem": "37_cirRsqu",
+    "id": "cirRsqu_37",
+    "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
+  },
+  {
+    "problem_family": "cirRsqu",
+    "N": 38,
+    "inner_shape": "circle",
+    "container_shape": "square",
+    "best_value": 3.20594,
+    "status": "best_known",
+    "source_note": "\u03a3 r = 3.20594+ Found by Haowei Lin in July 2026.",
+    "our_problem": "38_cirRsqu",
+    "id": "cirRsqu_38",
+    "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
+  },
+  {
+    "problem_family": "cirRsqu",
+    "N": 39,
+    "inner_shape": "circle",
+    "container_shape": "square",
+    "best_value": 3.24811,
+    "status": "best_known",
+    "source_note": "\u03a3 r = 3.24811+ Found by Haowei Lin in July 2026.",
+    "our_problem": "39_cirRsqu",
+    "id": "cirRsqu_39",
+    "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
+  },
+  {
+    "problem_family": "cirRsqu",
+    "N": 40,
+    "inner_shape": "circle",
+    "container_shape": "square",
+    "best_value": 3.29239,
+    "status": "best_known",
+    "source_note": "\u03a3 r = 3.29239+ Found by Haowei Lin in July 2026.",
+    "our_problem": "40_cirRsqu",
+    "id": "cirRsqu_40",
     "source_url": "https://erich-friedman.github.io/packing/cirRsqu/index.html"
   }
 ]

@@ -11,7 +11,7 @@
 ~~cirRcir~~
 ~~cirRell~~
 ~~cirRrec~~
-cirRsqu
+~~cirRsqu~~
 cirRtri
 ~~circovsqu~~
 circovtri
