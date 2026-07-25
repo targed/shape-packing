@@ -14,7 +14,9 @@ cirRtri
 circovtri
 ~~circotri~~
 ~~circohex~~
+~~circooct~~
 ~~circocir~~
+~~circopen~~
 ~~circotan~~
 ~~cirincir~~
 cirinel
