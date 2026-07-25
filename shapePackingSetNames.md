@@ -12,7 +12,7 @@
 ~~cirRell~~
 ~~cirRrec~~
 ~~cirRsqu~~
-cirRtri
+~~cirRtri~~
 ~~circovsqu~~
 circovtri
 ~~circotri~~

@@ -6,7 +6,7 @@
     "container_shape": "triangle",
     "best_value": 0.288,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "Σ r = √3/6 = .288+ Trivial.",
     "our_problem": "1_cirRtri",
     "id": "cirRtri_1",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -18,7 +18,7 @@
     "container_shape": "triangle",
     "best_value": 0.384,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "Σ r = 2√3/9 = .384+ Trivial.",
     "our_problem": "2_cirRtri",
     "id": "cirRtri_2",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -30,7 +30,7 @@
     "container_shape": "triangle",
     "best_value": 0.549,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "Σ r = (3√3 - 3) / 4 = .549+ Trivial.",
     "our_problem": "3_cirRtri",
     "id": "cirRtri_3",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -42,7 +42,7 @@
     "container_shape": "triangle",
     "best_value": 0.617,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = .617+ Found by David W. Cantrell in June 2011.",
     "our_problem": "4_cirRtri",
     "id": "cirRtri_4",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -54,7 +54,7 @@
     "container_shape": "triangle",
     "best_value": 0.693,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = .693+ Found by David W. Cantrell in June 2011.",
     "our_problem": "5_cirRtri",
     "id": "cirRtri_5",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -66,7 +66,7 @@
     "container_shape": "triangle",
     "best_value": 0.803,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "Σ r = 6 - 3√3 = .803+ Trivial.",
     "our_problem": "6_cirRtri",
     "id": "cirRtri_6",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -78,7 +78,7 @@
     "container_shape": "triangle",
     "best_value": 0.855,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = .855+ Found by David W. Cantrell in June 2011.",
     "our_problem": "7_cirRtri",
     "id": "cirRtri_7",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -90,7 +90,7 @@
     "container_shape": "triangle",
     "best_value": 0.912,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = .912+ Found by David W. Cantrell in June 2011.",
     "our_problem": "8_cirRtri",
     "id": "cirRtri_8",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -102,7 +102,7 @@
     "container_shape": "triangle",
     "best_value": 0.976,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = .976+ Found by David W. Cantrell in June 2011.",
     "our_problem": "9_cirRtri",
     "id": "cirRtri_9",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -114,7 +114,7 @@
     "container_shape": "triangle",
     "best_value": 1.056,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "Σ r = (15 - 5√3) / 6 = 1.056+ Trivial.",
     "our_problem": "10_cirRtri",
     "id": "cirRtri_10",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -126,7 +126,7 @@
     "container_shape": "triangle",
     "best_value": 1.098,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = 1.098+ Found by David W. Cantrell in June 2011.",
     "our_problem": "11_cirRtri",
     "id": "cirRtri_11",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -138,7 +138,7 @@
     "container_shape": "triangle",
     "best_value": 1.143,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = 1.143+ Found by David W. Cantrell in June 2011.",
     "our_problem": "12_cirRtri",
     "id": "cirRtri_12",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -150,7 +150,7 @@
     "container_shape": "triangle",
     "best_value": 1.191,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = 1.191+ Found by David W. Cantrell in June 2011.",
     "our_problem": "13_cirRtri",
     "id": "cirRtri_13",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -162,7 +162,7 @@
     "container_shape": "triangle",
     "best_value": 1.243,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = 1.243+ Found by David W. Cantrell in June 2011.",
     "our_problem": "14_cirRtri",
     "id": "cirRtri_14",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -174,7 +174,7 @@
     "container_shape": "triangle",
     "best_value": 1.308,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "Σ r = (60 - 15√3) / 26 = 1.308+ Trivial.",
     "our_problem": "15_cirRtri",
     "id": "cirRtri_15",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -186,7 +186,7 @@
     "container_shape": "triangle",
     "best_value": 1.343,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = 1.343+ Found by David W. Cantrell in June 2011.",
     "our_problem": "16_cirRtri",
     "id": "cirRtri_16",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -198,7 +198,7 @@
     "container_shape": "triangle",
     "best_value": 1.381,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = 1.381+ Found by David W. Cantrell in June 2011.",
     "our_problem": "17_cirRtri",
     "id": "cirRtri_17",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -208,9 +208,9 @@
     "N": 18,
     "inner_shape": "circle",
     "container_shape": "triangle",
-    "best_value": 1.420,
+    "best_value": 1.42,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = 1.420+ Found by David W. Cantrell in June 2011.",
     "our_problem": "18_cirRtri",
     "id": "cirRtri_18",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -222,7 +222,7 @@
     "container_shape": "triangle",
     "best_value": 1.462,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in June 2011.",
+    "source_note": "Σ r = 1.462+ Found by David W. Cantrell in June 2011.",
     "our_problem": "19_cirRtri",
     "id": "cirRtri_19",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -234,7 +234,7 @@
     "container_shape": "triangle",
     "best_value": 1.505,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.505+ Found by David W. Cantrell in July 2011.",
     "our_problem": "20_cirRtri",
     "id": "cirRtri_20",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -246,7 +246,7 @@
     "container_shape": "triangle",
     "best_value": 1.559,
     "status": "trivial",
-    "source_note": "Trivial.",
+    "source_note": "Σ r = (105 - 21√3) / 44 = 1.559+ Trivial.",
     "our_problem": "21_cirRtri",
     "id": "cirRtri_21",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -258,7 +258,7 @@
     "container_shape": "triangle",
     "best_value": 1.589,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.589+ Found by David W. Cantrell in July 2011.",
     "our_problem": "22_cirRtri",
     "id": "cirRtri_22",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -270,7 +270,7 @@
     "container_shape": "triangle",
     "best_value": 1.622,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.622+ Found by David W. Cantrell in July 2011.",
     "our_problem": "23_cirRtri",
     "id": "cirRtri_23",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -282,7 +282,7 @@
     "container_shape": "triangle",
     "best_value": 1.655,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.655+ Found by David W. Cantrell in July 2011.",
     "our_problem": "24_cirRtri",
     "id": "cirRtri_24",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -292,9 +292,9 @@
     "N": 25,
     "inner_shape": "circle",
     "container_shape": "triangle",
-    "best_value": 1.690,
+    "best_value": 1.69,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.690+ Found by David W. Cantrell in July 2011.",
     "our_problem": "25_cirRtri",
     "id": "cirRtri_25",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -306,7 +306,7 @@
     "container_shape": "triangle",
     "best_value": 1.727,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.727+ Found by David W. Cantrell in July 2011.",
     "our_problem": "26_cirRtri",
     "id": "cirRtri_26",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
@@ -316,11 +316,47 @@
     "N": 27,
     "inner_shape": "circle",
     "container_shape": "triangle",
-    "best_value": 1.763,
+    "best_value": 1.76421,
     "status": "best_known",
-    "source_note": "Found by David W. Cantrell in July 2011.",
+    "source_note": "Σ r = 1.76421+ Found by Haowei Lin in July 2026.",
     "our_problem": "27_cirRtri",
     "id": "cirRtri_27",
+    "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
+  },
+  {
+    "problem_family": "cirRtri",
+    "N": 28,
+    "inner_shape": "circle",
+    "container_shape": "triangle",
+    "best_value": 1.81066,
+    "status": "trivial",
+    "source_note": "Σ r = (168-28√3)/66 = 1.81066+ Trivial.",
+    "our_problem": "28_cirRtri",
+    "id": "cirRtri_28",
+    "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
+  },
+  {
+    "problem_family": "cirRtri",
+    "N": 29,
+    "inner_shape": "circle",
+    "container_shape": "triangle",
+    "best_value": 1.83673,
+    "status": "best_known",
+    "source_note": "Σ r = 1.83673+ Found by Jonathan Viquerat in June 2026.",
+    "our_problem": "29_cirRtri",
+    "id": "cirRtri_29",
+    "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
+  },
+  {
+    "problem_family": "cirRtri",
+    "N": 30,
+    "inner_shape": "circle",
+    "container_shape": "triangle",
+    "best_value": 1.8658,
+    "status": "best_known",
+    "source_note": "Σ r = 1.86580+ Found by Haowei Lin in July 2026.",
+    "our_problem": "30_cirRtri",
+    "id": "cirRtri_30",
     "source_url": "https://erich-friedman.github.io/packing/cirRtri/index.html"
   }
 ]
