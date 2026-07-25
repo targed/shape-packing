@@ -9,7 +9,7 @@
 ~~Lintan~~
 ~~Lintri~~
 ~~cirRcir~~
-cirRell
+~~cirRell~~
 cirRrec
 cirRsqu
 cirRtri
