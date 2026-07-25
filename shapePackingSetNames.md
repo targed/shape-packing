@@ -2,7 +2,7 @@
 ~~3insqu~~
 ~~LinL~~
 ~~Lindom~~
-Linhex
+~~Linhex~~
 Linoct
 ~~3inpen~~
 Lintan
