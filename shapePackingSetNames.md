@@ -74,7 +74,7 @@ dominpen
 ~~penintan~~
 ~~penintri~~
 ~~rigid~~
-squRcir
+~~squRcir~~
 ~~squcosqu~~
 ~~squincir~~
 ~~squindom~~
