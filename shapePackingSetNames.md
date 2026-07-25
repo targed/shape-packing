@@ -24,7 +24,7 @@
 ~~circodom~~
 ~~circoL~~
 ~~cirincir~~
-cirinel
+~~cirinel~~
 ~~cirinhex~~
 ~~cirinoct~~
 ~~cirinl~~
