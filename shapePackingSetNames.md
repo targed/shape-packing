@@ -1,6 +1,6 @@
 ~~boxes~~
 ~~3insqu~~
-LinL
+~~LinL~~
 ~~Lindom~~
 Linhex
 Linoct
