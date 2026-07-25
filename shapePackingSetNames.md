@@ -14,7 +14,7 @@
 ~~cirRsqu~~
 ~~cirRtri~~
 ~~circovsqu~~
-circovtri
+~~circovtri~~
 ~~circotri~~
 ~~circohex~~
 ~~circooct~~
