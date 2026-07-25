@@ -90,7 +90,7 @@ squRcir
 ~~taninhex~~
 ~~taninoct~~
 ~~taninpen~~
-taninsqu
+~~taninsqu~~
 ~~tanintan~~
 ~~tanintri~~
 ~~tricosqu~~
