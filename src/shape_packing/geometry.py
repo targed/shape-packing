@@ -18,7 +18,16 @@ Design goals:
 
 import math
 import numpy as np
-from numba import njit
+
+try:
+    from numba import njit
+except ImportError:
+    def njit(*args, **kwargs):
+        if len(args) == 1 and callable(args[0]):
+            return args[0]
+        def decorator(func):
+            return func
+        return decorator
 
 
 def _ensure_array(x):

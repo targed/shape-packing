@@ -212,3 +212,8 @@ auto	1.8630702536974426	0.0	discard	8_3_in_5	Auto run attempts=50
 auto	1.864683142075156	0.0	discard	8_3_in_5	Auto run attempts=50
 auto	1.8647878955649861	0.0	discard	8_3_in_5	Auto run attempts=50
 auto	1.8661277294537264	0.0	discard	8_3_in_5	Auto run attempts=5
+auto	4.154707933020684	0.0	keep	4_4_in_3	Parallel run loop
+auto	5.154752352831597	0.0	keep	7_4_in_3	Parallel run loop
+auto	1.6123349279510846	0.0	keep	6_3_in_5	Parallel run loop
+auto	1.4783979251891741	0.0	keep	3_3_in_4	Parallel run loop
+auto	2.2843323027186626	0.0	discard	12_3_in_5	Parallel run loop

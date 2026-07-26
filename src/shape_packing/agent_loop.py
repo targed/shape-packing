@@ -279,7 +279,8 @@ def choose_problem(
     history: List[ExperimentResult],
     queue_path: str = "priority_queue.json",
     prefer_different: bool = False,
-    filters: dict = None
+    filters: dict = None,
+    exclude_problems: set = None,
 ) -> str:
     queue = load_priority_queue(queue_path)
     if not queue:
@@ -314,6 +315,10 @@ def choose_problem(
         p_str = item["problem"]
         base_density = item["density"]
 
+        # Skip problems explicitly excluded (e.g. in-flight parallel jobs).
+        if exclude_problems and p_str in exclude_problems:
+            continue
+
         # Parse and basic pre-filter.
         try:
             p0 = parse_problem(p_str)
@@ -332,7 +337,6 @@ def choose_problem(
                 inner_token = p0.inner_token.upper()
                 container_token = p0.container_token.upper()
                 n = p0.N
-                print(f"Checking {p_str}: inner={inner_token} cont={container_token} vs filters {filters}")
                 
                 # Check for standard aliases
                 if inner_token == "CIR": inner_token = "CIRCLE"
@@ -421,8 +425,7 @@ def choose_problem(
                     continue
                 if filters.get("max_container_sides") is not None and (container_sides is None or container_sides > filters["max_container_sides"]):
                     continue
-            except Exception as e:
-                print(f"Error checking filter: {e}")
+            except Exception:
                 continue
 
         # Reference-based decisions.

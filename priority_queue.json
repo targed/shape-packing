@@ -1,464 +1,5 @@
 [
   {
-    "problem": "20_clinsqu",
-    "density": 0.006648199445983378,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 95.0
-  },
-  {
-    "problem": "19_clinsqu",
-    "density": 0.0073605371900826435,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 88.0
-  },
-  {
-    "problem": "18_clinsqu",
-    "density": 0.008030933967876262,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 82.0
-  },
-  {
-    "problem": "17_clinsqu",
-    "density": 0.009066666666666666,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 75.0
-  },
-  {
-    "problem": "16_clinsqu",
-    "density": 0.01008191556395715,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 69.0
-  },
-  {
-    "problem": "15_clinsqu",
-    "density": 0.011337868480725622,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 63.0
-  },
-  {
-    "problem": "14_clinsqu",
-    "density": 0.012927054478301014,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 57.0
-  },
-  {
-    "problem": "13_clinsqu",
-    "density": 0.01499423298731257,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 51.0
-  },
-  {
-    "problem": "12_clinsqu",
-    "density": 0.01701323251417769,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 46.0
-  },
-  {
-    "problem": "11_clinsqu",
-    "density": 0.01963117192147531,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 41.0
-  },
-  {
-    "problem": "10_clinsqu",
-    "density": 0.023148148148148143,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 36.0
-  },
-  {
-    "problem": "9_clinsqu",
-    "density": 0.028095733610822057,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 31.0
-  },
-  {
-    "problem": "45_squcosqu",
-    "density": 0.029522178347541648,
-    "N": 45,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 39.042
-  },
-  {
-    "problem": "44_squcosqu",
-    "density": 0.031338007622746945,
-    "N": 44,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 37.4706
-  },
-  {
-    "problem": "43_squcosqu",
-    "density": 0.03208606433994328,
-    "N": 43,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 36.608
-  },
-  {
-    "problem": "8_clinsqu",
-    "density": 0.03550295857988165,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 26.0
-  },
-  {
-    "problem": "35_squcosqu",
-    "density": 0.038256341158787795,
-    "N": 35,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 30.247
-  },
-  {
-    "problem": "34_squcosqu",
-    "density": 0.03956741146003354,
-    "N": 34,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 29.3137
-  },
-  {
-    "problem": "33_squcosqu",
-    "density": 0.042127938658616616,
-    "N": 33,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 27.988
-  },
-  {
-    "problem": "7_clinsqu",
-    "density": 0.04338842975206611,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 22.0
-  },
-  {
-    "problem": "32_squcosqu",
-    "density": 0.04352740686034045,
-    "N": 32,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 27.114
-  },
-  {
-    "problem": "31_squcosqu",
-    "density": 0.04757317502061058,
-    "N": 31,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 25.527
-  },
-  {
-    "problem": "6_clinsqu",
-    "density": 0.055555555555555546,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 18.0
-  },
-  {
-    "problem": "24_squcosqu",
-    "density": 0.05995202878464769,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 20.008
-  },
-  {
-    "problem": "23_squcosqu",
-    "density": 0.06370520536978044,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 19.001
-  },
-  {
-    "problem": "22_squcosqu",
-    "density": 0.06927212980289771,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 17.821
-  },
-  {
-    "problem": "21_squcosqu",
-    "density": 0.07279018964551125,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 16.9853
-  },
-  {
-    "problem": "5_clinsqu",
-    "density": 0.07653061224489795,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 14.0
-  },
-  {
-    "problem": "4_clinsqu",
-    "density": 0.09917355371900825,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 11.0
-  },
-  {
-    "problem": "15_squcosqu",
-    "density": 0.10761819440833656,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 11.806
-  },
-  {
-    "problem": "25_squRcir",
-    "density": 0.11822611626936398,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 8.20424
-  },
-  {
-    "problem": "24_squRcir",
-    "density": 0.11840665730250292,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 8.03235
-  },
-  {
-    "problem": "23_squRcir",
-    "density": 0.11843373533946094,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 7.86233
-  },
-  {
-    "problem": "14_squcosqu",
-    "density": 0.11870482857326974,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 10.86
-  },
-  {
-    "problem": "22_squRcir",
-    "density": 0.11910845265483887,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 7.6677
-  },
-  {
-    "problem": "21_squRcir",
-    "density": 0.1196959504254946,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 7.473
-  },
-  {
-    "problem": "20_squRcir",
-    "density": 0.12041811752673663,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 7.271
-  },
-  {
-    "problem": "19_squRcir",
-    "density": 0.12102853181467509,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 7.069
-  },
-  {
-    "problem": "18_squRcir",
-    "density": 0.12291519536478496,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 6.82745
-  },
-  {
-    "problem": "16_squRcir",
-    "density": 0.12299090791823931,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 6.435
-  },
-  {
-    "problem": "15_squRcir",
-    "density": 0.12349232037816472,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 6.218
-  },
-  {
-    "problem": "14_squRcir",
-    "density": 0.1235811236008037,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 6.005
-  },
-  {
-    "problem": "17_squRcir",
-    "density": 0.12368718477068123,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 6.61435
-  },
-  {
-    "problem": "13_squRcir",
-    "density": 0.12647404886514257,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 5.72
-  },
-  {
-    "problem": "9_squRcir",
-    "density": 0.12827530726113034,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 4.725794
-  },
-  {
-    "problem": "10_squRcir",
-    "density": 0.12886570375321985,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 4.97
-  },
-  {
-    "problem": "12_squRcir",
-    "density": 0.1289515356122305,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 5.44255
-  },
-  {
-    "problem": "11_squRcir",
-    "density": 0.13024027094036367,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 5.185
-  },
-  {
-    "problem": "8_squRcir",
-    "density": 0.13311616985033953,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 4.373757
-  },
-  {
-    "problem": "13_squcosqu",
-    "density": 0.1369599560471312,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 9.7426
-  },
-  {
-    "problem": "7_squRcir",
-    "density": 0.13776036652015744,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 4.021721
-  },
-  {
     "problem": "6_squinl",
     "density": 0.14685309788842166,
     "N": 6,
@@ -466,15 +7,6 @@
     "inner_shape": "square",
     "container_shape": "L",
     "best_value": 3.6904
-  },
-  {
-    "problem": "6_squRcir",
-    "density": 0.14761160488146144,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 3.597
   },
   {
     "problem": "4_cirinl",
@@ -504,15 +36,6 @@
     "best_value": 6.416
   },
   {
-    "problem": "5_squRcir",
-    "density": 0.15503691458154614,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 3.204
-  },
-  {
     "problem": "5_cirinl",
     "density": 0.15672668418670122,
     "N": 5,
@@ -529,15 +52,6 @@
     "inner_shape": "circle",
     "container_shape": "L",
     "best_value": 6.787
-  },
-  {
-    "problem": "4_squRcir",
-    "density": 0.15915495713077507,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 2.828427
   },
   {
     "problem": "8_cirinl",
@@ -565,15 +79,6 @@
     "inner_shape": "circle",
     "container_shape": "L",
     "best_value": 7.328201
-  },
-  {
-    "problem": "3_squRcir",
-    "density": 0.17574656078239895,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 2.331
   },
   {
     "problem": "15_cirinl",
@@ -646,15 +151,6 @@
     "inner_shape": "square",
     "container_shape": "L",
     "best_value": 5.576
-  },
-  {
-    "problem": "3_clinsqu",
-    "density": 0.18367346938775508,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 7.0
   },
   {
     "problem": "20_cirinl",
@@ -1026,24 +522,6 @@
     "best_value": 6.7071
   },
   {
-    "problem": "8_squcosqu",
-    "density": 0.23550020415277198,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 5.8284
-  },
-  {
-    "problem": "7_squcosqu",
-    "density": 0.29499067456305184,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 4.8713
-  },
-  {
     "problem": "3_3_in_circle",
     "density": 0.45528801362499627,
     "N": 3,
@@ -1143,15 +621,6 @@
     "best_value": 0.87669
   },
   {
-    "problem": "8_circovtri",
-    "density": 0.5497989749660247,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 5.649
-  },
-  {
     "problem": "3_tan_in_cir",
     "density": 0.5568258811624884,
     "N": 3,
@@ -1177,15 +646,6 @@
     "inner_shape": "octagon",
     "container_shape": "square",
     "best_value": 4.12132
-  },
-  {
-    "problem": "7_circovtri",
-    "density": 0.5737444318454976,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 5.398
   },
   {
     "problem": "4_3_in_circle",
@@ -1836,15 +1296,6 @@
     "best_value": 1.8297
   },
   {
-    "problem": "3_tricovcir",
-    "density": 0.6564526843028002,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 0.521
-  },
-  {
     "problem": "5_octindom",
     "density": 0.6565021251963064,
     "N": 5,
@@ -2385,15 +1836,6 @@
     "best_value": 1.26315
   },
   {
-    "problem": "2_tricovcir",
-    "density": 0.6801348580018182,
-    "N": 2,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 0.433
-  },
-  {
     "problem": "8_octintan",
     "density": 0.6802554549655455,
     "N": 8,
@@ -2878,15 +2320,6 @@
     "inner_shape": "6",
     "container_shape": "4",
     "best_value": 6.10469
-  },
-  {
-    "problem": "4_tricovcir",
-    "density": 0.6972244756116331,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 0.62
   },
   {
     "problem": "4_hexinoct",
@@ -6532,15 +5965,6 @@
     "inner_shape": "octagon",
     "container_shape": "triangle",
     "best_value": 17.9624
-  },
-  {
-    "problem": "5_tricovcir",
-    "density": 0.7606000764374681,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 0.724
   },
   {
     "problem": "20_squincir",
@@ -11385,15 +10809,6 @@
     "best_value": 2.9222
   },
   {
-    "problem": "7_tricovcir",
-    "density": 0.8246713470537453,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 0.892
-  },
-  {
     "problem": "20_dominoct",
     "density": 0.8250203319884156,
     "N": 20,
@@ -11572,15 +10987,6 @@
     "inner_shape": "domino",
     "container_shape": "pentagon",
     "best_value": 5.30159
-  },
-  {
-    "problem": "9_tricovcir",
-    "density": 0.8272287465763831,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.013
   },
   {
     "problem": "10_taninpen",
@@ -12870,15 +12276,6 @@
     "best_value": 1.65076
   },
   {
-    "problem": "12_tricovcir",
-    "density": 0.8475618405159742,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.184
-  },
-  {
     "problem": "26_squinpen",
     "density": 0.8479901125148425,
     "N": 26,
@@ -13138,15 +12535,6 @@
     "inner_shape": "3",
     "container_shape": "5",
     "best_value": 2.7186
-  },
-  {
-    "problem": "8_tricovcir",
-    "density": 0.8515434324203623,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 0.969
   },
   {
     "problem": "18_tan_in_cir",
@@ -13437,15 +12825,6 @@
     "best_value": 2.327
   },
   {
-    "problem": "10_tricovcir",
-    "density": 0.8588296458464278,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.088
-  },
-  {
     "problem": "28_3_in_4",
     "density": 0.858934592884247,
     "N": 28,
@@ -13498,15 +12877,6 @@
     "inner_shape": "L",
     "container_shape": "octagon",
     "best_value": 3.89499
-  },
-  {
-    "problem": "11_tricovcir",
-    "density": 0.8601788487480558,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.142
   },
   {
     "problem": "42_4_in_3",
@@ -13606,15 +12976,6 @@
     "inner_shape": "square",
     "container_shape": "octagon",
     "best_value": 3.02113
-  },
-  {
-    "problem": "14_tricovcir",
-    "density": 0.8623838634349033,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.29
   },
   {
     "problem": "26_3_in_tan",
@@ -14112,15 +13473,6 @@
     "best_value": 3.7746
   },
   {
-    "problem": "15_tricovcir",
-    "density": 0.8723886425337817,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.343
-  },
-  {
     "problem": "19_3_in_3",
     "density": 0.8726983041542826,
     "N": 19,
@@ -14238,15 +13590,6 @@
     "best_value": 2.98366
   },
   {
-    "problem": "18_tricovcir",
-    "density": 0.8769216092915709,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.475
-  },
-  {
     "problem": "34_triinoct",
     "density": 0.8770623385879112,
     "N": 34,
@@ -14265,24 +13608,6 @@
     "best_value": 2.82434
   },
   {
-    "problem": "17_tricovcir",
-    "density": 0.8776040483386394,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.434
-  },
-  {
-    "problem": "13_tricovcir",
-    "density": 0.8776087757071181,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.254
-  },
-  {
     "problem": "26_Linoct",
     "density": 0.8780354016928169,
     "N": 26,
@@ -14299,15 +13624,6 @@
     "inner_shape": "triangle",
     "container_shape": "octagon",
     "best_value": 1.89051
-  },
-  {
-    "problem": "16_tricovcir",
-    "density": 0.8786334328248825,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "circle",
-    "best_value": 1.392
   },
   {
     "problem": "17_tanintri",
@@ -14607,15 +13923,6 @@
     "best_value": 1.48829
   },
   {
-    "problem": "8_tricovtri",
-    "density": 0.8884445000000001,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": 2.666
-  },
-  {
     "problem": "35_3_in_5",
     "density": 0.8886517985442497,
     "N": 35,
@@ -14785,15 +14092,6 @@
     "inner_shape": "3",
     "container_shape": "3",
     "best_value": 5.5
-  },
-  {
-    "problem": "7_tricovtri",
-    "density": 0.8928571428571429,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": 2.5
   },
   {
     "problem": "44_3_in_5",
@@ -15075,15 +14373,6 @@
     "best_value": 2.71131
   },
   {
-    "problem": "6_tricovtri",
-    "density": 0.9071481666666669,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": 2.333
-  },
-  {
     "problem": "30_3_in_3",
     "density": 0.9073724007561436,
     "N": 30,
@@ -15291,15 +14580,6 @@
     "best_value": 2.75
   },
   {
-    "problem": "12_tricovtri",
-    "density": 0.9257407499999999,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": 3.333
-  },
-  {
     "problem": "48_triinhex",
     "density": 0.9271163422363063,
     "N": 48,
@@ -15381,15 +14661,6 @@
     "best_value": 3.26857
   },
   {
-    "problem": "15_tricovtri",
-    "density": 0.9375,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": 3.75
-  },
-  {
     "problem": "15_taninsqu",
     "density": 0.9382144476631672,
     "N": 15,
@@ -15424,15 +14695,6 @@
     "inner_shape": "tan",
     "container_shape": "square",
     "best_value": 3.34
-  },
-  {
-    "problem": "13_tricovtri",
-    "density": 0.9423076923076922,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": 3.5
   },
   {
     "problem": "11_taninsqu",
@@ -15514,24 +14776,6 @@
     "inner_shape": "tan",
     "container_shape": "square",
     "best_value": 3.464
-  },
-  {
-    "problem": "14_tricovtri",
-    "density": 0.9599682857142857,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": 3.666
-  },
-  {
-    "problem": "11_tricovtri",
-    "density": 0.9602272727272727,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "triangle",
-    "best_value": 3.25
   },
   {
     "problem": "12_tan_in_tan",
@@ -15660,510 +14904,6 @@
     "best_value": 1.0
   },
   {
-    "problem": "3_squcosqu",
-    "density": 1.1459461771999493,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "square",
-    "best_value": 1.618
-  },
-  {
-    "problem": "32_cirRcir",
-    "density": 1.1875391076111201,
-    "N": 32,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 5.191
-  },
-  {
-    "problem": "31_cirRcir",
-    "density": 1.1899819184166822,
-    "N": 31,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 5.104
-  },
-  {
-    "problem": "27_cirRcir",
-    "density": 1.1906523734288021,
-    "N": 27,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.762
-  },
-  {
-    "problem": "28_cirRcir",
-    "density": 1.1908406829114064,
-    "N": 28,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.849
-  },
-  {
-    "problem": "30_cirRcir",
-    "density": 1.1909317218598017,
-    "N": 30,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 5.019
-  },
-  {
-    "problem": "29_cirRcir",
-    "density": 1.1912412059698767,
-    "N": 29,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.934
-  },
-  {
-    "problem": "12_tricosqu",
-    "density": 1.1935623310986585,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 2.0865
-  },
-  {
-    "problem": "26_cirRcir",
-    "density": 1.1952431529116863,
-    "N": 26,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.664
-  },
-  {
-    "problem": "22_cirRcir",
-    "density": 1.1970594343817995,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.287
-  },
-  {
-    "problem": "19_cirRcir",
-    "density": 1.1988621410125628,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.981
-  },
-  {
-    "problem": "25_cirRcir",
-    "density": 1.2001864993805118,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.564
-  },
-  {
-    "problem": "21_cirRcir",
-    "density": 1.2013206976515496,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.181
-  },
-  {
-    "problem": "23_cirRcir",
-    "density": 1.2032823030028068,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.372
-  },
-  {
-    "problem": "24_cirRcir",
-    "density": 1.2032996884055456,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.466
-  },
-  {
-    "problem": "20_cirRcir",
-    "density": 1.2038202513384075,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.076
-  },
-  {
-    "problem": "11_tricosqu",
-    "density": 1.2123895883989397,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 1.9821
-  },
-  {
-    "problem": "18_cirRcir",
-    "density": 1.2143700455388766,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.85
-  },
-  {
-    "problem": "10_tricosqu",
-    "density": 1.216322949012191,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 1.8868
-  },
-  {
-    "problem": "17_cirRcir",
-    "density": 1.2218876007158825,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.73
-  },
-  {
-    "problem": "16_cirRcir",
-    "density": 1.227057758605682,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.611
-  },
-  {
-    "problem": "15_cirRcir",
-    "density": 1.2386048355132777,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.48
-  },
-  {
-    "problem": "14_cirRcir",
-    "density": 1.2408178372172851,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.359
-  },
-  {
-    "problem": "9_tricosqu",
-    "density": 1.241545885863334,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 1.7717
-  },
-  {
-    "problem": "8_tricosqu",
-    "density": 1.2422519684724105,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 1.6699
-  },
-  {
-    "problem": "12_cirRcir",
-    "density": 1.2462859380830607,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.103
-  },
-  {
-    "problem": "13_cirRcir",
-    "density": 1.2483760308345042,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.227
-  },
-  {
-    "problem": "11_cirRcir",
-    "density": 1.266579380156777,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 2.947
-  },
-  {
-    "problem": "8_cirRcir",
-    "density": 1.2677999107468862,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 2.512
-  },
-  {
-    "problem": "9_cirRcir",
-    "density": 1.2719769348182486,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 2.66
-  },
-  {
-    "problem": "7_cirRcir",
-    "density": 1.2860817113852587,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 2.333
-  },
-  {
-    "problem": "10_cirRcir",
-    "density": 1.2911407473819863,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 2.783
-  },
-  {
-    "problem": "7_tricosqu",
-    "density": 1.292979273145887,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 1.5311
-  },
-  {
-    "problem": "6_tricosqu",
-    "density": 1.301086269176164,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 1.4131
-  },
-  {
-    "problem": "6_cirRcir",
-    "density": 1.3476786235708993,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 2.11
-  },
-  {
-    "problem": "5_tricosqu",
-    "density": 1.396343977875425,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 1.2452
-  },
-  {
-    "problem": "22_circocir",
-    "density": 1.4114594079672007,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.948
-  },
-  {
-    "problem": "25_circocir",
-    "density": 1.430143687680416,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.181
-  },
-  {
-    "problem": "5_cirRcir",
-    "density": 1.4346825261807834,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 1.86684
-  },
-  {
-    "problem": "4_tricosqu",
-    "density": 1.436404788565118,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 1.0981
-  },
-  {
-    "problem": "23_circocir",
-    "density": 1.4375,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.0
-  },
-  {
-    "problem": "4_cirRcir",
-    "density": 1.4411526915688244,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 1.666
-  },
-  {
-    "problem": "24_circocir",
-    "density": 1.444584301606089,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 4.076
-  },
-  {
-    "problem": "21_circocir",
-    "density": 1.451236785452471,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.804
-  },
-  {
-    "problem": "19_circocir",
-    "density": 1.4619854917176598,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.605
-  },
-  {
-    "problem": "20_circocir",
-    "density": 1.4672584217698892,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.692
-  },
-  {
-    "problem": "3_tricosqu",
-    "density": 1.507782722877593,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 0.9282
-  },
-  {
-    "problem": "17_circocir",
-    "density": 1.515718761415257,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.349
-  },
-  {
-    "problem": "18_circocir",
-    "density": 1.515800195976123,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.446
-  },
-  {
-    "problem": "15_circocir",
-    "density": 1.5184569966398573,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.143
-  },
-  {
-    "problem": "16_circocir",
-    "density": 1.520401507630135,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.244
-  },
-  {
-    "problem": "14_circocir",
-    "density": 1.5411380379727608,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 3.014
-  },
-  {
-    "problem": "13_circocir",
-    "density": 1.5629779105534192,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 2.884
-  },
-  {
-    "problem": "12_circocir",
-    "density": 1.5650756498878817,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 2.769
-  },
-  {
-    "problem": "11_circocir",
-    "density": 1.5890991267033516,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "circle",
-    "best_value": 2.631
-  },
-  {
-    "problem": "2_tricosqu",
-    "density": 1.6158082379667913,
-    "N": 2,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "square",
-    "best_value": 0.7321
-  },
-  {
     "problem": "4_squindom",
     "density": 2.0000000000000004,
     "N": 4,
@@ -16173,60 +14913,6 @@
     "best_value": 1.0
   },
   {
-    "problem": "8_circovsqu",
-    "density": 5.793599900743234,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 3.841
-  },
-  {
-    "problem": "6_circovsqu",
-    "density": 5.865567636151362,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 3.347
-  },
-  {
-    "problem": "11_circovsqu",
-    "density": 6.322319555666689,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 4.705
-  },
-  {
-    "problem": "12_circovsqu",
-    "density": 6.3966096301441775,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 4.943
-  },
-  {
-    "problem": "9_circovsqu",
-    "density": 6.559724000511826,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 4.335
-  },
-  {
-    "problem": "10_circovsqu",
-    "density": 6.59568706825453,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "circle",
-    "best_value": 4.582
-  },
-  {
     "problem": "3_cirinoct",
     "density": 10.297070000160653,
     "N": 3,
@@ -16234,348 +14920,6 @@
     "inner_shape": "circle",
     "container_shape": "octagon",
     "best_value": 0.435387434219
-  },
-  {
-    "problem": "40_cirRsqu",
-    "density": 11.592772578264718,
-    "N": 40,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 3.29239
-  },
-  {
-    "problem": "36_cirRsqu",
-    "density": 11.605293616630426,
-    "N": 36,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 3.12175
-  },
-  {
-    "problem": "39_cirRsqu",
-    "density": 11.613229873171635,
-    "N": 39,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 3.24811
-  },
-  {
-    "problem": "38_cirRsqu",
-    "density": 11.615092933706181,
-    "N": 38,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 3.20594
-  },
-  {
-    "problem": "33_cirRsqu",
-    "density": 11.61748044290197,
-    "N": 33,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.98728
-  },
-  {
-    "problem": "37_cirRsqu",
-    "density": 11.629685541274673,
-    "N": 37,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 3.16149
-  },
-  {
-    "problem": "35_cirRsqu",
-    "density": 11.635946451549996,
-    "N": 35,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 3.07403
-  },
-  {
-    "problem": "34_cirRsqu",
-    "density": 11.636000575459665,
-    "N": 34,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 3.02979
-  },
-  {
-    "problem": "32_cirRsqu",
-    "density": 11.638598296341517,
-    "N": 32,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.939
-  },
-  {
-    "problem": "31_cirRsqu",
-    "density": 11.6685390199207,
-    "N": 31,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.889
-  },
-  {
-    "problem": "30_cirRsqu",
-    "density": 11.668713591851315,
-    "N": 30,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.842
-  },
-  {
-    "problem": "29_cirRsqu",
-    "density": 11.704138815547589,
-    "N": 29,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.79
-  },
-  {
-    "problem": "25_cirRsqu",
-    "density": 11.73537640624173,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.587
-  },
-  {
-    "problem": "28_cirRsqu",
-    "density": 11.742438903796483,
-    "N": 28,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.737
-  },
-  {
-    "problem": "26_cirRsqu",
-    "density": 11.755442973924085,
-    "N": 26,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.63598
-  },
-  {
-    "problem": "27_cirRsqu",
-    "density": 11.765897394924476,
-    "N": 27,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.685
-  },
-  {
-    "problem": "23_cirRsqu",
-    "density": 11.767253368393309,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.478
-  },
-  {
-    "problem": "24_cirRsqu",
-    "density": 11.779315984651383,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.53
-  },
-  {
-    "problem": "22_cirRsqu",
-    "density": 11.801625295228371,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.42
-  },
-  {
-    "problem": "21_cirRsqu",
-    "density": 11.82522412897006,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.362
-  },
-  {
-    "problem": "20_cirRsqu",
-    "density": 11.867155442269556,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.301
-  },
-  {
-    "problem": "18_cirRsqu",
-    "density": 11.92083363154381,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.178
-  },
-  {
-    "problem": "16_cirRsqu",
-    "density": 11.925921781375308,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.053
-  },
-  {
-    "problem": "19_cirRsqu",
-    "density": 11.938777961341257,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.236
-  },
-  {
-    "problem": "17_cirRsqu",
-    "density": 11.984566441920693,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 2.111
-  },
-  {
-    "problem": "15_cirRsqu",
-    "density": 12.020173911806674,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.98
-  },
-  {
-    "problem": "12_cirRsqu",
-    "density": 12.101569499178234,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.765
-  },
-  {
-    "problem": "14_cirRsqu",
-    "density": 12.119590565029753,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.905
-  },
-  {
-    "problem": "9_cirRsqu",
-    "density": 12.173695880052206,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.524
-  },
-  {
-    "problem": "13_cirRsqu",
-    "density": 12.208598572320295,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.829
-  },
-  {
-    "problem": "11_cirRsqu",
-    "density": 12.244018987205116,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.68
-  },
-  {
-    "problem": "10_cirRsqu",
-    "density": 12.411078239001489,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.591
-  },
-  {
-    "problem": "8_cirRsqu",
-    "density": 12.411665410845682,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.423
-  },
-  {
-    "problem": "4_cirRsqu",
-    "density": 12.416920558516862,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.006
-  },
-  {
-    "problem": "7_cirRsqu",
-    "density": 12.893224917349626,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.306
-  },
-  {
-    "problem": "5_cirRsqu",
-    "density": 12.91126669944819,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.103
-  },
-  {
-    "problem": "6_cirRsqu",
-    "density": 13.046444999833026,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 1.202
-  },
-  {
-    "problem": "3_cirRsqu",
-    "density": 14.874589594911392,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "square",
-    "best_value": 0.796
   },
   {
     "problem": "4_cirinoct",
@@ -16614,78 +14958,6 @@
     "best_value": 0.310945216831
   },
   {
-    "problem": "29_cirRtri",
-    "density": 62.36725009011257,
-    "N": 29,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.83673
-  },
-  {
-    "problem": "30_cirRtri",
-    "density": 62.52307278687936,
-    "N": 30,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.8658
-  },
-  {
-    "problem": "27_cirRtri",
-    "density": 62.93792809759175,
-    "N": 27,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.76421
-  },
-  {
-    "problem": "22_cirRtri",
-    "density": 63.215579438965065,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.589
-  },
-  {
-    "problem": "26_cirRtri",
-    "density": 63.24670569183353,
-    "N": 26,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.727
-  },
-  {
-    "problem": "23_cirRtri",
-    "density": 63.42717562216651,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.622
-  },
-  {
-    "problem": "25_cirRtri",
-    "density": 63.50615749568354,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.69
-  },
-  {
-    "problem": "24_cirRtri",
-    "density": 63.57179615610841,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.655
-  },
-  {
     "problem": "8_cirinoct",
     "density": 63.701607320180884,
     "N": 8,
@@ -16693,132 +14965,6 @@
     "inner_shape": "circle",
     "container_shape": "octagon",
     "best_value": 0.285852433677
-  },
-  {
-    "problem": "20_cirRtri",
-    "density": 64.06284660819965,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.505
-  },
-  {
-    "problem": "16_cirRtri",
-    "density": 64.36017169138225,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.343
-  },
-  {
-    "problem": "19_cirRtri",
-    "density": 64.49233368537398,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.462
-  },
-  {
-    "problem": "17_cirRtri",
-    "density": 64.67118233223455,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.381
-  },
-  {
-    "problem": "18_cirRtri",
-    "density": 64.76569838566934,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.42
-  },
-  {
-    "problem": "14_cirRtri",
-    "density": 65.74080459397479,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.243
-  },
-  {
-    "problem": "11_cirRtri",
-    "density": 66.19683745766066,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.098
-  },
-  {
-    "problem": "13_cirRtri",
-    "density": 66.49194944463781,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.191
-  },
-  {
-    "problem": "12_cirRtri",
-    "density": 66.64046547798071,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 1.143
-  },
-  {
-    "problem": "9_cirRtri",
-    "density": 68.54757742419694,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 0.976
-  },
-  {
-    "problem": "7_cirRtri",
-    "density": 69.4728390938177,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 0.855
-  },
-  {
-    "problem": "8_cirRtri",
-    "density": 69.78298569691509,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 0.912
-  },
-  {
-    "problem": "5_cirRtri",
-    "density": 75.53578931904981,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 0.693
-  },
-  {
-    "problem": "4_cirRtri",
-    "density": 76.23227838930853,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "triangle",
-    "best_value": 0.617
   },
   {
     "problem": "9_cirinoct",

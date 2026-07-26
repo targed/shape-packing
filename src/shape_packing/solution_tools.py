@@ -312,9 +312,13 @@ def render_solution(
     """
     Render a solution JSON to a PNG.
     """
-    import matplotlib
-    matplotlib.use("Agg", force=False)
-    import matplotlib.pyplot as plt
+    try:
+        import matplotlib
+        matplotlib.use("Agg", force=False)
+        import matplotlib.pyplot as plt
+    except ImportError:
+        print("[WARN] matplotlib is not installed. Skipping PNG rendering.")
+        return
 
     sol = load_solution(sol_path)
     data = to_plot_data(sol)

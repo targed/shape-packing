@@ -1,0 +1,7 @@
+{
+    "min_n": 3,
+    "max_n": 50,
+    "exclude_container": "circle",
+    "exclude_inner": "circle",
+    "min_inner_sides": 3
+}

@@ -20,8 +20,12 @@ def handle_suggest(args):
     if args.max_inner_sides is not None: filters["max_inner_sides"] = args.max_inner_sides
     if args.min_container_sides is not None: filters["min_container_sides"] = args.min_container_sides
     if args.max_container_sides is not None: filters["max_container_sides"] = args.max_container_sides
+
+    exclude_problems = None
+    if getattr(args, 'exclude_problems', None) is not None:
+        exclude_problems = set(args.exclude_problems.split(","))
     
-    problem = choose_problem(history, prefer_different=True, filters=filters)
+    problem = choose_problem(history, prefer_different=True, filters=filters, exclude_problems=exclude_problems)
     best_score = best.get(problem, "None")
     print(json.dumps({"problem": problem, "best_score": best_score}))
 
@@ -119,6 +123,7 @@ def main():
     suggest_parser.add_argument("--max-inner-sides", type=int)
     suggest_parser.add_argument("--min-container-sides", type=int)
     suggest_parser.add_argument("--max-container-sides", type=int)
+    suggest_parser.add_argument("--exclude-problems", type=str, help="Comma-separated list of problems to exclude")
     
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("--problem", required=True)

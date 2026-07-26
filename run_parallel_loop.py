@@ -107,26 +107,69 @@ def analyze_difficulty(problem_state):
 
 def worker_task(problem, attempts):
     print(f"[{problem}] Starting ({attempts} attempts)")
-    cmd = [sys.executable, "-m", "src.shape_packing.cli", "search", "--problem", problem, "--attempts", str(attempts)]
+    cmd = [
+        sys.executable,
+        "-m",
+        "src.shape_packing.cli",
+        "run",
+        "--problem",
+        problem,
+        "--attempts",
+        str(attempts),
+        "--no-commit",
+        "--json-out",
+    ]
     
     try:
         res = subprocess.run(cmd, capture_output=True, text=True)
     except Exception as e:
         print(f"[{problem}] Worker error: {e}")
-        return problem, False
+        return {
+            "problem": problem,
+            "success": False,
+            "error": str(e),
+            "stdout": "",
+            "stderr": "",
+        }
         
     if res.returncode == 0:
         print(f"[{problem}] Success!")
-        return problem, True
+        return {
+            "problem": problem,
+            "success": True,
+            "stdout": res.stdout,
+            "stderr": res.stderr,
+            "returncode": res.returncode,
+        }
     elif res.returncode == 42:
         print(f"[{problem}] Solution valid but NOT an improvement.")
-        return problem, False
+        return {
+            "problem": problem,
+            "success": False,
+            "stdout": res.stdout,
+            "stderr": res.stderr,
+            "returncode": res.returncode,
+        }
     else:
         print(f"[{problem}] Search failed/completed without new best.")
-        return problem, False
+        return {
+            "problem": problem,
+            "success": False,
+            "stdout": res.stdout,
+            "stderr": res.stderr,
+            "returncode": res.returncode,
+        }
 
 def process_result(result):
     """Safely process a completed worker result on the main thread."""
+    if isinstance(result, tuple) and len(result) == 2:
+        result = {
+            "problem": result[0],
+            "success": result[1],
+            "stdout": "",
+            "stderr": "",
+        }
+
     prob = result.get("problem", "unknown")
     if not result.get("success"):
         err = result.get("error", result.get("stderr", "Unknown error"))
@@ -134,8 +177,18 @@ def process_result(result):
         return
 
     try:
-        # Assume the CLI outputs a specific JSON payload on success when --json-out is passed
-        data = json.loads(result["stdout"])
+        stdout = result.get("stdout", "")
+        data = None
+        for line in reversed([line.strip() for line in stdout.splitlines() if line.strip()]):
+            try:
+                data = json.loads(line)
+                break
+            except json.JSONDecodeError:
+                continue
+
+        if data is None:
+            raise json.JSONDecodeError("No JSON payload found in worker output", stdout, 0)
+
         score = data.get("score", "unknown")
         print(f"[Main] Worker finished {prob} with score {score}")
         # Centralized logging and committing
