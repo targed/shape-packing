@@ -2,17 +2,25 @@
 #SBATCH --job-name=ShapePackOrchestrator
 #SBATCH --ntasks=1
 #SBATCH --nodes=1
-#SBATCH --time=00-00:05:00
+#SBATCH --cpus-per-task=32
+#SBATCH --time=0-00:05:00
 #SBATCH --mail-type=begin,end,fail
+#SBATCH --mail-user=ltkhg4@mst.edu
 #SBATCH --export=all
 #SBATCH --out=results/mill-%j.out
 
-# Load necessary modules (adjust versions based on Mill environment)
+# Load system modules
 module load anaconda/2023.07
 module load gcc/12.2.0
 
-# Optional: activate a virtual environment if needed
+# Load Rust environment
+source "$HOME/.cargo/env"
+
+# Navigate to repo
+cd /home/ltkhg4/Code/git/shape-packing
+
+# Activate Python environment
 source .venv/bin/activate
 
-# Execute the parallel loop
+# Execute parallel loop
 python run_parallel_loop.py
