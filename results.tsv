@@ -209,3 +209,4 @@ auto	3.284144430190815	0.0	keep	15_6_in_8	Auto run attempts=500
 604218f	3.2841715532928952	0.0	discard	15_6_in_8	Auto 15_6_in_8 attempts=2000 no improve
 d42c557	3.0724251058134984	0.0	keep	13_6_in_8	Auto 13_6_in_8 improve over 3.0974
 auto	1.8630702536974426	0.0	discard	8_3_in_5	Auto run attempts=50
+auto	1.864683142075156	0.0	discard	8_3_in_5	Auto run attempts=50
