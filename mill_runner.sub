@@ -3,7 +3,7 @@
 #SBATCH --ntasks=1
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=32
-#SBATCH --time=0-00:05:00
+#SBATCH --time=0-00:15:00
 #SBATCH --mail-type=begin,end,fail
 #SBATCH --mail-user=ltkhg4@mst.edu
 #SBATCH --export=all
@@ -16,11 +16,14 @@ module load gcc/12.2.0
 # Load Rust environment
 source "$HOME/.cargo/env"
 
-# Navigate to repo
+# Force Python output to be completely unbuffered
+export PYTHONUNBUFFERED=1
+
+# Navigate to repo directory
 cd /home/ltkhg4/Code/git/shape-packing
 
 # Activate Python environment
 source .venv/bin/activate
 
-# Execute parallel loop
-python run_parallel_loop.py
+# Execute parallel loop with -u (unbuffered output)
+python -u run_parallel_loop.py
