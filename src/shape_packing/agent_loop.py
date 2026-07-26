@@ -130,24 +130,28 @@ def append_result(path: str, result: ExperimentResult) -> None:
 # --------------- Reference utilities ---------------
 
 
-def load_packing_reference(path: str = "PACKING_REFERENCE.json") -> List[Dict[str, any]]:
+def load_packing_reference(verif_dir: str = "packingVerification") -> List[Dict[str, Any]]:
     """
-    Load PACKING_REFERENCE.json as list of dicts.
+    Load all verified JSON datasets in packingVerification as list of dicts.
     Fields per entry:
       id, problem_family, N, inner_shape, container_shape,
       best_value (float|null), status, source_url, source_note, our_problem.
     """
-    if not os.path.exists(path):
-        return []
-
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        if isinstance(data, list):
-            return data
-        return []
-    except Exception:
-        return []
+    import glob
+    rows = []
+    if not os.path.exists(verif_dir):
+        return rows
+        
+    json_files = glob.glob(os.path.join(verif_dir, "*.json"))
+    for filepath in json_files:
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            if isinstance(data, list):
+                rows.extend(data)
+        except Exception:
+            pass
+    return rows
 
 
 def is_reference_blocked(
@@ -301,7 +305,7 @@ def choose_problem(
             if f.get("include_inner") or f.get("include_container"):
                 return False
             return True
-        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE"}
+        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE", "TAN", "DOMINO", "L"}
         if token not in allowed:
             return True
         return False
@@ -318,17 +322,17 @@ def choose_problem(
         except Exception:
             continue
 
-        if is_unsupported(p0.inner_token, filters or {}):
+        if is_unsupported(p0.inner_token.upper(), filters or {}):
             continue
-        if is_unsupported(p0.container_token, filters or {}):
+        if is_unsupported(p0.container_token.upper(), filters or {}):
             continue
 
         # External filters (filter.json style).
         if filters:
             try:
                 n = p0.N
-                inner_token = p0.inner_token
-                container_token = p0.container_token
+                inner_token = p0.inner_token.upper()
+                container_token = p0.container_token.upper()
                 inner_sides = shape_token_to_sides(inner_token)
                 container_sides = shape_token_to_sides(container_token)
 
@@ -349,13 +353,13 @@ def choose_problem(
                 if filters.get("exclude_container") and container_token in filters["exclude_container"]:
                     continue
 
-                if filters.get("min_inner_sides") is not None and inner_sides < filters["min_inner_sides"]:
+                if filters.get("min_inner_sides") is not None and (inner_sides is None or inner_sides < filters["min_inner_sides"]):
                     continue
-                if filters.get("max_inner_sides") is not None and inner_sides > filters["max_inner_sides"]:
+                if filters.get("max_inner_sides") is not None and (inner_sides is None or inner_sides > filters["max_inner_sides"]):
                     continue
-                if filters.get("min_container_sides") is not None and container_sides < filters["min_container_sides"]:
+                if filters.get("min_container_sides") is not None and (container_sides is None or container_sides < filters["min_container_sides"]):
                     continue
-                if filters.get("max_container_sides") is not None and container_sides > filters["max_container_sides"]:
+                if filters.get("max_container_sides") is not None and (container_sides is None or container_sides > filters["max_container_sides"]):
                     continue
             except Exception:
                 continue
