@@ -1,0 +1,42 @@
+[Main] Starting parallel loop on 4 cores.
+[4_3_in_4] Starting (5000 attempts)
+[9_4_in_3] Starting (50000 attempts)
+[6_3_in_4] Starting (5000 attempts)
+[9_3_in_4] Starting (50000 attempts)
+[4_3_in_4] Success!
+[Main] Worker finished 4_3_in_4 with score 1.5854776416978478
+[6_3_in_4] Success!
+[9_3_in_4] Success!
+[9_4_in_3] Success!
+[Main] Worker finished 9_4_in_3 with score 5.313726164808948
+[10_3_in_5] Starting (50000 attempts)
+[Main] Worker finished 9_3_in_4 with score 2.389659079584457
+[Main] Worker finished 6_3_in_4 with score 1.948944984673332
+[4_3_in_5] Starting (5000 attempts)
+[12_6_in_4] Starting (50000 attempts)
+[13_4_in_3] Starting (50000 attempts)
+[12_6_in_4] Success!
+[Main] Worker finished 12_6_in_4 with score 6.388384628405314
+[4_3_in_5] Success!
+[10_3_in_5] Success!
+[Main] Worker finished 10_3_in_5 with score 2.0841937579647527
+[22_4_in_3] Starting (50000 attempts)
+[Main] Worker finished 4_3_in_5 with score 1.3242755807730342
+[13_4_in_3] Success!
+[10_3_in_4] Starting (50000 attempts)
+[Main] Worker finished 13_4_in_3 with score 6.464378013276984
+[7_3_in_4] Starting (5000 attempts)
+[9_3_in_5] Starting (50000 attempts)
+[7_3_in_4] Success!
+[Main] Worker finished 7_3_in_4 with score 2.105101180188391
+[10_3_in_4] Success!
+[22_4_in_3] Success!
+[Main] Worker finished 10_3_in_4 with score 2.5189218409294862
+[7_3_in_5] Starting (5000 attempts)
+[Main] Worker finished 22_4_in_3 with score 8.155007596594247
+[4_3_in_4] Starting (5000 attempts)
+[9_3_in_5] Success!
+[Main] Worker finished 9_3_in_5 with score 1.986413371159551
+[9_6_in_4] Starting (50000 attempts)
+[11_3_in_4] Starting (50000 attempts)
+slurmstepd: error: *** JOB 2330982 ON compute-34-07 CANCELLED AT 2026-07-26T13:40:14 DUE TO TIME LIMIT ***
