@@ -3846,3 +3846,4 @@ auto	3.754882873050317	0.0	discard	31_3_in_5	Parallel run loop
 auto	4.185211303247267	0.0	discard	27_3_in_4	Parallel run loop
 auto	4.4525473200192005	0.0	discard	43_3_in_5	Parallel run loop
 auto	3.421452771625277	0.0	discard	26_3_in_5	Parallel run loop
+1830ba1	3.072126	0.0	discard	13_6_in_8	Higher attempts 500k and 1e-28; no improvement

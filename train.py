@@ -32,7 +32,7 @@ from shape_packing.problems import parse_problem, shape_token_to_sides, is_speci
 # CONFIG: edit this section to choose/switch problems
 # ---------------------------------------------------------------------------
 
-CURRENT_PROBLEM = "13_6_in_8"
+CURRENT_PROBLEM = "11_6_in_6"
 
 # If "auto" is used, --auto-select will pick a target from PACKING_REFERENCE.
 AUTO_MODE = False
