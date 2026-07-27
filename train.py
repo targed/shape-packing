@@ -51,9 +51,9 @@ EXTRA_PACKER_ARGS = [
     "--attempts", "2000",
 ]
 
-RUST_ATTEMPTS = 300000
+RUST_ATTEMPTS = 500000
 RUST_TIME_LIMIT = 290
-RUST_TOLERANCE = "1e-25"
+RUST_TOLERANCE = "1e-28"
 
 # Supported tokens for auto-select (only regular polygons + circle for now).
 SUPPORTED_TOKENS = {"3", "4", "5", "6", "8", "CIRCLE"}
