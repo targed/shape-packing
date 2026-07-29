@@ -1,6 +1,7 @@
 import os
 import re
 import pandas as pd
+import numpy as np
 
 def parse_log(filepath):
     events = []
@@ -41,7 +42,31 @@ def parse_log(filepath):
 
     return pd.DataFrame(events)
 
+def extract_features(df):
+    starts = df[df['type'] == 'start'].groupby('problem').size().reset_index(name='total_starts')
+    successes = df[df['type'] == 'success'].groupby('problem').size().reset_index(name='total_successes')
+    scores = df[df['type'] == 'score'].groupby('problem')['score'].min().reset_index(name='best_score')
+    
+    agg_df = pd.merge(starts, successes, on='problem', how='left')
+    agg_df = pd.merge(agg_df, scores, on='problem', how='left')
+    agg_df['total_successes'] = agg_df['total_successes'].fillna(0)
+    agg_df['success_rate'] = agg_df['total_successes'] / agg_df['total_starts']
+    
+    def parse_prob(p):
+        parts = p.split('_')
+        if len(parts) >= 4 and parts[2] == 'in':
+            try:
+                n = int(parts[0])
+            except ValueError:
+                n = None
+            return pd.Series([n, parts[1], parts[3], f"{parts[1]}_in_{parts[3]}"])
+        return pd.Series([None, None, None, p])
+        
+    agg_df[['N', 'inner_sides', 'container_sides', 'problem_family']] = agg_df['problem'].apply(parse_prob)
+    return agg_df
+
 if __name__ == "__main__":
     df = parse_log("results/mill-2330986.out")
-    print(df.head())
-    print(f"Total events: {len(df)}")
+    agg_df = extract_features(df)
+    print(agg_df.head())
+    print(f"Total unique problems: {len(agg_df)}")
