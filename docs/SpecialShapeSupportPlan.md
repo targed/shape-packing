@@ -241,3 +241,62 @@ We are adding:
   - Chooses custom vertices and normals when a special shape token is detected.
 
 If you'd like, I can turn this into a concrete implementation plan (with exact code changes) for Domino as the first shape.
+
+---
+
+# DOMINO Implementation Documentation (Added 2026-07-29)
+
+We have successfully implemented DOMINO support across both the Python toolchain and the Rust solver engine.
+
+### Changes Made:
+1. **Geometry Pipeline (`src/shape_packing/geometry.py`)**:
+   - Introduced `get_shape_geometry(token: str)` which returns the number of sides, vertices, normals, and apothem based on the string token.
+   - For `"DOMINO"`, it returns a 1x2 rectangle with vertices `[(-1.0, -0.5), (1.0, -0.5), (1.0, 0.5), (-1.0, 0.5)]` and appropriate normals.
+
+2. **Python Solver & Tools (`src/shape_packing/optimization.py`, `polygon-packer/polygon_packer.py`, `solution_tools.py`)**:
+   - Upgraded `PackingProblem` and `Solution` dataclasses to use `inner_token` and `container_token` strings instead of integers `nsi` and `nsc`.
+   - Replaced direct calls to `regular_polygon_vertices` with `get_shape_geometry` so special shapes are routed and handled smoothly during verification and rendering.
+
+3. **Rust Solver (`packer_rs/src/main.rs`)**:
+   - Updated the CLI to parse `inner_shape` and `container_shape` as strings rather than integers.
+   - Used the string tokens to construct the appropriate vertices and normals inside `get_shape_geometry`.
+   - Updated the `serde_json_to_string` serialization to output the string tokens in the solution JSON (`inner_token` and `container_token`).
+
+4. **Agent Loop (`src/shape_packing/agent_loop.py`)**:
+   - Modified the `is_unsupported` function to allow `"DOMINO"` by default. Problems like `5_DOMINO_in_4` are now seamlessly handled by the experimentation loop.
+
+### How it works:
+When the loop or user requests a run with a `DOMINO`, the string token `"DOMINO"` propagates all the way into both the Python plotting/verification scripts and the Rust solving engine. Both ecosystems use a `get_shape_geometry` mapping function to retrieve custom arrays of vertices and normals for the SAT collision checks. By changing the `nsi` and `nsc` variables into strings everywhere, we opened the door for any arbitrary special shape without compromising the existing Numba/Rust math logic.
+
+### How to use it:
+To run a test with DOMINO, simply invoke the CLI with DOMINO as the inner shape token. For example:
+```bash
+python -m src.shape_packing.cli run --problem 5_DOMINO_in_4 --attempts 10
+```
+This is fully supported, renders appropriately via `render_solution.py`, and is verifiable via `verify_solution.py`.
+
+---
+
+# TAN Implementation Documentation (Added 2026-07-29)
+
+Following the same pattern as DOMINO, we have also successfully implemented TAN support across both the Python toolchain and the Rust solver engine.
+
+### Changes Made:
+1. **Geometry Pipeline (`src/shape_packing/geometry.py`)**:
+   - Expanded `get_shape_geometry(token: str)` to support the `"TAN"` token.
+   - For `"TAN"`, it returns a right isosceles triangle (with legs 1, 1, hypotenuse sqrt(2)) centered at its incenter. 
+   - Vertices: `[[-r, -r], [1.0 - r, -r], [-r, 1.0 - r]]` where `r = 1.0 - sqrt(2.0)/2.0`.
+   - By centering it at the incenter, the distance to all 3 edges is perfectly represented by the single `apothem = r`, making it compatible with both `inner_shape` and `container_shape` logic.
+
+2. **Rust Solver (`packer_rs/src/main.rs`)**:
+   - Updated `get_shape_geometry` in Rust to identically mirror the Python TAN definition with exact vertices, normals, and apothem derived from the inradius.
+
+3. **Agent Loop (`src/shape_packing/agent_loop.py`)**:
+   - Modified `is_unsupported` to explicitly allow `"TAN"` by default, alongside `"DOMINO"`.
+
+### How to use it:
+You can now run tests with TAN as well:
+```bash
+python -m src.shape_packing.cli run --problem 5_TAN_in_4 --attempts 10
+```
+As with DOMINO, the solutions will successfully generate, verify, and render properly!

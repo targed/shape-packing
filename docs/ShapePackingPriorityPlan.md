@@ -302,3 +302,24 @@ Summary (concise)
 If you’d like, I can:
 - Turn this into a concrete patch set for agent_loop.py (exact code changes) in a next step, or
 - Implement it directly and show the diff.
+
+## Implementation Log
+
+The proposed fixes were successfully implemented in `src/shape_packing/agent_loop.py`.
+
+### What was done
+1. **Problem Name Normalization**: Added a `normalize_problem_name` function that converts compact shortcodes (e.g., `6_squinl`, `4_cirinl`) into canonical formats (e.g., `6_4_in_L`, `4_CIRCLE_in_L`) before they are checked. This re-enables ~80% of the queued problems that were previously being ignored.
+2. **Run Count Caching**: Replaced the O(N * M) loop to calculate history counts with a single pass through history at the start of `choose_problem`, pre-computing `problem_runs` and `family_runs` dictionaries.
+3. **Configurable Soft Caps**: Added new keyword arguments to `choose_problem` to restrict monopolization by heavily run problems:
+   - `problem_cap1` (default 60): Adds a +5.0 penalty.
+   - `problem_cap2` (default 100): Adds a +15.0 penalty.
+   - `family_cap1` (default 400): Adds a +5.0 penalty to the family.
+   - `family_cap2` (default 800): Adds a +15.0 penalty to the family.
+4. **Low-run Boost**: Problems with 0 attempts get a -3.0 penalty, and <= 5 attempts get a -1.5 penalty.
+5. **Reduced Best-Value Pull**: The bonus for being far from `best_value` was reduced from -1.0 to -0.3, and is now only applied if the problem has been run fewer than 30 times.
+
+### How to use it
+These adjustments are now active by default. You can tune the distribution caps in `run_parallel_loop.py` or wherever `choose_problem()` is invoked by simply passing the optional arguments:
+```python
+choose_problem(history, problem_cap1=40, problem_cap2=80, family_cap1=200, family_cap2=500)
+```

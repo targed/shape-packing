@@ -60,6 +60,35 @@ def regular_polygon_outward_normals(sides: int):
     return np.column_stack((np.cos(nangles), np.sin(nangles)))
 
 
+def get_shape_geometry(token: str):
+    token = str(token).upper()
+    if token == "DOMINO":
+        vertices = np.array([[-1.0, -0.5], [1.0, -0.5], [1.0, 0.5], [-1.0, 0.5]])
+        vectors = np.array([[0.0, -1.0], [1.0, 0.0], [0.0, 1.0], [-1.0, 0.0]])
+        apothem = 0.5
+        sides = 4
+        return sides, vertices, vectors, apothem
+        
+    if token == "TAN":
+        r = 1.0 - np.sqrt(2.0) / 2.0
+        vertices = np.array([[-r, -r], [1.0 - r, -r], [-r, 1.0 - r]])
+        vectors = np.array([[0.0, -1.0], [np.sqrt(2.0) / 2.0, np.sqrt(2.0) / 2.0], [-1.0, 0.0]])
+        apothem = r
+        sides = 3
+        return sides, vertices, vectors, apothem
+        
+    # Fallback for numeric tokens
+    try:
+        sides = int(token)
+    except ValueError:
+        sides = 3 # default fallback
+        
+    vertices = regular_polygon_vertices(sides, 1.0)
+    vectors = regular_polygon_outward_normals(sides)
+    apothem = float(np.cos(np.pi / sides))
+    return sides, vertices, vectors, apothem
+
+
 def transform_polygon(vertices, cx: float, cy: float, a: float):
     """
     Rotate vertices by angle a about origin, then translate by (cx, cy).

@@ -21,8 +21,8 @@ from typing import Any, List, Optional, Tuple
 
 from .geometry import (
     polygon_normals,
-    regular_polygon_outward_normals,
-    regular_polygon_vertices,
+    get_shape_geometry,
+    sat_check_overlap,
     sat_check_overlap,
     transform_polygon,
 )
@@ -37,8 +37,8 @@ TOLERANCE: float = 1e-15
 class Solution:
     path: str
     N: int
-    inner_sides: int
-    container_sides: int
+    inner_token: str
+    container_token: str
     S: float
     final_metric: float
     values: List[float]
@@ -75,16 +75,16 @@ def load_solution(path: str) -> "Solution":
 
     # A) values-style
     if "values" in sol:
-        inner_sides = int(sol["inner_sides"])
-        container_sides = int(sol["container_sides"])
+        inner_token = str(sol.get("inner_token", sol.get("inner_sides", 3)))
+        container_token = str(sol.get("container_token", sol.get("container_sides", 3)))
         S = float(sol["S"])
         final_metric = float(sol["final_metric"])
         values = [float(v) for v in sol["values"]]
         return Solution(
             path=path,
             N=N,
-            inner_sides=inner_sides,
-            container_sides=container_sides,
+            inner_token=inner_token,
+            container_token=container_token,
             S=S,
             final_metric=final_metric,
             values=values,
@@ -92,8 +92,8 @@ def load_solution(path: str) -> "Solution":
 
     # B) positions-style
     if "positions" in sol:
-        nsi = int(sol["nsi"])
-        nsc = int(sol["nsc"])
+        inner_token = str(sol.get("nsi", sol.get("inner_token", "3")))
+        container_token = str(sol.get("nsc", sol.get("container_token", "3")))
         S = float(sol["S"])
         positions: List[Any] = sol["positions"]
 
@@ -104,14 +104,17 @@ def load_solution(path: str) -> "Solution":
             a = float(p["a"])
             values.extend([cx, cy, a])
 
-        # Derive final_metric using standard scale formula.
+        # derive final_metric if needed, but usually we just read it.
+        # we'll approximate with sides if missing
+        nsi, _, _, _ = get_shape_geometry(inner_token)
+        nsc, _, _, _ = get_shape_geometry(container_token)
         final_metric = S * math.sin(math.pi / nsc) / math.sin(math.pi / nsi)
 
         return Solution(
             path=path,
             N=N,
-            inner_sides=nsi,
-            container_sides=nsc,
+            inner_token=inner_token,
+            container_token=container_token,
             S=S,
             final_metric=final_metric,
             values=values,
@@ -131,7 +134,7 @@ def build_polygons(sol: "Solution") -> List[List[Tuple[float, float]]]:
     Build all inner polygons from a Solution:
     Each polygon is a list of (x, y) vertices.
     """
-    unit_inner = regular_polygon_vertices(sol.inner_sides, 1.0)
+    _, unit_inner, _, _ = get_shape_geometry(sol.inner_token)
     polygons: List[List[Tuple[float, float]]] = []
 
     for i in range(sol.N):
@@ -199,8 +202,8 @@ def verify_solution(
 
     sol = load_solution(sol_path)
     N = sol.N
-    nsi = sol.inner_sides
-    nsc = sol.container_sides
+    nsi, _, _, _ = get_shape_geometry(sol.inner_token)
+    nsc, _, unit_container_vectors, unit_container_apothem = get_shape_geometry(sol.container_token)
     S = sol.S
 
     # 1. Metric scaling verification
@@ -213,8 +216,8 @@ def verify_solution(
         )
 
     # 2. Container bounds verification
-    container_normals = regular_polygon_outward_normals(nsc)
-    container_limit = S * math.cos(math.pi / nsc)
+    container_limit = unit_container_apothem * S
+    container_normals = [(float(v[0]), float(v[1])) for v in unit_container_vectors]
 
     polygons = build_polygons(sol)
 
@@ -281,7 +284,8 @@ def to_plot_data(sol: "Solution") -> Any:
       - polygons: list of list of (x, y)
       - centers: list of (cx, cy)
     """
-    container_vertices = regular_polygon_vertices(sol.container_sides, sol.S)
+    _, unit_container, _, _ = get_shape_geometry(sol.container_token)
+    container_vertices = unit_container * sol.S
     polygons = build_polygons(sol)
 
     centers: List[Tuple[float, float]] = []

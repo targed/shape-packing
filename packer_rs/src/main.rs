@@ -15,8 +15,8 @@ use std::time::{Duration, Instant};
 #[command(name = "packer_rs", about = "Fast polygon packing solver")]
 struct Args {
     inner_polygons: usize,
-    inner_sides: usize,
-    container_sides: usize,
+    inner_shape: String,
+    container_shape: String,
 
     #[arg(long, default_value_t = 1000)]
     attempts: usize,
@@ -41,8 +41,8 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-    let nsi = args.inner_sides;
-    let nsc = args.container_sides;
+    let inner_token = args.inner_shape;
+    let container_token = args.container_shape;
     let attempts = args.attempts;
     let _penalty_tolerance = args.tolerance;
     let final_step_size = args.finalstep;
@@ -59,10 +59,8 @@ fn main() {
         });
     }
 
-    let unit_polygon_vertices = regular_polygon(1.0, nsi);
-    let unit_polygon_vectors = regular_polygon_vectors(1.0, nsi);
-    let unit_container_vectors = regular_polygon_vectors(1.0, nsc);
-    let unit_container_apothem = (PI / nsc as f64).cos();
+    let (nsi, unit_polygon_vertices, unit_polygon_vectors, _) = get_shape_geometry(&inner_token);
+    let (nsc, _, unit_container_vectors, unit_container_apothem) = get_shape_geometry(&container_token);
 
     let best_s = Arc::new(Mutex::new(f64::INFINITY));
     let best_x = Arc::new(Mutex::new(None::<Vec<f64>>));
@@ -149,7 +147,7 @@ fn main() {
 
         // Write solution JSON if requested
         if let Some(path) = &solution_file {
-            let json = serde_json_to_string(bx, *best, nsi, nsc, final_metric);
+            let json = serde_json_to_string(bx, *best, &inner_token, &container_token, final_metric);
             if let Ok(mut f) = fs::File::create(path) {
                 let _ = f.write_all(json.as_bytes());
             }
@@ -162,16 +160,16 @@ fn main() {
 fn serde_json_to_string(
     values: &[f64],
     S: f64,
-    nsi: usize,
-    nsc: usize,
+    inner_token: &str,
+    container_token: &str,
     final_metric: f64,
 ) -> String {
     let N = values.len() / 3;
     let mut buf = String::new();
     buf.push_str("{\n");
     buf.push_str(&format!("  \"S\": {},\n", S));
-    buf.push_str(&format!("  \"inner_sides\": {},\n", nsi));
-    buf.push_str(&format!("  \"container_sides\": {},\n", nsc));
+    buf.push_str(&format!("  \"inner_token\": \"{}\",\n", inner_token));
+    buf.push_str(&format!("  \"container_token\": \"{}\",\n", container_token));
     buf.push_str(&format!("  \"final_metric\": {},\n", final_metric));
     buf.push_str(&format!("  \"N\": {},\n", N));
     buf.push_str("  \"values\": [");
@@ -226,6 +224,34 @@ fn regular_polygon_vectors(radius: f64, sides: usize) -> Vec<(f64, f64)> {
             (radius * theta.cos(), radius * theta.sin())
         })
         .collect()
+}
+
+fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64)>, f64) {
+    if token.to_uppercase() == "DOMINO" {
+        let n = 4;
+        let vertices = vec![(-1.0, -0.5), (1.0, -0.5), (1.0, 0.5), (-1.0, 0.5)];
+        let vectors = vec![(0.0, -1.0), (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0)];
+        let apothem = 0.5;
+        return (n, vertices, vectors, apothem);
+    }
+    
+    if token.to_uppercase() == "TAN" {
+        let n = 3;
+        let r = 1.0 - (2.0f64).sqrt() / 2.0;
+        let vertices = vec![(-r, -r), (1.0 - r, -r), (-r, 1.0 - r)];
+        let vectors = vec![(0.0, -1.0), ((2.0f64).sqrt() / 2.0, (2.0f64).sqrt() / 2.0), (-1.0, 0.0)];
+        let apothem = r;
+        return (n, vertices, vectors, apothem);
+    }
+    
+    // Fallback to numeric parsing
+    let sides: usize = token.parse().unwrap_or(3);
+    let radius = 1.0;
+    let vertices = regular_polygon(radius, sides);
+    let vectors = regular_polygon_vectors(radius, sides);
+    let apothem = (PI / sides as f64).cos();
+    
+    (sides, vertices, vectors, apothem)
 }
 
 fn run_attempt<R: Rng>(

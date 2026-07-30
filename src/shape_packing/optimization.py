@@ -25,8 +25,7 @@ from scipy.optimize import basinhopping, minimize
 
 from .geometry import (
     bh_objective,
-    regular_polygon_outward_normals,
-    regular_polygon_vertices,
+    get_shape_geometry,
 )
 
 
@@ -37,8 +36,8 @@ class PackingProblem:
     inside a container with nsc sides.
     """
     N: int
-    nsi: int
-    nsc: int
+    inner_token: str
+    container_token: str
 
 
 @dataclass
@@ -65,13 +64,8 @@ def build_objective(problem: PackingProblem):
         geom: tuple with geometry constants
     """
     N = problem.N
-    nsi = problem.nsi
-    nsc = problem.nsc
-
-    unit_polygon_vertices = regular_polygon_vertices(nsi, 1.0)
-    unit_polygon_vectors = regular_polygon_outward_normals(nsi)
-    unit_container_vectors = regular_polygon_outward_normals(nsc)
-    unit_container_apothem = float(np.cos(np.pi / nsc))
+    nsi, unit_polygon_vertices, unit_polygon_vectors, _ = get_shape_geometry(problem.inner_token)
+    nsc, _, unit_container_vectors, unit_container_apothem = get_shape_geometry(problem.container_token)
 
     def objective(values: np.ndarray, S: float) -> float:
         return bh_objective(

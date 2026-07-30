@@ -48,8 +48,8 @@ def handle_run(args):
     from .problems import parse_problem, shape_token_to_sides
     p = parse_problem(args.problem)
     N = p.N
-    inner = shape_token_to_sides(p.inner_token)
-    container = shape_token_to_sides(p.container_token)
+    inner = p.inner_token
+    container = p.container_token
     
     import os
     from datetime import datetime

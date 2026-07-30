@@ -266,6 +266,24 @@ def has_improved(window: List[ExperimentResult]) -> bool:
 # --------------- Loop policies ---------------
 
 
+def normalize_problem_name(p_str: str) -> str:
+    import re
+    if re.match(r"^(\d+)_(.+)_(in)_(.+)$", p_str):
+        return p_str
+    m = re.match(r"^(\d+)_([a-zA-Z]+)in([a-zA-Z]+)$", p_str)
+    if m:
+        N = m.group(1)
+        inner = m.group(2).lower()
+        container = m.group(3).lower()
+        token_map = {
+            "squ": "4", "cir": "CIRCLE", "tri": "3", "pen": "5",
+            "hex": "6", "oct": "8", "l": "L", "tan": "TAN", "dom": "DOMINO"
+        }
+        c_inner = token_map.get(inner, inner.upper())
+        c_container = token_map.get(container, container.upper())
+        return f"{N}_{c_inner}_in_{c_container}"
+    return p_str
+
 def load_priority_queue(path: str = "priority_queue.json") -> List[Dict[str, float]]:
     if not os.path.exists(path):
         return []
@@ -281,6 +299,10 @@ def choose_problem(
     prefer_different: bool = False,
     filters: dict = None,
     exclude_problems: set = None,
+    problem_cap1: int = 60,
+    problem_cap2: int = 100,
+    family_cap1: int = 400,
+    family_cap2: int = 800,
 ) -> str:
     queue = load_priority_queue(queue_path)
     if not queue:
@@ -288,6 +310,15 @@ def choose_problem(
 
     recent = recent_problems(history, last=10)
     our_best = current_best_scores(history)
+    
+    problem_runs = {}
+    family_runs = {}
+    for r in history:
+        hp = normalize_problem_name(r.problem)
+        problem_runs[hp] = problem_runs.get(hp, 0) + 1
+        hf = extract_problem_family(hp)
+        family_runs[hf] = family_runs.get(hf, 0) + 1
+
     # We no longer need to load_packing_reference here because queue has the metadata directly.
     # reference_rows = load_packing_reference()
 
@@ -301,10 +332,12 @@ def choose_problem(
         if t == "DOM": t = "DOMINO"
         
         if is_special_shape(t):
+            if t == "DOMINO":
+                return False
             if f.get("include_inner") or f.get("include_container"):
                 return False
             return True
-        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE", "TAN", "DOMINO", "L", "TRIANGLE"}
+        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE", "DOMINO", "L", "TRIANGLE"}
         if t not in allowed:
             return True
         return False
@@ -312,7 +345,8 @@ def choose_problem(
     scored_candidates = []
 
     for item in queue:
-        p_str = item["problem"]
+        raw_p_str = item["problem"]
+        p_str = normalize_problem_name(raw_p_str)
         base_density = item["density"]
 
         # Skip problems explicitly excluded (e.g. in-flight parallel jobs).
@@ -441,11 +475,31 @@ def choose_problem(
             continue
 
         # Diversity / history-based penalties.
-        stagnation = sum(1 for r in recent if r == p_str)
+        stagnation = sum(1 for r in recent if normalize_problem_name(r) == p_str)
         penalty = stagnation * 0.05
 
-        total_runs = sum(1 for r in history if r.problem == p_str)
+        total_runs = problem_runs.get(p_str, 0)
         penalty += total_runs * 0.01
+
+        # Phase 2a: Per-problem run cap
+        if total_runs > problem_cap1:
+            penalty += 5.0
+        if total_runs > problem_cap2:
+            penalty += 15.0
+
+        # Phase 2b: Per-family run cap
+        family = extract_problem_family(p_str)
+        fam_runs = family_runs.get(family, 0)
+        if fam_runs > family_cap1:
+            penalty += 5.0
+        if fam_runs > family_cap2:
+            penalty += 15.0
+
+        # Phase 3: Boost low-run problems
+        if total_runs == 0:
+            penalty -= 3.0
+        elif total_runs <= 5:
+            penalty -= 1.5
 
         # If stuck: strong penalty.
         if is_stuck(history, p_str, threshold_no_improve=5):
@@ -460,10 +514,10 @@ def choose_problem(
             if rel_gap < 0.002:
                 # Near reference; add penalty.
                 penalty += 5.0
-            # If we have never reached close (gap > 10%), slight bonus by reducing effective density (making it more attractive).
-            # We do this by a small negative penalty (i.e., a bonus).
-            if rel_gap > 0.10:
-                penalty -= 1.0  # bonus: prioritize under-achieved problems
+            
+            # Phase 4: Reduce aggressive best_value-gap bonuses
+            if rel_gap > 0.10 and total_runs < 30:
+                penalty -= 0.3  # Reduced from 1.0, and conditional
 
         # Soft preference: best_known or human-found problems are interesting.
         if ref_status == "best_known":

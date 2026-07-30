@@ -29,7 +29,7 @@ for p in (_REPO_ROOT, _SCRIPT_DIR):
     if p not in sys.path:
         sys.path.insert(0, p)
 
-from geometry import regular_polygon_vertices, transform_polygon
+from geometry import get_shape_geometry, transform_polygon
 from optimization import (
     build_objective,
     OptConfig,
@@ -117,8 +117,8 @@ def main():
     # Build problem and optimization config
     problem = PackingProblem(
         N=args.inner_polygons,
-        nsi=args.inner_sides,
-        nsc=args.container_sides,
+        inner_token=str(args.inner_sides),
+        container_token=str(args.container_sides),
     )
 
     cfg = OptConfig(
@@ -137,8 +137,8 @@ def main():
 
     # Compute final metric consistent with previous behavior
     N = problem.N
-    nsi = problem.nsi
-    nsc = problem.nsc
+    nsi, unit_vertices, _, _ = get_shape_geometry(str(args.inner_sides))
+    nsc, _, _, _ = get_shape_geometry(str(args.container_sides))
     final_metric = best_S * np.sin(np.pi / nsc) / np.sin(np.pi / nsi)
     print("Final side length:", final_metric)
 
@@ -149,7 +149,6 @@ def main():
         matplotlib.use("Agg", force=True)
         import matplotlib.pyplot as plt
 
-        unit_vertices = regular_polygon_vertices(nsi, 1.0)
         container_plot = np.vstack(
             (unit_vertices * best_S, unit_vertices[0] * best_S)
         )
