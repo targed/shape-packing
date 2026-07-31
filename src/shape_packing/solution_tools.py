@@ -105,10 +105,15 @@ def load_solution(path: str) -> "Solution":
             values.extend([cx, cy, a])
 
         # derive final_metric if needed, but usually we just read it.
-        # we'll approximate with sides if missing
+        # For circle containers, final_metric = S (circumradius = Friedman's r).
+        # For polygon containers, use the standard sin-scaling formula.
         nsi, _, _, _ = get_shape_geometry(inner_token)
-        nsc, _, _, _ = get_shape_geometry(container_token)
-        final_metric = S * math.sin(math.pi / nsc) / math.sin(math.pi / nsi)
+        nsc_val, _, _, _ = get_shape_geometry(container_token)
+        container_upper = container_token.strip().upper()
+        if container_upper in ("CIRCLE", "CIR"):
+            final_metric = S
+        else:
+            final_metric = S * math.sin(math.pi / nsc_val) / math.sin(math.pi / nsi)
 
         return Solution(
             path=path,
@@ -207,7 +212,12 @@ def verify_solution(
     S = sol.S
 
     # 1. Metric scaling verification
-    calc_metric = S * math.sin(math.pi / nsc) / math.sin(math.pi / nsi)
+    container_upper = sol.container_token.strip().upper()
+    if container_upper in ("CIRCLE", "CIR"):
+        # For circle containers, final_metric = S (Friedman's r = circumradius of 32-gon).
+        calc_metric = S
+    else:
+        calc_metric = S * math.sin(math.pi / nsc) / math.sin(math.pi / nsi)
     diff = abs(calc_metric - sol.final_metric)
     if diff > 1e-10:
         errors.append(

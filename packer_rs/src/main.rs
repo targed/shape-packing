@@ -140,9 +140,15 @@ fn main() {
     let bx = best_x.lock().unwrap();
     if let Some(ref bx) = *bx {
         let best = best_s.lock().unwrap();
-        let final_metric = *best
-            * (PI / nsc as f64).sin()
-            / (PI / nsi as f64).sin();
+        // Fix 2: For circle containers (approximated as 32-gon), S is already the
+        // circumradius which directly equals Friedman's r. The polygon sin-scaling
+        // formula S*sin(π/32)/sin(π/nsi) is wrong by ~5x for circle containers.
+        let container_upper = container_token.trim().to_uppercase();
+        let final_metric = if container_upper == "CIRCLE" || container_upper == "CIR" {
+            *best  // S is Friedman's r for circle containers
+        } else {
+            *best * (PI / nsc as f64).sin() / (PI / nsi as f64).sin()
+        };
         println!("Final side length: {}", final_metric);
 
         // Write solution JSON if requested
@@ -335,9 +341,12 @@ fn run_attempt<R: Rng>(
             unit_container_apothem,
         );
 
-        let multiplier = 1.0
+        // Fix 3: Clamp multiplier so it never exceeds (1 - final_step_size) even when
+        // current_s dips below lowest_s (negative term would otherwise inflate multiplier).
+        let raw_multiplier = 1.0
             - final_step_size
             - (current_s - lowest_s) * (0.01 - final_step_size) / range_val;
+        let multiplier = raw_multiplier.min(1.0 - final_step_size);
 
         if minimized.max_violation <= 1e-15 {
             let new_x = minimized.x;
@@ -349,31 +358,40 @@ fn run_attempt<R: Rng>(
                 .collect::<Vec<_>>();
             current_s *= multiplier;
         } else {
-            let mut x_pert = x0.clone();
-            for v in x_pert.iter_mut() {
-                *v += (rng.gen::<f64>() - 0.5) * 0.12;
+            // Fix 1: Try up to 10 perturbations before giving up (was 1).
+            // Extra retries are critical for tight packings where shapes need
+            // many random nudges to escape local minima at small S.
+            let mut resolved = false;
+            for _ in 0..10 {
+                let mut x_pert = x0.clone();
+                for v in x_pert.iter_mut() {
+                    *v += (rng.gen::<f64>() - 0.5) * 0.12;
+                }
+                let bh_res = minimize_gradient(
+                    &x_pert,
+                    current_s,
+                    N,
+                    nsi,
+                    nsc,
+                    unit_polygon_vertices,
+                    unit_polygon_vectors,
+                    unit_container_vectors,
+                    unit_container_apothem,
+                );
+                if bh_res.max_violation <= 1e-15 {
+                    let new_x = bh_res.x;
+                    last_valid_x = new_x.clone();
+                    last_valid_s = current_s;
+                    x0 = new_x
+                        .iter()
+                        .map(|&v| v * multiplier)
+                        .collect::<Vec<_>>();
+                    current_s *= multiplier;
+                    resolved = true;
+                    break;
+                }
             }
-            let bh_res = minimize_gradient(
-                &x_pert,
-                current_s,
-                N,
-                nsi,
-                nsc,
-                unit_polygon_vertices,
-                unit_polygon_vectors,
-                unit_container_vectors,
-                unit_container_apothem,
-            );
-            if bh_res.max_violation <= 1e-15 {
-                let new_x = bh_res.x;
-                last_valid_x = new_x.clone();
-                last_valid_s = current_s;
-                x0 = new_x
-                    .iter()
-                    .map(|&v| v * multiplier)
-                    .collect::<Vec<_>>();
-                current_s *= multiplier;
-            } else {
+            if !resolved {
                 break;
             }
         }
@@ -413,7 +431,10 @@ fn minimize_gradient(
     let epsilon = 1e-8f64;
     let alpha = 0.02f64; // learning rate
 
-    for iter in 1..=800 {
+    // Fix 1: Increased from 800 to 3000 iterations. Empirical testing shows the
+    // convergence cliff for tight packings (especially sharp shapes like triangles)
+    // hits at S~1.6 with 800 iters but resolves consistently with 3000 iters.
+    for iter in 1..=3000 {
         let (_, grad, _) = penalty_and_gradient(
             &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, true
         );

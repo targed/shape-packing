@@ -39,14 +39,35 @@ def is_circle_token(token):
     t = str(token).strip().upper()
     return t in ("CIRCLE", "CIR", "0")
 
-def normalize_final_metric(data):
+def normalize_final_metric(data, is_circle_container=False):
     """
     Canonical metric to compare with Friedman best_value is 'final_metric'.
 
-    Priority:
+    For circle containers: always derive from S (= circumradius ≈ Friedman's r).
+    Old solution JSONs have a stale sin-scaled final_metric that is wrong by ~5x,
+    so we must compute from S and ignore the stored value for circle problems.
+
+    For polygon containers:
     - If 'final_metric' exists and is numeric/finite, use it.
-    - Otherwise, reconstruct from S and shape metadata when safe.
+    - Otherwise, reconstruct from S and shape metadata.
     """
+    S = data.get("S")
+
+    nsi_raw = (data.get("inner_sides") or data.get("nsi") or data.get("inner_token"))
+    nsc_raw = (data.get("container_sides") or data.get("nsc") or data.get("container_token"))
+
+    # For circle containers, always use S directly — override any stale final_metric.
+    # is_circle_container covers folder-name-detected circles; is_circle_token covers
+    # new JSONs that store container_token="CIRCLE".
+    if is_circle_container or is_circle_token(nsc_raw):
+        if S is None:
+            return None
+        try:
+            return float(S)
+        except (TypeError, ValueError):
+            return None
+
+    # For polygon containers, prefer the stored final_metric.
     fm = data.get("final_metric")
     if fm is not None:
         try:
@@ -57,23 +78,12 @@ def normalize_final_metric(data):
             pass
         return None
 
-    # Fallback: derive from S and sides when available and sensible.
-    S = data.get("S")
+    # Fallback: derive from S and sides when available.
     if S is None:
         return None
     try:
         S = float(S)
     except (TypeError, ValueError):
-        return None
-
-    nsi_raw = (data.get("inner_sides") or data.get("nsi"))
-    nsc_raw = (data.get("container_sides") or data.get("nsc"))
-
-    # If container is a circle, do NOT use polygon formula.
-    # For those problems, final_metric must be radius-like (π-based) and
-    # is usually already present in the JSON. If missing, we cannot safely
-    # reconstruct it from S here, so return None.
-    if is_circle_token(nsc_raw):
         return None
 
     try:
@@ -85,7 +95,6 @@ def normalize_final_metric(data):
     if nsi < 3 or nsc < 3:
         return None
 
-    # For polygon-in-polygon, use standard scale formula.
     sin_nsc = math.sin(math.pi / nsc)
     sin_nsi = math.sin(math.pi / nsi)
     if sin_nsi == 0 or sin_nsc == 0:
@@ -94,7 +103,7 @@ def normalize_final_metric(data):
     return S * sin_nsc / sin_nsi
 
 
-def find_best_solution(problem_dir):
+def find_best_solution(problem_dir, is_circle_container=False):
     best_metric = None
     best_data = None
     best_file = None
@@ -110,7 +119,7 @@ def find_best_solution(problem_dir):
             except Exception:
                 continue
 
-        metric = normalize_final_metric(data)
+        metric = normalize_final_metric(data, is_circle_container=is_circle_container)
         if metric is not None and (best_metric is None or metric < best_metric):
             best_metric = metric
             best_data = data
@@ -152,7 +161,10 @@ def main():
         if not os.path.isfile(pack_path):
             continue
 
-        best, best_metric, best_file = find_best_solution(folder_path)
+        container_is_circle = is_circle_token(container_sides)
+        best, best_metric, best_file = find_best_solution(
+            folder_path, is_circle_container=container_is_circle
+        )
         if best_metric is None:
             continue
 
@@ -165,14 +177,9 @@ def main():
         entry = next((k for k in known if k.get("N") == N), None)
         known_value = entry.get("best_value") if entry else None
 
-        # For circle containers, our final_metric is currently incomparable
-        # to Friedman's radius-based best_value, so do not claim NEW_BEST.
-        container_is_circle = is_circle_token(container_sides)
-
         # Determine comparison status
-        if container_is_circle:
-            status = "incomparable (circle)"
-        elif known_value is None:
+        # Note: circle containers now compare normally - final_metric = S ≈ Friedman's r
+        if known_value is None:
             status = "no_best_known"
         elif best_metric < known_value - 1e-6:
             status = "NEW_BEST"
