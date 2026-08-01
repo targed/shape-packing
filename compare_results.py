@@ -39,46 +39,15 @@ def is_circle_token(token):
     t = str(token).strip().upper()
     return t in ("CIRCLE", "CIR", "0")
 
+from src.shape_packing.solution_tools import compute_friedman_metric
+
 def normalize_final_metric(data, is_circle_container=False):
     """
     Canonical metric to compare with Friedman best_value is 'final_metric'.
-
-    For circle containers: always derive from S (= circumradius ≈ Friedman's r).
-    Old solution JSONs have a stale sin-scaled final_metric that is wrong by ~5x,
-    so we must compute from S and ignore the stored value for circle problems.
-
-    For polygon containers:
-    - If 'final_metric' exists and is numeric/finite, use it.
-    - Otherwise, reconstruct from S and shape metadata.
+    We recompute this directly from S and shape metadata using compute_friedman_metric
+    to ensure we override any stale/incorrect metrics stored in old JSONs.
     """
     S = data.get("S")
-
-    nsi_raw = (data.get("inner_sides") or data.get("nsi") or data.get("inner_token"))
-    nsc_raw = (data.get("container_sides") or data.get("nsc") or data.get("container_token"))
-
-    # For circle containers, always use S directly — override any stale final_metric.
-    # is_circle_container covers folder-name-detected circles; is_circle_token covers
-    # new JSONs that store container_token="CIRCLE".
-    if is_circle_container or is_circle_token(nsc_raw):
-        if S is None:
-            return None
-        try:
-            return float(S)
-        except (TypeError, ValueError):
-            return None
-
-    # For polygon containers, prefer the stored final_metric.
-    fm = data.get("final_metric")
-    if fm is not None:
-        try:
-            fm = float(fm)
-            if math.isfinite(fm):
-                return fm
-        except (TypeError, ValueError):
-            pass
-        return None
-
-    # Fallback: derive from S and sides when available.
     if S is None:
         return None
     try:
@@ -86,21 +55,13 @@ def normalize_final_metric(data, is_circle_container=False):
     except (TypeError, ValueError):
         return None
 
-    try:
-        nsi = int(nsi_raw)
-        nsc = int(nsc_raw)
-    except (TypeError, ValueError):
-        return None
+    nsi_raw = str(data.get("inner_sides") or data.get("nsi") or data.get("inner_token", "3"))
+    nsc_raw = str(data.get("container_sides") or data.get("nsc") or data.get("container_token", "3"))
 
-    if nsi < 3 or nsc < 3:
-        return None
+    if is_circle_container:
+        nsc_raw = "CIRCLE"
 
-    sin_nsc = math.sin(math.pi / nsc)
-    sin_nsi = math.sin(math.pi / nsi)
-    if sin_nsi == 0 or sin_nsc == 0:
-        return None
-
-    return S * sin_nsc / sin_nsi
+    return compute_friedman_metric(S, nsi_raw, nsc_raw)
 
 
 def find_best_solution(problem_dir, is_circle_container=False):

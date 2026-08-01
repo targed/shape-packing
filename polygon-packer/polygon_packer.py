@@ -139,7 +139,8 @@ def main():
     N = problem.N
     nsi, unit_vertices, _, _ = get_shape_geometry(str(args.inner_sides))
     nsc, _, _, _ = get_shape_geometry(str(args.container_sides))
-    final_metric = best_S * np.sin(np.pi / nsc) / np.sin(np.pi / nsi)
+    from src.shape_packing.solution_tools import compute_friedman_metric
+    final_metric = compute_friedman_metric(best_S, str(args.inner_sides), str(args.container_sides))
     print("Final side length:", final_metric)
 
     # Optional plotting (thin; uses geometry)

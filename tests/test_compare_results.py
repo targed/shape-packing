@@ -58,13 +58,12 @@ def test_compare_results_respects_circles(compare_script, project_root):
         if "CIRCLE" in line or "in_circle" in line
     ]
 
-    # Basic sanity: if we have any circle lines, none should
-    # falsely report NEW_BEST without “incomparable”.
+    # Basic sanity: circle problems are now comparable, so they should NOT contain 'incomparable'.
     for line in circle_lines:
         tokens = line.split()
-        if "NEW_BEST" in tokens:
-            assert "incomparable" in line.lower(), (
-                "Circle problem incorrectly marked NEW_BEST: " + line.strip()
+        if "incomparable" in line.lower():
+            assert False, (
+                "Circle problem incorrectly marked incomparable when it should be comparable: " + line.strip()
             )
 
 
