@@ -1,527 +1,5 @@
 [
   {
-    "problem": "6_squinl",
-    "density": 0.14685309788842166,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 3.6904
-  },
-  {
-    "problem": "4_cirinl",
-    "density": 0.1488955020708634,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 5.304
-  },
-  {
-    "problem": "7_squinl",
-    "density": 0.15229679364521495,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 3.9142
-  },
-  {
-    "problem": "6_cirinl",
-    "density": 0.15263395505108956,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 6.416
-  },
-  {
-    "problem": "5_cirinl",
-    "density": 0.15672668418670122,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 5.78
-  },
-  {
-    "problem": "7_cirinl",
-    "density": 0.15913692414413247,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 6.787
-  },
-  {
-    "problem": "8_cirinl",
-    "density": 0.1654423636442712,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 7.116
-  },
-  {
-    "problem": "13_cirinl",
-    "density": 0.1753165813273724,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 8.812
-  },
-  {
-    "problem": "9_cirinl",
-    "density": 0.17549970139118162,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 7.328201
-  },
-  {
-    "problem": "15_cirinl",
-    "density": 0.17731931300310536,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 9.412
-  },
-  {
-    "problem": "14_cirinl",
-    "density": 0.1776261040609539,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 9.085
-  },
-  {
-    "problem": "17_cirinl",
-    "density": 0.17787236006916776,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 10.00425
-  },
-  {
-    "problem": "18_cirinl",
-    "density": 0.17857972319308899,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 10.27388
-  },
-  {
-    "problem": "10_cirinl",
-    "density": 0.17997295573421399,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 7.628
-  },
-  {
-    "problem": "16_cirinl",
-    "density": 0.1804866826413233,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 9.635
-  },
-  {
-    "problem": "19_cirinl",
-    "density": 0.18168241060126863,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 10.46489
-  },
-  {
-    "problem": "17_squinl",
-    "density": 0.18225612672195596,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 5.576
-  },
-  {
-    "problem": "20_cirinl",
-    "density": 0.18581656670216037,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 10.61664
-  },
-  {
-    "problem": "13_squinl",
-    "density": 0.18587270321361415,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 4.8284
-  },
-  {
-    "problem": "11_cirinl",
-    "density": 0.1862803726839928,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 7.863703
-  },
-  {
-    "problem": "30_cirinl",
-    "density": 0.18753861649537482,
-    "N": 30,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 12.94284
-  },
-  {
-    "problem": "21_cirinl",
-    "density": 0.1876466221840984,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 10.82564
-  },
-  {
-    "problem": "14_squinl",
-    "density": 0.1876637097692945,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 4.9867
-  },
-  {
-    "problem": "28_cirinl",
-    "density": 0.18775391887625412,
-    "N": 28,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 12.4968
-  },
-  {
-    "problem": "31_cirinl",
-    "density": 0.18847448866522842,
-    "N": 31,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 13.12408
-  },
-  {
-    "problem": "33_cirinl",
-    "density": 0.18876296589078934,
-    "N": 33,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 13.53047
-  },
-  {
-    "problem": "19_squinl",
-    "density": 0.18878837133583634,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 5.792
-  },
-  {
-    "problem": "29_cirinl",
-    "density": 0.18901416885802513,
-    "N": 29,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 12.67553
-  },
-  {
-    "problem": "34_cirinl",
-    "density": 0.18903256303136476,
-    "N": 34,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 13.72415
-  },
-  {
-    "problem": "20_squinl",
-    "density": 0.18913619297232892,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 5.937
-  },
-  {
-    "problem": "32_cirinl",
-    "density": 0.18936127403768677,
-    "N": 32,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 13.30282
-  },
-  {
-    "problem": "35_cirinl",
-    "density": 0.19035693608965695,
-    "N": 35,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 13.87599
-  },
-  {
-    "problem": "18_squinl",
-    "density": 0.1906790351364338,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 5.6095
-  },
-  {
-    "problem": "25_cirinl",
-    "density": 0.1908334875050405,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 11.7127
-  },
-  {
-    "problem": "23_cirinl",
-    "density": 0.19139927752745106,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 11.21781
-  },
-  {
-    "problem": "36_cirinl",
-    "density": 0.19202625698847925,
-    "N": 36,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 14.01152
-  },
-  {
-    "problem": "24_cirinl",
-    "density": 0.19297367473461058,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 11.41224
-  },
-  {
-    "problem": "26_cirinl",
-    "density": 0.19355516206752593,
-    "N": 26,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 11.86038
-  },
-  {
-    "problem": "50_cirinl",
-    "density": 0.1937364665223233,
-    "N": 50,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 16.43969
-  },
-  {
-    "problem": "22_cirinl",
-    "density": 0.1939351258864614,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 10.89927
-  },
-  {
-    "problem": "37_cirinl",
-    "density": 0.19462769167677715,
-    "N": 37,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 14.10954
-  },
-  {
-    "problem": "49_cirinl",
-    "density": 0.1950740851382143,
-    "N": 49,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 16.21857
-  },
-  {
-    "problem": "46_cirinl",
-    "density": 0.19509027235437976,
-    "N": 46,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 15.71359
-  },
-  {
-    "problem": "47_cirinl",
-    "density": 0.1955936415054171,
-    "N": 47,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 15.86302
-  },
-  {
-    "problem": "38_cirinl",
-    "density": 0.19631490828132028,
-    "N": 38,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 14.23736
-  },
-  {
-    "problem": "48_cirinl",
-    "density": 0.19676474114546905,
-    "N": 48,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 15.98311
-  },
-  {
-    "problem": "44_cirinl",
-    "density": 0.197601713564026,
-    "N": 44,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 15.27022
-  },
-  {
-    "problem": "45_cirinl",
-    "density": 0.19776586577698557,
-    "N": 45,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 15.43636
-  },
-  {
-    "problem": "40_cirinl",
-    "density": 0.197869175435667,
-    "N": 40,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 14.54974
-  },
-  {
-    "problem": "42_cirinl",
-    "density": 0.19790015384909837,
-    "N": 42,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 14.90788
-  },
-  {
-    "problem": "43_cirinl",
-    "density": 0.19838912715425733,
-    "N": 43,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 15.06571
-  },
-  {
-    "problem": "41_cirinl",
-    "density": 0.19891727904912967,
-    "N": 41,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 14.69163
-  },
-  {
-    "problem": "39_cirinl",
-    "density": 0.1995632016164493,
-    "N": 39,
-    "status": "best_known",
-    "inner_shape": "circle",
-    "container_shape": "L",
-    "best_value": 14.30561
-  },
-  {
-    "problem": "34_squinl",
-    "density": 0.2007848241774834,
-    "N": 34,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 7.513
-  },
-  {
-    "problem": "36_squinl",
-    "density": 0.20082707282826442,
-    "N": 36,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 7.73
-  },
-  {
-    "problem": "35_squinl",
-    "density": 0.20412829054804366,
-    "N": 35,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 7.56
-  },
-  {
-    "problem": "29_squinl",
-    "density": 0.2066162807929506,
-    "N": 29,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 6.84
-  },
-  {
-    "problem": "28_squinl",
-    "density": 0.20747568807130315,
-    "N": 28,
-    "status": "best_known",
-    "inner_shape": "square",
-    "container_shape": "L",
-    "best_value": 6.7071
-  },
-  {
     "problem": "3_3_in_circle",
     "density": 0.45528801362499627,
     "N": 3,
@@ -684,15 +162,6 @@
     "best_value": 4.3854
   },
   {
-    "problem": "3_dominL",
-    "density": 0.5821004755714319,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "domino",
-    "container_shape": "L",
-    "best_value": 1.8536
-  },
-  {
     "problem": "4_penintri",
     "density": 0.5833115844266503,
     "N": 4,
@@ -729,15 +198,6 @@
     "best_value": 3.5137
   },
   {
-    "problem": "2_lincir",
-    "density": 0.5876331382793469,
-    "N": 2,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 1.8028
-  },
-  {
     "problem": "3_taninhex",
     "density": 0.5904795873009062,
     "N": 3,
@@ -745,15 +205,6 @@
     "inner_shape": "tan",
     "container_shape": "hexagon",
     "best_value": 0.98882
-  },
-  {
-    "problem": "4_peninL",
-    "density": 0.5915726057612533,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 1.9692
   },
   {
     "problem": "3_taninoct",
@@ -792,15 +243,6 @@
     "best_value": 8.6521
   },
   {
-    "problem": "4_hexinL",
-    "density": 0.5960697483997092,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 2.41072
-  },
-  {
     "problem": "4_hexindom",
     "density": 0.5981412083203329,
     "N": 4,
@@ -828,15 +270,6 @@
     "best_value": 3.74411
   },
   {
-    "problem": "3_lincir",
-    "density": 0.6011532028830864,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 2.183
-  },
-  {
     "problem": "3_dominoct",
     "density": 0.6018558411624954,
     "N": 3,
@@ -844,24 +277,6 @@
     "inner_shape": "domino",
     "container_shape": "octagon",
     "best_value": 1.4369
-  },
-  {
-    "problem": "2_Linoct",
-    "density": 0.6018558411624954,
-    "N": 2,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 1.4369
-  },
-  {
-    "problem": "3_taninL",
-    "density": 0.6019382701228325,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 0.9114
   },
   {
     "problem": "3_hexinpen",
@@ -880,15 +295,6 @@
     "inner_shape": "circle",
     "container_shape": "pentagon",
     "best_value": 3.015
-  },
-  {
-    "problem": "4_octinL",
-    "density": 0.6028946844651235,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 3.26777
   },
   {
     "problem": "3_hexindom",
@@ -952,15 +358,6 @@
     "inner_shape": "hexagon",
     "container_shape": "domino",
     "best_value": 3.2487
-  },
-  {
-    "problem": "6_hexinL",
-    "density": 0.6175473513473078,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 2.90072
   },
   {
     "problem": "4_3_in_tan",
@@ -1062,24 +459,6 @@
     "best_value": 8.7426
   },
   {
-    "problem": "3_Linoct",
-    "density": 0.6332045119170001,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 1.71572
-  },
-  {
-    "problem": "5_peninL",
-    "density": 0.6354275255017469,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 2.1243
-  },
-  {
     "problem": "3_octinoct",
     "density": 0.636153013426289,
     "N": 3,
@@ -1098,15 +477,6 @@
     "best_value": 1.5811
   },
   {
-    "problem": "7_hexinL",
-    "density": 0.6369979634599581,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 3.08493
-  },
-  {
     "problem": "7_octintri",
     "density": 0.6373796685829846,
     "N": 7,
@@ -1114,15 +484,6 @@
     "inner_shape": "octagon",
     "container_shape": "triangle",
     "best_value": 11.0663
-  },
-  {
-    "problem": "5_octinL",
-    "density": 0.6377347015825716,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 3.55228
   },
   {
     "problem": "4_domintri",
@@ -1134,15 +495,6 @@
     "best_value": 5.3819
   },
   {
-    "problem": "4_Lintri",
-    "density": 0.6388170408131839,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 6.58646
-  },
-  {
     "problem": "3_6_in_4",
     "density": 0.6395484393728036,
     "N": 3,
@@ -1150,15 +502,6 @@
     "inner_shape": "6",
     "container_shape": "4",
     "best_value": 3.491
-  },
-  {
-    "problem": "6_octinL",
-    "density": 0.6396129679315249,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 3.88561
   },
   {
     "problem": "4_4_in_tan",
@@ -1177,15 +520,6 @@
     "inner_shape": "pentagon",
     "container_shape": "tan",
     "best_value": 4.63338
-  },
-  {
-    "problem": "5_hexinL",
-    "density": 0.641503366445555,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 2.59807
   },
   {
     "problem": "3_peninoct",
@@ -1233,15 +567,6 @@
     "best_value": 9.285
   },
   {
-    "problem": "6_peninL",
-    "density": 0.6475889453180163,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 2.3051
-  },
-  {
     "problem": "3_dominpen",
     "density": 0.6483017397167643,
     "N": 3,
@@ -1249,15 +574,6 @@
     "inner_shape": "domino",
     "container_shape": "pentagon",
     "best_value": 2.31933
-  },
-  {
-    "problem": "8_hexinL",
-    "density": 0.6496767183272721,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 3.26559
   },
   {
     "problem": "4_domincir",
@@ -1386,15 +702,6 @@
     "best_value": 2.1547
   },
   {
-    "problem": "3_Lintri",
-    "density": 0.6632316210164205,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 5.59807
-  },
-  {
     "problem": "3_4_in_3",
     "density": 0.6632510015749363,
     "N": 3,
@@ -1402,15 +709,6 @@
     "inner_shape": "4",
     "container_shape": "3",
     "best_value": 3.232
-  },
-  {
-    "problem": "7_octinL",
-    "density": 0.6632996879984748,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 4.12132
   },
   {
     "problem": "9_squincir",
@@ -1492,15 +790,6 @@
     "inner_shape": "domino",
     "container_shape": "hexagon",
     "best_value": 1.5197
-  },
-  {
-    "problem": "2_Linhex",
-    "density": 0.6666664647938495,
-    "N": 2,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 1.86121
   },
   {
     "problem": "3_dominhex",
@@ -1638,15 +927,6 @@
     "best_value": 2.9889
   },
   {
-    "problem": "3_Linpen",
-    "density": 0.6716344994756585,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 2.79081
-  },
-  {
     "problem": "5_3_in_tan",
     "density": 0.6716733691512963,
     "N": 5,
@@ -1746,33 +1026,6 @@
     "best_value": 2.7017
   },
   {
-    "problem": "4_triinL",
-    "density": 0.675895025174377,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 0.92423
-  },
-  {
-    "problem": "8_octinL",
-    "density": 0.6759078754083983,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 4.36459
-  },
-  {
-    "problem": "9_hexinL",
-    "density": 0.6760852873009573,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 3.39536
-  },
-  {
     "problem": "9_cirinhex",
     "density": 0.6764491754758251,
     "N": 9,
@@ -1780,15 +1033,6 @@
     "inner_shape": "circle",
     "container_shape": "hexagon",
     "best_value": 4.011
-  },
-  {
-    "problem": "5_Lintri",
-    "density": 0.6767180592090795,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 7.1547
   },
   {
     "problem": "6_3_in_3",
@@ -2025,15 +1269,6 @@
     "best_value": 4.8284
   },
   {
-    "problem": "3_linsqu",
-    "density": 0.6864129364127647,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 3.621
-  },
-  {
     "problem": "8_4_in_tan",
     "density": 0.6864129364127648,
     "N": 8,
@@ -2050,15 +1285,6 @@
     "inner_shape": "pentagon",
     "container_shape": "tan",
     "best_value": 5.48233
-  },
-  {
-    "problem": "7_peninL",
-    "density": 0.6870125229440379,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 2.4173
   },
   {
     "problem": "4_taninhex",
@@ -2113,15 +1339,6 @@
     "inner_shape": "octagon",
     "container_shape": "circle",
     "best_value": 4.72215
-  },
-  {
-    "problem": "6_triinL",
-    "density": 0.6899342250053881,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.12037
   },
   {
     "problem": "4_triindom",
@@ -2257,15 +1474,6 @@
     "inner_shape": "square",
     "container_shape": "hexagon",
     "best_value": 2.2321
-  },
-  {
-    "problem": "3_Linhex",
-    "density": 0.6953162766979363,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 2.232051
   },
   {
     "problem": "6_domintri",
@@ -2583,15 +1791,6 @@
     "best_value": 3.59003
   },
   {
-    "problem": "5_Linhex",
-    "density": 0.7059009257331297,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 2.85988
-  },
-  {
     "problem": "9_cirinpen",
     "density": 0.7059090902076651,
     "N": 9,
@@ -2700,33 +1899,6 @@
     "best_value": 5.9658
   },
   {
-    "problem": "21_Linpen",
-    "density": 0.709919722146299,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 7.18193
-  },
-  {
-    "problem": "8_triinL",
-    "density": 0.710011007483766,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.27527
-  },
-  {
-    "problem": "8_peninL",
-    "density": 0.7102370125641762,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 2.5416
-  },
-  {
     "problem": "12_penintri",
     "density": 0.7106152483656343,
     "N": 12,
@@ -2770,15 +1942,6 @@
     "inner_shape": "circle",
     "container_shape": "tan",
     "best_value": 11.892
-  },
-  {
-    "problem": "6_lincir",
-    "density": 0.7112234017357373,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 2.8383
   },
   {
     "problem": "11_octinoct",
@@ -2862,15 +2025,6 @@
     "best_value": 2.779
   },
   {
-    "problem": "3_peninL",
-    "density": 0.7122544364860185,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 1.5542
-  },
-  {
     "problem": "7_cirinpen",
     "density": 0.7123395170990585,
     "N": 7,
@@ -2887,15 +2041,6 @@
     "inner_shape": "circle",
     "container_shape": "hexagon",
     "best_value": 4.119
-  },
-  {
-    "problem": "15_octinL",
-    "density": 0.7127327765158501,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 5.82002
   },
   {
     "problem": "11_6_in_4",
@@ -2952,15 +2097,6 @@
     "best_value": 8.536
   },
   {
-    "problem": "13_octinL",
-    "density": 0.7132444367868066,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 5.4162
-  },
-  {
     "problem": "11_hexinhex",
     "density": 0.7140249097326464,
     "N": 11,
@@ -2977,15 +2113,6 @@
     "inner_shape": "square",
     "container_shape": "circle",
     "best_value": 2.2139
-  },
-  {
-    "problem": "4_taninL",
-    "density": 0.7145693906777127,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 0.9659
   },
   {
     "problem": "11_octinhex",
@@ -3015,15 +2142,6 @@
     "best_value": 4.90581
   },
   {
-    "problem": "4_Lindom",
-    "density": 0.7148869678108891,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "domino",
-    "best_value": 2.8970563
-  },
-  {
     "problem": "4_peninsqu",
     "density": 0.7149567718512984,
     "N": 4,
@@ -3031,15 +2149,6 @@
     "inner_shape": "pentagon",
     "container_shape": "square",
     "best_value": 3.10252
-  },
-  {
-    "problem": "14_peninL",
-    "density": 0.7153856289201705,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 3.3501
   },
   {
     "problem": "7_triinhex",
@@ -3076,15 +2185,6 @@
     "inner_shape": "octagon",
     "container_shape": "triangle",
     "best_value": 6.8369
-  },
-  {
-    "problem": "15_peninL",
-    "density": 0.7157500727753144,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 3.4668
   },
   {
     "problem": "6_octinhex",
@@ -3130,15 +2230,6 @@
     "inner_shape": "pentagon",
     "container_shape": "square",
     "best_value": 4.3819
-  },
-  {
-    "problem": "13_peninL",
-    "density": 0.7173562524963812,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 3.2238
   },
   {
     "problem": "4_tanintri",
@@ -3258,15 +2349,6 @@
     "best_value": 3.3351
   },
   {
-    "problem": "9_peninL",
-    "density": 0.7193736037142056,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 2.6786
-  },
-  {
     "problem": "9_octindom",
     "density": 0.7195599691590304,
     "N": 9,
@@ -3310,15 +2392,6 @@
     "inner_shape": "domino",
     "container_shape": "circle",
     "best_value": 2.6585
-  },
-  {
-    "problem": "6_L_in_L",
-    "density": 0.7208744206722756,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "L",
-    "best_value": 2.885
   },
   {
     "problem": "7_dominoct",
@@ -3375,15 +2448,6 @@
     "best_value": 8.45706
   },
   {
-    "problem": "5_triinL",
-    "density": 0.7216878364870324,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.0
-  },
-  {
     "problem": "8_domintri",
     "density": 0.7218325964896848,
     "N": 8,
@@ -3429,15 +2493,6 @@
     "best_value": 8.57596
   },
   {
-    "problem": "17_hexinL",
-    "density": 0.7221853157392857,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 4.51508
-  },
-  {
     "problem": "9_hexintri",
     "density": 0.7225598270541598,
     "N": 9,
@@ -3454,15 +2509,6 @@
     "inner_shape": "octagon",
     "container_shape": "circle",
     "best_value": 4.1246
-  },
-  {
-    "problem": "14_hexinL",
-    "density": 0.7227420192158052,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 4.09579
   },
   {
     "problem": "17_cirintan",
@@ -3501,24 +2547,6 @@
     "best_value": 12.6568
   },
   {
-    "problem": "13_hexinL",
-    "density": 0.7234537862703635,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 3.94486
-  },
-  {
-    "problem": "5_lincir",
-    "density": 0.7236830985958126,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 2.5686
-  },
-  {
     "problem": "9_peninhex",
     "density": 0.7237133765723148,
     "N": 9,
@@ -3546,15 +2574,6 @@
     "best_value": 9.5482
   },
   {
-    "problem": "5_Linoct",
-    "density": 0.724269532449477,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 2.07106
-  },
-  {
     "problem": "16_hexintan",
     "density": 0.7243885001211602,
     "N": 16,
@@ -3562,15 +2581,6 @@
     "inner_shape": "hexagon",
     "container_shape": "tan",
     "best_value": 10.7131
-  },
-  {
-    "problem": "9_dominL",
-    "density": 0.7246371341809072,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "domino",
-    "container_shape": "L",
-    "best_value": 2.8775
   },
   {
     "problem": "11_penindom",
@@ -3609,15 +2619,6 @@
     "best_value": 9.9643
   },
   {
-    "problem": "16_peninL",
-    "density": 0.7253185915078876,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 3.5568
-  },
-  {
     "problem": "9_3_in_5",
     "density": 0.7254726997586305,
     "N": 9,
@@ -3634,15 +2635,6 @@
     "inner_shape": "pentagon",
     "container_shape": "tan",
     "best_value": 7.54006
-  },
-  {
-    "problem": "11_peninL",
-    "density": 0.7265709565896937,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 2.9466
   },
   {
     "problem": "10_hexinpen",
@@ -3663,15 +2655,6 @@
     "best_value": 3.077
   },
   {
-    "problem": "8_Lintri",
-    "density": 0.7269058734866726,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 8.73205
-  },
-  {
     "problem": "7_3_in_circle",
     "density": 0.7270157930261204,
     "N": 7,
@@ -3688,15 +2671,6 @@
     "inner_shape": "octagon",
     "container_shape": "domino",
     "best_value": 6.3113
-  },
-  {
-    "problem": "9_octinL",
-    "density": 0.7273170435477886,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 4.46274
   },
   {
     "problem": "16_octintri",
@@ -3733,15 +2707,6 @@
     "inner_shape": "tan",
     "container_shape": "octagon",
     "best_value": 0.92388
-  },
-  {
-    "problem": "12_peninL",
-    "density": 0.7280005676274324,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 3.0746
   },
   {
     "problem": "7_penincir",
@@ -3825,15 +2790,6 @@
     "best_value": 5.23457
   },
   {
-    "problem": "7_Lintri",
-    "density": 0.7292958574255911,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 8.15469
-  },
-  {
     "problem": "11_squinhex",
     "density": 0.7293281673109931,
     "N": 11,
@@ -3868,15 +2824,6 @@
     "inner_shape": "pentagon",
     "container_shape": "tan",
     "best_value": 7.82906
-  },
-  {
-    "problem": "3_hexinL",
-    "density": 0.7300413774531715,
-    "N": 3,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 1.88648
   },
   {
     "problem": "6_squinpen",
@@ -3933,15 +2880,6 @@
     "best_value": 1.659
   },
   {
-    "problem": "10_octinL",
-    "density": 0.731600381377344,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 4.69035
-  },
-  {
     "problem": "9_peninsqu",
     "density": 0.7316670692060516,
     "N": 9,
@@ -3949,24 +2887,6 @@
     "inner_shape": "pentagon",
     "container_shape": "square",
     "best_value": 4.60033
-  },
-  {
-    "problem": "15_hexinL",
-    "density": 0.7317395161947939,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 4.2134
-  },
-  {
-    "problem": "16_octinL",
-    "density": 0.7318237792429892,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 5.93197
   },
   {
     "problem": "10_squinoct",
@@ -4030,15 +2950,6 @@
     "inner_shape": "octagon",
     "container_shape": "circle",
     "best_value": 5.60687
-  },
-  {
-    "problem": "17_octinL",
-    "density": 0.733517809653574,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 6.10747
   },
   {
     "problem": "8_3_in_tan",
@@ -4140,15 +3051,6 @@
     "best_value": 16.0619
   },
   {
-    "problem": "6_linsqu",
-    "density": 0.7349158221293034,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 4.949
-  },
-  {
     "problem": "9_4_in_tan",
     "density": 0.7349158221293037,
     "N": 9,
@@ -4183,15 +3085,6 @@
     "inner_shape": "pentagon",
     "container_shape": "triangle",
     "best_value": 9.297
-  },
-  {
-    "problem": "9_triinL",
-    "density": 0.735559281112975,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.32893
   },
   {
     "problem": "13_hexincir",
@@ -4239,15 +3132,6 @@
     "best_value": 2.3229
   },
   {
-    "problem": "7_triinL",
-    "density": 0.7364841111294966,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.17127
-  },
-  {
     "problem": "17_4_in_3",
     "density": 0.7365183786835688,
     "N": 17,
@@ -4293,15 +3177,6 @@
     "best_value": 4.961
   },
   {
-    "problem": "4_Linhex",
-    "density": 0.7370199994023433,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 2.50337
-  },
-  {
     "problem": "13_cirinhex",
     "density": 0.737111999931627,
     "N": 13,
@@ -4318,15 +3193,6 @@
     "inner_shape": "pentagon",
     "container_shape": "pentagon",
     "best_value": 3.6832
-  },
-  {
-    "problem": "24_Lintri",
-    "density": 0.7373233364716676,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 15.01713
   },
   {
     "problem": "14_squinoct",
@@ -4401,15 +3267,6 @@
     "best_value": 3.0787
   },
   {
-    "problem": "18_hexinL",
-    "density": 0.7386298033007276,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 4.59397
-  },
-  {
     "problem": "10_domincir",
     "density": 0.7386807429048641,
     "N": 10,
@@ -4455,24 +3312,6 @@
     "best_value": 4.029
   },
   {
-    "problem": "18_peninL",
-    "density": 0.7392656278075563,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 3.7368
-  },
-  {
-    "problem": "4_Linpen",
-    "density": 0.7393227365270364,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 3.07149
-  },
-  {
     "problem": "17_octincir",
     "density": 0.739395816895802,
     "N": 17,
@@ -4480,15 +3319,6 @@
     "inner_shape": "octagon",
     "container_shape": "circle",
     "best_value": 5.94448
-  },
-  {
-    "problem": "28_Lintri",
-    "density": 0.7396146117482376,
-    "N": 28,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 16.19521
   },
   {
     "problem": "6_octinpen",
@@ -4608,15 +3438,6 @@
     "best_value": 1.9599
   },
   {
-    "problem": "19_hexinL",
-    "density": 0.7422441005584969,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 4.70835
-  },
-  {
     "problem": "14_peninsqu",
     "density": 0.742244659780077,
     "N": 14,
@@ -4680,15 +3501,6 @@
     "best_value": 2.984
   },
   {
-    "problem": "10_triinL",
-    "density": 0.7430889123412417,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.3937
-  },
-  {
     "problem": "13_cirinpen",
     "density": 0.7433505003811749,
     "N": 13,
@@ -4714,15 +3526,6 @@
     "inner_shape": "pentagon",
     "container_shape": "octagon",
     "best_value": 2.6812
-  },
-  {
-    "problem": "11_triinL",
-    "density": 0.7436635871155333,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.46116
   },
   {
     "problem": "10_triinhex",
@@ -4770,24 +3573,6 @@
     "best_value": 9.61296
   },
   {
-    "problem": "6_Linpen",
-    "density": 0.7450003459051898,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 3.74743
-  },
-  {
-    "problem": "29_Lintri",
-    "density": 0.7450157656440224,
-    "N": 29,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 16.42202
-  },
-  {
     "problem": "10_squinpen",
     "density": 0.7450907233357403,
     "N": 10,
@@ -4824,15 +3609,6 @@
     "best_value": 16.4098
   },
   {
-    "problem": "17_peninL",
-    "density": 0.7453764771741442,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 3.6166
-  },
-  {
     "problem": "12_octinsqu",
     "density": 0.7455163344986325,
     "N": 12,
@@ -4860,15 +3636,6 @@
     "best_value": 3.2752
   },
   {
-    "problem": "6_Lintri",
-    "density": 0.7461342408009506,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 7.4641
-  },
-  {
     "problem": "6_3_in_tan",
     "density": 0.7461386870077914,
     "N": 6,
@@ -4876,15 +3643,6 @@
     "inner_shape": "3",
     "container_shape": "tan",
     "best_value": 2.63895
-  },
-  {
-    "problem": "14_octinL",
-    "density": 0.7462130543063262,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "octagon",
-    "container_shape": "L",
-    "best_value": 5.49509
   },
   {
     "problem": "19_octintan",
@@ -4932,15 +3690,6 @@
     "best_value": 2.3933
   },
   {
-    "problem": "30_Linpen",
-    "density": 0.7467617352366972,
-    "N": 30,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 8.36962
-  },
-  {
     "problem": "13_octinoct",
     "density": 0.7470299857652402,
     "N": 13,
@@ -4957,15 +3706,6 @@
     "inner_shape": "octagon",
     "container_shape": "domino",
     "best_value": 8.0395
-  },
-  {
-    "problem": "5_Linpen",
-    "density": 0.7472834949896627,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 3.41569
   },
   {
     "problem": "5_octinpen",
@@ -5013,15 +3753,6 @@
     "best_value": 9.7808
   },
   {
-    "problem": "7_Lindom",
-    "density": 0.7476445049894311,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "domino",
-    "best_value": 3.7475469
-  },
-  {
     "problem": "7_hexindom",
     "density": 0.7477668683277605,
     "N": 7,
@@ -5049,15 +3780,6 @@
     "best_value": 4.6748
   },
   {
-    "problem": "22_Linpen",
-    "density": 0.7480709052306448,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 7.16104
-  },
-  {
     "problem": "16_octincir",
     "density": 0.748203064735321,
     "N": 16,
@@ -5083,15 +3805,6 @@
     "inner_shape": "triangle",
     "container_shape": "octagon",
     "best_value": 1.19914
-  },
-  {
-    "problem": "6_Linhex",
-    "density": 0.7484245511287746,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 3.04254
   },
   {
     "problem": "16_peninsqu",
@@ -5139,15 +3852,6 @@
     "best_value": 4.9185
   },
   {
-    "problem": "6_Linoct",
-    "density": 0.7493517642384145,
-    "N": 6,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 2.23044
-  },
-  {
     "problem": "20_penindom",
     "density": 0.7494805591907815,
     "N": 20,
@@ -5164,15 +3868,6 @@
     "inner_shape": "circle",
     "container_shape": "pentagon",
     "best_value": 5.407
-  },
-  {
-    "problem": "25_Lintri",
-    "density": 0.7495268038845484,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 15.20151
   },
   {
     "problem": "14_3_in_circle",
@@ -5218,24 +3913,6 @@
     "inner_shape": "pentagon",
     "container_shape": "octagon",
     "best_value": 1.8234
-  },
-  {
-    "problem": "19_peninL",
-    "density": 0.750206166570851,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 3.8111
-  },
-  {
-    "problem": "4_Lintan",
-    "density": 0.7502265684236641,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "tan",
-    "best_value": 5.656
   },
   {
     "problem": "12_4_in_tan",
@@ -5301,15 +3978,6 @@
     "best_value": 5.952
   },
   {
-    "problem": "29_Linpen",
-    "density": 0.7510972501050757,
-    "N": 29,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 8.20516
-  },
-  {
     "problem": "18_penindom",
     "density": 0.7511425811342574,
     "N": 18,
@@ -5344,15 +4012,6 @@
     "inner_shape": "tan",
     "container_shape": "domino",
     "best_value": 0.999
-  },
-  {
-    "problem": "23_Linpen",
-    "density": 0.7515387095011044,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 7.30507
   },
   {
     "problem": "13_penincir",
@@ -5416,15 +4075,6 @@
     "inner_shape": "pentagon",
     "container_shape": "hexagon",
     "best_value": 3.635
-  },
-  {
-    "problem": "26_Linpen",
-    "density": 0.7518309581522198,
-    "N": 26,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 7.76538
   },
   {
     "problem": "16_peninoct",
@@ -5787,15 +4437,6 @@
     "best_value": 3.3701
   },
   {
-    "problem": "16_hexinL",
-    "density": 0.758098349942705,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 4.27526
-  },
-  {
     "problem": "20_octincir",
     "density": 0.7581992735021542,
     "N": 20,
@@ -5830,15 +4471,6 @@
     "inner_shape": "tan",
     "container_shape": "cir",
     "best_value": 1.37381
-  },
-  {
-    "problem": "9_lincir",
-    "density": 0.7590936890067984,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 3.3648
   },
   {
     "problem": "21_cirinpen",
@@ -6066,15 +4698,6 @@
     "best_value": 7.91419
   },
   {
-    "problem": "28_Linpen",
-    "density": 0.7618351122621064,
-    "N": 28,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 8.00543
-  },
-  {
     "problem": "23_peninsqu",
     "density": 0.7620077079126679,
     "N": 23,
@@ -6111,15 +4734,6 @@
     "best_value": 3.49269
   },
   {
-    "problem": "25_Linpen",
-    "density": 0.7626395041136457,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 7.56043
-  },
-  {
     "problem": "22_peninsqu",
     "density": 0.7627416662683149,
     "N": 22,
@@ -6129,15 +4743,6 @@
     "best_value": 7.04445
   },
   {
-    "problem": "9_Lintri",
-    "density": 0.7627583282320372,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 9.04145
-  },
-  {
     "problem": "19_octinsqu",
     "density": 0.7628637132340319,
     "N": 19,
@@ -6145,15 +4750,6 @@
     "inner_shape": "octagon",
     "container_shape": "square",
     "best_value": 10.9662
-  },
-  {
-    "problem": "27_Lintri",
-    "density": 0.7628860310908504,
-    "N": 27,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 15.65894
   },
   {
     "problem": "11_peninpen",
@@ -6183,15 +4779,6 @@
     "best_value": 4.8568
   },
   {
-    "problem": "12_L_in_L",
-    "density": 0.7632992976056255,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "L",
-    "best_value": 3.965
-  },
-  {
     "problem": "5_squinpen",
     "density": 0.7634955203147129,
     "N": 5,
@@ -6199,15 +4786,6 @@
     "inner_shape": "square",
     "container_shape": "pentagon",
     "best_value": 1.951
-  },
-  {
-    "problem": "7_Linhex",
-    "density": 0.7635575207670511,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 3.25359
   },
   {
     "problem": "24_penintri",
@@ -6255,15 +4833,6 @@
     "best_value": 7.60383
   },
   {
-    "problem": "4_lincir",
-    "density": 0.7639218465915676,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 2.2361
-  },
-  {
     "problem": "12_squincir",
     "density": 0.7639218465915678,
     "N": 12,
@@ -6278,15 +4847,6 @@
     "N": 12,
     "status": "best_known",
     "inner_shape": "domino",
-    "container_shape": "circle",
-    "best_value": 3.1623
-  },
-  {
-    "problem": "8_lincir",
-    "density": 0.763932933232684,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "l",
     "container_shape": "circle",
     "best_value": 3.1623
   },
@@ -6363,15 +4923,6 @@
     "best_value": 8.15259
   },
   {
-    "problem": "27_Linpen",
-    "density": 0.764481106829049,
-    "N": 27,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 7.84756
-  },
-  {
     "problem": "21_dominhex",
     "density": 0.7646110670375892,
     "N": 21,
@@ -6408,15 +4959,6 @@
     "best_value": 7.1046
   },
   {
-    "problem": "13_triinL",
-    "density": 0.7654204881409511,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.56571
-  },
-  {
     "problem": "13_4_in_tan",
     "density": 0.7654807289637653,
     "N": 13,
@@ -6444,15 +4986,6 @@
     "best_value": 8.34354
   },
   {
-    "problem": "20_hexinL",
-    "density": 0.7661187992052246,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 4.7548
-  },
-  {
     "problem": "14_octinpen",
     "density": 0.7662279982499055,
     "N": 14,
@@ -6471,15 +5004,6 @@
     "best_value": 2.8932
   },
   {
-    "problem": "20_peninL",
-    "density": 0.7662319442792939,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "pentagon",
-    "container_shape": "L",
-    "best_value": 3.869
-  },
-  {
     "problem": "19_penintri",
     "density": 0.7662661622006209,
     "N": 19,
@@ -6496,15 +5020,6 @@
     "inner_shape": "3",
     "container_shape": "4",
     "best_value": 2.377
-  },
-  {
-    "problem": "30_Lintri",
-    "density": 0.766549723646145,
-    "N": 30,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 16.46648
   },
   {
     "problem": "16_hexinpen",
@@ -6543,15 +5058,6 @@
     "best_value": 2.8104
   },
   {
-    "problem": "12_hexinL",
-    "density": 0.7669482927597301,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 3.68106
-  },
-  {
     "problem": "10_dominoct",
     "density": 0.7669895427790345,
     "N": 10,
@@ -6559,15 +5065,6 @@
     "inner_shape": "domino",
     "container_shape": "octagon",
     "best_value": 2.3239
-  },
-  {
-    "problem": "15_triinL",
-    "density": 0.7669905923361687,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.68012
   },
   {
     "problem": "24_peninsqu",
@@ -6595,15 +5092,6 @@
     "inner_shape": "pentagon",
     "container_shape": "octagon",
     "best_value": 3.0468
-  },
-  {
-    "problem": "14_triinL",
-    "density": 0.7678419779547278,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.62225
   },
   {
     "problem": "10_peninhex",
@@ -6804,15 +5292,6 @@
     "best_value": 6.011
   },
   {
-    "problem": "12_triinL",
-    "density": 0.7698003589195013,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.5
-  },
-  {
     "problem": "14_octintri",
     "density": 0.7699488959136538,
     "N": 14,
@@ -6838,24 +5317,6 @@
     "inner_shape": "domino",
     "container_shape": "circle",
     "best_value": 3.2785
-  },
-  {
-    "problem": "8_Linpen",
-    "density": 0.7699691397310313,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 4.25642
-  },
-  {
-    "problem": "5_Lintan",
-    "density": 0.7699698613263747,
-    "N": 5,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "tan",
-    "best_value": 6.242
   },
   {
     "problem": "14_hexincir",
@@ -7083,15 +5544,6 @@
     "best_value": 1.636
   },
   {
-    "problem": "9_Linpen",
-    "density": 0.7725286995211492,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 4.50713
-  },
-  {
     "problem": "20_peninhex",
     "density": 0.772540939825705,
     "N": 20,
@@ -7153,15 +5605,6 @@
     "inner_shape": "hexagon",
     "container_shape": "domino",
     "best_value": 4.8499
-  },
-  {
-    "problem": "10_Lintri",
-    "density": 0.7735029559073113,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 9.4641
   },
   {
     "problem": "5_domintri",
@@ -7326,15 +5769,6 @@
     "best_value": 5.945
   },
   {
-    "problem": "11_lincir",
-    "density": 0.7749806598434757,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 3.6816
-  },
-  {
     "problem": "20_hexinoct",
     "density": 0.7751584755579032,
     "N": 20,
@@ -7360,15 +5794,6 @@
     "inner_shape": "pentagon",
     "container_shape": "octagon",
     "best_value": 3.2513
-  },
-  {
-    "problem": "7_Linpen",
-    "density": 0.7753955711750411,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 3.96756
   },
   {
     "problem": "20_peninsqu",
@@ -7497,24 +5922,6 @@
     "best_value": 8.381
   },
   {
-    "problem": "26_Lintri",
-    "density": 0.7771227682059829,
-    "N": 26,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 15.22482
-  },
-  {
-    "problem": "24_Linpen",
-    "density": 0.7774352779575643,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 7.33685
-  },
-  {
     "problem": "21_octinoct",
     "density": 0.777524103339766,
     "N": 21,
@@ -7585,15 +5992,6 @@
     "inner_shape": "domino",
     "container_shape": "tan",
     "best_value": 6.4142
-  },
-  {
-    "problem": "16_triinL",
-    "density": 0.7778458191968861,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.72307
   },
   {
     "problem": "26_hexincir",
@@ -7693,15 +6091,6 @@
     "inner_shape": "hexagon",
     "container_shape": "octagon",
     "best_value": 3.8101
-  },
-  {
-    "problem": "9_Linhex",
-    "density": 0.7784605312212672,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 3.65374
   },
   {
     "problem": "22_6_in_4",
@@ -7902,15 +6291,6 @@
     "best_value": 3.8352
   },
   {
-    "problem": "13_Lintri",
-    "density": 0.7819853128638251,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 10.73205
-  },
-  {
     "problem": "5_taninsqu",
     "density": 0.7819968069506377,
     "N": 5,
@@ -7956,15 +6336,6 @@
     "best_value": 1.663829
   },
   {
-    "problem": "11_hexinL",
-    "density": 0.7827865814540746,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "hexagon",
-    "container_shape": "L",
-    "best_value": 3.48851
-  },
-  {
     "problem": "17_3_in_circle",
     "density": 0.7829021369048805,
     "N": 17,
@@ -8001,24 +6372,6 @@
     "best_value": 7.8284
   },
   {
-    "problem": "12_Lintri",
-    "density": 0.7833644023005211,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 10.30194
-  },
-  {
-    "problem": "11_L_in_L",
-    "density": 0.7834752812480391,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "L",
-    "best_value": 3.747
-  },
-  {
     "problem": "16_domincir",
     "density": 0.7835108510391293,
     "N": 16,
@@ -8035,15 +6388,6 @@
     "inner_shape": "domino",
     "container_shape": "circle",
     "best_value": 3.60555
-  },
-  {
-    "problem": "10_lincir",
-    "density": 0.7840080611418395,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 3.49
   },
   {
     "problem": "14_triinhex",
@@ -8107,15 +6451,6 @@
     "inner_shape": "3",
     "container_shape": "circle",
     "best_value": 1.874
-  },
-  {
-    "problem": "9_Linoct",
-    "density": 0.7849607079900737,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 2.66904
   },
   {
     "problem": "28_peninoct",
@@ -8190,15 +6525,6 @@
     "best_value": 1.825
   },
   {
-    "problem": "7_lincir",
-    "density": 0.7863996843886903,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 2.9155
-  },
-  {
     "problem": "21_squincir",
     "density": 0.7863996843886905,
     "N": 21,
@@ -8206,15 +6532,6 @@
     "inner_shape": "square",
     "container_shape": "circle",
     "best_value": 2.9155
-  },
-  {
-    "problem": "14_lincir",
-    "density": 0.7864148059707093,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 4.1231
   },
   {
     "problem": "13_peninpen",
@@ -8451,15 +6768,6 @@
     "best_value": 5.1564
   },
   {
-    "problem": "17_dominL",
-    "density": 0.7898374495944325,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "domino",
-    "container_shape": "L",
-    "best_value": 3.788
-  },
-  {
     "problem": "15_dominoct",
     "density": 0.7899592431116503,
     "N": 15,
@@ -8476,15 +6784,6 @@
     "inner_shape": "octagon",
     "container_shape": "domino",
     "best_value": 6.7702
-  },
-  {
-    "problem": "18_dominL",
-    "density": 0.7901292622567488,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "domino",
-    "container_shape": "L",
-    "best_value": 3.8971
   },
   {
     "problem": "24_squincir",
@@ -8541,15 +6840,6 @@
     "best_value": 9.065
   },
   {
-    "problem": "23_Lintri",
-    "density": 0.7905125946195198,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 14.19776
-  },
-  {
     "problem": "7_hexinoct",
     "density": 0.7905263585479496,
     "N": 7,
@@ -8593,15 +6883,6 @@
     "inner_shape": "3",
     "container_shape": "5",
     "best_value": 1.871
-  },
-  {
-    "problem": "18_Linhex",
-    "density": 0.790895175784558,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 5.126388
   },
   {
     "problem": "12_3_in_tan",
@@ -8685,29 +6966,11 @@
     "best_value": 1.46678
   },
   {
-    "problem": "7_Linoct",
-    "density": 0.7921677133973982,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 2.34314
-  },
-  {
     "problem": "21_dominoct",
     "density": 0.7921678886457874,
     "N": 21,
     "status": "best_known",
     "inner_shape": "domino",
-    "container_shape": "octagon",
-    "best_value": 3.3137
-  },
-  {
-    "problem": "14_Linoct",
-    "density": 0.7921678886457874,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "L",
     "container_shape": "octagon",
     "best_value": 3.3137
   },
@@ -8746,15 +7009,6 @@
     "inner_shape": "triangle",
     "container_shape": "octagon",
     "best_value": 1.34566
-  },
-  {
-    "problem": "12_lincir",
-    "density": 0.7924438488865411,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 3.8027
   },
   {
     "problem": "20_squinoct",
@@ -8973,15 +7227,6 @@
     "best_value": 3.82264
   },
   {
-    "problem": "14_Lintri",
-    "density": 0.7956030403618061,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 11.04145
-  },
-  {
     "problem": "20_octintri",
     "density": 0.7956468824660338,
     "N": 20,
@@ -9007,15 +7252,6 @@
     "inner_shape": "square",
     "container_shape": "pentagon",
     "best_value": 3.62598
-  },
-  {
-    "problem": "13_lincir",
-    "density": 0.795808376113252,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 3.9496
   },
   {
     "problem": "29_hexintri",
@@ -9099,24 +7335,6 @@
     "best_value": 11.5995
   },
   {
-    "problem": "9_linsqu",
-    "density": 0.7973831420977218,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 5.819
-  },
-  {
-    "problem": "10_Linhex",
-    "density": 0.7974239652358442,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 3.80531
-  },
-  {
     "problem": "26_hexinhex",
     "density": 0.7974457200168076,
     "N": 26,
@@ -9160,15 +7378,6 @@
     "inner_shape": "square",
     "container_shape": "hexagon",
     "best_value": 3.4029
-  },
-  {
-    "problem": "11_Lintri",
-    "density": 0.7978349722826416,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 9.7735
   },
   {
     "problem": "30_squincir",
@@ -9324,15 +7533,6 @@
     "best_value": 1.937
   },
   {
-    "problem": "13_Linhex",
-    "density": 0.7996307159301415,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 4.33273
-  },
-  {
     "problem": "10_octintri",
     "density": 0.7999632920659151,
     "N": 10,
@@ -9403,15 +7603,6 @@
     "inner_shape": "hexagon",
     "container_shape": "pentagon",
     "best_value": 7.7662
-  },
-  {
-    "problem": "12_Linhex",
-    "density": 0.8011975393167653,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 4.15868
   },
   {
     "problem": "18_domincir",
@@ -9513,15 +7704,6 @@
     "best_value": 3.70918
   },
   {
-    "problem": "18_Lintri",
-    "density": 0.8027332908982249,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 12.4641
-  },
-  {
     "problem": "12_domintri",
     "density": 0.802733290898225,
     "N": 12,
@@ -9612,15 +7794,6 @@
     "best_value": 2.9363
   },
   {
-    "problem": "13_Lindom",
-    "density": 0.8035918697258934,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "domino",
-    "best_value": 4.9260582
-  },
-  {
     "problem": "15_6_in_4",
     "density": 0.8036496890389319,
     "N": 15,
@@ -9628,15 +7801,6 @@
     "inner_shape": "6",
     "container_shape": "4",
     "best_value": 6.96367
-  },
-  {
-    "problem": "10_Linpen",
-    "density": 0.8037756626245763,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 4.65767
   },
   {
     "problem": "13_3_in_5",
@@ -9684,24 +7848,6 @@
     "best_value": 3.527
   },
   {
-    "problem": "8_Linoct",
-    "density": 0.8047387440861431,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 2.48528
-  },
-  {
-    "problem": "4_Linoct",
-    "density": 0.8047463833843305,
-    "N": 4,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 1.75735
-  },
-  {
     "problem": "27_dominoct",
     "density": 0.8047473788768057,
     "N": 27,
@@ -9727,15 +7873,6 @@
     "inner_shape": "hexagon",
     "container_shape": "pentagon",
     "best_value": 7.2481
-  },
-  {
-    "problem": "16_Lintri",
-    "density": 0.8053650724523719,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 11.73205
   },
   {
     "problem": "25_squindom",
@@ -9810,42 +7947,6 @@
     "best_value": 10.1715
   },
   {
-    "problem": "15_Lintri",
-    "density": 0.8065942256654239,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 11.35085
-  },
-  {
-    "problem": "15_lincir",
-    "density": 0.8066285297043945,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 4.214
-  },
-  {
-    "problem": "17_Lintri",
-    "density": 0.8067280871275101,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 12.0829
-  },
-  {
-    "problem": "14_Linpen",
-    "density": 0.8070348906919915,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 5.49989
-  },
-  {
     "problem": "20_dominhex",
     "density": 0.8072386404939673,
     "N": 20,
@@ -9862,15 +7963,6 @@
     "inner_shape": "square",
     "container_shape": "circle",
     "best_value": 3.2016
-  },
-  {
-    "problem": "17_Linhex",
-    "density": 0.8074426776265633,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 4.93064
   },
   {
     "problem": "26_3_in_circle",
@@ -9981,15 +8073,6 @@
     "best_value": 3.9029
   },
   {
-    "problem": "13_Linpen",
-    "density": 0.8085832055029869,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 5.29475
-  },
-  {
     "problem": "6_triinoct",
     "density": 0.8086166663243913,
     "N": 6,
@@ -10053,15 +8136,6 @@
     "best_value": 6.428
   },
   {
-    "problem": "14_Linhex",
-    "density": 0.8100920838101344,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 4.46716
-  },
-  {
     "problem": "33_squincir",
     "density": 0.8104662577357148,
     "N": 33,
@@ -10069,15 +8143,6 @@
     "inner_shape": "square",
     "container_shape": "circle",
     "best_value": 3.6001
-  },
-  {
-    "problem": "22_Linhex",
-    "density": 0.810614688055469,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 5.598076
   },
   {
     "problem": "15_3_in_4",
@@ -10107,33 +8172,6 @@
     "best_value": 1.37728
   },
   {
-    "problem": "17_lincir",
-    "density": 0.8117032615512604,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 4.4721
-  },
-  {
-    "problem": "11_Linpen",
-    "density": 0.81172395902536,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 4.86103
-  },
-  {
-    "problem": "13_Linoct",
-    "density": 0.8117969715111016,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 3.15432
-  },
-  {
     "problem": "22_triindom",
     "density": 0.8118990059584699,
     "N": 22,
@@ -10152,24 +8190,6 @@
     "best_value": 2.921
   },
   {
-    "problem": "19_Lintri",
-    "density": 0.812040235914337,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 12.73205
-  },
-  {
-    "problem": "12_Linpen",
-    "density": 0.8123607227382122,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 5.07519
-  },
-  {
     "problem": "13_domintan",
     "density": 0.8125,
     "N": 13,
@@ -10177,42 +8197,6 @@
     "inner_shape": "domino",
     "container_shape": "tan",
     "best_value": 8.0
-  },
-  {
-    "problem": "19_Linhex",
-    "density": 0.8125671777306994,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 5.196152
-  },
-  {
-    "problem": "18_lincir",
-    "density": 0.8129227607067756,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 4.5983
-  },
-  {
-    "problem": "11_Linoct",
-    "density": 0.8129522331049603,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 2.89949
-  },
-  {
-    "problem": "23_Linhex",
-    "density": 0.813003459204463,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 5.715476
   },
   {
     "problem": "17_dominhex",
@@ -10312,15 +8296,6 @@
     "inner_shape": "hexagon",
     "container_shape": "hexagon",
     "best_value": 6.263
-  },
-  {
-    "problem": "13_Lintan",
-    "density": 0.8158203548517318,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "tan",
-    "best_value": 9.778
   },
   {
     "problem": "28_dominhex",
@@ -10431,15 +8406,6 @@
     "best_value": 3.86365
   },
   {
-    "problem": "17_triinL",
-    "density": 0.81792308859589,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.73204
-  },
-  {
     "problem": "13_dominoct",
     "density": 0.8180686936389143,
     "N": 13,
@@ -10476,24 +8442,6 @@
     "best_value": 3.98382
   },
   {
-    "problem": "20_Lintri",
-    "density": 0.8186885585250707,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 13.00966
-  },
-  {
-    "problem": "8_taninL",
-    "density": 0.8187839468719919,
-    "N": 8,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 1.2761
-  },
-  {
     "problem": "29_3_in_circle",
     "density": 0.8188789715847323,
     "N": 29,
@@ -10501,24 +8449,6 @@
     "inner_shape": "3",
     "container_shape": "circle",
     "best_value": 2.20935
-  },
-  {
-    "problem": "20_Linhex",
-    "density": 0.8192346436748486,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 5.309401
-  },
-  {
-    "problem": "19_lincir",
-    "density": 0.8194329579313735,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 4.7055
   },
   {
     "problem": "13_triindom",
@@ -10636,15 +8566,6 @@
     "inner_shape": "domino",
     "container_shape": "tan",
     "best_value": 8.8284
-  },
-  {
-    "problem": "21_Lintri",
-    "density": 0.821346141854892,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 13.30935
   },
   {
     "problem": "34_squincir",
@@ -10791,15 +8712,6 @@
     "best_value": 8.2426
   },
   {
-    "problem": "19_Linpen",
-    "density": 0.8243866352545192,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 6.33939
-  },
-  {
     "problem": "17_dominoct",
     "density": 0.8246190494978497,
     "N": 17,
@@ -10825,15 +8737,6 @@
     "inner_shape": "domino",
     "container_shape": "triangle",
     "best_value": 9.4641
-  },
-  {
-    "problem": "15_Linpen",
-    "density": 0.8250737230321888,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 5.63035
   },
   {
     "problem": "32_4_in_3",
@@ -10872,15 +8775,6 @@
     "best_value": 10.3094
   },
   {
-    "problem": "16_lincir",
-    "density": 0.8258707604824165,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 4.3012
-  },
-  {
     "problem": "31_4_in_3",
     "density": 0.8261425621120188,
     "N": 31,
@@ -10888,33 +8782,6 @@
     "inner_shape": "4",
     "container_shape": "3",
     "best_value": 9.309
-  },
-  {
-    "problem": "19_triinL",
-    "density": 0.8262791975041084,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.82181
-  },
-  {
-    "problem": "18_Linpen",
-    "density": 0.8262949222587211,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 6.16318
-  },
-  {
-    "problem": "26_Linhex",
-    "density": 0.8263210652886191,
-    "N": 26,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 6.027635
   },
   {
     "problem": "19_dominpen",
@@ -10944,15 +8811,6 @@
     "best_value": 3.93347
   },
   {
-    "problem": "16_Linhex",
-    "density": 0.8264629566286564,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 4.72806
-  },
-  {
     "problem": "38_4_in_3",
     "density": 0.8265540544619715,
     "N": 38,
@@ -10960,15 +8818,6 @@
     "inner_shape": "4",
     "container_shape": "3",
     "best_value": 10.304
-  },
-  {
-    "problem": "21_Linhex",
-    "density": 0.8269542343412947,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 5.415064
   },
   {
     "problem": "27_hexinhex",
@@ -11025,15 +8874,6 @@
     "best_value": 1.44631
   },
   {
-    "problem": "20_triinL",
-    "density": 0.8281191498015399,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.86706
-  },
-  {
     "problem": "20_domintan",
     "density": 0.8281792412629586,
     "N": 20,
@@ -11050,15 +8890,6 @@
     "inner_shape": "3",
     "container_shape": "tan",
     "best_value": 4.45701
-  },
-  {
-    "problem": "10_Linoct",
-    "density": 0.8283199220246404,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 2.73879
   },
   {
     "problem": "30_squinoct",
@@ -11169,15 +9000,6 @@
     "best_value": 5.91914
   },
   {
-    "problem": "28_Linhex",
-    "density": 0.8297022423692338,
-    "N": 28,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 6.242414
-  },
-  {
     "problem": "16_dominpen",
     "density": 0.8297289686489039,
     "N": 16,
@@ -11203,15 +9025,6 @@
     "inner_shape": "3",
     "container_shape": "4",
     "best_value": 3.2305
-  },
-  {
-    "problem": "14_dominL",
-    "density": 0.82987800584659,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "domino",
-    "container_shape": "L",
-    "best_value": 3.3536
   },
   {
     "problem": "22_dominoct",
@@ -11241,15 +9054,6 @@
     "best_value": 1.953
   },
   {
-    "problem": "29_Linhex",
-    "density": 0.8302392198999484,
-    "N": 29,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 6.350853
-  },
-  {
     "problem": "19_dominhex",
     "density": 0.8304149586229665,
     "N": 19,
@@ -11257,15 +9061,6 @@
     "inner_shape": "domino",
     "container_shape": "hexagon",
     "best_value": 4.1968
-  },
-  {
-    "problem": "22_Lintri",
-    "density": 0.8305332767618218,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "triangle",
-    "best_value": 13.547
   },
   {
     "problem": "21_octintri",
@@ -11302,15 +9097,6 @@
     "inner_shape": "triangle",
     "container_shape": "octagon",
     "best_value": 1.73796
-  },
-  {
-    "problem": "24_Linhex",
-    "density": 0.8313842988991904,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 5.773503
   },
   {
     "problem": "26_triinoct",
@@ -11358,15 +9144,6 @@
     "best_value": 4.56124
   },
   {
-    "problem": "20_L_in_L",
-    "density": 0.8326463653882895,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "L",
-    "best_value": 4.901
-  },
-  {
     "problem": "29_squinpen",
     "density": 0.8328323444249546,
     "N": 29,
@@ -11383,15 +9160,6 @@
     "inner_shape": "square",
     "container_shape": "hexagon",
     "best_value": 4.2451
-  },
-  {
-    "problem": "25_Linhex",
-    "density": 0.8330250176794,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 5.886751
   },
   {
     "problem": "15_dominhex",
@@ -11421,15 +9189,6 @@
     "best_value": 4.8369
   },
   {
-    "problem": "11_Lindom",
-    "density": 0.8337796051717073,
-    "N": 11,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "domino",
-    "best_value": 4.4485281
-  },
-  {
     "problem": "17_3_in_tan",
     "density": 0.8341004725155337,
     "N": 17,
@@ -11437,15 +9196,6 @@
     "inner_shape": "3",
     "container_shape": "tan",
     "best_value": 4.20127
-  },
-  {
-    "problem": "18_Linoct",
-    "density": 0.8343545932726886,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 3.66116
   },
   {
     "problem": "17_tan_in_cir",
@@ -11574,15 +9324,6 @@
     "best_value": 7.618
   },
   {
-    "problem": "16_Linpen",
-    "density": 0.8358539473139421,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 5.77738
-  },
-  {
     "problem": "13_3_in_4",
     "density": 0.8359287535461856,
     "N": 13,
@@ -11592,15 +9333,6 @@
     "best_value": 2.595
   },
   {
-    "problem": "20_Linpen",
-    "density": 0.8359696989411589,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 6.45886
-  },
-  {
     "problem": "22_3_in_4",
     "density": 0.8359795032183189,
     "N": 22,
@@ -11608,15 +9340,6 @@
     "inner_shape": "3",
     "container_shape": "4",
     "best_value": 3.3757
-  },
-  {
-    "problem": "19_L_in_L",
-    "density": 0.8361097678347603,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "L",
-    "best_value": 4.767
   },
   {
     "problem": "33_squinoct",
@@ -11644,15 +9367,6 @@
     "inner_shape": "domino",
     "container_shape": "pentagon",
     "best_value": 5.6542
-  },
-  {
-    "problem": "13_linsqu",
-    "density": 0.8365224141676523,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 6.828
   },
   {
     "problem": "25_triinoct",
@@ -11754,15 +9468,6 @@
     "best_value": 3.5207
   },
   {
-    "problem": "20_lincir",
-    "density": 0.8384772891473596,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "l",
-    "container_shape": "circle",
-    "best_value": 4.7726
-  },
-  {
     "problem": "24_triinoct",
     "density": 0.8388602549481158,
     "N": 24,
@@ -11770,15 +9475,6 @@
     "inner_shape": "triangle",
     "container_shape": "octagon",
     "best_value": 1.6018
-  },
-  {
-    "problem": "19_Lindom",
-    "density": 0.8389616755255784,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "domino",
-    "best_value": 5.8284271
   },
   {
     "problem": "12_tan_in_cir",
@@ -11934,15 +9630,6 @@
     "best_value": 3.6401
   },
   {
-    "problem": "27_Linhex",
-    "density": 0.8412494491447475,
-    "N": 27,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 6.087713
-  },
-  {
     "problem": "9_tanintri",
     "density": 0.8414183300220056,
     "N": 9,
@@ -12087,33 +9774,6 @@
     "best_value": 2.14913
   },
   {
-    "problem": "9_taninL",
-    "density": 0.8437921890820841,
-    "N": 9,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 1.3333
-  },
-  {
-    "problem": "17_Linpen",
-    "density": 0.8438315239447306,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "pentagon",
-    "best_value": 5.92697
-  },
-  {
-    "problem": "28_Linoct",
-    "density": 0.8440972997058993,
-    "N": 28,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 4.53984
-  },
-  {
     "problem": "21_3_in_tan",
     "density": 0.8442091582336569,
     "N": 21,
@@ -12121,15 +9781,6 @@
     "inner_shape": "3",
     "container_shape": "tan",
     "best_value": 4.64141
-  },
-  {
-    "problem": "16_Linoct",
-    "density": 0.844267761770604,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 3.43145
   },
   {
     "problem": "23_3_in_5",
@@ -12222,15 +9873,6 @@
     "best_value": 1.75285
   },
   {
-    "problem": "15_Linoct",
-    "density": 0.8467518807437464,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 3.31761
-  },
-  {
     "problem": "33_squindom",
     "density": 0.8467982100865961,
     "N": 33,
@@ -12283,15 +9925,6 @@
     "inner_shape": "square",
     "container_shape": "pentagon",
     "best_value": 4.2215
-  },
-  {
-    "problem": "18_triinL",
-    "density": 0.848070317929112,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "triangle",
-    "container_shape": "L",
-    "best_value": 1.75029
   },
   {
     "problem": "19_tan_in_cir",
@@ -12375,15 +10008,6 @@
     "best_value": 4.03901
   },
   {
-    "problem": "19_Linoct",
-    "density": 0.8494464520909287,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 3.72792
-  },
-  {
     "problem": "19_octinhex",
     "density": 0.8495560854309472,
     "N": 19,
@@ -12420,24 +10044,6 @@
     "best_value": 3.8663
   },
   {
-    "problem": "17_linsqu",
-    "density": 0.8497732663296554,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 7.747
-  },
-  {
-    "problem": "23_Linoct",
-    "density": 0.8499038122406685,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 4.1005
-  },
-  {
     "problem": "30_triinoct",
     "density": 0.8499837211853701,
     "N": 30,
@@ -12465,15 +10071,6 @@
     "best_value": 4.4714
   },
   {
-    "problem": "10_taninL",
-    "density": 0.8503401360544219,
-    "N": 10,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 1.4
-  },
-  {
     "problem": "16_3_in_5",
     "density": 0.8504912134120778,
     "N": 16,
@@ -12499,15 +10096,6 @@
     "inner_shape": "square",
     "container_shape": "domino",
     "best_value": 4.9686
-  },
-  {
-    "problem": "17_Lindom",
-    "density": 0.8507304362748674,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "domino",
-    "best_value": 5.4748737
   },
   {
     "problem": "22_domintri",
@@ -12645,15 +10233,6 @@
     "best_value": 4.2712
   },
   {
-    "problem": "30_Linhex",
-    "density": 0.8547791956993024,
-    "N": 30,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "hexagon",
-    "best_value": 6.366025
-  },
-  {
     "problem": "31_triinoct",
     "density": 0.8548347157901097,
     "N": 31,
@@ -12661,15 +10240,6 @@
     "inner_shape": "triangle",
     "container_shape": "octagon",
     "best_value": 1.80338
-  },
-  {
-    "problem": "17_Linoct",
-    "density": 0.8550381668416361,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 3.51471
   },
   {
     "problem": "17_3_in_5",
@@ -12870,15 +10440,6 @@
     "best_value": 2.479
   },
   {
-    "problem": "21_Linoct",
-    "density": 0.8600469785216304,
-    "N": 21,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 3.89499
-  },
-  {
     "problem": "42_4_in_3",
     "density": 0.860196699886337,
     "N": 42,
@@ -12951,15 +10512,6 @@
     "best_value": 3.81711
   },
   {
-    "problem": "18_linsqu",
-    "density": 0.8621873924061982,
-    "N": 18,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 7.914
-  },
-  {
     "problem": "30_dominhex",
     "density": 0.8622069534540221,
     "N": 30,
@@ -13030,15 +10582,6 @@
     "inner_shape": "tan",
     "container_shape": "hexagon",
     "best_value": 1.88728
-  },
-  {
-    "problem": "20_Lintan",
-    "density": 0.8650438962199918,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "tan",
-    "best_value": 11.778
   },
   {
     "problem": "28_triinhex",
@@ -13248,24 +10791,6 @@
     "best_value": 4.97801
   },
   {
-    "problem": "29_Linoct",
-    "density": 0.8679232514172938,
-    "N": 29,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 4.55634
-  },
-  {
-    "problem": "23_linsqu",
-    "density": 0.8683680404517546,
-    "N": 23,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 8.914
-  },
-  {
     "problem": "30_dominoct",
     "density": 0.8685357434906972,
     "N": 30,
@@ -13293,33 +10818,6 @@
     "best_value": 3.86619
   },
   {
-    "problem": "12_Linoct",
-    "density": 0.8691181810482492,
-    "N": 12,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 2.92893
-  },
-  {
-    "problem": "24_Linoct",
-    "density": 0.8691192424395534,
-    "N": 24,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 4.14213
-  },
-  {
-    "problem": "27_Linoct",
-    "density": 0.8691201592898248,
-    "N": 27,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 4.39339
-  },
-  {
     "problem": "36_squinoct",
     "density": 0.8692546955638484,
     "N": 36,
@@ -13327,15 +10825,6 @@
     "inner_shape": "square",
     "container_shape": "octagon",
     "best_value": 2.9287
-  },
-  {
-    "problem": "28_linsqu",
-    "density": 0.8696589893171089,
-    "N": 28,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 9.828
   },
   {
     "problem": "36_triinoct",
@@ -13354,24 +10843,6 @@
     "inner_shape": "tan",
     "container_shape": "pentagon",
     "best_value": 2.7112
-  },
-  {
-    "problem": "17_taninL",
-    "density": 0.8699366629921668,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 1.8047
-  },
-  {
-    "problem": "17_Lintan",
-    "density": 0.8699687998483594,
-    "N": 17,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "tan",
-    "best_value": 10.828
   },
   {
     "problem": "40_squinpen",
@@ -13464,15 +10935,6 @@
     "best_value": 4.14927
   },
   {
-    "problem": "20_Linoct",
-    "density": 0.8721751291985447,
-    "N": 20,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 3.7746
-  },
-  {
     "problem": "19_3_in_3",
     "density": 0.8726983041542826,
     "N": 19,
@@ -13491,15 +10953,6 @@
     "best_value": 2.393
   },
   {
-    "problem": "16_taninL",
-    "density": 0.8732414928881983,
-    "N": 16,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 1.7475
-  },
-  {
     "problem": "24_dominhex",
     "density": 0.8738412194715305,
     "N": 24,
@@ -13507,15 +10960,6 @@
     "inner_shape": "domino",
     "container_shape": "hexagon",
     "best_value": 4.5981
-  },
-  {
-    "problem": "22_Linoct",
-    "density": 0.8742868393141098,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 3.95405
   },
   {
     "problem": "18_taninhex",
@@ -13608,15 +11052,6 @@
     "best_value": 2.82434
   },
   {
-    "problem": "26_Linoct",
-    "density": 0.8780354016928169,
-    "N": 26,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 4.28932
-  },
-  {
     "problem": "35_triinoct",
     "density": 0.8782234746849595,
     "N": 35,
@@ -13705,15 +11140,6 @@
     "inner_shape": "triangle",
     "container_shape": "hexagon",
     "best_value": 2.46104
-  },
-  {
-    "problem": "22_linsqu",
-    "density": 0.8808651740290622,
-    "N": 22,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "square",
-    "best_value": 8.656
   },
   {
     "problem": "26_3_in_4",
@@ -13822,15 +11248,6 @@
     "inner_shape": "tan",
     "container_shape": "hexagon",
     "best_value": 2.03182
-  },
-  {
-    "problem": "15_taninL",
-    "density": 0.8857709750566896,
-    "N": 15,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 1.68
   },
   {
     "problem": "46_3_in_5",
@@ -14049,15 +11466,6 @@
     "best_value": 4.46446
   },
   {
-    "problem": "19_Lintan",
-    "density": 0.8907365577949844,
-    "N": 19,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "tan",
-    "best_value": 11.313
-  },
-  {
     "problem": "14_tan_in_cir",
     "density": 0.8914242154068395,
     "N": 14,
@@ -14139,15 +11547,6 @@
     "best_value": 2.4
   },
   {
-    "problem": "30_Linoct",
-    "density": 0.8978516393972005,
-    "N": 30,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 4.55634
-  },
-  {
     "problem": "11_tanindom",
     "density": 0.8984314398400162,
     "N": 11,
@@ -14220,15 +11619,6 @@
     "best_value": 4.60023
   },
   {
-    "problem": "7_taninL",
-    "density": 0.9007119878638171,
-    "N": 7,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 1.1381
-  },
-  {
     "problem": "42_3_in_5",
     "density": 0.9010878263546261,
     "N": 42,
@@ -14283,15 +11673,6 @@
     "best_value": 5.666
   },
   {
-    "problem": "14_taninL",
-    "density": 0.9035351069211177,
-    "N": 14,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 1.607
-  },
-  {
     "problem": "32_3_in_3",
     "density": 0.9051288217175011,
     "N": 32,
@@ -14299,15 +11680,6 @@
     "inner_shape": "3",
     "container_shape": "3",
     "best_value": 5.94593
-  },
-  {
-    "problem": "25_Linoct",
-    "density": 0.9053325442078681,
-    "N": 25,
-    "status": "best_known",
-    "inner_shape": "L",
-    "container_shape": "octagon",
-    "best_value": 4.14213
   },
   {
     "problem": "12_taninoct",
@@ -14803,15 +12175,6 @@
     "inner_shape": "tan",
     "container_shape": "square",
     "best_value": 2.97
-  },
-  {
-    "problem": "13_taninL",
-    "density": 0.9642481986731053,
-    "N": 13,
-    "status": "best_known",
-    "inner_shape": "tan",
-    "container_shape": "L",
-    "best_value": 1.499
   },
   {
     "problem": "22_tan_in_tan",

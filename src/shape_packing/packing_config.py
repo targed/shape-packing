@@ -177,7 +177,6 @@ ALL_FAMILIES = (
     + OCTAGON_FAMILIES
     + TAN_FAMILIES
     + DOMINO_FAMILIES
-    + L_FAMILIES
 )
 
 # ---------------------------------------------------------------------------
