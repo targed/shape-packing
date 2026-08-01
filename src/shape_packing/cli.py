@@ -77,6 +77,22 @@ def handle_run(args):
     if init_json_path:
         cmd.extend(["--initial-positions", init_json_path])
         
+    from .solution_tools import inverse_friedman_metric
+    from .agent_loop import load_history, current_best_scores
+    
+    # Fetch best score and inject target-s
+    try:
+        history = load_history("results.tsv")
+        best = current_best_scores(history)
+        best_score = best.get(args.problem, "None")
+        
+        if best_score != "None":
+            target_s = inverse_friedman_metric(float(best_score), inner, container)
+            cmd.extend(["--target-s", str(target_s)])
+            eprint(f"Injecting --target-s {target_s} (from Friedman best_score {best_score})")
+    except Exception as e:
+        eprint(f"Could not inject target_s: {e}")
+
     proc = subprocess.run(cmd, capture_output=True, text=True)
     
     if proc.returncode != 0:
