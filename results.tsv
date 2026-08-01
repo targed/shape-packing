@@ -9424,3 +9424,4 @@ auto	0.0	0.0	crash	3_L_in_4	Auto run attempts=10
 auto	0.0	0.0	crash	3_L_in_4	Auto run attempts=50
 auto	0.522694087062294	0.0	keep	3_3_in_L	Auto run attempts=50
 auto	1.199329630148091	0.0	keep	4_3_in_5	Auto run attempts=50
+auto	0.0	0.0	crash	3_L_in_4	Auto run attempts=50
