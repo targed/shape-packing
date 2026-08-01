@@ -275,6 +275,15 @@ fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64)>, 
         return (n, vertices, vectors, apothem);
     }
     
+    if token.to_uppercase() == "CIRCLE" || token.to_uppercase() == "CIR" {
+        let sides = 32;
+        let radius = 1.0;
+        let vertices = regular_polygon(radius, sides);
+        let vectors = regular_polygon_vectors(radius, sides);
+        let apothem = (PI / sides as f64).cos();
+        return (sides, vertices, vectors, apothem);
+    }
+    
     // Fallback to numeric parsing
     let sides: usize = token.parse().unwrap_or(3);
     let radius = 1.0;
