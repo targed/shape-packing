@@ -9415,13 +9415,9 @@ auto	9.783113701199017	0.0	discard	33_4_in_3	Parallel run loop
 auto	4.154750717508222	0.0	discard	4_4_in_3	Parallel run loop
 auto	10.090848203208573	0.0	discard	36_4_in_3	Parallel run loop
 auto	1.7706427928987616	0.0	keep	5_TAN_in_4	Auto run attempts=1000
-auto	2.560722625436409	0.0	keep	3_L_in_4	Auto run attempts=2
 auto	3.003847804299404	0.0	keep	3_DOMINO_in_4	Auto run attempts=2
 auto	1.862142861770641	0.0	keep	2_L_in_6	Auto run attempts=20
 auto	2.000000263815072	0.0	keep	2_DOMINO_in_4	Auto run attempts=500
 auto	3.980841597336746	0.0	keep	4_CIRCLE_in_4	Auto run attempts=50
-auto	0.0	0.0	crash	3_L_in_4	Auto run attempts=10
-auto	0.0	0.0	crash	3_L_in_4	Auto run attempts=50
-auto	0.522694087062294	0.0	keep	3_3_in_L	Auto run attempts=50
 auto	1.199329630148091	0.0	keep	4_3_in_5	Auto run attempts=50
-auto	0.0	0.0	crash	3_L_in_4	Auto run attempts=50
+auto	3.621594402137817	0.0	keep	3_L_in_4	Auto run attempts=50
