@@ -56,6 +56,62 @@ class VerifyResult:
 # --------------- Solution loading ---------------
 
 
+def compute_friedman_metric(S: float, inner_token: str, container_token: str) -> float:
+    """
+    Computes the correct Friedman metric corresponding to the container and inner shapes.
+    """
+    container_upper = container_token.strip().upper()
+    inner_upper = inner_token.strip().upper()
+    
+    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+        c_metric = S
+    else:
+        try:
+            nsc = int(container_upper)
+            c_metric = 2 * S * math.sin(math.pi / nsc)
+        except ValueError:
+            c_metric = 2 * S * math.sin(math.pi / 3)
+
+    if inner_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+        i_scale = 1.0
+    else:
+        try:
+            nsi = int(inner_upper)
+            i_scale = 2 * math.sin(math.pi / nsi)
+        except ValueError:
+            i_scale = 2 * math.sin(math.pi / 3)
+
+    return c_metric / i_scale
+
+def inverse_friedman_metric(f_metric: float, inner_token: str, container_token: str) -> float:
+    """
+    Given a target Friedman metric, compute the corresponding solver S (circumradius).
+    """
+    container_upper = container_token.strip().upper()
+    inner_upper = inner_token.strip().upper()
+    
+    # Get inner scale
+    if inner_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+        i_scale = 1.0
+    else:
+        try:
+            nsi = int(inner_upper)
+            i_scale = 2 * math.sin(math.pi / nsi)
+        except ValueError:
+            i_scale = 2 * math.sin(math.pi / 3)
+
+    c_metric = f_metric * i_scale
+
+    # Reverse container metric
+    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+        return c_metric
+    else:
+        try:
+            nsc = int(container_upper)
+            return c_metric / (2 * math.sin(math.pi / nsc))
+        except ValueError:
+            return c_metric / (2 * math.sin(math.pi / 3))
+
 def load_solution(path: str) -> "Solution":
     """
     Load solution JSON into a typed Solution.
@@ -104,16 +160,7 @@ def load_solution(path: str) -> "Solution":
             a = float(p["a"])
             values.extend([cx, cy, a])
 
-        # derive final_metric if needed, but usually we just read it.
-        # For circle containers, final_metric = S (circumradius = Friedman's r).
-        # For polygon containers, use the standard sin-scaling formula.
-        nsi, _, _, _ = get_shape_geometry(inner_token)
-        nsc_val, _, _, _ = get_shape_geometry(container_token)
-        container_upper = container_token.strip().upper()
-        if container_upper in ("CIRCLE", "CIR"):
-            final_metric = S
-        else:
-            final_metric = S * math.sin(math.pi / nsc_val) / math.sin(math.pi / nsi)
+        final_metric = compute_friedman_metric(S, inner_token, container_token)
 
         return Solution(
             path=path,
@@ -212,12 +259,7 @@ def verify_solution(
     S = sol.S
 
     # 1. Metric scaling verification
-    container_upper = sol.container_token.strip().upper()
-    if container_upper in ("CIRCLE", "CIR"):
-        # For circle containers, final_metric = S (Friedman's r = circumradius of 32-gon).
-        calc_metric = S
-    else:
-        calc_metric = S * math.sin(math.pi / nsc) / math.sin(math.pi / nsi)
+    calc_metric = compute_friedman_metric(S, sol.inner_token, sol.container_token)
     diff = abs(calc_metric - sol.final_metric)
     if diff > 1e-10:
         errors.append(

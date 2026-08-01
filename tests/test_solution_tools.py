@@ -22,8 +22,18 @@ from shape_packing.solution_tools import (
     to_plot_data,
     Solution,
     TOLERANCE,
+    inverse_friedman_metric,
+    compute_friedman_metric,
 )
 
+def test_inverse_friedman_metric():
+    # Regular polygon
+    f_val = compute_friedman_metric(3.0, "3", "4")
+    assert abs(inverse_friedman_metric(f_val, "3", "4") - 3.0) < 1e-9
+    
+    # Special shapes
+    f_val = compute_friedman_metric(2.0, "TAN", "CIRCLE")
+    assert abs(inverse_friedman_metric(f_val, "TAN", "CIRCLE") - 2.0) < 1e-9
 
 class TestLoadSolutionValuesStyle:
     def test_load_basic(self, sample_solution_values):
