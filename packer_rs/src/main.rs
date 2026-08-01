@@ -37,6 +37,10 @@ struct Args {
     /// If provided, use these initial positions for optimization
     #[arg(long)]
     initial_positions: Option<String>,
+
+    /// Optional target S to aggressively short-circuit optimization runs
+    #[arg(long)]
+    target_s: Option<f64>,
 }
 
 fn main() {
@@ -78,6 +82,8 @@ fn main() {
         None
     };
 
+    let target_s = args.target_s;
+
     (0..attempts)
         .into_par_iter()
         .for_each_with(
@@ -92,8 +98,9 @@ fn main() {
                 &best_x,
                 N_f64,
                 &initial_positions,
+                &target_s,
             ),
-            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions), seed| {
+            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions, target_s), seed| {
                 let mut rng = ChaCha8Rng::seed_from_u64(seed as u64);
                 let (s, x) = run_attempt(
                     &mut rng,
@@ -110,6 +117,7 @@ fn main() {
                     stop,
                     args.time_limit,
                     (*initial_positions).as_ref(),
+                    **target_s,
                 );
                 if s.is_finite() && x.is_some() {
                     loop {
@@ -140,15 +148,32 @@ fn main() {
     let bx = best_x.lock().unwrap();
     if let Some(ref bx) = *bx {
         let best = best_s.lock().unwrap();
-        // Fix 2: For circle containers (approximated as 32-gon), S is already the
-        // circumradius which directly equals Friedman's r. The polygon sin-scaling
-        // formula S*sin(π/32)/sin(π/nsi) is wrong by ~5x for circle containers.
         let container_upper = container_token.trim().to_uppercase();
-        let final_metric = if container_upper == "CIRCLE" || container_upper == "CIR" {
-            *best  // S is Friedman's r for circle containers
-        } else {
-            *best * (PI / nsc as f64).sin() / (PI / nsi as f64).sin()
+        let inner_upper = inner_token.trim().to_uppercase();
+        
+        let c_metric = match container_upper.as_str() {
+            "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => *best,
+            _ => {
+                if let Ok(nsc) = container_upper.parse::<usize>() {
+                    2.0 * *best * (PI / nsc as f64).sin()
+                } else {
+                    2.0 * *best * (PI / 3.0).sin()
+                }
+            }
         };
+
+        let i_scale = match inner_upper.as_str() {
+            "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => 1.0,
+            _ => {
+                if let Ok(nsi) = inner_upper.parse::<usize>() {
+                    2.0 * (PI / nsi as f64).sin()
+                } else {
+                    2.0 * (PI / 3.0).sin()
+                }
+            }
+        };
+
+        let final_metric = c_metric / i_scale;
         println!("Final side length: {}", final_metric);
 
         // Write solution JSON if requested
@@ -275,12 +300,18 @@ fn run_attempt<R: Rng>(
     stop_flag: &AtomicBool,
     time_limit: Option<f64>,
     initial_positions: Option<&Vec<f64>>,
+    target_s: Option<f64>,
 ) -> (f64, Option<Vec<f64>>) {
     if stop_flag.load(Ordering::Relaxed) {
         return (f64::INFINITY, None);
     }
 
-    let dynamic_s = N_f64.sqrt() * (2.0 + rng.gen::<f64>() * 2.0);
+    let mut dynamic_s = N_f64.sqrt() * (2.0 + rng.gen::<f64>() * 2.0);
+    if let Some(ts) = target_s {
+        // Funnel approach: start 5% larger than the target
+        dynamic_s = ts * 1.05;
+    }
+    
     let lowest_s = N_f64.sqrt();
     let range_val = dynamic_s - lowest_s;
 
@@ -392,6 +423,12 @@ fn run_attempt<R: Rng>(
                 }
             }
             if !resolved {
+                if let Some(ts) = target_s {
+                    if current_s >= ts {
+                        // Stuck early! Abort without returning a valid packing
+                        return (f64::INFINITY, None);
+                    }
+                }
                 break;
             }
         }
