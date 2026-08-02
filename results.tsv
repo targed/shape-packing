@@ -9422,3 +9422,4 @@ auto	3.980841597336746	0.0	keep	4_CIRCLE_in_4	Auto run attempts=50
 auto	1.199329630148091	0.0	keep	4_3_in_5	Auto run attempts=50
 auto	3.621594402137817	0.0	keep	3_L_in_4	Auto run attempts=50
 auto	2.000144799994031	0.0	discard	2_DOMINO_in_4	Auto run attempts=50
+auto	0.522694087062294	0.0	keep	3_3_in_L	Auto run attempts=50
