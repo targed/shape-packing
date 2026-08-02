@@ -78,7 +78,7 @@ class TestBuildPolygons:
         polys = build_polygons(sol)
         # inner_token defaults to 3 -> triangles
         for poly in polys:
-            assert len(poly) >= 3
+            assert len(poly[0]) >= 3
 
 
 class TestLoadBestValue:

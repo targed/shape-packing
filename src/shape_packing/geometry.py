@@ -62,31 +62,63 @@ def regular_polygon_outward_normals(sides: int):
 
 def get_shape_geometry(token: str):
     token = str(token).upper()
+    if token == "L":
+        num_parts = 2
+        max_sides = 4
+        part_sides = np.array([4, 4], dtype=np.int32)
+        part_offsets = np.array([[0.0, -0.5], [-0.5, 0.5]], dtype=float)
+        
+        vertices = np.zeros((2, 4, 2), dtype=float)
+        # Part 0: Domino (2x1)
+        vertices[0] = [[-1.0, -0.5], [1.0, -0.5], [1.0, 0.5], [-1.0, 0.5]]
+        # Part 1: Square (1x1)
+        vertices[1] = [[-0.5, -0.5], [0.5, -0.5], [0.5, 0.5], [-0.5, 0.5]]
+        
+        vectors = np.zeros((2, 4, 2), dtype=float)
+        vectors[0] = [[0.0, -1.0], [1.0, 0.0], [0.0, 1.0], [-1.0, 0.0]]
+        vectors[1] = [[0.0, -1.0], [1.0, 0.0], [0.0, 1.0], [-1.0, 0.0]]
+        
+        apothem = math.sqrt(2.0)
+        return num_parts, max_sides, part_sides, part_offsets, vertices, vectors, apothem
+
     if token == "DOMINO":
         vertices = np.array([[-1.0, -0.5], [1.0, -0.5], [1.0, 0.5], [-1.0, 0.5]])
         vectors = np.array([[0.0, -1.0], [1.0, 0.0], [0.0, 1.0], [-1.0, 0.0]])
         apothem = 0.5
         sides = 4
-        return sides, vertices, vectors, apothem
-        
-    if token == "TAN":
+    elif token == "TAN":
         r = 1.0 - np.sqrt(2.0) / 2.0
         vertices = np.array([[-r, -r], [1.0 - r, -r], [-r, 1.0 - r]])
         vectors = np.array([[0.0, -1.0], [np.sqrt(2.0) / 2.0, np.sqrt(2.0) / 2.0], [-1.0, 0.0]])
         apothem = r
         sides = 3
-        return sides, vertices, vectors, apothem
+    elif token in ("CIRCLE", "CIR"):
+        sides = 32
+        vertices = regular_polygon_vertices(sides, 1.0)
+        vectors = regular_polygon_outward_normals(sides)
+        apothem = float(np.cos(np.pi / sides))
+    else:
+        try:
+            sides = int(token)
+        except ValueError:
+            sides = 3
+        vertices = regular_polygon_vertices(sides, 1.0)
+        vectors = regular_polygon_outward_normals(sides)
+        apothem = float(np.cos(np.pi / sides))
         
-    # Fallback for numeric tokens
-    try:
-        sides = int(token)
-    except ValueError:
-        sides = 3 # default fallback
-        
-    vertices = regular_polygon_vertices(sides, 1.0)
-    vectors = regular_polygon_outward_normals(sides)
-    apothem = float(np.cos(np.pi / sides))
-    return sides, vertices, vectors, apothem
+    num_parts = 1
+    max_sides = sides
+    part_sides = np.array([sides], dtype=np.int32)
+    part_offsets = np.array([[0.0, 0.0]], dtype=float)
+    
+    vert_arr = np.zeros((1, sides, 2), dtype=float)
+    vert_arr[0] = vertices
+    
+    vec_arr = np.zeros((1, sides, 2), dtype=float)
+    vec_arr[0] = vectors
+    
+    return num_parts, max_sides, part_sides, part_offsets, vert_arr, vec_arr, apothem
+
 
 
 def transform_polygon(vertices, cx: float, cy: float, a: float):
@@ -147,23 +179,25 @@ class GeoConfig:
 # ------------ Numba-accelerated core ------------
 
 @njit(cache=True)
-def _transform_polygon_nb(vertices, cx, cy, a):
-    n = vertices.shape[0]
-    out = np.empty_like(vertices)
+def _transform_part_nb(vertices, part_sides, part_offset, cx, cy, a):
+    n = part_sides
+    out = np.zeros_like(vertices)
     sina = math.sin(a)
     cosa = math.cos(a)
+    # offset in world space
+    ox = part_offset[0] * cosa - part_offset[1] * sina
+    oy = part_offset[0] * sina + part_offset[1] * cosa
     for i in range(n):
         vx = vertices[i, 0]
         vy = vertices[i, 1]
-        out[i, 0] = cx + (vx * cosa - vy * sina)
-        out[i, 1] = cy + (vx * sina + vy * cosa)
+        out[i, 0] = cx + ox + (vx * cosa - vy * sina)
+        out[i, 1] = cy + oy + (vx * sina + vy * cosa)
     return out
 
-
 @njit(cache=True)
-def _rotate_vectors_nb(a, vectors):
-    n = vectors.shape[0]
-    out = np.empty_like(vectors)
+def _rotate_part_vectors_nb(a, vectors, part_sides):
+    n = part_sides
+    out = np.zeros_like(vectors)
     sina = math.sin(a)
     cosa = math.cos(a)
     for i in range(n):
@@ -173,96 +207,144 @@ def _rotate_vectors_nb(a, vectors):
         out[i, 1] = vx * sina + vy * cosa
     return out
 
-
 @njit(cache=True)
-def _poking_penalty_nb(vertices, S, container_vectors, apothem):
+def _poking_penalty_impl(vertices, part_sides, S, container_vectors, container_sides, apothem):
     penalty = 0.0
     limit = apothem * S
-    for v in range(vertices.shape[0]):
+    for v in range(part_sides):
         vx = vertices[v, 0]
         vy = vertices[v, 1]
-        for i in range(container_vectors.shape[0]):
+        for i in range(container_sides):
             d = vx * container_vectors[i, 0] + vy * container_vectors[i, 1]
             if d > limit:
                 diff = d - limit
                 penalty += diff * diff
     return penalty
 
+def _poking_penalty_nb(*args):
+    if len(args) == 4:
+        vertices, S, container_vectors, apothem = args
+        return _poking_penalty_impl(vertices, len(vertices), float(S), container_vectors, len(container_vectors), float(apothem))
+    vertices, part_sides, S, container_vectors, container_sides, apothem = args
+    return _poking_penalty_impl(vertices, int(part_sides), float(S), container_vectors, int(container_sides), float(apothem))
+
+def _transform_polygon_nb(vertices, cx, cy, a):
+    return _transform_part_nb(vertices, len(vertices), np.array([0.0, 0.0]), cx, cy, a)
+
+def _rotate_vectors_nb(a, vectors):
+    return _rotate_part_vectors_nb(a, vectors, len(vectors))
 
 @njit(cache=True)
-def bh_objective(
+def _bh_objective_multipart(
     values,
     S,
     N,
-    nsi,
+    num_parts,
+    max_sides,
+    part_sides,
+    part_offsets,
     unit_polygon_vertices,
     unit_polygon_vectors,
+    c_num_parts,
+    c_max_sides,
+    c_part_sides,
+    c_part_offsets,
+    unit_container_vertices,
     unit_container_vectors,
     unit_container_apothem,
 ) -> float:
-    """
-    Core objective: penalty for container overflow + overlaps (SAT-style).
-    Mirrors polygon_packer.py's bh_function exactly.
-    """
     penalty = 0.0
-    polys = np.zeros((N, nsi, 2))
-    vecs = np.zeros((N, nsi, 2))
+    polys = np.zeros((N, num_parts, max_sides, 2))
+    vecs = np.zeros((N, num_parts, max_sides, 2))
+
+    # We assume container is always simple (c_num_parts=1) for now
+    c_sides = c_part_sides[0]
+    c_vecs = unit_container_vectors[0]
 
     for i in range(N):
         x = values[i * 3]
         y = values[i * 3 + 1]
         a = values[i * 3 + 2]
-        polys[i] = _transform_polygon_nb(unit_polygon_vertices, x, y, a)
-        vecs[i] = _rotate_vectors_nb(a, unit_polygon_vectors)
-        penalty += _poking_penalty_nb(
-            polys[i], S, unit_container_vectors, unit_container_apothem
-        )
+        for p in range(num_parts):
+            polys[i, p] = _transform_part_nb(unit_polygon_vertices[p], part_sides[p], part_offsets[p], x, y, a)
+            vecs[i, p] = _rotate_part_vectors_nb(a, unit_polygon_vectors[p], part_sides[p])
+            penalty += _poking_penalty_nb(
+                polys[i, p], part_sides[p], S, c_vecs, c_sides, unit_container_apothem
+            )
 
     for i in range(N):
         for j in range(i + 1, N):
-            collision = True
-            min_overlap = 1e30
+            for pi in range(num_parts):
+                for pj in range(num_parts):
+                    collision = True
+                    min_overlap = 1e30
 
-            # axes from both polygons
-            for vec in range(nsi * 2):
-                if vec < nsi:
-                    ax = vecs[i, vec, 0]
-                    ay = vecs[i, vec, 1]
-                else:
-                    ax = vecs[j, vec - nsi, 0]
-                    ay = vecs[j, vec - nsi, 1]
+                    nsi = part_sides[pi]
+                    nsj = part_sides[pj]
+                    
+                    for vec in range(nsi + nsj):
+                        if vec < nsi:
+                            ax = vecs[i, pi, vec, 0]
+                            ay = vecs[i, pi, vec, 1]
+                        else:
+                            ax = vecs[j, pj, vec - nsi, 0]
+                            ay = vecs[j, pj, vec - nsi, 1]
 
-                # project poly i
-                mn1 = 1e30
-                mx1 = -1e30
-                for k in range(nsi):
-                    p = polys[i, k, 0] * ax + polys[i, k, 1] * ay
-                    if p < mn1:
-                        mn1 = p
-                    if p > mx1:
-                        mx1 = p
+                        mn1 = 1e30
+                        mx1 = -1e30
+                        for k in range(nsi):
+                            p_val = polys[i, pi, k, 0] * ax + polys[i, pi, k, 1] * ay
+                            if p_val < mn1: mn1 = p_val
+                            if p_val > mx1: mx1 = p_val
 
-                # project poly j
-                mn2 = 1e30
-                mx2 = -1e30
-                for k in range(nsi):
-                    p = polys[j, k, 0] * ax + polys[j, k, 1] * ay
-                    if p < mn2:
-                        mn2 = p
-                    if p > mx2:
-                        mx2 = p
+                        mn2 = 1e30
+                        mx2 = -1e30
+                        for k in range(nsj):
+                            p_val = polys[j, pj, k, 0] * ax + polys[j, pj, k, 1] * ay
+                            if p_val < mn2: mn2 = p_val
+                            if p_val > mx2: mx2 = p_val
 
-                overlap = (mx1 if mx1 < mx2 else mx2) - (mn1 if mn1 > mn2 else mn2)
-                if overlap <= 0:
-                    collision = False
-                    break
-                if overlap < min_overlap:
-                    min_overlap = overlap
+                        overlap = min(mx1, mx2) - max(mn1, mn2)
+                        if overlap <= 0.0:
+                            collision = False
+                            break
+                        if overlap < min_overlap:
+                            min_overlap = overlap
 
-            if collision:
-                penalty += min_overlap * min_overlap
+                    if collision:
+                        penalty += min_overlap * min_overlap
 
     return penalty
+
+
+def bh_objective(*args):
+    """
+    Objective function supporting both legacy 8-argument signature
+    and 16-argument multi-part signature.
+    """
+    if len(args) == 8:
+        values, S, N, nsi, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem = args
+        num_parts = 1
+        max_sides = int(nsi)
+        part_sides = np.array([max_sides], dtype=np.int32)
+        part_offsets = np.array([[0.0, 0.0]], dtype=float)
+        vert_arr = np.zeros((1, max_sides, 2), dtype=float)
+        vert_arr[0] = unit_polygon_vertices
+        vec_arr = np.zeros((1, max_sides, 2), dtype=float)
+        vec_arr[0] = unit_polygon_vectors
+        c_num_parts = 1
+        c_max_sides = len(unit_container_vectors)
+        c_part_sides = np.array([c_max_sides], dtype=np.int32)
+        c_part_offsets = np.array([[0.0, 0.0]], dtype=float)
+        c_vert_arr = np.zeros((1, c_max_sides, 2), dtype=float)
+        c_vec_arr = np.zeros((1, c_max_sides, 2), dtype=float)
+        c_vec_arr[0] = unit_container_vectors
+        return _bh_objective_multipart(
+            values, float(S), int(N), num_parts, max_sides, part_sides, part_offsets,
+            vert_arr, vec_arr, c_num_parts, c_max_sides, c_part_sides,
+            c_part_offsets, c_vert_arr, c_vec_arr, float(unit_container_apothem)
+        )
+    return _bh_objective_multipart(*args)
 
 
 # ------------ public helpers for SAT verification (non-Numba) ------------

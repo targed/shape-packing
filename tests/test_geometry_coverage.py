@@ -137,10 +137,9 @@ class TestPolygonNormalsMixedInputs:
 
 class TestGetShapeGeometryEdgeCases:
     def test_circle_token(self):
-        # Circle falls through int(CIRCLE) and defaults to sides=3
-        sides, vertices, vectors, apothem = get_shape_geometry("CIRCLE")
-        assert sides == 3
-        assert vertices.shape[0] == sides
+        num_parts, max_sides, part_sides, part_offsets, vertices, vectors, apothem = get_shape_geometry("CIRCLE")
+        assert max_sides == 32
+        assert vertices.shape == (1, 32, 2)
 
 class TestNumbaDirectCoverage:
     """

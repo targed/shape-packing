@@ -64,17 +64,43 @@ def build_objective(problem: PackingProblem):
         geom: tuple with geometry constants
     """
     N = problem.N
-    nsi, unit_polygon_vertices, unit_polygon_vectors, _ = get_shape_geometry(problem.inner_token)
-    nsc, _, unit_container_vectors, unit_container_apothem = get_shape_geometry(problem.container_token)
+    
+    (
+        num_parts, 
+        max_sides, 
+        part_sides, 
+        part_offsets, 
+        unit_polygon_vertices, 
+        unit_polygon_vectors, 
+        _
+    ) = get_shape_geometry(problem.inner_token)
+    
+    (
+        c_num_parts, 
+        c_max_sides, 
+        c_part_sides, 
+        c_part_offsets, 
+        unit_container_vertices, 
+        unit_container_vectors, 
+        unit_container_apothem
+    ) = get_shape_geometry(problem.container_token)
 
     def objective(values: np.ndarray, S: float) -> float:
         return bh_objective(
             values,
             S,
             N,
-            nsi,
+            num_parts,
+            max_sides,
+            part_sides,
+            part_offsets,
             unit_polygon_vertices,
             unit_polygon_vectors,
+            c_num_parts,
+            c_max_sides,
+            c_part_sides,
+            c_part_offsets,
+            unit_container_vertices,
             unit_container_vectors,
             unit_container_apothem,
         )

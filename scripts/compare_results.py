@@ -38,8 +38,18 @@ def is_circle_token(token):
         return False
     t = str(token).strip().upper()
     return t in ("CIRCLE", "CIR", "0")
+import sys
+from pathlib import Path
+_project_root = Path(__file__).resolve().parent.parent
+if str(_project_root) not in sys.path:
+    sys.path.insert(0, str(_project_root))
+if str(_project_root / "src") not in sys.path:
+    sys.path.insert(0, str(_project_root / "src"))
 
-from src.shape_packing.solution_tools import compute_friedman_metric
+try:
+    from shape_packing.solution_tools import compute_friedman_metric
+except ImportError:
+    from src.shape_packing.solution_tools import compute_friedman_metric
 
 def normalize_final_metric(data, is_circle_container=False):
     """

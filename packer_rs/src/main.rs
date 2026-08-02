@@ -63,8 +63,8 @@ fn main() {
         });
     }
 
-    let (nsi, unit_polygon_vertices, unit_polygon_vectors, _) = get_shape_geometry(&inner_token);
-    let (nsc, _, unit_container_vectors, unit_container_apothem) = get_shape_geometry(&container_token);
+    let inner_geom = get_shape_geometry(&inner_token);
+    let container_geom = get_shape_geometry(&container_token);
 
     let best_s = Arc::new(Mutex::new(f64::INFINITY));
     let best_x = Arc::new(Mutex::new(None::<Vec<f64>>));
@@ -90,27 +90,21 @@ fn main() {
             (
                 &stop_flag,
                 &start,
-                &unit_polygon_vertices,
-                &unit_polygon_vectors,
-                &unit_container_vectors,
-                &unit_container_apothem,
+                &inner_geom,
+                &container_geom,
                 &best_s,
                 &best_x,
                 N_f64,
                 &initial_positions,
                 &target_s,
             ),
-            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions, target_s), seed| {
+            |(stop, start, inner_geom, container_geom, best_s, best_x, N_f64, initial_positions, target_s), seed| {
                 let mut rng = ChaCha8Rng::seed_from_u64(seed as u64);
                 let (s, x) = run_attempt(
                     &mut rng,
                     *N_f64,
-                    nsi,
-                    nsc,
-                    upv,
-                    upvectors,
-                    ucv,
-                    **uap,
+                    inner_geom,
+                    container_geom,
                     _penalty_tolerance,
                     final_step_size,
                     start,
@@ -257,52 +251,103 @@ fn regular_polygon_vectors(radius: f64, sides: usize) -> Vec<(f64, f64)> {
         .collect()
 }
 
-fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64)>, f64) {
-    if token.to_uppercase() == "DOMINO" {
-        let n = 4;
-        let vertices = vec![(-1.0, -0.5), (1.0, -0.5), (1.0, 0.5), (-1.0, 0.5)];
-        let vectors = vec![(0.0, -1.0), (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0)];
-        let apothem = 0.5;
-        return (n, vertices, vectors, apothem);
+struct ShapeGeometry {
+    num_parts: usize,
+    max_sides: usize,
+    part_sides: Vec<usize>,
+    part_offsets: Vec<(f64, f64)>,
+    vertices: Vec<(f64, f64)>,
+    vectors: Vec<(f64, f64)>,
+    apothem: f64,
+}
+
+fn get_shape_geometry(token: &str) -> ShapeGeometry {
+    let t = token.to_uppercase();
+    
+    if t == "L" {
+        let mut vertices = vec![(0.0, 0.0); 2 * 4];
+        let mut vectors = vec![(0.0, 0.0); 2 * 4];
+        
+        let p0_v = [(-1.0, -0.5), (1.0, -0.5), (1.0, 0.5), (-1.0, 0.5)];
+        let p0_vec = [(0.0, -1.0), (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0)];
+        for i in 0..4 {
+            vertices[i] = p0_v[i];
+            vectors[i] = p0_vec[i];
+        }
+        
+        let p1_v = [(-0.5, -0.5), (0.5, -0.5), (0.5, 0.5), (-0.5, 0.5)];
+        let p1_vec = [(0.0, -1.0), (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0)];
+        for i in 0..4 {
+            vertices[4 + i] = p1_v[i];
+            vectors[4 + i] = p1_vec[i];
+        }
+        
+        return ShapeGeometry {
+            num_parts: 2,
+            max_sides: 4,
+            part_sides: vec![4, 4],
+            part_offsets: vec![(0.0, -0.5), (-0.5, 0.5)],
+            vertices,
+            vectors,
+            apothem: 2.0_f64.sqrt(),
+        };
     }
+
+    let (sides, mut vertices, mut vectors, apothem) = if t == "DOMINO" {
+        (
+            4,
+            vec![(-1.0, -0.5), (1.0, -0.5), (1.0, 0.5), (-1.0, 0.5)],
+            vec![(0.0, -1.0), (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0)],
+            0.5,
+        )
+    } else if t == "TAN" {
+        let r = 1.0 - (2.0_f64.sqrt() / 2.0);
+        (
+            3,
+            vec![(-r, -r), (1.0 - r, -r), (-r, 1.0 - r)],
+            vec![(0.0, -1.0), (2.0_f64.sqrt() / 2.0, 2.0_f64.sqrt() / 2.0), (-1.0, 0.0)],
+            r,
+        )
+    } else if t == "CIRCLE" || t == "CIR" {
+        let s = 32;
+        let mut v = Vec::with_capacity(s);
+        let mut n = Vec::with_capacity(s);
+        for i in 0..s {
+            let angle = 2.0 * std::f64::consts::PI * (i as f64) / (s as f64);
+            v.push((angle.cos(), angle.sin()));
+            let nangle = angle + std::f64::consts::PI / (s as f64);
+            n.push((nangle.cos(), nangle.sin()));
+        }
+        (s, v, n, (std::f64::consts::PI / (s as f64)).cos())
+    } else {
+        let sides = t.parse::<usize>().unwrap_or(3);
+        let mut v = Vec::with_capacity(sides);
+        let mut n = Vec::with_capacity(sides);
+        for i in 0..sides {
+            let angle = 2.0 * std::f64::consts::PI * (i as f64) / (sides as f64);
+            v.push((angle.cos(), angle.sin()));
+            let nangle = angle + std::f64::consts::PI / (sides as f64);
+            n.push((nangle.cos(), nangle.sin()));
+        }
+        (sides, v, n, (std::f64::consts::PI / (sides as f64)).cos())
+    };
     
-    if token.to_uppercase() == "TAN" {
-        let n = 3;
-        let r = 1.0 - (2.0f64).sqrt() / 2.0;
-        let vertices = vec![(-r, -r), (1.0 - r, -r), (-r, 1.0 - r)];
-        let vectors = vec![(0.0, -1.0), ((2.0f64).sqrt() / 2.0, (2.0f64).sqrt() / 2.0), (-1.0, 0.0)];
-        let apothem = r;
-        return (n, vertices, vectors, apothem);
+    ShapeGeometry {
+        num_parts: 1,
+        max_sides: sides,
+        part_sides: vec![sides],
+        part_offsets: vec![(0.0, 0.0)],
+        vertices,
+        vectors,
+        apothem,
     }
-    
-    if token.to_uppercase() == "CIRCLE" || token.to_uppercase() == "CIR" {
-        let sides = 32;
-        let radius = 1.0;
-        let vertices = regular_polygon(radius, sides);
-        let vectors = regular_polygon_vectors(radius, sides);
-        let apothem = (PI / sides as f64).cos();
-        return (sides, vertices, vectors, apothem);
-    }
-    
-    // Fallback to numeric parsing
-    let sides: usize = token.parse().unwrap_or(3);
-    let radius = 1.0;
-    let vertices = regular_polygon(radius, sides);
-    let vectors = regular_polygon_vectors(radius, sides);
-    let apothem = (PI / sides as f64).cos();
-    
-    (sides, vertices, vectors, apothem)
 }
 
 fn run_attempt<R: Rng>(
     rng: &mut R,
     N_f64: f64,
-    nsi: usize,
-    nsc: usize,
-    unit_polygon_vertices: &[(f64, f64)],
-    unit_polygon_vectors: &[(f64, f64)],
-    unit_container_vectors: &[(f64, f64)],
-    unit_container_apothem: f64,
+    inner_geom: &ShapeGeometry,
+    container_geom: &ShapeGeometry,
     _penalty_tolerance: f64,
     final_step_size: f64,
     start: &Instant,
@@ -373,12 +418,8 @@ fn run_attempt<R: Rng>(
             &x0,
             current_s,
             N,
-            nsi,
-            nsc,
-            unit_polygon_vertices,
-            unit_polygon_vectors,
-            unit_container_vectors,
-            unit_container_apothem,
+            inner_geom,
+            container_geom,
         );
 
         // Fix 3: Clamp multiplier so it never exceeds (1 - final_step_size) even when
@@ -411,12 +452,8 @@ fn run_attempt<R: Rng>(
                     &x_pert,
                     current_s,
                     N,
-                    nsi,
-                    nsc,
-                    unit_polygon_vertices,
-                    unit_polygon_vectors,
-                    unit_container_vectors,
-                    unit_container_apothem,
+                    inner_geom,
+                    container_geom,
                 );
                 if bh_res.max_violation <= 1e-15 {
                     let new_x = bh_res.x;
@@ -456,18 +493,14 @@ fn minimize_gradient(
     x0: &[f64],
     S: f64,
     N: usize,
-    nsi: usize,
-    nsc: usize,
-    unit_polygon_vertices: &[(f64, f64)],
-    unit_polygon_vectors: &[(f64, f64)],
-    unit_container_vectors: &[(f64, f64)],
-    unit_container_apothem: f64,
+    inner_geom: &ShapeGeometry,
+    container_geom: &ShapeGeometry,
 ) -> OptResult {
     let n = x0.len();
     let mut x = x0.to_vec();
     let mut best_x = x.clone();
     let (mut best_fun, _, mut best_max_violation) = penalty_and_gradient(
-        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, false
+        &x, S, N, inner_geom, container_geom, false
     );
 
     let mut m = vec![0.0f64; n];
@@ -482,7 +515,7 @@ fn minimize_gradient(
     // hits at S~1.6 with 800 iters but resolves consistently with 3000 iters.
     for iter in 1..=3000 {
         let (_, grad, _) = penalty_and_gradient(
-            &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, true
+            &x, S, N, inner_geom, container_geom, true
         );
 
         let mut new_x = vec![0.0f64; n];
@@ -497,7 +530,7 @@ fn minimize_gradient(
         }
 
         let (new_fx, _, new_max_violation) = penalty_and_gradient(
-            &new_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, false
+            &new_x, S, N, inner_geom, container_geom, false
         );
 
         x = new_x;
@@ -516,179 +549,178 @@ fn penalty_and_gradient(
     values: &[f64],
     S: f64,
     N: usize,
-    nsi: usize,
-    nsc: usize,
-    unit_polygon_vertices: &[(f64, f64)],
-    unit_polygon_vectors: &[(f64, f64)],
-    unit_container_vectors: &[(f64, f64)],
-    unit_container_apothem: f64,
+    inner_geom: &ShapeGeometry,
+    container_geom: &ShapeGeometry,
     compute_grad: bool,
 ) -> (f64, Vec<f64>, f64) {
     let mut penalty = 0.0f64;
     let mut grad = if compute_grad { vec![0.0f64; values.len()] } else { vec![] };
     let mut max_violation = 0.0f64;
 
-    let mut polygon_array = vec![(0.0, 0.0); N * nsi];
-    let mut vector_array = vec![(0.0, 0.0); N * nsi];
+    let num_parts = inner_geom.num_parts;
+    let max_sides = inner_geom.max_sides;
+    let nsc = container_geom.part_sides[0];
+    let limit = container_geom.apothem * S;
+
+    // Build world-space vertices and normals for every shape + part
+    // Layout: polygon_array[shape_i * (num_parts * max_sides) + part_p * max_sides + vertex_v]
+    let stride = num_parts * max_sides;
+    let mut polygon_array = vec![(0.0_f64, 0.0_f64); N * stride];
+    let mut vector_array  = vec![(0.0_f64, 0.0_f64); N * stride];
 
     for i in 0..N {
         let posx = values[i * 3];
         let posy = values[i * 3 + 1];
-        let rot = values[i * 3 + 2];
-        let sin_a = rot.sin();
+        let rot  = values[i * 3 + 2];
         let cos_a = rot.cos();
+        let sin_a = rot.sin();
 
-        for v in 0..nsi {
-            let (vx, vy) = unit_polygon_vertices[v];
-            let tx = posx + (vx * cos_a - vy * sin_a);
-            let ty = posy + (vx * sin_a + vy * cos_a);
-            polygon_array[i * nsi + v] = (tx, ty);
+        for p in 0..num_parts {
+            let ns = inner_geom.part_sides[p];
+            let (ox, oy) = inner_geom.part_offsets[p];
+            // centre of this part in world space
+            let cx = posx + ox * cos_a - oy * sin_a;
+            let cy = posy + ox * sin_a + oy * cos_a;
+
+            for v in 0..ns {
+                let (vx, vy) = inner_geom.vertices[p * max_sides + v];
+                polygon_array[i * stride + p * max_sides + v] =
+                    (cx + vx * cos_a - vy * sin_a,
+                     cy + vx * sin_a + vy * cos_a);
+
+                let (nx, ny) = inner_geom.vectors[p * max_sides + v];
+                vector_array[i * stride + p * max_sides + v] =
+                    (nx * cos_a - ny * sin_a,
+                     nx * sin_a + ny * cos_a);
+            }
         }
+    }
 
-        for v in 0..nsi {
-            let (vx, vy) = unit_polygon_vectors[v];
-            let rx = vx * cos_a - vy * sin_a;
-            let ry = vx * sin_a + vy * cos_a;
-            vector_array[i * nsi + v] = (rx, ry);
-        }
+    // --- Container penalty ---
+    for i in 0..N {
+        let posx = values[i * 3];
+        let posy = values[i * 3 + 1];
 
-        let limit = unit_container_apothem * S;
-        for v in 0..nsi {
-            let (tx, ty) = polygon_array[i * nsi + v];
-            for j in 0..nsc {
-                let (cx, cy) = unit_container_vectors[j];
-                let dist = tx * cx + ty * cy;
-                if dist > limit {
-                    let diff = dist - limit;
-                    penalty += diff * diff;
-                    if diff > max_violation {
-                        max_violation = diff;
-                    }
+        for p in 0..num_parts {
+            let ns = inner_geom.part_sides[p];
+            for v in 0..ns {
+                let (tx, ty) = polygon_array[i * stride + p * max_sides + v];
+                for c in 0..nsc {
+                    let (cx, cy) = container_geom.vectors[c];
+                    let dist = tx * cx + ty * cy;
+                    if dist > limit {
+                        let diff = dist - limit;
+                        penalty += diff * diff;
+                        if diff > max_violation { max_violation = diff; }
 
-                    if compute_grad {
-                        let ddist_dposx = cx;
-                        let ddist_dposy = cy;
-                        let ddist_drot = -(ty - posy) * cx + (tx - posx) * cy;
-
-                        let term = 2.0 * diff;
-                        grad[i * 3] += term * ddist_dposx;
-                        grad[i * 3 + 1] += term * ddist_dposy;
-                        grad[i * 3 + 2] += term * ddist_drot;
+                        if compute_grad {
+                            let ddist_drot = -(ty - posy) * cx + (tx - posx) * cy;
+                            let term = 2.0 * diff;
+                            grad[i * 3]     += term * cx;
+                            grad[i * 3 + 1] += term * cy;
+                            grad[i * 3 + 2] += term * ddist_drot;
+                        }
                     }
                 }
             }
         }
     }
 
+    // --- Overlap penalty (SAT over all part pairs) ---
     for i in 0..N {
         for j in (i + 1)..N {
-            let mut collision = true;
-            let mut min_overlap = 1e30f64;
-            let mut best_axis_idx = 0;
-            let mut best_v1_min = 0;
-            let mut best_v1_max = 0;
-            let mut best_v2_min = 0;
-            let mut best_v2_max = 0;
+            for pi in 0..num_parts {
+                let nsi = inner_geom.part_sides[pi];
+                for pj in 0..num_parts {
+                    let nsj = inner_geom.part_sides[pj];
 
-            for vec in 0..(nsi * 2) {
-                let (x_axis, y_axis) = if vec < nsi {
-                    vector_array[i * nsi + vec]
-                } else {
-                    vector_array[j * nsi + (vec - nsi)]
-                };
+                    let mut collision = true;
+                    let mut min_overlap = 1e30_f64;
+                    let mut best_axis_idx = 0usize;
+                    let mut best_v1_min = 0usize;
+                    let mut best_v1_max = 0usize;
+                    let mut best_v2_min = 0usize;
+                    let mut best_v2_max = 0usize;
 
-                let mut min_1 = 1e30f64;
-                let mut max_1 = -1e30f64;
-                let mut v1_min = 0;
-                let mut v1_max = 0;
-                for v in 0..nsi {
-                    let (px, py) = polygon_array[i * nsi + v];
-                    let dot = px * x_axis + py * y_axis;
-                    if dot < min_1 { min_1 = dot; v1_min = v; }
-                    if dot > max_1 { max_1 = dot; v1_max = v; }
-                }
+                    for axis in 0..(nsi + nsj) {
+                        let (x_axis, y_axis) = if axis < nsi {
+                            vector_array[i * stride + pi * max_sides + axis]
+                        } else {
+                            vector_array[j * stride + pj * max_sides + (axis - nsi)]
+                        };
 
-                let mut min_2 = 1e30f64;
-                let mut max_2 = -1e30f64;
-                let mut v2_min = 0;
-                let mut v2_max = 0;
-                for v in 0..nsi {
-                    let (px, py) = polygon_array[j * nsi + v];
-                    let dot = px * x_axis + py * y_axis;
-                    if dot < min_2 { min_2 = dot; v2_min = v; }
-                    if dot > max_2 { max_2 = dot; v2_max = v; }
-                }
+                        let mut mn1 = 1e30_f64; let mut mx1 = -1e30_f64;
+                        let mut v1_min = 0; let mut v1_max = 0;
+                        for v in 0..nsi {
+                            let (px, py) = polygon_array[i * stride + pi * max_sides + v];
+                            let d = px * x_axis + py * y_axis;
+                            if d < mn1 { mn1 = d; v1_min = v; }
+                            if d > mx1 { mx1 = d; v1_max = v; }
+                        }
 
-                let overlap = max_1.min(max_2) - min_1.max(min_2);
-                if overlap <= 0.0 {
-                    collision = false;
-                    break;
-                }
-                if overlap < min_overlap {
-                    min_overlap = overlap;
-                    best_axis_idx = vec;
-                    best_v1_min = v1_min;
-                    best_v1_max = v1_max;
-                    best_v2_min = v2_min;
-                    best_v2_max = v2_max;
-                }
-            }
+                        let mut mn2 = 1e30_f64; let mut mx2 = -1e30_f64;
+                        let mut v2_min = 0; let mut v2_max = 0;
+                        for v in 0..nsj {
+                            let (px, py) = polygon_array[j * stride + pj * max_sides + v];
+                            let d = px * x_axis + py * y_axis;
+                            if d < mn2 { mn2 = d; v2_min = v; }
+                            if d > mx2 { mx2 = d; v2_max = v; }
+                        }
 
-            if collision {
-                penalty += min_overlap * min_overlap;
-                if min_overlap > max_violation {
-                    max_violation = min_overlap;
-                }
+                        let overlap = mx1.min(mx2) - mn1.max(mn2);
+                        if overlap <= 0.0 { collision = false; break; }
+                        if overlap < min_overlap {
+                            min_overlap = overlap;
+                            best_axis_idx = axis;
+                            best_v1_min = v1_min; best_v1_max = v1_max;
+                            best_v2_min = v2_min; best_v2_max = v2_max;
+                        }
+                    }
 
-                if compute_grad {
-                    let term = 2.0 * min_overlap;
-                    let (x_axis, y_axis) = if best_axis_idx < nsi {
-                        vector_array[i * nsi + best_axis_idx]
-                    } else {
-                        vector_array[j * nsi + (best_axis_idx - nsi)]
-                    };
+                    if collision {
+                        penalty += min_overlap * min_overlap;
+                        if min_overlap > max_violation { max_violation = min_overlap; }
 
-                    let p1_max = polygon_array[i * nsi + best_v1_max];
-                    let max_1 = p1_max.0 * x_axis + p1_max.1 * y_axis;
-                    let p2_max = polygon_array[j * nsi + best_v2_max];
-                    let max_2 = p2_max.0 * x_axis + p2_max.1 * y_axis;
-                    let p1_min = polygon_array[i * nsi + best_v1_min];
-                    let min_1 = p1_min.0 * x_axis + p1_min.1 * y_axis;
-                    let p2_min = polygon_array[j * nsi + best_v2_min];
-                    let min_2 = p2_min.0 * x_axis + p2_min.1 * y_axis;
+                        if compute_grad {
+                            let term = 2.0 * min_overlap;
+                            let is_i_axis = best_axis_idx < nsi;
+                            let (x_axis, y_axis) = if is_i_axis {
+                                vector_array[i * stride + pi * max_sides + best_axis_idx]
+                            } else {
+                                vector_array[j * stride + pj * max_sides + (best_axis_idx - nsi)]
+                            };
 
-                    let (p_upper, _v_upper_idx, upper_poly_idx) = if max_1 < max_2 {
-                        (p1_max, best_v1_max, i)
-                    } else {
-                        (p2_max, best_v2_max, j)
-                    };
+                            let p1_max = polygon_array[i * stride + pi * max_sides + best_v1_max];
+                            let p2_max = polygon_array[j * stride + pj * max_sides + best_v2_max];
+                            let p1_min = polygon_array[i * stride + pi * max_sides + best_v1_min];
+                            let p2_min = polygon_array[j * stride + pj * max_sides + best_v2_min];
 
-                    let (p_lower, _v_lower_idx, lower_poly_idx) = if min_1 > min_2 {
-                        (p1_min, best_v1_min, i)
-                    } else {
-                        (p2_min, best_v2_min, j)
-                    };
+                            let max_1 = p1_max.0 * x_axis + p1_max.1 * y_axis;
+                            let max_2 = p2_max.0 * x_axis + p2_max.1 * y_axis;
+                            let min_1 = p1_min.0 * x_axis + p1_min.1 * y_axis;
+                            let min_2 = p2_min.0 * x_axis + p2_min.1 * y_axis;
 
-                    let mut add_grad = |poly_idx: usize, sign: f64, p: (f64, f64)| {
-                        let posx = values[poly_idx * 3];
-                        let posy = values[poly_idx * 3 + 1];
-                        let dp_drot_x = -(p.1 - posy);
-                        let dp_drot_y = p.0 - posx;
-                        grad[poly_idx * 3] += term * sign * x_axis;
-                        grad[poly_idx * 3 + 1] += term * sign * y_axis;
-                        grad[poly_idx * 3 + 2] += term * sign * (dp_drot_x * x_axis + dp_drot_y * y_axis);
-                    };
+                            let (p_upper, upper_poly_idx) = if max_1 < max_2 { (p1_max, i) } else { (p2_max, j) };
+                            let (p_lower, lower_poly_idx) = if min_1 > min_2 { (p1_min, i) } else { (p2_min, j) };
 
-                    add_grad(upper_poly_idx, 1.0, p_upper);
-                    add_grad(lower_poly_idx, -1.0, p_lower);
+                            let mut add_grad = |poly_idx: usize, sign: f64, p: (f64, f64)| {
+                                let posx = values[poly_idx * 3];
+                                let posy = values[poly_idx * 3 + 1];
+                                let dp_drot_x = -(p.1 - posy);
+                                let dp_drot_y = p.0 - posx;
+                                grad[poly_idx * 3]     += term * sign * x_axis;
+                                grad[poly_idx * 3 + 1] += term * sign * y_axis;
+                                grad[poly_idx * 3 + 2] += term * sign * (dp_drot_x * x_axis + dp_drot_y * y_axis);
+                            };
+                            add_grad(upper_poly_idx, 1.0,  p_upper);
+                            add_grad(lower_poly_idx, -1.0, p_lower);
 
-                    let axis_poly_idx = if best_axis_idx < nsi { i } else { j };
-                    let delta_x = p_upper.0 - p_lower.0;
-                    let delta_y = p_upper.1 - p_lower.1;
-                    let d_axis_drot_x = -y_axis;
-                    let d_axis_drot_y = x_axis;
-                    let d_overlap_drot_axis = delta_x * d_axis_drot_x + delta_y * d_axis_drot_y;
-                    grad[axis_poly_idx * 3 + 2] += term * d_overlap_drot_axis;
+                            let axis_poly_idx = if is_i_axis { i } else { j };
+                            let delta_x = p_upper.0 - p_lower.0;
+                            let delta_y = p_upper.1 - p_lower.1;
+                            grad[axis_poly_idx * 3 + 2] += term * (delta_x * (-y_axis) + delta_y * x_axis);
+                        }
+                    }
                 }
             }
         }

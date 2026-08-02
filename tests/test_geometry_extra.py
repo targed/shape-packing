@@ -12,30 +12,30 @@ from shape_packing.geometry import (
 
 class TestGetShapeGeometry:
     def test_domino_shape(self):
-        sides, vertices, vectors, apothem = get_shape_geometry("DOMINO")
-        assert sides == 4
-        assert vertices.shape == (4, 2)
-        assert vectors.shape == (4, 2)
+        num_parts, max_sides, part_sides, part_offsets, vertices, vectors, apothem = get_shape_geometry("DOMINO")
+        assert max_sides == 4
+        assert vertices.shape == (1, 4, 2)
+        assert vectors.shape == (1, 4, 2)
         assert abs(apothem - 0.5) < 1e-9
 
     def test_tan_shape(self):
-        sides, vertices, vectors, apothem = get_shape_geometry("TAN")
-        assert sides == 3
-        assert vertices.shape == (3, 2)
-        assert vectors.shape == (3, 2)
+        num_parts, max_sides, part_sides, part_offsets, vertices, vectors, apothem = get_shape_geometry("TAN")
+        assert max_sides == 3
+        assert vertices.shape == (1, 3, 2)
+        assert vectors.shape == (1, 3, 2)
         assert apothem > 0.0
 
     def test_numeric_shape(self):
-        sides, vertices, vectors, apothem = get_shape_geometry("4")
-        assert sides == 4
-        assert vertices.shape == (4, 2)
-        assert vectors.shape == (4, 2)
+        num_parts, max_sides, part_sides, part_offsets, vertices, vectors, apothem = get_shape_geometry("4")
+        assert max_sides == 4
+        assert vertices.shape == (1, 4, 2)
+        assert vectors.shape == (1, 4, 2)
 
     def test_unknown_shape_fallback(self):
         # Unknown token should trigger ValueError fallback
-        sides, vertices, vectors, apothem = get_shape_geometry("XYZ")
-        assert sides == 3  # default fallback
-        assert vertices.shape == (3, 2)
+        num_parts, max_sides, part_sides, part_offsets, vertices, vectors, apothem = get_shape_geometry("XYZ")
+        assert max_sides == 3  # default fallback
+        assert vertices.shape == (1, 3, 2)
 
 
 class TestGeoConfig:

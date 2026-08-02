@@ -25,12 +25,12 @@ import os
 # - inside polygon-packer: "python polygon_packer.py"
 _SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 _REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
-for p in (_REPO_ROOT, _SCRIPT_DIR):
+for p in (os.path.join(_REPO_ROOT, "src"), _SCRIPT_DIR):
     if p not in sys.path:
         sys.path.insert(0, p)
 
-from geometry import get_shape_geometry, transform_polygon
-from optimization import (
+from shape_packing.geometry import get_shape_geometry, transform_polygon
+from shape_packing.optimization import (
     build_objective,
     OptConfig,
     PackingProblem,
@@ -48,11 +48,11 @@ def parse_args():
         "inner_polygons", type=int, help="Number of inner polygons"
     )
     arg_parser.add_argument(
-        "inner_sides", type=int, help="Number of sides of the inner polygons"
+        "inner_sides", type=str, help="Number of sides of the inner polygons"
     )
     arg_parser.add_argument(
         "container_sides",
-        type=int,
+        type=str,
         help="Number of sides of the container polygon",
     )
     arg_parser.add_argument(
@@ -137,8 +137,27 @@ def main():
 
     # Compute final metric consistent with previous behavior
     N = problem.N
-    nsi, unit_vertices, _, _ = get_shape_geometry(str(args.inner_sides))
-    nsc, _, _, _ = get_shape_geometry(str(args.container_sides))
+    
+    (
+        num_parts, 
+        max_sides, 
+        part_sides, 
+        part_offsets, 
+        unit_polygon_vertices, 
+        unit_polygon_vectors, 
+        _
+    ) = get_shape_geometry(str(args.inner_sides))
+    
+    (
+        c_num_parts, 
+        c_max_sides, 
+        c_part_sides, 
+        c_part_offsets, 
+        unit_container_vertices, 
+        unit_container_vectors, 
+        unit_container_apothem
+    ) = get_shape_geometry(str(args.container_sides))
+    
     from src.shape_packing.solution_tools import compute_friedman_metric
     final_metric = compute_friedman_metric(best_S, str(args.inner_sides), str(args.container_sides))
     print("Final side length:", final_metric)
@@ -149,9 +168,13 @@ def main():
 
         matplotlib.use("Agg", force=True)
         import matplotlib.pyplot as plt
+        import math
 
+        # We assume container is simple (1 part) for plotting in this script
+        c_ns = c_part_sides[0]
+        c_verts = unit_container_vertices[0][:c_ns]
         container_plot = np.vstack(
-            (unit_vertices * best_S, unit_vertices[0] * best_S)
+            (c_verts * best_S, c_verts[0] * best_S)
         )
 
         fig, ax = plt.subplots()
@@ -163,25 +186,34 @@ def main():
         )
 
         for i in range(N):
-            polygon = transform_polygon(
-                unit_vertices,
-                best_values[i * 3],
-                best_values[i * 3 + 1],
-                best_values[i * 3 + 2],
-            )
-            polygon_plot = np.vstack((polygon, polygon[0]))
-            ax.fill(
-                polygon_plot[:, 0],
-                polygon_plot[:, 1],
-                "#CCCCCC",
-                edgecolor="black",
-                linewidth=0.5,
-            )
+            x = best_values[i * 3]
+            y = best_values[i * 3 + 1]
+            a = best_values[i * 3 + 2]
+            cosa = math.cos(a)
+            sina = math.sin(a)
+            
+            for p in range(num_parts):
+                ns = part_sides[p]
+                raw_verts = unit_polygon_vertices[p][:ns]
+                ox, oy = part_offsets[p]
+                cx = x + (ox * cosa - oy * sina)
+                cy = y + (ox * sina + oy * cosa)
+                
+                polygon = transform_polygon(raw_verts, cx, cy, a)
+                polygon_plot = np.vstack((polygon, polygon[0]))
+                ax.fill(
+                    polygon_plot[:, 0],
+                    polygon_plot[:, 1],
+                    "#CCCCCC",
+                    edgecolor="black",
+                    linewidth=0.5,
+                )
 
         ax.set_aspect("equal")
         plt.title(f"Side length: {final_metric}")
 
-        base_name = f"{N}_{nsi}_in_{nsc}"
+        base_name = f"{N}_{args.inner_sides}_in_{args.container_sides}"
+
         if args.output_prefix:
             base_name = f"{args.output_prefix}_{base_name}"
 

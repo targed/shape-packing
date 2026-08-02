@@ -8,7 +8,7 @@ Delegates all logic to solution_tools.render_solution.
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "src"))
 
 try:
     from shape_packing.solution_tools import render_solution

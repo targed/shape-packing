@@ -107,9 +107,6 @@ def generate_queue(verif_dir="packingVerification", out_path="priority_queue.jso
                         # Push to a default priority or skip.
                         continue
                         
-                    # Temporarily disable L shapes because the geometry engine does not support them
-                    if inner_shape.upper() == "L" or container_shape.upper() == "L":
-                        continue
                         
                     total_inner_area = N * inner_area_unit
                     

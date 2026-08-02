@@ -331,13 +331,17 @@ def choose_problem(
         if t == "CIR": t = "CIRCLE"
         if t == "DOM": t = "DOMINO"
         
+        # Explicitly disable L shapes as requested
+        if t == "L":
+            return True
+            
         if is_special_shape(t):
             if t == "DOMINO":
                 return False
             if f.get("include_inner") or f.get("include_container"):
                 return False
             return True
-        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE", "DOMINO", "L", "TRIANGLE"}
+        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE", "DOMINO", "TRIANGLE"}
         if t not in allowed:
             return True
         return False

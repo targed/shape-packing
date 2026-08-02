@@ -15,7 +15,7 @@ import pytest
 
 @pytest.fixture
 def compare_script():
-    return "compare_results.py"
+    return os.path.join("scripts", "compare_results.py")
 
 
 @pytest.fixture

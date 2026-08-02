@@ -181,25 +181,54 @@ def load_solution(path: str) -> "Solution":
 # --------------- Polygon reconstruction ---------------
 
 
-def build_polygons(sol: "Solution") -> List[List[Tuple[float, float]]]:
+def build_polygons(sol: "Solution") -> List[List[List[Tuple[float, float]]]]:
     """
     Build all inner polygons from a Solution:
-    Each polygon is a list of (x, y) vertices.
+    Returns a list of shapes, where each shape is a list of sub-polygons,
+    and each sub-polygon is a list of (x, y) vertices.
     """
-    _, unit_inner, _, _ = get_shape_geometry(sol.inner_token)
-    polygons: List[List[Tuple[float, float]]] = []
+    (
+        num_parts, 
+        max_sides, 
+        part_sides, 
+        part_offsets, 
+        unit_polygon_vertices, 
+        unit_polygon_vectors, 
+        _
+    ) = get_shape_geometry(sol.inner_token)
+    
+    shapes: List[List[List[Tuple[float, float]]]] = []
 
     for i in range(sol.N):
         x = sol.values[i * 3]
         y = sol.values[i * 3 + 1]
         a = sol.values[i * 3 + 2]
-        poly = transform_polygon(unit_inner, x, y, a)
-        # Ensure poly is a plain list of (x,y).
-        polygons.append(
-            [(float(v[0]), float(v[1])) for v in poly]
-        )
+        
+        parts: List[List[Tuple[float, float]]] = []
+        for p in range(num_parts):
+            # get the actual valid vertices for this part
+            ns = part_sides[p]
+            raw_verts = unit_polygon_vertices[p][:ns]
+            
+            # apply offset
+            ox, oy = part_offsets[p]
+            
+            # translate the part by offset, then rotate by 'a', then translate by 'x, y'
+            # Wait, the kinematics are: rotate offset by 'a', then add to (x,y), then rotate vertices.
+            # transform_polygon takes (vertices, cx, cy, a).
+            # The cx, cy of the part should be:
+            import math
+            cosa = math.cos(a)
+            sina = math.sin(a)
+            cx = x + (ox * cosa - oy * sina)
+            cy = y + (ox * sina + oy * cosa)
+            
+            poly = transform_polygon(raw_verts, cx, cy, a)
+            parts.append([(float(v[0]), float(v[1])) for v in poly])
+        
+        shapes.append(parts)
 
-    return polygons
+    return shapes
 
 
 # --------------- Reference helpers ---------------
@@ -254,8 +283,7 @@ def verify_solution(
 
     sol = load_solution(sol_path)
     N = sol.N
-    nsi, _, _, _ = get_shape_geometry(sol.inner_token)
-    nsc, _, unit_container_vectors, unit_container_apothem = get_shape_geometry(sol.container_token)
+
     S = sol.S
 
     # 1. Metric scaling verification
@@ -267,36 +295,51 @@ def verify_solution(
             f"JSON says: {sol.final_metric}"
         )
 
+    
     # 2. Container bounds verification
+    (
+        c_num_parts, 
+        c_max_sides, 
+        c_part_sides, 
+        c_part_offsets, 
+        unit_container_vertices, 
+        unit_container_vectors, 
+        unit_container_apothem
+    ) = get_shape_geometry(sol.container_token)
+    
     container_limit = unit_container_apothem * S
-    container_normals = [(float(v[0]), float(v[1])) for v in unit_container_vectors]
+    # container is simple
+    c_ns = c_part_sides[0]
+    container_normals = [(float(v[0]), float(v[1])) for v in unit_container_vectors[0][:c_ns]]
 
-    polygons = build_polygons(sol)
+    shapes = build_polygons(sol)
 
-    for i, poly in enumerate(polygons):
-        for v in poly:
-            for n in container_normals:
-                dist = v[0] * n[0] + v[1] * n[1]
-                if dist > container_limit + tolerance:
-                    violation = dist - container_limit
-                    errors.append(
-                        f"Shape {i} is out of bounds! Violation margin: {violation}"
-                    )
+    for i, parts in enumerate(shapes):
+        for p, poly in enumerate(parts):
+            for v in poly:
+                for n in container_normals:
+                    dist = v[0] * n[0] + v[1] * n[1]
+                    if dist > container_limit + tolerance:
+                        violation = dist - container_limit
+                        errors.append(
+                            f"Shape {i} (part {p}) is out of bounds! Violation margin: {violation}"
+                        )
 
     # 3. Overlap verification (SAT)
-    poly_normals_list = [polygon_normals(p) for p in polygons]
     for i in range(N):
         for j in range(i + 1, N):
-            overlap, depth = sat_check_overlap(
-                polygons[i],
-                polygons[j],
-                poly_normals_list[i],
-                poly_normals_list[j],
-            )
-            if overlap and depth > tolerance:
-                errors.append(
-                    f"Shapes {i} and {j} overlap! Depth: {depth}"
-                )
+            # check all parts of shape i against all parts of shape j
+            for pi, poly_i in enumerate(shapes[i]):
+                for pj, poly_j in enumerate(shapes[j]):
+                    norm_i = polygon_normals(poly_i)
+                    norm_j = polygon_normals(poly_j)
+                    overlap, depth = sat_check_overlap(
+                        poly_i, poly_j, norm_i, norm_j
+                    )
+                    if overlap and depth > tolerance:
+                        errors.append(
+                            f"Shapes {i} (part {pi}) and {j} (part {pj}) overlap! Depth: {depth}"
+                        )
 
     valid = len(errors) == 0
 
@@ -336,7 +379,16 @@ def to_plot_data(sol: "Solution") -> Any:
       - polygons: list of list of (x, y)
       - centers: list of (cx, cy)
     """
-    _, unit_container, _, _ = get_shape_geometry(sol.container_token)
+    (
+        c_num_parts, 
+        c_max_sides, 
+        c_part_sides, 
+        c_part_offsets, 
+        c_vert_arr, 
+        c_vec_arr, 
+        c_apothem
+    ) = get_shape_geometry(sol.container_token)
+    unit_container = c_vert_arr[0][:c_part_sides[0]]
     container_vertices = unit_container * sol.S
     polygons = build_polygons(sol)
 
@@ -389,15 +441,16 @@ def render_solution(
         linewidth=0.5,
     )
 
-    for poly in data["polygons"]:
-        poly_plot = list(poly) + [poly[0]]
-        ax.fill(
-            [v[0] for v in poly_plot],
-            [v[1] for v in poly_plot],
-            "#CCCCCC",
-            edgecolor="black",
-            linewidth=0.5,
-        )
+    for shape in data["polygons"]:
+        for part in shape:
+            poly_plot = list(part) + [part[0]]
+            ax.fill(
+                [v[0] for v in poly_plot],
+                [v[1] for v in poly_plot],
+                "#CCCCCC",
+                edgecolor="black",
+                linewidth=0.5,
+            )
 
     ax.set_aspect("equal")
     if not show_axes:

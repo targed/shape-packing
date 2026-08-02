@@ -106,10 +106,10 @@ def handle_run(args):
             
     # Verify and render
     if os.path.exists(solution_file):
-        verify_cmd = [sys.executable, "verify_solution.py", solution_file]
+        verify_cmd = [sys.executable, "-m", "scripts.verify_solution", solution_file]
         subprocess.run(verify_cmd)
         
-        render_cmd = [sys.executable, "render_solution.py", solution_file, os.path.join(result_dir, "solution.png")]
+        render_cmd = [sys.executable, "-m", "scripts.render_solution", solution_file, os.path.join(result_dir, "solution.png")]
         subprocess.run(render_cmd)
             
     # 4. Log to TSV
