@@ -9429,3 +9429,4 @@ auto	3.768179404460293	0.0	keep	5_DOMINO_in_DOMINO	Auto run attempts=10
 auto	3.77106038543089	0.0	discard	5_DOMINO_in_DOMINO	Auto run attempts=50
 auto	3.77106038543089	0.0	discard	5_DOMINO_in_DOMINO	Auto run attempts=500
 auto	3.77106038543089	0.0	discard	5_DOMINO_in_DOMINO	Auto run attempts=5000
+auto	3.77106038543089	0.0	discard	5_DOMINO_in_DOMINO	Auto run attempts=50000
