@@ -39,7 +39,13 @@ def is_circle_token(token):
     t = str(token).strip().upper()
     return t in ("CIRCLE", "CIR", "0")
 
-from src.shape_packing.solution_tools import compute_friedman_metric
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "src"))
+
+try:
+    from shape_packing.solution_tools import compute_friedman_metric
+except ImportError:
+    from src.shape_packing.solution_tools import compute_friedman_metric
 
 def normalize_final_metric(data, is_circle_container=False):
     """

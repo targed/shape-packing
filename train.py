@@ -458,7 +458,7 @@ def run_experiment():
         try:
             render_cmd = [
                 sys.executable,
-                "render_solution.py",
+                os.path.join("scripts", "render_solution.py"),
                 solution_json,
                 png_out,
             ]
@@ -475,7 +475,7 @@ def run_experiment():
         try:
             verify_cmd = [
                 sys.executable,
-                "verify_solution.py",
+                os.path.join("scripts", "verify_solution.py"),
                 solution_json,
                 CURRENT_PROBLEM,
             ]
