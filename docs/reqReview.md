@@ -401,16 +401,6 @@ Batch 5: lincir, linsqu
     - Both: ASPIRATIONAL for L-tromino; otherwise OK for container/validity.
     - Fix: same “planned L-tromino” note.
 
-Batch 6: minrect
-
-- Code:
-    - No specific “minrect” family handling in geometry.py/optimization.py.
-    - No rectangle-only container mode documented in current solver.
-- Verdict:
-    - Mostly ASPIRATIONAL.
-    - Fix:
-    - Mark “minrect is a conceptual family; when supported, container SHALL be a rectangle with adjustable dimensions and documented metric alignment.”
-
 Batch 7: octin* families (octinL, octincir, octindom, octinhex, octinoct, octinpen, octinsqu, octintan, octintri)
 
 - Geometry:
@@ -437,20 +427,6 @@ Batch 8: penin* families (peninL, penincir, penindom, peninhex, peninoct, peninp
 - Verdict:
     - peninL: ASPIRATIONAL for L.
     - Others: geometry OK; metric rule ASPIRATIONAL.
-
-Batch 9: rigid, squRcir, squcosqu, tricosqu
-
-These are more specialized/niche.
-
-- rigid:
-    - No special “rigid” mode in current code; all shapes are inherently rigid.
-    - Verdict: ASPIRATIONAL but harmless.
-    - Fix: clarify: “Rigid is default: all shapes are rigid; no deformation allowed.”
-
-- squRcir, squcosqu, tricosqu:
-    - Not explicitly handled in geometry/optimization as separate modes.
-    - Verdict: ASPIRATIONAL / conceptual.
-    - Fix: mark them as: “If implemented, these SHALL follow the same SAT-based validity and explicit Friedman mapping rules; currently they are conceptual families to be defined in code if used.”
 
 Batch 10: squin* families (squincir, squindom, squinhex, squinl, squinoct, squinpen, squintan, squintri)
 
