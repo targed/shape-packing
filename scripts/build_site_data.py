@@ -2,18 +2,28 @@
 """
 build_site_data.py
 
-Ingests packingVerification/*.json (verified benchmark entries from Erich Friedman's site),
-results.tsv, and results/ solution files to generate site/src/data/site_data.json.
+Comprehensive Data Pipeline & Analytics Builder for Shape Packing Dashboard.
+Ingests:
+- packingVerification/*.json (Erich Friedman verified benchmark references)
+- results/ (Local solver runs and geometry solutions)
+- results/mill-*.out (Slurm execution logs and worker stats)
+- priority_queue.json (Priority queue targets ranked by density / promise)
+
+Outputs site/src/data/site_data.json.
 """
 
+import glob
 import json
-import csv
+import math
+import os
+import re
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Any, Dict, List, Optional
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 PACKING_VERIFICATION_DIR = ROOT_DIR / "packingVerification"
 RESULTS_DIR = ROOT_DIR / "results"
+PRIORITY_QUEUE_PATH = ROOT_DIR / "priority_queue.json"
 OUTPUT_PATH = ROOT_DIR / "site" / "src" / "data" / "site_data.json"
 
 LEGACY_MAP = {
@@ -114,7 +124,7 @@ LEGACY_MAP = {
 
 
 def normalize_family_slug(raw: str) -> str:
-    cleaned = raw.strip()
+    cleaned = str(raw).strip()
     return LEGACY_MAP.get(cleaned, cleaned)
 
 
@@ -205,6 +215,31 @@ FAMILY_DISPLAY_NAMES = {
 }
 
 
+def compute_friedman_metric(S: float, inner_token: str, container_token: str) -> float:
+    container_upper = str(container_token).strip().upper()
+    inner_upper = str(inner_token).strip().upper()
+
+    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+        c_metric = S
+    else:
+        try:
+            nsc = int(container_upper)
+            c_metric = 2 * S * math.sin(math.pi / nsc)
+        except ValueError:
+            c_metric = 2 * S * math.sin(math.pi / 3)
+
+    if inner_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+        i_scale = 1.0
+    else:
+        try:
+            nsi = int(inner_upper)
+            i_scale = 2 * math.sin(math.pi / nsi)
+        except ValueError:
+            i_scale = 2 * math.sin(math.pi / 3)
+
+    return c_metric / i_scale
+
+
 def load_reference_entries() -> List[Dict[str, Any]]:
     entries = []
     if PACKING_VERIFICATION_DIR.exists():
@@ -219,7 +254,7 @@ def load_reference_entries() -> List[Dict[str, Any]]:
     return entries
 
 
-def load_solutions() -> Dict[str, Dict[str, Any]]:
+def load_local_solutions() -> Dict[str, Dict[str, Any]]:
     solutions = {}
     if not RESULTS_DIR.exists():
         return solutions
@@ -227,9 +262,9 @@ def load_solutions() -> Dict[str, Dict[str, Any]]:
     for problem_dir in RESULTS_DIR.iterdir():
         if not problem_dir.is_dir():
             continue
-        problem_key = problem_dir.name
+        folder_name = problem_dir.name
         best_sol = None
-        best_s = None
+        best_metric = None
 
         for run_dir in problem_dir.iterdir():
             if not run_dir.is_dir():
@@ -239,17 +274,74 @@ def load_solutions() -> Dict[str, Dict[str, Any]]:
                 try:
                     with open(sol_file, "r", encoding="utf-8") as f:
                         sol_data = json.load(f)
-                    s_val = sol_data.get("S") or sol_data.get("final_metric")
-                    if s_val is not None and (best_s is None or s_val > best_s):
-                        best_s = float(s_val)
-                        best_sol = sol_data
+                    S = sol_data.get("S")
+                    if S is not None:
+                        nsi = sol_data.get("inner_sides") or sol_data.get("nsi", "3")
+                        nsc = sol_data.get("container_sides") or sol_data.get("nsc", "3")
+                        metric = compute_friedman_metric(float(S), str(nsi), str(nsc))
+                        if best_metric is None or metric < best_metric:
+                            best_metric = metric
+                            sol_data["computed_metric"] = metric
+                            sol_data["folder_name"] = folder_name
+                            best_sol = sol_data
                 except Exception:
                     pass
 
         if best_sol:
-            solutions[problem_key] = best_sol
+            solutions[folder_name] = best_sol
 
     return solutions
+
+
+def parse_slurm_mill_logs() -> Dict[str, Dict[str, Any]]:
+    log_stats = {}
+    log_files = glob.glob(os.path.join(str(RESULTS_DIR), "mill-*.out"))
+
+    start_re = re.compile(r"\[([a-zA-Z0-9_]+)\] Starting \((\d+) attempts\)")
+    success_re = re.compile(r"\[([a-zA-Z0-9_]+)\] Success!")
+    score_re = re.compile(r"\[Main\] Worker finished ([a-zA-Z0-9_]+) with score ([\d\.]+)")
+    fail_re = re.compile(r"\[([a-zA-Z0-9_]+)\] Search failed")
+
+    for lf in log_files:
+        try:
+            with open(lf, "r", encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    for m in start_re.finditer(line):
+                        prob = m.group(1)
+                        log_stats.setdefault(prob, {"starts": 0, "attempts": 0, "successes": 0, "fails": 0})
+                        log_stats[prob]["starts"] += 1
+                        log_stats[prob]["attempts"] += int(m.group(2))
+                    for m in success_re.finditer(line):
+                        prob = m.group(1)
+                        log_stats.setdefault(prob, {"starts": 0, "attempts": 0, "successes": 0, "fails": 0})
+                        log_stats[prob]["successes"] += 1
+                    for m in fail_re.finditer(line):
+                        prob = m.group(1)
+                        log_stats.setdefault(prob, {"starts": 0, "attempts": 0, "successes": 0, "fails": 0})
+                        log_stats[prob]["fails"] += 1
+        except Exception:
+            pass
+
+    return log_stats
+
+
+def load_priority_queue() -> Dict[str, Dict[str, Any]]:
+    pq_dict = {}
+    if PRIORITY_QUEUE_PATH.exists():
+        try:
+            with open(PRIORITY_QUEUE_PATH, "r", encoding="utf-8") as f:
+                pq_list = json.load(f)
+            for idx, item in enumerate(pq_list):
+                prob = item.get("problem", "")
+                pq_dict[prob] = {
+                    "priority_rank": idx + 1,
+                    "density": item.get("density"),
+                    "status": item.get("status"),
+                    "best_value": item.get("best_value"),
+                }
+        except Exception:
+            pass
+    return pq_dict
 
 
 def main():
@@ -257,12 +349,17 @@ def main():
     if not ref_entries:
         raise FileNotFoundError("No reference benchmark entries found in packingVerification/.")
 
-    solutions = load_solutions()
+    solutions = load_local_solutions()
+    log_stats = parse_slurm_mill_logs()
+    pq_dict = load_priority_queue()
 
-    # Index problems and group by normalized canonical family slug
     problems_list = []
     family_stats: Dict[str, Dict[str, Any]] = {}
     seen_ids = set()
+
+    new_best_list = []
+    matches_best_list = []
+    attempted_list = []
 
     for entry in ref_entries:
         raw_family = entry.get("problem_family", "")
@@ -271,7 +368,6 @@ def main():
         prob_n = entry.get("N")
         entry_id = f"{family_slug}_{prob_n}"
 
-        # Prevent duplicate entries across files
         if entry_id in seen_ids:
             continue
         seen_ids.add(entry_id)
@@ -286,59 +382,119 @@ def main():
                 "total_problems": 0,
                 "proved_optimal_count": 0,
                 "best_known_count": 0,
-                "solved_count": 0,
+                "attempted_count": 0,
+                "new_best_count": 0,
             }
 
         fam = family_stats[family_slug]
         fam["total_problems"] += 1
-        status = entry.get("status", "unknown")
-        if status == "proved_optimal":
+        ref_status = entry.get("status", "unknown")
+        if ref_status == "proved_optimal":
             fam["proved_optimal_count"] += 1
-        elif status == "best_known":
+        elif ref_status == "best_known":
             fam["best_known_count"] += 1
 
-        # Match local solution files
-        problem_keys_to_try = [
-            f"{prob_n}_{family_slug}",
+        known_value = entry.get("best_value")
+        if known_value is not None:
+            try:
+                known_value = float(known_value)
+            except (ValueError, TypeError):
+                known_value = None
+
+        # Match local solution run folders
+        inner_token = entry.get("inner_shape")
+        container_token = entry.get("container_shape")
+        our_prob_key = entry.get("our_problem") or f"{prob_n}_{raw_family}"
+
+        possible_folder_keys = [
+            f"{prob_n}_{inner_token}_in_{container_token}",
             f"{prob_n}_{raw_family}",
-            entry.get("our_problem", ""),
-            f"{prob_n}_{entry.get('inner_shape')}_in_{entry.get('container_shape')}"
+            our_prob_key,
+            f"{prob_n}_{family_slug}",
         ]
+
         sol_data = None
-        for pk in problem_keys_to_try:
+        for pk in possible_folder_keys:
             if pk and pk in solutions:
                 sol_data = solutions[pk]
                 break
 
-        if sol_data:
-            fam["solved_count"] += 1
+        # Check execution logs
+        l_stat = log_stats.get(our_prob_key) or log_stats.get(f"{prob_n}_{family_slug}") or {}
 
-        best_val = entry.get("best_value")
-        if best_val is not None:
-            try:
-                best_val = float(best_val)
-            except (ValueError, TypeError):
-                best_val = None
+        # Check priority queue
+        pq_item = pq_dict.get(our_prob_key) or pq_dict.get(f"{prob_n}_{raw_family}") or pq_dict.get(f"{prob_n}_{family_slug}")
+
+        attempted = (sol_data is not None) or (l_stat.get("starts", 0) > 0)
+        if attempted:
+            fam["attempted_count"] += 1
+
+        # Comparison status & diff metric
+        our_best_metric = sol_data.get("computed_metric") if sol_data else None
+        comparison_status = "unattempted"
+        diff = None
+        closeness_pct = None
+
+        if our_best_metric is not None:
+            if known_value is None:
+                comparison_status = "no_best_known"
+            elif our_best_metric < known_value - 1e-6:
+                comparison_status = "NEW_BEST"
+                fam["new_best_count"] += 1
+                diff = our_best_metric - known_value
+                closeness_pct = (known_value / our_best_metric) * 100.0
+            elif abs(our_best_metric - known_value) < 1e-4:
+                comparison_status = "matches_best_known"
+                diff = 0.0
+                closeness_pct = 100.0
+            else:
+                comparison_status = "worse_than_best_known"
+                diff = our_best_metric - known_value
+                closeness_pct = (known_value / our_best_metric) * 100.0 if our_best_metric > 0 else 0.0
 
         item = {
             "id": entry_id,
             "problem_family": family_slug,
             "N": prob_n,
-            "inner_shape": entry.get("inner_shape"),
-            "container_shape": entry.get("container_shape"),
-            "best_value": best_val,
-            "status": status,
+            "inner_shape": inner_token,
+            "container_shape": container_token,
+            "known_value": known_value,
+            "best_value": known_value,
+            "ref_status": ref_status,
+            "status": ref_status,
+            "attempted": attempted,
+            "our_best_metric": round(our_best_metric, 6) if our_best_metric is not None else None,
+            "our_best_s": round(sol_data.get("S"), 6) if sol_data and sol_data.get("S") else None,
+            "comparison_status": comparison_status,
+            "diff": round(diff, 6) if diff is not None else None,
+            "closeness_pct": round(closeness_pct, 2) if closeness_pct is not None else None,
+            "starts": l_stat.get("starts", 0),
+            "attempts": l_stat.get("attempts", 0),
+            "successes": l_stat.get("successes", 0),
+            "fails": l_stat.get("fails", 0),
+            "priority_rank": pq_item.get("priority_rank") if pq_item else None,
+            "density": round(pq_item.get("density"), 4) if pq_item and pq_item.get("density") else None,
             "source_url": entry.get("source_url"),
             "source_note": entry.get("source_note"),
             "solution": sol_data,
         }
         problems_list.append(item)
 
-    # Sort problems by family slug and then N numeric
-    problems_list.sort(key=lambda p: (p["problem_family"], p["N"]))
+        if comparison_status == "NEW_BEST":
+            new_best_list.append(item)
+        elif comparison_status == "matches_best_known":
+            matches_best_list.append(item)
 
+        if attempted:
+            attempted_list.append(item)
+
+    problems_list.sort(key=lambda p: (p["problem_family"], p["N"]))
     families_list = list(family_stats.values())
     families_list.sort(key=lambda x: x["slug"])
+
+    # Extract top promising priority targets
+    priority_targets = [p for p in problems_list if p.get("priority_rank") is not None]
+    priority_targets.sort(key=lambda p: p["priority_rank"])
 
     site_data = {
         "summary": {
@@ -346,8 +502,16 @@ def main():
             "total_problems": len(problems_list),
             "proved_optimal": sum(f["proved_optimal_count"] for f in families_list),
             "best_known": sum(f["best_known_count"] for f in families_list),
+            "total_attempted": len(attempted_list),
+            "total_new_bests": len(new_best_list),
+            "total_matches": len(matches_best_list),
             "total_visualizations": len(solutions),
+            "total_slurm_starts": sum(p["starts"] for p in problems_list),
+            "total_slurm_attempts": sum(p["attempts"] for p in problems_list),
         },
+        "new_bests": new_best_list,
+        "matches_bests": matches_best_list,
+        "priority_targets": priority_targets[:25],
         "families": families_list,
         "problems": problems_list,
     }
@@ -356,7 +520,7 @@ def main():
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(site_data, f, indent=2)
 
-    print(f"Generated site_data.json with {len(families_list)} families and {len(problems_list)} problems at {OUTPUT_PATH}")
+    print(f"Generated analytics site_data.json with {len(families_list)} families, {len(problems_list)} problems, {len(new_best_list)} NEW_BEST records, and {len(attempted_list)} attempted problems at {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":

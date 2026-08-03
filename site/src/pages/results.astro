@@ -1,71 +1,190 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ResultsTable from '../components/ResultsTable.astro';
+import PackingVisual from '../components/PackingVisual.astro';
 import siteData from '../data/site_data.json';
 
-const { families, problems } = siteData;
+const { summary, new_bests, matches_bests, priority_targets, families, problems } = siteData;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<BaseLayout title="Results Dashboard | Shape Packing">
-  <div class="space-y-6">
+<BaseLayout title="Results & Solver Analysis | Shape Packing">
+  <div class="space-y-8">
+    <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
       <div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Results Dashboard</h1>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Results & Solver Analysis</h1>
         <p class="text-xs sm:text-sm text-slate-400 mt-1">
-          Explore {problems.length.toLocaleString()} benchmark packing bounds across {families.length} shape families.
+          Tracking solver runs, record-beating metrics, optimization gaps, and priority targets across {summary.total_problems.toLocaleString()} problems.
         </p>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40">
+          🏆 {summary.total_new_bests} New Bests
+        </span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          {summary.total_matches} Matched Records
+        </span>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-900 border border-slate-800 text-slate-300">
-          Showing: <strong id="visible-count" class="text-indigo-400 ml-1">{problems.length.toLocaleString()}</strong> / {problems.length.toLocaleString()}
+          {summary.total_attempted} Attempted
         </span>
       </div>
     </div>
 
-    <!-- Interactive Filters -->
-    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
-      <div class="w-full sm:w-auto flex-1 flex flex-col sm:flex-row gap-3">
-        <!-- Family Select -->
-        <select id="family-filter" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
-          <option value="">All Families ({families.length})</option>
-          {families.map((f) => (
-            <option value={f.slug}>{f.name} ({f.slug})</option>
+    <!-- Highlight: New Best Records Showcase -->
+    {new_bests.length > 0 && (
+      <div class="bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-indigo-500/10 border border-amber-500/30 rounded-2xl p-6 space-y-4 shadow-xl">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 text-xl font-bold">
+              🏆
+            </div>
+            <div>
+              <h2 class="text-lg font-bold text-white tracking-tight">New Best Records Beat ({summary.total_new_bests} Problems)</h2>
+              <p class="text-xs text-amber-200/80">Configurations where your solver beat Erich Friedman's historical benchmark bounds!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-amber-500/20 bg-slate-950/80">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="bg-slate-900/90 uppercase text-amber-300 border-b border-amber-500/20 font-semibold tracking-wider">
+              <tr>
+                <th class="px-4 py-3">Problem</th>
+                <th class="px-3 py-3 text-center">N</th>
+                <th class="px-4 py-3 text-right">Erich Friedman Known</th>
+                <th class="px-4 py-3 text-right">Our Solver Best</th>
+                <th class="px-4 py-3 text-right">Improvement (Delta)</th>
+                <th class="px-4 py-3 text-center">Visual</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 font-mono">
+              {new_bests.map((nb) => (
+                <tr class="hover:bg-amber-500/5 transition-colors">
+                  <td class="px-4 py-2.5 font-sans font-semibold text-slate-200">
+                    <a href={`${base}/family/${nb.problem_family}`} class="hover:text-amber-300 underline">
+                      {nb.problem_family}
+                    </a>
+                  </td>
+                  <td class="px-3 py-2.5 text-center font-bold text-amber-400">{nb.N}</td>
+                  <td class="px-4 py-2.5 text-right text-slate-400">{nb.known_value ? nb.known_value.toFixed(6) : '—'}</td>
+                  <td class="px-4 py-2.5 text-right font-bold text-amber-300">{nb.our_best_metric ? nb.our_best_metric.toFixed(6) : '—'}</td>
+                  <td class="px-4 py-2.5 text-right font-bold text-emerald-400">{nb.diff ? nb.diff.toFixed(6) : '—'}</td>
+                  <td class="px-4 py-2.5 text-center font-sans">
+                    {nb.solution ? (
+                      <span class="inline-flex items-center text-[10px] font-semibold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+                        Visual Ready
+                      </span>
+                    ) : (
+                      <span class="text-slate-600">—</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )}
+
+    <!-- Promising Shapes & Priority Queue Targets -->
+    {priority_targets.length > 0 && (
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-white tracking-tight">Most Promising Target Shapes (Priority Queue)</h2>
+            <p class="text-xs text-slate-400">Unproven problems ranked by lowest density / highest optimization potential from priority_queue.json</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+          {priority_targets.slice(0, 10).map((pt) => (
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex flex-col justify-between space-y-2 hover:border-indigo-500/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">
+                  Rank #{pt.priority_rank}
+                </span>
+                <span class="text-[11px] font-mono text-emerald-400 font-bold">N={pt.N}</span>
+              </div>
+              <div>
+                <a href={`${base}/family/${pt.problem_family}`} class="text-xs font-bold text-slate-200 hover:text-indigo-400 transition-colors">
+                  {pt.problem_family}
+                </a>
+                <div class="text-[11px] text-slate-400 mt-1 flex justify-between">
+                  <span>Density:</span>
+                  <span class="font-mono font-semibold text-indigo-300">{pt.density ? pt.density.toFixed(4) : 'N/A'}</span>
+                </div>
+              </div>
+            </div>
           ))}
-        </select>
+        </div>
+      </div>
+    )}
 
-        <!-- Status Select -->
-        <select id="status-filter" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
-          <option value="">All Statuses</option>
-          <option value="proved_optimal">Proved Optimal</option>
-          <option value="best_known">Best Known</option>
-          <option value="trivial">Trivial</option>
-        </select>
-
-        <!-- Search Input -->
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Search by family, N, value..."
-          class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500 flex-1 min-w-[180px]"
-        />
+    <!-- Interactive Filters for Full Table -->
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold text-white tracking-tight">All Benchmark & Attempted Results</h2>
+        <span class="text-xs text-slate-400">
+          Showing: <strong id="visible-count" class="text-indigo-400">{problems.length.toLocaleString()}</strong> / {problems.length.toLocaleString()}
+        </span>
       </div>
 
-      <button
-        id="reset-filters"
-        class="w-full sm:w-auto px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 border border-slate-700 transition-colors"
-      >
-        Reset Filters
-      </button>
-    </div>
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-3 items-center justify-between">
+        <div class="w-full flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Family Filter -->
+          <select id="family-filter" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+            <option value="">All Families ({families.length})</option>
+            {families.map((f) => (
+              <option value={f.slug}>{f.name} ({f.slug})</option>
+            ))}
+          </select>
 
-    <!-- Table Container -->
-    <div id="results-table-container">
-      <ResultsTable problems={problems} />
+          <!-- Attempted Filter -->
+          <select id="attempted-filter" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+            <option value="">All Attempt Statuses</option>
+            <option value="yes">Attempted Only ({summary.total_attempted})</option>
+            <option value="NEW_BEST">NEW_BEST Records Beat ({summary.total_new_bests})</option>
+            <option value="matches_best_known">Matches Known Record ({summary.total_matches})</option>
+            <option value="worse_than_best_known">Attempted (With Gap)</option>
+            <option value="no">Unattempted Only</option>
+          </select>
+
+          <!-- Ref Status Filter -->
+          <select id="status-filter" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+            <option value="">All Benchmark Types</option>
+            <option value="proved_optimal">Proved Optimal ({summary.proved_optimal})</option>
+            <option value="best_known">Best Known ({summary.best_known})</option>
+            <option value="trivial">Trivial</option>
+          </select>
+
+          <!-- Search Input -->
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search family, N, status..."
+            class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+          />
+        </div>
+
+        <button
+          id="reset-filters"
+          class="w-full md:w-auto px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 border border-slate-700 transition-colors"
+        >
+          Reset
+        </button>
+      </div>
+
+      <!-- Table Container -->
+      <div id="results-table-container">
+        <ResultsTable problems={problems} />
+      </div>
     </div>
   </div>
 
   <script is:inline>
     const familyFilter = document.getElementById('family-filter');
+    const attemptedFilter = document.getElementById('attempted-filter');
     const statusFilter = document.getElementById('status-filter');
     const searchInput = document.getElementById('search-input');
     const resetButton = document.getElementById('reset-filters');
@@ -74,6 +193,7 @@ const { families, problems } = siteData;
 
     function applyFilters() {
       const fam = (familyFilter?.value || '').toLowerCase().trim();
+      const att = (attemptedFilter?.value || '').trim();
       const stat = (statusFilter?.value || '').toLowerCase().trim();
       const query = (searchInput?.value || '').toLowerCase().trim();
 
@@ -82,14 +202,24 @@ const { families, problems } = siteData;
 
       rows.forEach((tr) => {
         const rowFam = (tr.getAttribute('data-family') || '').toLowerCase();
+        const rowAtt = tr.getAttribute('data-attempted') || 'no';
+        const rowComp = tr.getAttribute('data-comparison') || '';
         const rowStat = (tr.getAttribute('data-status') || '').toLowerCase();
         const rowSearch = (tr.getAttribute('data-search') || tr.innerText || '').toLowerCase();
 
         const matchesFam = !fam || rowFam === fam;
+
+        let matchesAtt = true;
+        if (att === 'yes') matchesAtt = (rowAtt === 'yes');
+        else if (att === 'no') matchesAtt = (rowAtt === 'no');
+        else if (att === 'NEW_BEST') matchesAtt = (rowComp === 'NEW_BEST');
+        else if (att === 'matches_best_known') matchesAtt = (rowComp === 'matches_best_known');
+        else if (att === 'worse_than_best_known') matchesAtt = (rowComp === 'worse_than_best_known');
+
         const matchesStat = !stat || rowStat === stat;
         const matchesQuery = !query || rowSearch.includes(query);
 
-        if (matchesFam && matchesStat && matchesQuery) {
+        if (matchesFam && matchesAtt && matchesStat && matchesQuery) {
           tr.style.display = '';
           visibleCount++;
         } else {
@@ -103,10 +233,12 @@ const { families, problems } = siteData;
     }
 
     familyFilter?.addEventListener('change', applyFilters);
+    attemptedFilter?.addEventListener('change', applyFilters);
     statusFilter?.addEventListener('change', applyFilters);
     searchInput?.addEventListener('input', applyFilters);
     resetButton?.addEventListener('click', () => {
       if (familyFilter) familyFilter.value = '';
+      if (attemptedFilter) attemptedFilter.value = '';
       if (statusFilter) statusFilter.value = '';
       if (searchInput) searchInput.value = '';
       applyFilters();

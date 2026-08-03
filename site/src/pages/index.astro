@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PackingVisual from '../components/PackingVisual.astro';
 import siteData from '../data/site_data.json';
 
-const { summary, families, problems } = siteData;
+const { summary, new_bests, priority_targets, problems } = siteData;
 const solvedProblems = problems.filter(p => p.solution).slice(0, 4);
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
@@ -19,14 +19,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           Auto-Researcher Pipeline & Dashboard
         </div>
         <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-          Shape Packing <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Benchmark Hub</span>
+          Shape Packing <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-purple-400 to-indigo-400">Benchmark & Analytics Hub</span>
         </h1>
         <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
-          Internal auto-researcher dashboard tracking best-known container scale metrics (<code class="text-indigo-300">S</code>), geometric proofs, and interactive shape visualizations across 108 problem families.
+          Internal auto-researcher workbench tracking solver runs, record-beating bounds (<code class="text-amber-300">NEW_BEST</code>), optimization gaps, and priority queue targets across 80 shape families.
         </p>
         <div class="flex flex-wrap gap-4 pt-2">
-          <a href={`${base}/results`} class="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-sm shadow-lg shadow-indigo-500/25 transition-all flex items-center gap-2">
-            Explore Results Dashboard &rarr;
+          <a href={`${base}/results`} class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2">
+            Explore Results & New Best Records &rarr;
           </a>
           <a href={`${base}/docs`} class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 transition-all">
             System Documentation
@@ -36,35 +36,115 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     </div>
 
     <!-- Stat Cards -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
       <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 backdrop-blur-sm flex flex-col">
         <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Problem Families</span>
         <span class="text-3xl font-extrabold text-white mt-2">{summary.total_families}</span>
-        <span class="text-[11px] text-slate-500 mt-1">Erich Friedman Catalog</span>
+        <span class="text-[11px] text-slate-500 mt-1">Normalized x_in_y Catalog</span>
       </div>
+
       <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 backdrop-blur-sm flex flex-col">
-        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Total Benchmark Problems</span>
+        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Benchmark Records</span>
         <span class="text-3xl font-extrabold text-indigo-400 mt-2">{summary.total_problems.toLocaleString()}</span>
-        <span class="text-[11px] text-slate-500 mt-1">Configurations (N = 1..N)</span>
+        <span class="text-[11px] text-slate-500 mt-1">Erich Friedman Entries</span>
       </div>
-      <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 backdrop-blur-sm flex flex-col">
-        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Proved Optimal</span>
-        <span class="text-3xl font-extrabold text-emerald-400 mt-2">{summary.proved_optimal}</span>
-        <span class="text-[11px] text-slate-500 mt-1">Mathematically verified</span>
+
+      <div class="bg-slate-900/60 border border-amber-500/30 rounded-xl p-5 bg-amber-500/5 flex flex-col">
+        <span class="text-xs uppercase tracking-wider font-bold text-amber-400">NEW BEST RECORDS</span>
+        <span class="text-3xl font-extrabold text-amber-300 mt-2">{summary.total_new_bests}</span>
+        <span class="text-[11px] text-amber-400/80 mt-1">Solver beat benchmark!</span>
       </div>
+
       <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 backdrop-blur-sm flex flex-col">
-        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Best Known Bounds</span>
-        <span class="text-3xl font-extrabold text-sky-400 mt-2">{summary.best_known}</span>
-        <span class="text-[11px] text-slate-500 mt-1">Active research targets</span>
+        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Attempted Problems</span>
+        <span class="text-3xl font-extrabold text-emerald-400 mt-2">{summary.total_attempted}</span>
+        <span class="text-[11px] text-slate-500 mt-1">Local & Slurm Runs</span>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 backdrop-blur-sm flex flex-col">
+        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Slurm Solver Runs</span>
+        <span class="text-3xl font-extrabold text-sky-400 mt-2">{summary.total_slurm_starts}</span>
+        <span class="text-[11px] text-slate-500 mt-1">{summary.total_slurm_attempts.toLocaleString()} total attempts</span>
       </div>
     </div>
+
+    <!-- New Best Records Banner -->
+    {new_bests.length > 0 && (
+      <div class="bg-gradient-to-r from-amber-500/15 via-purple-500/10 to-slate-900 border border-amber-500/30 rounded-2xl p-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🏆</span>
+            <div>
+              <h2 class="text-lg font-bold text-white tracking-tight">Record-Beating Results ({summary.total_new_bests} Problems)</h2>
+              <p class="text-xs text-amber-200/80">Configurations where your solver achieved tighter scale metrics than Erich Friedman's reference</p>
+            </div>
+          </div>
+          <a href={`${base}/results`} class="text-xs font-bold text-amber-400 hover:text-amber-300">View All in Dashboard &rarr;</a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {new_bests.slice(0, 4).map((nb) => (
+            <div class="bg-slate-950 border border-amber-500/30 rounded-xl p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-sm text-slate-200">{nb.problem_family}</span>
+                <span class="text-xs font-mono font-bold text-amber-400">N={nb.N}</span>
+              </div>
+              <div class="text-xs space-y-1 text-slate-400 font-mono">
+                <div class="flex justify-between">
+                  <span>Known Ref:</span>
+                  <span>{nb.known_value ? nb.known_value.toFixed(5) : '—'}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-amber-300 font-semibold">Our Solver:</span>
+                  <span class="text-amber-300 font-bold">{nb.our_best_metric ? nb.our_best_metric.toFixed(5) : '—'}</span>
+                </div>
+                <div class="flex justify-between text-emerald-400 font-semibold border-t border-slate-800/80 pt-1">
+                  <span>Improvement:</span>
+                  <span>{nb.diff ? nb.diff.toFixed(5) : '—'}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Promising Targets Preview -->
+    {priority_targets.length > 0 && (
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-white tracking-tight">Most Promising Target Shapes</h2>
+            <p class="text-xs text-slate-400">Priority queue problems with lowest density / highest potential for new best bounds</p>
+          </div>
+          <a href={`${base}/results`} class="text-xs font-semibold text-indigo-400 hover:text-indigo-300">Explore Queue &rarr;</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {priority_targets.slice(0, 4).map((pt) => (
+            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">
+                  Rank #{pt.priority_rank}
+                </span>
+                <span class="text-xs font-mono font-bold text-emerald-400">N={pt.N}</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-100">{pt.problem_family}</h3>
+              <div class="text-xs text-slate-400 flex justify-between font-mono pt-1">
+                <span>Density:</span>
+                <span class="text-indigo-300 font-semibold">{pt.density ? pt.density.toFixed(4) : 'N/A'}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
 
     <!-- Visualizations Showcase -->
     {solvedProblems.length > 0 && (
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-xl font-bold text-white tracking-tight">Featured Packing Visualizations</h2>
+            <h2 class="text-xl font-bold text-white tracking-tight">Featured Vector Packing Visualizations</h2>
             <p class="text-xs text-slate-400">Sample best-packing geometry rendered at build time</p>
           </div>
           <a href={`${base}/results`} class="text-xs font-semibold text-indigo-400 hover:text-indigo-300">View All &rarr;</a>
@@ -84,9 +164,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           <div class="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">
             01
           </div>
-          <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">Results Dashboard</h3>
+          <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">Results & Analytics Dashboard</h3>
           <p class="text-xs text-slate-400 leading-relaxed">
-            Searchable, filterable table of all 2,600+ packing metrics with status indicators and reference links.
+            Filter attempted runs, explore 33 NEW_BEST record-beating metrics, and compare solver performance.
           </p>
         </div>
         <span class="text-xs font-semibold text-indigo-400 flex items-center gap-1">Browse Results &rarr;</span>
