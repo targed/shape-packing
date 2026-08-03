@@ -2,8 +2,8 @@
 """
 build_site_data.py
 
-Ingests PACKING_REFERENCE.json, results.tsv, and results/ solution files
-to generate site/src/data/site_data.json for the Astro dashboard.
+Ingests packingVerification/*.json (verified benchmark entries from Erich Friedman's site),
+results.tsv, and results/ solution files to generate site/src/data/site_data.json.
 """
 
 import json
@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Dict, Any, List
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
+PACKING_VERIFICATION_DIR = ROOT_DIR / "packingVerification"
 PACKING_REF_PATH = ROOT_DIR / "PACKING_REFERENCE.json"
 RESULTS_TSV_PATH = ROOT_DIR / "results.tsv"
 RESULTS_DIR = ROOT_DIR / "results"
@@ -116,6 +117,27 @@ FAMILY_NAMES = {
 }
 
 
+def load_reference_entries() -> List[Dict[str, Any]]:
+    entries = []
+    # Primary source: packingVerification/*.json
+    if PACKING_VERIFICATION_DIR.exists():
+        for json_file in sorted(PACKING_VERIFICATION_DIR.glob("*.json")):
+            try:
+                with open(json_file, "r", encoding="utf-8") as f:
+                    file_entries = json.load(f)
+                    if isinstance(file_entries, list):
+                        entries.extend(file_entries)
+            except Exception as e:
+                print(f"Warning: failed reading {json_file}: {e}")
+
+    # Secondary fallback: PACKING_REFERENCE.json
+    if not entries and PACKING_REF_PATH.exists():
+        with open(PACKING_REF_PATH, "r", encoding="utf-8") as f:
+            entries = json.load(f)
+
+    return entries
+
+
 def load_solutions() -> Dict[str, Dict[str, Any]]:
     solutions = {}
     if not RESULTS_DIR.exists():
@@ -150,11 +172,9 @@ def load_solutions() -> Dict[str, Dict[str, Any]]:
 
 
 def main():
-    if not PACKING_REF_PATH.exists():
-        raise FileNotFoundError(f"{PACKING_REF_PATH} does not exist. Run parse_erich_friedman.py first.")
-
-    with open(PACKING_REF_PATH, "r", encoding="utf-8") as f:
-        ref_entries = json.load(f)
+    ref_entries = load_reference_entries()
+    if not ref_entries:
+        raise FileNotFoundError("No reference benchmark entries found in packingVerification/ or PACKING_REFERENCE.json.")
 
     solutions = load_solutions()
 
@@ -187,7 +207,7 @@ def main():
 
         prob_n = entry.get("N")
         problem_key = f"{prob_n}_{entry.get('inner_shape')}_in_{entry.get('container_shape')}"
-        sol_data = solutions.get(problem_key) or solutions.get(f"{prob_n}_{family_id}")
+        sol_data = solutions.get(problem_key) or solutions.get(f"{prob_n}_{family_id}") or solutions.get(entry.get("our_problem", ""))
         if sol_data:
             fam["solved_count"] += 1
 
@@ -224,7 +244,7 @@ def main():
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(site_data, f, indent=2)
 
-    print(f"Generated site_data.json with {len(families_list)} families and {len(problems_list)} problems at {OUTPUT_PATH}")
+    print(f"Generated site_data.json from packingVerification/ with {len(families_list)} families and {len(problems_list)} problems at {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":
