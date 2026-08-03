@@ -64,7 +64,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <!-- Requirements Document Section -->
     {reqData && (
       <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-3">
-        <h2 class="text-sm uppercase tracking-wider font-semibold text-slate-400">Requirement Specification ({reqData.filename})</h2>
+        <h2 class="text-sm uppercase tracking-wider font-semibold text-slate-400">Requirement Specification ({reqData.original_filename || reqData.slug})</h2>
         <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 font-mono text-xs text-slate-300 whitespace-pre-wrap overflow-x-auto leading-relaxed">
           {reqData.content}
         </div>

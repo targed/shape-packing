@@ -4,9 +4,6 @@ import ResultsTable from '../components/ResultsTable.astro';
 import siteData from '../data/site_data.json';
 
 const { families, problems } = siteData;
-
-// Unique status values
-const statusOptions = Array.from(new Set(problems.map(p => p.status)));
 ---
 
 <BaseLayout title="Results Dashboard | Shape Packing">
@@ -20,7 +17,7 @@ const statusOptions = Array.from(new Set(problems.map(p => p.status)));
       </div>
       <div class="flex items-center gap-2">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-900 border border-slate-800 text-slate-300">
-          Total Entries: <strong class="text-indigo-400 ml-1">{problems.length.toLocaleString()}</strong>
+          Showing: <strong id="visible-count" class="text-indigo-400 ml-1">{problems.length.toLocaleString()}</strong> / {problems.length.toLocaleString()}
         </span>
       </div>
     </div>
@@ -48,7 +45,7 @@ const statusOptions = Array.from(new Set(problems.map(p => p.status)));
         <input
           type="text"
           id="search-input"
-          placeholder="Filter by family or N..."
+          placeholder="Search by family, N, value..."
           class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500 flex-1 min-w-[180px]"
         />
       </div>
@@ -63,30 +60,34 @@ const statusOptions = Array.from(new Set(problems.map(p => p.status)));
 
     <!-- Table Container -->
     <div id="results-table-container">
-      <ResultsTable problems={problems} limit={200} />
+      <ResultsTable problems={problems} />
     </div>
   </div>
 
-  <script is:inline define:vars={{ allProblems: problems }}>
+  <script is:inline>
     const familyFilter = document.getElementById('family-filter');
     const statusFilter = document.getElementById('status-filter');
     const searchInput = document.getElementById('search-input');
     const resetButton = document.getElementById('reset-filters');
+    const visibleCountDisplay = document.getElementById('visible-count');
     const container = document.getElementById('results-table-container');
 
     function applyFilters() {
-      const fam = familyFilter.value.toLowerCase();
-      const stat = statusFilter.value.toLowerCase();
-      const query = searchInput.value.toLowerCase().trim();
+      const fam = (familyFilter?.value || '').toLowerCase().trim();
+      const stat = (statusFilter?.value || '').toLowerCase().trim();
+      const query = (searchInput?.value || '').toLowerCase().trim();
 
-      const rows = container.querySelectorAll('tbody tr');
+      const rows = container?.querySelectorAll('tbody tr') || [];
       let visibleCount = 0;
 
       rows.forEach((tr) => {
-        const text = tr.innerText.toLowerCase();
-        const matchesFam = !fam || text.includes(fam);
-        const matchesStat = !stat || text.includes(stat);
-        const matchesQuery = !query || text.includes(query);
+        const rowFam = (tr.getAttribute('data-family') || '').toLowerCase();
+        const rowStat = (tr.getAttribute('data-status') || '').toLowerCase();
+        const rowSearch = (tr.getAttribute('data-search') || tr.innerText || '').toLowerCase();
+
+        const matchesFam = !fam || rowFam === fam;
+        const matchesStat = !stat || rowStat === stat;
+        const matchesQuery = !query || rowSearch.includes(query);
 
         if (matchesFam && matchesStat && matchesQuery) {
           tr.style.display = '';
@@ -95,6 +96,10 @@ const statusOptions = Array.from(new Set(problems.map(p => p.status)));
           tr.style.display = 'none';
         }
       });
+
+      if (visibleCountDisplay) {
+        visibleCountDisplay.textContent = visibleCount.toLocaleString();
+      }
     }
 
     familyFilter?.addEventListener('change', applyFilters);

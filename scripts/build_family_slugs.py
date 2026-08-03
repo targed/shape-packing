@@ -2,11 +2,12 @@
 """
 build_family_slugs.py
 
-Generates site/src/data/family_slugs.json mapping family slugs to requirement markdown contents.
+Generates site/src/data/family_slugs.json mapping canonical family slugs to requirement markdown contents.
 """
 
 import json
 from pathlib import Path
+from build_site_data import normalize_family_slug
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 REQ_DIR = ROOT_DIR / "docs" / "requirements" / "60-problem-families"
@@ -19,11 +20,12 @@ def main():
         for req_file in REQ_DIR.glob("*.md"):
             if req_file.name == "template-family.md":
                 continue
-            slug = req_file.stem
+            raw_stem = req_file.stem
+            canonical_slug = normalize_family_slug(raw_stem)
             content = req_file.read_text(encoding="utf-8", errors="ignore")
-            slugs_data[slug] = {
-                "slug": slug,
-                "filename": req_file.name,
+            slugs_data[canonical_slug] = {
+                "slug": canonical_slug,
+                "original_filename": req_file.name,
                 "content": content
             }
 
