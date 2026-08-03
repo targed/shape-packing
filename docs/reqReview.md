@@ -312,3 +312,198 @@ Summary for 50-test-coverage.md:
 
 If you’d like, next I’ll:
 - Apply these fixes as patches to the non-shape-family requirements files so they’re fully consistent with the actual codebase.
+
+
+
+
+
+
+
+
+
+I’ll verify every family doc systematically and report real discrepancies.
+
+I’ll do this in batches but list each family clearly.
+
+Batch 1: L families (LinL, Lindom, Linhex, Linoct, Linpen, Lintan, Lintri)
+
+Check: L-tromino is not fully implemented.
+
+- Code: geometry.py has no "L" token. packer_rs also lacks L-tromino.
+- Docs claim:
+    - "canonical L-tromino definition"
+    - "both shall use canonical definitions"
+    - "scaling from S via documented rule"
+- Verdict (all 7):
+    - Currently ASPIRATIONAL, not implemented.
+    - Fix: change each doc’s Geometry section to:
+    - “L-tromino support is planned. When implemented, it SHALL use a canonical L-tromino definition; until then, L-family problems SHALL be excluded or handled via explicit TODO logic.”
+
+Batch 2: cirin* families (cirinel, cirinhex, cirinoct, cirinl, cirinpen, cirinsqu, cirintan, cirintri, cirinttt)
+
+These are “circles in [container]” families.
+
+- Code:
+    - Geometry: circles modeled via high-sided polygons (usually 32) in get_shape_geometry; special token handling in compare_results and solution_tools.
+    - Tolerance/validity: same SAT + bounds checks as other polygons.
+    - Friedman metric: compare_results.py treats circles specially but still uses final_metric or S-based conversion; metric alignment is uncertain.
+- Docs claim:
+    - “circles SHALL be represented consistently”
+    - “scaling derived from S via documented rule”
+    - “NEW_BEST only if geometry and metric alignment are confirmed”
+- Verdict:
+    - Mostly accurate in intent.
+    - Issue: none of these docs currently enforce “metric alignment confirmed” in code.
+    - Fix (all 9):
+    - Add: “Until explicit per-family conversion is implemented, circle-in-container problems SHALL be marked as needing review when NEW_BEST is detected.”
+
+Batch 3: dom* families (dominL, domincir, domindom, dominhex, dominoct, dominpen, domintan, domintri)
+
+Domino is implemented (geometry.py and packer_rs have explicit domino definitions).
+
+- Geometry:
+    - Python: explicit vertices/normal in get_shape_geometry.
+    - Rust: explicit domino geometry.
+    - Matches “canonical domino.”
+- Validity:
+    - Standard SAT checks; same tolerance.
+- Friedman:
+    - Docs: “explicit, documented conversion from S; NEW_BEST only if alignment confirmed.”
+    - Code: compare_results uses final_metric directly for many non-circle families, including domino.
+- Verdict:
+    - Geometry/validity: OK.
+    - Metric rule: ASPIRATIONAL.
+    - Fix (all 8):
+    - Add: “For domino families, final_metric SHALL NOT be assumed equivalent to Friedman’s metric unless explicitly validated.”
+
+Batch 4: hexin* families (hexinL, hexincir, hexindom, hexinhex, hexinoct, hexinpen, hexintan, hexintri)
+
+- Geometry:
+    - Hexagon is regular polygon with 6 sides; implemented consistently.
+    - hexinL: L not implemented (same as Batch 1).
+- Validity:
+    - SAT checks OK.
+- Friedman:
+    - Same issue: docs require explicit conversion; code uses final_metric.
+- Verdict:
+    - hexinL: geometry for L is missing → ASPIRATIONAL.
+    - Others: geometry OK; metric rule ASPIRATIONAL.
+    - Fix:
+    - hexinL: same note as L families.
+    - Others: add “final_metric SHALL NOT be treated as Friedman-equivalent without explicit validation.”
+
+Batch 5: lincir, linsqu
+
+- Geometry:
+    - L-tromino not implemented.
+    - Container shapes (circle/square) are implemented.
+- Verdict:
+    - Both: ASPIRATIONAL for L-tromino; otherwise OK for container/validity.
+    - Fix: same “planned L-tromino” note.
+
+Batch 6: minrect
+
+- Code:
+    - No specific “minrect” family handling in geometry.py/optimization.py.
+    - No rectangle-only container mode documented in current solver.
+- Verdict:
+    - Mostly ASPIRATIONAL.
+    - Fix:
+    - Mark “minrect is a conceptual family; when supported, container SHALL be a rectangle with adjustable dimensions and documented metric alignment.”
+
+Batch 7: octin* families (octinL, octincir, octindom, octinhex, octinoct, octinpen, octinsqu, octintan, octintri)
+
+- Geometry:
+    - Octagon = regular polygon with 8 sides; implemented.
+    - octinL uses L → not implemented.
+- Validity:
+    - SAT checks consistent.
+- Friedman:
+    - Same final_metric issue.
+- Verdict:
+    - octinL: ASPIRATIONAL (L missing).
+    - Others: geometry OK; metric rule ASPIRATIONAL.
+    - Fix: same pattern.
+
+Batch 8: penin* families (peninL, penincir, penindom, peninhex, peninoct, peninpen, peninsqu, penintan, penintri)
+
+- Geometry:
+    - Pentagon = 5-sided regular polygon; implemented.
+    - peninL: L missing.
+- Validity:
+    - OK.
+- Friedman:
+    - Same issue.
+- Verdict:
+    - peninL: ASPIRATIONAL for L.
+    - Others: geometry OK; metric rule ASPIRATIONAL.
+
+Batch 9: rigid, squRcir, squcosqu, tricosqu
+
+These are more specialized/niche.
+
+- rigid:
+    - No special “rigid” mode in current code; all shapes are inherently rigid.
+    - Verdict: ASPIRATIONAL but harmless.
+    - Fix: clarify: “Rigid is default: all shapes are rigid; no deformation allowed.”
+
+- squRcir, squcosqu, tricosqu:
+    - Not explicitly handled in geometry/optimization as separate modes.
+    - Verdict: ASPIRATIONAL / conceptual.
+    - Fix: mark them as: “If implemented, these SHALL follow the same SAT-based validity and explicit Friedman mapping rules; currently they are conceptual families to be defined in code if used.”
+
+Batch 10: squin* families (squincir, squindom, squinhex, squinl, squinoct, squinpen, squintan, squintri)
+
+- Geometry:
+    - Square (4-gon) is implemented.
+    - squinl: uses L → missing.
+- Validity:
+    - OK.
+- Friedman:
+    - Same final_metric issue.
+- Verdict:
+    - squinl: ASPIRATIONAL for L.
+    - Others: geometry OK; metric rule ASPIRATIONAL.
+
+Batch 11: tanin* families (taninL, tanincir, tanindom, taninhex, taninoct, taninpen, taninsqu, tanintan, tanintri)
+
+- Geometry:
+    - TAN implemented in Python and Rust with explicit vertices.
+    - taninL uses L → missing.
+- Validity:
+    - OK.
+- Friedman:
+    - Critical family (we know the metric mismatch issue).
+    - Docs: “explicit, documented conversion from S; NEW_BEST only if geometry and metric alignment are confirmed.”
+    - Code: compare_results.py currently uses final_metric; incorrect for TAN-in-SQUARE.
+- Verdict:
+    - taninL: ASPIRATIONAL for L.
+    - Others: geometry OK; metric requirement is CORRECT but NOT enforced.
+    - Fix:
+    - For taninsqu specifically, explicitly state: “For TAN-in-SQUARE, Friedman metric SHALL be s = S * sqrt(2); final_metric SHALL NOT be used for comparison.”
+
+Batch 12: triin* families (triinL, triincir, triindom, triinhex, triinoct, triintan, triintri)
+
+(Exclude triinpen, triinsqu which were already done earlier.)
+
+- Geometry:
+    - Triangles are 3-sided regular polygons; implemented.
+    - triinL: L missing.
+- Validity:
+    - OK.
+- Friedman:
+    - Same final_metric issue.
+- Verdict:
+    - triinL: ASPIRATIONAL.
+    - Others: geometry OK; metric rule ASPIRATIONAL.
+
+Now, concrete fixes I’ll apply (concise):
+
+I’ll:
+- Update all L-family docs to mark L-tromino as not yet implemented.
+- Add a uniform note to all families about metric alignment: “final_metric SHALL NOT be assumed equivalent to Friedman unless explicitly validated; potential NEW_BEST for such families SHALL be flagged as
+NEEDS_REVIEW.”
+- For TAN-in-SQUARE, explicitly codify the correct metric rule we discovered.
+- Clarify minrect, rigid, squRcir, squcosqu, tricosqu as conceptual/currently unimplemented.
+
+If that’s OK, I’ll proceed with patches now.
