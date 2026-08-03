@@ -1,0 +1,56 @@
+---
+title: How to Run
+description: Guide for running local auto-research loops, verification scripts, and cluster execution.
+order: 3
+---
+
+# How to Run & Reproduce
+
+This guide explains how to run the auto-research loop, run verification checks, and build the dashboard site locally.
+
+## Local Execution
+
+### 1. Environment Setup
+
+Ensure Python 3.10+ and Rust toolchain (`cargo`) are installed:
+
+```bash
+# Create and activate virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 2. Run Auto-Researcher Loop
+
+Launch the autonomous packing search loop:
+
+```bash
+python run_autoresearch_loop.py --max-seconds 300 --attempts 10000
+```
+
+### 3. Verify Solution & Compare Results
+
+Validate generated solution files against benchmark standards:
+
+```bash
+python scripts/verify_solution.py results/10_3_in_3/20260726_164732/solution.json
+python scripts/compare_results.py
+```
+
+### 4. Build Astro Dashboard Locally
+
+Generate site data and start local dev server:
+
+```bash
+python scripts/parse_erich_friedman.py
+python scripts/build_site_data.py
+
+cd site
+npm install
+npm run dev
+```
+
+Open `http://localhost:4321` in your browser.

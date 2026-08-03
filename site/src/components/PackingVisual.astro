@@ -1,0 +1,79 @@
+---
+import { generatePackingSvgElements, getRegularPolygonVertices, transformPoint, type SolutionData } from '../lib/visualization/render_packing';
+
+interface Props {
+  solution: SolutionData;
+  title?: string;
+}
+
+const { solution, title } = Astro.props;
+const svgData = generatePackingSvgElements(solution);
+---
+
+{svgData ? (
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col items-center shadow-lg">
+    {title && <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{title}</h4>}
+    <div class="w-full aspect-square max-w-[280px] relative flex items-center justify-center bg-slate-950/60 rounded-lg border border-slate-800/60 p-2">
+      <svg viewBox={svgData.viewBox} class="w-full h-full transform scale-y-[-1] overflow-visible">
+        <!-- Container Boundary -->
+        {typeof svgData.containerSides === 'number' && svgData.containerSides > 2 ? (
+          <polygon
+            points={getRegularPolygonVertices(svgData.containerSides, svgData.S)
+              .map(p => `${p.x},${p.y}`)
+              .join(' ')}
+            fill="none"
+            stroke="#475569"
+            stroke-width="0.04"
+            stroke-dasharray="0.1,0.1"
+          />
+        ) : (
+          <circle
+            cx="0"
+            cy="0"
+            r={svgData.S}
+            fill="none"
+            stroke="#475569"
+            stroke-width="0.04"
+            stroke-dasharray="0.1,0.1"
+          />
+        )}
+
+        <!-- Inner Shapes -->
+        {svgData.shapes.map((shape) => {
+          const numSides = typeof svgData.innerSides === 'number' ? svgData.innerSides : 3;
+          if (numSides > 2) {
+            const vertices = getRegularPolygonVertices(numSides, 1.0);
+            const transformed = vertices.map(v => transformPoint(v, shape.cx, shape.cy, shape.angle));
+            return (
+              <polygon
+                points={transformed.map(p => `${p.x},${p.y}`).join(' ')}
+                fill={shape.color}
+                fill-opacity="0.35"
+                stroke={shape.color}
+                stroke-width="0.03"
+              />
+            );
+          } else {
+            return (
+              <circle
+                cx={shape.cx}
+                cy={shape.cy}
+                r="0.5"
+                fill={shape.color}
+                fill-opacity="0.35"
+                stroke={shape.color}
+                stroke-width="0.03"
+              />
+            );
+          }
+        })}
+      </svg>
+    </div>
+    <div class="mt-3 flex items-center justify-between w-full text-[11px] text-slate-400 border-t border-slate-800/60 pt-2">
+      <span>N = <strong class="text-indigo-400">{solution.N}</strong></span>
+      <span>Scale (S) = <strong class="text-emerald-400">{(solution.S || solution.final_metric || 0).toFixed(4)}</strong></span>
+    </div>
+  </div>
+) : (
+  <div class="text-xs text-slate-500 italic py-4 text-center">No visualization available for this configuration</div>
+)}

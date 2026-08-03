@@ -1,0 +1,21 @@
+---
+title: Verification & Metrics
+description: Verification algorithms, comparison rules, and status classifications.
+order: 6
+---
+
+# Verification & Metrics
+
+To maintain high scientific integrity, all candidate solution outputs undergo automated verification before recording in `results.tsv` or updating benchmark statuses.
+
+## Verification Checklist
+
+1. **Containment Test:** All vertices of each inner shape `P_i` must lie inside the container boundary `S * C` within tolerance `eps = 1e-5`.
+2. **Non-Overlap Test:** Every pair of inner shapes `(P_i, P_j)` must satisfy `OverlapArea(P_i, P_j) <= 1e-5`.
+3. **Scale Computation:** Scale factor `S` must match the values recorded in `solution.json`.
+
+## Status Classifications
+
+- **Proved Optimal:** The metric `S` has been mathematically proven as optimal by published literature.
+- **Best Known:** The recorded `S` is the current world-best known bound.
+- **Trivial:** Small instances (e.g. `N=1` or `N=2`) where analytical solutions are immediate.

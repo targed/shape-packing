@@ -26,7 +26,10 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent / "erich-friedman.github.io" / "packing"
+root_candidate = Path(__file__).resolve().parent.parent / "docs" / "erich-friedman.github.io" / "packing"
+if not root_candidate.exists():
+    root_candidate = Path(__file__).resolve().parent.parent / "erich-friedman.github.io" / "packing"
+ROOT = root_candidate
 OUT = Path(__file__).resolve().parent.parent / "PACKING_REFERENCE.json"
 BASE_URL = "https://erich-friedman.github.io/packing"
 

@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout title="About | Shape Packing Dashboard">
+  <div class="max-w-3xl mx-auto space-y-8">
+    <div class="border-b border-slate-800 pb-6">
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">About Shape Packing Auto-Researcher</h1>
+      <p class="text-sm text-slate-400 mt-2">
+        Background, purpose, internal use guidelines, and citation information.
+      </p>
+    </div>
+
+    <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-3">
+        <h2 class="text-lg font-bold text-white">Project Purpose</h2>
+        <p>
+          The Shape Packing Auto-Researcher project automates the exploration, verification, and benchmark tracking of 2D polygon packing problems. It is designed to act as an internal workbench for algorithmic development, log analysis, and continuous performance evaluation against Erich Friedman's historical packing benchmarks.
+        </p>
+      </div>
+
+      <div class="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-6 space-y-3">
+        <h2 class="text-lg font-bold text-amber-300">Internal Use & Citation Notice</h2>
+        <p class="text-amber-200/90 text-xs leading-relaxed">
+          This GitHub Pages site serves as an operational dashboard for ongoing algorithm experiments and research tasks. Results displayed on this dashboard reflect automated solver runs and references. They are intended for internal system debugging, performance tuning, and geometric visualization, and should not be cited as definitive mathematical proofs without explicit secondary verification.
+        </p>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <h2 class="text-lg font-bold text-white">How to Use This Site</h2>
+        <ul class="list-disc list-inside space-y-2 text-xs text-slate-400">
+          <li><strong>Results Dashboard:</strong> Use search and family dropdown filters to locate specific configuration bounds (<code class="text-indigo-300">N</code>, shape tokens).</li>
+          <li><strong>Per-Family Pages:</strong> Access detailed requirement specifications and family-level packing metrics via <code class="text-indigo-300">/family/&lt;slug&gt;</code>.</li>
+          <li><strong>Visualizations:</strong> Check solutions with vector SVG drawings rendered directly from position coordinate matrices.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

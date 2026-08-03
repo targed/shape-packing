@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResultsTable from '../../components/ResultsTable.astro';
+import PackingVisual from '../../components/PackingVisual.astro';
+import siteData from '../../data/site_data.json';
+import familySlugs from '../../data/family_slugs.json';
+
+export async function getStaticPaths() {
+  const { families } = siteData;
+  return families.map((fam) => ({
+    params: { slug: fam.slug },
+    props: { family: fam },
+  }));
+}
+
+const { family } = Astro.props;
+const { problems } = siteData;
+const familyProblems = problems.filter((p) => p.problem_family === family.slug);
+const reqData = (familySlugs as Record<string, any>)[family.slug];
+const solvedProblems = familyProblems.filter(p => p.solution);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout title={`${family.name} (${family.slug}) | Family Detail`}>
+  <div class="space-y-8">
+    <!-- Header -->
+    <div class="border-b border-slate-800 pb-6 space-y-4">
+      <div class="flex items-center gap-2 text-xs text-slate-400">
+        <a href={`${base}/results`} class="hover:text-indigo-400">Results</a>
+        <span>/</span>
+        <span class="text-slate-200 font-medium">{family.slug}</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">{family.name}</h1>
+          <p class="text-xs text-slate-400 mt-1">
+            Problem Family Code: <code class="text-indigo-300 font-bold">{family.slug}</code> &bull; Inner Shape: <span class="text-slate-200">{family.inner_shape}</span> &bull; Container: <span class="text-slate-200">{family.container_shape}</span>
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            {familyProblems.length} Problems
+          </span>
+          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            {family.proved_optimal_count} Optimal
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution Visualizations (if any exist for family) -->
+    {solvedProblems.length > 0 && (
+      <div class="space-y-3">
+        <h2 class="text-lg font-bold text-white tracking-tight">Best Packing Visualizations</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {solvedProblems.map(p => (
+            <PackingVisual solution={p.solution} title={`N=${p.N}`} />
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Requirements Document Section -->
+    {reqData && (
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-3">
+        <h2 class="text-sm uppercase tracking-wider font-semibold text-slate-400">Requirement Specification ({reqData.filename})</h2>
+        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 font-mono text-xs text-slate-300 whitespace-pre-wrap overflow-x-auto leading-relaxed">
+          {reqData.content}
+        </div>
+      </div>
+    )}
+
+    <!-- Benchmark Results Table for Family -->
+    <div class="space-y-4">
+      <h2 class="text-lg font-bold text-white tracking-tight">Benchmark Results Table</h2>
+      <ResultsTable problems={familyProblems} limit={500} />
+    </div>
+  </div>
+</BaseLayout>

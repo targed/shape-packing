@@ -1,0 +1,407 @@
+{
+  "cirincir": {
+    "slug": "cirincir",
+    "filename": "cirincir.md",
+    "content": "# Circles in Circles Requirements\n\nFamily: N_CIRCLE_in_CIRCLE (N circles inside a larger circle).\n\n1. Geometry\n- WHEN the inner shape is \"CIRCLE\" THEN:\n  - it SHALL be modeled with a consistent numeric representation (e.g., high-sided polygon or dedicated circle logic),\n  - its unit size SHALL be stable across all N.\n- WHEN the container is \"CIRCLE\" THEN:\n  - it SHALL be modeled consistently with the same logic,\n  - its size SHALL be represented by radius r (mapped from S).\n\n2. Validity\n- WHEN a solution is generated THEN:\n  - all inner circle boundaries SHALL lie inside the outer circle,\n  - no two inner circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison\n- Friedman\u2019s metric for circle-in-circle problems uses his specific radius r.\n- WHEN comparing to Friedman THEN:\n  - the metric SHALL be derived from S via an explicit, per-shape conversion,\n  - old sin-scaled final_metric values SHALL NOT be used directly as r.\n- IF the mapping is uncertain THEN:\n  - the problem SHALL be marked incomparable\n    and no NEW_BEST SHALL be claimed.\n\n4. Test Expectations\n- WHEN testing this family THEN:\n  - there SHALL be tests for:\n    - construction of circle representations,\n    - a valid packing inside a circle,\n    - an overlapping-circle case,\n    - a boundary-violation case where an inner circle extends outside.\n"
+  },
+  "cirinel": {
+    "slug": "cirinel",
+    "filename": "cirinel.md",
+    "content": "# cirinel: Circles in L-tromino\n\nFamily: N_CIRCLE_in_L (N circles inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner is \"CIRCLE\" and container is \"L\" THEN:\n  - circles SHALL be represented consistently (e.g., via high-sided polygon or dedicated logic).\n  - container SHALL use a canonical L-tromino shape.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all circles SHALL be inside the L-tromino container.\n  - no two circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "cirinhex": {
+    "slug": "cirinhex",
+    "filename": "cirinhex.md",
+    "content": "# cirinhex: Circles in Hexagon\n\nFamily: N_CIRCLE_in_hex (N circles inside a regular hexagon container).\n\n1. Geometry:\n- WHEN inner is \"CIRCLE\" and container is \"hex\" THEN:\n  - circles SHALL be represented consistently.\n  - container SHALL be a regular hexagon.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all circles SHALL be inside the hexagon.\n  - no two circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "cirinl": {
+    "slug": "cirinl",
+    "filename": "cirinl.md",
+    "content": "# cirinl: Circles in L-tromino\n\nFamily: N_CIRCLE_in_L (N circles inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner is \"CIRCLE\" and container is \"L\" THEN:\n  - circles SHALL be represented consistently.\n  - container SHALL be a canonical L-tromino.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all circles SHALL be inside the L-tromino.\n  - no two circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "cirinoct": {
+    "slug": "cirinoct",
+    "filename": "cirinoct.md",
+    "content": "# cirinoct: Circles in Octagon\n\nFamily: N_CIRCLE_in_oct (N circles inside a regular octagon container).\n\n1. Geometry:\n- WHEN inner is \"CIRCLE\" and container is \"oct\" THEN:\n  - circles SHALL be represented consistently.\n  - container SHALL be a regular octagon.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all circles SHALL be inside the octagon.\n  - no two circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "cirinpen": {
+    "slug": "cirinpen",
+    "filename": "cirinpen.md",
+    "content": "# cirinpen: Circles in Pentagon\n\nFamily: N_CIRCLE_in_pen (N circles inside a regular pentagon container).\n\n1. Geometry:\n- WHEN inner is \"CIRCLE\" and container is \"pen\" THEN:\n  - circles SHALL be represented consistently.\n  - container SHALL be a regular pentagon.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all circles SHALL be inside the pentagon.\n  - no two circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "cirinsqu": {
+    "slug": "cirinsqu",
+    "filename": "cirinsqu.md",
+    "content": "# cirinsqu: Circles in Square\n\nFamily: N_CIRCLE_in_squ (N circles inside a square container).\n\n1. Geometry:\n- WHEN inner is \"CIRCLE\" and container is \"squ\" THEN:\n  - circles SHALL be represented consistently.\n  - container SHALL be a square.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all circles SHALL be inside the square.\n  - no two circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "cirintan": {
+    "slug": "cirintan",
+    "filename": "cirintan.md",
+    "content": "# cirintan: Circles in Tan\n\nFamily: N_CIRCLE_in_tan (N circles inside a Tan container).\n\n1. Geometry:\n- WHEN inner is \"CIRCLE\" and container is \"tan\" THEN:\n  - circles SHALL be represented consistently.\n  - container SHALL use a canonical Tan shape.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all circles SHALL be inside the Tan container.\n  - no two circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "cirintri": {
+    "slug": "cirintri",
+    "filename": "cirintri.md",
+    "content": "# cirintri: Circles in Triangle\n\nFamily: N_CIRCLE_in_tri (N circles inside an equilateral triangle container).\n\n1. Geometry:\n- WHEN inner is \"CIRCLE\" and container is \"tri\" THEN:\n  - circles SHALL be represented consistently.\n  - container SHALL be a regular triangle.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all circles SHALL be inside the triangle.\n  - no two circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "cirinttt": {
+    "slug": "cirinttt",
+    "filename": "cirinttt.md",
+    "content": "# cirinttt: Circles in Truncated Triangle (TTT)\n\nFamily: N_CIRCLE_in_TTT (N circles inside a TTT-shaped container).\n\n1. Geometry:\n- WHEN inner is \"CIRCLE\" and container is \"TTT\" THEN:\n  - circles SHALL be represented consistently.\n  - container SHALL use a clearly defined TTT shape.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all circles SHALL be inside the TTT container.\n  - no two circles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "domincir": {
+    "slug": "domincir",
+    "filename": "domincir.md",
+    "content": "# domincir: Domino in Circle\n\nFamily: N_dom_in_CIRCLE (N dominoes inside a circle container).\n\n1. Geometry:\n- WHEN inner is \"dom\" and container is \"CIRCLE\" THEN:\n  - domino uses canonical shape.\n  - circle SHALL be modeled consistently (e.g., high-sided polygon or dedicated logic).\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all dominoes SHALL be inside the circle.\n  - no two dominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "domindom": {
+    "slug": "domindom",
+    "filename": "domindom.md",
+    "content": "# domindom: Domino in Domino\n\nFamily: N_dom_in_dom (N dominoes inside a domino container).\n\n1. Geometry:\n- WHEN both inner and container are \"dom\" THEN:\n  - both SHALL use the same canonical domino shape.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner dominoes SHALL be inside the container.\n  - no two inner dominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of domino shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "dominhex": {
+    "slug": "dominhex",
+    "filename": "dominhex.md",
+    "content": "# dominhex: Domino in Hexagon\n\nFamily: N_dom_in_hex (N dominoes inside a regular hexagon container).\n\n1. Geometry:\n- WHEN inner is \"dom\" and container is \"hex\" THEN:\n  - domino and hexagon use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all dominoes SHALL be inside the hexagon.\n  - no two dominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "dominL": {
+    "slug": "dominL",
+    "filename": "dominL.md",
+    "content": "# dominL: Domino in L-tromino\n\nFamily: N_dom_in_L (N dominoes inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner is \"dom\" and container is \"L\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all dominoes SHALL be inside the L-tromino.\n  - no two dominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "dominoct": {
+    "slug": "dominoct",
+    "filename": "dominoct.md",
+    "content": "# dominoct: Domino in Octagon\n\nFamily: N_dom_in_oct (N dominoes inside a regular octagon container).\n\n1. Geometry:\n- WHEN inner is \"dom\" and container is \"oct\" THEN:\n  - domino and octagon use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all dominoes SHALL be inside the octagon.\n  - no two dominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "dominpen": {
+    "slug": "dominpen",
+    "filename": "dominpen.md",
+    "content": "# dominpen: Domino in Pentagon\n\nFamily: N_dom_in_pen (N dominoes inside a regular pentagon container).\n\n1. Geometry:\n- WHEN inner is \"dom\" and container is \"pen\" THEN:\n  - domino and pentagon use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all dominoes SHALL be inside the pentagon.\n  - no two dominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "dominsqu": {
+    "slug": "dominsqu",
+    "filename": "dominsqu.md",
+    "content": "# Dominoes in Squares Requirements\n\nFamily: N_DOMINO_in_4 (N dominoes inside a square).\n\n1. Geometry\n- WHEN the problem uses token \"DOMINO\" THEN:\n  - the domino SHALL be defined using an explicit rectangular vertex set and edge normals\n    matching the implemented shape,\n  - it SHALL NOT fall back to regular-polygon formulas.\n- WHEN the container is \"4\" THEN:\n  - it SHALL be a square defined by 4 vertices with circumradius S.\n\n2. Validity\n- WHEN a solution is generated THEN:\n  - all domino vertices SHALL lie inside or on the square boundary,\n  - no two dominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison\n- Friedman\u2019s metric for domino problems is his stated unit and normalization.\n- WHEN comparing to Friedman THEN:\n  - the metric SHALL be derived from S using a consistent, documented conversion\n    that matches the domino\u2019s unit size,\n  - NEW_BEST is only valid if:\n    - geometry is verified,\n    - metric alignment is confirmed.\n\n4. Test Expectations\n- WHEN testing this family THEN:\n  - there SHALL be tests for:\n    - construction of the domino shape,\n    - a valid packing inside a square,\n    - an overlapping-domino case,\n    - a boundary-violation case.\n"
+  },
+  "domintan": {
+    "slug": "domintan",
+    "filename": "domintan.md",
+    "content": "# domintan: Domino in Tan\n\nFamily: N_dom_in_tan (N dominoes inside a Tan container).\n\n1. Geometry:\n- WHEN inner is \"dom\" and container is \"tan\" THEN:\n  - domino and Tan use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all dominoes SHALL be inside the Tan container.\n  - no two dominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "domintri": {
+    "slug": "domintri",
+    "filename": "domintri.md",
+    "content": "# domintri: Domino in Triangle\n\nFamily: N_dom_in_tri (N dominoes inside an equilateral triangle container).\n\n1. Geometry:\n- WHEN inner is \"dom\" and container is \"tri\" THEN:\n  - domino and triangle use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all dominoes SHALL be inside the triangle.\n  - no two dominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "hexincir": {
+    "slug": "hexincir",
+    "filename": "hexincir.md",
+    "content": "# hexincir: Hexagon in Circle\n\nFamily: N_hex_in_CIRCLE (N hexagons inside a circle container).\n\n1. Geometry:\n- WHEN inner is \"hex\" and container is \"CIRCLE\" THEN:\n  - hexagons and circle SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all hexagons SHALL be inside the circle.\n  - no two hexagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "hexindom": {
+    "slug": "hexindom",
+    "filename": "hexindom.md",
+    "content": "# hexindom: Hexagon in Domino\n\nFamily: N_hex_in_dom (N hexagons inside a domino container).\n\n1. Geometry:\n- WHEN inner is \"hex\" and container is \"dom\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all hexagons SHALL be inside the domino.\n  - no two hexagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "hexinhex": {
+    "slug": "hexinhex",
+    "filename": "hexinhex.md",
+    "content": "# hexinhex: Hexagon in Hexagon\n\nFamily: N_hex_in_hex (N hexagons inside a hexagon container).\n\n1. Geometry:\n- WHEN both inner and container are \"hex\" THEN:\n  - both SHALL use the same canonical hexagon shape.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner hexagons SHALL be inside the container.\n  - no two inner hexagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of hexagon shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "hexinL": {
+    "slug": "hexinL",
+    "filename": "hexinL.md",
+    "content": "# hexinL: Hexagon in L-tromino\n\nFamily: N_hex_in_L (N hexagons inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner is \"hex\" and container is \"L\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all hexagons SHALL be inside the L-tromino.\n  - no two hexagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "hexinoct": {
+    "slug": "hexinoct",
+    "filename": "hexinoct.md",
+    "content": "# hexinoct: Hexagon in Octagon\n\nFamily: N_hex_in_oct (N hexagons inside an octagon container).\n\n1. Geometry:\n- WHEN inner is \"hex\" and container is \"oct\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all hexagons SHALL be inside the octagon.\n  - no two hexagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "hexinpen": {
+    "slug": "hexinpen",
+    "filename": "hexinpen.md",
+    "content": "# hexinpen: Hexagon in Pentagon\n\nFamily: N_hex_in_pen (N hexagons inside a pentagon container).\n\n1. Geometry:\n- WHEN inner is \"hex\" and container is \"pen\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all hexagons SHALL be inside the pentagon.\n  - no two hexagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "hexinsqu": {
+    "slug": "hexinsqu",
+    "filename": "hexinsqu.md",
+    "content": "# Hexagons in Squares Requirements\n\nFamily: N_6_in_4 (N hexagons inside a square).\n\n1. Geometry\n- WHEN the problem uses token \"6\" THEN:\n  - hexagons SHALL be regular, defined via circumradius-based construction.\n- WHEN the container is \"4\" THEN:\n  - it SHALL be a square defined by 4 vertices with circumradius S.\n\n2. Validity\n- WHEN a solution is generated THEN:\n  - all hexagon vertices SHALL lie inside or on the square boundary,\n  - no two hexagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison\n- Friedman\u2019s metric for this family uses a consistent normalization.\n- WHEN comparing to Friedman THEN:\n  - the metric SHALL be derived from S using an explicit, documented formula\n    (e.g., based on S and sin(pi/n) where appropriate),\n  - NEW_BEST is only valid if:\n    - geometry is verified,\n    - metric alignment with Friedman is confirmed.\n\n4. Test Expectations\n- WHEN testing this family THEN:\n  - there SHALL be tests for:\n    - construction of hexagons and square,\n    - a valid packing inside the square,\n    - a case with overlap,\n    - a case with boundary violation.\n"
+  },
+  "hexintan": {
+    "slug": "hexintan",
+    "filename": "hexintan.md",
+    "content": "# hexintan: Hexagon in Tan\n\nFamily: N_hex_in_tan (N hexagons inside a Tan container).\n\n1. Geometry:\n- WHEN inner is \"hex\" and container is \"tan\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all hexagons SHALL be inside the Tan.\n  - no two hexagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "hexintri": {
+    "slug": "hexintri",
+    "filename": "hexintri.md",
+    "content": "# hexintri: Hexagon in Triangle\n\nFamily: N_hex_in_tri (N hexagons inside a triangle container).\n\n1. Geometry:\n- WHEN inner is \"hex\" and container is \"tri\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all hexagons SHALL be inside the triangle.\n  - no two hexagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "lincir": {
+    "slug": "lincir",
+    "filename": "lincir.md",
+    "content": "# lincir: L-tromino in Circle\n\nFamily: N_L_in_CIRCLE (N L-trominoes inside a circle container).\n\n1. Geometry:\n- WHEN inner is \"L\" and container is \"CIRCLE\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all L-trominoes SHALL be inside the circle.\n  - no two L-trominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "Lindom": {
+    "slug": "Lindom",
+    "filename": "Lindom.md",
+    "content": "# Lindom: L-tromino in Domino\n\nFamily: N_L_in_dom (N L-trominoes inside a domino container).\n\n1. Geometry:\n- WHEN inner is \"L\" and container is \"dom\" THEN:\n  - both SHALL be defined using canonical, fixed shapes.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner L-trominoes SHALL be inside the domino container.\n  - no two inner shapes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "Linhex": {
+    "slug": "Linhex",
+    "filename": "Linhex.md",
+    "content": "# Linhex: L-tromino in Hexagon\n\nFamily: N_L_in_hex (N L-trominoes inside a regular hexagon container).\n\n1. Geometry:\n- WHEN inner is \"L\" and container is \"hex\" THEN:\n  - use a canonical L-tromino definition and a regular hexagon.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner L-trominoes SHALL be inside the hexagon.\n  - no two inner shapes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "LinL": {
+    "slug": "LinL",
+    "filename": "LinL.md",
+    "content": "# LinL: L-tromino in L-tromino\n\nFamily: N_L_in_L (N L-trominoes inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner and container shapes are both \"L\" THEN:\n  - both SHALL use the same canonical L-tromino definition.\n  - Scaling SHALL be done via a documented conversion from S.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner L-trominoes SHALL be inside the container L-tromino.\n  - no two inner shapes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- Friedman\u2019s metric is defined for this family in his source.\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of L-tromino shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "Linoct": {
+    "slug": "Linoct",
+    "filename": "Linoct.md",
+    "content": "# Linoct: L-tromino in Octagon\n\nFamily: N_L_in_oct (N L-trominoes inside a regular octagon container).\n\n1. Geometry:\n- WHEN inner is \"L\" and container is \"oct\" THEN:\n  - use a canonical L-tromino definition and a regular octagon.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner L-trominoes SHALL be inside the octagon.\n  - no two inner shapes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "Linpen": {
+    "slug": "Linpen",
+    "filename": "Linpen.md",
+    "content": "# Linpen: L-tromino in Pentagon\n\nFamily: N_L_in_pen (N L-trominoes inside a regular pentagon container).\n\n1. Geometry:\n- WHEN inner is \"L\" and container is \"pen\" THEN:\n  - use a canonical L-tromino definition and a regular pentagon.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner L-trominoes SHALL be inside the pentagon.\n  - no two inner shapes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "linsqu": {
+    "slug": "linsqu",
+    "filename": "linsqu.md",
+    "content": "# linsqu: L-tromino in Square\n\nFamily: N_L_in_squ (N L-trominoes inside a square container).\n\n1. Geometry:\n- WHEN inner is \"L\" and container is \"squ\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all L-trominoes SHALL be inside the square.\n  - no two L-trominoes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "Lintan": {
+    "slug": "Lintan",
+    "filename": "Lintan.md",
+    "content": "# Lintan: L-tromino in Tan\n\nFamily: N_L_in_tan (N L-trominoes inside a Tan container).\n\n1. Geometry:\n- WHEN inner is \"L\" and container is \"tan\" THEN:\n  - use canonical definitions for both.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner L-trominoes SHALL be inside the Tan container.\n  - no two inner shapes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "Lintri": {
+    "slug": "Lintri",
+    "filename": "Lintri.md",
+    "content": "# Lintri: L-tromino in Triangle\n\nFamily: N_L_in_tri (N L-trominoes inside an equilateral triangle container).\n\n1. Geometry:\n- WHEN inner is \"L\" and container is \"tri\" THEN:\n  - use a canonical L-tromino definition and a regular triangle.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner L-trominoes SHALL be inside the triangle.\n  - no two inner shapes SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case.\n"
+  },
+  "octincir": {
+    "slug": "octincir",
+    "filename": "octincir.md",
+    "content": "# octincir: Octagon in Circle\n\nFamily: N_oct_in_CIRCLE (N octagons inside a circle container).\n\n1. Geometry:\n- WHEN inner is \"oct\" and container is \"CIRCLE\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all octagons SHALL be inside the circle.\n  - no two octagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "octindom": {
+    "slug": "octindom",
+    "filename": "octindom.md",
+    "content": "# octindom: Octagon in Domino\n\nFamily: N_oct_in_dom (N octagons inside a domino container).\n\n1. Geometry:\n- WHEN inner is \"oct\" and container is \"dom\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all octagons SHALL be inside the domino.\n  - no two octagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "octinhex": {
+    "slug": "octinhex",
+    "filename": "octinhex.md",
+    "content": "# octinhex: Octagon in Hexagon\n\nFamily: N_oct_in_hex (N octagons inside a hexagon container).\n\n1. Geometry:\n- WHEN inner is \"oct\" and container is \"hex\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all octagons SHALL be inside the hexagon.\n  - no two octagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "octinL": {
+    "slug": "octinL",
+    "filename": "octinL.md",
+    "content": "# octinL: Octagon in L-tromino\n\nFamily: N_oct_in_L (N octagons inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner is \"oct\" and container is \"L\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all octagons SHALL be inside the L-tromino.\n  - no two octagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "octinoct": {
+    "slug": "octinoct",
+    "filename": "octinoct.md",
+    "content": "# octinoct: Octagon in Octagon\n\nFamily: N_oct_in_oct (N octagons inside an octagon container).\n\n1. Geometry:\n- WHEN both inner and container are \"oct\" THEN:\n  - both SHALL use the same canonical octagon shape.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner octagons SHALL be inside the container.\n  - no two inner octagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of octagon shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "octinpen": {
+    "slug": "octinpen",
+    "filename": "octinpen.md",
+    "content": "# octinpen: Octagon in Pentagon\n\nFamily: N_oct_in_pen (N octagons inside a pentagon container).\n\n1. Geometry:\n- WHEN inner is \"oct\" and container is \"pen\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all octagons SHALL be inside the pentagon.\n  - no two octagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "octinsqu": {
+    "slug": "octinsqu",
+    "filename": "octinsqu.md",
+    "content": "# octinsqu: Octagon in Square\n\nFamily: N_oct_in_squ (N octagons inside a square container).\n\n1. Geometry:\n- WHEN inner is \"oct\" and container is \"squ\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all octagons SHALL be inside the square.\n  - no two octagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "octintan": {
+    "slug": "octintan",
+    "filename": "octintan.md",
+    "content": "# octintan: Octagon in Tan\n\nFamily: N_oct_in_tan (N octagons inside a Tan container).\n\n1. Geometry:\n- WHEN inner is \"oct\" and container is \"tan\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all octagons SHALL be inside the Tan.\n  - no two octagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "octintri": {
+    "slug": "octintri",
+    "filename": "octintri.md",
+    "content": "# octintri: Octagon in Triangle\n\nFamily: N_oct_in_tri (N octagons inside a triangle container).\n\n1. Geometry:\n- WHEN inner is \"oct\" and container is \"tri\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all octagons SHALL be inside the triangle.\n  - no two octagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "penincir": {
+    "slug": "penincir",
+    "filename": "penincir.md",
+    "content": "# penincir: Pentagon in Circle\n\nFamily: N_pen_in_CIRCLE (N pentagons inside a circle container).\n\n1. Geometry:\n- WHEN inner is \"pen\" and container is \"CIRCLE\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all pentagons SHALL be inside the circle.\n  - no two pentagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "penindom": {
+    "slug": "penindom",
+    "filename": "penindom.md",
+    "content": "# penindom: Pentagon in Domino\n\nFamily: N_pen_in_dom (N pentagons inside a domino container).\n\n1. Geometry:\n- WHEN inner is \"pen\" and container is \"dom\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all pentagons SHALL be inside the domino.\n  - no two pentagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "peninhex": {
+    "slug": "peninhex",
+    "filename": "peninhex.md",
+    "content": "# peninhex: Pentagon in Hexagon\n\nFamily: N_pen_in_hex (N pentagons inside a hexagon container).\n\n1. Geometry:\n- WHEN inner is \"pen\" and container is \"hex\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all pentagons SHALL be inside the hexagon.\n  - no two pentagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "peninL": {
+    "slug": "peninL",
+    "filename": "peninL.md",
+    "content": "# peninL: Pentagon in L-tromino\n\nFamily: N_pen_in_L (N pentagons inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner is \"pen\" and container is \"L\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all pentagons SHALL be inside the L-tromino.\n  - no two pentagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "peninoct": {
+    "slug": "peninoct",
+    "filename": "peninoct.md",
+    "content": "# peninoct: Pentagon in Octagon\n\nFamily: N_pen_in_oct (N pentagons inside an octagon container).\n\n1. Geometry:\n- WHEN inner is \"pen\" and container is \"oct\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all pentagons SHALL be inside the octagon.\n  - no two pentagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "peninpen": {
+    "slug": "peninpen",
+    "filename": "peninpen.md",
+    "content": "# peninpen: Pentagon in Pentagon\n\nFamily: N_pen_in_pen (N pentagons inside a pentagon container).\n\n1. Geometry:\n- WHEN both inner and container are \"pen\" THEN:\n  - both SHALL use the same canonical pentagon shape.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner pentagons SHALL be inside the container.\n  - no two inner pentagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of pentagon shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "peninsqu": {
+    "slug": "peninsqu",
+    "filename": "peninsqu.md",
+    "content": "# peninsqu: Pentagon in Square\n\nFamily: N_pen_in_squ (N pentagons inside a square container).\n\n1. Geometry:\n- WHEN inner is \"pen\" and container is \"squ\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all pentagons SHALL be inside the square.\n  - no two pentagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "penintan": {
+    "slug": "penintan",
+    "filename": "penintan.md",
+    "content": "# penintan: Pentagon in Tan\n\nFamily: N_pen_in_tan (N pentagons inside a Tan container).\n\n1. Geometry:\n- WHEN inner is \"pen\" and container is \"tan\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all pentagons SHALL be inside the Tan.\n  - no two pentagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "penintri": {
+    "slug": "penintri",
+    "filename": "penintri.md",
+    "content": "# penintri: Pentagon in Triangle\n\nFamily: N_pen_in_tri (N pentagons inside a triangle container).\n\n1. Geometry:\n- WHEN inner is \"pen\" and container is \"tri\" THEN:\n  - both SHALL use canonical definitions.\n  - Scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all pentagons SHALL be inside the triangle.\n  - no two pentagons SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "squincir": {
+    "slug": "squincir",
+    "filename": "squincir.md",
+    "content": "# squincir: Square in Circle\n\nFamily: N_squ_in_CIRCLE (N squares inside a circle container).\n\n1. Geometry:\n- WHEN inner is \"squ\" and container is \"CIRCLE\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all squares SHALL be inside the circle.\n  - no two squares SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "squindom": {
+    "slug": "squindom",
+    "filename": "squindom.md",
+    "content": "# squindom: Square in Domino\n\nFamily: N_squ_in_dom (N squares inside a domino container).\n\n1. Geometry:\n- WHEN inner is \"squ\" and container is \"dom\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all squares SHALL be inside the domino.\n  - no two squares SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "squinhex": {
+    "slug": "squinhex",
+    "filename": "squinhex.md",
+    "content": "# squinhex: Square in Hexagon\n\nFamily: N_squ_in_hex (N squares inside a hexagon container).\n\n1. Geometry:\n- WHEN inner is \"squ\" and container is \"hex\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all squares SHALL be inside the hexagon.\n  - no two squares SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "squinl": {
+    "slug": "squinl",
+    "filename": "squinl.md",
+    "content": "# squinl: Square in L-tromino\n\nFamily: N_squ_in_L (N squares inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner is \"squ\" and container is \"L\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all squares SHALL be inside the L-tromino.\n  - no two squares SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "squinoct": {
+    "slug": "squinoct",
+    "filename": "squinoct.md",
+    "content": "# squinoct: Square in Octagon\n\nFamily: N_squ_in_oct (N squares inside an octagon container).\n\n1. Geometry:\n- WHEN inner is \"squ\" and container is \"oct\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all squares SHALL be inside the octagon.\n  - no two squares SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "squinpen": {
+    "slug": "squinpen",
+    "filename": "squinpen.md",
+    "content": "# squinpen: Square in Pentagon\n\nFamily: N_squ_in_pen (N squares inside a pentagon container).\n\n1. Geometry:\n- WHEN inner is \"squ\" and container is \"pen\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all squares SHALL be inside the pentagon.\n  - no two squares SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "squintan": {
+    "slug": "squintan",
+    "filename": "squintan.md",
+    "content": "# squintan: Square in Tan\n\nFamily: N_squ_in_tan (N squares inside a Tan container).\n\n1. Geometry:\n- WHEN inner is \"squ\" and container is \"tan\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all squares SHALL be inside the Tan.\n  - no two squares SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "squintri": {
+    "slug": "squintri",
+    "filename": "squintri.md",
+    "content": "# squintri: Square in Triangle\n\nFamily: N_squ_in_tri (N squares inside a triangle container).\n\n1. Geometry:\n- WHEN inner is \"squ\" and container is \"tri\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all squares SHALL be inside the triangle.\n  - no two squares SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "tanincir": {
+    "slug": "tanincir",
+    "filename": "tanincir.md",
+    "content": "# tanincir: Tan in Circle\n\nFamily: N_tan_in_CIRCLE (N tans inside a circle container).\n\n1. Geometry:\n- WHEN inner is \"tan\" and container is \"CIRCLE\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all tans SHALL be inside the circle.\n  - no two tans SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "tanindom": {
+    "slug": "tanindom",
+    "filename": "tanindom.md",
+    "content": "# tanindom: Tan in Domino\n\nFamily: N_tan_in_dom (N tans inside a domino container).\n\n1. Geometry:\n- WHEN inner is \"tan\" and container is \"dom\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all tans SHALL be inside the domino.\n  - no two tans SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "taninhex": {
+    "slug": "taninhex",
+    "filename": "taninhex.md",
+    "content": "# taninhex: Tan in Hexagon\n\nFamily: N_tan_in_hex (N tans inside a hexagon container).\n\n1. Geometry:\n- WHEN inner is \"tan\" and container is \"hex\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all tans SHALL be inside the hexagon.\n  - no two tans SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "taninL": {
+    "slug": "taninL",
+    "filename": "taninL.md",
+    "content": "# taninL: Tan in L-tromino\n\nFamily: N_tan_in_L (N tans inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner is \"tan\" and container is \"L\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all tans SHALL be inside the L-tromino.\n  - no two tans SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "taninoct": {
+    "slug": "taninoct",
+    "filename": "taninoct.md",
+    "content": "# taninoct: Tan in Octagon\n\nFamily: N_tan_in_oct (N tans inside an octagon container).\n\n1. Geometry:\n- WHEN inner is \"tan\" and container is \"oct\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all tans SHALL be inside the octagon.\n  - no two tans SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "taninpen": {
+    "slug": "taninpen",
+    "filename": "taninpen.md",
+    "content": "# taninpen: Tan in Pentagon\n\nFamily: N_tan_in_pen (N tans inside a pentagon container).\n\n1. Geometry:\n- WHEN inner is \"tan\" and container is \"pen\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all tans SHALL be inside the pentagon.\n  - no two tans SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "taninsqu": {
+    "slug": "taninsqu",
+    "filename": "taninsqu.md",
+    "content": "# Tans in Squares Requirements\n\nFamily: N_TAN_in_4 (N tans inside a square).\n\n1. Geometry\n- WHEN the problem uses token \"TAN\" THEN:\n  - the tan SHALL be defined as a right isosceles triangle with:\n    - leg length = 1.0,\n    - vertices and normals explicitly specified, not via regular-polygon formulas.\n- WHEN the container is \"4\" THEN:\n  - it SHALL be a square defined by 4 vertices with circumradius S.\n\n2. Validity\n- WHEN a solution is generated THEN:\n  - all tan vertices SHALL lie inside or on the square boundary,\n  - no two tans SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison\n- Friedman\u2019s metric: s = side length of the square that encloses N tans of leg 1.\n- WHEN comparing to Friedman THEN:\n  - the metric SHALL be s = S * sqrt(2).\n- WHEN we claim NEW_BEST THEN:\n  - our computed s SHALL be less than Friedman\u2019s s,\n  - geometry SHALL be verified,\n  - and the result SHALL be within a plausible margin (e.g., < 1% of our best known for that N) to avoid false records.\n\n4. Test Expectations\n- WHEN testing this family THEN:\n  - there SHALL be tests for:\n    - construction of TAN shape,\n    - a valid packing inside a square,\n    - an overlapping-tan case,\n    - a boundary-violation case.\n"
+  },
+  "tanintan": {
+    "slug": "tanintan",
+    "filename": "tanintan.md",
+    "content": "# tanintan: Tan in Tan\n\nFamily: N_tan_in_tan (N tans inside a Tan container).\n\n1. Geometry:\n- WHEN both inner and container are \"tan\" THEN:\n  - both SHALL use the same canonical Tan shape.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner tans SHALL be inside the container.\n  - no two inner tans SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of Tan shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "tanintri": {
+    "slug": "tanintri",
+    "filename": "tanintri.md",
+    "content": "# tanintri: Tan in Triangle\n\nFamily: N_tan_in_tri (N tans inside a triangle container).\n\n1. Geometry:\n- WHEN inner is \"tan\" and container is \"tri\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all tans SHALL be inside the triangle.\n  - no two tans SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "triincir": {
+    "slug": "triincir",
+    "filename": "triincir.md",
+    "content": "# triincir: Triangle in Circle\n\nFamily: N_tri_in_CIRCLE (N triangles inside a circle container).\n\n1. Geometry:\n- WHEN inner is \"tri\" and container is \"CIRCLE\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all triangles SHALL be inside the circle.\n  - no two triangles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "triindom": {
+    "slug": "triindom",
+    "filename": "triindom.md",
+    "content": "# triindom: Triangle in Domino\n\nFamily: N_tri_in_dom (N triangles inside a domino container).\n\n1. Geometry:\n- WHEN inner is \"tri\" and container is \"dom\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all triangles SHALL be inside the domino.\n  - no two triangles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "triinhex": {
+    "slug": "triinhex",
+    "filename": "triinhex.md",
+    "content": "# triinhex: Triangle in Hexagon\n\nFamily: N_tri_in_hex (N triangles inside a hexagon container).\n\n1. Geometry:\n- WHEN inner is \"tri\" and container is \"hex\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all triangles SHALL be inside the hexagon.\n  - no two triangles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "triinL": {
+    "slug": "triinL",
+    "filename": "triinL.md",
+    "content": "# triinL: Triangle in L-tromino\n\nFamily: N_tri_in_L (N triangles inside an L-tromino container).\n\n1. Geometry:\n- WHEN inner is \"tri\" and container is \"L\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all triangles SHALL be inside the L-tromino.\n  - no two triangles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "triinoct": {
+    "slug": "triinoct",
+    "filename": "triinoct.md",
+    "content": "# triinoct: Triangle in Octagon\n\nFamily: N_tri_in_oct (N triangles inside an octagon container).\n\n1. Geometry:\n- WHEN inner is \"tri\" and container is \"oct\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all triangles SHALL be inside the octagon.\n  - no two triangles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "triinpen": {
+    "slug": "triinpen",
+    "filename": "triinpen.md",
+    "content": "# Triangles in Pentagons Requirements\n\nFamily: N_3_in_5 (N triangles inside a regular pentagon).\n\n1. Geometry\n- WHEN the problem uses token \"3\" for inner shape THEN:\n  - triangles SHALL be regular, defined via circumradius-based construction.\n- WHEN the container is \"5\" THEN:\n  - it SHALL be a regular pentagon defined by 5 vertices with circumradius S.\n\n2. Validity\n- WHEN a solution is generated THEN:\n  - all triangle vertices SHALL lie inside or on the pentagon boundary,\n  - no two triangles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison\n- Friedman\u2019s metric for this family uses his specific container-side/area normalization.\n- WHEN comparing to Friedman THEN:\n  - the metric SHALL be derived from S using a consistent, documented formula,\n  - it SHALL NOT be used as a universal metric across different families.\n\n4. Test Expectations\n- WHEN testing this family THEN:\n  - there SHALL be tests for:\n    - construction of triangles and pentagon,\n    - a valid packing inside a pentagon,\n    - a case with overlap,\n    - a case with boundary violation.\n"
+  },
+  "triinsqu": {
+    "slug": "triinsqu",
+    "filename": "triinsqu.md",
+    "content": "# Triangles in Squares Requirements\n\nFamily: N_3_in_4 (N triangles inside a square).\n\n1. Geometry\n- WHEN the problem uses token \"3\" for inner shape THEN:\n  - triangles SHALL be regular, defined via circumradius-based construction.\n- WHEN a square container is used THEN:\n  - it SHALL be defined by 4 vertices forming a regular square (circumradius S).\n\n2. Validity\n- WHEN a solution is generated THEN:\n  - all triangle vertices SHALL lie inside or on the square boundary,\n  - no two triangles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison\n- Friedman\u2019s metric: s = side length of the square.\n- WHEN comparing to Friedman THEN:\n  - the metric SHALL be s = S * sqrt(2).\n- WHEN we claim NEW_BEST THEN:\n  - our computed s SHALL be less than Friedman\u2019s s,\n  - AND geometry SHALL be verified.\n\n4. Test Expectations\n- WHEN testing this family THEN:\n  - there SHALL be tests for:\n    - construction of triangles,\n    - a valid packing inside a square,\n    - a case where a triangle overlaps another triangle,\n    - a case where a triangle violates the square boundary.\n"
+  },
+  "triintan": {
+    "slug": "triintan",
+    "filename": "triintan.md",
+    "content": "# triintan: Triangle in Tan\n\nFamily: N_tri_in_tan (N triangles inside a Tan container).\n\n1. Geometry:\n- WHEN inner is \"tri\" and container is \"tan\" THEN:\n  - both SHALL use canonical definitions.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all triangles SHALL be inside the Tan.\n  - no two triangles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of both shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  },
+  "triintri": {
+    "slug": "triintri",
+    "filename": "triintri.md",
+    "content": "# triintri: Triangle in Triangle\n\nFamily: N_tri_in_tri (N triangles inside a triangle container).\n\n1. Geometry:\n- WHEN both inner and container are \"tri\" THEN:\n  - both SHALL use the same canonical triangle shape.\n  - scaling SHALL be derived from S via a documented rule.\n\n2. Validity:\n- WHEN a solution is generated THEN:\n  - all inner triangles SHALL be inside the container.\n  - no two inner triangles SHALL overlap beyond tolerance (\u2264 1e-15).\n\n3. Friedman Comparison:\n- WHEN comparing to Friedman THEN:\n  - use an explicit, documented conversion from S to his unit.\n  - NEW_BEST is valid only if geometry and metric alignment are confirmed.\n\n4. Test Expectations:\n- Tests SHALL include:\n  - construction of triangle shapes.\n  - a valid packing.\n  - an overlapping pair.\n  - a boundary-violation case."
+  }
+}

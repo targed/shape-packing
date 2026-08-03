@@ -1,0 +1,24 @@
+---
+title: System Overview
+description: Overview of the Shape Packing Auto-Researcher framework and repository layout.
+order: 1
+---
+
+# Shape Packing System Overview
+
+The **Shape Packing Auto-Researcher** is an autonomous search and verification framework designed to find optimal containers for packing multiple identical geometric shapes (triangles, squares, pentagons, hexagons, octagons, dominoes, L-trominoes, tans, and circles).
+
+## Core Capabilities
+
+- **Autonomous Search Loop:** Executes parallel numerical optimization and basinhopping solvers.
+- **Dual-Engine Solvers:** High-performance Rust backend combined with Python fallback engine.
+- **Mathematical Verification:** Rigorous overlap detection and containment boundary validation (`verify_solution.py`).
+- **Friedman Reference Integration:** Automated parsing and verification against Erich Friedman's packing benchmarks.
+
+## Repository Structure
+
+- `src/shape_packing/`: Python auto-researcher orchestrator, ranking logic, and problem definitions.
+- `packer_rs/` & `polygon-packer/`: Rust-compiled native solver backends.
+- `docs/requirements/60-problem-families/`: Markdown specification requirements for 80+ problem families.
+- `scripts/`: Data ingestion, verification, log analysis, and site data builder scripts.
+- `site/`: Astro static dashboard deployed to GitHub Pages.

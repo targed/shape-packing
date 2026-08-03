@@ -1,0 +1,32 @@
+---
+title: Problem Families Catalog
+description: Problem family classification and shape tokens used across the repository.
+order: 4
+---
+
+# Problem Families Catalog
+
+The benchmark suit classifies packing configurations by their inner shape ($k_i$) and container shape ($k_c$).
+
+## Shape Tokens
+
+| Token | Shape | Description |
+|-------|-------|-------------|
+| `tri` / `3` | Equilateral Triangle | 3-sided regular polygon |
+| `squ` / `4` | Square | 4-sided regular polygon |
+| `pen` / `5` | Regular Pentagon | 5-sided regular polygon |
+| `hex` / `6` | Regular Hexagon | 6-sided regular polygon |
+| `oct` / `8` | Regular Octagon | 8-sided regular polygon |
+| `cir` / `CIRCLE` | Circle | Smooth boundary |
+| `dom` / `DOMINO` | Domino | 2x1 rectangle |
+| `L` | L-tromino | 3-square L shape |
+| `tan` / `TAN` | Tan (7-iamond) | 7-triangle polyiamond |
+
+## Problem Naming Format
+
+Problems are specified in the format `<N>_<inner_shape>_in_<container_shape>`.
+
+For example:
+- `10_3_in_3`: Packing 10 equilateral triangles into an equilateral triangle container.
+- `5_4_in_6`: Packing 5 squares into a regular hexagon container.
+- `7_cir_in_cir`: Packing 7 circles into a circle container.
