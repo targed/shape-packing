@@ -57,6 +57,29 @@ The architecture follows a strict "God Module" pattern where each major sub-doma
 
 ---
 
+## 6. Universal Configuration (`packing_config.py`)
+
+All global constants, tuning parameters, tolerances, and file paths are defined in:
+
+```python
+src/shape_packing/packing_config.py
+```
+
+**To tune the system, edit ONLY this file.** The 8 configuration sections are:
+
+| Section | Constants | Controls |
+|---|---|---|
+| 1. Geometry | `CIRCLE_SIDES` | Circle polygon approximation resolution |
+| 2. Rust Solver | `RUST_BINARY`, `RUST_TOLERANCE`, etc. | Rust packer_rs execution |
+| 3. Python Optimizer | `OPTIMIZER_ATTEMPTS`, `OPTIMIZER_TOLERANCE`, etc. | Scipy basinhopping |
+| 4. Verification | `VERIFY_SAT_TOLERANCE`, `GEOMETRY_SAT_TOLERANCE`, etc. | Solution validity checks |
+| 5. Loop & Scheduling | `LOOP_*` constants | Backoff, attempts, swarm sizes |
+| 6. Priority Queue | `QUEUE_*` constants | Problem selection and diversity |
+| 7. File Paths | `RESULTS_TSV_PATH`, `RESULTS_DIR`, etc. | All data file locations |
+| 8. Rendering | `RENDER_DPI`, `RENDER_FIGURE_SIZE`, etc. | PNG output quality |
+
+---
+
 ## 2. Auto-Researcher Loop Workflow
 
 The auto-researcher operates as an autonomous continuous improvement loop:

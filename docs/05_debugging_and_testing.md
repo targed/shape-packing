@@ -43,6 +43,10 @@ When encountering unexpected behavior, solver crashes, or invalid metric scores,
    - *Cause*: Using raw container scale $S$ instead of converted Friedman metric $s$.
    - *Fix*: Always verify with `compute_friedman_metric(S, inner_token, container_token)`.
 
+4. **Unexpected behavior from stale constants**:
+   - *Cause*: Constants edited in one place but not reflected elsewhere due to duplicate definitions.
+   - *Fix*: All constants now live in `packing_config.py`. If a behavioral parameter seems wrong, check there first.
+
 ---
 
 ## 2. Solution Verification Engine (`solution_tools.py`)
