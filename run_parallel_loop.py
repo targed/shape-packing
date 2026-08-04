@@ -7,10 +7,17 @@ import signal
 import concurrent.futures
 from src.shape_packing.agent_loop import log_result
 
-# Configuration
-MAX_CONSECUTIVE_FAILURES = 5
-BASE_BACKOFF = 5
-MAX_BACKOFF = 120
+from src.shape_packing.packing_config import (
+    LOOP_MAX_CONSECUTIVE_FAILURES as MAX_CONSECUTIVE_FAILURES,
+    LOOP_BASE_BACKOFF as BASE_BACKOFF,
+    LOOP_MAX_BACKOFF as MAX_BACKOFF,
+    LOOP_DEFAULT_ATTEMPTS,
+    LOOP_HIGH_N_THRESHOLD,
+    LOOP_HIGH_N_ATTEMPTS,
+    LOOP_STUCK_ATTEMPTS,
+    LOOP_STUCK_SWARM_COUNT,
+    LOOP_HARD_SWARM_COUNT,
+)
 
 # Global shutdown flag for graceful exit
 _SHUTDOWN = False
@@ -88,20 +95,20 @@ def analyze_difficulty(problem_state):
     except Exception:
         n = 5
         
-    attempts = 5000
-    if n >= 8:
-        attempts = 50000  # Harder problems get more attempts
+    attempts = LOOP_DEFAULT_ATTEMPTS
+    if n >= LOOP_HIGH_N_THRESHOLD:
+        attempts = LOOP_HIGH_N_ATTEMPTS  # Harder problems get more attempts
         
     # Heuristic based on state (e.g., if CLI flagged it as 'stuck')
     status = problem_state.get("status", "normal")
     swarm_count = 1
     
     if status == "stuck":
-        attempts = 500000
-        swarm_count = 20 # Swarm it!
+        attempts = LOOP_STUCK_ATTEMPTS
+        swarm_count = LOOP_STUCK_SWARM_COUNT # Swarm it!
     elif status == "hard":
-        attempts = 50000
-        swarm_count = 5
+        attempts = LOOP_HIGH_N_ATTEMPTS
+        swarm_count = LOOP_HARD_SWARM_COUNT
         
     return attempts, swarm_count
 

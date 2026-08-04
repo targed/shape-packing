@@ -2,7 +2,18 @@ import argparse
 import glob
 import os
 import re
+import sys
+from collections import defaultdict
+from datetime import datetime
+import json
 import matplotlib.pyplot as plt
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "src"))
+try:
+    from shape_packing.packing_config import ANALYSIS_PLOT_DPI
+except ImportError:
+    from src.shape_packing.packing_config import ANALYSIS_PLOT_DPI
+
 import numpy as np
 import pandas as pd
 
@@ -122,7 +133,7 @@ def generate_charts(agg_df, df, output_dir="analysis", top_n=15):
     plt.ylabel('Total Execution Runs')
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, 'top_problems.png'), dpi=200)
+    plt.savefig(os.path.join(output_dir, 'top_problems.png'), dpi=ANALYSIS_PLOT_DPI)
     plt.close()
 
     # Chart 2: Top Problem Families (Donut Chart)
@@ -132,7 +143,7 @@ def generate_charts(agg_df, df, output_dir="analysis", top_n=15):
     plt.pie(fam_runs, labels=fam_runs.index, autopct='%1.1f%%', startangle=140, colors=colors, wedgeprops=dict(width=0.4, edgecolor='w'))
     plt.title('Top Problem Families Distribution', fontsize=14, fontweight='bold')
     plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, 'family_distribution.png'), dpi=200)
+    plt.savefig(os.path.join(output_dir, 'family_distribution.png'), dpi=ANALYSIS_PLOT_DPI)
     plt.close()
 
     # Chart 3: N vs Success Rate Scatter Plot with Trend Line
@@ -154,7 +165,7 @@ def generate_charts(agg_df, df, output_dir="analysis", top_n=15):
         plt.ylabel('Success Rate (%)')
         plt.grid(True, linestyle='--', alpha=0.5)
         plt.tight_layout()
-        plt.savefig(os.path.join(output_dir, 'n_vs_success.png'), dpi=200)
+        plt.savefig(os.path.join(output_dir, 'n_vs_success.png'), dpi=ANALYSIS_PLOT_DPI)
         plt.close()
 
     # Chart 4: Best Score Scaling per Problem Family
@@ -171,7 +182,7 @@ def generate_charts(agg_df, df, output_dir="analysis", top_n=15):
         plt.legend()
         plt.grid(True, linestyle='--', alpha=0.5)
         plt.tight_layout()
-        plt.savefig(os.path.join(output_dir, 'score_by_family.png'), dpi=200)
+        plt.savefig(os.path.join(output_dir, 'score_by_family.png'), dpi=ANALYSIS_PLOT_DPI)
         plt.close()
 
     # Chart 5: Attempts Distribution Requested
@@ -185,7 +196,7 @@ def generate_charts(agg_df, df, output_dir="analysis", top_n=15):
         plt.ylabel('Frequency')
         plt.xticks(rotation=0)
         plt.tight_layout()
-        plt.savefig(os.path.join(output_dir, 'attempts_distribution.png'), dpi=200)
+        plt.savefig(os.path.join(output_dir, 'attempts_distribution.png'), dpi=ANALYSIS_PLOT_DPI)
         plt.close()
 
 def write_report(agg_df, df, log_file, output_dir="analysis", top_n=15):

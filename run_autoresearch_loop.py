@@ -21,11 +21,12 @@ import os
 #
 # No LLM, no external services. Pure automated search.
 
-SLEEP_BETWEEN_RUNS = 2  # seconds between successful runs
-MAX_CONSECUTIVE_FAILURES = 5  # after this many failures, we back off longer
-BASE_BACKOFF = 5  # seconds for first backoff
-MAX_BACKOFF = 120  # seconds cap
-
+from src.shape_packing.packing_config import (
+    LOOP_SLEEP_BETWEEN_RUNS as SLEEP_BETWEEN_RUNS,
+    LOOP_MAX_CONSECUTIVE_FAILURES as MAX_CONSECUTIVE_FAILURES,
+    LOOP_BASE_BACKOFF as BASE_BACKOFF,
+    LOOP_MAX_BACKOFF as MAX_BACKOFF,
+)
 
 def get_suggest_command():
     # Build the command for suggest including filter.json mappings.

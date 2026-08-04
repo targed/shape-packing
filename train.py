@@ -43,7 +43,11 @@ SOLVER_BACKEND = "rust"
 
 PACKER_SCRIPT = "polygon-packer/polygon_packer.py"
 
-PACKER_RS_BIN = "packer_rs/target/release/packer_rs"
+from shape_packing.packing_config import (
+    RUST_BINARY as PACKER_RS_BIN,
+    RUST_TOLERANCE,
+    RUST_DEFAULT_TIME_LIMIT as RUST_TIME_LIMIT,
+)
 
 EXTRA_PACKER_ARGS = [
     "--time_limit", "300",
@@ -51,9 +55,7 @@ EXTRA_PACKER_ARGS = [
     "--attempts", "2000",
 ]
 
-RUST_ATTEMPTS = 500000
-RUST_TIME_LIMIT = 290
-RUST_TOLERANCE = "1e-28"
+RUST_ATTEMPTS = 500000  # train.py uses a higher value; keep local override
 
 # Supported tokens for auto-select (only regular polygons + circle for now).
 SUPPORTED_TOKENS = {"3", "4", "5", "6", "8", "CIRCLE"}
