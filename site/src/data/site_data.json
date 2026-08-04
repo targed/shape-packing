@@ -5,10 +5,10 @@
     "proved_optimal": 48,
     "best_known": 1733,
     "trivial": 461,
-    "total_attempted": 271,
-    "total_new_bests": 31,
+    "total_attempted": 269,
+    "total_new_bests": 30,
     "total_matches": 11,
-    "total_visualizations": 285,
+    "total_visualizations": 281,
     "total_slurm_starts": 9200,
     "total_slurm_attempts": 429445000
   },
@@ -2589,51 +2589,6 @@
         "container_token": "32",
         "folder_name": "31_3_in_circle"
       }
-    },
-    {
-      "id": "3_in_L_3",
-      "problem_family": "3_in_L",
-      "N": 3,
-      "inner_shape": "triangle",
-      "container_shape": "L",
-      "known_value": 0.86602,
-      "best_value": 0.86602,
-      "ref_status": "trivial",
-      "status": "trivial",
-      "attempted": true,
-      "our_best_metric": 0.522694,
-      "our_best_s": 0.905333,
-      "comparison_status": "NEW_BEST",
-      "diff": -0.343326,
-      "closeness_pct": 165.68,
-      "starts": 0,
-      "attempts": 0,
-      "successes": 0,
-      "fails": 0,
-      "priority_rank": null,
-      "density": null,
-      "source_url": "https://erich-friedman.github.io/packing/triinL/index.html",
-      "source_note": "Trivial.",
-      "solution": {
-        "S": 0.9053327156077234,
-        "inner_token": "3",
-        "container_token": "L",
-        "final_metric": 0.522694087062294,
-        "N": 3,
-        "values": [
-          0.21967056094831117,
-          0.7803328350795219,
-          0.5235981149350379,
-          -0.7803311352700221,
-          -0.2196691363567597,
-          2.960285236787372e-07,
-          0.5744690691055122,
-          -0.571983491285906,
-          -0.7871572697883169
-        ],
-        "computed_metric": 0.522694087062294,
-        "folder_name": "3_3_in_L"
-      }
     }
   ],
   "matches_bests": [
@@ -4174,8 +4129,8 @@
       "proved_optimal_count": 0,
       "best_known_count": 17,
       "trivial_count": 3,
-      "attempted_count": 1,
-      "new_best_count": 1
+      "attempted_count": 0,
+      "new_best_count": 0
     },
     {
       "slug": "3_in_circle",
@@ -4666,7 +4621,7 @@
       "proved_optimal_count": 0,
       "best_known_count": 26,
       "trivial_count": 4,
-      "attempted_count": 1,
+      "attempted_count": 0,
       "new_best_count": 0
     },
     {
@@ -22383,12 +22338,12 @@
       "best_value": 0.86602,
       "ref_status": "trivial",
       "status": "trivial",
-      "attempted": true,
-      "our_best_metric": 0.522694,
-      "our_best_s": 0.905333,
-      "comparison_status": "NEW_BEST",
-      "diff": -0.343326,
-      "closeness_pct": 165.68,
+      "attempted": false,
+      "our_best_metric": null,
+      "our_best_s": null,
+      "comparison_status": "unattempted",
+      "diff": null,
+      "closeness_pct": null,
       "starts": 0,
       "attempts": 0,
       "successes": 0,
@@ -22397,26 +22352,7 @@
       "density": null,
       "source_url": "https://erich-friedman.github.io/packing/triinL/index.html",
       "source_note": "Trivial.",
-      "solution": {
-        "S": 0.9053327156077234,
-        "inner_token": "3",
-        "container_token": "L",
-        "final_metric": 0.522694087062294,
-        "N": 3,
-        "values": [
-          0.21967056094831117,
-          0.7803328350795219,
-          0.5235981149350379,
-          -0.7803311352700221,
-          -0.2196691363567597,
-          2.960285236787372e-07,
-          0.5744690691055122,
-          -0.571983491285906,
-          -0.7871572697883169
-        ],
-        "computed_metric": 0.522694087062294,
-        "folder_name": "3_3_in_L"
-      }
+      "solution": null
     },
     {
       "id": "3_in_L_4",
@@ -60353,12 +60289,12 @@
       "best_value": 1.86121,
       "ref_status": "best_known",
       "status": "best_known",
-      "attempted": true,
-      "our_best_metric": 1.862143,
-      "our_best_s": 1.862143,
-      "comparison_status": "worse_than_best_known",
-      "diff": 0.000933,
-      "closeness_pct": 99.95,
+      "attempted": false,
+      "our_best_metric": null,
+      "our_best_s": null,
+      "comparison_status": "unattempted",
+      "diff": null,
+      "closeness_pct": null,
       "starts": 0,
       "attempts": 0,
       "successes": 0,
@@ -60367,23 +60303,7 @@
       "density": null,
       "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html",
       "source_note": "s = 121/4 = 1.861+ Found by Maurizio Morandi in May 2026.",
-      "solution": {
-        "S": 1.8621428617706413,
-        "inner_token": "L",
-        "container_token": "6",
-        "final_metric": 1.862142861770641,
-        "N": 2,
-        "values": [
-          -0.4178007752364237,
-          0.29055180938526504,
-          4.289989867330584,
-          0.4177346054628854,
-          -0.2904914701875452,
-          1.1482697568036009
-        ],
-        "computed_metric": 1.862142861770641,
-        "folder_name": "2_L_in_6"
-      }
+      "solution": null
     },
     {
       "id": "L_in_6_3",

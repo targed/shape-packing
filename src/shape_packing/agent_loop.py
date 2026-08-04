@@ -197,13 +197,58 @@ def is_preferred_reference(
 # --------------- Analysis utilities ---------------
 
 
+import math
+
+def _get_inner_shape_area(inner_token: str) -> Optional[float]:
+    t = str(inner_token).upper()
+    if t in ("3", "TRIANGLE", "TRI"):
+        return math.sqrt(3) / 4.0
+    if t in ("4", "SQUARE", "SQU"):
+        return 1.0
+    if t in ("5", "PENTAGON", "PEN"):
+        return 0.25 * math.sqrt(5.0 * (5.0 + 2.0 * math.sqrt(5.0)))
+    if t in ("6", "HEXAGON", "HEX"):
+        return 1.5 * math.sqrt(3)
+    if t in ("8", "OCTAGON", "OCT"):
+        return 2.0 * (1.0 + math.sqrt(2.0))
+    return None
+
+
+def _get_container_shape_area(s: float, container_token: str) -> Optional[float]:
+    t = str(container_token).upper()
+    if t in ("CIRCLE", "CIR", "0"):
+        return math.pi * (s ** 2)
+    if t in ("3", "TRIANGLE", "TRI"):
+        return (math.sqrt(3) / 4.0) * (s ** 2)
+    if t in ("4", "SQUARE", "SQU"):
+        return s ** 2
+    if t in ("5", "PENTAGON", "PEN"):
+        return (5.0 / 4.0) * (s ** 2) / math.tan(math.pi / 5.0)
+    if t in ("6", "HEXAGON", "HEX"):
+        return 1.5 * math.sqrt(3) * (s ** 2)
+    if t in ("8", "OCTAGON", "OCT"):
+        return 2.0 * (1.0 + math.sqrt(2.0)) * (s ** 2)
+    return None
+
+
+def is_physically_valid_score(problem: str, score: float) -> bool:
+    if score <= 0:
+        return False
+    parts = str(problem).split("_")
+    if len(parts) == 4 and parts[2] == "in":
+        container = parts[3].upper()
+        if container in ("CIRCLE", "CIR", "0") and score < 0.1:
+            return False
+    return True
+
+
 def current_best_scores(history: List[ExperimentResult]) -> Dict[str, float]:
     """
-    For each problem, return the best (lowest) score we have achieved.
+    For each problem, return the best (lowest) valid score we have achieved.
     """
     best: Dict[str, float] = {}
     for r in history:
-        if r.score <= 0:
+        if not is_physically_valid_score(r.problem, r.score):
             continue
         p = r.problem
         if p not in best or r.score < best[p]:
