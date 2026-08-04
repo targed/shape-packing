@@ -1,0 +1,699 @@
+[3_4_in_CIRCLE] Starting (5000 attempts)
+[5_4_in_CIRCLE] Starting (5000 attempts)
+[8_4_in_CIRCLE] Starting (50000 attempts)
+[9_4_in_CIRCLE] Starting (50000 attempts)
+[6_4_in_CIRCLE] Starting (5000 attempts)
+[7_4_in_CIRCLE] Starting (5000 attempts)
+[10_4_in_CIRCLE] Starting (50000 attempts)
+[11_4_in_DOMINO] Starting (50000 attempts)
+[14_4_in_CIRCLE] Starting (50000 attempts)
+[11_4_in_CIRCLE] Starting (50000 attempts)
+[12_4_in_DOMINO] Starting (50000 attempts)
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_4_in_DOMINO] Starting (50000 attempts)
+[9_4_in_DOMINO] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_4_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[3_4_in_CIRCLE] Success!
+[Main] Worker finished 3_4_in_CIRCLE with score 1.2911810522568856
+[8_4_in_CIRCLE] Success!
+[7_4_in_CIRCLE] Success!
+[5_4_in_CIRCLE] Success!
+[11_4_in_CIRCLE] Success!
+[12_4_in_DOMINO] Success!
+[14_4_in_CIRCLE] Success!
+[9_4_in_CIRCLE] Success!
+[Main] Worker finished 11_4_in_CIRCLE with score 2.220361219728013
+[13_4_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 8_4_in_CIRCLE with score 1.9818368424965718
+[Main] Worker finished 9_4_in_CIRCLE with score 2.0823953065082064
+[11_4_in_DOMINO] Success!
+[6_4_in_CIRCLE] Success!
+[10_4_in_CIRCLE] Success!
+[Main] Worker finished 5_4_in_CIRCLE with score 1.5842435462840303
+[Main] Worker finished 7_4_in_CIRCLE with score 1.8029798099291015
+[Main] Worker finished 12_4_in_DOMINO with score 4.000066516140078
+[Main] Worker finished 14_4_in_CIRCLE with score 2.5060499986418394
+[15_4_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_4_in_DOMINO] Success!
+[15_CIRCLE_in_CIRCLE] Success!
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_4_in_CIRCLE] Starting (50000 attempts)
+[9_4_in_DOMINO] Success!
+[20_4_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 12_CIRCLE_in_CIRCLE with score 4.037181695726069
+[22_4_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 11_4_in_DOMINO with score 3.8841915003150964
+[Main] Worker finished 9_4_in_DOMINO with score 3.0000168780981764
+[Main] Worker finished 13_4_in_DOMINO with score 4.000049222802654
+[Main] Worker finished 10_4_in_CIRCLE with score 2.1213904992323065
+[16_4_in_CIRCLE] Success!
+[Main] Worker finished 15_CIRCLE_in_CIRCLE with score 4.886339305174285
+[Main] Worker finished 6_4_in_CIRCLE with score 1.6926296826365022
+[18_4_in_CIRCLE] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_4_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Success!
+[19_4_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[23_4_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 17_CIRCLE_in_CIRCLE with score 5.367314831769513
+[23_4_in_DOMINO] Starting (50000 attempts)
+[Main] Worker finished 16_4_in_CIRCLE with score 2.6555741619533118
+[22_4_in_DOMINO] Starting (50000 attempts)
+[21_4_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Success!
+[Main] Worker finished 13_CIRCLE_in_3 with score 11.375603687960313
+[25_4_in_CIRCLE] Starting (50000 attempts)
+[13_4_in_CIRCLE] Success!
+[Main] Worker finished 13_4_in_CIRCLE with score 2.3663291008001184
+[15_4_in_CIRCLE] Success!
+[Main] Worker finished 15_4_in_CIRCLE with score 2.6450372851280095
+[24_4_in_CIRCLE] Starting (50000 attempts)
+[17_4_in_CIRCLE] Success!
+[Main] Worker finished 17_4_in_CIRCLE with score 2.753157118289266
+[31_4_in_CIRCLE] Starting (50000 attempts)
+[20_4_in_CIRCLE] Success!
+[14_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 14_CIRCLE_in_CIRCLE with score 4.564681432031563
+[24_4_in_DOMINO] Starting (50000 attempts)
+[Main] Worker finished 20_4_in_CIRCLE with score 3.0514254467048434
+[22_4_in_CIRCLE] Success!
+[32_4_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Success!
+[18_4_in_CIRCLE] Success!
+[Main] Worker finished 22_4_in_CIRCLE with score 3.2299426800063578
+[30_4_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 18_4_in_CIRCLE with score 2.8603042009592823
+[18_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 16_CIRCLE_in_CIRCLE with score 5.101832427591166
+[19_4_in_DOMINO] Starting (50000 attempts)
+[12_4_in_CIRCLE] Success!
+[29_4_in_CIRCLE] Starting (50000 attempts)
+[19_4_in_CIRCLE] Success!
+[Main] Worker finished 18_CIRCLE_in_CIRCLE with score 5.647593169000348
+[28_4_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 12_4_in_CIRCLE with score 2.240543671384635
+[Main] Worker finished 19_4_in_CIRCLE with score 2.962362780918864
+[20_CIRCLE_in_CIRCLE] Success!
+[23_4_in_CIRCLE] Success!
+[25_4_in_DOMINO] Starting (50000 attempts)
+[26_4_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 20_CIRCLE_in_CIRCLE with score 6.145894819094607
+[27_4_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 23_4_in_CIRCLE with score 3.315440405817822
+[33_4_in_CIRCLE] Starting (50000 attempts)
+[26_4_in_DOMINO] Starting (50000 attempts)
+[21_4_in_CIRCLE] Success!
+[Main] Worker finished 21_4_in_CIRCLE with score 3.1405694692667723
+[23_4_in_DOMINO] Success!
+[Main] Worker finished 23_4_in_DOMINO with score 5.000663714038477
+[34_4_in_CIRCLE] Starting (50000 attempts)
+[22_4_in_DOMINO] Success!
+[Main] Worker finished 22_4_in_DOMINO with score 5.000100728930703
+[38_4_in_DOMINO] Starting (50000 attempts)
+[37_4_in_DOMINO] Starting (50000 attempts)
+[25_4_in_CIRCLE] Success!
+[Main] Worker finished 25_4_in_CIRCLE with score 3.499104486158914
+[39_4_in_DOMINO] Starting (50000 attempts)
+[14_CIRCLE_in_3] Success!
+[Main] Worker finished 14_CIRCLE_in_3 with score 11.433429144696115
+[40_4_in_DOMINO] Starting (50000 attempts)
+[24_4_in_CIRCLE] Success!
+[Main] Worker finished 24_4_in_CIRCLE with score 3.3979436487764114
+[31_4_in_CIRCLE] Success!
+[Main] Worker finished 31_4_in_CIRCLE with score 3.939107119313552
+[35_4_in_CIRCLE] Starting (50000 attempts)
+[41_4_in_DOMINO] Starting (50000 attempts)
+[24_4_in_DOMINO] Success!
+[Main] Worker finished 24_4_in_DOMINO with score 5.000049544633559
+[32_4_in_CIRCLE] Success!
+[Main] Worker finished 32_4_in_CIRCLE with score 4.013591717891482
+[33_4_in_DOMINO] Starting (50000 attempts)
+[30_4_in_CIRCLE] Success!
+[Main] Worker finished 30_4_in_CIRCLE with score 3.8664744429705884
+[34_4_in_DOMINO] Starting (50000 attempts)
+[29_4_in_CIRCLE] Success!
+[Main] Worker finished 29_4_in_CIRCLE with score 3.7942707222825236
+[42_4_in_DOMINO] Starting (50000 attempts)
+[19_4_in_DOMINO] Success!
+[28_4_in_CIRCLE] Success!
+[Main] Worker finished 28_4_in_CIRCLE with score 3.7204568110929648
+[11_4_in_DOMINO] Starting (50000 attempts)
+[Main] Worker finished 19_4_in_DOMINO with score 4.900043966699061
+[12_4_in_DOMINO] Starting (50000 attempts)
+[26_4_in_CIRCLE] Success!
+[Main] Worker finished 26_4_in_CIRCLE with score 3.5683105137745867
+[13_4_in_DOMINO] Starting (50000 attempts)
+[27_4_in_CIRCLE] Success!
+[Main] Worker finished 27_4_in_CIRCLE with score 3.6490343733152177
+[9_4_in_DOMINO] Starting (50000 attempts)
+[33_4_in_CIRCLE] Success!
+[Main] Worker finished 33_4_in_CIRCLE with score 4.083376058395446
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[34_4_in_CIRCLE] Success!
+[Main] Worker finished 34_4_in_CIRCLE with score 4.15869865428219
+[25_4_in_DOMINO] Success!
+[Main] Worker finished 25_4_in_DOMINO with score 5.000564870610604
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[38_4_in_DOMINO] Success!
+[26_4_in_DOMINO] Success!
+[37_4_in_DOMINO] Success!
+[Main] Worker finished 38_4_in_DOMINO with score 6.844169714654811
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 37_4_in_DOMINO with score 6.720795178720315
+[Main] Worker finished 26_4_in_DOMINO with score 5.663979468573045
+[23_4_in_DOMINO] Starting (50000 attempts)
+[22_4_in_DOMINO] Starting (50000 attempts)
+[25_4_in_CIRCLE] Starting (50000 attempts)
+[39_4_in_DOMINO] Success!
+[Main] Worker finished 39_4_in_DOMINO with score 6.936219836618377
+[4_4_in_DOMINO] Starting (5000 attempts)
+[40_4_in_DOMINO] Success!
+[Main] Worker finished 40_4_in_DOMINO with score 7.000360905136249
+[31_4_in_CIRCLE] Starting (50000 attempts)
+[35_4_in_CIRCLE] Success!
+[Main] Worker finished 35_4_in_CIRCLE with score 4.2385837506034285
+[24_4_in_DOMINO] Starting (50000 attempts)
+[41_4_in_DOMINO] Success!
+[Main] Worker finished 41_4_in_DOMINO with score 7.000718377210237
+[32_4_in_CIRCLE] Starting (50000 attempts)
+[34_4_in_DOMINO] Success!
+[Main] Worker finished 34_4_in_DOMINO with score 6.001083613029955
+[30_4_in_CIRCLE] Starting (50000 attempts)
+[11_4_in_DOMINO] Success!
+[Main] Worker finished 11_4_in_DOMINO with score 3.887357685639538
+[33_4_in_DOMINO] Success!
+[Main] Worker finished 33_4_in_DOMINO with score 6.000144111305925
+[19_4_in_DOMINO] Starting (50000 attempts)
+[12_4_in_DOMINO] Success!
+[Main] Worker finished 12_4_in_DOMINO with score 4.003501590998801
+[29_4_in_CIRCLE] Starting (50000 attempts)
+[13_4_in_DOMINO] Success!
+[Main] Worker finished 13_4_in_DOMINO with score 4.004033105574783
+[28_4_in_CIRCLE] Starting (50000 attempts)
+[9_4_in_DOMINO] Success!
+[Main] Worker finished 9_4_in_DOMINO with score 3.004460492606513
+[25_4_in_DOMINO] Starting (50000 attempts)
+[26_4_in_CIRCLE] Starting (50000 attempts)
+[42_4_in_DOMINO] Success!
+[Main] Worker finished 42_4_in_DOMINO with score 7.001693619607065
+[18_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 18_CIRCLE_in_CIRCLE with score 4.883218408741343
+[27_4_in_CIRCLE] Starting (50000 attempts)
+[33_4_in_CIRCLE] Starting (50000 attempts)
+[22_4_in_DOMINO] Success!
+[Main] Worker finished 22_4_in_DOMINO with score 5.005883650081759
+[23_4_in_DOMINO] Success!
+[Main] Worker finished 23_4_in_DOMINO with score 5.006955435642607
+[26_4_in_DOMINO] Starting (50000 attempts)
+[34_4_in_CIRCLE] Starting (50000 attempts)
+[25_4_in_CIRCLE] Success!
+[Main] Worker finished 25_4_in_CIRCLE with score 3.3626273967388487
+[38_4_in_DOMINO] Starting (50000 attempts)
+[4_4_in_DOMINO] Success!
+[Main] Worker finished 4_4_in_DOMINO with score 2.0000031306913817
+[11_4_in_DOMINO] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 20_CIRCLE_in_CIRCLE with score 5.124354200758783
+[37_4_in_DOMINO] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 16_CIRCLE_in_CIRCLE with score 4.619395766575224
+[12_4_in_DOMINO] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 17_CIRCLE_in_CIRCLE with score 4.799984419071998
+[13_4_in_DOMINO] Starting (50000 attempts)
+[31_4_in_CIRCLE] Success!
+[Main] Worker finished 31_4_in_CIRCLE with score 3.7950713367084528
+[9_4_in_DOMINO] Starting (50000 attempts)
+[32_4_in_CIRCLE] Success!
+[Main] Worker finished 32_4_in_CIRCLE with score 3.8617270015195526
+[39_4_in_DOMINO] Starting (50000 attempts)
+[30_4_in_CIRCLE] Success!
+[Main] Worker finished 30_4_in_CIRCLE with score 3.7236382372562575
+[40_4_in_DOMINO] Starting (50000 attempts)
+[29_4_in_CIRCLE] Success!
+[Main] Worker finished 29_4_in_CIRCLE with score 3.6559641988747025
+[24_4_in_DOMINO] Success!
+[19_4_in_DOMINO] Success!
+[28_4_in_CIRCLE] Success!
+[Main] Worker finished 28_4_in_CIRCLE with score 3.5787486174141794
+[22_4_in_DOMINO] Starting (50000 attempts)
+[Main] Worker finished 24_4_in_DOMINO with score 5.006883418686714
+[Main] Worker finished 19_4_in_DOMINO with score 4.904690957433619
+[23_4_in_DOMINO] Starting (50000 attempts)
+[26_4_in_CIRCLE] Success!
+[35_4_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 26_4_in_CIRCLE with score 3.4309313677882707
+[41_4_in_DOMINO] Starting (50000 attempts)
+[33_4_in_DOMINO] Starting (50000 attempts)
+[25_4_in_DOMINO] Success!
+[Main] Worker finished 25_4_in_DOMINO with score 5.007968528075264
+[27_4_in_CIRCLE] Success!
+[33_4_in_CIRCLE] Success!
+[Main] Worker finished 27_4_in_CIRCLE with score 3.505981038128078
+[34_4_in_DOMINO] Starting (50000 attempts)
+[Main] Worker finished 33_4_in_CIRCLE with score 3.9313790762187133
+[42_4_in_DOMINO] Starting (50000 attempts)
+[3_4_in_CIRCLE] Starting (5000 attempts)
+[34_4_in_CIRCLE] Success!
+[Main] Worker finished 34_4_in_CIRCLE with score 3.9987330443858813
+[9_4_in_CIRCLE] Starting (50000 attempts)
+[26_4_in_DOMINO] Success!
+[Main] Worker finished 26_4_in_DOMINO with score 5.669594473319813
+[6_4_in_CIRCLE] Starting (5000 attempts)
+[38_4_in_DOMINO] Success!
+[Main] Worker finished 38_4_in_DOMINO with score 6.790502747524857
+[14_4_in_CIRCLE] Starting (50000 attempts)
+[11_4_in_DOMINO] Success!
+[Main] Worker finished 11_4_in_DOMINO with score 3.887357685639538
+[11_4_in_CIRCLE] Starting (50000 attempts)
+[37_4_in_DOMINO] Success!
+[12_4_in_DOMINO] Success!
+[Main] Worker finished 37_4_in_DOMINO with score 6.727591323482214
+[Main] Worker finished 12_4_in_DOMINO with score 4.003501590998801
+[24_4_in_DOMINO] Starting (50000 attempts)
+[19_4_in_DOMINO] Starting (50000 attempts)
+[13_4_in_DOMINO] Success!
+[Main] Worker finished 13_4_in_DOMINO with score 4.004033105574783
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[9_4_in_DOMINO] Success!
+[Main] Worker finished 9_4_in_DOMINO with score 3.004460492606513
+[25_4_in_DOMINO] Starting (50000 attempts)
+[3_4_in_CIRCLE] Success!
+[Main] Worker finished 3_4_in_CIRCLE with score 1.2936256404466273
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[35_4_in_CIRCLE] Success!
+[Main] Worker finished 35_4_in_CIRCLE with score 4.064502691876538
+[22_4_in_DOMINO] Success!
+[39_4_in_DOMINO] Success!
+[Main] Worker finished 22_4_in_DOMINO with score 5.005883650081759
+[16_4_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 39_4_in_DOMINO with score 6.943098697911141
+[26_4_in_DOMINO] Starting (50000 attempts)
+[34_4_in_CIRCLE] Starting (50000 attempts)
+[23_4_in_DOMINO] Success!
+[Main] Worker finished 23_4_in_DOMINO with score 5.006955435642607
+[38_4_in_DOMINO] Starting (50000 attempts)
+[40_4_in_DOMINO] Success!
+[Main] Worker finished 40_4_in_DOMINO with score 7.007393145971029
+[11_4_in_DOMINO] Starting (50000 attempts)
+[33_4_in_DOMINO] Success!
+[Main] Worker finished 33_4_in_DOMINO with score 6.007644136397841
+[37_4_in_DOMINO] Starting (50000 attempts)
+[41_4_in_DOMINO] Success!
+[Main] Worker finished 41_4_in_DOMINO with score 7.008080932989927
+[12_4_in_DOMINO] Starting (50000 attempts)
+[9_4_in_CIRCLE] Success!
+[Main] Worker finished 9_4_in_CIRCLE with score 2.0823712776305063
+[13_4_in_DOMINO] Starting (50000 attempts)
+[6_4_in_CIRCLE] Success!
+[Main] Worker finished 6_4_in_CIRCLE with score 1.692584114745949
+[9_4_in_DOMINO] Starting (50000 attempts)
+[34_4_in_DOMINO] Success!
+[Main] Worker finished 34_4_in_DOMINO with score 6.009024011813199
+[3_4_in_CIRCLE] Starting (5000 attempts)
+[42_4_in_DOMINO] Success!
+[Main] Worker finished 42_4_in_DOMINO with score 7.0093932218477315
+[35_4_in_CIRCLE] Starting (50000 attempts)
+[14_4_in_CIRCLE] Success!
+[Main] Worker finished 14_4_in_CIRCLE with score 2.5318581134866758
+[22_4_in_DOMINO] Starting (50000 attempts)
+[11_4_in_CIRCLE] Success!
+[Main] Worker finished 11_4_in_CIRCLE with score 2.246462013612704
+[39_4_in_DOMINO] Starting (50000 attempts)
+[19_4_in_DOMINO] Success!
+[Main] Worker finished 19_4_in_DOMINO with score 5.043917465208776
+[23_4_in_DOMINO] Starting (50000 attempts)
+[24_4_in_DOMINO] Success!
+[Main] Worker finished 24_4_in_DOMINO with score 5.006883418686714
+[40_4_in_DOMINO] Starting (50000 attempts)
+[25_4_in_DOMINO] Success!
+[Main] Worker finished 25_4_in_DOMINO with score 5.007968528075264
+[33_4_in_DOMINO] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 15_CIRCLE_in_CIRCLE with score 4.54443937686749
+[41_4_in_DOMINO] Starting (50000 attempts)
+[3_4_in_CIRCLE] Success!
+[Main] Worker finished 3_4_in_CIRCLE with score 1.2936256404466273
+[9_4_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 12_CIRCLE_in_CIRCLE with score 4.052026505191741
+[6_4_in_CIRCLE] Starting (5000 attempts)
+[34_4_in_CIRCLE] Success!
+[Main] Worker finished 34_4_in_CIRCLE with score 3.9947793403715397
+[16_4_in_CIRCLE] Success!
+[Main] Worker finished 16_4_in_CIRCLE with score 2.636761423759811
+[34_4_in_DOMINO] Starting (50000 attempts)
+[42_4_in_DOMINO] Starting (50000 attempts)
+[11_4_in_DOMINO] Success!
+[Main] Worker finished 11_4_in_DOMINO with score 3.887357685639538
+[26_4_in_DOMINO] Success!
+[Main] Worker finished 26_4_in_DOMINO with score 5.669594473319813
+[14_4_in_CIRCLE] Starting (50000 attempts)
+[11_4_in_CIRCLE] Starting (50000 attempts)
+[12_4_in_DOMINO] Success!
+[Main] Worker finished 12_4_in_DOMINO with score 4.003501590998801
+[38_4_in_DOMINO] Success!
+[Main] Worker finished 38_4_in_DOMINO with score 7.1300278849011
+[19_4_in_DOMINO] Starting (50000 attempts)
+[13_4_in_DOMINO] Success!
+[Main] Worker finished 13_4_in_DOMINO with score 4.004033105574783
+[24_4_in_DOMINO] Starting (50000 attempts)
+[25_4_in_DOMINO] Starting (50000 attempts)
+[9_4_in_DOMINO] Success!
+[Main] Worker finished 9_4_in_DOMINO with score 3.004460492606513
+[13_4_in_CIRCLE] Starting (50000 attempts)
+[37_4_in_DOMINO] Success!
+[Main] Worker finished 37_4_in_DOMINO with score 6.727591323482214
+[3_4_in_CIRCLE] Starting (5000 attempts)
+[35_4_in_CIRCLE] Success!
+[Main] Worker finished 35_4_in_CIRCLE with score 4.055888874988012
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[22_4_in_DOMINO] Success!
+[Main] Worker finished 22_4_in_DOMINO with score 5.005883650081759
+[34_4_in_CIRCLE] Starting (50000 attempts)
+[39_4_in_DOMINO] Success!
+[Main] Worker finished 39_4_in_DOMINO with score 6.943098697911141
+[15_4_in_CIRCLE] Starting (50000 attempts)
+[23_4_in_DOMINO] Success!
+[Main] Worker finished 23_4_in_DOMINO with score 5.006955435642607
+[11_4_in_DOMINO] Starting (50000 attempts)
+[40_4_in_DOMINO] Success!
+[Main] Worker finished 40_4_in_DOMINO with score 7.007393145971029
+[26_4_in_DOMINO] Starting (50000 attempts)
+[33_4_in_DOMINO] Success!
+[Main] Worker finished 33_4_in_DOMINO with score 6.007644136397841
+[12_4_in_DOMINO] Starting (50000 attempts)
+[41_4_in_DOMINO] Success!
+[Main] Worker finished 41_4_in_DOMINO with score 7.008080932989927
+[38_4_in_DOMINO] Starting (50000 attempts)
+[9_4_in_CIRCLE] Success!
+[Main] Worker finished 9_4_in_CIRCLE with score 2.08237002175884
+[13_4_in_DOMINO] Starting (50000 attempts)
+[3_4_in_CIRCLE] Success!
+[Main] Worker finished 3_4_in_CIRCLE with score 1.2936256404466273
+[9_4_in_DOMINO] Starting (50000 attempts)
+[6_4_in_CIRCLE] Success!
+[Main] Worker finished 6_4_in_CIRCLE with score 1.6925818598111404
+[37_4_in_DOMINO] Starting (50000 attempts)
+[14_4_in_CIRCLE] Success!
+[Main] Worker finished 14_4_in_CIRCLE with score 2.5318581134866758
+[11_4_in_CIRCLE] Success!
+[Main] Worker finished 11_4_in_CIRCLE with score 2.246462013612704
+[35_4_in_CIRCLE] Starting (50000 attempts)
+[22_4_in_DOMINO] Starting (50000 attempts)
+[34_4_in_DOMINO] Success!
+[Main] Worker finished 34_4_in_DOMINO with score 6.009024011813199
+[19_4_in_DOMINO] Success!
+[Main] Worker finished 19_4_in_DOMINO with score 4.904690957433619
+[39_4_in_DOMINO] Starting (50000 attempts)
+[23_4_in_DOMINO] Starting (50000 attempts)
+[42_4_in_DOMINO] Success!
+[Main] Worker finished 42_4_in_DOMINO with score 7.0093932218477315
+[40_4_in_DOMINO] Starting (50000 attempts)
+[13_4_in_CIRCLE] Success!
+[Main] Worker finished 13_4_in_CIRCLE with score 2.3798535582824565
+[33_4_in_DOMINO] Starting (50000 attempts)
+[24_4_in_DOMINO] Success!
+[Main] Worker finished 24_4_in_DOMINO with score 5.006883418686714
+[25_4_in_DOMINO] Success!
+[Main] Worker finished 25_4_in_DOMINO with score 5.007968528075264
+[41_4_in_DOMINO] Starting (50000 attempts)
+[9_4_in_CIRCLE] Starting (50000 attempts)
+[34_4_in_CIRCLE] Success!
+[Main] Worker finished 34_4_in_CIRCLE with score 3.9925660144896806
+[3_4_in_CIRCLE] Starting (5000 attempts)
+[15_4_in_CIRCLE] Success!
+[Main] Worker finished 15_4_in_CIRCLE with score 2.538856912492477
+[6_4_in_CIRCLE] Starting (5000 attempts)
+[11_4_in_DOMINO] Success!
+[Main] Worker finished 11_4_in_DOMINO with score 3.887357685639538
+[14_4_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 15_CIRCLE_in_CIRCLE with score 4.5255021764499865
+[26_4_in_DOMINO] Success!
+[Main] Worker finished 26_4_in_DOMINO with score 5.9471784420016975
+[11_4_in_CIRCLE] Starting (50000 attempts)
+[34_4_in_DOMINO] Starting (50000 attempts)
+[12_4_in_DOMINO] Success!
+[Main] Worker finished 12_4_in_DOMINO with score 4.003501590998801
+[19_4_in_DOMINO] Starting (50000 attempts)
+[38_4_in_DOMINO] Success!
+[Main] Worker finished 38_4_in_DOMINO with score 7.1300278849011
+[42_4_in_DOMINO] Starting (50000 attempts)
+[13_4_in_DOMINO] Success!
+[Main] Worker finished 13_4_in_DOMINO with score 4.004033105574783
+[9_4_in_DOMINO] Success!
+[Main] Worker finished 9_4_in_DOMINO with score 3.004460492606513
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[24_4_in_DOMINO] Starting (50000 attempts)
+[3_4_in_CIRCLE] Success!
+[Main] Worker finished 3_4_in_CIRCLE with score 1.2936256404466273
+[25_4_in_DOMINO] Starting (50000 attempts)
+[37_4_in_DOMINO] Success!
+[Main] Worker finished 37_4_in_DOMINO with score 6.727591323482214
+[34_4_in_CIRCLE] Starting (50000 attempts)
+[35_4_in_CIRCLE] Success!
+[Main] Worker finished 35_4_in_CIRCLE with score 4.059515125630039
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[22_4_in_DOMINO] Success!
+[Main] Worker finished 22_4_in_DOMINO with score 5.005883650081759
+[16_4_in_CIRCLE] Starting (50000 attempts)
+[23_4_in_DOMINO] Success!
+[Main] Worker finished 23_4_in_DOMINO with score 5.006955435642607
+[13_4_in_CIRCLE] Starting (50000 attempts)
+[9_4_in_CIRCLE] Success!
+[Main] Worker finished 9_4_in_CIRCLE with score 2.082369956191419
+[26_4_in_DOMINO] Starting (50000 attempts)
+[39_4_in_DOMINO] Success!
+[Main] Worker finished 39_4_in_DOMINO with score 6.943098697911141
+[15_4_in_CIRCLE] Starting (50000 attempts)
+[40_4_in_DOMINO] Success!
+[Main] Worker finished 40_4_in_DOMINO with score 7.007393145971029
+[38_4_in_DOMINO] Starting (50000 attempts)
+[33_4_in_DOMINO] Success!
+[Main] Worker finished 33_4_in_DOMINO with score 6.007644136397841
+[17_4_in_CIRCLE] Starting (50000 attempts)
+[41_4_in_DOMINO] Success!
+[Main] Worker finished 41_4_in_DOMINO with score 7.008080932989927
+[20_4_in_CIRCLE] Starting (50000 attempts)
+[6_4_in_CIRCLE] Success!
+[Main] Worker finished 6_4_in_CIRCLE with score 1.6925817485782602
+[22_4_in_CIRCLE] Starting (50000 attempts)
+[14_4_in_CIRCLE] Success!
+[Main] Worker finished 14_4_in_CIRCLE with score 2.5318581134866758
+[37_4_in_DOMINO] Starting (50000 attempts)
+[11_4_in_CIRCLE] Success!
+[Main] Worker finished 11_4_in_CIRCLE with score 2.246462013612704
+[35_4_in_CIRCLE] Starting (50000 attempts)
+[34_4_in_DOMINO] Success!
+[Main] Worker finished 34_4_in_DOMINO with score 6.009024011813199
+[18_4_in_CIRCLE] Starting (50000 attempts)
+[19_4_in_DOMINO] Success!
+[Main] Worker finished 19_4_in_DOMINO with score 5.043917465208776
+[19_4_in_CIRCLE] Starting (50000 attempts)
+[42_4_in_DOMINO] Success!
+[Main] Worker finished 42_4_in_DOMINO with score 7.0093932218477315
+[9_4_in_CIRCLE] Starting (50000 attempts)
+[24_4_in_DOMINO] Success!
+[Main] Worker finished 24_4_in_DOMINO with score 5.006883418686714
+[39_4_in_DOMINO] Starting (50000 attempts)
+[25_4_in_DOMINO] Success!
+[Main] Worker finished 25_4_in_DOMINO with score 5.007968528075264
+[40_4_in_DOMINO] Starting (50000 attempts)
+[34_4_in_CIRCLE] Success!
+[Main] Worker finished 34_4_in_CIRCLE with score 3.99727238822758
+[33_4_in_DOMINO] Starting (50000 attempts)
+[16_4_in_CIRCLE] Success!
+[Main] Worker finished 16_4_in_CIRCLE with score 2.6437013056270984
+[41_4_in_DOMINO] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 14_CIRCLE_in_CIRCLE with score 4.3316257643911165
+[13_4_in_CIRCLE] Success!
+[Main] Worker finished 13_4_in_CIRCLE with score 2.3798535582824565
+[6_4_in_CIRCLE] Starting (5000 attempts)
+[14_4_in_CIRCLE] Starting (50000 attempts)
+[15_4_in_CIRCLE] Success!
+[Main] Worker finished 15_4_in_CIRCLE with score 2.5549907424362357
+[26_4_in_DOMINO] Success!
+[Main] Worker finished 26_4_in_DOMINO with score 5.669594473319813
+[11_4_in_CIRCLE] Starting (50000 attempts)
+[34_4_in_DOMINO] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 12_CIRCLE_in_CIRCLE with score 4.052026505191741
+[20_4_in_CIRCLE] Success!
+[17_4_in_CIRCLE] Success!
+[Main] Worker finished 20_4_in_CIRCLE with score 2.9399857641609297
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[Main] Worker finished 17_4_in_CIRCLE with score 2.8000753172788735
+[42_4_in_DOMINO] Starting (50000 attempts)
+[38_4_in_DOMINO] Success!
+[Main] Worker finished 38_4_in_DOMINO with score 7.1300278849011
+[23_4_in_CIRCLE] Starting (50000 attempts)
+[21_4_in_CIRCLE] Starting (50000 attempts)
+[22_4_in_CIRCLE] Success!
+[Main] Worker finished 22_4_in_CIRCLE with score 3.113140756601185
+[34_4_in_CIRCLE] Starting (50000 attempts)
+[37_4_in_DOMINO] Success!
+[Main] Worker finished 37_4_in_DOMINO with score 6.727591323482214
+[35_4_in_CIRCLE] Success!
+[Main] Worker finished 35_4_in_CIRCLE with score 4.058297392873745
+[16_4_in_CIRCLE] Starting (50000 attempts)
+[24_4_in_CIRCLE] Starting (50000 attempts)
+[18_4_in_CIRCLE] Success!
+[Main] Worker finished 18_4_in_CIRCLE with score 2.754026385928892
+[13_4_in_CIRCLE] Starting (50000 attempts)
+[19_4_in_CIRCLE] Success!
+[Main] Worker finished 19_4_in_CIRCLE with score 2.8397697210754362
+[15_4_in_CIRCLE] Starting (50000 attempts)
+[9_4_in_CIRCLE] Success!
+[Main] Worker finished 9_4_in_CIRCLE with score 2.082369952768422
+[25_4_in_CIRCLE] Starting (50000 attempts)
+[39_4_in_DOMINO] Success!
+[Main] Worker finished 39_4_in_DOMINO with score 6.943098697911141
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[40_4_in_DOMINO] Success!
+[Main] Worker finished 40_4_in_DOMINO with score 7.007393145971029
+[20_4_in_CIRCLE] Starting (50000 attempts)
+[33_4_in_DOMINO] Success!
+[Main] Worker finished 33_4_in_DOMINO with score 6.007644136397841
+[17_4_in_CIRCLE] Starting (50000 attempts)
+[6_4_in_CIRCLE] Success!
+[Main] Worker finished 6_4_in_CIRCLE with score 1.6925817430921521
+[31_4_in_CIRCLE] Starting (50000 attempts)
+[14_4_in_CIRCLE] Success!
+[Main] Worker finished 14_4_in_CIRCLE with score 2.5318581134866758
+[22_4_in_CIRCLE] Starting (50000 attempts)
+[11_4_in_CIRCLE] Success!
+[Main] Worker finished 11_4_in_CIRCLE with score 2.246462013612704
+[32_4_in_CIRCLE] Starting (50000 attempts)
+[41_4_in_DOMINO] Success!
+[Main] Worker finished 41_4_in_DOMINO with score 7.008080932989927
+[35_4_in_CIRCLE] Starting (50000 attempts)
+[23_4_in_CIRCLE] Success!
+[Main] Worker finished 23_4_in_CIRCLE with score 3.2025424266017426
+[18_4_in_CIRCLE] Starting (50000 attempts)
+[34_4_in_DOMINO] Success!
+[Main] Worker finished 34_4_in_DOMINO with score 6.009024011813199
+[21_4_in_CIRCLE] Success!
+[Main] Worker finished 21_4_in_CIRCLE with score 3.036269294827279
+[19_4_in_CIRCLE] Starting (50000 attempts)
+[9_4_in_CIRCLE] Starting (50000 attempts)
+[42_4_in_DOMINO] Success!
+[Main] Worker finished 42_4_in_DOMINO with score 7.0093932218477315
+[30_4_in_CIRCLE] Starting (50000 attempts)
+[34_4_in_CIRCLE] Success!
+[Main] Worker finished 34_4_in_CIRCLE with score 3.9924782986822818
+[29_4_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 18_CIRCLE_in_CIRCLE with score 4.865890592980288
+[28_4_in_CIRCLE] Starting (50000 attempts)
+[24_4_in_CIRCLE] Success!
+[Main] Worker finished 24_4_in_CIRCLE with score 3.2798013645429567
+[6_4_in_CIRCLE] Starting (5000 attempts)
+[16_4_in_CIRCLE] Success!
+[Main] Worker finished 16_4_in_CIRCLE with score 2.6437013056270984
+[26_4_in_CIRCLE] Starting (50000 attempts)
+[13_4_in_CIRCLE] Success!
+[Main] Worker finished 13_4_in_CIRCLE with score 2.3798535582824565
+[27_4_in_CIRCLE] Starting (50000 attempts)
+[15_4_in_CIRCLE] Success!
+[Main] Worker finished 15_4_in_CIRCLE with score 2.5549907424362357
+[33_4_in_CIRCLE] Starting (50000 attempts)
+[25_4_in_CIRCLE] Success!
+[Main] Worker finished 25_4_in_CIRCLE with score 3.204626041557529
+[23_4_in_CIRCLE] Starting (50000 attempts)
+[20_4_in_CIRCLE] Success!
+[Main] Worker finished 20_4_in_CIRCLE with score 2.953764856144117
+[4_4_in_DOMINO] Starting (5000 attempts)
+[17_4_in_CIRCLE] Success!
+[Main] Worker finished 17_4_in_CIRCLE with score 2.8000753172788735
+[12_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 12_CIRCLE_in_CIRCLE with score 4.052026505191741
+[21_4_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[31_4_in_CIRCLE] Success!
+[Main] Worker finished 31_4_in_CIRCLE with score 3.79190363182334
+[34_4_in_CIRCLE] Starting (50000 attempts)
+[32_4_in_CIRCLE] Success!
+[Main] Worker finished 32_4_in_CIRCLE with score 3.861024028546992
+[16_4_in_CIRCLE] Starting (50000 attempts)
+[35_4_in_CIRCLE] Success!
+[Main] Worker finished 35_4_in_CIRCLE with score 4.05505189105548
+[22_4_in_CIRCLE] Success!
+[Main] Worker finished 22_4_in_CIRCLE with score 3.0927687609559498
+[24_4_in_CIRCLE] Starting (50000 attempts)
+[13_4_in_CIRCLE] Starting (50000 attempts)
+[18_4_in_CIRCLE] Success!
+[Main] Worker finished 18_4_in_CIRCLE with score 2.7815174444652295
+[9_4_in_CIRCLE] Success!
+[Main] Worker finished 9_4_in_CIRCLE with score 2.0823699525897243
+[15_4_in_CIRCLE] Starting (50000 attempts)
+[17_4_in_CIRCLE] Starting (50000 attempts)
+[19_4_in_CIRCLE] Success!
+[Main] Worker finished 19_4_in_CIRCLE with score 2.8650775875965833
+[25_4_in_CIRCLE] Starting (50000 attempts)
+[30_4_in_CIRCLE] Success!
+[Main] Worker finished 30_4_in_CIRCLE with score 3.720801359426783
+[20_4_in_CIRCLE] Starting (50000 attempts)
+[29_4_in_CIRCLE] Success!
+[Main] Worker finished 29_4_in_CIRCLE with score 3.6404144653953203
+[22_4_in_CIRCLE] Starting (50000 attempts)
+[28_4_in_CIRCLE] Success!
+[Main] Worker finished 28_4_in_CIRCLE with score 3.560677476933009
+[18_4_in_CIRCLE] Starting (50000 attempts)
+[6_4_in_CIRCLE] Success!
+[Main] Worker finished 6_4_in_CIRCLE with score 1.6925817428215761
+[31_4_in_CIRCLE] Starting (50000 attempts)
+[26_4_in_CIRCLE] Success!
+[Main] Worker finished 26_4_in_CIRCLE with score 3.5664531568159075
+[32_4_in_CIRCLE] Starting (50000 attempts)
+[27_4_in_CIRCLE] Success!
+[Main] Worker finished 27_4_in_CIRCLE with score 3.47852334031696
+[35_4_in_CIRCLE] Starting (50000 attempts)
+[33_4_in_CIRCLE] Success!
+[Main] Worker finished 33_4_in_CIRCLE with score 3.931640484703852
+[19_4_in_CIRCLE] Starting (50000 attempts)
+[4_4_in_DOMINO] Success!
+[Main] Worker finished 4_4_in_DOMINO with score 2.0029655761848515
+[30_4_in_CIRCLE] Starting (50000 attempts)
+[23_4_in_CIRCLE] Success!
+[Main] Worker finished 23_4_in_CIRCLE with score 3.104567020401386
+[9_4_in_CIRCLE] Starting (50000 attempts)
+[21_4_in_CIRCLE] Success!
+[Main] Worker finished 21_4_in_CIRCLE with score 3.0260253803709074
+[23_4_in_CIRCLE] Starting (50000 attempts)
+[34_4_in_CIRCLE] Success!
+[Main] Worker finished 34_4_in_CIRCLE with score 3.9968696402901003
+[21_4_in_CIRCLE] Starting (50000 attempts)
+[16_4_in_CIRCLE] Success!
+[Main] Worker finished 16_4_in_CIRCLE with score 2.6437013056270984
+[29_4_in_CIRCLE] Starting (50000 attempts)
+[13_4_in_CIRCLE] Success!
+[Main] Worker finished 13_4_in_CIRCLE with score 2.3798535582824565
+[28_4_in_CIRCLE] Starting (50000 attempts)
+[24_4_in_CIRCLE] Success!
+[Main] Worker finished 24_4_in_CIRCLE with score 3.3180291263247113
+[6_4_in_CIRCLE] Starting (5000 attempts)
+[15_4_in_CIRCLE] Success!
+[Main] Worker finished 15_4_in_CIRCLE with score 2.5549907424362357
+[26_4_in_CIRCLE] Starting (50000 attempts)
+[17_4_in_CIRCLE] Success!
+[Main] Worker finished 17_4_in_CIRCLE with score 2.8000753172788735
+[27_4_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 12_CIRCLE_in_CIRCLE with score 4.052026505191741
+[33_4_in_CIRCLE] Starting (50000 attempts)
+[25_4_in_CIRCLE] Success!
+[Main] Worker finished 25_4_in_CIRCLE with score 3.18935261692976
+[4_4_in_DOMINO] Starting (5000 attempts)
+[20_4_in_CIRCLE] Success!
+[Main] Worker finished 20_4_in_CIRCLE with score 2.953764856144117
+[16_4_in_CIRCLE] Starting (50000 attempts)
