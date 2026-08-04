@@ -188,3 +188,145 @@ DEFAULT_EXPERIMENT_KWARGS = {
     "tolerance": 1e-8,
     "finalstep": 0.0001,
 }
+
+# ===========================================================================
+# SECTION 2: Solver — Rust Backend (packer_rs)
+# ===========================================================================
+
+#: Path to compiled Rust solver binary.
+RUST_BINARY: str = "packer_rs/target/release/packer_rs"
+
+#: Convergence tolerance passed to Rust L-BFGS-B solver via --tolerance flag.
+RUST_TOLERANCE: str = "1e-28"
+
+#: Default number of solver restart attempts per run (overridden by loop scripts and CLI).
+RUST_DEFAULT_ATTEMPTS: int = 1000
+
+#: Default time limit in seconds for a single Rust solver run.
+RUST_DEFAULT_TIME_LIMIT: int = 290
+
+# ===========================================================================
+# SECTION 3: Solver — Python Backend (scipy/optimization.py)
+# ===========================================================================
+
+#: Default number of basinhopping attempts in the Python optimizer.
+OPTIMIZER_ATTEMPTS: int = 1000
+
+#: Convergence tolerance for scipy L-BFGS-B. Lower = more precise, slower.
+OPTIMIZER_TOLERANCE: float = 1e-8
+
+#: Final step size for the optimizer's local refinement stage.
+OPTIMIZER_FINAL_STEP: float = 0.0001
+
+#: Number of parallel jobs for joblib. -1 = all cores, 1 = serial.
+OPTIMIZER_N_JOBS: int = -1
+
+# ===========================================================================
+# SECTION 4: Verification Tolerances
+# ===========================================================================
+
+#: Maximum allowed SAT penetration depth when verifying boundary containment
+#: in solution_tools.verify_solution(). Small positive value to allow float rounding.
+VERIFY_SAT_TOLERANCE: float = 1e-5
+
+#: Tolerance when comparing computed Friedman metric against stored final_metric in JSON.
+VERIFY_METRIC_TOLERANCE: float = 1e-6
+
+#: Tolerance used inside geometry.sat_check_overlap() for separating axis projection.
+#: Tighter than VERIFY_SAT_TOLERANCE since this is an internal math primitive.
+GEOMETRY_SAT_TOLERANCE: float = 1e-12
+
+#: Physical validity floor for circle problem scores. Scores below this value
+#: are treated as corrupt legacy metrics (old broken formula) and ignored.
+MIN_VALID_CIRCLE_SCORE: float = 0.1
+
+# ===========================================================================
+# SECTION 5: Loop & Scheduling (autoresearch and parallel loops)
+# ===========================================================================
+
+#: Seconds to sleep between successful solver runs in run_autoresearch_loop.py.
+LOOP_SLEEP_BETWEEN_RUNS: int = 2
+
+#: Maximum number of consecutive failures before applying exponential backoff.
+LOOP_MAX_CONSECUTIVE_FAILURES: int = 5
+
+#: Starting backoff duration in seconds after a failure.
+LOOP_BASE_BACKOFF: int = 5
+
+#: Maximum backoff duration cap in seconds.
+LOOP_MAX_BACKOFF: int = 120
+
+#: Default solver attempts for "normal" difficulty problems in the parallel loop.
+LOOP_DEFAULT_ATTEMPTS: int = 5000
+
+#: N threshold above which a problem is considered "hard" (more attempts allocated).
+LOOP_HIGH_N_THRESHOLD: int = 8
+
+#: Solver attempts for hard problems (N >= LOOP_HIGH_N_THRESHOLD).
+LOOP_HIGH_N_ATTEMPTS: int = 50000
+
+#: Solver attempts for "stuck" problems (status='stuck' returned by suggest).
+LOOP_STUCK_ATTEMPTS: int = 500000
+
+#: Number of parallel swarm workers dispatched for stuck problems.
+LOOP_STUCK_SWARM_COUNT: int = 20
+
+#: Number of parallel swarm workers dispatched for hard problems.
+LOOP_HARD_SWARM_COUNT: int = 5
+
+# ===========================================================================
+# SECTION 6: Priority Queue & Problem Selection
+# ===========================================================================
+
+#: Fallback problem key used if priority_queue.json is missing or empty.
+QUEUE_FALLBACK_PROBLEM: str = "8_3_in_5"
+
+#: Window size for recent_problems() diversity check.
+QUEUE_RECENT_WINDOW: int = 10
+
+#: Soft run cap per problem — beyond this, mild score penalty applied.
+QUEUE_PROBLEM_CAP1: int = 60
+
+#: Hard run cap per problem — beyond this, strong score penalty applied.
+QUEUE_PROBLEM_CAP2: int = 100
+
+#: Soft run cap per problem family — beyond this, mild score penalty applied.
+QUEUE_FAMILY_CAP1: int = 400
+
+#: Hard run cap per problem family — beyond this, strong score penalty applied.
+QUEUE_FAMILY_CAP2: int = 800
+
+# ===========================================================================
+# SECTION 7: File Paths (relative to project root)
+# ===========================================================================
+
+#: Path to the experiment history TSV file.
+RESULTS_TSV_PATH: str = "results.tsv"
+
+#: Directory where per-run result subdirectories are saved.
+RESULTS_DIR: str = "results"
+
+#: Path to the JSON priority queue file.
+PRIORITY_QUEUE_PATH: str = "priority_queue.json"
+
+#: Directory containing benchmark verification JSON files.
+PACKING_VERIFICATION_DIR: str = "packingVerification"
+
+#: Path to the optional runtime filter JSON file.
+FILTER_JSON_PATH: str = "filter.json"
+
+#: Path to the legacy PACKING_REFERENCE.tsv file.
+PACKING_REFERENCE_TSV: str = "PACKING_REFERENCE.tsv"
+
+# ===========================================================================
+# SECTION 8: Rendering & Output
+# ===========================================================================
+
+#: DPI for solution.png renders (solution_tools.render_solution).
+RENDER_DPI: int = 300
+
+#: Matplotlib figure size in inches for solution renders.
+RENDER_FIGURE_SIZE: tuple = (6, 6)
+
+#: DPI for analysis charts produced by scripts/analyze_mill_log.py.
+ANALYSIS_PLOT_DPI: int = 200
