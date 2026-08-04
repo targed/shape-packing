@@ -145,6 +145,7 @@ def run_loop():
             problem,
             "--attempts",
             str(attempts),
+            "--no-png",
         ]
 
         try:

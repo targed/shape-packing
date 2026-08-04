@@ -118,6 +118,7 @@ def worker_task(problem, attempts):
         str(attempts),
         "--no-commit",
         "--json-out",
+        "--no-png",
     ]
     
     try:
