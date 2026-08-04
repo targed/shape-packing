@@ -52,6 +52,18 @@ import os
 from dataclasses import dataclass, asdict
 from typing import List, Dict, Optional, Tuple, Any
 
+from .packing_config import (
+    CIRCLE_SIDES,
+    MIN_VALID_CIRCLE_SCORE,
+    QUEUE_FALLBACK_PROBLEM,
+    QUEUE_RECENT_WINDOW,
+    QUEUE_PROBLEM_CAP1,
+    QUEUE_PROBLEM_CAP2,
+    QUEUE_FAMILY_CAP1,
+    QUEUE_FAMILY_CAP2,
+    PRIORITY_QUEUE_PATH,
+)
+
 
 # --------------- Data types ---------------
 
@@ -237,7 +249,7 @@ def is_physically_valid_score(problem: str, score: float) -> bool:
     parts = str(problem).split("_")
     if len(parts) == 4 and parts[2] == "in":
         container = parts[3].upper()
-        if container in ("CIRCLE", "CIR", "0") and score < 0.1:
+        if container in ("CIRCLE", "CIR", "0") and score < MIN_VALID_CIRCLE_SCORE:
             return False
     return True
 
@@ -340,20 +352,20 @@ def load_priority_queue(path: str = "priority_queue.json") -> List[Dict[str, flo
 
 def choose_problem(
     history: List[ExperimentResult],
-    queue_path: str = "priority_queue.json",
+    queue_path: str = PRIORITY_QUEUE_PATH,
     prefer_different: bool = False,
     filters: dict = None,
     exclude_problems: set = None,
-    problem_cap1: int = 60,
-    problem_cap2: int = 100,
-    family_cap1: int = 400,
-    family_cap2: int = 800,
+    problem_cap1: int = QUEUE_PROBLEM_CAP1,
+    problem_cap2: int = QUEUE_PROBLEM_CAP2,
+    family_cap1: int = QUEUE_FAMILY_CAP1,
+    family_cap2: int = QUEUE_FAMILY_CAP2,
 ) -> str:
     queue = load_priority_queue(queue_path)
     if not queue:
-        return "8_3_in_5"
+        return QUEUE_FALLBACK_PROBLEM
 
-    recent = recent_problems(history, last=10)
+    recent = recent_problems(history, last=QUEUE_RECENT_WINDOW)
     our_best = current_best_scores(history)
     
     problem_runs = {}
@@ -491,10 +503,10 @@ def choose_problem(
                     if container_token in exc_cont or p0_cont in exc_cont or item_container in exc_cont:
                         continue
 
-                if inner_sides is None and inner_token == "CIRCLE":
-                    inner_sides = 32
-                if container_sides is None and container_token == "CIRCLE":
-                    container_sides = 32
+                if inner_token == "CIRCLE":
+                    inner_sides = CIRCLE_SIDES
+                if container_token == "CIRCLE":
+                    container_sides = CIRCLE_SIDES
                     
                 if filters.get("min_inner_sides") is not None and (inner_sides is None or inner_sides < filters["min_inner_sides"]):
                     continue

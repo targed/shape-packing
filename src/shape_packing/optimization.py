@@ -23,6 +23,13 @@ import numpy as np
 from joblib import Parallel, delayed
 from scipy.optimize import basinhopping, minimize
 
+from .packing_config import (
+    OPTIMIZER_ATTEMPTS,
+    OPTIMIZER_TOLERANCE,
+    OPTIMIZER_FINAL_STEP,
+    OPTIMIZER_N_JOBS,
+)
+
 from .geometry import (
     bh_objective,
     get_shape_geometry,
@@ -45,11 +52,11 @@ class OptConfig:
     """
     High-level knobs for optimization behavior.
     """
-    attempts: int = 1000
-    tolerance: float = 1e-8
-    final_step: float = 0.0001
+    attempts: int = OPTIMIZER_ATTEMPTS
+    tolerance: float = OPTIMIZER_TOLERANCE
+    final_step: float = OPTIMIZER_FINAL_STEP
     time_limit: Optional[float] = None  # seconds; None = no limit
-    n_jobs: int = -1  # -1 = use all cores
+    n_jobs: int = OPTIMIZER_N_JOBS  # -1 = use all cores
     # Future: strategy, convergence_policy, etc.
 
 
