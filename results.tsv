@@ -9277,3 +9277,4 @@ auto	0.9812184282634165	0.0	keep	4_3_in_circle	Auto run attempts=50
 auto	0.9845373348328486	0.0	discard	4_3_in_circle	Auto run attempts=50
 auto	1.0085276714669014	0.0	discard	5_3_in_circle	Auto run attempts=50
 auto	3.986852118441901	0.0	discard	4_CIRCLE_in_4	Auto run attempts=50
+auto	2.4501761625185745	0.0	keep	7_CIRCLE_in_8	Auto run attempts=50
