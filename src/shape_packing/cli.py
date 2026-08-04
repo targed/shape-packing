@@ -109,8 +109,9 @@ def handle_run(args):
         verify_cmd = [sys.executable, os.path.join("scripts", "verify_solution.py"), solution_file, args.problem]
         subprocess.run(verify_cmd)
         
-        render_cmd = [sys.executable, os.path.join("scripts", "render_solution.py"), solution_file, os.path.join(result_dir, "solution.png")]
-        subprocess.run(render_cmd)
+        if not getattr(args, "no_png", False):
+            render_cmd = [sys.executable, os.path.join("scripts", "render_solution.py"), solution_file, os.path.join(result_dir, "solution.png")]
+            subprocess.run(render_cmd)
             
     # 4. Log to TSV
     if not args.no_commit:
@@ -147,6 +148,7 @@ def main():
     run_parser.add_argument("--init-script", type=str)
     run_parser.add_argument("--no-commit", action="store_true")
     run_parser.add_argument("--json-out", action="store_true")
+    run_parser.add_argument("--no-png", action="store_true", help="Skip generating solution.png image to save disk space")
     
     args = parser.parse_args()
     if args.command == "suggest":

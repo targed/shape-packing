@@ -100,6 +100,17 @@ packer_rs/target/release/packer_rs <N> <inner_token> <container_token> \
   --target-s <target_scale>
 ```
 
+### PNG Rendering Control & Storage Optimization
+
+To prevent high-volume parallel runs (e.g., thousands of Slurm worker iterations) from consuming excessive disk space and slowing down Git commits with `solution.png` files, the runner CLI supports skipping PNG generation:
+
+- **Disable PNG Output**: Pass `--no-png` to `python -m src.shape_packing.cli run --problem 4_3_in_circle --no-png` to output ONLY `solution.json`.
+- **Batch / Recursive Rendering**: Use `scripts/render_solution.py` to recursively generate PNGs on demand for JSON solutions:
+  ```bash
+  # Batch render missing solution.png images across results/ in parallel (4 cores):
+  python scripts/render_solution.py results/ --recursive --jobs 4
+  ```
+
 ### JSON Solution Schema
 
 Both Python and Rust solvers emit solution files compliant with the following schema:
