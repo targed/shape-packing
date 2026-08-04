@@ -77,6 +77,13 @@ def get_shape_geometry(token: str):
         sides = 3
         return sides, vertices, vectors, apothem
         
+    if token in ("CIRCLE", "CIR"):
+        sides = 32
+        vertices = regular_polygon_vertices(sides, 1.0)
+        vectors = regular_polygon_outward_normals(sides)
+        apothem = float(np.cos(np.pi / sides))
+        return sides, vertices, vectors, apothem
+
     # Fallback for numeric tokens
     try:
         sides = int(token)

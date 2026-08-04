@@ -125,7 +125,24 @@ LEGACY_MAP = {
 
 def normalize_family_slug(raw: str) -> str:
     cleaned = str(raw).strip()
-    return LEGACY_MAP.get(cleaned, cleaned)
+    if cleaned in LEGACY_MAP:
+        return LEGACY_MAP[cleaned]
+    if cleaned.lower() in LEGACY_MAP:
+        return LEGACY_MAP[cleaned.lower()]
+    return cleaned
+
+
+def normalize_status(raw: Any) -> str:
+    if not raw:
+        return "unknown"
+    s = str(raw).strip().lower()
+    if "trivial" in s:
+        return "trivial"
+    if "proved" in s or "proof" in s:
+        return "proved_optimal"
+    if "best" in s or "found" in s or "conjectured" in s:
+        return "best_known"
+    return "unknown"
 
 
 FAMILY_DISPLAY_NAMES = {
@@ -399,7 +416,7 @@ def main():
 
         fam = family_stats[family_slug]
         fam["total_problems"] += 1
-        ref_status = entry.get("status", "unknown")
+        ref_status = normalize_status(entry.get("status", "unknown"))
         if ref_status == "proved_optimal":
             fam["proved_optimal_count"] += 1
         elif ref_status == "best_known":

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """
+DO NOT USE. OUTDATED. GIVES BAD INFO. LOOK AT PACKING VERIFICATION FOLDER
 Parse Erich Friedman's packing pages (local HTML) into a structured JSON reference.
 
 Input:

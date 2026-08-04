@@ -137,9 +137,9 @@ class TestPolygonNormalsMixedInputs:
 
 class TestGetShapeGeometryEdgeCases:
     def test_circle_token(self):
-        # Circle falls through int(CIRCLE) and defaults to sides=3
+        # Circle maps to 32-sided polygon approximation
         sides, vertices, vectors, apothem = get_shape_geometry("CIRCLE")
-        assert sides == 3
+        assert sides == 32
         assert vertices.shape[0] == sides
 
 class TestNumbaDirectCoverage:
