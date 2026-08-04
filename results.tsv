@@ -9440,3 +9440,4 @@ auto	1.0026177629096924	0.0	keep	5_3_in_circle	Auto run attempts=5
 auto	1.0026177629096924	0.0	keep	5_3_in_cir	Auto run attempts=5
 auto	0.9812463665176733	0.0	keep	4_3_in_cir	Auto run attempts=5
 auto	1.0085276714669014	0.0	discard	5_3_in_circle	Auto run attempts=1
+auto	1.0085276714669014	0.0	discard	5_3_in_circle	Auto run attempts=5
