@@ -27,7 +27,14 @@ from .geometry import (
     transform_polygon,
 )
 
-TOLERANCE: float = 1e-15
+from .packing_config import (
+    VERIFY_SAT_TOLERANCE,
+    VERIFY_METRIC_TOLERANCE,
+    RENDER_DPI,
+    RENDER_FIGURE_SIZE,
+)
+
+TOLERANCE: float = VERIFY_SAT_TOLERANCE  # Re-exported for backward compatibility
 
 
 # --------------- Data models ---------------
@@ -361,7 +368,7 @@ def to_plot_data(sol: "Solution") -> Any:
 def render_solution(
     sol_path: str,
     out_png: str = "solution.png",
-    dpi: int = 300,
+    dpi: int = RENDER_DPI,
     show_axes: bool = False,
     show_grid: bool = False,
 ) -> None:
@@ -379,7 +386,7 @@ def render_solution(
     sol = load_solution(sol_path)
     data = to_plot_data(sol)
 
-    fig, ax = plt.subplots(figsize=(6, 6))
+    fig, ax = plt.subplots(figsize=RENDER_FIGURE_SIZE)
 
     container = list(data["container_vertices"]) + [data["container_vertices"][0]]
     ax.plot(

@@ -18,6 +18,7 @@ Design goals:
 
 import math
 import numpy as np
+from .packing_config import CIRCLE_SIDES, GEOMETRY_SAT_TOLERANCE
 
 try:
     from numba import njit
@@ -78,7 +79,7 @@ def get_shape_geometry(token: str):
         return sides, vertices, vectors, apothem
         
     if token in ("CIRCLE", "CIR"):
-        sides = 32
+        sides = CIRCLE_SIDES
         vertices = regular_polygon_vertices(sides, 1.0)
         vectors = regular_polygon_outward_normals(sides)
         apothem = float(np.cos(np.pi / sides))
@@ -311,7 +312,7 @@ def polygon_normals(vertices):
 
 
 def sat_check_overlap(poly1, poly2, normals1, normals2,
-                      tolerance: float = 1e-12):
+                      tolerance: float = GEOMETRY_SAT_TOLERANCE):
     """
     Separating Axis Theorem check between two convex polygons.
     Returns:
