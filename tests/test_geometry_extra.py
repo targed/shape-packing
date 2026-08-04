@@ -12,28 +12,29 @@ from shape_packing.geometry import (
 
 class TestGetShapeGeometry:
     def test_domino_shape(self):
-        sides, vertices, vectors, apothem = get_shape_geometry("DOMINO")
+        sides, vertices, vectors, edge_radii = get_shape_geometry("DOMINO")
         assert sides == 4
         assert vertices.shape == (4, 2)
         assert vectors.shape == (4, 2)
-        assert abs(apothem - 0.5) < 1e-9
+        assert abs(edge_radii[0] - 0.5) < 1e-9
+        assert abs(edge_radii[1] - 1.0) < 1e-9
 
     def test_tan_shape(self):
-        sides, vertices, vectors, apothem = get_shape_geometry("TAN")
+        sides, vertices, vectors, edge_radii = get_shape_geometry("TAN")
         assert sides == 3
         assert vertices.shape == (3, 2)
         assert vectors.shape == (3, 2)
-        assert apothem > 0.0
+        assert edge_radii[0] > 0.0
 
     def test_numeric_shape(self):
-        sides, vertices, vectors, apothem = get_shape_geometry("4")
+        sides, vertices, vectors, edge_radii = get_shape_geometry("4")
         assert sides == 4
         assert vertices.shape == (4, 2)
         assert vectors.shape == (4, 2)
 
     def test_unknown_shape_fallback(self):
         # Unknown token should trigger ValueError fallback
-        sides, vertices, vectors, apothem = get_shape_geometry("XYZ")
+        sides, vertices, vectors, edge_radii = get_shape_geometry("XYZ")
         assert sides == 3  # default fallback
         assert vertices.shape == (3, 2)
 
@@ -47,12 +48,12 @@ class TestGeoConfig:
             unit_polygon_vertices=np.zeros((3, 2)),
             unit_polygon_vectors=np.zeros((3, 2)),
             unit_container_vectors=np.zeros((4, 2)),
-            unit_container_apothem=1.0,
+            unit_container_radii=1.0,
         )
         assert g.N == 2
         assert g.nsi == 3
         assert g.nsc == 4
-        assert g.unit_container_apothem == 1.0
+        assert np.all(g.unit_container_radii == 1.0)
 
     def test_slots_enforcement(self):
         g = GeoConfig(
@@ -62,7 +63,7 @@ class TestGeoConfig:
             unit_polygon_vertices=np.zeros((3, 2)),
             unit_polygon_vectors=np.zeros((3, 2)),
             unit_container_vectors=np.zeros((3, 2)),
-            unit_container_apothem=1.0,
+            unit_container_radii=1.0,
         )
         with pytest.raises(AttributeError):
             g.random_extra_field = 123
@@ -83,13 +84,13 @@ class TestGeoConfig:
             [-1.0, 0.0],
             [0.0, -1.0]
         ])
-        unit_container_apothem = 1.0
+        unit_container_radii = np.ones(4)
         S = 5.0
         values = np.array([0.0, 0.0, 0.0, 2.0, 0.0, 0.0])
 
         penalty = bh_objective(
             values, S, N, nsi,
             unit_polygon_vertices, unit_polygon_vectors,
-            unit_container_vectors, unit_container_apothem
+            unit_container_vectors, unit_container_radii
         )
         assert isinstance(penalty, float)

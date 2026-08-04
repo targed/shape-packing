@@ -63,7 +63,7 @@ class TestNumbaBHObjectivePaths:
             [-1.0, 0.0],
             [0.0, -1.0],
         ])
-        apothem = 1.0
+        edge_radii = np.ones(4)
         S = 5.0
         # Same position:
         x0 = np.array([0.0, 0.0, 0.0,
@@ -71,7 +71,7 @@ class TestNumbaBHObjectivePaths:
         penalty = bh_objective(
             x0, S, N, nsi,
             unit_polygon_vertices, unit_polygon_vectors,
-            unit_container_vectors, apothem,
+            unit_container_vectors, edge_radii,
         )
         assert penalty > 0.0
 
@@ -91,13 +91,13 @@ class TestNumbaBHObjectivePaths:
             [-1.0, 0.0],
             [0.0, -1.0],
         ])
-        apothem = 0.5
+        edge_radii = np.full(4, 0.5)
         S = 0.5  # very small container -> poking
         x0 = np.array([0.0, 0.0, 0.0])
         penalty = bh_objective(
             x0, S, N, nsi,
             unit_polygon_vertices, unit_polygon_vectors,
-            unit_container_vectors, apothem,
+            unit_container_vectors, edge_radii,
         )
         assert penalty > 0.0
 
@@ -138,7 +138,7 @@ class TestPolygonNormalsMixedInputs:
 class TestGetShapeGeometryEdgeCases:
     def test_circle_token(self):
         # Circle maps to 32-sided polygon approximation
-        sides, vertices, vectors, apothem = get_shape_geometry("CIRCLE")
+        sides, vertices, vectors, edge_radii = get_shape_geometry("CIRCLE")
         assert sides == 32
         assert vertices.shape[0] == sides
 
@@ -163,18 +163,18 @@ class TestNumbaDirectCoverage:
         from shape_packing.geometry import _poking_penalty_nb
         v = np.array([[0.0, 0.0], [0.1, 0.0]])
         cv = np.array([[1.0, 0.0], [-1.0, 0.0], [0.0, 1.0], [0.0, -1.0]])
-        apothem = 1.0
+        edge_radii = np.ones(4)
         S = 10.0
-        p = _poking_penalty_nb(v, S, cv, apothem)
+        p = _poking_penalty_nb(v, S, cv, edge_radii)
         assert p == 0.0
 
     def test_poking_penalty_nb_with_poke(self):
         from shape_packing.geometry import _poking_penalty_nb
         v = np.array([[5.0, 0.0]])  # outside container
         cv = np.array([[1.0, 0.0], [-1.0, 0.0], [0.0, 1.0], [0.0, -1.0]])
-        apothem = 1.0
+        edge_radii = np.ones(4)
         S = 1.0
-        p = _poking_penalty_nb(v, S, cv, apothem)
+        p = _poking_penalty_nb(v, S, cv, edge_radii)
         assert p > 0.0
 
     def test_bh_objective_full_path(self):
@@ -197,7 +197,7 @@ class TestNumbaDirectCoverage:
             [-1.0, 0.0],
             [0.0, -1.0],
         ])
-        apothem = 1.0
+        edge_radii = np.ones(4)
         S = 5.0
         values = np.array([
             0.0, 0.0, 0.0,
@@ -207,7 +207,7 @@ class TestNumbaDirectCoverage:
         penalty = bh_objective(
             values, S, N, nsi,
             unit_polys, unit_vecs,
-            unit_container_vectors, apothem,
+            unit_container_vectors, edge_radii,
         )
         assert isinstance(penalty, float)
 

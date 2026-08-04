@@ -133,13 +133,13 @@ class TestBHObjective:
                                             [0.0, 1.0],
                                             [-1.0, 0.0],
                                             [0.0, -1.0]])
-        apothem = 1.0
+        edge_radii = np.ones(4)
         S = 10.0
         x0 = np.array([0.0, 0.0, 0.0])
         penalty = bh_objective(
             x0, S, N, nsi,
             unit_polys, unit_vectors,
-            unit_container_vectors, apothem
+            unit_container_vectors, edge_radii
         )
         # Large S => shape well inside => penalty very small
         assert penalty < 1e-3
@@ -155,13 +155,13 @@ class TestBHObjective:
                                             [0.0, 1.0],
                                             [-1.0, 0.0],
                                             [0.0, -1.0]])
-        apothem = 1.0
+        edge_radii = np.ones(4)
         S = 100.0
         x0 = np.array([0.0, 0.0, 0.0,
                        1.0, 0.0, 0.0])
         penalty = bh_objective(
             x0, S, N, nsi,
             unit_polys, unit_vectors,
-            unit_container_vectors, apothem
+            unit_container_vectors, edge_radii
         )
         assert penalty < 1e-4

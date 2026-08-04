@@ -66,24 +66,25 @@ def get_shape_geometry(token: str):
     if token == "DOMINO":
         vertices = np.array([[-1.0, -0.5], [1.0, -0.5], [1.0, 0.5], [-1.0, 0.5]])
         vectors = np.array([[0.0, -1.0], [1.0, 0.0], [0.0, 1.0], [-1.0, 0.0]])
-        apothem = 0.5
+        edge_radii = np.array([0.5, 1.0, 0.5, 1.0])
         sides = 4
-        return sides, vertices, vectors, apothem
+        return sides, vertices, vectors, edge_radii
         
     if token == "TAN":
         r = 1.0 - np.sqrt(2.0) / 2.0
         vertices = np.array([[-r, -r], [1.0 - r, -r], [-r, 1.0 - r]])
         vectors = np.array([[0.0, -1.0], [np.sqrt(2.0) / 2.0, np.sqrt(2.0) / 2.0], [-1.0, 0.0]])
-        apothem = r
+        edge_radii = np.array([r, r, r])
         sides = 3
-        return sides, vertices, vectors, apothem
+        return sides, vertices, vectors, edge_radii
         
     if token in ("CIRCLE", "CIR"):
         sides = CIRCLE_SIDES
         vertices = regular_polygon_vertices(sides, 1.0)
         vectors = regular_polygon_outward_normals(sides)
         apothem = float(np.cos(np.pi / sides))
-        return sides, vertices, vectors, apothem
+        edge_radii = np.full(sides, apothem)
+        return sides, vertices, vectors, edge_radii
 
     # Fallback for numeric tokens
     try:
@@ -94,7 +95,8 @@ def get_shape_geometry(token: str):
     vertices = regular_polygon_vertices(sides, 1.0)
     vectors = regular_polygon_outward_normals(sides)
     apothem = float(np.cos(np.pi / sides))
-    return sides, vertices, vectors, apothem
+    edge_radii = np.full(sides, apothem)
+    return sides, vertices, vectors, edge_radii
 
 
 def transform_polygon(vertices, cx: float, cy: float, a: float):
@@ -130,7 +132,7 @@ class GeoConfig:
         "unit_polygon_vertices",
         "unit_polygon_vectors",
         "unit_container_vectors",
-        "unit_container_apothem",
+        "unit_container_radii",
     )
 
     def __init__(
@@ -141,15 +143,15 @@ class GeoConfig:
         unit_polygon_vertices: np.ndarray,
         unit_polygon_vectors: np.ndarray,
         unit_container_vectors: np.ndarray,
-        unit_container_apothem: float,
+        unit_container_radii: np.ndarray,
     ):
         self.N = N
         self.nsi = nsi
         self.nsc = nsc
-        self.unit_polygon_vertices = unit_polygon_vertices
-        self.unit_polygon_vectors = unit_polygon_vectors
-        self.unit_container_vectors = unit_container_vectors
-        self.unit_container_apothem = unit_container_apothem
+        self.unit_polygon_vertices = _ensure_array(unit_polygon_vertices)
+        self.unit_polygon_vectors = _ensure_array(unit_polygon_vectors)
+        self.unit_container_vectors = _ensure_array(unit_container_vectors)
+        self.unit_container_radii = _ensure_array(unit_container_radii)
 
 
 # ------------ Numba-accelerated core ------------
@@ -183,13 +185,13 @@ def _rotate_vectors_nb(a, vectors):
 
 
 @njit(cache=True)
-def _poking_penalty_nb(vertices, S, container_vectors, apothem):
+def _poking_penalty_nb(vertices, S, container_vectors, edge_radii):
     penalty = 0.0
-    limit = apothem * S
     for v in range(vertices.shape[0]):
         vx = vertices[v, 0]
         vy = vertices[v, 1]
         for i in range(container_vectors.shape[0]):
+            limit = edge_radii[i] * S
             d = vx * container_vectors[i, 0] + vy * container_vectors[i, 1]
             if d > limit:
                 diff = d - limit
@@ -206,7 +208,7 @@ def bh_objective(
     unit_polygon_vertices,
     unit_polygon_vectors,
     unit_container_vectors,
-    unit_container_apothem,
+    unit_container_radii,
 ) -> float:
     """
     Core objective: penalty for container overflow + overlaps (SAT-style).
@@ -223,7 +225,7 @@ def bh_objective(
         polys[i] = _transform_polygon_nb(unit_polygon_vertices, x, y, a)
         vecs[i] = _rotate_vectors_nb(a, unit_polygon_vectors)
         penalty += _poking_penalty_nb(
-            polys[i], S, unit_container_vectors, unit_container_apothem
+            polys[i], S, unit_container_vectors, unit_container_radii
         )
 
     for i in range(N):

@@ -110,7 +110,7 @@ fn main() {
                     upv,
                     upvectors,
                     ucv,
-                    **uap,
+                    uap,
                     _penalty_tolerance,
                     final_step_size,
                     start,
@@ -257,12 +257,12 @@ fn regular_polygon_vectors(radius: f64, sides: usize) -> Vec<(f64, f64)> {
         .collect()
 }
 
-fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64)>, f64) {
+fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64)>, Vec<f64>) {
     if token.to_uppercase() == "DOMINO" {
         let n = 4;
         let vertices = vec![(-1.0, -0.5), (1.0, -0.5), (1.0, 0.5), (-1.0, 0.5)];
         let vectors = vec![(0.0, -1.0), (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0)];
-        let apothem = 0.5;
+        let apothem = vec![0.5, 1.0, 0.5, 1.0];
         return (n, vertices, vectors, apothem);
     }
     
@@ -271,7 +271,7 @@ fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64)>, 
         let r = 1.0 - (2.0f64).sqrt() / 2.0;
         let vertices = vec![(-r, -r), (1.0 - r, -r), (-r, 1.0 - r)];
         let vectors = vec![(0.0, -1.0), ((2.0f64).sqrt() / 2.0, (2.0f64).sqrt() / 2.0), (-1.0, 0.0)];
-        let apothem = r;
+        let apothem = vec![r, r, r];
         return (n, vertices, vectors, apothem);
     }
     
@@ -280,7 +280,7 @@ fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64)>, 
         let radius = 1.0;
         let vertices = regular_polygon(radius, sides);
         let vectors = regular_polygon_vectors(radius, sides);
-        let apothem = (PI / sides as f64).cos();
+        let apothem = vec![(PI / sides as f64).cos(); sides];
         return (sides, vertices, vectors, apothem);
     }
     
@@ -289,7 +289,7 @@ fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64)>, 
     let radius = 1.0;
     let vertices = regular_polygon(radius, sides);
     let vectors = regular_polygon_vectors(radius, sides);
-    let apothem = (PI / sides as f64).cos();
+    let apothem = vec![(PI / sides as f64).cos(); sides];
     
     (sides, vertices, vectors, apothem)
 }
@@ -302,7 +302,7 @@ fn run_attempt<R: Rng>(
     unit_polygon_vertices: &[(f64, f64)],
     unit_polygon_vectors: &[(f64, f64)],
     unit_container_vectors: &[(f64, f64)],
-    unit_container_apothem: f64,
+    unit_container_apothem: &[f64],
     _penalty_tolerance: f64,
     final_step_size: f64,
     start: &Instant,
@@ -461,7 +461,7 @@ fn minimize_gradient(
     unit_polygon_vertices: &[(f64, f64)],
     unit_polygon_vectors: &[(f64, f64)],
     unit_container_vectors: &[(f64, f64)],
-    unit_container_apothem: f64,
+    unit_container_apothem: &[f64],
 ) -> OptResult {
     let n = x0.len();
     let mut x = x0.to_vec();
@@ -521,7 +521,7 @@ fn penalty_and_gradient(
     unit_polygon_vertices: &[(f64, f64)],
     unit_polygon_vectors: &[(f64, f64)],
     unit_container_vectors: &[(f64, f64)],
-    unit_container_apothem: f64,
+    unit_container_apothem: &[f64],
     compute_grad: bool,
 ) -> (f64, Vec<f64>, f64) {
     let mut penalty = 0.0f64;
@@ -552,10 +552,10 @@ fn penalty_and_gradient(
             vector_array[i * nsi + v] = (rx, ry);
         }
 
-        let limit = unit_container_apothem * S;
         for v in 0..nsi {
             let (tx, ty) = polygon_array[i * nsi + v];
             for j in 0..nsc {
+                let limit = unit_container_apothem[j] * S;
                 let (cx, cy) = unit_container_vectors[j];
                 let dist = tx * cx + ty * cy;
                 if dist > limit {

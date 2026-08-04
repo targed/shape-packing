@@ -262,7 +262,7 @@ def verify_solution(
     sol = load_solution(sol_path)
     N = sol.N
     nsi, _, _, _ = get_shape_geometry(sol.inner_token)
-    nsc, _, unit_container_vectors, unit_container_apothem = get_shape_geometry(sol.container_token)
+    nsc, _, unit_container_vectors, unit_container_radii = get_shape_geometry(sol.container_token)
     S = sol.S
 
     # 1. Metric scaling verification
@@ -275,17 +275,17 @@ def verify_solution(
         )
 
     # 2. Container bounds verification
-    container_limit = unit_container_apothem * S
+    container_limits = unit_container_radii * S
     container_normals = [(float(v[0]), float(v[1])) for v in unit_container_vectors]
 
     polygons = build_polygons(sol)
 
     for i, poly in enumerate(polygons):
         for v in poly:
-            for n in container_normals:
+            for n_idx, n in enumerate(container_normals):
                 dist = v[0] * n[0] + v[1] * n[1]
-                if dist > container_limit + tolerance:
-                    violation = dist - container_limit
+                if dist > container_limits[n_idx] + tolerance:
+                    violation = dist - container_limits[n_idx]
                     errors.append(
                         f"Shape {i} is out of bounds! Violation margin: {violation}"
                     )
