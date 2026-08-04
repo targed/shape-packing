@@ -219,7 +219,9 @@ def compute_friedman_metric(S: float, inner_token: str, container_token: str) ->
     container_upper = str(container_token).strip().upper()
     inner_upper = str(inner_token).strip().upper()
 
-    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+    if container_upper in ("CIRCLE", "CIR", "0"):
+        c_metric = S
+    elif container_upper in ("TAN", "DOMINO", "L"):
         c_metric = S
     else:
         try:
@@ -228,7 +230,9 @@ def compute_friedman_metric(S: float, inner_token: str, container_token: str) ->
         except ValueError:
             c_metric = 2 * S * math.sin(math.pi / 3)
 
-    if inner_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+    if inner_upper in ("CIRCLE", "CIR", "0"):
+        i_scale = 1.0
+    elif inner_upper in ("TAN", "DOMINO", "L"):
         i_scale = 1.0
     else:
         try:
@@ -263,6 +267,10 @@ def load_local_solutions() -> Dict[str, Dict[str, Any]]:
         if not problem_dir.is_dir():
             continue
         folder_name = problem_dir.name
+        tokens = folder_name.split("_")
+        inner_token = tokens[1] if len(tokens) >= 4 else "3"
+        container_token = tokens[3] if len(tokens) >= 4 else "3"
+
         best_sol = None
         best_metric = None
 
@@ -276,12 +284,14 @@ def load_local_solutions() -> Dict[str, Dict[str, Any]]:
                         sol_data = json.load(f)
                     S = sol_data.get("S")
                     if S is not None:
-                        nsi = sol_data.get("inner_sides") or sol_data.get("nsi", "3")
-                        nsc = sol_data.get("container_sides") or sol_data.get("nsc", "3")
+                        nsi = sol_data.get("inner_token") or sol_data.get("inner_sides") or sol_data.get("nsi") or inner_token
+                        nsc = sol_data.get("container_token") or sol_data.get("container_sides") or sol_data.get("nsc") or container_token
                         metric = compute_friedman_metric(float(S), str(nsi), str(nsc))
                         if best_metric is None or metric < best_metric:
                             best_metric = metric
                             sol_data["computed_metric"] = metric
+                            sol_data["inner_token"] = str(nsi)
+                            sol_data["container_token"] = str(nsc)
                             sol_data["folder_name"] = folder_name
                             best_sol = sol_data
                 except Exception:
@@ -382,6 +392,7 @@ def main():
                 "total_problems": 0,
                 "proved_optimal_count": 0,
                 "best_known_count": 0,
+                "trivial_count": 0,
                 "attempted_count": 0,
                 "new_best_count": 0,
             }
@@ -393,6 +404,8 @@ def main():
             fam["proved_optimal_count"] += 1
         elif ref_status == "best_known":
             fam["best_known_count"] += 1
+        elif ref_status == "trivial":
+            fam["trivial_count"] += 1
 
         known_value = entry.get("best_value")
         if known_value is not None:
@@ -492,7 +505,6 @@ def main():
     families_list = list(family_stats.values())
     families_list.sort(key=lambda x: x["slug"])
 
-    # Extract top promising priority targets
     priority_targets = [p for p in problems_list if p.get("priority_rank") is not None]
     priority_targets.sort(key=lambda p: p["priority_rank"])
 
@@ -502,6 +514,7 @@ def main():
             "total_problems": len(problems_list),
             "proved_optimal": sum(f["proved_optimal_count"] for f in families_list),
             "best_known": sum(f["best_known_count"] for f in families_list),
+            "trivial": sum(f["trivial_count"] for f in families_list),
             "total_attempted": len(attempted_list),
             "total_new_bests": len(new_best_list),
             "total_matches": len(matches_best_list),

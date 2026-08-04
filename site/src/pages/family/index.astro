@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import siteData from '../../data/site_data.json';
+
+const { families, summary } = siteData;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout title="Problem Family Catalog | Shape Packing">
+  <div class="space-y-8">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Problem Family Catalog</h1>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Catalog of all {families.length} normalized polygon packing problem families.
+        </p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+          Total Families: <strong class="ml-1 text-white">{families.length}</strong>
+        </span>
+      </div>
+    </div>
+
+    <!-- Search / Filter Bar -->
+    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
+      <input
+        type="text"
+        id="family-search"
+        placeholder="Filter families by name or shape code (e.g., 3_in_4, hex, circle)..."
+        class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+      />
+    </div>
+
+    <!-- Family Grid -->
+    <div id="family-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {families.map((fam) => (
+        <a
+          href={`${base}/family/${fam.slug}`}
+          data-family-name={`${fam.name} ${fam.slug} ${fam.inner_shape} ${fam.container_shape}`.toLowerCase()}
+          class="group p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-900 transition-all flex flex-col justify-between space-y-3"
+        >
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20 font-mono">
+                {fam.slug}
+              </span>
+              <span class="text-[11px] text-slate-400 font-semibold">{fam.total_problems} problems</span>
+            </div>
+            <h2 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors">
+              {fam.name}
+            </h2>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/80 pt-3">
+            <span class="text-emerald-400 font-medium">{fam.proved_optimal_count} Optimal</span>
+            <span class="text-indigo-400 group-hover:translate-x-1 transition-transform font-semibold">&rarr;</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script is:inline>
+    const searchInput = document.getElementById('family-search');
+    const grid = document.getElementById('family-grid');
+
+    searchInput?.addEventListener('input', () => {
+      const query = (searchInput.value || '').toLowerCase().trim();
+      const cards = grid?.querySelectorAll('a') || [];
+
+      cards.forEach((card) => {
+        const text = card.getAttribute('data-family-name') || '';
+        if (!query || text.includes(query)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</BaseLayout>

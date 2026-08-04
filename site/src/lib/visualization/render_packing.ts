@@ -3,6 +3,10 @@ export interface SolutionData {
   final_metric?: number;
   inner_sides?: number | string;
   container_sides?: number | string;
+  inner_token?: number | string;
+  container_token?: number | string;
+  nsi?: number | string;
+  nsc?: number | string;
   N?: number;
   values?: number[];
 }
@@ -10,6 +14,17 @@ export interface SolutionData {
 export interface PolygonPoint {
   x: number;
   y: number;
+}
+
+export function parseSides(val: any): number | string {
+  if (val === undefined || val === null) return 3;
+  const s = String(val).trim().toUpperCase();
+  if (s === 'CIRCLE' || s === 'CIR' || s === '0') return 'CIRCLE';
+  if (s === 'TAN') return 'TAN';
+  if (s === 'DOMINO' || s === 'DOM') return 'DOMINO';
+  if (s === 'L') return 'L';
+  const num = parseInt(s, 10);
+  return isNaN(num) ? s : num;
 }
 
 export function getRegularPolygonVertices(sides: number, radius: number = 1.0, offsetAngle: number = 0): PolygonPoint[] {
@@ -41,17 +56,19 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
 
   const N = solution.N;
   const values = solution.values;
-  const containerSides = solution.container_sides;
-  const innerSides = solution.inner_sides;
-  const S = solution.S || solution.final_metric || 1.0;
+  const rawContainer = solution.container_sides ?? solution.container_token ?? solution.nsc;
+  const rawInner = solution.inner_sides ?? solution.inner_token ?? solution.nsi;
 
-  // Colors palette for shapes
+  const containerSides = parseSides(rawContainer);
+  const innerSides = parseSides(rawInner);
+  const S = solution.S || 1.0;
+  const finalMetric = solution.final_metric || S;
+
   const colors = [
     '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#10b981',
     '#06b6d4', '#3b82f6', '#f59e0b', '#84cc16', '#a855f7'
   ];
 
-  // Extract shapes
   const shapes: Array<{ cx: number; cy: number; angle: number; color: string }> = [];
   const stride = Math.floor(values.length / N);
   
@@ -68,7 +85,6 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
     });
   }
 
-  // Determine bounding box
   let minX = -S, maxX = S, minY = -S, maxY = S;
   shapes.forEach(s => {
     minX = Math.min(minX, s.cx - 1.5);
@@ -85,6 +101,7 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
     containerSides,
     innerSides,
     shapes,
-    S
+    S,
+    finalMetric
   };
 }

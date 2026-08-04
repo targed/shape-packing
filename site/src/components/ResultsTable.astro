@@ -43,13 +43,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <table class="w-full text-left text-sm text-slate-300">
       <thead class="bg-slate-950/80 text-xs uppercase text-slate-400 border-b border-slate-800 tracking-wider">
         <tr>
-          <th scope="col" class="px-5 py-3.5 font-semibold">Family</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold">Family</th>
           <th scope="col" class="px-3 py-3.5 font-semibold text-center">N</th>
-          <th scope="col" class="px-4 py-3.5 font-semibold text-right">Known Ref</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold text-center">Benchmark Status</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold text-right">Known Ref Metric</th>
           <th scope="col" class="px-4 py-3.5 font-semibold text-right">Our Best Metric</th>
-          <th scope="col" class="px-4 py-3.5 font-semibold text-center">Solver Status & Gap</th>
-          <th scope="col" class="px-4 py-3.5 font-semibold text-center">Attempts & Logs</th>
-          <th scope="col" class="px-5 py-3.5 font-semibold text-right">Visual / Ref</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold text-center">Solver Result & Gap</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold text-right">Visual / Ref</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-slate-800/60 font-mono text-xs">
@@ -63,7 +63,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             data-search={`${p.problem_family} N=${p.N} ${p.status} ${p.comparison_status} ${p.known_value ?? ''} ${p.our_best_metric ?? ''}`.toLowerCase()}
           >
             <!-- Family -->
-            <td class="px-5 py-3.5 font-sans font-medium text-slate-200">
+            <td class="px-4 py-3.5 font-sans font-medium text-slate-200">
               <a href={`${base}/family/${p.problem_family}`} class="hover:text-indigo-400 transition-colors flex items-center gap-2">
                 <span>{p.problem_family}</span>
                 <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -74,6 +74,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
             <!-- N -->
             <td class="px-3 py-3.5 text-center font-semibold text-indigo-300">{p.N}</td>
+
+            <!-- Benchmark Status -->
+            <td class="px-4 py-3.5 text-center font-sans">
+              {p.status === 'proved_optimal' && (
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  Proved Optimal
+                </span>
+              )}
+              {p.status === 'best_known' && (
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                  Best Known
+                </span>
+              )}
+              {p.status === 'trivial' && (
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-800 text-slate-400 border border-slate-700">
+                  Trivial
+                </span>
+              )}
+              {p.status !== 'proved_optimal' && p.status !== 'best_known' && p.status !== 'trivial' && (
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                  {p.status}
+                </span>
+              )}
+            </td>
 
             <!-- Known Ref -->
             <td class="px-4 py-3.5 text-right font-semibold text-slate-300">
@@ -87,15 +111,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             <!-- Our Best Metric -->
             <td class="px-4 py-3.5 text-right font-semibold">
               {p.our_best_metric !== null && p.our_best_metric !== undefined ? (
-                <span class={p.comparison_status === 'NEW_BEST' ? 'text-amber-400 font-bold' : p.comparison_status === 'matches_best_known' ? 'text-emerald-400' : 'text-sky-300'}>
-                  {p.our_best_metric.toFixed(5)}
-                </span>
+                <div class="flex flex-col items-end">
+                  <span class={p.comparison_status === 'NEW_BEST' ? 'text-amber-400 font-bold' : p.comparison_status === 'matches_best_known' ? 'text-emerald-400' : 'text-sky-300'}>
+                    s = {p.our_best_metric.toFixed(5)}
+                  </span>
+                  {p.our_best_s && (
+                    <span class="text-[10px] text-slate-500 font-normal">S = {p.our_best_s.toFixed(4)}</span>
+                  )}
+                </div>
               ) : (
                 <span class="text-slate-600">—</span>
               )}
             </td>
 
-            <!-- Solver Status & Gap -->
+            <!-- Solver Result & Gap -->
             <td class="px-4 py-3.5 text-center font-sans">
               {p.comparison_status === 'NEW_BEST' && (
                 <div class="flex flex-col items-center gap-0.5">
@@ -110,7 +139,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                   <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                     Matches Record
                   </span>
-                  <span class="text-[10px] font-mono text-slate-400">100.0%</span>
+                  <span class="text-[10px] font-mono text-slate-400">100.0% match</span>
                 </div>
               )}
               {p.comparison_status === 'worse_than_best_known' && (
@@ -135,23 +164,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               )}
             </td>
 
-            <!-- Attempts & Logs -->
-            <td class="px-4 py-3.5 text-center font-mono text-[11px]">
-              {p.starts > 0 ? (
-                <div class="flex flex-col items-center">
-                  <span class="text-slate-200 font-semibold">{p.starts} runs</span>
-                  <span class="text-slate-500 text-[10px]">{p.attempts.toLocaleString()} att</span>
-                </div>
-              ) : p.attempted ? (
-                <span class="text-slate-400">Local Run</span>
-              ) : (
-                <span class="text-slate-600">—</span>
-              )}
-            </td>
-
-            <!-- Visual / Ref Link -->
-            <td class="px-5 py-3.5 text-right font-sans">
-              <div class="flex items-center justify-end gap-2.5">
+            <!-- Visual / Source Link -->
+            <td class="px-4 py-3.5 text-right font-sans">
+              <div class="flex items-center justify-end gap-2">
                 {p.solution && (
                   <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
                     <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -166,6 +181,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                     href={p.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    title={p.source_note || 'Reference Page'}
                     class="text-xs text-slate-400 hover:text-white transition-colors underline underline-offset-2"
                   >
                     Ref &rarr;

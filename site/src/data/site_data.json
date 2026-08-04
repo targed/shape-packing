@@ -4,10 +4,11 @@
     "total_problems": 2242,
     "proved_optimal": 48,
     "best_known": 1733,
-    "total_attempted": 277,
-    "total_new_bests": 33,
-    "total_matches": 18,
-    "total_visualizations": 289,
+    "trivial": 461,
+    "total_attempted": 276,
+    "total_new_bests": 32,
+    "total_matches": 19,
+    "total_visualizations": 288,
     "total_slurm_starts": 9200,
     "total_slurm_attempts": 429445000
   },
@@ -60,6 +61,8 @@
           -1.8318919687492662e-05
         ],
         "computed_metric": 2.666628487560574,
+        "inner_token": "6",
+        "container_token": "6",
         "folder_name": "5_6_in_6"
       }
     },
@@ -132,6 +135,8 @@
           3.973801041741355
         ],
         "computed_metric": 3.941648986549848,
+        "inner_token": "6",
+        "container_token": "6",
         "folder_name": "12_6_in_6"
       }
     },
@@ -180,6 +185,8 @@
           1.3089841453306805
         ],
         "computed_metric": 1.7562837004469616,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "4_6_in_8"
       }
     },
@@ -231,6 +238,8 @@
           0.9162977896879614
         ],
         "computed_metric": 1.987076808641154,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "5_6_in_8"
       }
     },
@@ -285,55 +294,9 @@
           1.1126202496734932
         ],
         "computed_metric": 2.1643635287453797,
-        "folder_name": "6_6_in_8"
-      }
-    },
-    {
-      "id": "6_in_5_4",
-      "problem_family": "6_in_5",
-      "N": 4,
-      "inner_shape": "hexagon",
-      "container_shape": "pentagon",
-      "known_value": 3.0152,
-      "best_value": 3.0152,
-      "ref_status": "best_known",
-      "status": "best_known",
-      "attempted": true,
-      "our_best_metric": 2.570604,
-      "our_best_s": 2.570604,
-      "comparison_status": "NEW_BEST",
-      "diff": -0.444596,
-      "closeness_pct": 117.3,
-      "starts": 0,
-      "attempts": 0,
-      "successes": 0,
-      "fails": 0,
-      "priority_rank": 83,
-      "density": 0.6644,
-      "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html",
-      "source_note": "s = 3.01521+ Found by Bhavithran Ananthan in July 2026.",
-      "solution": {
-        "S": 2.5706039648725856,
         "inner_token": "6",
-        "container_token": "5",
-        "final_metric": 3.0219262000733296,
-        "N": 4,
-        "values": [
-          -1.125547183357293,
-          -0.9022540893876976,
-          4.923536597395869,
-          0.7580795159389712,
-          -1.0193209452979397,
-          3.0368510154214836,
-          -0.8969260084397573,
-          0.9804144674181675,
-          3.454856809155352,
-          0.9249519614258245,
-          0.7911112168131544,
-          5.341196001556866
-        ],
-        "computed_metric": 2.5706039648725856,
-        "folder_name": "4_6_in_5"
+        "container_token": "8",
+        "folder_name": "6_6_in_8"
       }
     },
     {
@@ -390,58 +353,9 @@
           -1.4306742977846365
         ],
         "computed_metric": 1.4368985383233146,
-        "folder_name": "7_4_in_8"
-      }
-    },
-    {
-      "id": "4_in_3_5",
-      "problem_family": "4_in_3",
-      "N": 5,
-      "inner_shape": "4",
-      "container_shape": "3",
-      "known_value": 4.309,
-      "best_value": 4.309,
-      "ref_status": "best_known",
-      "status": "best_known",
-      "attempted": true,
-      "our_best_metric": 3.522085,
-      "our_best_s": 3.522085,
-      "comparison_status": "NEW_BEST",
-      "diff": -0.786915,
-      "closeness_pct": 122.34,
-      "starts": 45,
-      "attempts": 225000,
-      "successes": 45,
-      "fails": 0,
-      "priority_rank": 44,
-      "density": 0.6219,
-      "source_url": "https://erich-friedman.github.io/packing/squintri/index.html",
-      "source_note": "Found by Erich Friedman in 1997.",
-      "solution": {
-        "S": 3.52208461095734,
         "inner_token": "4",
-        "container_token": "3",
-        "final_metric": 4.313655063877242,
-        "N": 5,
-        "values": [
-          -0.7951193572964305,
-          1.6759851582511838,
-          0.2618275254072251,
-          0.38531822062693116,
-          -0.8039669835999189,
-          -0.5359317825452442,
-          1.8147155057530961,
-          -0.14421245464362478,
-          -0.28553652025025206,
-          0.4296646466536567,
-          0.9688933142979453,
-          -1.3089827695038911,
-          -1.028009765100196,
-          -1.5235618065313286,
-          0.8227542893188613
-        ],
-        "computed_metric": 3.52208461095734,
-        "folder_name": "5_4_in_3"
+        "container_token": "8",
+        "folder_name": "7_4_in_8"
       }
     },
     {
@@ -486,6 +400,8 @@
           -0.5548876240046545
         ],
         "computed_metric": 0.1901181618981853,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "3_3_in_circle"
       }
     },
@@ -534,6 +450,8 @@
           -0.22691076329789525
         ],
         "computed_metric": 0.21950593666702656,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "4_3_in_circle"
       }
     },
@@ -591,6 +509,8 @@
           -1.4882551045099688
         ],
         "computed_metric": 0.2904129418828604,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "7_3_in_circle"
       }
     },
@@ -651,6 +571,8 @@
           1.8281336827591497
         ],
         "computed_metric": 0.31049563410539205,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "8_3_in_circle"
       }
     },
@@ -714,6 +636,8 @@
           1.3830319040243555
         ],
         "computed_metric": 0.3293291268523082,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "9_3_in_circle"
       }
     },
@@ -780,6 +704,8 @@
           -0.14364138420736802
         ],
         "computed_metric": 0.3470965518126944,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "10_3_in_circle"
       }
     },
@@ -849,6 +775,8 @@
           0.30531561166543686
         ],
         "computed_metric": 0.3641979108499014,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "11_3_in_circle"
       }
     },
@@ -924,6 +852,8 @@
           0.989026134711306
         ],
         "computed_metric": 0.3972886426521831,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "13_3_in_circle"
       }
     },
@@ -1002,6 +932,8 @@
           1.4005322640481357
         ],
         "computed_metric": 0.4130855439146945,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "14_3_in_circle"
       }
     },
@@ -1083,6 +1015,8 @@
           -0.30994615958505267
         ],
         "computed_metric": 0.4268539767078174,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "15_3_in_circle"
       }
     },
@@ -1167,6 +1101,8 @@
           -0.010121224185162758
         ],
         "computed_metric": 0.441746733316688,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "16_3_in_circle"
       }
     },
@@ -1254,6 +1190,8 @@
           1.642699368859615
         ],
         "computed_metric": 0.4553588730311857,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "17_3_in_circle"
       }
     },
@@ -1344,6 +1282,8 @@
           2.1258712704619
         ],
         "computed_metric": 0.47092736075795416,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "18_3_in_circle"
       }
     },
@@ -1437,6 +1377,8 @@
           4.164870554762695
         ],
         "computed_metric": 0.4843919816680677,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "19_3_in_circle"
       }
     },
@@ -1533,6 +1475,8 @@
           1.4826892287937001
         ],
         "computed_metric": 0.49708436341307244,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "20_3_in_circle"
       }
     },
@@ -1632,6 +1576,8 @@
           -0.589814153550387
         ],
         "computed_metric": 0.5103798415347125,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "21_3_in_circle"
       }
     },
@@ -1734,6 +1680,8 @@
           -3.5687312580822748
         ],
         "computed_metric": 0.5239704197459295,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "22_3_in_circle"
       }
     },
@@ -1839,6 +1787,8 @@
           -0.8922853222167902
         ],
         "computed_metric": 0.5337939644095621,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "23_3_in_circle"
       }
     },
@@ -1950,6 +1900,8 @@
           2.863809225073359
         ],
         "computed_metric": 0.5565382631058418,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "25_3_in_circle"
       }
     },
@@ -2064,6 +2016,8 @@
           -0.715648011233075
         ],
         "computed_metric": 0.5672033172258854,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "26_3_in_circle"
       }
     },
@@ -2181,6 +2135,8 @@
           4.141561821033942
         ],
         "computed_metric": 0.5826690378835864,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "27_3_in_circle"
       }
     },
@@ -2301,6 +2257,8 @@
           1.5851208144531732
         ],
         "computed_metric": 0.5927964139603555,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "28_3_in_circle"
       }
     },
@@ -2424,6 +2382,8 @@
           2.434554797471273
         ],
         "computed_metric": 0.6038615275051217,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "29_3_in_circle"
       }
     },
@@ -2550,6 +2510,8 @@
           1.9921431644540402
         ],
         "computed_metric": 0.6152997730881806,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "30_3_in_circle"
       }
     },
@@ -2679,7 +2641,54 @@
           2.0340912395700594
         ],
         "computed_metric": 0.6247004752848732,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "31_3_in_circle"
+      }
+    },
+    {
+      "id": "3_in_L_3",
+      "problem_family": "3_in_L",
+      "N": 3,
+      "inner_shape": "triangle",
+      "container_shape": "L",
+      "known_value": 0.86602,
+      "best_value": 0.86602,
+      "ref_status": "trivial",
+      "status": "trivial",
+      "attempted": true,
+      "our_best_metric": 0.522694,
+      "our_best_s": 0.905333,
+      "comparison_status": "NEW_BEST",
+      "diff": -0.343326,
+      "closeness_pct": 165.68,
+      "starts": 0,
+      "attempts": 0,
+      "successes": 0,
+      "fails": 0,
+      "priority_rank": null,
+      "density": null,
+      "source_url": "https://erich-friedman.github.io/packing/triinL/index.html",
+      "source_note": "Trivial.",
+      "solution": {
+        "S": 0.9053327156077234,
+        "inner_token": "3",
+        "container_token": "L",
+        "final_metric": 0.522694087062294,
+        "N": 3,
+        "values": [
+          0.21967056094831117,
+          0.7803328350795219,
+          0.5235981149350379,
+          -0.7803311352700221,
+          -0.2196691363567597,
+          2.960285236787372e-07,
+          0.5744690691055122,
+          -0.571983491285906,
+          -0.7871572697883169
+        ],
+        "computed_metric": 0.522694087062294,
+        "folder_name": "3_3_in_L"
       }
     }
   ],
@@ -2726,6 +2735,8 @@
           1.701696573862114
         ],
         "computed_metric": 1.6064518065238693,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "3_6_in_8"
       }
     },
@@ -2795,6 +2806,8 @@
           -1.6977113501760837
         ],
         "computed_metric": 2.869746533171968,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "11_6_in_8"
       }
     },
@@ -2837,6 +2850,8 @@
           0.6391956912098796
         ],
         "computed_metric": 2.465911549324087,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "2_6_in_5"
       }
     },
@@ -2882,7 +2897,59 @@
           -0.9424784696151144
         ],
         "computed_metric": 2.742826175682922,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "3_6_in_5"
+      }
+    },
+    {
+      "id": "6_in_5_4",
+      "problem_family": "6_in_5",
+      "N": 4,
+      "inner_shape": "hexagon",
+      "container_shape": "pentagon",
+      "known_value": 3.0152,
+      "best_value": 3.0152,
+      "ref_status": "best_known",
+      "status": "best_known",
+      "attempted": true,
+      "our_best_metric": 3.01522,
+      "our_best_s": 2.564899,
+      "comparison_status": "matches_best_known",
+      "diff": 0.0,
+      "closeness_pct": 100.0,
+      "starts": 0,
+      "attempts": 0,
+      "successes": 0,
+      "fails": 0,
+      "priority_rank": 83,
+      "density": 0.6644,
+      "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html",
+      "source_note": "s = 3.01521+ Found by Bhavithran Ananthan in July 2026.",
+      "solution": {
+        "S": 2.564899311701111,
+        "inner_sides": 6,
+        "container_sides": 5,
+        "final_metric": 3.015219978066057,
+        "N": 4,
+        "values": [
+          -1.1239906314744699,
+          -0.9060336031184643,
+          0.7330381825028297,
+          0.7568801941741133,
+          -1.015153592083384,
+          1.989675127676426,
+          -0.9020454923879183,
+          0.9781476880366768,
+          1.361357788037108,
+          0.9167315023505815,
+          0.7951364909392719,
+          1.151916133279428
+        ],
+        "computed_metric": 3.015219978066057,
+        "inner_token": "6",
+        "container_token": "5",
+        "folder_name": "4_6_in_5"
       }
     },
     {
@@ -2942,6 +3009,8 @@
           3.5195184462857503
         ],
         "computed_metric": 4.1492118237956745,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "8_6_in_5"
       }
     },
@@ -3017,6 +3086,8 @@
           2.4085544719806995
         ],
         "computed_metric": 5.101119963685507,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "13_6_in_5"
       }
     },
@@ -3065,6 +3136,8 @@
           0.523598455458571
         ],
         "computed_metric": 3.7250031912651167,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "4_6_in_4"
       }
     },
@@ -3107,6 +3180,8 @@
           3.2202330049959142
         ],
         "computed_metric": 3.3560717428343176,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "2_8_in_5"
       }
     },
@@ -3152,6 +3227,8 @@
           0.07865561917745545
         ],
         "computed_metric": 3.744131632294112,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "3_8_in_5"
       }
     },
@@ -3200,6 +3277,8 @@
           -0.7068584810922678
         ],
         "computed_metric": 4.1012610892265275,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "4_8_in_5"
       }
     },
@@ -3254,6 +3333,8 @@
           1.151917046931828
         ],
         "computed_metric": 2.322940774100219,
+        "inner_token": "5",
+        "container_token": "6",
         "folder_name": "6_5_in_6"
       }
     },
@@ -3320,6 +3401,8 @@
           -1.0195887226425822
         ],
         "computed_metric": 3.6832855085836256,
+        "inner_token": "5",
+        "container_token": "5",
         "folder_name": "10_5_in_5"
       }
     },
@@ -3395,6 +3478,8 @@
           1.2566353099361225
         ],
         "computed_metric": 4.0652535110058405,
+        "inner_token": "5",
+        "container_token": "5",
         "folder_name": "13_5_in_5"
       }
     },
@@ -3449,6 +3534,8 @@
           1.415613570080529
         ],
         "computed_metric": 3.8830248430247694,
+        "inner_token": "5",
+        "container_token": "4",
         "folder_name": "6_5_in_4"
       }
     },
@@ -3521,6 +3608,8 @@
           1.6754332383866448
         ],
         "computed_metric": 8.191238582978015,
+        "inner_token": "5",
+        "container_token": "3",
         "folder_name": "12_5_in_3"
       }
     },
@@ -3575,6 +3664,8 @@
           -0.3926954843278214
         ],
         "computed_metric": 1.3431566992814308,
+        "inner_token": "4",
+        "container_token": "8",
         "folder_name": "6_4_in_8"
       }
     },
@@ -3620,6 +3711,8 @@
           1.8325951134195893
         ],
         "computed_metric": 3.232052318453765,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "3_4_in_3"
       }
     },
@@ -3686,6 +3779,8 @@
           1.047194185654137
         ],
         "computed_metric": 3.5000315615295814,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "10_3_in_3"
       }
     }
@@ -3733,6 +3828,8 @@
           -0.5548876240046545
         ],
         "computed_metric": 0.1901181618981853,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "3_3_in_circle"
       }
     },
@@ -3853,6 +3950,8 @@
           0.6391956912098796
         ],
         "computed_metric": 2.465911549324087,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "2_6_in_5"
       }
     },
@@ -3895,6 +3994,8 @@
           3.2202330049959142
         ],
         "computed_metric": 3.3560717428343176,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "2_8_in_5"
       }
     },
@@ -4021,6 +4122,8 @@
           -2.356199375050026
         ],
         "computed_metric": 4.154707933020684,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "4_4_in_3"
       }
     },
@@ -4173,6 +4276,8 @@
           -0.22691076329789525
         ],
         "computed_metric": 0.21950593666702656,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "4_3_in_circle"
       }
     },
@@ -4244,6 +4349,8 @@
           0.8651972218900137
         ],
         "computed_metric": 1.1435295943053447,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "3_3_in_5"
       }
     },
@@ -4474,6 +4581,8 @@
           1.144088020544398
         ],
         "computed_metric": 0.8570982491688316,
+        "inner_token": "3",
+        "container_token": "8",
         "folder_name": "4_3_in_8"
       }
     }
@@ -4487,6 +4596,7 @@
       "total_problems": 36,
       "proved_optimal_count": 1,
       "best_known_count": 28,
+      "trivial_count": 7,
       "attempted_count": 28,
       "new_best_count": 0
     },
@@ -4498,6 +4608,7 @@
       "total_problems": 48,
       "proved_optimal_count": 0,
       "best_known_count": 46,
+      "trivial_count": 2,
       "attempted_count": 46,
       "new_best_count": 0
     },
@@ -4509,6 +4620,7 @@
       "total_problems": 50,
       "proved_optimal_count": 0,
       "best_known_count": 48,
+      "trivial_count": 2,
       "attempted_count": 48,
       "new_best_count": 0
     },
@@ -4520,6 +4632,7 @@
       "total_problems": 54,
       "proved_optimal_count": 0,
       "best_known_count": 41,
+      "trivial_count": 13,
       "attempted_count": 2,
       "new_best_count": 0
     },
@@ -4531,6 +4644,7 @@
       "total_problems": 37,
       "proved_optimal_count": 0,
       "best_known_count": 35,
+      "trivial_count": 2,
       "attempted_count": 3,
       "new_best_count": 0
     },
@@ -4542,8 +4656,9 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 3,
       "attempted_count": 1,
-      "new_best_count": 0
+      "new_best_count": 1
     },
     {
       "slug": "3_in_circle",
@@ -4553,6 +4668,7 @@
       "total_problems": 31,
       "proved_optimal_count": 0,
       "best_known_count": 26,
+      "trivial_count": 5,
       "attempted_count": 26,
       "new_best_count": 25
     },
@@ -4564,6 +4680,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 20,
+      "trivial_count": 2,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4575,6 +4692,7 @@
       "total_problems": 30,
       "proved_optimal_count": 0,
       "best_known_count": 27,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4586,8 +4704,9 @@
       "total_problems": 43,
       "proved_optimal_count": 0,
       "best_known_count": 41,
+      "trivial_count": 2,
       "attempted_count": 41,
-      "new_best_count": 1
+      "new_best_count": 0
     },
     {
       "slug": "4_in_5",
@@ -4597,6 +4716,7 @@
       "total_problems": 40,
       "proved_optimal_count": 0,
       "best_known_count": 39,
+      "trivial_count": 1,
       "attempted_count": 4,
       "new_best_count": 0
     },
@@ -4608,6 +4728,7 @@
       "total_problems": 40,
       "proved_optimal_count": 0,
       "best_known_count": 34,
+      "trivial_count": 6,
       "attempted_count": 1,
       "new_best_count": 0
     },
@@ -4619,6 +4740,7 @@
       "total_problems": 40,
       "proved_optimal_count": 0,
       "best_known_count": 32,
+      "trivial_count": 8,
       "attempted_count": 4,
       "new_best_count": 1
     },
@@ -4630,6 +4752,7 @@
       "total_problems": 36,
       "proved_optimal_count": 0,
       "best_known_count": 13,
+      "trivial_count": 23,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4641,6 +4764,7 @@
       "total_problems": 35,
       "proved_optimal_count": 1,
       "best_known_count": 32,
+      "trivial_count": 2,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4652,6 +4776,7 @@
       "total_problems": 50,
       "proved_optimal_count": 0,
       "best_known_count": 19,
+      "trivial_count": 31,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4663,6 +4788,7 @@
       "total_problems": 27,
       "proved_optimal_count": 0,
       "best_known_count": 18,
+      "trivial_count": 9,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4674,6 +4800,7 @@
       "total_problems": 40,
       "proved_optimal_count": 1,
       "best_known_count": 38,
+      "trivial_count": 1,
       "attempted_count": 1,
       "new_best_count": 0
     },
@@ -4685,6 +4812,7 @@
       "total_problems": 25,
       "proved_optimal_count": 0,
       "best_known_count": 23,
+      "trivial_count": 2,
       "attempted_count": 3,
       "new_best_count": 0
     },
@@ -4696,6 +4824,7 @@
       "total_problems": 26,
       "proved_optimal_count": 0,
       "best_known_count": 21,
+      "trivial_count": 5,
       "attempted_count": 2,
       "new_best_count": 0
     },
@@ -4707,6 +4836,7 @@
       "total_problems": 31,
       "proved_optimal_count": 0,
       "best_known_count": 28,
+      "trivial_count": 3,
       "attempted_count": 2,
       "new_best_count": 0
     },
@@ -4718,6 +4848,7 @@
       "total_problems": 31,
       "proved_optimal_count": 0,
       "best_known_count": 28,
+      "trivial_count": 3,
       "attempted_count": 1,
       "new_best_count": 0
     },
@@ -4729,6 +4860,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4740,6 +4872,7 @@
       "total_problems": 24,
       "proved_optimal_count": 0,
       "best_known_count": 21,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4751,6 +4884,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 21,
+      "trivial_count": 1,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4762,6 +4896,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4773,6 +4908,7 @@
       "total_problems": 32,
       "proved_optimal_count": 0,
       "best_known_count": 16,
+      "trivial_count": 16,
       "attempted_count": 1,
       "new_best_count": 0
     },
@@ -4784,6 +4920,7 @@
       "total_problems": 27,
       "proved_optimal_count": 0,
       "best_known_count": 22,
+      "trivial_count": 5,
       "attempted_count": 22,
       "new_best_count": 0
     },
@@ -4795,8 +4932,9 @@
       "total_problems": 32,
       "proved_optimal_count": 0,
       "best_known_count": 31,
-      "attempted_count": 12,
-      "new_best_count": 1
+      "trivial_count": 1,
+      "attempted_count": 11,
+      "new_best_count": 0
     },
     {
       "slug": "6_in_6",
@@ -4806,6 +4944,7 @@
       "total_problems": 33,
       "proved_optimal_count": 0,
       "best_known_count": 23,
+      "trivial_count": 10,
       "attempted_count": 6,
       "new_best_count": 2
     },
@@ -4817,6 +4956,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 20,
+      "trivial_count": 2,
       "attempted_count": 10,
       "new_best_count": 3
     },
@@ -4828,6 +4968,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4839,6 +4980,7 @@
       "total_problems": 27,
       "proved_optimal_count": 0,
       "best_known_count": 20,
+      "trivial_count": 7,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4850,6 +4992,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 19,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4861,6 +5004,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4872,6 +5016,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 21,
+      "trivial_count": 1,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4883,6 +5028,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 15,
+      "trivial_count": 5,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4894,6 +5040,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 19,
+      "trivial_count": 1,
       "attempted_count": 12,
       "new_best_count": 0
     },
@@ -4905,6 +5052,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 18,
+      "trivial_count": 2,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4916,6 +5064,7 @@
       "total_problems": 30,
       "proved_optimal_count": 0,
       "best_known_count": 30,
+      "trivial_count": 0,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4927,6 +5076,7 @@
       "total_problems": 17,
       "proved_optimal_count": 0,
       "best_known_count": 12,
+      "trivial_count": 5,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4938,6 +5088,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4949,6 +5100,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 16,
+      "trivial_count": 6,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4960,6 +5112,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 12,
+      "trivial_count": 10,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4971,6 +5124,7 @@
       "total_problems": 30,
       "proved_optimal_count": 0,
       "best_known_count": 28,
+      "trivial_count": 2,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4982,6 +5136,7 @@
       "total_problems": 30,
       "proved_optimal_count": 0,
       "best_known_count": 28,
+      "trivial_count": 2,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -4993,6 +5148,7 @@
       "total_problems": 30,
       "proved_optimal_count": 0,
       "best_known_count": 26,
+      "trivial_count": 4,
       "attempted_count": 1,
       "new_best_count": 0
     },
@@ -5004,6 +5160,7 @@
       "total_problems": 30,
       "proved_optimal_count": 0,
       "best_known_count": 29,
+      "trivial_count": 1,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5015,6 +5172,7 @@
       "total_problems": 25,
       "proved_optimal_count": 0,
       "best_known_count": 5,
+      "trivial_count": 20,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5026,6 +5184,7 @@
       "total_problems": 24,
       "proved_optimal_count": 0,
       "best_known_count": 6,
+      "trivial_count": 18,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5037,6 +5196,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 6,
+      "trivial_count": 16,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5048,6 +5208,7 @@
       "total_problems": 39,
       "proved_optimal_count": 10,
       "best_known_count": 26,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5059,6 +5220,7 @@
       "total_problems": 24,
       "proved_optimal_count": 19,
       "best_known_count": 0,
+      "trivial_count": 5,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5070,6 +5232,7 @@
       "total_problems": 24,
       "proved_optimal_count": 0,
       "best_known_count": 20,
+      "trivial_count": 4,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5081,6 +5244,7 @@
       "total_problems": 24,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 7,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5092,6 +5256,7 @@
       "total_problems": 48,
       "proved_optimal_count": 0,
       "best_known_count": 46,
+      "trivial_count": 2,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5103,6 +5268,7 @@
       "total_problems": 50,
       "proved_optimal_count": 0,
       "best_known_count": 45,
+      "trivial_count": 5,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5114,6 +5280,7 @@
       "total_problems": 20,
       "proved_optimal_count": 9,
       "best_known_count": 7,
+      "trivial_count": 4,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5125,6 +5292,7 @@
       "total_problems": 24,
       "proved_optimal_count": 1,
       "best_known_count": 22,
+      "trivial_count": 1,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5136,6 +5304,7 @@
       "total_problems": 21,
       "proved_optimal_count": 6,
       "best_known_count": 10,
+      "trivial_count": 5,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5147,6 +5316,7 @@
       "total_problems": 27,
       "proved_optimal_count": 0,
       "best_known_count": 24,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5158,6 +5328,7 @@
       "total_problems": 24,
       "proved_optimal_count": 0,
       "best_known_count": 6,
+      "trivial_count": 18,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5169,6 +5340,7 @@
       "total_problems": 30,
       "proved_optimal_count": 0,
       "best_known_count": 29,
+      "trivial_count": 1,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5180,6 +5352,7 @@
       "total_problems": 30,
       "proved_optimal_count": 0,
       "best_known_count": 28,
+      "trivial_count": 2,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5191,6 +5364,7 @@
       "total_problems": 31,
       "proved_optimal_count": 0,
       "best_known_count": 27,
+      "trivial_count": 4,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5202,6 +5376,7 @@
       "total_problems": 24,
       "proved_optimal_count": 0,
       "best_known_count": 5,
+      "trivial_count": 19,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5213,6 +5388,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 16,
+      "trivial_count": 4,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5224,6 +5400,7 @@
       "total_problems": 25,
       "proved_optimal_count": 0,
       "best_known_count": 6,
+      "trivial_count": 19,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5235,6 +5412,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 14,
+      "trivial_count": 6,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5246,6 +5424,7 @@
       "total_problems": 28,
       "proved_optimal_count": 0,
       "best_known_count": 9,
+      "trivial_count": 19,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5257,6 +5436,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 19,
+      "trivial_count": 1,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5268,6 +5448,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 19,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5279,6 +5460,7 @@
       "total_problems": 24,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 7,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5290,6 +5472,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 21,
+      "trivial_count": 1,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5301,6 +5484,7 @@
       "total_problems": 22,
       "proved_optimal_count": 0,
       "best_known_count": 21,
+      "trivial_count": 1,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5312,6 +5496,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5323,6 +5508,7 @@
       "total_problems": 17,
       "proved_optimal_count": 0,
       "best_known_count": 11,
+      "trivial_count": 6,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5334,6 +5520,7 @@
       "total_problems": 20,
       "proved_optimal_count": 0,
       "best_known_count": 17,
+      "trivial_count": 3,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5345,6 +5532,7 @@
       "total_problems": 18,
       "proved_optimal_count": 0,
       "best_known_count": 12,
+      "trivial_count": 6,
       "attempted_count": 0,
       "new_best_count": 0
     },
@@ -5356,6 +5544,7 @@
       "total_problems": 27,
       "proved_optimal_count": 0,
       "best_known_count": 19,
+      "trivial_count": 8,
       "attempted_count": 0,
       "new_best_count": 0
     }
@@ -5490,6 +5679,8 @@
           0.0005657466905764904
         ],
         "computed_metric": 2.977160322439396,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "6_3_in_3"
       }
     },
@@ -5582,6 +5773,8 @@
           1.047194185654137
         ],
         "computed_metric": 3.5000315615295814,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "10_3_in_3"
       }
     },
@@ -5651,6 +5844,8 @@
           0.9796948049619948
         ],
         "computed_metric": 3.729640593560089,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "11_3_in_3"
       }
     },
@@ -5723,6 +5918,8 @@
           2.094435649571918
         ],
         "computed_metric": 3.879900024835896,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "12_3_in_3"
       }
     },
@@ -5798,6 +5995,8 @@
           -2.553239755450886
         ],
         "computed_metric": 3.9986631753988564,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "13_3_in_3"
       }
     },
@@ -5911,6 +6110,8 @@
           -2.094326842544964
         ],
         "computed_metric": 4.500213775121804,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "17_3_in_3"
       }
     },
@@ -6001,6 +6202,8 @@
           2.094483578695112
         ],
         "computed_metric": 4.501187039771029,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "18_3_in_3"
       }
     },
@@ -6094,6 +6297,8 @@
           -1.0472200765959854
         ],
         "computed_metric": 4.808414913454218,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "19_3_in_3"
       }
     },
@@ -6190,6 +6395,8 @@
           -4.188690819235158
         ],
         "computed_metric": 4.901987310202369,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "20_3_in_3"
       }
     },
@@ -6289,6 +6496,8 @@
           4.188785969793267
         ],
         "computed_metric": 4.93394718759379,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "21_3_in_3"
       }
     },
@@ -6391,6 +6600,8 @@
           3.7320534412596142
         ],
         "computed_metric": 5.000067707885885,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "22_3_in_3"
       }
     },
@@ -6531,6 +6742,8 @@
           -4.18879020125777
         ],
         "computed_metric": 5.446783302208864,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "26_3_in_3"
       }
     },
@@ -6648,6 +6861,8 @@
           -2.094586534486163
         ],
         "computed_metric": 5.501566405682054,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "27_3_in_3"
       }
     },
@@ -6771,6 +6986,8 @@
           4.189007352616376
         ],
         "computed_metric": 5.750775043117149,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "29_3_in_3"
       }
     },
@@ -6897,6 +7114,8 @@
           4.081797843627874
         ],
         "computed_metric": 5.909524672483831,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "30_3_in_3"
       }
     },
@@ -7026,6 +7245,8 @@
           4.188787280500815
         ],
         "computed_metric": 5.95228234154563,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "31_3_in_3"
       }
     },
@@ -7158,6 +7379,8 @@
           2.094389802307386
         ],
         "computed_metric": 6.000045144398807,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "32_3_in_3"
       }
     },
@@ -7293,6 +7516,8 @@
           -3.1421980646263585
         ],
         "computed_metric": 6.000570829625356,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "33_3_in_3"
       }
     },
@@ -7466,6 +7691,8 @@
           -0.000500230477460838
         ],
         "computed_metric": 6.4818090142671645,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "37_3_in_3"
       }
     },
@@ -7616,6 +7843,8 @@
           2.094274980964654
         ],
         "computed_metric": 6.659767022824357,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "38_3_in_3"
       }
     },
@@ -7769,6 +7998,8 @@
           -4.281987538568847
         ],
         "computed_metric": 6.812285038961553,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "39_3_in_3"
       }
     },
@@ -7928,6 +8159,8 @@
           0.00026879267326865297
         ],
         "computed_metric": 6.864963969939269,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "41_3_in_3"
       }
     },
@@ -8090,6 +8323,8 @@
           0.0020237422732095173
         ],
         "computed_metric": 6.9415985252871755,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "42_3_in_3"
       }
     },
@@ -8255,6 +8490,8 @@
           4.189149048515482
         ],
         "computed_metric": 6.993287957642054,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "43_3_in_3"
       }
     },
@@ -8423,6 +8660,8 @@
           3.1448462815631606
         ],
         "computed_metric": 7.003877512508083,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "44_3_in_3"
       }
     },
@@ -8594,6 +8833,8 @@
           2.114133747476787
         ],
         "computed_metric": 7.143501075123361,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "45_3_in_3"
       }
     },
@@ -8768,6 +9009,8 @@
           2.1161809598417407
         ],
         "computed_metric": 7.3421123153878725,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "46_3_in_3"
       }
     },
@@ -8980,6 +9223,8 @@
           5.235981121000333
         ],
         "computed_metric": 7.740357666666721,
+        "inner_token": "3",
+        "container_token": "3",
         "folder_name": "50_3_in_3"
       }
     },
@@ -9077,6 +9322,8 @@
           -0.2617994246843982
         ],
         "computed_metric": 1.4783979251891741,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "3_3_in_4"
       }
     },
@@ -9125,6 +9372,8 @@
           2.876877891965514
         ],
         "computed_metric": 1.583711059516685,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "4_3_in_4"
       }
     },
@@ -9176,6 +9425,8 @@
           -1.8326587798707619
         ],
         "computed_metric": 1.80331706631647,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "5_3_in_4"
       }
     },
@@ -9230,6 +9481,8 @@
           1.3145059184710146
         ],
         "computed_metric": 1.940316082320483,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "6_3_in_4"
       }
     },
@@ -9287,6 +9540,8 @@
           -1.8209561958900322
         ],
         "computed_metric": 2.095052900818078,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "7_3_in_4"
       }
     },
@@ -9347,6 +9602,8 @@
           -1.1895907207004968
         ],
         "computed_metric": 2.239447822224145,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "8_3_in_4"
       }
     },
@@ -9410,6 +9667,8 @@
           0.9793349476143826
         ],
         "computed_metric": 2.3762121445582016,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "9_3_in_4"
       }
     },
@@ -9476,6 +9735,8 @@
           2.3691440127148344
         ],
         "computed_metric": 2.5043480808823877,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "10_3_in_4"
       }
     },
@@ -9545,6 +9806,8 @@
           -0.779391578861185
         ],
         "computed_metric": 2.627063518387486,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "11_3_in_4"
       }
     },
@@ -9617,6 +9880,8 @@
           0.7871165839199137
         ],
         "computed_metric": 2.743155901046655,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "12_3_in_4"
       }
     },
@@ -9692,6 +9957,8 @@
           1.2891785508706297
         ],
         "computed_metric": 2.855975678794047,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "13_3_in_4"
       }
     },
@@ -9770,6 +10037,8 @@
           1.7331705673472972
         ],
         "computed_metric": 2.966276181194337,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "14_3_in_4"
       }
     },
@@ -9851,6 +10120,8 @@
           -1.445502568426702
         ],
         "computed_metric": 3.0707242173062386,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "15_3_in_4"
       }
     },
@@ -9935,6 +10206,8 @@
           1.8140245660551713
         ],
         "computed_metric": 3.1745577693806686,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "16_3_in_4"
       }
     },
@@ -10022,6 +10295,8 @@
           0.972821332113707
         ],
         "computed_metric": 3.2755499597546867,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "17_3_in_4"
       }
     },
@@ -10112,6 +10387,8 @@
           1.072527531984991
         ],
         "computed_metric": 3.3659064048143974,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "18_3_in_4"
       }
     },
@@ -10205,6 +10482,8 @@
           -0.24822652694958872
         ],
         "computed_metric": 3.4596912513205367,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "19_3_in_4"
       }
     },
@@ -10301,6 +10580,8 @@
           1.5048583608763066
         ],
         "computed_metric": 3.549083914646416,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "20_3_in_4"
       }
     },
@@ -10400,6 +10681,8 @@
           1.077258470950831
         ],
         "computed_metric": 3.6462313982685792,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "21_3_in_4"
       }
     },
@@ -10502,6 +10785,8 @@
           -2.336429534590117
         ],
         "computed_metric": 3.7357759323064097,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "22_3_in_4"
       }
     },
@@ -10607,6 +10892,8 @@
           0.743313033320792
         ],
         "computed_metric": 3.8244268738926563,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "23_3_in_4"
       }
     },
@@ -10715,6 +11002,8 @@
           1.8474454735722343
         ],
         "computed_metric": 3.9060563809443423,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "24_3_in_4"
       }
     },
@@ -10826,6 +11115,8 @@
           1.8168923842888884
         ],
         "computed_metric": 4.002889960909426,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "25_3_in_4"
       }
     },
@@ -10940,6 +11231,8 @@
           1.143412708403824
         ],
         "computed_metric": 4.0901451616694695,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "26_3_in_4"
       }
     },
@@ -11057,6 +11350,8 @@
           2.212888773677968
         ],
         "computed_metric": 4.158858482903761,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "27_3_in_4"
       }
     },
@@ -11177,6 +11472,8 @@
           1.8217955110091486
         ],
         "computed_metric": 4.251144311720913,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "28_3_in_4"
       }
     },
@@ -11300,6 +11597,8 @@
           1.6744256101325241
         ],
         "computed_metric": 4.319557952529596,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "29_3_in_4"
       }
     },
@@ -11426,6 +11725,8 @@
           -1.6136561856900693
         ],
         "computed_metric": 4.410032600340794,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "30_3_in_4"
       }
     },
@@ -11555,6 +11856,8 @@
           0.7194866488677372
         ],
         "computed_metric": 4.49577648726146,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "31_3_in_4"
       }
     },
@@ -11687,6 +11990,8 @@
           1.4732665572268766
         ],
         "computed_metric": 4.556799074928651,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "32_3_in_4"
       }
     },
@@ -11822,6 +12127,8 @@
           -2.649140067892634
         ],
         "computed_metric": 4.6389216795523245,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "33_3_in_4"
       }
     },
@@ -11960,6 +12267,8 @@
           -2.8035754049730177
         ],
         "computed_metric": 4.702647918670572,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "34_3_in_4"
       }
     },
@@ -12101,6 +12410,8 @@
           -1.3396167242332822
         ],
         "computed_metric": 4.786408121027799,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "35_3_in_4"
       }
     },
@@ -12245,6 +12556,8 @@
           3.9149844822961684
         ],
         "computed_metric": 4.855207569977714,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "36_3_in_4"
       }
     },
@@ -12392,6 +12705,8 @@
           3.975195224739644
         ],
         "computed_metric": 4.932626726151571,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "37_3_in_4"
       }
     },
@@ -12542,6 +12857,8 @@
           -1.9513337763040008
         ],
         "computed_metric": 4.977483030433842,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "38_3_in_4"
       }
     },
@@ -12695,6 +13012,8 @@
           3.3732594063152144
         ],
         "computed_metric": 5.062733428936621,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "39_3_in_4"
       }
     },
@@ -12851,6 +13170,8 @@
           1.2579968018606797
         ],
         "computed_metric": 5.126519174670584,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "40_3_in_4"
       }
     },
@@ -13010,6 +13331,8 @@
           -0.4109173406384594
         ],
         "computed_metric": 5.20082418490838,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "41_3_in_4"
       }
     },
@@ -13172,6 +13495,8 @@
           3.3993126542078933
         ],
         "computed_metric": 5.26070778961657,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "42_3_in_4"
       }
     },
@@ -13337,6 +13662,8 @@
           1.3096691715870696
         ],
         "computed_metric": 5.352984094039624,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "43_3_in_4"
       }
     },
@@ -13505,6 +13832,8 @@
           2.794642717242194
         ],
         "computed_metric": 5.4066744774582185,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "44_3_in_4"
       }
     },
@@ -13676,6 +14005,8 @@
           2.0156414199962325
         ],
         "computed_metric": 5.484972884636444,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "45_3_in_4"
       }
     },
@@ -13850,6 +14181,8 @@
           0.719381645731996
         ],
         "computed_metric": 5.553453579087333,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "46_3_in_4"
       }
     },
@@ -14027,6 +14360,8 @@
           1.9691423435527955
         ],
         "computed_metric": 5.563590171770928,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "47_3_in_4"
       }
     },
@@ -14207,6 +14542,8 @@
           2.2507947853790284
         ],
         "computed_metric": 5.6950724175014065,
+        "inner_token": "3",
+        "container_token": "4",
         "folder_name": "48_3_in_4"
       }
     },
@@ -14304,6 +14641,8 @@
           0.8651972218900137
         ],
         "computed_metric": 1.1435295943053447,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "3_3_in_5"
       }
     },
@@ -14318,11 +14657,11 @@
       "ref_status": "best_known",
       "status": "best_known",
       "attempted": true,
-      "our_best_metric": 1.316301,
-      "our_best_s": 1.939399,
+      "our_best_metric": 1.19933,
+      "our_best_s": 1.767057,
       "comparison_status": "worse_than_best_known",
-      "diff": 0.117301,
-      "closeness_pct": 91.09,
+      "diff": 0.00033,
+      "closeness_pct": 99.97,
       "starts": 7,
       "attempts": 35000,
       "successes": 7,
@@ -14332,26 +14671,26 @@
       "source_url": "https://erich-friedman.github.io/packing/triinpen/index.html",
       "source_note": "Found by Maurizio Morandi in July 2012.",
       "solution": {
-        "S": 1.9393988644473252,
-        "inner_sides": 3,
-        "container_sides": 5,
-        "final_metric": 1.3163009374245223,
+        "S": 1.7670568003683518,
+        "inner_token": "3",
+        "container_token": "5",
+        "final_metric": 1.199329630148091,
         "N": 4,
         "values": [
-          -0.8944484043963533,
-          -0.3023273592629516,
-          -0.0016218863434466408,
-          0.6928327253528413,
-          -0.5276655451307575,
-          2.276973640743203,
-          -0.5711811640006342,
-          0.9013986594129025,
-          0.8357796179728652,
-          0.6731353278065321,
-          0.794398564030536,
-          1.6465541698465418
+          -0.2620177334474314,
+          0.8922457193055604,
+          -1.2566304222108522,
+          -0.5289705192135767,
+          -0.6039680725601261,
+          -0.5975117745928522,
+          0.6198538013534517,
+          -0.6831591701638382,
+          0.4497813713267701,
+          0.8213494531857894,
+          0.45097610701867374,
+          -0.41887419292576045
         ],
-        "computed_metric": 1.3163009374245223,
+        "computed_metric": 1.199329630148091,
         "folder_name": "4_3_in_5"
       }
     },
@@ -14403,6 +14742,8 @@
           0.06409469610859356
         ],
         "computed_metric": 1.4717129001451648,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "5_3_in_5"
       }
     },
@@ -14457,6 +14798,8 @@
           1.2785802058040543
         ],
         "computed_metric": 1.6121328425417065,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "6_3_in_5"
       }
     },
@@ -14514,6 +14857,8 @@
           0.8328065565516188
         ],
         "computed_metric": 1.741302480727963,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "7_3_in_5"
       }
     },
@@ -14574,6 +14919,8 @@
           1.0908803365471282
         ],
         "computed_metric": 1.8616678399803717,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "8_3_in_5"
       }
     },
@@ -14637,6 +14984,8 @@
           3.5232123992592643
         ],
         "computed_metric": 1.9745999816583595,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "9_3_in_5"
       }
     },
@@ -14703,6 +15052,8 @@
           1.2622262192356324
         ],
         "computed_metric": 2.0813781235179083,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "10_3_in_5"
       }
     },
@@ -14772,6 +15123,8 @@
           1.7539159952095387
         ],
         "computed_metric": 2.1831181048744353,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "11_3_in_5"
       }
     },
@@ -14844,6 +15197,8 @@
           0.3449092919931666
         ],
         "computed_metric": 2.2802589739963444,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "12_3_in_5"
       }
     },
@@ -14919,6 +15274,8 @@
           -0.09993979674772846
         ],
         "computed_metric": 2.3735653384503954,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "13_3_in_5"
       }
     },
@@ -14997,6 +15354,8 @@
           -1.6439580609519377
         ],
         "computed_metric": 2.4629634876115145,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "14_3_in_5"
       }
     },
@@ -15078,6 +15437,8 @@
           1.8410025315075083
         ],
         "computed_metric": 2.5508985342279327,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "15_3_in_5"
       }
     },
@@ -15162,6 +15523,8 @@
           4.758932058079519
         ],
         "computed_metric": 2.634098174048226,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "16_3_in_5"
       }
     },
@@ -15249,6 +15612,8 @@
           -1.6914809440302234
         ],
         "computed_metric": 2.714734297372576,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "17_3_in_5"
       }
     },
@@ -15339,6 +15704,8 @@
           0.9750983920753097
         ],
         "computed_metric": 2.7954319496263142,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "18_3_in_5"
       }
     },
@@ -15432,6 +15799,8 @@
           0.9602296815703655
         ],
         "computed_metric": 2.875106171137398,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "19_3_in_5"
       }
     },
@@ -15528,6 +15897,8 @@
           -2.5119972323326913
         ],
         "computed_metric": 2.9571889063784953,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "20_3_in_5"
       }
     },
@@ -15627,6 +15998,8 @@
           2.8699469242181865
         ],
         "computed_metric": 3.0288109232127978,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "21_3_in_5"
       }
     },
@@ -15729,6 +16102,8 @@
           0.49438566458433836
         ],
         "computed_metric": 3.1095685217839386,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "22_3_in_5"
       }
     },
@@ -15834,6 +16209,8 @@
           2.034057745921982
         ],
         "computed_metric": 3.17430864953989,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "23_3_in_5"
       }
     },
@@ -15942,6 +16319,8 @@
           1.7016042748455094
         ],
         "computed_metric": 3.253076672859039,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "24_3_in_5"
       }
     },
@@ -16053,6 +16432,8 @@
           5.1737760358545595
         ],
         "computed_metric": 3.3242390912223763,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "25_3_in_5"
       }
     },
@@ -16167,6 +16548,8 @@
           -1.2782675761064903
         ],
         "computed_metric": 3.3888843888255074,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "26_3_in_5"
       }
     },
@@ -16284,6 +16667,8 @@
           1.445690749433497
         ],
         "computed_metric": 3.4772605786429898,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "27_3_in_5"
       }
     },
@@ -16404,6 +16789,8 @@
           -0.4282909268809602
         ],
         "computed_metric": 3.5375540596121873,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "28_3_in_5"
       }
     },
@@ -16527,6 +16914,8 @@
           3.1932350163602616
         ],
         "computed_metric": 3.5968474148853176,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "29_3_in_5"
       }
     },
@@ -16653,6 +17042,8 @@
           1.5520049432606486
         ],
         "computed_metric": 3.670157491643775,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "30_3_in_5"
       }
     },
@@ -16782,6 +17173,8 @@
           1.2769875413767808
         ],
         "computed_metric": 3.730523852919141,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "31_3_in_5"
       }
     },
@@ -16914,6 +17307,8 @@
           0.38234988879359355
         ],
         "computed_metric": 3.7978788551625318,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "32_3_in_5"
       }
     },
@@ -17049,6 +17444,8 @@
           3.2390088980382603
         ],
         "computed_metric": 3.8605134090047843,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "33_3_in_5"
       }
     },
@@ -17187,6 +17584,8 @@
           0.5939774591277931
         ],
         "computed_metric": 3.9204292505234863,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "34_3_in_5"
       }
     },
@@ -17328,6 +17727,8 @@
           1.784834755092705
         ],
         "computed_metric": 3.9834523819333825,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "35_3_in_5"
       }
     },
@@ -17472,6 +17873,8 @@
           1.1537197812131403
         ],
         "computed_metric": 4.04393797282226,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "36_3_in_5"
       }
     },
@@ -17619,6 +18022,8 @@
           1.91153782883055
         ],
         "computed_metric": 4.092638616505865,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "37_3_in_5"
       }
     },
@@ -17769,6 +18174,8 @@
           3.0513360419836215
         ],
         "computed_metric": 4.144708358448107,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "38_3_in_5"
       }
     },
@@ -17922,6 +18329,8 @@
           1.4710226997087112
         ],
         "computed_metric": 4.217627144546835,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "39_3_in_5"
       }
     },
@@ -18078,6 +18487,8 @@
           3.2906147118557314
         ],
         "computed_metric": 4.262546235425356,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "40_3_in_5"
       }
     },
@@ -18237,6 +18648,8 @@
           0.640290542720954
         ],
         "computed_metric": 4.316813081800303,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "41_3_in_5"
       }
     },
@@ -18399,6 +18812,8 @@
           2.6184180222303044
         ],
         "computed_metric": 4.382322300346171,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "42_3_in_5"
       }
     },
@@ -18564,6 +18979,8 @@
           1.7142481934532083
         ],
         "computed_metric": 4.437767350905076,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "43_3_in_5"
       }
     },
@@ -18732,6 +19149,8 @@
           -0.279001915616376
         ],
         "computed_metric": 4.467286074352201,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "44_3_in_5"
       }
     },
@@ -18903,6 +19322,8 @@
           -0.9315123471689446
         ],
         "computed_metric": 4.561132686861078,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "45_3_in_5"
       }
     },
@@ -19077,6 +19498,8 @@
           0.9393156632369357
         ],
         "computed_metric": 4.5945660734942075,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "46_3_in_5"
       }
     },
@@ -19254,6 +19677,8 @@
           1.5257464420140958
         ],
         "computed_metric": 4.674215492351177,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "47_3_in_5"
       }
     },
@@ -19434,6 +19859,8 @@
           0.4400026532457681
         ],
         "computed_metric": 4.7073426341293025,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "48_3_in_5"
       }
     },
@@ -19617,6 +20044,8 @@
           1.761826154453998
         ],
         "computed_metric": 4.789411271511172,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "49_3_in_5"
       }
     },
@@ -19803,6 +20232,8 @@
           3.1942652596733505
         ],
         "computed_metric": 4.827465822132832,
+        "inner_token": "3",
+        "container_token": "5",
         "folder_name": "50_3_in_5"
       }
     },
@@ -20103,6 +20534,8 @@
           1.9604451932665168
         ],
         "computed_metric": 1.7706995201340492,
+        "inner_token": "3",
+        "container_token": "6",
         "folder_name": "10_3_in_6"
       }
     },
@@ -20201,6 +20634,8 @@
           0.28477553806790407
         ],
         "computed_metric": 1.9397041394819834,
+        "inner_token": "3",
+        "container_token": "6",
         "folder_name": "12_3_in_6"
       }
     },
@@ -21419,6 +21854,8 @@
           1.144088020544398
         ],
         "computed_metric": 0.8570982491688316,
+        "inner_token": "3",
+        "container_token": "8",
         "folder_name": "4_3_in_8"
       }
     },
@@ -21586,6 +22023,8 @@
           1.3335924934471983
         ],
         "computed_metric": 1.2856885628747126,
+        "inner_token": "3",
+        "container_token": "8",
         "folder_name": "9_3_in_8"
       }
     },
@@ -21710,6 +22149,8 @@
           1.0608759337046765
         ],
         "computed_metric": 1.4855219391711496,
+        "inner_token": "3",
+        "container_token": "8",
         "folder_name": "12_3_in_8"
       }
     },
@@ -22426,11 +22867,11 @@
       "ref_status": "trivial",
       "status": "trivial",
       "attempted": true,
-      "our_best_metric": 0.905333,
+      "our_best_metric": 0.522694,
       "our_best_s": 0.905333,
-      "comparison_status": "worse_than_best_known",
-      "diff": 0.039313,
-      "closeness_pct": 95.66,
+      "comparison_status": "NEW_BEST",
+      "diff": -0.343326,
+      "closeness_pct": 165.68,
       "starts": 0,
       "attempts": 0,
       "successes": 0,
@@ -22456,7 +22897,7 @@
           -0.571983491285906,
           -0.7871572697883169
         ],
-        "computed_metric": 0.9053327156077234,
+        "computed_metric": 0.522694087062294,
         "folder_name": "3_3_in_L"
       }
     },
@@ -22996,6 +23437,8 @@
           -0.5548876240046545
         ],
         "computed_metric": 0.1901181618981853,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "3_3_in_circle"
       }
     },
@@ -23044,6 +23487,8 @@
           -0.22691076329789525
         ],
         "computed_metric": 0.21950593666702656,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "4_3_in_circle"
       }
     },
@@ -23153,6 +23598,8 @@
           -1.4882551045099688
         ],
         "computed_metric": 0.2904129418828604,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "7_3_in_circle"
       }
     },
@@ -23213,6 +23660,8 @@
           1.8281336827591497
         ],
         "computed_metric": 0.31049563410539205,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "8_3_in_circle"
       }
     },
@@ -23276,6 +23725,8 @@
           1.3830319040243555
         ],
         "computed_metric": 0.3293291268523082,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "9_3_in_circle"
       }
     },
@@ -23342,6 +23793,8 @@
           -0.14364138420736802
         ],
         "computed_metric": 0.3470965518126944,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "10_3_in_circle"
       }
     },
@@ -23411,6 +23864,8 @@
           0.30531561166543686
         ],
         "computed_metric": 0.3641979108499014,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "11_3_in_circle"
       }
     },
@@ -23512,6 +23967,8 @@
           0.989026134711306
         ],
         "computed_metric": 0.3972886426521831,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "13_3_in_circle"
       }
     },
@@ -23590,6 +24047,8 @@
           1.4005322640481357
         ],
         "computed_metric": 0.4130855439146945,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "14_3_in_circle"
       }
     },
@@ -23671,6 +24130,8 @@
           -0.30994615958505267
         ],
         "computed_metric": 0.4268539767078174,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "15_3_in_circle"
       }
     },
@@ -23755,6 +24216,8 @@
           -0.010121224185162758
         ],
         "computed_metric": 0.441746733316688,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "16_3_in_circle"
       }
     },
@@ -23842,6 +24305,8 @@
           1.642699368859615
         ],
         "computed_metric": 0.4553588730311857,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "17_3_in_circle"
       }
     },
@@ -23932,6 +24397,8 @@
           2.1258712704619
         ],
         "computed_metric": 0.47092736075795416,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "18_3_in_circle"
       }
     },
@@ -24025,6 +24492,8 @@
           4.164870554762695
         ],
         "computed_metric": 0.4843919816680677,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "19_3_in_circle"
       }
     },
@@ -24121,6 +24590,8 @@
           1.4826892287937001
         ],
         "computed_metric": 0.49708436341307244,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "20_3_in_circle"
       }
     },
@@ -24220,6 +24691,8 @@
           -0.589814153550387
         ],
         "computed_metric": 0.5103798415347125,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "21_3_in_circle"
       }
     },
@@ -24322,6 +24795,8 @@
           -3.5687312580822748
         ],
         "computed_metric": 0.5239704197459295,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "22_3_in_circle"
       }
     },
@@ -24427,6 +24902,8 @@
           -0.8922853222167902
         ],
         "computed_metric": 0.5337939644095621,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "23_3_in_circle"
       }
     },
@@ -24564,6 +25041,8 @@
           2.863809225073359
         ],
         "computed_metric": 0.5565382631058418,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "25_3_in_circle"
       }
     },
@@ -24678,6 +25157,8 @@
           -0.715648011233075
         ],
         "computed_metric": 0.5672033172258854,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "26_3_in_circle"
       }
     },
@@ -24795,6 +25276,8 @@
           4.141561821033942
         ],
         "computed_metric": 0.5826690378835864,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "27_3_in_circle"
       }
     },
@@ -24915,6 +25398,8 @@
           1.5851208144531732
         ],
         "computed_metric": 0.5927964139603555,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "28_3_in_circle"
       }
     },
@@ -25038,6 +25523,8 @@
           2.434554797471273
         ],
         "computed_metric": 0.6038615275051217,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "29_3_in_circle"
       }
     },
@@ -25164,6 +25651,8 @@
           1.9921431644540402
         ],
         "computed_metric": 0.6152997730881806,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "30_3_in_circle"
       }
     },
@@ -25293,6 +25782,8 @@
           2.0340912395700594
         ],
         "computed_metric": 0.6247004752848732,
+        "inner_token": "3",
+        "container_token": "32",
         "folder_name": "31_3_in_circle"
       }
     },
@@ -26742,6 +27233,8 @@
           1.8325951134195893
         ],
         "computed_metric": 3.232052318453765,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "3_4_in_3"
       }
     },
@@ -26790,6 +27283,8 @@
           -2.356199375050026
         ],
         "computed_metric": 4.154707933020684,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "4_4_in_3"
       }
     },
@@ -26804,11 +27299,11 @@
       "ref_status": "best_known",
       "status": "best_known",
       "attempted": true,
-      "our_best_metric": 3.522085,
-      "our_best_s": 3.522085,
-      "comparison_status": "NEW_BEST",
-      "diff": -0.786915,
-      "closeness_pct": 122.34,
+      "our_best_metric": 4.30941,
+      "our_best_s": 3.518618,
+      "comparison_status": "worse_than_best_known",
+      "diff": 0.00041,
+      "closeness_pct": 99.99,
       "starts": 45,
       "attempts": 225000,
       "successes": 45,
@@ -26818,29 +27313,31 @@
       "source_url": "https://erich-friedman.github.io/packing/squintri/index.html",
       "source_note": "Found by Erich Friedman in 1997.",
       "solution": {
-        "S": 3.52208461095734,
-        "inner_token": "4",
-        "container_token": "3",
-        "final_metric": 4.313655063877242,
+        "S": 3.518618352842657,
+        "inner_sides": 4,
+        "container_sides": 3,
+        "final_metric": 4.309409782028365,
         "N": 5,
         "values": [
-          -0.7951193572964305,
-          1.6759851582511838,
-          0.2618275254072251,
-          0.38531822062693116,
-          -0.8039669835999189,
-          -0.5359317825452442,
-          1.8147155057530961,
-          -0.14421245464362478,
-          -0.28553652025025206,
-          0.4296646466536567,
-          0.9688933142979453,
-          -1.3089827695038911,
-          -1.028009765100196,
-          -1.5235618065313286,
-          0.8227542893188613
+          -1.0521916150718083,
+          -1.5236059276871154,
+          0.785408168280102,
+          0.6208364953674101,
+          -0.8565352137263766,
+          2.8797918202697996,
+          1.845583392583867,
+          -0.14942922713520515,
+          4.450588462029399,
+          -1.0522002016092986,
+          -0.1093853519209448,
+          0.7854010932763485,
+          0.4313687564076121,
+          0.6670690941955816,
+          2.879793481484485
         ],
-        "computed_metric": 3.52208461095734,
+        "computed_metric": 4.309409782028364,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "5_4_in_3"
       }
     },
@@ -26895,6 +27392,8 @@
           0.2617819701021874
         ],
         "computed_metric": 4.309499666915435,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "6_4_in_3"
       }
     },
@@ -26952,6 +27451,8 @@
           -0.8654275069247048
         ],
         "computed_metric": 5.154704354704567,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "7_4_in_3"
       }
     },
@@ -27012,6 +27513,8 @@
           -2.541011752507749
         ],
         "computed_metric": 5.308091743620478,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "8_4_in_3"
       }
     },
@@ -27075,6 +27578,8 @@
           -0.26158565629727903
         ],
         "computed_metric": 5.309910838673368,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "9_4_in_3"
       }
     },
@@ -27141,6 +27646,8 @@
           0.2617984969691542
         ],
         "computed_metric": 5.464105685717411,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "10_4_in_3"
       }
     },
@@ -27210,6 +27717,8 @@
           -2.356218979473518
         ],
         "computed_metric": 6.154757970205472,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "11_4_in_3"
       }
     },
@@ -27282,6 +27791,8 @@
           1.5889840590418136
         ],
         "computed_metric": 6.309427355251921,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "12_4_in_3"
       }
     },
@@ -27357,6 +27868,8 @@
           -1.3088462510300507
         ],
         "computed_metric": 6.31016274520439,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "13_4_in_3"
       }
     },
@@ -27435,6 +27948,8 @@
           4.974234236070716
         ],
         "computed_metric": 6.464206205188049,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "14_4_in_3"
       }
     },
@@ -27516,6 +28031,8 @@
           1.832626863916738
         ],
         "computed_metric": 6.467495835495331,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "15_4_in_3"
       }
     },
@@ -27600,6 +28117,8 @@
           -1.8325886513068639
         ],
         "computed_metric": 7.154764083641413,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "16_4_in_3"
       }
     },
@@ -27687,6 +28206,8 @@
           2.2551978394877246
         ],
         "computed_metric": 7.3098240334923625,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "17_4_in_3"
       }
     },
@@ -27777,6 +28298,8 @@
           3.377066747387619
         ],
         "computed_metric": 7.387785192386594,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "18_4_in_3"
       }
     },
@@ -27870,6 +28393,8 @@
           3.4034371806183787
         ],
         "computed_metric": 7.470689960011098,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "19_4_in_3"
       }
     },
@@ -27966,6 +28491,8 @@
           0.25170533565540143
         ],
         "computed_metric": 7.618906682430824,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "20_4_in_3"
       }
     },
@@ -28065,6 +28592,8 @@
           -4.450267714225278
         ],
         "computed_metric": 7.623675363404805,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "21_4_in_3"
       }
     },
@@ -28167,6 +28696,8 @@
           -2.366116084115168
         ],
         "computed_metric": 8.154847614937543,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "22_4_in_3"
       }
     },
@@ -28272,6 +28803,8 @@
           5.018499441111161
         ],
         "computed_metric": 8.315893168578011,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "23_4_in_3"
       }
     },
@@ -28380,6 +28913,8 @@
           -2.879526383462789
         ],
         "computed_metric": 8.465628025883607,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "24_4_in_3"
       }
     },
@@ -28491,6 +29026,8 @@
           -5.478798428969061
         ],
         "computed_metric": 8.545164371624017,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "25_4_in_3"
       }
     },
@@ -28605,6 +29142,8 @@
           0.260421364538036
         ],
         "computed_metric": 8.625701385822884,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "26_4_in_3"
       }
     },
@@ -28722,6 +29261,8 @@
           3.4067594761573248
         ],
         "computed_metric": 8.710054883820813,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "27_4_in_3"
       }
     },
@@ -28842,6 +29383,8 @@
           1.8331257703659218
         ],
         "computed_metric": 8.778031375178879,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "28_4_in_3"
       }
     },
@@ -28965,6 +29508,8 @@
           -7.197346135315416
         ],
         "computed_metric": 9.15532248432023,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "29_4_in_3"
       }
     },
@@ -29091,6 +29636,8 @@
           1.312754777592166
         ],
         "computed_metric": 9.315449465151758,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "30_4_in_3"
       }
     },
@@ -29220,6 +29767,8 @@
           -4.429624715861411
         ],
         "computed_metric": 9.469128336582967,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "31_4_in_3"
       }
     },
@@ -29352,6 +29901,8 @@
           0.7846032060225913
         ],
         "computed_metric": 9.622119891087136,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "32_4_in_3"
       }
     },
@@ -29487,6 +30038,8 @@
           0.26184695848564055
         ],
         "computed_metric": 9.62977971352941,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "33_4_in_3"
       }
     },
@@ -29625,6 +30178,8 @@
           -3.4101808221378933
         ],
         "computed_metric": 9.781117907555876,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "34_4_in_3"
       }
     },
@@ -29766,6 +30321,8 @@
           -0.2613117630947869
         ],
         "computed_metric": 9.877528661157255,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "35_4_in_3"
       }
     },
@@ -29910,6 +30467,8 @@
           -3.408487146084526
         ],
         "computed_metric": 9.93298811681792,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "36_4_in_3"
       }
     },
@@ -30057,6 +30616,8 @@
           1.8737977270074313
         ],
         "computed_metric": 10.155495364577073,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "37_4_in_3"
       }
     },
@@ -30207,6 +30768,8 @@
           5.473990279954747
         ],
         "computed_metric": 10.309697273818443,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "38_4_in_3"
       }
     },
@@ -30360,6 +30923,8 @@
           -0.26325176855259125
         ],
         "computed_metric": 10.47584509430036,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "39_4_in_3"
       }
     },
@@ -30516,6 +31081,8 @@
           1.8425733354807972
         ],
         "computed_metric": 10.618864243954448,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "40_4_in_3"
       }
     },
@@ -30675,6 +31242,8 @@
           0.2668104448407824
         ],
         "computed_metric": 10.710295080902226,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "41_4_in_3"
       }
     },
@@ -30837,6 +31406,8 @@
           5.499138513424193
         ],
         "computed_metric": 10.704533671176037,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "42_4_in_3"
       }
     },
@@ -31002,6 +31573,8 @@
           0.7767776416866491
         ],
         "computed_metric": 10.916088910920749,
+        "inner_token": "4",
+        "container_token": "3",
         "folder_name": "43_4_in_3"
       }
     },
@@ -31157,6 +31730,8 @@
           -1.0996612785125806
         ],
         "computed_metric": 1.951257596493327,
+        "inner_token": "4",
+        "container_token": "5",
         "folder_name": "5_4_in_5"
       }
     },
@@ -31211,6 +31786,8 @@
           2.664471569972679
         ],
         "computed_metric": 2.185518582840857,
+        "inner_token": "4",
+        "container_token": "5",
         "folder_name": "6_4_in_5"
       }
     },
@@ -31268,6 +31845,8 @@
           -1.4137027893363414
         ],
         "computed_metric": 2.421634303999724,
+        "inner_token": "4",
+        "container_token": "5",
         "folder_name": "7_4_in_5"
       }
     },
@@ -31444,6 +32023,8 @@
           -0.7854231455229681
         ],
         "computed_metric": 2.9707792765771934,
+        "inner_token": "4",
+        "container_token": "5",
         "folder_name": "12_4_in_5"
       }
     },
@@ -32414,6 +32995,8 @@
           0.26082609088653763
         ],
         "computed_metric": 2.153917482006646,
+        "inner_token": "4",
+        "container_token": "6",
         "folder_name": "8_4_in_6"
       }
     },
@@ -33430,6 +34013,8 @@
           -0.3926954843278214
         ],
         "computed_metric": 1.3431566992814308,
+        "inner_token": "4",
+        "container_token": "8",
         "folder_name": "6_4_in_8"
       }
     },
@@ -33487,6 +34072,8 @@
           -1.4306742977846365
         ],
         "computed_metric": 1.4368985383233146,
+        "inner_token": "4",
+        "container_token": "8",
         "folder_name": "7_4_in_8"
       }
     },
@@ -33547,6 +34134,8 @@
           0.7746670342987358
         ],
         "computed_metric": 1.5718777950975078,
+        "inner_token": "4",
+        "container_token": "8",
         "folder_name": "8_4_in_8"
       }
     },
@@ -33697,6 +34286,8 @@
           0.3742482154418726
         ],
         "computed_metric": 1.8182382026053918,
+        "inner_token": "4",
+        "container_token": "8",
         "folder_name": "12_4_in_8"
       }
     },
@@ -38631,6 +39222,8 @@
           1.6754332383866448
         ],
         "computed_metric": 8.191238582978015,
+        "inner_token": "5",
+        "container_token": "3",
         "folder_name": "12_5_in_3"
       }
     },
@@ -39543,6 +40136,8 @@
           1.415613570080529
         ],
         "computed_metric": 3.8830248430247694,
+        "inner_token": "5",
+        "container_token": "4",
         "folder_name": "6_5_in_4"
       }
     },
@@ -39629,6 +40224,8 @@
           -0.789004527803263
         ],
         "computed_metric": 4.3851184897732995,
+        "inner_token": "5",
+        "container_token": "4",
         "folder_name": "8_5_in_4"
       }
     },
@@ -39779,6 +40376,8 @@
           0.15700818377177486
         ],
         "computed_metric": 5.2325833111761915,
+        "inner_token": "5",
+        "container_token": "4",
         "folder_name": "12_5_in_4"
       }
     },
@@ -40417,6 +41016,8 @@
           -1.0195887226425822
         ],
         "computed_metric": 3.6832855085836256,
+        "inner_token": "5",
+        "container_token": "5",
         "folder_name": "10_5_in_5"
       }
     },
@@ -40544,6 +41145,8 @@
           1.2566353099361225
         ],
         "computed_metric": 4.0652535110058405,
+        "inner_token": "5",
+        "container_token": "5",
         "folder_name": "13_5_in_5"
       }
     },
@@ -41066,6 +41669,8 @@
           1.151917046931828
         ],
         "computed_metric": 2.322940774100219,
+        "inner_token": "5",
+        "container_token": "6",
         "folder_name": "6_5_in_6"
       }
     },
@@ -41268,6 +41873,8 @@
           0.6284396436546706
         ],
         "computed_metric": 3.2148891547960936,
+        "inner_token": "5",
+        "container_token": "6",
         "folder_name": "12_5_in_6"
       }
     },
@@ -42120,6 +42727,8 @@
           -1.8662395692363658
         ],
         "computed_metric": 2.398309238190163,
+        "inner_token": "5",
+        "container_token": "8",
         "folder_name": "12_5_in_8"
       }
     },
@@ -45237,6 +45846,8 @@
           -0.5237358191783937
         ],
         "computed_metric": 10.290399378431061,
+        "inner_token": "6",
+        "container_token": "3",
         "folder_name": "13_6_in_3"
       }
     },
@@ -45828,6 +46439,8 @@
           3.9269909241209677
         ],
         "computed_metric": 3.4919590145095976,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "3_6_in_4"
       }
     },
@@ -45876,6 +46489,8 @@
           0.523598455458571
         ],
         "computed_metric": 3.7250031912651167,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "4_6_in_4"
       }
     },
@@ -45927,6 +46542,8 @@
           0.7853957120787712
         ],
         "computed_metric": 4.437844418212016,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "5_6_in_4"
       }
     },
@@ -45981,6 +46598,8 @@
           0.7854205455154537
         ],
         "computed_metric": 4.8138532565622425,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "6_6_in_4"
       }
     },
@@ -46096,6 +46715,8 @@
           1.5707956976874649
         ],
         "computed_metric": 5.518154519484777,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "9_6_in_4"
       }
     },
@@ -46162,6 +46783,8 @@
           1.3140222573219376
         ],
         "computed_metric": 6.104982492730228,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "10_6_in_4"
       }
     },
@@ -46231,6 +46854,8 @@
           -1.8668315901850598
         ],
         "computed_metric": 6.333631309387912,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "11_6_in_4"
       }
     },
@@ -46303,6 +46928,8 @@
           0.2618040242039663
         ],
         "computed_metric": 6.387462699883304,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "12_6_in_4"
       }
     },
@@ -46378,6 +47005,8 @@
           -1.820531970062386
         ],
         "computed_metric": 6.755918552529949,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "13_6_in_4"
       }
     },
@@ -46485,6 +47114,8 @@
           0.23475218313848975
         ],
         "computed_metric": 6.963996744975706,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "15_6_in_4"
       }
     },
@@ -46569,6 +47200,8 @@
           0.5232453261061597
         ],
         "computed_metric": 7.315017526280248,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "16_6_in_4"
       }
     },
@@ -46656,6 +47289,8 @@
           -1.8508331580852246
         ],
         "computed_metric": 7.605038036934169,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "17_6_in_4"
       }
     },
@@ -46746,6 +47381,8 @@
           2.359513658073174
         ],
         "computed_metric": 7.715875493458837,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "18_6_in_4"
       }
     },
@@ -46839,6 +47476,8 @@
           0.25942466672751635
         ],
         "computed_metric": 7.929378074021843,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "19_6_in_4"
       }
     },
@@ -46935,6 +47574,8 @@
           1.3101766235901053
         ],
         "computed_metric": 7.953493270840083,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "20_6_in_4"
       }
     },
@@ -47034,6 +47675,8 @@
           1.3159426411580617
         ],
         "computed_metric": 8.388805753357856,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "21_6_in_4"
       }
     },
@@ -47136,6 +47779,8 @@
           0.8069926536087305
         ],
         "computed_metric": 8.571858677686736,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "22_6_in_4"
       }
     },
@@ -47241,6 +47886,8 @@
           -2.8797941239194054
         ],
         "computed_metric": 8.660258484063416,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "23_6_in_4"
       }
     },
@@ -47349,6 +47996,8 @@
           2.4603452036162086
         ],
         "computed_metric": 8.796580909835015,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "24_6_in_4"
       }
     },
@@ -47460,6 +48109,8 @@
           -1.2997067740325923
         ],
         "computed_metric": 9.073586204037364,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "25_6_in_4"
       }
     },
@@ -47574,6 +48225,8 @@
           3.4173630377606297
         ],
         "computed_metric": 9.230960506741901,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "26_6_in_4"
       }
     },
@@ -47691,6 +48344,8 @@
           -0.2618969539686753
         ],
         "computed_metric": 9.340448099000858,
+        "inner_token": "6",
+        "container_token": "4",
         "folder_name": "27_6_in_4"
       }
     },
@@ -47759,6 +48414,8 @@
           0.6391956912098796
         ],
         "computed_metric": 2.465911549324087,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "2_6_in_5"
       }
     },
@@ -47804,6 +48461,8 @@
           -0.9424784696151144
         ],
         "computed_metric": 2.742826175682922,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "3_6_in_5"
       }
     },
@@ -47818,11 +48477,11 @@
       "ref_status": "best_known",
       "status": "best_known",
       "attempted": true,
-      "our_best_metric": 2.570604,
-      "our_best_s": 2.570604,
-      "comparison_status": "NEW_BEST",
-      "diff": -0.444596,
-      "closeness_pct": 117.3,
+      "our_best_metric": 3.01522,
+      "our_best_s": 2.564899,
+      "comparison_status": "matches_best_known",
+      "diff": 0.0,
+      "closeness_pct": 100.0,
       "starts": 0,
       "attempts": 0,
       "successes": 0,
@@ -47832,26 +48491,28 @@
       "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html",
       "source_note": "s = 3.01521+ Found by Bhavithran Ananthan in July 2026.",
       "solution": {
-        "S": 2.5706039648725856,
-        "inner_token": "6",
-        "container_token": "5",
-        "final_metric": 3.0219262000733296,
+        "S": 2.564899311701111,
+        "inner_sides": 6,
+        "container_sides": 5,
+        "final_metric": 3.015219978066057,
         "N": 4,
         "values": [
-          -1.125547183357293,
-          -0.9022540893876976,
-          4.923536597395869,
-          0.7580795159389712,
-          -1.0193209452979397,
-          3.0368510154214836,
-          -0.8969260084397573,
-          0.9804144674181675,
-          3.454856809155352,
-          0.9249519614258245,
-          0.7911112168131544,
-          5.341196001556866
+          -1.1239906314744699,
+          -0.9060336031184643,
+          0.7330381825028297,
+          0.7568801941741133,
+          -1.015153592083384,
+          1.989675127676426,
+          -0.9020454923879183,
+          0.9781476880366768,
+          1.361357788037108,
+          0.9167315023505815,
+          0.7951364909392719,
+          1.151916133279428
         ],
-        "computed_metric": 2.5706039648725856,
+        "computed_metric": 3.015219978066057,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "4_6_in_5"
       }
     },
@@ -47903,6 +48564,8 @@
           1.6889552504158125
         ],
         "computed_metric": 3.2204833916000335,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "5_6_in_5"
       }
     },
@@ -47957,6 +48620,8 @@
           0.2890838304392848
         ],
         "computed_metric": 3.551443871957106,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "6_6_in_5"
       }
     },
@@ -48014,6 +48679,8 @@
           -1.961126543953273
         ],
         "computed_metric": 3.80240236321914,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "7_6_in_5"
       }
     },
@@ -48074,6 +48741,8 @@
           3.5195184462857503
         ],
         "computed_metric": 4.1492118237956745,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "8_6_in_5"
       }
     },
@@ -48137,6 +48806,8 @@
           -1.3578510077987345
         ],
         "computed_metric": 4.34440516599146,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "9_6_in_5"
       }
     },
@@ -48203,6 +48874,8 @@
           -1.5776836083019825
         ],
         "computed_metric": 4.586738396690827,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "10_6_in_5"
       }
     },
@@ -48216,12 +48889,12 @@
       "best_value": 4.7196,
       "ref_status": "best_known",
       "status": "best_known",
-      "attempted": true,
-      "our_best_metric": 7.8073,
-      "our_best_s": 6.641286,
-      "comparison_status": "worse_than_best_known",
-      "diff": 3.0877,
-      "closeness_pct": 60.45,
+      "attempted": false,
+      "our_best_metric": null,
+      "our_best_s": null,
+      "comparison_status": "unattempted",
+      "diff": null,
+      "closeness_pct": null,
       "starts": 0,
       "attempts": 0,
       "successes": 0,
@@ -48230,50 +48903,7 @@
       "density": 0.7457,
       "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html",
       "source_note": "s = 4.71959+ Found by Bhavithran Ananthan in July 2026.",
-      "solution": {
-        "S": 6.641286374447329,
-        "inner_sides": 6,
-        "container_sides": 5,
-        "final_metric": 7.8073003743021765,
-        "N": 11,
-        "values": [
-          10.00000275704155,
-          10.00000189524084,
-          -2.4349484780956343e-06,
-          35.00000109256376,
-          10.00000345912686,
-          9.308234425502005e-07,
-          59.999999278203575,
-          9.999995801296327,
-          -3.867837698153251e-06,
-          84.99999595485706,
-          10.000002000409202,
-          -3.135994214460417e-06,
-          9.999999470676157,
-          35.000001531924276,
-          -4.9239017475676265e-06,
-          34.9999959762979,
-          35.00000311596404,
-          -1.9142905758983566e-06,
-          60.000004268734465,
-          34.99999866050369,
-          9.799025857735711e-07,
-          85.00000197511754,
-          34.99999993657865,
-          -3.769731071614691e-06,
-          9.999999421443471,
-          59.99999888148748,
-          3.848644316743368e-06,
-          35.000001683426234,
-          60.000001406484536,
-          2.7351360080938026e-06,
-          59.999999412010844,
-          60.000000007952146,
-          -4.350337114228531e-07
-        ],
-        "computed_metric": 7.8073003743021765,
-        "folder_name": "11_6_in_5"
-      }
+      "solution": null
     },
     {
       "id": "6_in_5_12",
@@ -48373,6 +49003,8 @@
           2.4085544719806995
         ],
         "computed_metric": 5.101119963685507,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "13_6_in_5"
       }
     },
@@ -48451,6 +49083,8 @@
           -1.0669879008775625
         ],
         "computed_metric": 5.292411057060316,
+        "inner_token": "6",
+        "container_token": "5",
         "folder_name": "14_6_in_5"
       }
     },
@@ -49074,6 +49708,8 @@
           -1.8318919687492662e-05
         ],
         "computed_metric": 2.666628487560574,
+        "inner_token": "6",
+        "container_token": "6",
         "folder_name": "5_6_in_6"
       }
     },
@@ -49186,6 +49822,8 @@
           -3.932888489088549e-06
         ],
         "computed_metric": 3.314477169278608,
+        "inner_token": "6",
+        "container_token": "6",
         "folder_name": "8_6_in_6"
       }
     },
@@ -49249,6 +49887,8 @@
           1.0471957499212001
         ],
         "computed_metric": 3.628935545351786,
+        "inner_token": "6",
+        "container_token": "6",
         "folder_name": "9_6_in_6"
       }
     },
@@ -49315,6 +49955,8 @@
           0.11683435014946723
         ],
         "computed_metric": 3.7370363216596365,
+        "inner_token": "6",
+        "container_token": "6",
         "folder_name": "10_6_in_6"
       }
     },
@@ -49384,6 +50026,8 @@
           2.6887361355228543
         ],
         "computed_metric": 3.9271948628958717,
+        "inner_token": "6",
+        "container_token": "6",
         "folder_name": "11_6_in_6"
       }
     },
@@ -49456,6 +50100,8 @@
           3.973801041741355
         ],
         "computed_metric": 3.941648986549848,
+        "inner_token": "6",
+        "container_token": "6",
         "folder_name": "12_6_in_6"
       }
     },
@@ -50099,6 +50745,8 @@
           1.701696573862114
         ],
         "computed_metric": 1.6064518065238693,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "3_6_in_8"
       }
     },
@@ -50147,6 +50795,8 @@
           1.3089841453306805
         ],
         "computed_metric": 1.7562837004469616,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "4_6_in_8"
       }
     },
@@ -50198,6 +50848,8 @@
           0.9162977896879614
         ],
         "computed_metric": 1.987076808641154,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "5_6_in_8"
       }
     },
@@ -50252,6 +50904,8 @@
           1.1126202496734932
         ],
         "computed_metric": 2.1643635287453797,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "6_6_in_8"
       }
     },
@@ -50338,6 +50992,8 @@
           0.6544968939747384
         ],
         "computed_metric": 2.409205076566872,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "8_6_in_8"
       }
     },
@@ -50401,6 +51057,8 @@
           -0.8415233426915436
         ],
         "computed_metric": 2.6435172336221453,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "9_6_in_8"
       }
     },
@@ -50467,6 +51125,8 @@
           -0.3930355729809991
         ],
         "computed_metric": 2.7446080738430743,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "10_6_in_8"
       }
     },
@@ -50536,6 +51196,8 @@
           -1.6977113501760837
         ],
         "computed_metric": 2.869746533171968,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "11_6_in_8"
       }
     },
@@ -50637,6 +51299,8 @@
           1.701924601064149
         ],
         "computed_metric": 3.0721259118048114,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "13_6_in_8"
       }
     },
@@ -50744,6 +51408,8 @@
           1.6910096552598695
         ],
         "computed_metric": 3.284144430190815,
+        "inner_token": "6",
+        "container_token": "8",
         "folder_name": "15_6_in_8"
       }
     },
@@ -54400,6 +55066,8 @@
           3.2202330049959142
         ],
         "computed_metric": 3.3560717428343176,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "2_8_in_5"
       }
     },
@@ -54445,6 +55113,8 @@
           0.07865561917745545
         ],
         "computed_metric": 3.744131632294112,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "3_8_in_5"
       }
     },
@@ -54493,6 +55163,8 @@
           -0.7068584810922678
         ],
         "computed_metric": 4.1012610892265275,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "4_8_in_5"
       }
     },
@@ -54544,6 +55216,8 @@
           0.8648053899464466
         ],
         "computed_metric": 4.33817209229885,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "5_8_in_5"
       }
     },
@@ -54598,6 +55272,8 @@
           -0.5494467636920939
         ],
         "computed_metric": 4.770572805257783,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "6_8_in_5"
       }
     },
@@ -54655,6 +55331,8 @@
           1.4922558227857539
         ],
         "computed_metric": 5.256554068205588,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "7_8_in_5"
       }
     },
@@ -54715,6 +55393,8 @@
           0.7601343242042209
         ],
         "computed_metric": 5.620301379188071,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "8_8_in_5"
       }
     },
@@ -54778,6 +55458,8 @@
           1.6426276814682028
         ],
         "computed_metric": 5.981470840585326,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "9_8_in_5"
       }
     },
@@ -54844,6 +55526,8 @@
           -0.5105374054804859
         ],
         "computed_metric": 6.295140264885341,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "10_8_in_5"
       }
     },
@@ -54913,6 +55597,8 @@
           1.6022747073052643
         ],
         "computed_metric": 6.482921070776286,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "11_8_in_5"
       }
     },
@@ -54985,6 +55671,8 @@
           0.7038689392779384
         ],
         "computed_metric": 6.71938110679768,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "12_8_in_5"
       }
     },
@@ -55060,6 +55748,8 @@
           -2.4347392383932984
         ],
         "computed_metric": 6.971102456753502,
+        "inner_token": "8",
+        "container_token": "5",
         "folder_name": "13_8_in_5"
       }
     },
@@ -60275,7 +60965,7 @@
           -0.2904914701875452,
           1.1482697568036009
         ],
-        "computed_metric": 1.8621428617706413,
+        "computed_metric": 1.862142861770641,
         "folder_name": "2_L_in_6"
       }
     },

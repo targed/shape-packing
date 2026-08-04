@@ -1,13 +1,23 @@
 ---
-import { generatePackingSvgElements, getRegularPolygonVertices, transformPoint, type SolutionData } from '../lib/visualization/render_packing';
+import { generatePackingSvgElements, getRegularPolygonVertices, transformPoint, parseSides, type SolutionData } from '../lib/visualization/render_packing';
 
 interface Props {
   solution: SolutionData;
   title?: string;
+  fallbackInner?: string | number;
+  fallbackContainer?: string | number;
 }
 
-const { solution, title } = Astro.props;
-const svgData = generatePackingSvgElements(solution);
+const { solution, title, fallbackInner, fallbackContainer } = Astro.props;
+
+// Merge fallbacks if missing in solution object
+const mergedSolution = {
+  ...solution,
+  inner_token: solution.inner_token ?? solution.inner_sides ?? fallbackInner,
+  container_token: solution.container_token ?? solution.container_sides ?? fallbackContainer,
+};
+
+const svgData = generatePackingSvgElements(mergedSolution);
 ---
 
 {svgData ? (
@@ -22,7 +32,7 @@ const svgData = generatePackingSvgElements(solution);
               .map(p => `${p.x},${p.y}`)
               .join(' ')}
             fill="none"
-            stroke="#475569"
+            stroke="#64748b"
             stroke-width="0.04"
             stroke-dasharray="0.1,0.1"
           />
@@ -32,7 +42,7 @@ const svgData = generatePackingSvgElements(solution);
             cy="0"
             r={svgData.S}
             fill="none"
-            stroke="#475569"
+            stroke="#64748b"
             stroke-width="0.04"
             stroke-dasharray="0.1,0.1"
           />
@@ -41,14 +51,14 @@ const svgData = generatePackingSvgElements(solution);
         <!-- Inner Shapes -->
         {svgData.shapes.map((shape) => {
           const numSides = typeof svgData.innerSides === 'number' ? svgData.innerSides : 3;
-          if (numSides > 2) {
+          if (typeof numSides === 'number' && numSides > 2) {
             const vertices = getRegularPolygonVertices(numSides, 1.0);
             const transformed = vertices.map(v => transformPoint(v, shape.cx, shape.cy, shape.angle));
             return (
               <polygon
                 points={transformed.map(p => `${p.x},${p.y}`).join(' ')}
                 fill={shape.color}
-                fill-opacity="0.35"
+                fill-opacity="0.4"
                 stroke={shape.color}
                 stroke-width="0.03"
               />
@@ -60,7 +70,7 @@ const svgData = generatePackingSvgElements(solution);
                 cy={shape.cy}
                 r="0.5"
                 fill={shape.color}
-                fill-opacity="0.35"
+                fill-opacity="0.4"
                 stroke={shape.color}
                 stroke-width="0.03"
               />
@@ -69,11 +79,11 @@ const svgData = generatePackingSvgElements(solution);
         })}
       </svg>
     </div>
-    <div class="mt-3 flex items-center justify-between w-full text-[11px] text-slate-400 border-t border-slate-800/60 pt-2">
+    <div class="mt-3 flex items-center justify-between w-full text-[11px] text-slate-400 border-t border-slate-800/60 pt-2 font-mono">
       <span>N = <strong class="text-indigo-400">{solution.N}</strong></span>
-      <span>Scale (S) = <strong class="text-emerald-400">{(solution.S || solution.final_metric || 0).toFixed(4)}</strong></span>
+      <span>Final Metric (s) = <strong class="text-emerald-400">{svgData.finalMetric.toFixed(4)}</strong></span>
     </div>
   </div>
 ) : (
-  <div class="text-xs text-slate-500 italic py-4 text-center">No visualization available for this configuration</div>
+  <div class="text-xs text-slate-500 italic py-4 text-center">No visualization available</div>
 )}
