@@ -676,11 +676,11 @@ fn penalty_and_gradient(
                         let nx = if dist > 1e-12 { dx / dist } else { 1.0 };
                         let ny = if dist > 1e-12 { dy / dist } else { 0.0 };
                         
-                        grad[i * 3] -= term * nx;
-                        grad[i * 3 + 1] -= term * ny;
+                        grad[i * 3] += term * nx;
+                        grad[i * 3 + 1] += term * ny;
                         
-                        grad[j * 3] += term * nx;
-                        grad[j * 3 + 1] += term * ny;
+                        grad[j * 3] -= term * nx;
+                        grad[j * 3 + 1] -= term * ny;
                     }
                 }
                 continue;
