@@ -9412,3 +9412,4 @@ auto	4.052026505191741	0.0	discard	12_CIRCLE_in_CIRCLE	Parallel run loop
 auto	3.18935261692976	0.0	keep	25_4_in_CIRCLE	Parallel run loop
 auto	2.953764856144117	0.0	discard	20_4_in_CIRCLE	Parallel run loop
 auto	4.477554360231393	0.0	keep	5_CIRCLE_in_DOMINO	Auto run attempts=200
+auto	3.54617472316401	0.0	keep	5_CIRCLE_in_DOMINO	Auto run attempts=200
