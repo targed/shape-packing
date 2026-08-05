@@ -165,7 +165,7 @@ class TestNumbaDirectCoverage:
         cv = np.array([[1.0, 0.0], [-1.0, 0.0], [0.0, 1.0], [0.0, -1.0]])
         edge_radii = np.ones(4)
         S = 10.0
-        p = _poking_penalty_nb(v, S, cv, edge_radii)
+        p = _poking_penalty_nb(v, S, cv, edge_radii, False, False, 0.0, 0.0)
         assert p == 0.0
 
     def test_poking_penalty_nb_with_poke(self):
@@ -174,7 +174,7 @@ class TestNumbaDirectCoverage:
         cv = np.array([[1.0, 0.0], [-1.0, 0.0], [0.0, 1.0], [0.0, -1.0]])
         edge_radii = np.ones(4)
         S = 1.0
-        p = _poking_penalty_nb(v, S, cv, edge_radii)
+        p = _poking_penalty_nb(v, S, cv, edge_radii, False, False, 0.0, 0.0)
         assert p > 0.0
 
     def test_bh_objective_full_path(self):
