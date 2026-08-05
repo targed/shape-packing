@@ -133,6 +133,8 @@ class GeoConfig:
         "unit_polygon_vectors",
         "unit_container_vectors",
         "unit_container_radii",
+        "is_inner_circle",
+        "is_container_circle",
     )
 
     def __init__(
@@ -144,6 +146,8 @@ class GeoConfig:
         unit_polygon_vectors: np.ndarray,
         unit_container_vectors: np.ndarray,
         unit_container_radii: np.ndarray,
+        is_inner_circle: bool = False,
+        is_container_circle: bool = False,
     ):
         self.N = N
         self.nsi = nsi
@@ -152,6 +156,8 @@ class GeoConfig:
         self.unit_polygon_vectors = _ensure_array(unit_polygon_vectors)
         self.unit_container_vectors = _ensure_array(unit_container_vectors)
         self.unit_container_radii = _ensure_array(unit_container_radii)
+        self.is_inner_circle = is_inner_circle
+        self.is_container_circle = is_container_circle
 
 
 # ------------ Numba-accelerated core ------------
@@ -185,17 +191,40 @@ def _rotate_vectors_nb(a, vectors):
 
 
 @njit(cache=True)
-def _poking_penalty_nb(vertices, S, container_vectors, edge_radii):
+def _poking_penalty_nb(vertices, S, container_vectors, edge_radii, is_inner_circle, is_container_circle, posx, posy):
     penalty = 0.0
-    for v in range(vertices.shape[0]):
-        vx = vertices[v, 0]
-        vy = vertices[v, 1]
-        for i in range(container_vectors.shape[0]):
-            limit = edge_radii[i] * S
-            d = vx * container_vectors[i, 0] + vy * container_vectors[i, 1]
-            if d > limit:
-                diff = d - limit
+    if is_container_circle:
+        if is_inner_circle:
+            limit = S - 1.0
+            dist = math.hypot(posx, posy)
+            if dist > limit:
+                diff = dist - limit
                 penalty += diff * diff
+        else:
+            limit = S
+            for v in range(vertices.shape[0]):
+                dist = math.hypot(vertices[v, 0], vertices[v, 1])
+                if dist > limit:
+                    diff = dist - limit
+                    penalty += diff * diff
+    else:
+        if is_inner_circle:
+            for i in range(container_vectors.shape[0]):
+                limit = edge_radii[i] * S - 1.0
+                d = posx * container_vectors[i, 0] + posy * container_vectors[i, 1]
+                if d > limit:
+                    diff = d - limit
+                    penalty += diff * diff
+        else:
+            for v in range(vertices.shape[0]):
+                vx = vertices[v, 0]
+                vy = vertices[v, 1]
+                for i in range(container_vectors.shape[0]):
+                    limit = edge_radii[i] * S
+                    d = vx * container_vectors[i, 0] + vy * container_vectors[i, 1]
+                    if d > limit:
+                        diff = d - limit
+                        penalty += diff * diff
     return penalty
 
 
@@ -209,6 +238,8 @@ def bh_objective(
     unit_polygon_vectors,
     unit_container_vectors,
     unit_container_radii,
+    is_inner_circle=False,
+    is_container_circle=False,
 ) -> float:
     """
     Core objective: penalty for container overflow + overlaps (SAT-style).
@@ -225,11 +256,20 @@ def bh_objective(
         polys[i] = _transform_polygon_nb(unit_polygon_vertices, x, y, a)
         vecs[i] = _rotate_vectors_nb(a, unit_polygon_vectors)
         penalty += _poking_penalty_nb(
-            polys[i], S, unit_container_vectors, unit_container_radii
+            polys[i], S, unit_container_vectors, unit_container_radii, is_inner_circle, is_container_circle, x, y
         )
 
     for i in range(N):
         for j in range(i + 1, N):
+            if is_inner_circle:
+                dx = values[j * 3] - values[i * 3]
+                dy = values[j * 3 + 1] - values[i * 3 + 1]
+                dist = math.hypot(dx, dy)
+                if dist < 2.0:
+                    diff = 2.0 - dist
+                    penalty += diff * diff
+                continue
+
             collision = True
             min_overlap = 1e30
 

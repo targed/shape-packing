@@ -74,6 +74,9 @@ def build_objective(problem: PackingProblem):
     nsi, unit_polygon_vertices, unit_polygon_vectors, _ = get_shape_geometry(problem.inner_token)
     nsc, _, unit_container_vectors, unit_container_apothem = get_shape_geometry(problem.container_token)
 
+    is_inner_circle = problem.inner_token.upper() in ["CIRCLE", "CIR"]
+    is_container_circle = problem.container_token.upper() in ["CIRCLE", "CIR"]
+
     def objective(values: np.ndarray, S: float) -> float:
         return bh_objective(
             values,
@@ -84,6 +87,8 @@ def build_objective(problem: PackingProblem):
             unit_polygon_vectors,
             unit_container_vectors,
             unit_container_apothem,
+            is_inner_circle,
+            is_container_circle,
         )
 
     # Return objective + geometry constants for use inside attempts.

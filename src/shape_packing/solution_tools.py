@@ -265,6 +265,9 @@ def verify_solution(
     nsc, _, unit_container_vectors, unit_container_radii = get_shape_geometry(sol.container_token)
     S = sol.S
 
+    is_inner_circle = sol.inner_token.upper() in ["CIRCLE", "CIR"]
+    is_container_circle = sol.container_token.upper() in ["CIRCLE", "CIR"]
+
     # 1. Metric scaling verification
     calc_metric = compute_friedman_metric(S, sol.inner_token, sol.container_token)
     diff = abs(calc_metric - sol.final_metric)
@@ -281,19 +284,49 @@ def verify_solution(
     polygons = build_polygons(sol)
 
     for i, poly in enumerate(polygons):
-        for v in poly:
-            for n_idx, n in enumerate(container_normals):
-                dist = v[0] * n[0] + v[1] * n[1]
-                if dist > container_limits[n_idx] + tolerance:
-                    violation = dist - container_limits[n_idx]
-                    errors.append(
-                        f"Shape {i} is out of bounds! Violation margin: {violation}"
-                    )
+        posx = sol.values[i * 3]
+        posy = sol.values[i * 3 + 1]
+        
+        if is_container_circle:
+            if is_inner_circle:
+                dist = math.hypot(posx, posy)
+                limit = S - 1.0
+                if dist > limit + tolerance:
+                    errors.append(f"Shape {i} (circle) out of circular bounds! Margin: {dist - limit}")
+            else:
+                for v in poly:
+                    dist = math.hypot(v[0], v[1])
+                    if dist > S + tolerance:
+                        errors.append(f"Shape {i} out of circular bounds! Margin: {dist - S}")
+        else:
+            if is_inner_circle:
+                for n_idx, n in enumerate(container_normals):
+                    dist = posx * n[0] + posy * n[1]
+                    limit = container_limits[n_idx] - 1.0
+                    if dist > limit + tolerance:
+                        errors.append(f"Shape {i} (circle) out of bounds! Margin: {dist - limit}")
+            else:
+                for v in poly:
+                    for n_idx, n in enumerate(container_normals):
+                        dist = v[0] * n[0] + v[1] * n[1]
+                        if dist > container_limits[n_idx] + tolerance:
+                            violation = dist - container_limits[n_idx]
+                            errors.append(f"Shape {i} is out of bounds! Violation margin: {violation}")
 
     # 3. Overlap verification (SAT)
     poly_normals_list = [polygon_normals(p) for p in polygons]
     for i in range(N):
         for j in range(i + 1, N):
+            if is_inner_circle:
+                posxi = sol.values[i * 3]
+                posyi = sol.values[i * 3 + 1]
+                posxj = sol.values[j * 3]
+                posyj = sol.values[j * 3 + 1]
+                dist = math.hypot(posxi - posxj, posyi - posyj)
+                if dist < 2.0 - tolerance:
+                    errors.append(f"Shapes {i} and {j} overlap (circle)! Depth: {2.0 - dist}")
+                continue
+
             overlap, depth = sat_check_overlap(
                 polygons[i],
                 polygons[j],
