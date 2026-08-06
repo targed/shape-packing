@@ -203,7 +203,7 @@ RUST_TOLERANCE: str = "1e-28"
 RUST_DEFAULT_ATTEMPTS: int = 1000
 
 #: Default time limit in seconds for a single Rust solver run.
-RUST_DEFAULT_TIME_LIMIT: int = 290
+RUST_DEFAULT_TIME_LIMIT: int = 1000
 
 # ===========================================================================
 # SECTION 3: Solver — Python Backend (scipy/optimization.py)
@@ -329,4 +329,4 @@ RENDER_DPI: int = 300
 RENDER_FIGURE_SIZE: tuple = (6, 6)
 
 #: DPI for analysis charts produced by scripts/analyze_mill_log.py.
-ANALYSIS_PLOT_DPI: int = 200
+ANALYSIS_PLOT_DPI: int = 200
