@@ -115,9 +115,9 @@ def run_loop():
             check=True,
             stdout=subprocess.DEVNULL,
         )
-    except subprocess.CalledProcessError as e:
+    except Exception as e:
         print(f"[Loop] Failed to compile Rust solver: {e}")
-        sys.exit(1)
+        print("[Loop] Continuing anyway, assuming the binary is already compiled...")
 
     while True:
         try:

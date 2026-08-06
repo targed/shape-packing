@@ -223,9 +223,9 @@ def run_loop():
             check=True,
             stdout=subprocess.DEVNULL,
         )
-    except subprocess.CalledProcessError as e:
+    except Exception as e:
         print(f"[Main] Failed to compile Rust solver: {e}")
-        sys.exit(1)
+        print("[Main] Continuing anyway, assuming the binary is already compiled...")
     
     in_flight = {} # Map of Future -> problem_name
     
