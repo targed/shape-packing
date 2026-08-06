@@ -12593,3 +12593,4 @@ auto	2.708323128391939	0.0	discard	24_3_in_5	Auto run attempts=500000
 auto	0.0	0.0	crash	5_DOMINO_in_CIRCLE	Parallel run loop
 auto	0.0	0.0	crash	6_DOMINO_in_DOMINO	Parallel run loop
 auto	2.1803977449531997	0.0	keep	5_DOMINO_in_CIRCLE	Auto run attempts=500
+auto	1.9794956013202119	0.0	keep	4_DOMINO_in_CIRCLE	Auto run attempts=5000
