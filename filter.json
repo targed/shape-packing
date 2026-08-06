@@ -1,6 +1,7 @@
 {
-    "min_n": 4,
-    "min_inner_sides": 4,
-    "exclude_inner" : "3,4",
-    "exclude_container" : "3,4"
+  "min_n": 5,
+  "exclude_inner": "3,4,TRIANGLE,SQUARE",
+  "exclude_container": "3,4,TRIANGLE,SQUARE",
+  "include_inner": "PENTAGON,HEXAGON,OCTAGON,DOMINO",
+  "include_container": "PENTAGON,HEXAGON,OCTAGON,TRIANGLE,CIRCLE,DOMINO"
 }

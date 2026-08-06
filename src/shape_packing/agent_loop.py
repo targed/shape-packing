@@ -463,20 +463,29 @@ def choose_problem(
                 if item_container == "TRIANGLE": item_container = "3"
                 if item_inner == "TRIANGLE": item_inner = "3"
 
+                def _to_list(v):
+                    # Normalize: if a comma-separated string, split into list.
+                    if isinstance(v, str):
+                        return [x.strip() for x in v.split(",") if x.strip()]
+                    if isinstance(v, list):
+                        return v
+                    return [str(v)]
+
                 inc_inner = []
                 if filters.get("include_inner"):
-                    inc_inner = [t.upper() for t in filters["include_inner"]]
-                    # Add aliases to filter
+                    raw = _to_list(filters["include_inner"])
+                    inc_inner = [t.upper() for t in raw]
                     if "CIRCLE" in inc_inner: inc_inner.append("CIR")
                     if "CIR" in inc_inner: inc_inner.append("CIRCLE")
                     if "3" in inc_inner: inc_inner.append("TRIANGLE")
                     if "TRIANGLE" in inc_inner: inc_inner.append("3")
-                    
+
                     if inner_token not in inc_inner and p0_inner not in inc_inner and item_inner not in inc_inner:
                         continue
-                        
+
                 if filters.get("exclude_inner"):
-                    exc_inner = [t.upper() for t in filters["exclude_inner"]]
+                    raw = _to_list(filters["exclude_inner"])
+                    exc_inner = [t.upper() for t in raw]
                     if "CIRCLE" in exc_inner: exc_inner.append("CIR")
                     if "CIR" in exc_inner: exc_inner.append("CIRCLE")
                     if "3" in exc_inner: exc_inner.append("TRIANGLE")
@@ -486,16 +495,18 @@ def choose_problem(
 
                 inc_cont = []
                 if filters.get("include_container"):
-                    inc_cont = [t.upper() for t in filters["include_container"]]
+                    raw = _to_list(filters["include_container"])
+                    inc_cont = [t.upper() for t in raw]
                     if "CIRCLE" in inc_cont: inc_cont.append("CIR")
                     if "CIR" in inc_cont: inc_cont.append("CIRCLE")
                     if "3" in inc_cont: inc_cont.append("TRIANGLE")
                     if "TRIANGLE" in inc_cont: inc_cont.append("3")
                     if container_token not in inc_cont and p0_cont not in inc_cont and item_container not in inc_cont:
                         continue
-                        
+
                 if filters.get("exclude_container"):
-                    exc_cont = [t.upper() for t in filters["exclude_container"]]
+                    raw = _to_list(filters["exclude_container"])
+                    exc_cont = [t.upper() for t in raw]
                     if "CIRCLE" in exc_cont: exc_cont.append("CIR")
                     if "CIR" in exc_cont: exc_cont.append("CIRCLE")
                     if "3" in exc_cont: exc_cont.append("TRIANGLE")
@@ -508,14 +519,19 @@ def choose_problem(
                 if container_token == "CIRCLE":
                     container_sides = CIRCLE_SIDES
                     
-                if filters.get("min_inner_sides") is not None and (inner_sides is None or inner_sides < filters["min_inner_sides"]):
-                    continue
-                if filters.get("max_inner_sides") is not None and (inner_sides is None or inner_sides > filters["max_inner_sides"]):
-                    continue
-                if filters.get("min_container_sides") is not None and (container_sides is None or container_sides < filters["min_container_sides"]):
-                    continue
-                if filters.get("max_container_sides") is not None and (container_sides is None or container_sides > filters["max_container_sides"]):
-                    continue
+                # Only apply min/max sides filters to regular polygons (numeric sides).
+                # Special shapes (DOMINO, TAN, L) use their identity for include/exclude,
+                # not their "side count", so don't exclude them based on sides.
+                if inner_sides is not None:
+                    if filters.get("min_inner_sides") is not None and inner_sides < filters["min_inner_sides"]:
+                        continue
+                    if filters.get("max_inner_sides") is not None and inner_sides > filters["max_inner_sides"]:
+                        continue
+                if container_sides is not None:
+                    if filters.get("min_container_sides") is not None and container_sides < filters["min_container_sides"]:
+                        continue
+                    if filters.get("max_container_sides") is not None and container_sides > filters["max_container_sides"]:
+                        continue
             except Exception:
                 continue
 
