@@ -13328,3 +13328,4 @@ VERIFY	2.0	0.0	keep	11_DOMINO_in_DOMINO	verify
 VERIFY	2.0	0.0	keep	12_DOMINO_in_DOMINO	verify
 VERIFY	2.0	0.0	keep	20_DOMINO_in_DOMINO	verify
 auto	2.694665449000631	0.0	keep	24_3_in_5	Auto run attempts=5000
+auto	2.674689822064729	0.0	keep	24_3_in_5	Auto run attempts=50000
