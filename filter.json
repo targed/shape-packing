@@ -1,5 +1,4 @@
 {
     "min_n": 3,
-    "max_n": 50,
-    "min_inner_sides": 5
+    "min_inner_sides": 3
 }
