@@ -1,0 +1,1884 @@
+[Main] Starting parallel loop on 32 cores.
+[Main] Compiling Rust solver once before spawning workers...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading shared libraries: librustc_driver-832cf6cfb1386559.so: cannot open shared object file: No such file or directory
+error: could not compile `packer_rs` (bin "packer_rs")
+
+Caused by:
+  process didn't exit successfully: `/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name packer_rs --edition=2021 src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C opt-level=3 -C lto -C codegen-units=1 --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values())' -C metadata=3d8ec413365de388 -C extra-filename=-8c625e11bc6c539b --out-dir /home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps -C strip=debuginfo -L dependency=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps --extern clap=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/libclap-78959b96ac7dd16a.rlib --extern rand=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/librand-a4c5521bd009bc6d.rlib --extern rand_chacha=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/librand_chacha-f2e81b837b6d39a1.rlib --extern rayon=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/librayon-fffc46244a81162e.rlib --extern serde=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/libserde-bd3bbd5717fc7c86.rlib --extern serde_json=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/libserde_json-a08456acf1784534.rlib` (exit status: 127)
+[Main] Failed to compile Rust solver: Command '['cargo', 'build', '--release']' returned non-zero exit status 101.
+[Main] Continuing anyway, assuming the binary is already compiled...
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[27_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Injecting --target-s 4.521808642531515 (from Friedman best_score 4.521808642531515)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 16_6_in_4: Injecting --target-s 5.1724984973312065 (from Friedman best_score 7.315017526280247)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 19_6_in_4: Injecting --target-s 5.60691700673277 (from Friedman best_score 7.929378074021842)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 9_6_in_4: Injecting --target-s 3.9019244803628794 (from Friedman best_score 5.518154519484776)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 15_6_in_4: Injecting --target-s 4.924289322533364 (from Friedman best_score 6.963996744975704)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 12_6_in_4: Injecting --target-s 4.516618189663617 (from Friedman best_score 6.387462699883303)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 5_6_in_4: Injecting --target-s 3.1380298819685843 (from Friedman best_score 4.437844418212015)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 13_CIRCLE_in_3: Injecting --target-s 6.585859000404045 (from Friedman best_score 11.407042400184585)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in strin
+[Main] Worker failed on 3_6_in_4: Injecting --target-s 2.4691878987852296 (from Friedman best_score 3.491959014509597)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 6_6_in_4: Injecting --target-s 3.403908281352106 (from Friedman best_score 4.813853256562242)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Injecting --target-s 4.3284563187822975 (from Friedman best_score 4.3284563187822975)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 21_6_in_4: Injecting --target-s 5.931781434256063 (from Friedman best_score 8.388805753357856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 26_6_in_4: Injecting --target-s 6.527274771182405 (from Friedman best_score 9.2309605067419)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a va
+[Main] Worker failed on 13_6_in_4: Injecting --target-s 4.778087799929785 (from Friedman best_score 6.757236568870126)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 25_6_in_4: Injecting --target-s 6.415994334555522 (from Friedman best_score 9.073586204037362)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 27_6_in_4: Injecting --target-s 6.604694190124501 (from Friedman best_score 9.340448099000856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Injecting --target-s 4.029653631456982 (from Friedman best_score 4.029653631456982)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Injecting --target-s 4.615463307860416 (from Friedman best_score 4.615463307860416)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 11_6_in_4: Injecting --target-s 4.478553648403624 (from Friedman best_score 6.333631309387911)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 17_6_in_4: Injecting --target-s 5.37757396709778 (from Friedman best_score 7.605038036934168)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 23_6_in_4: Injecting --target-s 6.12372750090957 (from Friedman best_score 8.660258484063416)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 22_6_in_4: Injecting --target-s 6.061219398365042 (from Friedman best_score 8.571858677686734)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 18_6_in_4: Injecting --target-s 5.455947884215841 (from Friedman best_score 7.715875493458835)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Injecting --target-s 4.863717375030539 (from Friedman best_score 4.863717375030539)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 24_6_in_4: Injecting --target-s 6.220122012600467 (from Friedman best_score 8.796580909835013)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 20_6_in_4: Injecting --target-s 5.623969025932595 (from Friedman best_score 7.953493270840081)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 10_6_in_4: Injecting --target-s 4.316874519634696 (from Friedman best_score 6.104982492730227)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Injecting --target-s 4.792049696275617 (from Friedman best_score 4.792049696275617)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 14_CIRCLE_in_3: Injecting --target-s 6.6189266380430425 (from Friedman best_score 11.464317228661605)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 4_6_in_4: Injecting --target-s 2.6339750164850937 (from Friedman best_score 3.7250031912651163)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as 
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Injecting --target-s 5.1223780819223546 (from Friedman best_score 5.1223780819223546)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[20_6_in_4] Starting (50000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[18_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 24_6_in_4: Injecting --target-s 6.220122012600467 (from Friedman best_score 8.796580909835013)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Injecting --target-s 4.615463307860416 (from Friedman best_score 4.615463307860416)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 10_6_in_4: Injecting --target-s 4.316874519634696 (from Friedman best_score 6.104982492730227)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 22_6_in_4: Injecting --target-s 6.061219398365042 (from Friedman best_score 8.571858677686734)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 19_6_in_4: Injecting --target-s 5.60691700673277 (from Friedman best_score 7.929378074021842)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 15_6_in_4: Injecting --target-s 4.924289322533364 (from Friedman best_score 6.963996744975704)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 23_6_in_4: Injecting --target-s 6.12372750090957 (from Friedman best_score 8.660258484063416)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Injecting --target-s 4.3284563187822975 (from Friedman best_score 4.3284563187822975)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 16_6_in_4: Injecting --target-s 5.1724984973312065 (from Friedman best_score 7.315017526280247)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 26_6_in_4: Injecting --target-s 6.527274771182405 (from Friedman best_score 9.2309605067419)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a va
+[Main] Worker failed on 9_6_in_4: Injecting --target-s 3.9019244803628794 (from Friedman best_score 5.518154519484776)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 21_6_in_4: Injecting --target-s 5.931781434256063 (from Friedman best_score 8.388805753357856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 20_6_in_4: Injecting --target-s 5.623969025932595 (from Friedman best_score 7.953493270840081)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 25_6_in_4: Injecting --target-s 6.415994334555522 (from Friedman best_score 9.073586204037362)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 11_6_in_4: Injecting --target-s 4.478553648403624 (from Friedman best_score 6.333631309387911)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Injecting --target-s 4.863717375030539 (from Friedman best_score 4.863717375030539)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 14_CIRCLE_in_3: Injecting --target-s 6.6189266380430425 (from Friedman best_score 11.464317228661605)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 27_6_in_4: Injecting --target-s 6.604694190124501 (from Friedman best_score 9.340448099000856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 18_6_in_4: Injecting --target-s 5.455947884215841 (from Friedman best_score 7.715875493458835)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 3_6_in_4: Injecting --target-s 2.4691878987852296 (from Friedman best_score 3.491959014509597)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 5_6_in_4: Injecting --target-s 3.1380298819685843 (from Friedman best_score 4.437844418212015)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Injecting --target-s 5.1223780819223546 (from Friedman best_score 5.1223780819223546)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 17_6_in_4: Injecting --target-s 5.37757396709778 (from Friedman best_score 7.605038036934168)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 13_6_in_4: Injecting --target-s 4.778087799929785 (from Friedman best_score 6.757236568870126)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Injecting --target-s 4.029653631456982 (from Friedman best_score 4.029653631456982)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Injecting --target-s 4.521808642531515 (from Friedman best_score 4.521808642531515)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 4_6_in_4: Injecting --target-s 2.6339750164850937 (from Friedman best_score 3.7250031912651163)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as 
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Injecting --target-s 4.792049696275617 (from Friedman best_score 4.792049696275617)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 12_6_in_4: Injecting --target-s 4.516618189663617 (from Friedman best_score 6.387462699883303)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 13_CIRCLE_in_3: Injecting --target-s 6.585859000404045 (from Friedman best_score 11.407042400184585)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in strin
+[Main] Worker failed on 6_6_in_4: Injecting --target-s 3.403908281352106 (from Friedman best_score 4.813853256562242)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[4_6_in_4] Starting (5000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Injecting --target-s 4.863717375030539 (from Friedman best_score 4.863717375030539)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Injecting --target-s 4.792049696275617 (from Friedman best_score 4.792049696275617)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Injecting --target-s 4.3284563187822975 (from Friedman best_score 4.3284563187822975)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 17_6_in_4: Injecting --target-s 5.37757396709778 (from Friedman best_score 7.605038036934168)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 18_6_in_4: Injecting --target-s 5.455947884215841 (from Friedman best_score 7.715875493458835)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 4_6_in_4: Injecting --target-s 2.6339750164850937 (from Friedman best_score 3.7250031912651163)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as 
+[Main] Worker failed on 19_6_in_4: Injecting --target-s 5.60691700673277 (from Friedman best_score 7.929378074021842)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 9_6_in_4: Injecting --target-s 3.9019244803628794 (from Friedman best_score 5.518154519484776)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Injecting --target-s 4.029653631456982 (from Friedman best_score 4.029653631456982)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 14_CIRCLE_in_3: Injecting --target-s 6.6189266380430425 (from Friedman best_score 11.464317228661605)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 3_6_in_4: Injecting --target-s 2.4691878987852296 (from Friedman best_score 3.491959014509597)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 16_6_in_4: Injecting --target-s 5.1724984973312065 (from Friedman best_score 7.315017526280247)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 26_6_in_4: Injecting --target-s 6.527274771182405 (from Friedman best_score 9.2309605067419)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a va
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Injecting --target-s 4.521808642531515 (from Friedman best_score 4.521808642531515)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 15_6_in_4: Injecting --target-s 4.924289322533364 (from Friedman best_score 6.963996744975704)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 27_6_in_4: Injecting --target-s 6.604694190124501 (from Friedman best_score 9.340448099000856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 21_6_in_4: Injecting --target-s 5.931781434256063 (from Friedman best_score 8.388805753357856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 23_6_in_4: Injecting --target-s 6.12372750090957 (from Friedman best_score 8.660258484063416)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 12_6_in_4: Injecting --target-s 4.516618189663617 (from Friedman best_score 6.387462699883303)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 25_6_in_4: Injecting --target-s 6.415994334555522 (from Friedman best_score 9.073586204037362)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Injecting --target-s 5.1223780819223546 (from Friedman best_score 5.1223780819223546)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 11_6_in_4: Injecting --target-s 4.478553648403624 (from Friedman best_score 6.333631309387911)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 20_6_in_4: Injecting --target-s 5.623969025932595 (from Friedman best_score 7.953493270840081)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 24_6_in_4: Injecting --target-s 6.220122012600467 (from Friedman best_score 8.796580909835013)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 13_CIRCLE_in_3: Injecting --target-s 6.585859000404045 (from Friedman best_score 11.407042400184585)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in strin
+[Main] Worker failed on 22_6_in_4: Injecting --target-s 6.061219398365042 (from Friedman best_score 8.571858677686734)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 6_6_in_4: Injecting --target-s 3.403908281352106 (from Friedman best_score 4.813853256562242)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 5_6_in_4: Injecting --target-s 3.1380298819685843 (from Friedman best_score 4.437844418212015)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 13_6_in_4: Injecting --target-s 4.778087799929785 (from Friedman best_score 6.757236568870126)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Injecting --target-s 4.615463307860416 (from Friedman best_score 4.615463307860416)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 10_6_in_4: Injecting --target-s 4.316874519634696 (from Friedman best_score 6.104982492730227)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[15_6_in_4] Starting (50000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 26_6_in_4: Injecting --target-s 6.527274771182405 (from Friedman best_score 9.2309605067419)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a va
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Injecting --target-s 4.029653631456982 (from Friedman best_score 4.029653631456982)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 16_6_in_4: Injecting --target-s 5.1724984973312065 (from Friedman best_score 7.315017526280247)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 10_6_in_4: Injecting --target-s 4.316874519634696 (from Friedman best_score 6.104982492730227)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 5_6_in_4: Injecting --target-s 3.1380298819685843 (from Friedman best_score 4.437844418212015)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Injecting --target-s 5.1223780819223546 (from Friedman best_score 5.1223780819223546)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 17_6_in_4: Injecting --target-s 5.37757396709778 (from Friedman best_score 7.605038036934168)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 23_6_in_4: Injecting --target-s 6.12372750090957 (from Friedman best_score 8.660258484063416)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 4_6_in_4: Injecting --target-s 2.6339750164850937 (from Friedman best_score 3.7250031912651163)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as 
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Injecting --target-s 4.863717375030539 (from Friedman best_score 4.863717375030539)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 24_6_in_4: Injecting --target-s 6.220122012600467 (from Friedman best_score 8.796580909835013)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 13_CIRCLE_in_3: Injecting --target-s 6.585859000404045 (from Friedman best_score 11.407042400184585)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in strin
+[Main] Worker failed on 20_6_in_4: Injecting --target-s 5.623969025932595 (from Friedman best_score 7.953493270840081)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 11_6_in_4: Injecting --target-s 4.478553648403624 (from Friedman best_score 6.333631309387911)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 6_6_in_4: Injecting --target-s 3.403908281352106 (from Friedman best_score 4.813853256562242)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 14_CIRCLE_in_3: Injecting --target-s 6.6189266380430425 (from Friedman best_score 11.464317228661605)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 22_6_in_4: Injecting --target-s 6.061219398365042 (from Friedman best_score 8.571858677686734)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 25_6_in_4: Injecting --target-s 6.415994334555522 (from Friedman best_score 9.073586204037362)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Injecting --target-s 4.3284563187822975 (from Friedman best_score 4.3284563187822975)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Injecting --target-s 4.615463307860416 (from Friedman best_score 4.615463307860416)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 13_6_in_4: Injecting --target-s 4.778087799929785 (from Friedman best_score 6.757236568870126)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 21_6_in_4: Injecting --target-s 5.931781434256063 (from Friedman best_score 8.388805753357856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 19_6_in_4: Injecting --target-s 5.60691700673277 (from Friedman best_score 7.929378074021842)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 9_6_in_4: Injecting --target-s 3.9019244803628794 (from Friedman best_score 5.518154519484776)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 15_6_in_4: Injecting --target-s 4.924289322533364 (from Friedman best_score 6.963996744975704)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Injecting --target-s 4.792049696275617 (from Friedman best_score 4.792049696275617)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 12_6_in_4: Injecting --target-s 4.516618189663617 (from Friedman best_score 6.387462699883303)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Injecting --target-s 4.521808642531515 (from Friedman best_score 4.521808642531515)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 3_6_in_4: Injecting --target-s 2.4691878987852296 (from Friedman best_score 3.491959014509597)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 18_6_in_4: Injecting --target-s 5.455947884215841 (from Friedman best_score 7.715875493458835)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 27_6_in_4: Injecting --target-s 6.604694190124501 (from Friedman best_score 9.340448099000856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[18_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Injecting --target-s 4.029653631456982 (from Friedman best_score 4.029653631456982)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 11_6_in_4: Injecting --target-s 4.478553648403624 (from Friedman best_score 6.333631309387911)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 20_6_in_4: Injecting --target-s 5.623969025932595 (from Friedman best_score 7.953493270840081)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Injecting --target-s 4.3284563187822975 (from Friedman best_score 4.3284563187822975)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 16_6_in_4: Injecting --target-s 5.1724984973312065 (from Friedman best_score 7.315017526280247)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 9_6_in_4: Injecting --target-s 3.9019244803628794 (from Friedman best_score 5.518154519484776)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 12_6_in_4: Injecting --target-s 4.516618189663617 (from Friedman best_score 6.387462699883303)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Injecting --target-s 4.792049696275617 (from Friedman best_score 4.792049696275617)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Injecting --target-s 4.521808642531515 (from Friedman best_score 4.521808642531515)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 13_6_in_4: Injecting --target-s 4.778087799929785 (from Friedman best_score 6.757236568870126)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 17_6_in_4: Injecting --target-s 5.37757396709778 (from Friedman best_score 7.605038036934168)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 25_6_in_4: Injecting --target-s 6.415994334555522 (from Friedman best_score 9.073586204037362)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 23_6_in_4: Injecting --target-s 6.12372750090957 (from Friedman best_score 8.660258484063416)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 18_6_in_4: Injecting --target-s 5.455947884215841 (from Friedman best_score 7.715875493458835)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 5_6_in_4: Injecting --target-s 3.1380298819685843 (from Friedman best_score 4.437844418212015)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 10_6_in_4: Injecting --target-s 4.316874519634696 (from Friedman best_score 6.104982492730227)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 27_6_in_4: Injecting --target-s 6.604694190124501 (from Friedman best_score 9.340448099000856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 6_6_in_4: Injecting --target-s 3.403908281352106 (from Friedman best_score 4.813853256562242)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 26_6_in_4: Injecting --target-s 6.527274771182405 (from Friedman best_score 9.2309605067419)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a va
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Injecting --target-s 4.615463307860416 (from Friedman best_score 4.615463307860416)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 13_CIRCLE_in_3: Injecting --target-s 6.585859000404045 (from Friedman best_score 11.407042400184585)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in strin
+[Main] Worker failed on 24_6_in_4: Injecting --target-s 6.220122012600467 (from Friedman best_score 8.796580909835013)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 15_6_in_4: Injecting --target-s 4.924289322533364 (from Friedman best_score 6.963996744975704)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 14_CIRCLE_in_3: Injecting --target-s 6.6189266380430425 (from Friedman best_score 11.464317228661605)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Injecting --target-s 5.1223780819223546 (from Friedman best_score 5.1223780819223546)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 3_6_in_4: Injecting --target-s 2.4691878987852296 (from Friedman best_score 3.491959014509597)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 22_6_in_4: Injecting --target-s 6.061219398365042 (from Friedman best_score 8.571858677686734)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 21_6_in_4: Injecting --target-s 5.931781434256063 (from Friedman best_score 8.388805753357856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Injecting --target-s 4.863717375030539 (from Friedman best_score 4.863717375030539)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 4_6_in_4: Injecting --target-s 2.6339750164850937 (from Friedman best_score 3.7250031912651163)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as 
+[Main] Worker failed on 19_6_in_4: Injecting --target-s 5.60691700673277 (from Friedman best_score 7.929378074021842)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Starting (5000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Injecting --target-s 4.3284563187822975 (from Friedman best_score 4.3284563187822975)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 12_6_in_4: Injecting --target-s 4.516618189663617 (from Friedman best_score 6.387462699883303)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Injecting --target-s 4.029653631456982 (from Friedman best_score 4.029653631456982)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 13_6_in_4: Injecting --target-s 4.778087799929785 (from Friedman best_score 6.757236568870126)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 23_6_in_4: Injecting --target-s 6.12372750090957 (from Friedman best_score 8.660258484063416)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 11_6_in_4: Injecting --target-s 4.478553648403624 (from Friedman best_score 6.333631309387911)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 6_6_in_4: Injecting --target-s 3.403908281352106 (from Friedman best_score 4.813853256562242)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Injecting --target-s 4.863717375030539 (from Friedman best_score 4.863717375030539)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 10_6_in_4: Injecting --target-s 4.316874519634696 (from Friedman best_score 6.104982492730227)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 21_6_in_4: Injecting --target-s 5.931781434256063 (from Friedman best_score 8.388805753357856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 16_6_in_4: Injecting --target-s 5.1724984973312065 (from Friedman best_score 7.315017526280247)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 25_6_in_4: Injecting --target-s 6.415994334555522 (from Friedman best_score 9.073586204037362)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 17_6_in_4: Injecting --target-s 5.37757396709778 (from Friedman best_score 7.605038036934168)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 20_6_in_4: Injecting --target-s 5.623969025932595 (from Friedman best_score 7.953493270840081)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Injecting --target-s 4.521808642531515 (from Friedman best_score 4.521808642531515)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 4_6_in_4: Injecting --target-s 2.6339750164850937 (from Friedman best_score 3.7250031912651163)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as 
+[Main] Worker failed on 22_6_in_4: Injecting --target-s 6.061219398365042 (from Friedman best_score 8.571858677686734)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Injecting --target-s 5.1223780819223546 (from Friedman best_score 5.1223780819223546)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 14_CIRCLE_in_3: Injecting --target-s 6.6189266380430425 (from Friedman best_score 11.464317228661605)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 9_6_in_4: Injecting --target-s 3.9019244803628794 (from Friedman best_score 5.518154519484776)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 15_6_in_4: Injecting --target-s 4.924289322533364 (from Friedman best_score 6.963996744975704)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Injecting --target-s 4.792049696275617 (from Friedman best_score 4.792049696275617)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 5_6_in_4: Injecting --target-s 3.1380298819685843 (from Friedman best_score 4.437844418212015)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 19_6_in_4: Injecting --target-s 5.60691700673277 (from Friedman best_score 7.929378074021842)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 27_6_in_4: Injecting --target-s 6.604694190124501 (from Friedman best_score 9.340448099000856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Injecting --target-s 4.615463307860416 (from Friedman best_score 4.615463307860416)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 18_6_in_4: Injecting --target-s 5.455947884215841 (from Friedman best_score 7.715875493458835)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 3_6_in_4: Injecting --target-s 2.4691878987852296 (from Friedman best_score 3.491959014509597)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 13_CIRCLE_in_3: Injecting --target-s 6.585859000404045 (from Friedman best_score 11.407042400184585)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in strin
+[Main] Worker failed on 26_6_in_4: Injecting --target-s 6.527274771182405 (from Friedman best_score 9.2309605067419)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a va
+[Main] Worker failed on 24_6_in_4: Injecting --target-s 6.220122012600467 (from Friedman best_score 8.796580909835013)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Injecting --target-s 4.029653631456982 (from Friedman best_score 4.029653631456982)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Injecting --target-s 4.615463307860416 (from Friedman best_score 4.615463307860416)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 15_6_in_4: Injecting --target-s 4.924289322533364 (from Friedman best_score 6.963996744975704)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 25_6_in_4: Injecting --target-s 6.415994334555522 (from Friedman best_score 9.073586204037362)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 21_6_in_4: Injecting --target-s 5.931781434256063 (from Friedman best_score 8.388805753357856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 17_6_in_4: Injecting --target-s 5.37757396709778 (from Friedman best_score 7.605038036934168)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 13_CIRCLE_in_3: Injecting --target-s 6.585859000404045 (from Friedman best_score 11.407042400184585)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in strin
+[Main] Worker failed on 3_6_in_4: Injecting --target-s 2.4691878987852296 (from Friedman best_score 3.491959014509597)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Injecting --target-s 4.3284563187822975 (from Friedman best_score 4.3284563187822975)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 19_6_in_4: Injecting --target-s 5.60691700673277 (from Friedman best_score 7.929378074021842)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 6_6_in_4: Injecting --target-s 3.403908281352106 (from Friedman best_score 4.813853256562242)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 23_6_in_4: Injecting --target-s 6.12372750090957 (from Friedman best_score 8.660258484063416)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Injecting --target-s 4.521808642531515 (from Friedman best_score 4.521808642531515)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 18_6_in_4: Injecting --target-s 5.455947884215841 (from Friedman best_score 7.715875493458835)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 27_6_in_4: Injecting --target-s 6.604694190124501 (from Friedman best_score 9.340448099000856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 16_6_in_4: Injecting --target-s 5.1724984973312065 (from Friedman best_score 7.315017526280247)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 5_6_in_4: Injecting --target-s 3.1380298819685843 (from Friedman best_score 4.437844418212015)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 12_6_in_4: Injecting --target-s 4.516618189663617 (from Friedman best_score 6.387462699883303)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 20_6_in_4: Injecting --target-s 5.623969025932595 (from Friedman best_score 7.953493270840081)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 22_6_in_4: Injecting --target-s 6.061219398365042 (from Friedman best_score 8.571858677686734)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 4_6_in_4: Injecting --target-s 2.6339750164850937 (from Friedman best_score 3.7250031912651163)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as 
+[Main] Worker failed on 13_6_in_4: Injecting --target-s 4.778087799929785 (from Friedman best_score 6.757236568870126)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 10_6_in_4: Injecting --target-s 4.316874519634696 (from Friedman best_score 6.104982492730227)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Injecting --target-s 4.792049696275617 (from Friedman best_score 4.792049696275617)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Injecting --target-s 5.1223780819223546 (from Friedman best_score 5.1223780819223546)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 9_6_in_4: Injecting --target-s 3.9019244803628794 (from Friedman best_score 5.518154519484776)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 26_6_in_4: Injecting --target-s 6.527274771182405 (from Friedman best_score 9.2309605067419)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a va
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Injecting --target-s 4.863717375030539 (from Friedman best_score 4.863717375030539)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 14_CIRCLE_in_3: Injecting --target-s 6.6189266380430425 (from Friedman best_score 11.464317228661605)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 24_6_in_4: Injecting --target-s 6.220122012600467 (from Friedman best_score 8.796580909835013)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 11_6_in_4: Injecting --target-s 4.478553648403624 (from Friedman best_score 6.333631309387911)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Injecting --target-s 5.1223780819223546 (from Friedman best_score 5.1223780819223546)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Injecting --target-s 4.029653631456982 (from Friedman best_score 4.029653631456982)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 6_6_in_4: Injecting --target-s 3.403908281352106 (from Friedman best_score 4.813853256562242)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 19_6_in_4: Injecting --target-s 5.60691700673277 (from Friedman best_score 7.929378074021842)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 17_6_in_4: Injecting --target-s 5.37757396709778 (from Friedman best_score 7.605038036934168)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 12_6_in_4: Injecting --target-s 4.516618189663617 (from Friedman best_score 6.387462699883303)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 18_6_in_4: Injecting --target-s 5.455947884215841 (from Friedman best_score 7.715875493458835)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 13_CIRCLE_in_3: Injecting --target-s 6.585859000404045 (from Friedman best_score 11.407042400184585)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in strin
+[Main] Worker failed on 13_6_in_4: Injecting --target-s 4.778087799929785 (from Friedman best_score 6.757236568870126)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 24_6_in_4: Injecting --target-s 6.220122012600467 (from Friedman best_score 8.796580909835013)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 11_6_in_4: Injecting --target-s 4.478553648403624 (from Friedman best_score 6.333631309387911)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Injecting --target-s 4.3284563187822975 (from Friedman best_score 4.3284563187822975)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Injecting --target-s 4.792049696275617 (from Friedman best_score 4.792049696275617)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 26_6_in_4: Injecting --target-s 6.527274771182405 (from Friedman best_score 9.2309605067419)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a va
+[Main] Worker failed on 27_6_in_4: Injecting --target-s 6.604694190124501 (from Friedman best_score 9.340448099000856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 23_6_in_4: Injecting --target-s 6.12372750090957 (from Friedman best_score 8.660258484063416)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 22_6_in_4: Injecting --target-s 6.061219398365042 (from Friedman best_score 8.571858677686734)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 21_6_in_4: Injecting --target-s 5.931781434256063 (from Friedman best_score 8.388805753357856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 9_6_in_4: Injecting --target-s 3.9019244803628794 (from Friedman best_score 5.518154519484776)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 15_6_in_4: Injecting --target-s 4.924289322533364 (from Friedman best_score 6.963996744975704)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 20_6_in_4: Injecting --target-s 5.623969025932595 (from Friedman best_score 7.953493270840081)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Injecting --target-s 4.615463307860416 (from Friedman best_score 4.615463307860416)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 10_6_in_4: Injecting --target-s 4.316874519634696 (from Friedman best_score 6.104982492730227)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Injecting --target-s 4.863717375030539 (from Friedman best_score 4.863717375030539)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 4_6_in_4: Injecting --target-s 2.6339750164850937 (from Friedman best_score 3.7250031912651163)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as 
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Injecting --target-s 4.521808642531515 (from Friedman best_score 4.521808642531515)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 25_6_in_4: Injecting --target-s 6.415994334555522 (from Friedman best_score 9.073586204037362)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 14_CIRCLE_in_3: Injecting --target-s 6.6189266380430425 (from Friedman best_score 11.464317228661605)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 3_6_in_4: Injecting --target-s 2.4691878987852296 (from Friedman best_score 3.491959014509597)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 16_6_in_4: Injecting --target-s 5.1724984973312065 (from Friedman best_score 7.315017526280247)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 5_6_in_4: Injecting --target-s 3.1380298819685843 (from Friedman best_score 4.437844418212015)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Starting (5000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[18_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 19_6_in_4: Injecting --target-s 5.60691700673277 (from Friedman best_score 7.929378074021842)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 22_6_in_4: Injecting --target-s 6.061219398365042 (from Friedman best_score 8.571858677686734)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 4_6_in_4: Injecting --target-s 2.6339750164850937 (from Friedman best_score 3.7250031912651163)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as 
+[Main] Worker failed on 27_6_in_4: Injecting --target-s 6.604694190124501 (from Friedman best_score 9.340448099000856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Injecting --target-s 4.521808642531515 (from Friedman best_score 4.521808642531515)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 16_6_in_4: Injecting --target-s 5.1724984973312065 (from Friedman best_score 7.315017526280247)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 6_6_in_4: Injecting --target-s 3.403908281352106 (from Friedman best_score 4.813853256562242)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 10_6_in_4: Injecting --target-s 4.316874519634696 (from Friedman best_score 6.104982492730227)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Injecting --target-s 4.029653631456982 (from Friedman best_score 4.029653631456982)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 20_6_in_4: Injecting --target-s 5.623969025932595 (from Friedman best_score 7.953493270840081)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 13_CIRCLE_in_3: Injecting --target-s 6.585859000404045 (from Friedman best_score 11.407042400184585)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in strin
+[Main] Worker failed on 3_6_in_4: Injecting --target-s 2.4691878987852296 (from Friedman best_score 3.491959014509597)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Injecting --target-s 4.792049696275617 (from Friedman best_score 4.792049696275617)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Injecting --target-s 4.863717375030539 (from Friedman best_score 4.863717375030539)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 25_6_in_4: Injecting --target-s 6.415994334555522 (from Friedman best_score 9.073586204037362)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 5_6_in_4: Injecting --target-s 3.1380298819685843 (from Friedman best_score 4.437844418212015)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 24_6_in_4: Injecting --target-s 6.220122012600467 (from Friedman best_score 8.796580909835013)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 21_6_in_4: Injecting --target-s 5.931781434256063 (from Friedman best_score 8.388805753357856)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 14_CIRCLE_in_3: Injecting --target-s 6.6189266380430425 (from Friedman best_score 11.464317228661605)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 26_6_in_4: Injecting --target-s 6.527274771182405 (from Friedman best_score 9.2309605067419)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a va
+[Main] Worker failed on 18_6_in_4: Injecting --target-s 5.455947884215841 (from Friedman best_score 7.715875493458835)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 11_6_in_4: Injecting --target-s 4.478553648403624 (from Friedman best_score 6.333631309387911)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 9_6_in_4: Injecting --target-s 3.9019244803628794 (from Friedman best_score 5.518154519484776)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a
+[Main] Worker failed on 17_6_in_4: Injecting --target-s 5.37757396709778 (from Friedman best_score 7.605038036934168)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Injecting --target-s 5.1223780819223546 (from Friedman best_score 5.1223780819223546)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Injecting --target-s 4.615463307860416 (from Friedman best_score 4.615463307860416)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in string
+[Main] Worker failed on 15_6_in_4: Injecting --target-s 4.924289322533364 (from Friedman best_score 6.963996744975704)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 23_6_in_4: Injecting --target-s 6.12372750090957 (from Friedman best_score 8.660258484063416)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a v
+[Main] Worker failed on 12_6_in_4: Injecting --target-s 4.516618189663617 (from Friedman best_score 6.387462699883303)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Injecting --target-s 4.3284563187822975 (from Friedman best_score 4.3284563187822975)
+Rust solver failed with exit code 2
+error: invalid value 'CIRCLE' for '<INNER_SIDES>': invalid digit found in stri
+[Main] Worker failed on 13_6_in_4: Injecting --target-s 4.778087799929785 (from Friedman best_score 6.757236568870126)
+Rust solver failed with exit code 2
+error: unexpected argument '--target-s' found
+
+  tip: to pass '--target-s' as a 
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[13_6_in_4] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+slurmstepd: error: *** JOB 2407312 ON compute-34-07 CANCELLED AT 2026-08-05T22:51:57 ***

@@ -1,0 +1,9 @@
+[Main] Starting parallel loop on 32 cores.
+[Main] Compiling Rust solver once before spawning workers...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading shared libraries: librustc_driver-832cf6cfb1386559.so: cannot open shared object file: No such file or directory
+error: could not compile `packer_rs` (bin "packer_rs")
+
+Caused by:
+  process didn't exit successfully: `/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name packer_rs --edition=2021 src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C opt-level=3 -C lto -C codegen-units=1 --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values())' -C metadata=3d8ec413365de388 -C extra-filename=-8c625e11bc6c539b --out-dir /home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps -C strip=debuginfo -L dependency=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps --extern clap=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/libclap-78959b96ac7dd16a.rlib --extern rand=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/librand-a4c5521bd009bc6d.rlib --extern rand_chacha=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/librand_chacha-f2e81b837b6d39a1.rlib --extern rayon=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/librayon-fffc46244a81162e.rlib --extern serde=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/libserde-bd3bbd5717fc7c86.rlib --extern serde_json=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/libserde_json-a08456acf1784534.rlib` (exit status: 127)
+[Main] Failed to compile Rust solver: Command '['cargo', 'build', '--release']' returned non-zero exit status 101.

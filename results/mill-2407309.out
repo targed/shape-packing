@@ -1,0 +1,1735 @@
+[Main] Starting parallel loop on 32 cores.
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.[13_CIRCLE_in_3] Search failed/completed without new best.
+
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[20_6_in_4] Starting (50000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[27_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+warning: failed to save last-use data
+This may prevent cargo from accurately tracking what is being used in its global cache. This information is used for automatically removi
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+warning: failed to save last-use data
+This may prevent cargo from accurately tracking what is being used in its global cache. This information is used for automatically removi
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+warning: failed to save last-use data
+This may prevent cargo from accurately tracking what is being used in its global cache. This information is used for automatically removi
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+warning: failed to save last-use data
+This may prevent cargo from accurately tracking what is being used in its global cache. This information is used for automatically removi
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+warning: failed to save last-use data
+This may prevent cargo from accurately tracking what is being used in its global cache. This information is used for automatically removi
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[9_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[27_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[18_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Starting (5000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[18_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[9_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Starting (5000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[20_6_in_4] Starting (50000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[15_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[12_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Starting (50000 attempts)
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[18_6_in_4] Search failed/completed without new best.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[20_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[13_6_in_4] Starting (50000 attempts)
+[14_CIRCLE_in_3] Search failed/completed without new best.
+[24_6_in_4] Starting (50000 attempts)
+[13_6_in_4] Search failed/completed without new best.
+[19_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Search failed/completed without new best.
+[16_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Search failed/completed without new best.
+[9_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Search failed/completed without new best.
+[4_6_in_4] Starting (5000 attempts)
+[9_6_in_4] Search failed/completed without new best.
+[3_6_in_4] Starting (5000 attempts)
+[4_6_in_4] Search failed/completed without new best.
+[5_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Search failed/completed without new best.
+[20_6_in_4] Starting (50000 attempts)
+[5_6_in_4] Search failed/completed without new best.
+[11_6_in_4] Starting (50000 attempts)
+[20_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Starting (5000 attempts)
+[15_6_in_4] Starting (50000 attempts)
+[11_6_in_4] Search failed/completed without new best.
+[6_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Starting (50000 attempts)
+[15_6_in_4] Search failed/completed without new best.
+[17_6_in_4] Search failed/completed without new best.
+[26_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Search failed/completed without new best.
+[10_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Search failed/completed without new best.
+[23_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Search failed/completed without new best.
+[22_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Search failed/completed without new best.
+[21_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Search failed/completed without new best.
+[25_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Starting (50000 attempts)
+[27_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Search failed/completed without new best.
+[18_6_in_4] Search failed/completed without new best.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[27_6_in_4] Search failed/completed without new best.
+[Main] Worker failed on 14_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 23_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 14_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 24_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 6_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 25_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 12_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 15_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 21_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 4_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 9_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 19_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 22_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 17_CIRCLE_in_CIRCLE: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 13_CIRCLE_in_3: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 3_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 16_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 5_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 11_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 26_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 18_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 27_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 20_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[Main] Worker failed on 10_6_in_4: Compiling Rust solver...
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading sh
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[13_CIRCLE_in_3] Search failed/completed without new best.
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Search failed/completed without new best.
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+slurmstepd: error: *** JOB 2407309 ON compute-34-07 CANCELLED AT 2026-08-05T22:40:40 ***

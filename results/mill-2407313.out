@@ -1,0 +1,120 @@
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+warning: unused variable: `dx_dposx`
+   --> src/main.rs:601:33
+    |
+601 | ...                   let dx_dposx = 1.0;
+    |                           ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_dx_dposx`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `dy_dposy`
+   --> src/main.rs:602:33
+    |
+602 | ...                   let dy_dposy = 1.0;
+    |                           ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_dy_dposy`
+
+warning: `packer_rs` (bin "packer_rs") generated 2 warnings (run `cargo fix --bin "packer_rs" -p packer_rs` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 12.09s
+[Main] Starting parallel loop on 32 cores.
+[Main] Compiling Rust solver once before spawning workers...
+warning: unused variable: `dx_dposx`
+   --> src/main.rs:601:33
+    |
+601 | ...                   let dx_dposx = 1.0;
+    |                           ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_dx_dposx`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `dy_dposy`
+   --> src/main.rs:602:33
+    |
+602 | ...                   let dy_dposy = 1.0;
+    |                           ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_dy_dposy`
+
+warning: `packer_rs` (bin "packer_rs") generated 2 warnings (run `cargo fix --bin "packer_rs" -p packer_rs` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.16s
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[16_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[18_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[20_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[14_CIRCLE_in_3] Starting (50000 attempts)
+[13_6_in_4] Starting (50000 attempts)
+[24_6_in_4] Starting (50000 attempts)
+[19_6_in_4] Starting (50000 attempts)
+[16_6_in_4] Starting (50000 attempts)
+[9_6_in_4] Starting (50000 attempts)
+[4_6_in_4] Starting (5000 attempts)
+[3_6_in_4] Starting (5000 attempts)
+[5_6_in_4] Starting (5000 attempts)
+[20_6_in_4] Starting (50000 attempts)
+[11_6_in_4] Starting (50000 attempts)
+[6_6_in_4] Starting (5000 attempts)
+[15_6_in_4] Starting (50000 attempts)
+[17_6_in_4] Starting (50000 attempts)
+[12_6_in_4] Starting (50000 attempts)
+[26_6_in_4] Starting (50000 attempts)
+[10_6_in_4] Starting (50000 attempts)
+[23_6_in_4] Starting (50000 attempts)
+[22_6_in_4] Starting (50000 attempts)
+[25_6_in_4] Starting (50000 attempts)
+[21_6_in_4] Starting (50000 attempts)
+[18_6_in_4] Starting (50000 attempts)
+[27_6_in_4] Starting (50000 attempts)
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[12_CIRCLE_in_CIRCLE] Success!
+[13_CIRCLE_in_3] Success!
+[15_CIRCLE_in_CIRCLE] Success!
+[Main] suggest returned invalid JSON.
+[Main] Failed to get valid state. Backing off 5s.
+[14_CIRCLE_in_CIRCLE] Success!
+[16_CIRCLE_in_CIRCLE] Success!
+[17_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 13_CIRCLE_in_3 with score 11.413488992180232
+[Main] Worker finished 15_CIRCLE_in_CIRCLE with score 4.538260254000323
+[18_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 17_CIRCLE_in_CIRCLE with score 4.809960188594904
+[14_CIRCLE_in_3] Success!
+[Main] Worker finished 12_CIRCLE_in_CIRCLE with score 4.044636069278394
+[Main] Worker finished 14_CIRCLE_in_CIRCLE with score 4.345096413036063
+[20_CIRCLE_in_CIRCLE] Success!
+[Main] Worker finished 16_CIRCLE_in_CIRCLE with score 4.63348722009616
+[13_CIRCLE_in_3] Starting (50000 attempts)
+[15_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[12_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+[17_CIRCLE_in_CIRCLE] Starting (50000 attempts)
+slurmstepd: error: *** JOB 2407313 ON compute-34-07 CANCELLED AT 2026-08-05T22:58:59 DUE TO TIME LIMIT ***
