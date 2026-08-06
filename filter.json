@@ -1,4 +1,6 @@
 {
-    "min_n": 3,
-    "min_inner_sides": 3
+    "min_n": 4,
+    "min_inner_sides": 4,
+    "exclude_inner" : "3,4",
+    "exclude_container" : "3,4"
 }
