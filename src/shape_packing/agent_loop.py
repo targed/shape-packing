@@ -592,7 +592,8 @@ def choose_problem(
         scored_candidates.append((p_str, base_density + penalty))
 
     if not scored_candidates:
-        print("No candidates matched filters!")
+        import sys
+        print("No candidates matched filters!", file=sys.stderr)
         return "8_3_in_5"
 
     # Lower is better: density + penalties
