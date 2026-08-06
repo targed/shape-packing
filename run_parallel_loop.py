@@ -126,6 +126,7 @@ def worker_task(problem, attempts):
         "--no-commit",
         "--json-out",
         "--no-png",
+        "--no-build",
     ]
     
     try:
@@ -213,6 +214,18 @@ def run_loop():
     
     num_cores = get_available_cores()
     print(f"[Main] Starting parallel loop on {num_cores} cores.")
+    
+    print("[Main] Compiling Rust solver once before spawning workers...")
+    try:
+        subprocess.run(
+            ["cargo", "build", "--release"],
+            cwd="packer_rs",
+            check=True,
+            stdout=subprocess.DEVNULL,
+        )
+    except subprocess.CalledProcessError as e:
+        print(f"[Main] Failed to compile Rust solver: {e}")
+        sys.exit(1)
     
     in_flight = {} # Map of Future -> problem_name
     

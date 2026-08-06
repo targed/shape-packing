@@ -60,13 +60,14 @@ def handle_run(args):
     solution_file = os.path.join(result_dir, "solution.json")
     
     # 3. Call Rust solver
-    eprint("Compiling Rust solver...")
-    subprocess.run(
-        ["cargo", "build", "--release"],
-        cwd="packer_rs",
-        check=True,
-        stdout=subprocess.DEVNULL,
-    )
+    if not getattr(args, "no_build", False):
+        eprint("Compiling Rust solver...")
+        subprocess.run(
+            ["cargo", "build", "--release"],
+            cwd="packer_rs",
+            check=True,
+            stdout=subprocess.DEVNULL,
+        )
     
     cmd = [
         "packer_rs/target/release/packer_rs",
@@ -149,6 +150,7 @@ def main():
     run_parser.add_argument("--no-commit", action="store_true")
     run_parser.add_argument("--json-out", action="store_true")
     run_parser.add_argument("--no-png", action="store_true", help="Skip generating solution.png image to save disk space")
+    run_parser.add_argument("--no-build", action="store_true", help="Skip compiling the Rust solver")
     
     args = parser.parse_args()
     if args.command == "suggest":

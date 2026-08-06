@@ -104,10 +104,20 @@ def choose_attempts(problem):
 
 
 def run_loop():
-    print("[Loop] Starting pure-code autoresearch loop (no LLM).")
-    print("[Loop] Press Ctrl+C to stop.")
+    print(f"[Loop] Starting infinite search loop.")
+    print(f"[Loop] Mode: {'Radical/Diverse' if FORCE_DIVERSE else 'Incremental/Exploitative'}")
 
-    consecutive_failures = 0
+    print("[Loop] Compiling Rust solver once before starting...")
+    try:
+        subprocess.run(
+            ["cargo", "build", "--release"],
+            cwd="packer_rs",
+            check=True,
+            stdout=subprocess.DEVNULL,
+        )
+    except subprocess.CalledProcessError as e:
+        print(f"[Loop] Failed to compile Rust solver: {e}")
+        sys.exit(1)
 
     while True:
         try:
@@ -147,6 +157,7 @@ def run_loop():
             "--attempts",
             str(attempts),
             "--no-png",
+            "--no-build",
         ]
 
         try:
