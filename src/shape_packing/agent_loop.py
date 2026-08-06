@@ -394,7 +394,7 @@ def choose_problem(
             if f.get("include_inner") or f.get("include_container"):
                 return False
             return True
-        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE", "DOMINO", "L", "TRIANGLE"}
+        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE", "DOMINO", "L", "TRIANGLE", "PENTAGON", "HEXAGON", "OCTAGON"}
         if t not in allowed:
             return True
         return False
