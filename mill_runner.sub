@@ -9,12 +9,15 @@
 #SBATCH --export=all
 #SBATCH --out=results/mill-%j.out
 
+# Load Rust environment and compile before Anaconda breaks LD_LIBRARY_PATH
+source "$HOME/.cargo/env"
+cd /home/ltkhg4/Code/git/shape-packing/packer_rs
+cargo build --release
+cd ..
+
 # Load system modules
 module load anaconda/2023.07
 module load gcc/12.2.0
-
-# Load Rust environment
-source "$HOME/.cargo/env"
 
 # Force Python output to be completely unbuffered
 export PYTHONUNBUFFERED=1
