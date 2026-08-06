@@ -40,6 +40,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'site/package-lock.json'
 
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Install Astro Dependencies
         run: |
           cd site
