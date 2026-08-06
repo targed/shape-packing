@@ -84,6 +84,12 @@ def handle_run(args):
     # Fetch best score and inject target-s
     try:
         history = load_history("results.tsv")
+        # Ignore fake/verification rows so we never inject an impossible target-s.
+        history = [
+            r for r in history
+            if r.commit.lower() not in ("verify", "auto-verify", "test")
+            and "verify" not in (r.description or "").lower()
+        ]
         best = current_best_scores(history)
         best_score = best.get(args.problem, "None")
         
@@ -100,10 +106,23 @@ def handle_run(args):
         eprint(f"Rust solver failed with exit code {proc.returncode}")
         eprint(proc.stderr)
         sys.exit(1)
+
+    # Detect if solver reported no valid packing.
+    solver_output = proc.stdout.strip()
+    if "No valid packing found" in solver_output:
+        eprint("Solver reported: No valid packing found. Refusing to log 0.0 score.")
+        sys.exit(0)
+
+    # Extract score
     score = 0.0
-    for line in proc.stdout.splitlines():
+    found_score = False
+    for line in solver_output.splitlines():
         if "Final side length:" in line:
             score = float(line.split(":")[1].strip())
+            found_score = True
+
+    if not found_score:
+        eprint("Warning: 'Final side length' not found in solver output.")
             
     # Verify and render
     if os.path.exists(solution_file):
