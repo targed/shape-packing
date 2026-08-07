@@ -35,6 +35,11 @@ def main() -> None:
         help="List failures but do not delete anything."
     )
     parser.add_argument(
+        "--keep-pngs",
+        action="store_true",
+        help="Do not delete PNGs of failed solutions."
+    )
+    parser.add_argument(
         "--workers",
         type=int,
         default=8,
@@ -85,7 +90,7 @@ def main() -> None:
         return
 
     # Confirm
-    answer = input(f"\nDelete {len(failures)} failed solution.json (+ PNG)? [y/N]: ").strip()
+    answer = input(f"\nDelete {len(failures)} failed solution.json (and PNGs unless --keep-pngs)? [y/N]: ").strip()
     if answer.lower() not in ("y", "yes"):
         print("Aborted.")
         return
@@ -93,13 +98,14 @@ def main() -> None:
     removed = 0
     for sol, _, _ in failures:
         run_dir = sol.parent
-        png = run_dir / "solution.png"
         if sol.exists():
             sol.unlink()
             removed += 1
-        if png.exists():
-            png.unlink()
-            removed += 1
+        if not args.keep_pngs:
+            png = run_dir / "solution.png"
+            if png.exists():
+                png.unlink()
+                removed += 1
         try:
             if not any(run_dir.iterdir()):
                 run_dir.rmdir()
