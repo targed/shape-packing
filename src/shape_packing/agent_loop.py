@@ -323,11 +323,16 @@ def has_improved(window: List[ExperimentResult]) -> bool:
 # --------------- Loop policies ---------------
 
 
+import re
+
+_NORM_FULL_RE = re.compile(r"^(\d+)_(.+)_(in)_(.+)$")
+_NORM_COMPACT_RE = re.compile(r"^(\d+)_([a-zA-Z]+)in([a-zA-Z]+)$")
+
+
 def normalize_problem_name(p_str: str) -> str:
-    import re
-    if re.match(r"^(\d+)_(.+)_(in)_(.+)$", p_str):
+    if _NORM_FULL_RE.match(p_str):
         return p_str
-    m = re.match(r"^(\d+)_([a-zA-Z]+)in([a-zA-Z]+)$", p_str)
+    m = _NORM_COMPACT_RE.match(p_str)
     if m:
         N = m.group(1)
         inner = m.group(2).lower()
@@ -367,14 +372,8 @@ def choose_problem(
 
     recent = recent_problems(history, last=QUEUE_RECENT_WINDOW)
     our_best = current_best_scores(history)
-    
-    problem_runs = {}
-    family_runs = {}
-    for r in history:
-        hp = normalize_problem_name(r.problem)
-        problem_runs[hp] = problem_runs.get(hp, 0) + 1
-        hf = extract_problem_family(hp)
-        family_runs[hf] = family_runs.get(hf, 0) + 1
+
+    problem_runs, family_runs, problem_last_k = _build_problem_stats(history)
 
     # We no longer need to load_packing_reference here because queue has the metadata directly.
     # reference_rows = load_packing_reference()
@@ -575,7 +574,7 @@ def choose_problem(
             penalty -= 1.5
 
         # If stuck: strong penalty.
-        if is_stuck(history, p_str, threshold_no_improve=5):
+        if is_stuck(problem_last_k, p_str, threshold_no_improve=5):
             penalty += 10.0
 
         # Our-best vs reference-best_value: prefer problems with room to improve.
@@ -617,20 +616,64 @@ def choose_problem(
     return scored_candidates[0][0]
 
 
-def is_stuck(
+def _build_problem_stats(
     history: List[ExperimentResult],
+    k: int = 10,
+):
+    """
+    Precompute per-problem stats for fast choose_problem / is_stuck:
+    - problem_runs[p] = total count
+    - family_runs[family] = total count
+    - problem_last_k[p] = last-k ExperimentResults for that problem
+    """
+    problem_runs: Dict[str, int] = {}
+    family_runs: Dict[str, int] = {}
+    problem_last_k: Dict[str, List[ExperimentResult]] = {}
+
+    for r in history:
+        hp = normalize_problem_name(r.problem)
+        problem_runs[hp] = problem_runs.get(hp, 0) + 1
+        hf = extract_problem_family(hp)
+        family_runs[hf] = family_runs.get(hf, 0) + 1
+
+        lst = problem_last_k.setdefault(hp, [])
+        if len(lst) < k:
+            lst.append(r)
+        else:
+            lst.pop(0)
+            lst.append(r)
+
+    return problem_runs, family_runs, problem_last_k
+
+
+def is_stuck(
+    history_or_stats,
     problem: str,
     threshold_no_improve: int = 5,
 ) -> bool:
     """
-    Consider a problem 'stuck' if the last threshold_no_improve experiments
-    on this problem had no score improvement and all were non-crash.
+    Check if problem is stuck.
+
+    Can be called two ways:
+      - is_stuck(problem_last_k_dict, problem)
+      - is_stuck(history_list, problem)  (for backward compatibility in tests)
     """
-    window = last_experiments_for(history, problem, last=max(threshold_no_improve, 5))
+    if isinstance(history_or_stats, dict):
+        # new style: problem_last_k dict
+        window = history_or_stats.get(problem)
+        if not window:
+            return False
+    else:
+        # fallback: raw history list (backward compat)
+        window = last_experiments_for(history_or_stats, problem, last=10)
+        if len(window) < threshold_no_improve:
+            return False
+
     if len(window) < threshold_no_improve:
         return False
+        return False
 
-    # All must be for this problem and non-crash.
+    # All must be non-crash.
     if any(r.status == "crash" for r in window):
         return False
 
@@ -736,10 +779,12 @@ def make_loop_candidate(
     total = len(history) + experiments_count
     radically = should_switch_radically(total)
 
+    problem_last_k = _build_problem_stats(history)[2]
+
     if current and radically:
         # If radical time, force diversity.
         problem = choose_problem(history, prefer_different=True)
-    elif is_stuck(history, current or ""):
+    elif is_stuck(problem_last_k, current or ""):
         problem = choose_problem(history, prefer_different=True)
     else:
         # Optionally switch even if not stuck for diversity.
