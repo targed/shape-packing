@@ -16967,3 +16967,13 @@ auto	5.790189669490146	0.0	discard	13_8_in_6	Parallel run loop
 auto	5.994170884047151	0.0	discard	9_8_in_5	Parallel run loop
 auto	4.8203042879733635	0.0	discard	20_5_in_DOMINO	Parallel run loop
 auto	2.40887962868564	0.0	keep	6_CIRCLE_in_8	Auto run attempts=5000
+auto	2.99935673673655	0.0	keep	5_CIRCLE_in_6	Parallel run loop
+auto	3.709403638696858	0.0	keep	8_CIRCLE_in_6	Parallel run loop
+auto	4.1193610079274485	0.0	keep	10_CIRCLE_in_6	Parallel run loop
+auto	4.011850126531809	0.0	keep	9_CIRCLE_in_6	Parallel run loop
+auto	4.564586453758822	0.0	keep	8_CIRCLE_in_5	Parallel run loop
+auto	4.825027890101098	0.0	keep	9_CIRCLE_in_5	Parallel run loop
+auto	5.095202624832034	0.0	keep	10_CIRCLE_in_5	Parallel run loop
+auto	4.236123080364597	0.0	keep	7_CIRCLE_in_5	Parallel run loop
+auto	4.30940205832741	0.0	keep	11_CIRCLE_in_6	Parallel run loop
+auto	5.2404316106068185	0.0	keep	11_CIRCLE_in_5	Parallel run loop
