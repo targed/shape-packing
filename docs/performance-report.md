@@ -315,10 +315,10 @@ Each solver invocation:
 
 - [x] In `choose_problem`, cache per-problem run counts and last-K scores; avoid O(Q × H) scan via `is_stuck`.
 - [x] Pre-normalize problem names in queue and history accessors; avoid repeated regex in `normalize_problem_name`.
-- [ ] Reuse geometry buffers in Rust `penalty_and_gradient` instead of allocating each call.
+- [x] Reuse geometry buffers in Rust `penalty_and_gradient` instead of allocating each call.
 - [x] Add early stopping in Adam loop (3,000 iterations) when no improvement.
 - [x] Replace `beta.powi(iter)` with incremental bias correction factors.
-- [ ] Batch git commits instead of one per run.
+- [x] Batch git commits instead of one per run.
 
 Expected: 30–60 % reduction in orchestrator overhead; 15–30 % reduction in solver time without changing algorithm.
 

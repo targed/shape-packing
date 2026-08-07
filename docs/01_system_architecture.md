@@ -173,3 +173,18 @@ Problem strings follow strict naming conventions across the system:
 | `5_tan_in_5` | 5 Tans in Pentagon | `tan` | `5` |
 
 The `normalize_family_slug()` function handles converting legacy Friedman folder names (e.g. `hexinpen` $\rightarrow$ `6_in_5`, `squincir` $\rightarrow$ `4_in_circle`).
+
+---
+
+## 5. Performance Optimizations Architecture
+
+To handle high-throughput autonomous search across thousands of configurations, the architecture integrates low-overhead IPC and fast SAT broadphase:
+
+1. **Direct In-Memory CLI Invocation**:
+   - `cli.py` exposes `handle_suggest()` and `handle_run()` with a `direct_call=True` mode, returning internal Python objects instead of forcing `sys.exit()` and JSON stdout parsing.
+   - Long-lived runner threads (`run_parallel_loop.py`, `run_autoresearch_loop.py`) keep an in-memory cache of `results.tsv` (`_GLOBAL_HISTORY`) via worker initialization hooks, preventing repeated disk scans.
+
+2. **Rust Solver Sweep & Prune Broadphase**:
+   - For $N > 20$, the Rust solver (`packer_rs`) dynamically calculates bounding boxes for each transformed polygon and sorts them along the X-axis.
+   - Overlap checks prune non-overlapping candidate pairs early (`min_x2 > max_x1`), avoiding expensive SAT projections and scaling from $O(N^2)$ to $O(N \log N)$.
+

@@ -4,8 +4,12 @@ import json
 import subprocess
 from .agent_loop import load_history, choose_problem, current_best_scores
 
-def handle_suggest(args):
-    history = load_history("results.tsv")
+def handle_suggest(args, history_cache=None, direct_call=False):
+    if history_cache is not None:
+        history = history_cache
+    else:
+        history = load_history("results.tsv")
+        
     best = current_best_scores(history)
     
     filters = {}
@@ -27,9 +31,13 @@ def handle_suggest(args):
     
     problem = choose_problem(history, prefer_different=True, filters=filters, exclude_problems=exclude_problems)
     best_score = best.get(problem, "None")
-    print(json.dumps({"problem": problem, "best_score": best_score}))
+    
+    out = {"problem": problem, "best_score": best_score}
+    if direct_call:
+        return out
+    print(json.dumps(out))
 
-def handle_run(args):
+def handle_run(args, history_cache=None, direct_call=False):
     def eprint(*a, **kw):
         if args.json_out:
             kw["file"] = sys.stderr
@@ -41,7 +49,10 @@ def handle_run(args):
         init_json_path = "initial_positions.json"
         res = subprocess.run([sys.executable, args.init_script, init_json_path], capture_output=True, text=True)
         if res.returncode != 0:
-            eprint("Init script failed:\n" + res.stderr)
+            err = "Init script failed:\n" + res.stderr
+            eprint(err)
+            if direct_call:
+                return {"success": False, "error": err, "returncode": 1}
             sys.exit(1)
             
     # 2. Extract problem parts
@@ -83,7 +94,11 @@ def handle_run(args):
     
     # Fetch best score and inject target-s
     try:
-        history = load_history("results.tsv")
+        if history_cache is not None:
+            history = history_cache
+        else:
+            history = load_history("results.tsv")
+            
         # Ignore fake/verification rows so we never inject an impossible target-s.
         history = [
             r for r in history
@@ -103,14 +118,18 @@ def handle_run(args):
     proc = subprocess.run(cmd, capture_output=True, text=True)
     
     if proc.returncode != 0:
-        eprint(f"Rust solver failed with exit code {proc.returncode}")
-        eprint(proc.stderr)
+        err = f"Rust solver failed with exit code {proc.returncode}\n{proc.stderr}"
+        eprint(err)
+        if direct_call:
+            return {"success": False, "error": err, "returncode": proc.returncode}
         sys.exit(1)
 
     # Detect if solver reported no valid packing.
     solver_output = proc.stdout.strip()
     if "No valid packing found" in solver_output:
         eprint("Solver reported: No valid packing found. Refusing to log 0.0 score.")
+        if direct_call:
+            return {"success": False, "error": "No valid packing found", "returncode": 42}
         sys.exit(0)
 
     # Extract score
@@ -142,7 +161,10 @@ def handle_run(args):
         subprocess.run(["git", "add", "results.tsv", "results/"])
         subprocess.run(["git", "commit", "-m", f"auto: run {args.problem} score {score}"])
     
-    print(json.dumps({"score": score}))
+    out = {"score": score}
+    if direct_call:
+        return {"success": True, "score": score, "returncode": 0}
+    print(json.dumps(out))
 
 def main():
     parser = argparse.ArgumentParser()

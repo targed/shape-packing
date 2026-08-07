@@ -34,6 +34,16 @@ This document tracks the chronological history, major milestones, past bug resol
 - Cleaned legacy corrupt scores from `results.tsv` and added physical area bound validation (`is_physically_valid_score`).
 - Reorganized documentation structure into 6 comprehensive modular guides.
 
+### Milestone 7: Low & Medium Term Performance Optimizations
+- **Rust Solver Allocation & Broadphase**:
+  - Eliminated heap allocation inside hot-loop `penalty_and_gradient` by introducing reusable pre-allocated buffers.
+  - Implemented early stopping in Adam optimizer after 300 non-improving iterations.
+  - Added Sweep & Prune (Spatial Broadphase) bounding-box sorting for $N > 20$, reducing overlap complexity to $O(N \log N)$.
+- **Python Orchestrator & Multi-Processing**:
+  - Implemented batched git commits (1 commit per 10 successful solver runs) to minimize filesystem I/O.
+  - Refactored `cli.py` to expose direct Python invocation functions (`direct_call=True`) avoiding subprocess execution overhead.
+  - Added global in-memory caching of `results.tsv` across process pools in `run_parallel_loop.py` and `run_autoresearch_loop.py`.
+
 ---
 
 ## Historical Handoff Logs Summary

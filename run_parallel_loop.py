@@ -38,49 +38,56 @@ def get_available_cores():
     # Fallback to os.cpu_count()
     return os.cpu_count() or 4
 
-def get_suggest_command(in_flight=None):
-    cmd = [sys.executable, "-m", "src.shape_packing.cli", "suggest"]
-    
+class DummyArgs:
+    pass
+
+_GLOBAL_HISTORY = None
+
+def init_worker(history):
+    global _GLOBAL_HISTORY
+    _GLOBAL_HISTORY = history
+
+def get_state(in_flight=None):
+    from src.shape_packing.cli import handle_suggest
+    args = DummyArgs()
+    args.min_n = None
+    args.max_n = None
+    args.equal_n = None
+    args.include_inner = None
+    args.exclude_inner = None
+    args.include_container = None
+    args.exclude_container = None
+    args.min_inner_sides = None
+    args.max_inner_sides = None
+    args.min_container_sides = None
+    args.max_container_sides = None
+    args.exclude_problems = None
+
     if os.path.exists("filter.json"):
         try:
             with open("filter.json", "r") as f:
                 filters = json.load(f)
-            mapping = {
-                "min_n": "--min-n", "max_n": "--max-n", "equal_n": "--equal-n",
-                "include_inner": "--include-inner", "exclude_inner": "--exclude-inner",
-                "include_container": "--include-container", "exclude_container": "--exclude-container",
-                "min_inner_sides": "--min-inner-sides", "max_inner_sides": "--max-inner-sides",
-                "min_container_sides": "--min-container-sides", "max_container_sides": "--max-container-sides",
-            }
-            for k, flag in mapping.items():
-                v = filters.get(k)
-                if v is not None:
-                    cmd.extend([flag, str(v)])
+            args.min_n = filters.get("min_n")
+            args.max_n = filters.get("max_n")
+            args.equal_n = filters.get("equal_n")
+            args.include_inner = filters.get("include_inner")
+            args.exclude_inner = filters.get("exclude_inner")
+            args.include_container = filters.get("include_container")
+            args.exclude_container = filters.get("exclude_container")
+            args.min_inner_sides = filters.get("min_inner_sides")
+            args.max_inner_sides = filters.get("max_inner_sides")
+            args.min_container_sides = filters.get("min_container_sides")
+            args.max_container_sides = filters.get("max_container_sides")
         except Exception:
             pass
-            
-    if in_flight:
-        # Pass in-flight problems as a comma-separated list
-        cmd.extend(["--exclude-problems", ",".join(in_flight)])
-        
-    return cmd
 
-def get_state(in_flight=None):
-    cmd = get_suggest_command(in_flight)
+    if in_flight:
+        args.exclude_problems = ",".join(in_flight)
+
     try:
-        res = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        return handle_suggest(args, history_cache=_GLOBAL_HISTORY, direct_call=True)
     except Exception as e:
         print(f"[Main] suggest failed (runtime error): {e}")
-        return None
-
-    if res.returncode != 0:
-        print(f"[Main] suggest failed (exit {res.returncode}):")
-        return None
-
-    try:
-        return json.loads(res.stdout)
-    except json.JSONDecodeError:
-        print("[Main] suggest returned invalid JSON.")
         return None
 
 def analyze_difficulty(problem_state):
@@ -114,96 +121,66 @@ def analyze_difficulty(problem_state):
 
 def worker_task(problem, attempts):
     print(f"[{problem}] Starting ({attempts} attempts)")
-    cmd = [
-        sys.executable,
-        "-m",
-        "src.shape_packing.cli",
-        "run",
-        "--problem",
-        problem,
-        "--attempts",
-        str(attempts),
-        "--no-commit",
-        "--json-out",
-        "--no-png",
-        "--no-build",
-    ]
+    from src.shape_packing.cli import handle_run
     
+    args = DummyArgs()
+    args.problem = problem
+    args.attempts = attempts
+    args.init_script = None
+    args.no_commit = True
+    args.json_out = True
+    args.no_png = True
+    args.no_build = True
+
     try:
-        res = subprocess.run(cmd, capture_output=True, text=True)
+        res = handle_run(args, history_cache=_GLOBAL_HISTORY, direct_call=True)
+        res["problem"] = problem
+        if res.get("success"):
+            print(f"[{problem}] Success!")
+        else:
+            if res.get("returncode") == 42:
+                print(f"[{problem}] Solution valid but NOT an improvement.")
+            else:
+                print(f"[{problem}] Search failed: {res.get('error')}")
+        return res
     except Exception as e:
-        print(f"[{problem}] Worker error: {e}")
-        return {
-            "problem": problem,
-            "success": False,
-            "error": str(e),
-            "stdout": "",
-            "stderr": "",
-        }
-        
-    if res.returncode == 0:
-        print(f"[{problem}] Success!")
-        return {
-            "problem": problem,
-            "success": True,
-            "stdout": res.stdout,
-            "stderr": res.stderr,
-            "returncode": res.returncode,
-        }
-    elif res.returncode == 42:
-        print(f"[{problem}] Solution valid but NOT an improvement.")
-        return {
-            "problem": problem,
-            "success": False,
-            "stdout": res.stdout,
-            "stderr": res.stderr,
-            "returncode": res.returncode,
-        }
-    else:
-        print(f"[{problem}] Search failed/completed without new best.")
-        return {
-            "problem": problem,
-            "success": False,
-            "stdout": res.stdout,
-            "stderr": res.stderr,
-            "returncode": res.returncode,
-        }
+        print(f"[{problem}] Worker exception: {e}")
+        return {"success": False, "error": str(e), "returncode": 1, "problem": problem}
 
 def process_result(result):
     """Safely process a completed worker result on the main thread."""
-    if isinstance(result, tuple) and len(result) == 2:
-        result = {
-            "problem": result[0],
-            "success": result[1],
-            "stdout": "",
-            "stderr": "",
-        }
-
     prob = result.get("problem", "unknown")
     if not result.get("success"):
-        err = result.get("error", result.get("stderr", "Unknown error"))
-        print(f"[Main] Worker failed on {prob}: {err[:200]}")
+        err = result.get("error", "Unknown error")
+        print(f"[Main] Worker failed on {prob}: {str(err)[:200]}")
         return
 
     try:
-        stdout = result.get("stdout", "")
-        data = None
-        for line in reversed([line.strip() for line in stdout.splitlines() if line.strip()]):
-            try:
-                data = json.loads(line)
-                break
-            except json.JSONDecodeError:
-                continue
-
-        if data is None:
-            raise json.JSONDecodeError("No JSON payload found in worker output", stdout, 0)
-
-        score = data.get("score", "unknown")
+        score = result.get("score")
+        if score is None:
+            print(f"[Main] No score found for {prob}")
+            return
+            
         print(f"[Main] Worker finished {prob} with score {score}")
+        
         # Centralized logging and committing
-        log_result(None, prob, score, 0.0, "Parallel run loop", commit="auto")
-    except json.JSONDecodeError:
-        print(f"[Main] Failed to parse JSON from {prob} output.")
+        from src.shape_packing.agent_loop import load_history, append_result, ExperimentResult
+        global _GLOBAL_HISTORY
+        
+        log_result(_GLOBAL_HISTORY, prob, score, 0.0, "Parallel run loop", commit="auto")
+        
+        # Also need to manually append to _GLOBAL_HISTORY so next suggest sees it
+        if _GLOBAL_HISTORY is not None:
+            _GLOBAL_HISTORY.append(ExperimentResult(
+                problem=prob,
+                score=score,
+                status="keep",  # Approximation, will be checked properly next load
+                description="Parallel run loop",
+                seconds=0.0,
+                commit="auto",
+                memory_gb=0.0
+            ))
+            
     except Exception as e:
         print(f"[Main] Error during log_result on {prob}: {e}")
 
@@ -228,8 +205,14 @@ def run_loop():
         print("[Main] Continuing anyway, assuming the binary is already compiled...")
     
     in_flight = {} # Map of Future -> problem_name
+    results_since_commit = 0
     
-    with concurrent.futures.ProcessPoolExecutor(max_workers=num_cores) as executor:
+    from src.shape_packing.agent_loop import load_history
+    global _GLOBAL_HISTORY
+    print("[Main] Loading history into memory...")
+    _GLOBAL_HISTORY = load_history("results.tsv")
+    
+    with concurrent.futures.ProcessPoolExecutor(max_workers=num_cores, initializer=init_worker, initargs=(_GLOBAL_HISTORY,)) as executor:
         while not _SHUTDOWN:
             # Fill the pool
             while len(in_flight) < num_cores and not _SHUTDOWN:
@@ -264,6 +247,13 @@ def run_loop():
                     try:
                         result = future.result()
                         process_result(result)
+                        if isinstance(result, dict) and result.get("success"):
+                            results_since_commit += 1
+                            if results_since_commit >= 10:
+                                print(f"[Main] Batch committing {results_since_commit} runs...")
+                                subprocess.run(["git", "add", "results.tsv", "results/"])
+                                subprocess.run(["git", "commit", "-m", f"auto: batch update of {results_since_commit} runs"])
+                                results_since_commit = 0
                     except Exception as e:
                         print(f"[Main] Future for {prob} raised exception: {e}")
             else:

@@ -11,17 +11,6 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, Instant};
 
-// Per-thread reusable geometry buffers for penalty_and_gradient
-// to avoid millions of tiny allocations.
-thread_local! {
-    static POLY_ARRAY: std::cell::RefCell<Vec<(f64, f64)>> =
-        std::cell::RefCell::new(Vec::with_capacity(4096));
-    static VEC_ARRAY: std::cell::RefCell<Vec<(f64, f64)>> =
-        std::cell::RefCell::new(Vec::with_capacity(4096));
-}
-
-
-
 #[derive(Parser, Debug)]
 #[command(name = "packer_rs", about = "Fast polygon packing solver")]
 struct Args {
@@ -346,6 +335,12 @@ fn run_attempt<R: Rng>(
 
     let N = N_f64 as usize;
 
+    let mut polygon_array = vec![(0.0, 0.0); N * nsi];
+    let mut vector_array = vec![(0.0, 0.0); N * nsi];
+    let mut grad_buffer = vec![0.0f64; N * 3];
+    let mut bbox_array = vec![(0.0f64, 0.0f64, 0.0f64, 0.0f64); N];
+    let mut sort_indices = vec![0usize; N];
+
     let mut x0: Vec<f64> = if let Some(init_pos) = initial_positions {
         init_pos.iter().map(|&v| v + (rng.gen::<f64>() - 0.5) * 1e-5).collect()
     } else if rng.gen_bool(0.5) {
@@ -401,6 +396,11 @@ fn run_attempt<R: Rng>(
             unit_container_apothem,
             is_inner_circle,
             is_container_circle,
+            &mut polygon_array,
+            &mut vector_array,
+            &mut grad_buffer,
+            &mut bbox_array,
+            &mut sort_indices,
         );
 
         // Fix 3: Clamp multiplier so it never exceeds (1 - final_step_size) even when
@@ -441,6 +441,11 @@ fn run_attempt<R: Rng>(
                     unit_container_apothem,
                     is_inner_circle,
                     is_container_circle,
+                    &mut polygon_array,
+                    &mut vector_array,
+                    &mut grad_buffer,
+                    &mut bbox_array,
+                    &mut sort_indices,
                 );
                 if bh_res.max_violation <= 1e-15 {
                     let new_x = bh_res.x;
@@ -488,12 +493,17 @@ fn minimize_gradient(
     unit_container_apothem: &[f64],
     is_inner_circle: bool,
     is_container_circle: bool,
+    polygon_array: &mut [(f64, f64)],
+    vector_array: &mut [(f64, f64)],
+    grad_buffer: &mut [f64],
+    bbox_array: &mut [(f64, f64, f64, f64)],
+    sort_indices: &mut [usize],
 ) -> OptResult {
     let n = x0.len();
     let mut x = x0.to_vec();
     let mut best_x = x.clone();
-    let (mut best_fun, _, mut best_max_violation) = penalty_and_gradient(
-        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, false
+    let (mut best_fun, mut best_max_violation) = penalty_and_gradient(
+        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
     );
 
     let mut m = vec![0.0f64; n];
@@ -503,26 +513,16 @@ fn minimize_gradient(
     let epsilon = 1e-8f64;
     let alpha = 0.02f64;
 
-    // Fix 1: Increased from 800 to 3000 iterations. Empirical testing shows the
-    // convergence cliff for tight packings (especially sharp shapes like triangles)
-    // hits at S~1.6 with 800 iters but resolves consistently with 3000 iters.
     let mut no_improve: u32 = 0;
     let mut best_fun_iter = f64::INFINITY;
-
-    // Incremental bias correction: maintain beta1^t and beta2^t instead of powi.
     let mut beta1_t = beta1;
     let mut beta2_t = beta2;
 
     for _iter in 1..=3000 {
-        let (fun, grad, _max_violation) = penalty_and_gradient(
-            &x, S, N, nsi, nsc,
-            unit_polygon_vertices, unit_polygon_vectors,
-            unit_container_vectors, unit_container_apothem,
-            is_inner_circle, is_container_circle,
-            true,
+        let (fun, _max_violation) = penalty_and_gradient(
+            &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
         );
 
-        // Early stop if no improvement for a while.
         if fun < best_fun_iter * 0.9999 {
             no_improve = 0;
             best_fun_iter = fun;
@@ -535,8 +535,8 @@ fn minimize_gradient(
 
         let mut new_x = vec![0.0f64; n];
         for i in 0..n {
-            m[i] = beta1 * m[i] + (1.0 - beta1) * grad[i];
-            v[i] = beta2 * v[i] + (1.0 - beta2) * grad[i] * grad[i];
+            m[i] = beta1 * m[i] + (1.0 - beta1) * grad_buffer[i];
+            v[i] = beta2 * v[i] + (1.0 - beta2) * grad_buffer[i] * grad_buffer[i];
 
             let m_hat = m[i] / (1.0 - beta1_t);
             let v_hat = v[i] / (1.0 - beta2_t);
@@ -544,16 +544,11 @@ fn minimize_gradient(
             new_x[i] = x[i] - alpha * m_hat / (v_hat.sqrt() + epsilon);
         }
 
-        // Update incremental powers
         beta1_t *= beta1;
         beta2_t *= beta2;
 
-        let (new_fx, _, new_max_violation) = penalty_and_gradient(
-            &new_x, S, N, nsi, nsc,
-            unit_polygon_vertices, unit_polygon_vectors,
-            unit_container_vectors, unit_container_apothem,
-            is_inner_circle, is_container_circle,
-            false,
+        let (new_fx, new_max_violation) = penalty_and_gradient(
+            &new_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
         );
 
         x = new_x;
@@ -568,23 +563,30 @@ fn minimize_gradient(
 }
 
 
-
+fn penalty_and_gradient(
+    values: &[f64],
+    S: f64,
+    N: usize,
+    nsi: usize,
+    nsc: usize,
+    unit_polygon_vertices: &[(f64, f64)],
+    unit_polygon_vectors: &[(f64, f64)],
+    unit_container_vectors: &[(f64, f64)],
+    unit_container_apothem: &[f64],
+    is_inner_circle: bool,
+    is_container_circle: bool,
+    compute_grad: bool,
+    polygon_array: &mut [(f64, f64)],
+    vector_array: &mut [(f64, f64)],
+    grad: &mut [f64],
+    bbox_array: &mut [(f64, f64, f64, f64)],
+    sort_indices: &mut [usize],
+) -> (f64, f64) {
     let mut penalty = 0.0f64;
-    let mut grad = if compute_grad { vec![0.0f64; values.len()] } else { vec![] };
+    if compute_grad {
+        grad.fill(0.0);
+    }
     let mut max_violation = 0.0f64;
-
-    let mut polygon_array: Vec<(f64, f64)> = POLY_ARRAY.with(|buf| {
-        ensure_buf(buf.borrow_mut().as_ref().clone().len().max(1), N * nsi);
-        // use RefCell inside
-        let mut b = buf.borrow_mut();
-        if b.len() < N * nsi { b.resize(N * nsi, (0.0, 0.0)); }
-        b[..N * nsi].to_vec()
-    });
-    let mut vector_array: Vec<(f64, f64)> = VEC_ARRAY.with(|buf| {
-        let mut b = buf.borrow_mut();
-        if b.len() < N * nsi { b.resize(N * nsi, (0.0, 0.0)); }
-        b[..N * nsi].to_vec()
-    });
 
     for i in 0..N {
         let posx = values[i * 3];
@@ -698,8 +700,44 @@ fn minimize_gradient(
         }
     }
 
-    for i in 0..N {
-        for j in (i + 1)..N {
+    let use_broadphase = N > 20 && !is_inner_circle;
+    if use_broadphase {
+        for i in 0..N {
+            let mut min_x = 1e30f64;
+            let mut max_x = -1e30f64;
+            let mut min_y = 1e30f64;
+            let mut max_y = -1e30f64;
+            for v in 0..nsi {
+                let (px, py) = polygon_array[i * nsi + v];
+                if px < min_x { min_x = px; }
+                if px > max_x { max_x = px; }
+                if py < min_y { min_y = py; }
+                if py > max_y { max_y = py; }
+            }
+            bbox_array[i] = (min_x, max_x, min_y, max_y);
+            sort_indices[i] = i;
+        }
+        sort_indices.sort_unstable_by(|&a, &b| bbox_array[a].0.partial_cmp(&bbox_array[b].0).unwrap());
+    }
+
+    for idx_i in 0..N {
+        let i = if use_broadphase { sort_indices[idx_i] } else { idx_i };
+        let end_j = N;
+        for idx_j in (idx_i + 1)..end_j {
+            let j = if use_broadphase { sort_indices[idx_j] } else { idx_j };
+
+            if use_broadphase {
+                let b1 = bbox_array[i];
+                let b2 = bbox_array[j];
+                // Sweep prune X axis
+                if b2.0 > b1.1 {
+                    break;
+                }
+                // Prune Y axis
+                if b1.2 > b2.3 || b1.3 < b2.2 {
+                    continue;
+                }
+            }
             if is_inner_circle {
                 let dx = values[j * 3] - values[i * 3];
                 let dy = values[j * 3 + 1] - values[i * 3 + 1];
@@ -836,35 +874,5 @@ fn minimize_gradient(
         }
     }
 
-    (penalty, grad, max_violation)
+    (penalty, max_violation)
 }
-
-fn penalty_and_gradient(
-    values: &[f64],
-    S: f64,
-    N: usize,
-    nsi: usize,
-    nsc: usize,
-    unit_polygon_vertices: &[(f64, f64)],
-    unit_polygon_vectors: &[(f64, f64)],
-    unit_container_vectors: &[(f64, f64)],
-    unit_container_apothem: &[f64],
-    is_inner_circle: bool,
-    is_container_circle: bool,
-    compute_grad: bool,
-) -> (f64, Vec<f64>, f64) {
-    let mut penalty = 0.0f64;
-    let mut grad = if compute_grad { vec![0.0f64; values.len()] } else { vec![] };
-    let mut max_violation = 0.0f64;
-
-    let size = N * nsi;
-    let mut polygon_array = POLY_ARRAY.with(|buf| {
-        let mut b = buf.borrow_mut();
-        if b.len() < size { b.resize(size, (0.0, 0.0)); }
-        b[..size].to_vec()
-    });
-    let mut vector_array = VEC_ARRAY.with(|buf| {
-        let mut b = buf.borrow_mut();
-        if b.len() < size { b.resize(size, (0.0, 0.0)); }
-        b[..size].to_vec()
-    });

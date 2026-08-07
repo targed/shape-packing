@@ -28,66 +28,50 @@ from src.shape_packing.packing_config import (
     LOOP_MAX_BACKOFF as MAX_BACKOFF,
 )
 
-def get_suggest_command():
-    # Build the command for suggest including filter.json mappings.
-    cmd = [sys.executable, "-m", "src.shape_packing.cli", "suggest"]
+class DummyArgs:
+    pass
 
-    if not os.path.exists("filter.json"):
-        return cmd
-
-    try:
-        with open("filter.json", "r") as f:
-            filters = json.load(f)
-    except Exception:
-        return cmd
-
-    mapping = {
-        "min_n": "--min-n",
-        "max_n": "--max-n",
-        "equal_n": "--equal-n",
-        "include_inner": "--include-inner",
-        "exclude_inner": "--exclude-inner",
-        "include_container": "--include-container",
-        "exclude_container": "--exclude-container",
-        "min_inner_sides": "--min-inner-sides",
-        "max_inner_sides": "--max-inner-sides",
-        "min_container_sides": "--min-container-sides",
-        "max_container_sides": "--max-container-sides",
-    }
-
-    for k, flag in mapping.items():
-        v = filters.get(k)
-        if v is not None:
-            cmd.extend([flag, str(v)])
-
-    return cmd
-
+_GLOBAL_HISTORY = None
 
 def get_state():
-    # Ask the suggest command to pick a target problem.
-    cmd = get_suggest_command()
+    from src.shape_packing.cli import handle_suggest
+    args = DummyArgs()
+    args.min_n = None
+    args.max_n = None
+    args.equal_n = None
+    args.include_inner = None
+    args.exclude_inner = None
+    args.include_container = None
+    args.exclude_container = None
+    args.min_inner_sides = None
+    args.max_inner_sides = None
+    args.min_container_sides = None
+    args.max_container_sides = None
+    args.exclude_problems = None
+
+    if os.path.exists("filter.json"):
+        try:
+            with open("filter.json", "r") as f:
+                filters = json.load(f)
+            args.min_n = filters.get("min_n")
+            args.max_n = filters.get("max_n")
+            args.equal_n = filters.get("equal_n")
+            args.include_inner = filters.get("include_inner")
+            args.exclude_inner = filters.get("exclude_inner")
+            args.include_container = filters.get("include_container")
+            args.exclude_container = filters.get("exclude_container")
+            args.min_inner_sides = filters.get("min_inner_sides")
+            args.max_inner_sides = filters.get("max_inner_sides")
+            args.min_container_sides = filters.get("min_container_sides")
+            args.max_container_sides = filters.get("max_container_sides")
+        except Exception:
+            pass
+
     try:
-        res = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-    except subprocess.TimeoutExpired:
-        print("[Loop] suggest timed out.")
-        return None
+        return handle_suggest(args, history_cache=_GLOBAL_HISTORY, direct_call=True)
     except Exception as e:
         print(f"[Loop] suggest failed (runtime error): {e}")
         return None
-
-    if res.returncode != 0:
-        print(f"[Loop] suggest failed (exit {res.returncode}):")
-        print(res.stderr.strip()[:1200])
-        return None
-
-    try:
-        out = json.loads(res.stdout)
-    except json.JSONDecodeError:
-        print("[Loop] suggest returned invalid JSON.")
-        print(res.stdout.strip()[:1200])
-        return None
-
-    return out
 
 
 def choose_attempts(problem):
@@ -104,9 +88,14 @@ def choose_attempts(problem):
 
 
 def run_loop():
+    global _GLOBAL_HISTORY
     print(f"[Loop] Starting infinite search loop.")
+    from src.shape_packing.agent_loop import load_history
+    global _GLOBAL_HISTORY
+    _GLOBAL_HISTORY = load_history("results.tsv")
     print(f"[Loop] Mode: {'Radical/Diverse' if FORCE_DIVERSE else 'Incremental/Exploitative'}")
 
+    results_since_commit = 0
     print("[Loop] Compiling Rust solver once before starting...")
     try:
         subprocess.run(
@@ -147,21 +136,18 @@ def run_loop():
         attempts = choose_attempts(problem)
         print(f"[Loop] Running solver on {problem} with {attempts} attempts...")
 
-        cmd = [
-            sys.executable,
-            "-m",
-            "src.shape_packing.cli",
-            "run",
-            "--problem",
-            problem,
-            "--attempts",
-            str(attempts),
-            "--no-png",
-            "--no-build",
-        ]
+        from src.shape_packing.cli import handle_run
+        args = DummyArgs()
+        args.problem = problem
+        args.attempts = attempts
+        args.init_script = None
+        args.no_commit = True
+        args.json_out = False
+        args.no_png = True
+        args.no_build = True
 
         try:
-            res = subprocess.run(cmd)
+            res = handle_run(args, history_cache=_GLOBAL_HISTORY, direct_call=True)
         except KeyboardInterrupt:
             print("[Loop] Interrupted (Ctrl+C). Exiting loop.")
             sys.exit(0)
@@ -173,13 +159,28 @@ def run_loop():
             time.sleep(sleep)
             continue
 
-        if res.returncode != 0:
+        if not res.get("success") and res.get("returncode") != 42:
             consecutive_failures += 1
             sleep = min(MAX_BACKOFF, BASE_BACKOFF * (2 ** (min(consecutive_failures - 1, 4))))
-            print(f"[Loop] Solver failed (exit {res.returncode}, failure {consecutive_failures}). Backing off {sleep}s...")
+            print(f"[Loop] Solver failed (exit {res.get('returncode')}, failure {consecutive_failures}). Backing off {sleep}s...")
             time.sleep(sleep)
         else:
+            # We must manually log here if success since no_commit is True
+            # (Or actually, cli.py does NOT log if no_commit is True!)
+            if res.get("success"):
+                score = res.get("score")
+                from src.shape_packing.agent_loop import log_result, ExperimentResult
+                log_result(_GLOBAL_HISTORY, problem, score, 0.0, "Auto run attempts=" + str(attempts), commit="auto")
+                if _GLOBAL_HISTORY is not None:
+                    _GLOBAL_HISTORY.append(ExperimentResult(problem=problem, score=score, status="keep", description="", seconds=0.0, commit="auto", memory_gb=0.0))
             consecutive_failures = 0
+            results_since_commit += 1
+            if results_since_commit >= 10:
+                print(f"[Loop] Batch committing {results_since_commit} runs...")
+                subprocess.run(["git", "add", "results.tsv", "results/"])
+                subprocess.run(["git", "commit", "-m", f"auto: batch update of {results_since_commit} runs"])
+                results_since_commit = 0
+                
             print(f"[Loop] Execution complete. Sleeping {SLEEP_BETWEEN_RUNS}s...")
             time.sleep(SLEEP_BETWEEN_RUNS)
 
