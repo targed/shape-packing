@@ -1,0 +1,119 @@
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+warning: unused variable: `dx_dposx`
+   --> src/main.rs:641:33
+    |
+641 | ...                   let dx_dposx = 1.0;
+    |                           ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_dx_dposx`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `dy_dposy`
+   --> src/main.rs:642:33
+    |
+642 | ...                   let dy_dposy = 1.0;
+    |                           ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_dy_dposy`
+
+warning: `packer_rs` (bin "packer_rs") generated 2 warnings (run `cargo fix --bin "packer_rs" -p packer_rs` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 13.03s
+[Main] Starting parallel loop on 32 cores.
+[Main] Compiling Rust solver once before spawning workers...
+warning: unused variable: `dx_dposx`
+   --> src/main.rs:641:33
+    |
+641 | ...                   let dx_dposx = 1.0;
+    |                           ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_dx_dposx`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `dy_dposy`
+   --> src/main.rs:642:33
+    |
+642 | ...                   let dy_dposy = 1.0;
+    |                           ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_dy_dposy`
+
+warning: `packer_rs` (bin "packer_rs") generated 2 warnings (run `cargo fix --bin "packer_rs" -p packer_rs` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.27s
+[Main] Loading history into memory...
+[17_CIRCLE_in_6] Starting (50000 attempts)
+[12_CIRCLE_in_6] Starting (50000 attempts)
+[24_DOMINO_in_6] Starting (50000 attempts)
+[29_5_in_6] Starting (50000 attempts)
+[5_CIRCLE_in_6] Starting (5000 attempts)
+[10_CIRCLE_in_5] Starting (50000 attempts)
+[9_CIRCLE_in_5] Starting (50000 attempts)
+[7_CIRCLE_in_5] Starting (5000 attempts)
+[10_CIRCLE_in_6] Starting (50000 attempts)
+[11_CIRCLE_in_6] Starting (50000 attempts)
+[11_CIRCLE_in_5] Starting (50000 attempts)
+[15_CIRCLE_in_6] Starting (50000 attempts)
+[13_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 4.119361007927449 (from Friedman best_score 4.1193610079274485)
+Injecting --target-s 4.721959225512638 (from Friedman best_score 4.721959225512637)
+Injecting --target-s 5.795418834502115 (from Friedman best_score 4.92987771630786)
+Injecting --target-s 4.334238231530805 (from Friedman best_score 5.095202624832034)
+Injecting --target-s 4.104413875035637 (from Friedman best_score 4.825027890101098)
+Injecting --target-s 3.6034615225908775 (from Friedman best_score 4.236123080364597)
+Injecting --target-s 2.9993567367365506 (from Friedman best_score 2.99935673673655)
+[13_CIRCLE_in_5] Starting (50000 attempts)
+[12_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 4.457777385676272 (from Friedman best_score 5.2404316106068185)
+Injecting --target-s 4.309402058327411 (from Friedman best_score 4.30940205832741)
+Injecting --target-s 4.8076985700657255 (from Friedman best_score 5.65178863390449)
+Injecting --target-s 4.619964531942142 (from Friedman best_score 4.619964531942141)
+Injecting --target-s 4.600141220679243 (from Friedman best_score 5.407790335955908)
+Injecting --target-s 4.961394742524032 (from Friedman best_score 4.961394742524031)
+[20_CIRCLE_in_6] Starting (50000 attempts)
+[22_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 5.678142415213436 (from Friedman best_score 5.678142415213435)
+Injecting --target-s 5.95186267022939 (from Friedman best_score 5.9518626702293895)
+[17_CIRCLE_in_5] Starting (50000 attempts)
+[19_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.460730472768395 (from Friedman best_score 6.419473677274734)
+[20_CIRCLE_in_5] Starting (50000 attempts)
+[18_CIRCLE_in_5] Starting (50000 attempts)
+[14_CIRCLE_in_5] Starting (50000 attempts)
+[21_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.765766474940665 (from Friedman best_score 6.778065004264964)
+[22_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.908009788055549 (from Friedman best_score 6.945282047637263)
+Injecting --target-s 5.603189090884032 (from Friedman best_score 6.586943826855408)
+Injecting --target-s 4.941105994445288 (from Friedman best_score 5.80861846709775)
+Injecting --target-s 6.045819811355619 (from Friedman best_score 7.10728744626499)
+Injecting --target-s 6.1861155731958375 (from Friedman best_score 7.272215005802625)
+[23_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 6.2927145743197865 (from Friedman best_score 7.397529647342157)
+[24_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 6.409224695559712 (from Friedman best_score 7.53449550935743)
+[6_5_in_CIRCLE] Starting (5000 attempts)
+Injecting --target-s 2.6230421606130716 (from Friedman best_score 2.2312929342669907)
+[5_DOMINO_in_CIRCLE] Starting (5000 attempts)
+[10_5_in_CIRCLE] Starting (50000 attempts)
+Injecting --target-s 2.1803977449531997 (from Friedman best_score 2.1803977449531997)
+[6_DOMINO_in_DOMINO] Starting (5000 attempts)
+Injecting --target-s 3.2916368118400885 (from Friedman best_score 2.800033514793103)
+[12_5_in_CIRCLE] Starting (50000 attempts)
+Injecting --target-s 2.9174892150649567 (from Friedman best_score 2.9174892150649567)
+[14_5_in_CIRCLE] Starting (50000 attempts)
+Injecting --target-s 3.549426853920723 (from Friedman best_score 3.019322822474101)
+Injecting --target-s 3.8032654001171027 (from Friedman best_score 3.235250786986958)
+[PASS] Valid configuration, metric s=3.004876530928477
+[5_CIRCLE_in_6] Success!
+[Main] Worker finished 5_CIRCLE_in_6 with score 3.0048765309284766
+[15_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.057262894890713 (from Friedman best_score 5.9451690931654015)
+[PASS] Valid configuration, metric s=4.243434570955204
+[7_CIRCLE_in_5] Success!
+[Main] Worker finished 7_CIRCLE_in_5 with score 4.243434570955204
+[14_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 4.666572918703829 (from Friedman best_score 4.666572918703828)
+[PASS] Valid configuration, metric s=2.926963590249675
+[6_DOMINO_in_DOMINO] Success!
+[Main] Worker finished 6_DOMINO_in_DOMINO with score 2.9269635902496747
+[16_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.214168587755284 (from Friedman best_score 6.129622797698456)
+[PASS] Valid configuration, metric s=2.232167754713471
+[6_5_in_CIRCLE] Success!
+[Main] Worker finished 6_5_in_CIRCLE with score 2.232167754713471
+[23_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 6.0119178965542215 (from Friedman best_score 6.011917896554221)
+slurmstepd: error: *** JOB 2408690 ON compute-34-07 CANCELLED AT 2026-08-07T18:48:44 DUE TO TIME LIMIT ***
