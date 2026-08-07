@@ -16966,3 +16966,4 @@ auto	4.766294300519613	0.0	discard	24_DOMINO_in_6	Parallel run loop
 auto	5.790189669490146	0.0	discard	13_8_in_6	Parallel run loop
 auto	5.994170884047151	0.0	discard	9_8_in_5	Parallel run loop
 auto	4.8203042879733635	0.0	discard	20_5_in_DOMINO	Parallel run loop
+auto	2.40887962868564	0.0	keep	6_CIRCLE_in_8	Auto run attempts=5000
