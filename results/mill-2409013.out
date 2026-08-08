@@ -13276,3 +13276,60 @@ After doing this, you may fix the identity used for this commit with:
 [3_8_in_8] Success!
 [PASS] Valid configuration, metric s=3.845764502478891
 [32_4_in_6] Success!
+[main cb047ff0] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 15 files changed, 182 insertions(+)
+ create mode 100644 results/17_3_in_6/20260808_093017/solution.json
+ create mode 100644 results/18_3_in_6/20260808_093017/solution.json
+ create mode 100644 results/18_DOMINO_in_3/20260808_093017/solution.json
+ create mode 100644 results/19_4_in_6/20260808_093017/solution.json
+ create mode 100644 results/19_DOMINO_in_3/20260808_093016/solution.json
+ create mode 100644 results/21_3_in_6/20260808_093019/solution.json
+ create mode 100644 results/28_4_in_5/20260808_093018/solution.json
+ create mode 100644 results/38_4_in_8/20260808_093258/solution.json
+ create mode 100644 results/3_3_in_6/20260808_093301/solution.json
+ create mode 100644 results/3_3_in_8/20260808_093300/solution.json
+ create mode 100644 results/3_4_in_6/20260808_093304/solution.json
+ create mode 100644 results/3_8_in_8/20260808_093308/solution.json
+ create mode 100644 results/3_8_in_CIRCLE/20260808_093305/solution.json
+[Main] Worker finished 17_3_in_6 with score 1.8333584779613132
+[Main] Worker finished 28_4_in_5 with score 4.438082017691727
+[Main] Worker finished 18_3_in_6 with score 1.895877731964159
+[Main] Worker finished 18_DOMINO_in_3 with score 9.932984586741902
+[Main] Worker finished 21_3_in_6 with score 2.000025568006337
+[Main] Worker finished 19_DOMINO_in_3 with score 10.310305194130006
+[31_4_in_5] Starting (50000 attempts)
+[25_4_in_5] Starting (50000 attempts)
+[34_4_in_8] Starting (50000 attempts)
+[28_4_in_8] Starting (50000 attempts)
+[36_4_in_5] Starting (50000 attempts)
+[34_4_in_5] Starting (50000 attempts)
+[36_4_in_8] Starting (50000 attempts)
+[31_3_in_6] Starting (50000 attempts)
+[1_8_in_8] Starting (5000 attempts)
+[3_4_in_8] Starting (5000 attempts)
+[4_3_in_8] Starting (5000 attempts)
+Injecting --target-s 1.9396418866384895 (from Friedman best_score 0.8570982)
+[4_6_in_DOMINO] Starting (5000 attempts)
+[4_8_in_DOMINO] Starting (5000 attempts)
+[8_4_in_8] Starting (50000 attempts)
+Injecting --target-s 2.904492474308983 (from Friedman best_score 1.5719)
+[4_5_in_6] Starting (5000 attempts)
+[Main] Worker finished 38_4_in_8 with score 3.080877833871798[7_8_in_4] Starting (5000 attempts)
+
+[Main] Worker finished 3_3_in_6 with score 0.9892996509203482
+[Main] Worker finished 1_8_in_3 with score 1.5442374671963693e-15
+[Main] Worker finished 3_4_in_6 with score 1.3660308937496013
+[Main] Batch committing 10 runs...
