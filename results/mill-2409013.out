@@ -10756,3 +10756,61 @@ After doing this, you may fix the identity used for this commit with:
 [17_5_in_4] Success!
 [PASS] Valid configuration, metric s=7.209005604559256
 [23_5_in_4] Success!
+[main 8093b681] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 14 files changed, 186 insertions(+)
+ create mode 100644 results/11_4_in_8/20260808_074506/solution.json
+ create mode 100644 results/12_3_in_6/20260808_074506/solution.json
+ create mode 100644 results/12_4_in_5/20260808_074516/solution.json
+ create mode 100644 results/14_3_in_8/20260808_074512/solution.json
+ create mode 100644 results/14_8_in_3/20260808_074507/solution.json
+ create mode 100644 results/19_5_in_4/20260808_074508/solution.json
+ create mode 100644 results/20_5_in_3/20260808_074506/solution.json
+ create mode 100644 results/22_4_in_6/20260808_074513/solution.json
+ create mode 100644 results/22_4_in_8/20260808_074511/solution.json
+ create mode 100644 results/22_8_in_3/20260808_074510/solution.json
+ create mode 100644 results/37_5_in_3/20260808_074506/solution.json
+ create mode 100644 results/6_8_in_3/20260808_074515/solution.json
+[Main] Worker finished 7_4_in_6 with score 1.8612129236313664
+[Main] Worker finished 29_5_in_3 with score 12.208038296240993
+[10_5_in_3] Starting (50000 attempts)
+[21_4_in_6] Starting (50000 attempts)
+[20_4_in_8] Starting (50000 attempts)
+[13_3_in_6] Starting (50000 attempts)
+[22_5_in_4] Starting (50000 attempts)
+[19_8_in_4] Starting (50000 attempts)
+[15_3_in_8] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=10.609432218967457
+[18_8_in_4] Success!
+[20_8_in_4] Starting (50000 attempts)
+[5_4_in_5] Starting (5000 attempts)
+Injecting --target-s 2.347417627012448 (from Friedman best_score 1.9513)
+[5_DOMINO_in_3] Starting (5000 attempts)
+[24_5_in_3] Starting (50000 attempts)
+[18_4_in_8] Starting (50000 attempts)
+[12_4_in_6] Starting (50000 attempts)
+[Main] Worker finished 19_5_in_4 with score 6.559110050612426
+[Main] Worker finished 22_4_in_8 with score 2.42874741437945
+[Main] Worker finished 23_5_in_4 with score 7.209005604559256
+[Main] Worker finished 13_3_in_8 with score 1.2374664980592032
+[Main] Worker finished 15_4_in_6 with score 2.756319777861962
+[Main] Worker finished 20_5_in_3 with score 10.112392733890127
+[Main] Worker finished 21_5_in_4 with score 6.861609167386894
+[Main] Worker finished 14_3_in_8 with score 1.2766608702562512
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=1.955927169353040
+[5_4_in_5] Success!
+[PASS] Valid configuration, metric s=5.464140210439507
+[5_DOMINO_in_3] Success!
