@@ -10349,3 +10349,81 @@ Injecting --target-s 2.347417627012448 (from Friedman best_score 1.9513)
 [22_8_in_3] Success!
 [PASS] Valid configuration, metric s=5.464140210439507
 [5_DOMINO_in_3] Success!
+[main 01713024] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 22 files changed, 264 insertions(+)
+ create mode 100644 results/11_3_in_8/20260808_072814/solution.json
+ create mode 100644 results/11_4_in_8/20260808_072807/solution.json
+ create mode 100644 results/12_3_in_6/20260808_072807/solution.json
+ create mode 100644 results/13_3_in_8/20260808_072813/solution.json
+ create mode 100644 results/14_3_in_8/20260808_072809/solution.json
+ create mode 100644 results/14_8_in_3/20260808_072808/solution.json
+ create mode 100644 results/15_4_in_6/20260808_072813/solution.json
+ create mode 100644 results/15_5_in_4/20260808_072812/solution.json
+ create mode 100644 results/16_4_in_5/20260808_072807/solution.json
+ create mode 100644 results/16_5_in_4/20260808_072806/solution.json
+ create mode 100644 results/19_5_in_4/20260808_072808/solution.json
+ create mode 100644 results/20_5_in_3/20260808_072807/solution.json
+ create mode 100644 results/21_5_in_4/20260808_072807/solution.json
+ create mode 100644 results/22_4_in_6/20260808_072810/solution.json
+ create mode 100644 results/22_8_in_3/20260808_072808/solution.json
+ create mode 100644 results/23_6_in_3/20260808_072806/solution.json
+ create mode 100644 results/5_4_in_5/20260808_073103/solution.json
+ create mode 100644 results/5_DOMINO_in_3/20260808_073105/solution.json
+ create mode 100644 results/6_5_in_3/20260808_072809/solution.json
+ create mode 100644 results/6_8_in_3/20260808_072811/solution.json
+[Main] Worker finished 15_4_in_6 with score 2.766989065083348
+[Main] Worker finished 5_4_in_5 with score 1.95592716935304
+[Main] Worker finished 19_5_in_4 with score 6.559110050612426
+[Main] Worker finished 22_4_in_6 with score 3.314757120833075
+[Main] Worker finished 20_5_in_3 with score 10.110839754113679
+[Main] Worker finished 23_6_in_3 with score 13.415666255457156
+[Main] Worker finished 21_5_in_4 with score 6.855994971480812
+[Main] Worker finished 6_8_in_3 with score 9.315789363255375
+[Main] Worker finished 13_3_in_8 with score 1.2375424699839104
+[Main] Worker finished 14_8_in_3 with score 14.24080134149529
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=10.449895341199724
+[17_8_in_4] Success!
+[PASS] Valid configuration, metric s=13.011165710784399
+[22_6_in_3] Success!
+[PASS] Valid configuration, metric s=9.199762078842069
+[13_8_in_4] Success!
+[PASS] Valid configuration, metric s=6.242833112717157
+[17_5_in_4] Success!
+[PASS] Valid configuration, metric s=10.618230812343883
+[18_8_in_4] Success!
+[PASS] Valid configuration, metric s=7.218355925758169
+[23_5_in_4] Success!
+[PASS] Valid configuration, metric s=7.172393485589609
+[10_5_in_3] Success!
+[PASS] Valid configuration, metric s=3.241994219783647
+[21_4_in_6] Success!
+[PASS] Valid configuration, metric s=2.032741487278952
+[15_4_in_8] Success!
+[PASS] Valid configuration, metric s=1.666672569073629
+[13_3_in_6] Success!
+[PASS] Valid configuration, metric s=7.046050674069792
+[22_5_in_4] Success!
+[PASS] Valid configuration, metric s=10.980723806978341
+[19_8_in_4] Success!
+[PASS] Valid configuration, metric s=11.659043235523658
+[PASS] Valid configuration, metric s=11.197299676890633
+[17_6_in_3] Success!
+[24_5_in_3] Success!
+[PASS] Valid configuration, metric s=2.443376420605840
+[12_4_in_6] Success!
+[PASS] Valid configuration, metric s=6.327982142264967
+[18_5_in_4] Success!
