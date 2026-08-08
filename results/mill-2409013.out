@@ -4107,3 +4107,65 @@ After doing this, you may fix the identity used for this commit with:
 [22_DOMINO_in_3] Success!
 [PASS] Valid configuration, metric s=1.766400991396902
 [28_3_in_8] Success!
+[PASS] Valid configuration, metric s=1.741322775994562
+[27_3_in_8] Success!
+[PASS] Valid configuration, metric s=4.259462931925501
+[39_4_in_6] Success!
+[PASS] Valid configuration, metric s=4.723191490629986
+[32_4_in_5] Success!
+[PASS] Valid configuration, metric s=6.880135199247852
+[19_DOMINO_in_4] Success!
+[PASS] Valid configuration, metric s=4.558920746985814
+[30_4_in_5] Success!
+[main 452b8de9] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 15 files changed, 196 insertions(+)
+ create mode 100644 results/14_DOMINO_in_3/20260808_031354/solution.json
+ create mode 100644 results/22_DOMINO_in_3/20260808_031358/solution.json
+ create mode 100644 results/27_4_in_6/20260808_031347/solution.json
+ create mode 100644 results/28_3_in_8/20260808_031400/solution.json
+ create mode 100644 results/30_3_in_8/20260808_031352/solution.json
+ create mode 100644 results/30_4_in_8/20260808_031346/solution.json
+ create mode 100644 results/33_4_in_5/20260808_031347/solution.json
+ create mode 100644 results/35_4_in_5/20260808_031355/solution.json
+ create mode 100644 results/35_4_in_6/20260808_031349/solution.json
+ create mode 100644 results/36_3_in_8/20260808_031351/solution.json
+ create mode 100644 results/36_4_in_6/20260808_031346/solution.json
+ create mode 100644 results/40_4_in_5/20260808_031357/solution.json
+ create mode 100644 results/40_4_in_8/20260808_031348/solution.json
+[Main] Worker finished 36_4_in_8 with score 2.9471914444154206
+[Main] Worker finished 24_DOMINO_in_3 with score 11.625502563333496
+[Main] Worker finished 24_3_in_8 with score 1.6370396410597632
+[29_4_in_6] Starting (50000 attempts)
+[40_4_in_6] Starting (50000 attempts)
+[26_DOMINO_in_3] Starting (50000 attempts)
+[21_DOMINO_in_3] Starting (50000 attempts)
+[23_DOMINO_in_3] Starting (50000 attempts)
+[31_3_in_8] Starting (50000 attempts)
+[28_3_in_6] Starting (50000 attempts)
+[25_DOMINO_in_3] Starting (50000 attempts)
+[33_4_in_8] Starting (50000 attempts)
+[29_3_in_8] Starting (50000 attempts)
+[25_3_in_8] Starting (50000 attempts)
+[32_3_in_8] Starting (50000 attempts)
+[Main] Worker finished 35_4_in_6 with score 4.016637004422287
+[34_3_in_8] Starting (50000 attempts)
+[Main] Worker finished 33_4_in_5 with score 4.795186589905255
+[Main] Worker finished 22_DOMINO_in_3 with score 11.087420695432247
+[Main] Worker finished 36_4_in_6 with score 4.041482035549435
+[Main] Worker finished 30_4_in_5 with score 4.558920746985814
+[Main] Worker finished 28_3_in_8 with score 1.7664009913969017
+[Main] Worker finished 35_4_in_5 with score 4.888808075130369
+[Main] Batch committing 10 runs...
