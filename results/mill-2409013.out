@@ -1194,3 +1194,82 @@ After doing this, you may fix the identity used for this commit with:
 [37_5_in_3] Success!
 [PASS] Valid configuration, metric s=12.896165973825520
 [33_5_in_3] Success!
+[PASS] Valid configuration, metric s=2.886925318404044
+[PASS] Valid configuration, metric s=2.290263919705898
+[PASS] Valid configuration, metric s=1.376249064302241
+[17_4_in_6] Success!
+[16_3_in_8] Success!
+[20_4_in_8] Success!
+[PASS] Valid configuration, metric s=1.302549355173943
+[15_3_in_8] Success!
+[main 50b6d8d8] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 19 files changed, 247 insertions(+)
+ create mode 100644 results/12_4_in_5/20260808_011504/solution.json
+ create mode 100644 results/13_3_in_6/20260808_011458/solution.json
+ create mode 100644 results/14_3_in_6/20260808_011500/solution.json
+ create mode 100644 results/14_4_in_6/20260808_011501/solution.json
+ create mode 100644 results/15_5_in_3/20260808_011503/solution.json
+ create mode 100644 results/17_3_in_8/20260808_011503/solution.json
+ create mode 100644 results/17_4_in_5/20260808_011502/solution.json
+ create mode 100644 results/19_3_in_8/20260808_011505/solution.json
+ create mode 100644 results/20_8_in_4/20260808_011459/solution.json
+ create mode 100644 results/22_6_in_3/20260808_011457/solution.json
+ create mode 100644 results/23_4_in_6/20260808_011458/solution.json
+ create mode 100644 results/25_6_in_3/20260808_011503/solution.json
+ create mode 100644 results/26_5_in_3/20260808_011501/solution.json
+ create mode 100644 results/32_5_in_3/20260808_011501/solution.json
+ create mode 100644 results/33_5_in_3/20260808_011506/solution.json
+ create mode 100644 results/37_5_in_3/20260808_011503/solution.json
+ create mode 100644 results/38_5_in_3/20260808_011502/solution.json
+[Main] Worker finished 17_3_in_8 with score 1.3962954396689018
+[Main] Worker finished 20_8_in_4 with score 11.161660541849523
+[Main] Worker finished 14_3_in_6 with score 1.7310529605379383
+[Main] Worker finished 15_5_in_3 with score 8.695062298319634
+[Main] Worker finished 14_4_in_6 with score 2.621521434701497
+[14_4_in_5] Starting (50000 attempts)
+[34_5_in_3] Starting (50000 attempts)
+[32_6_in_3] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=2.167591636504477
+[18_4_in_8] Success!
+[19_4_in_5] Starting (50000 attempts)
+[12_DOMINO_in_3] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=2.230628980054408
+[19_4_in_8] Success!
+[Main] Worker finished 20_4_in_8 with score 2.2902639197058985
+[18_3_in_8] Starting (50000 attempts)
+[Main] Worker finished 17_4_in_6 with score 2.886925318404044
+[Main] Worker finished 38_5_in_3 with score 13.86920973938104
+[Main] Worker finished 18_4_in_8 with score 2.1675916365044765
+[Main] Worker finished 33_5_in_3 with score 12.89616597382552
+[PASS] Valid configuration, metric s=14.059625404706441
+[Main] Batch committing 10 runs...
+[39_5_in_3] Success!
+[PASS] Valid configuration, metric s=14.178899983479139
+[PASS] Valid configuration, metric s=7.622111068686571
+[40_5_in_3] Success!
+[10_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=3.627131076026824
+[18_4_in_5] Success!
+[PASS] Valid configuration, metric s=16.752700566438442
+[20_8_in_3] Success!
+[PASS] Valid configuration, metric s=14.809524854611061
+[29_6_in_3] Success!
+[PASS] Valid configuration, metric s=3.417881217059269
+[24_4_in_6] Success!
+[PASS] Valid configuration, metric s=11.618739598198866
+[27_5_in_3] Success!
+[PASS] Valid configuration, metric s=5.709925539225584
+[13_DOMINO_in_4] Success!
