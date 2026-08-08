@@ -18196,3 +18196,13 @@ auto	4.896337609702395	0.0	keep	9_DOMINO_in_4	Parallel run loop
 auto	10.175419775552646	0.0	keep	21_5_in_3	Parallel run loop
 auto	2.335140167941394	0.0	keep	21_4_in_8	Parallel run loop
 auto	1.5610577210797874	0.0	keep	22_3_in_8	Parallel run loop
+auto	4.5041733168589975	0.0	keep	29_4_in_5	Parallel run loop
+auto	7.000013110524711	0.0	keep	20_DOMINO_in_4	Parallel run loop
+auto	9.784392058904936	0.0	keep	17_DOMINO_in_3	Parallel run loop
+auto	1.596109782763897	0.0	keep	23_3_in_8	Parallel run loop
+auto	1.4711065336694122	0.0	keep	19_3_in_8	Parallel run loop
+auto	1.3962954396689018	0.0	discard	17_3_in_8	Parallel run loop
+auto	3.165543618305243	0.0	keep	20_4_in_6	Parallel run loop
+auto	3.4206687303787935	0.0	discard	24_4_in_6	Parallel run loop
+auto	1.3552982199663324	0.0	discard	16_3_in_8	Parallel run loop
+auto	4.270339905002986	0.0	discard	39_4_in_6	Parallel run loop
