@@ -1104,3 +1104,85 @@ Injecting --target-s 4.941105994445288 (from Friedman best_score 5.8086184670977
 [20_CIRCLE_in_5] Success!
 [PASS] Valid configuration, metric s=2.809695740716984
 [10_5_in_CIRCLE] Success!
+[PASS] Valid configuration, metric s=5.133571200613463
+[17_CIRCLE_in_6] Success!
+[PASS] Valid configuration, metric s=6.135395762849153
+[24_CIRCLE_in_6] Success!
+[main cbeaf286] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-34-07.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 30 files changed, 339 insertions(+)
+ create mode 100644 results/10_6_in_8/20260807_192842/solution.json
+ create mode 100644 results/10_CIRCLE_in_5/20260807_192836/solution.json
+ create mode 100644 results/11_CIRCLE_in_5/20260807_192836/solution.json
+ create mode 100644 results/11_CIRCLE_in_6/20260807_192836/solution.json
+ create mode 100644 results/12_5_in_CIRCLE/20260807_192844/solution.json
+ create mode 100644 results/12_CIRCLE_in_5/20260807_192836/solution.json
+ create mode 100644 results/13_5_in_CIRCLE/20260807_192844/solution.json
+ create mode 100644 results/13_6_in_8/20260807_192842/solution.json
+ create mode 100644 results/13_CIRCLE_in_5/20260807_192836/solution.json
+ create mode 100644 results/13_CIRCLE_in_6/20260807_192836/solution.json
+ create mode 100644 results/14_CIRCLE_in_6/20260807_192839/solution.json
+ create mode 100644 results/15_CIRCLE_in_6/20260807_192836/solution.json
+ create mode 100644 results/16_CIRCLE_in_5/20260807_192839/solution.json
+ create mode 100644 results/16_CIRCLE_in_6/20260807_192839/solution.json
+ create mode 100644 results/17_8_in_8/20260807_192843/solution.json
+ create mode 100644 results/20_CIRCLE_in_6/20260807_192837/solution.json
+ create mode 100644 results/21_CIRCLE_in_5/20260807_192837/solution.json
+ create mode 100644 results/21_CIRCLE_in_6/20260807_192838/solution.json
+ create mode 100644 results/22_CIRCLE_in_6/20260807_192837/solution.json
+ create mode 100644 results/23_CIRCLE_in_5/20260807_192837/solution.json
+ create mode 100644 results/23_CIRCLE_in_6/20260807_192838/solution.json
+ create mode 100644 results/24_CIRCLE_in_5/20260807_192839/solution.json
+ create mode 100644 results/24_DOMINO_in_6/20260807_192836/solution.json
+ create mode 100644 results/29_5_in_6/20260807_192836/solution.json
+ create mode 100644 results/5_DOMINO_in_CIRCLE/20260807_192842/solution.json
+ create mode 100644 results/6_5_in_CIRCLE/20260807_192840/solution.json
+ create mode 100644 results/6_DOMINO_in_DOMINO/20260807_192842/solution.json
+ create mode 100644 results/9_CIRCLE_in_5/20260807_192836/solution.json
+[Main] Worker finished 12_CIRCLE_in_5 with score 5.418179850967894
+[Main] Worker finished 15_CIRCLE_in_6 with score 4.97258179399648
+[Main] Worker finished 13_CIRCLE_in_6 with score 4.630369722961516
+[Main] Worker finished 13_CIRCLE_in_5 with score 5.662456632949463
+[18_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.603189090884032 (from Friedman best_score 6.586943826855408)
+[22_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 6.1861155731958375 (from Friedman best_score 7.272215005802625)
+[15_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.057262894890713 (from Friedman best_score 5.9451690931654015)
+[6_5_in_CIRCLE] Starting (5000 attempts)
+Injecting --target-s 2.6230421606130716 (from Friedman best_score 2.2312929342669907)
+[6_DOMINO_in_DOMINO] Starting (5000 attempts)
+Injecting --target-s 2.9174892150649567 (from Friedman best_score 2.9174892150649567)
+[Main] Worker finished 12_5_in_CIRCLE with score 3.0249325226413832
+[15_5_in_6] Starting (50000 attempts)
+[Main] Worker finished 16_CIRCLE_in_5 with score 6.142396280676911
+Injecting --target-s 4.277442903466547 (from Friedman best_score 3.638610263513514)
+[Main] Worker finished 24_DOMINO_in_6 with score 4.77154037136806
+[Main] Worker finished 16_CIRCLE_in_6 with score 5.012029695954504
+[Main] Worker finished 24_CIRCLE_in_5 with score 7.549945952587069
+[Main] Worker finished 22_CIRCLE_in_6 with score 5.965887068319776
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=2.926963590249675
+[6_DOMINO_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=2.232167754713471
+[6_5_in_CIRCLE] Success!
+[PASS] Valid configuration, metric s=4.309402874516071
+[12_CIRCLE_in_6] Success!
+[PASS] Valid configuration, metric s=6.431949425698770
+[17_CIRCLE_in_5] Success!
+[PASS] Valid configuration, metric s=4.127971354080490
+[10_CIRCLE_in_6] Success!
+[PASS] Valid configuration, metric s=5.820050941652189
+[14_CIRCLE_in_5] Success!
