@@ -1556,3 +1556,97 @@ After doing this, you may fix the identity used for this commit with:
 [Main] Worker finished 14_DOMINO_in_4 with score 5.978348114063382
 [Main] Worker finished 20_DOMINO_in_4 with score 7.00002069337825
 [Main] Batch committing 10 runs...
+[main b115365d] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 14 files changed, 175 insertions(+)
+ create mode 100644 results/14_DOMINO_in_4/20260808_012923/solution.json
+ create mode 100644 results/15_8_in_3/20260808_012918/solution.json
+ create mode 100644 results/16_3_in_6/20260808_012922/solution.json
+ create mode 100644 results/17_DOMINO_in_3/20260808_012920/solution.json
+ create mode 100644 results/20_DOMINO_in_4/20260808_012919/solution.json
+ create mode 100644 results/21_4_in_5/20260808_012918/solution.json
+ create mode 100644 results/23_3_in_8/20260808_012921/solution.json
+ create mode 100644 results/26_4_in_6/20260808_012919/solution.json
+ create mode 100644 results/28_4_in_6/20260808_012921/solution.json
+ create mode 100644 results/29_4_in_8/20260808_012919/solution.json
+ create mode 100644 results/32_4_in_8/20260808_012919/solution.json
+ create mode 100644 results/36_5_in_3/20260808_012922/solution.json
+[Main] Worker finished 26_4_in_6 with score 3.5043692815954772
+[Main] Worker finished 28_4_in_6 with score 3.6316480035405587
+[Main] Worker finished 21_4_in_5 with score 3.8704173057651876
+[32_4_in_6] Starting (50000 attempts)
+[23_4_in_5] Starting (50000 attempts)
+[25_4_in_8] Starting (50000 attempts)
+[33_4_in_8] Starting (50000 attempts)
+[27_4_in_8] Starting (50000 attempts)
+[25_3_in_8] Starting (50000 attempts)
+[25_4_in_5] Starting (50000 attempts)
+[38_4_in_6] Starting (50000 attempts)
+[34_4_in_8] Starting (50000 attempts)
+[27_4_in_6] Starting (50000 attempts)
+[24_3_in_8] Starting (50000 attempts)
+[40_4_in_8] Starting (50000 attempts)
+[28_4_in_8] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=9.619115168407207
+[PASS] Valid configuration, metric s=2.770093644924145
+[PASS] Valid configuration, metric s=3.936673286917023
+[30_4_in_8] Success!
+[Main] Worker finished 30_4_in_8 with score 2.7700936449241453
+[22_4_in_5] Success!
+[16_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=1.962562654966987
+[PASS] Valid configuration, metric s=2.787023388543349
+[PASS] Valid configuration, metric s=10.465438229182674
+[31_4_in_8] Success!
+[19_DOMINO_in_3] Success!
+[Main] Worker finished 19_DOMINO_in_3 with score 10.465438229182674
+[14_DOMINO_in_3] Starting (50000 attempts)
+[19_3_in_6] Success!
+[Main] Worker finished 22_4_in_5 with score 3.936673286917023
+[Main] Worker finished 31_4_in_8 with score 2.787023388543349
+[Main] Worker finished 16_DOMINO_in_3 with score 9.619115168407207
+[18_3_in_6] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=9.657000936176487
+[PASS] Valid configuration, metric s=4.355276251862383
+[16_8_in_4] Success!
+[27_4_in_5] Success!
+[32_4_in_5] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=3.686981498186666
+[29_4_in_6] Success!
+[PASS] Valid configuration, metric s=1.754676731022058
+[28_3_in_8] Success!
+[PASS] Valid configuration, metric s=1.696064765240625
+[26_3_in_8] Success!
+[PASS] Valid configuration, metric s=4.117832997059029
+[31_4_in_5] Starting (50000 attempts)
+[24_4_in_5] Success!
+[PASS] Valid configuration, metric s=1.741729337650681
+[PASS] Valid configuration, metric s=16.786989896453434
+[21_8_in_3] Success!
+[27_3_in_8] Success!
+[Main] Worker finished 28_3_in_8 with score 1.7546767310220577
+[19_DOMINO_in_4] Starting (50000 attempts)
+[Main] Worker finished 29_4_in_6 with score 3.6869814981866664
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=4.329755603406173
+[40_4_in_6] Success!
+[PASS] Valid configuration, metric s=4.270339905002986
+[39_4_in_6] Success!
+[PASS] Valid configuration, metric s=4.509402259792557
+[29_4_in_5] Success!
+[PASS] Valid configuration, metric s=4.432846163334495
+[28_4_in_5] Success!
+[PASS] Valid configuration, metric s=3.804363332294116
+[31_4_in_6] Success!
