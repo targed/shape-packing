@@ -3643,3 +3643,120 @@ Injecting --target-s 5.29540470083123 (from Friedman best_score 5.29540470083123
 [Main] Worker finished 16_5_in_5 with score 4.441477536678243
 [Main] Worker finished 26_6_in_5 with score 7.073021978092495
 [Main] Batch committing 10 runs...
+[main bd816cd9] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-34-07.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 94 insertions(+)
+ create mode 100644 results/25_8_in_8/20260807_211324/solution.json
+[Main] Worker finished 25_8_in_8 with score 5.679885998161292
+[Main] Worker finished 27_6_in_CIRCLE with score 5.291310888280076
+[Main] Worker finished 24_5_in_8 with score 3.2939446631250693
+[27_6_in_5] Starting (50000 attempts)
+Injecting --target-s 6.085054179861333 (from Friedman best_score 7.153410212646325)
+[23_5_in_6] Starting (50000 attempts)
+Injecting --target-s 5.1697746965442235 (from Friedman best_score 4.3976730246132645)
+[26_5_in_5] Starting (50000 attempts)
+Injecting --target-s 5.677020127738932 (from Friedman best_score 5.677020127738932)
+[31_5_in_8] Starting (50000 attempts)
+Injecting --target-s 5.760645194710282 (from Friedman best_score 3.7505253273218626)
+[29_DOMINO_in_5] Starting (50000 attempts)
+Injecting --target-s 5.367057626637951 (from Friedman best_score 6.30935464228326)
+[23_6_in_6] Starting (50000 attempts)
+Injecting --target-s 5.40048176991982 (from Friedman best_score 5.40048176991982)
+[12_DOMINO_in_5] Starting (50000 attempts)
+Injecting --target-s 3.520728102066765 (from Friedman best_score 4.138864111453027)
+[29_5_in_8] Starting (50000 attempts)
+Injecting --target-s 5.568151159689465 (from Friedman best_score 3.6252001720134106)
+[27_8_in_8] Starting (50000 attempts)
+Injecting --target-s 5.815470563365018 (from Friedman best_score 5.815470563365018)
+[14_5_in_5] Starting (50000 attempts)
+Injecting --target-s 4.212319033891546 (from Friedman best_score 4.212319033891546)
+[PASS] Valid configuration, metric s=3.828751125834083
+[PASS] Valid configuration, metric s=3.935981746673115
+[10_DOMINO_in_5] Success!
+[Main] Worker finished 10_DOMINO_in_5 with score 3.828751125834083
+[12_DOMINO_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=4.514186871828370
+[14_DOMINO_in_5] Success!
+[PASS] Valid configuration, metric s=4.738880780683014
+[11_6_in_5] Success!
+[Main] Worker finished 14_DOMINO_in_5 with score 4.51418687182837
+[24_6_in_5] Starting (50000 attempts)
+[Main] Worker finished 11_6_in_5 with score 4.738880780683014
+Injecting --target-s 5.773549614885527 (from Friedman best_score 6.787214634017203)
+[Main] Worker finished 12_DOMINO_in_DOMINO with score 3.935981746673115
+[23_5_in_CIRCLE] Starting (50000 attempts)
+Injecting --target-s 4.787066122977682 (from Friedman best_score 4.07212166714563)
+[16_DOMINO_in_5] Starting (50000 attempts)
+Injecting --target-s 4.025608171847662 (from Friedman best_score 4.732386229840239)
+[21_5_in_5] Starting (50000 attempts)
+Injecting --target-s 5.162533653034662 (from Friedman best_score 5.162533653034662)
+[PASS] Valid configuration, metric s=3.532369992899478
+[15_DOMINO_in_CIRCLE] Success!
+[Main] Worker finished 15_DOMINO_in_CIRCLE with score 3.532369992899478
+[29_8_in_8] Starting (50000 attempts)
+Injecting --target-s 6.056529720239095 (from Friedman best_score 6.056529720239095)
+[PASS] Valid configuration, metric s=3.998253685736246
+[22_5_in_CIRCLE] Success!
+[Main] Worker finished 22_5_in_CIRCLE with score 3.9982536857362456
+[16_5_in_5] Starting (50000 attempts)
+Injecting --target-s 4.418316100768158 (from Friedman best_score 4.418316100768158)
+[PASS] Valid configuration, metric s=4.129663294249506
+[24_5_in_CIRCLE] Success!
+[Main] Worker finished 24_5_in_CIRCLE with score 4.1296632942495055
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=6.082666816508816
+[PASS] Valid configuration, metric s=3.383558796385488
+[22_6_in_DOMINO] Success!
+[25_5_in_8] Success!
+[PASS] Valid configuration, metric s=3.616547745836317
+[18_5_in_CIRCLE] Success!
+[PASS] Valid configuration, metric s=5.525354288666385
+[24_5_in_5] Success!
+[PASS] Valid configuration, metric s=6.928203614427568
+[25_6_in_5] Success!
+[PASS] Valid configuration, metric s=3.516305110593564
+[27_5_in_8] Success!
+[PASS] Valid configuration, metric s=5.310294973685477
+[20_DOMINO_in_5] Success!
+[PASS] Valid configuration, metric s=5.319190116042833
+[22_6_in_6] Success!
+[PASS] Valid configuration, metric s=3.582215248748605
+[28_5_in_8] Success!
+[PASS] Valid configuration, metric s=5.747359388851401
+[26_6_in_6] Success!
+[PASS] Valid configuration, metric s=4.974408251907489
+[30_5_in_6] Success!
+[PASS] Valid configuration, metric s=6.300619479013313
+[32_6_in_6] Success!
+[PASS] Valid configuration, metric s=5.445689579242635
+[23_8_in_8] Success!
+[PASS] Valid configuration, metric s=5.746679693947278
+[27_6_in_6] Success!
+[PASS] Valid configuration, metric s=5.868505394281390
+[28_8_in_8] Success!
+[PASS] Valid configuration, metric s=4.142528358899169
+[PASS] Valid configuration, metric s=4.425678367894450
+[12_DOMINO_in_5] Success!
+[23_5_in_6] Success!
+[PASS] Valid configuration, metric s=5.705107689893281
+[26_5_in_5] Success!
+[FAIL] Shapes 0 and 3 overlap! Depth: 0.6319816844686084; Shapes 0 and 6 overlap! Depth: 0.8304171037543419; Shapes 0 and 12 overlap! Depth: 0.24861262917353977; Shapes 0 and 15 overlap! Depth: 0.04727028743921213; Shapes 0 and 16 overlap! Depth: 0.1803957277822842; Shapes 0 and 23 overlap! Depth: 1.040421193269909; Shapes 0 and 24 overlap! Depth: 0.3682527361771393; Shapes 0 and 26 overlap! Depth: 0.2834343790176874; Shapes 0 and 28 overlap! Depth: 0.4847171228665541; Shapes 1 and 4 overlap! Depth: 0.06681008711714309; Shapes 1 and 8 overlap! Depth: 0.6180268345360964; Shapes 1 and 10 overlap! Depth: 0.016171703998174913; Shapes 1 and 13 overlap! Depth: 1.1730959150348497; Shapes 1 and 14 overlap! Depth: 0.37016123087235997; Shapes 1 and 17 overlap! Depth: 0.1454665930713856; Shapes 1 and 20 overlap! Depth: 1.335312440516999; Shapes 1 and 21 overlap! Depth: 0.766799409165654; Shapes 2 and 5 overlap! Depth: 1.2863159882612787; Shapes 2 and 9 overlap! Depth: 0.848414323850053; Shapes 2 and 11 overlap! Depth: 0.8880771298315602; Shapes 2 and 18 overlap! Depth: 0.44552987538195143; Shapes 3 and 6 overlap! Depth: 1.1831282848329068; Shapes 3 and 16 overlap! Depth: 0.10890288342604901; Shapes 3 and 23 overlap! Depth: 0.37921789466136757; Shapes 4 and 10 overlap! Depth: 0.19319303725064518; Shapes 4 and 21 overlap! Depth: 0.36661244189055253; Shapes 5 and 9 overlap! Depth: 0.683529201639173; Shapes 5 and 11 overlap! Depth: 0.7408005374094255; Shapes 5 and 18 overlap! Depth: 0.4992742862915498; Shapes 6 and 8 overlap! Depth: 0.22432904161831776; Shapes 6 and 16 overlap! Depth: 0.6490093950778361; Shapes 6 and 22 overlap! Depth: 0.005112938623507757; Shapes 6 and 23 overlap! Depth: 0.2665646602758231; Shapes 6 and 26 overlap! Depth: 0.5417325642476555; Shapes 7 and 9 overlap! Depth: 0.0328367151314255; Shapes 7 and 12 overlap! Depth: 1.1435075751132873; Shapes 7 and 27 overlap! Depth: 0.5627496412657045; Shapes 8 and 13 overlap! Depth: 0.5174269267956639; Shapes 8 and 14 overlap! Depth: 0.4684529873720287; Shapes 8 and 16 overlap! Depth: 0.18638623815270905; Shapes 8 and 17 overlap! Depth: 0.5653855871020662; Shapes 8 and 18 overlap! Depth: 0.0522353182327564; Shapes 8 and 20 overlap! Depth: 0.36617814452615693; Shapes 8 and 22 overlap! Depth: 0.5453621208600223; Shapes 8 and 26 overlap! Depth: 0.8962038218579801; Shapes 9 and 11 overlap! Depth: 0.18509203778371652; Shapes 9 and 18 overlap! Depth: 1.0467808149648299; Shapes 10 and 13 overlap! Depth: 0.44751860316030934; Shapes 10 and 14 overlap! Depth: 0.9699133027219413; Shapes 10 and 17 overlap! Depth: 0.8977953738343669; Shapes 10 and 20 overlap! Depth: 0.23212152507454614; Shapes 10 and 21 overlap! Depth: 0.24371922743962687; Shapes 10 and 22 overlap! Depth: 0.26113385275349055; Shapes 10 and 25 overlap! Depth: 0.46992980585124466; Shapes 10 and 26 overlap! Depth: 0.3093402961313968; Shapes 11 and 18 overlap! Depth: 0.21925932810152737; Shapes 12 and 15 overlap! Depth: 0.6184573828504398; Shapes 12 and 23 overlap! Depth: 0.36442452162061456; Shapes 12 and 24 overlap! Depth: 0.7381974506541376; Shapes 12 and 27 overlap! Depth: 0.507384057607652; Shapes 12 and 28 overlap! Depth: 0.05512208350684711; Shapes 13 and 14 overlap! Depth: 0.7151217690172733; Shapes 13 and 17 overlap! Depth: 0.6983244228197272; Shapes 13 and 20 overlap! Depth: 1.0100633069068232; Shapes 13 and 21 overlap! Depth: 0.046331446143301314; Shapes 13 and 22 overlap! Depth: 0.3043724428460633; Shapes 13 and 26 overlap! Depth: 0.23166192406321592; Shapes 14 and 17 overlap! Depth: 1.3456527041389583; Shapes 14 and 20 overlap! Depth: 0.28756832505393026; Shapes 14 and 21 overlap! Depth: 0.3239539960062796; Shapes 14 and 22 overlap! Depth: 0.6235368697315382; Shapes 14 and 25 overlap! Depth: 0.4281933651142796; Shapes 14 and 26 overlap! Depth: 0.574812359695771; Shapes 15 and 23 overlap! Depth: 0.5412673755913247; Shapes 15 and 24 overlap! Depth: 1.037098530661765; Shapes 15 and 27 overlap! Depth: 0.6103008645754953; Shapes 15 and 28 overlap! Depth: 1.5042609010969734; Shapes 16 and 19 overlap! Depth: 0.7367284637385064; Shapes 16 and 22 overlap! Depth: 0.9666194124034206; Shapes 16 and 26 overlap! Depth: 0.3032825587250104; Shapes 17 and 20 overlap! Depth: 0.4513620686112488; Shapes 17 and 21 overlap! Depth: 0.2928164318412394; Shapes 17 and 22 overlap! Depth: 0.931660026519244; Shapes 17 and 25 overlap! Depth: 0.39929662269375776; Shapes 17 and 26 overlap! Depth: 0.7010057080169654; Shapes 19 and 22 overlap! Depth: 0.5755331427496051; Shapes 19 and 25 overlap! Depth: 0.5387453998334111; Shapes 19 and 26 overlap! Depth: 0.3527608846778829; Shapes 20 and 21 overlap! Depth: 0.6236481372804348; Shapes 22 and 25 overlap! Depth: 0.5985590038617061; Shapes 22 and 26 overlap! Depth: 1.1895772602700467; Shapes 23 and 24 overlap! Depth: 0.7563388891672314; Shapes 23 and 28 overlap! Depth: 0.8931521704250058; Shapes 24 and 27 overlap! Depth: 0.8561113640991302; Shapes 24 and 28 overlap! Depth: 1.1709746857246017; Shapes 25 and 26 overlap! Depth: 0.4548686110568454; Shapes 27 and 28 overlap! Depth: 0.31224689665606586
+[29_DOMINO_in_5] Success!
+[PASS] Valid configuration, metric s=7.178978529661767
+[PASS] Valid configuration, metric s=4.231605407181420
+[27_6_in_5] Success!
+[14_5_in_5] Success!
+[PASS] Valid configuration, metric s=5.425165163298882
+[23_6_in_6] Success!
