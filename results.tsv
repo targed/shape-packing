@@ -19836,3 +19836,13 @@ auto	2.931925434374192	0.0	discard	36_4_in_8	Parallel run loop
 auto	8.333536267671072	0.0	discard	8_6_in_3	Parallel run loop
 auto	1.9833282766528608	0.0	discard	14_4_in_8	Parallel run loop
 auto	1.0294375004178038	0.0	discard	3_4_in_8	Parallel run loop
+auto	10.289748499654928	0.0	discard	13_6_in_3	Parallel run loop
+auto	1.9999133994884375	0.0	keep	21_3_in_6	Parallel run loop
+auto	4.942795225197669	0.0	discard	36_4_in_5	Parallel run loop
+auto	1.5740009890436293	0.0	discard	8_4_in_8	Parallel run loop
+auto	5.904858111418961	0.0	discard	15_5_in_4	Parallel run loop
+auto	0.9892996887000588	0.0	discard	3_3_in_6	Parallel run loop
+auto	3.030176589100015e-11	0.0	discard	1_8_in_8	Parallel run loop
+auto	6.511438022198529	0.0	discard	6_8_in_4	Parallel run loop
+auto	2.1552824900461513e-11	0.0	discard	1_8_in_3	Parallel run loop
+auto	2.716111370352478	0.0	discard	3_8_in_CIRCLE	Parallel run loop
