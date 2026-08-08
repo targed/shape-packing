@@ -614,3 +614,91 @@ After doing this, you may fix the identity used for this commit with:
 [23_CIRCLE_in_5] Success!
 [PASS] Valid configuration, metric s=3.087624644501296
 [13_6_in_8] Success!
+[main 80096259] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-34-07.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 4 files changed, 61 insertions(+)
+ create mode 100644 results/21_CIRCLE_in_6/20260807_191117/solution.json
+ create mode 100644 results/23_CIRCLE_in_5/20260807_191117/solution.json
+[Main] Worker finished 24_CIRCLE_in_6 with score 6.135395762849153
+[Main] Worker finished 14_CIRCLE_in_6 with score 4.6785157712076435
+[Main] Worker finished 17_CIRCLE_in_5 with score 6.43194942569877
+[Main] Worker finished 15_CIRCLE_in_6 with score 4.97258179399648
+[Main] Worker finished 8_CIRCLE_in_5 with score 4.572208146659769
+[Main] Worker finished 16_CIRCLE_in_5 with score 6.142396280676911
+[Main] Worker finished 11_CIRCLE_in_6 with score 4.318513001799295
+[Main] Worker finished 22_CIRCLE_in_5 with score 7.2866078512870835
+[Main] Worker finished 15_CIRCLE_in_5 with score 5.957464100021371
+[24_DOMINO_in_6] Starting (50000 attempts)
+Injecting --target-s 4.721959225512638 (from Friedman best_score 4.721959225512637)
+[29_5_in_6] Starting (50000 attempts)
+Injecting --target-s 5.795418834502115 (from Friedman best_score 4.92987771630786)
+[5_CIRCLE_in_6] Starting (5000 attempts)
+Injecting --target-s 2.9993567367365506 (from Friedman best_score 2.99935673673655)
+[9_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 4.011844785498148 (from Friedman best_score 4.011844785498147)
+[10_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 4.334238231530805 (from Friedman best_score 5.095202624832034)
+[9_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 4.104413875035637 (from Friedman best_score 4.825027890101098)
+[10_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 4.119361007927449 (from Friedman best_score 4.1193610079274485)
+[8_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 3.7094036386968585 (from Friedman best_score 3.709403638696858)
+[7_CIRCLE_in_5] Starting (5000 attempts)
+Injecting --target-s 3.6034615225908775 (from Friedman best_score 4.236123080364597)
+[11_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 4.457777385676272 (from Friedman best_score 5.2404316106068185)
+[13_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 4.619964531942142 (from Friedman best_score 4.619964531942141)
+[13_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 4.8076985700657255 (from Friedman best_score 5.65178863390449)
+[12_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 4.600141220679243 (from Friedman best_score 5.407790335955908)
+[20_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 5.678142415213436 (from Friedman best_score 5.678142415213435)
+[22_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 5.95186267022939 (from Friedman best_score 5.9518626702293895)
+[19_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.765766474940665 (from Friedman best_score 6.778065004264964)
+[20_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.908009788055549 (from Friedman best_score 6.945282047637263)
+[18_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 5.603189090884032 (from Friedman best_score 6.586943826855408)
+[14_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 4.941105994445288 (from Friedman best_score 5.80861846709775)
+[21_CIRCLE_in_5] Starting (50000 attempts)
+Injecting --target-s 6.045819811355619 (from Friedman best_score 7.10728744626499)
+[23_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 6.0119178965542215 (from Friedman best_score 6.011917896554221)
+[17_CIRCLE_in_6] Starting (50000 attempts)
+[12_CIRCLE_in_6] Starting (50000 attempts)
+[16_CIRCLE_in_6] Starting (50000 attempts)
+Injecting --target-s 4.999366341805163 (from Friedman best_score 4.999366341805162)
+[6_5_in_CIRCLE] Starting (5000 attempts)
+Injecting --target-s 2.6230421606130716 (from Friedman best_score 2.2312929342669907)
+[10_5_in_CIRCLE] Starting (50000 attempts)
+Injecting --target-s 3.2916368118400885 (from Friedman best_score 2.800033514793103)
+[6_DOMINO_in_DOMINO] Starting (5000 attempts)
+Injecting --target-s 2.9174892150649567 (from Friedman best_score 2.9174892150649567)
+[Main] Worker finished 13_6_in_8 with score 3.087624644501296
+[12_5_in_CIRCLE] Starting (50000 attempts)
+Injecting --target-s 3.549426853920723 (from Friedman best_score 3.019322822474101)
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=3.004876530928477
+[5_CIRCLE_in_6] Success!
+[PASS] Valid configuration, metric s=4.243434570955204
+[7_CIRCLE_in_5] Success!
+[PASS] Valid configuration, metric s=2.926963590249675
+[6_DOMINO_in_DOMINO] Success!
