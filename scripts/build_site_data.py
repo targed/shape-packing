@@ -525,7 +525,18 @@ def main():
     priority_targets = [p for p in problems_list if p.get("priority_rank") is not None]
     priority_targets.sort(key=lambda p: p["priority_rank"])
 
-    site_data = {
+    def sanitize_floats(obj):
+        if isinstance(obj, float):
+            if math.isnan(obj) or math.isinf(obj):
+                return None
+            return obj
+        elif isinstance(obj, dict):
+            return {k: sanitize_floats(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [sanitize_floats(x) for x in obj]
+        return obj
+
+    site_data = sanitize_floats({
         "summary": {
             "total_families": len(families_list),
             "total_problems": len(problems_list),
@@ -544,7 +555,7 @@ def main():
         "priority_targets": priority_targets[:25],
         "families": families_list,
         "problems": problems_list,
-    }
+    })
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
