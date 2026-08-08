@@ -11451,3 +11451,91 @@ After doing this, you may fix the identity used for this commit with:
 [Main] Worker finished 14_4_in_6 with score 2.621343655272934
 [Main] Worker finished 19_8_in_3 with score 16.544767247188243
 [Main] Batch committing 10 runs...
+[main 848e9233] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 15 files changed, 162 insertions(+)
+ create mode 100644 results/10_3_in_8/20260808_081454/solution.json
+ create mode 100644 results/10_DOMINO_in_3/20260808_081452/solution.json
+ create mode 100644 results/11_4_in_5/20260808_081451/solution.json
+ create mode 100644 results/13_4_in_5/20260808_081454/solution.json
+ create mode 100644 results/14_4_in_6/20260808_081449/solution.json
+ create mode 100644 results/16_4_in_6/20260808_081449/solution.json
+ create mode 100644 results/18_4_in_5/20260808_081453/solution.json
+ create mode 100644 results/19_4_in_8/20260808_081450/solution.json
+ create mode 100644 results/20_5_in_4/20260808_081450/solution.json
+ create mode 100644 results/20_8_in_3/20260808_081452/solution.json
+ create mode 100644 results/25_5_in_3/20260808_081449/solution.json
+ create mode 100644 results/25_5_in_4/20260808_081448/solution.json
+ create mode 100644 results/40_5_in_3/20260808_081450/solution.json
+[Main] Worker finished 14_3_in_6 with score 1.726091666469519
+[Main] Worker finished 25_5_in_4 with score 7.473964564971502
+[Main] Worker finished 11_4_in_5 with score 2.890963298341843
+[Main] Worker finished 18_4_in_5 with score 3.626066762816006
+[Main] Worker finished 10_DOMINO_in_3 with score 7.622582891208529
+[Main] Worker finished 10_3_in_8 with score 1.0760479230399078
+[Main] Worker finished 19_4_in_8 with score 2.230617366690337
+[16_4_in_5] Starting (50000 attempts)
+[6_3_in_8] Starting (5000 attempts)
+[15_5_in_3] Starting (50000 attempts)
+[21_5_in_4] Starting (50000 attempts)
+[20_5_in_3] Starting (50000 attempts)
+[35_5_in_3] Starting (50000 attempts)
+[15_DOMINO_in_3] Starting (50000 attempts)
+[37_5_in_3] Starting (50000 attempts)
+[10_8_in_3] Starting (50000 attempts)
+[20_4_in_6] Starting (50000 attempts)
+[22_4_in_8] Starting (50000 attempts)
+[14_4_in_5] Starting (50000 attempts)
+[12_4_in_5] Starting (50000 attempts)
+[23_4_in_8] Starting (50000 attempts)
+[22_6_in_3] Starting (50000 attempts)
+[34_5_in_3] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=1.861211893860316
+[PASS] Valid configuration, metric s=3.803457077784814
+[PASS] Valid configuration, metric s=9.657026619489814
+[20_4_in_5] Success!
+[Main] Worker finished 20_4_in_5 with score 3.8034570777848136
+[7_4_in_6] Success!
+[15_8_in_4] Success!
+[PASS] Valid configuration, metric s=12.422548798690189
+[30_5_in_3] Success!
+[PASS] Valid configuration, metric s=13.645110786679366
+[PASS] Valid configuration, metric s=7.317204392650463
+[24_6_in_3] Success!
+[PASS] Valid configuration, metric s=5.723293361877296
+[9_DOMINO_in_3] Success!
+[13_DOMINO_in_4] Success!
+[Main] Worker finished 30_5_in_3 with score 12.422548798690189
+[32_6_in_3] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=14.818984147007146
+[Main] Worker finished 15_8_in_4 with score 9.657026619489814
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=1.753411365902675
+[29_6_in_3] Success!
+[12_4_in_8] Success!
+[PASS] Valid configuration, metric s=11.478290935644102
+[PASS] Valid configuration, metric s=11.619093667564650
+[27_5_in_3] Success!
+[26_5_in_3] Success!
+[PASS] Valid configuration, metric s=3.285257194926323
+[PASS] Valid configuration, metric s=12.608975489247648
+[PASS] Valid configuration, metric s=3.542367189182854
+[31_5_in_3] Success!
+[15_4_in_5] Success!
+[17_4_in_5] Success!
+[PASS] Valid configuration, metric s=12.201815406996435
+[29_5_in_3] Success!
+[PASS] Valid configuration, metric s=13.423728013287104
+[23_6_in_3] Success!
