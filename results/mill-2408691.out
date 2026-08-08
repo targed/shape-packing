@@ -4251,3 +4251,103 @@ Injecting --target-s 2.619919577339808 (from Friedman best_score 2.0051996327537
 [Main] Worker finished 16_DOMINO_in_CIRCLE with score 3.659026073253804
 [Main] Worker finished 25_6_in_5 with score 6.928203614427568
 [Main] Batch committing 10 runs...
+[main cf3c8754] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-34-07.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 92 insertions(+)
+[Main] Worker finished 27_6_in_5 with score 7.178978529661767
+[Main] Worker finished 28_8_in_8 with score 5.86850539428139
+[28_8_in_8] Starting (50000 attempts)
+Injecting --target-s 5.837617794331301 (from Friedman best_score 5.837617794331301)
+[25_6_in_5] Starting (50000 attempts)
+Injecting --target-s 5.8728508453263455 (from Friedman best_score 6.903950231592421)
+[27_6_in_5] Starting (50000 attempts)
+Injecting --target-s 6.085054179861333 (from Friedman best_score 7.153410212646325)
+[16_DOMINO_in_5] Starting (50000 attempts)
+Injecting --target-s 4.025608171847662 (from Friedman best_score 4.732386229840239)
+[16_DOMINO_in_CIRCLE] Starting (50000 attempts)
+Injecting --target-s 3.6124146323887247 (from Friedman best_score 3.6124146323887247)
+[25_DOMINO_in_8] Starting (50000 attempts)
+Injecting --target-s 4.65768834912934 (from Friedman best_score 3.5648403286634087)
+[10_DOMINO_in_8] Starting (50000 attempts)
+Injecting --target-s 3.0365619192011657 (from Friedman best_score 2.324083875658053)
+[9_DOMINO_in_8] Starting (50000 attempts)
+Injecting --target-s 2.872009275209375 (from Friedman best_score 2.198140734442995)
+[PASS] Valid configuration, metric s=2.005199632752155
+[7_DOMINO_in_8] Success!
+[Main] Worker finished 7_DOMINO_in_8 with score 2.0051996327521553
+[15_DOMINO_in_8] Starting (50000 attempts)
+Injecting --target-s 3.6504614256241523 (from Friedman best_score 2.793942216148419)
+[PASS] Valid configuration, metric s=4.514186871828370
+[PASS] Valid configuration, metric s=4.107409157480664
+[14_DOMINO_in_5] Success!
+[Main] Worker finished 14_DOMINO_in_5 with score 4.51418687182837
+[PASS] Valid configuration, metric s=4.142528358899169
+[12_DOMINO_in_5] Success!
+[23_5_in_CIRCLE] Success!
+[Main] Worker finished 23_5_in_CIRCLE with score 4.107409157480664
+[21_DOMINO_in_8] Starting (50000 attempts)
+[Main] Worker finished 12_DOMINO_in_5 with score 4.142528358899169
+Injecting --target-s 4.333630299437825 (from Friedman best_score 3.3168170351804376)
+[12_DOMINO_in_5] Starting (50000 attempts)
+Injecting --target-s 3.520728102066765 (from Friedman best_score 4.138864111453027)
+[22_DOMINO_in_6] Starting (50000 attempts)
+Injecting --target-s 4.579812418082425 (from Friedman best_score 4.579812418082424)
+[PASS] Valid configuration, metric s=3.937348419509807
+[19_DOMINO_in_CIRCLE] Success!
+[Main] Worker finished 19_DOMINO_in_CIRCLE with score 3.9373484195098065
+[PASS] Valid configuration, metric s=4.425678367894450
+[PASS] Valid configuration, metric s=3.998253685736246
+[PASS] Valid configuration, metric s=5.310294973685477
+[20_DOMINO_in_5] Success!
+[23_5_in_6] Success!
+[22_5_in_CIRCLE] Success!
+[FAIL] Shape 4 is out of bounds! Violation margin: 0.1905273975981352; Shapes 0 and 1 overlap! Depth: 0.43878150618533196; Shapes 0 and 5 overlap! Depth: 0.5825707998487041; Shapes 0 and 6 overlap! Depth: 0.44897569508515645; Shapes 1 and 2 overlap! Depth: 0.3729497918589515; Shapes 1 and 6 overlap! Depth: 0.3013614498586652; Shapes 1 and 7 overlap! Depth: 0.4066535323158271; Shapes 2 and 3 overlap! Depth: 0.37216975379044204; Shapes 2 and 6 overlap! Depth: 0.0015851722851599748; Shapes 2 and 7 overlap! Depth: 0.8351533599551242; Shapes 2 and 8 overlap! Depth: 0.48463024153633805; Shapes 3 and 4 overlap! Depth: 0.6209572763076505; Shapes 3 and 7 overlap! Depth: 0.02330355561798214; Shapes 3 and 8 overlap! Depth: 0.26983115165447114; Shapes 3 and 9 overlap! Depth: 0.10542877070977885; Shapes 4 and 8 overlap! Depth: 0.30385767763708693; Shapes 4 and 9 overlap! Depth: 0.36957117712373144; Shapes 5 and 6 overlap! Depth: 0.8109263402546416; Shapes 5 and 10 overlap! Depth: 0.5039510004325745; Shapes 5 and 11 overlap! Depth: 0.19795355661792724; Shapes 6 and 7 overlap! Depth: 0.41476825884750335; Shapes 6 and 10 overlap! Depth: 0.11476726490804467; Shapes 6 and 11 overlap! Depth: 0.09802510935642766; Shapes 6 and 12 overlap! Depth: 0.44395789159801635; Shapes 7 and 8 overlap! Depth: 0.43812734208953585; Shapes 7 and 11 overlap! Depth: 0.3612158427044285; Shapes 7 and 12 overlap! Depth: 0.8932614491642995; Shapes 8 and 9 overlap! Depth: 0.988508957233779; Shapes 8 and 12 overlap! Depth: 0.08418757550848588; Shapes 8 and 13 overlap! Depth: 0.4311567778502371; Shapes 8 and 14 overlap! Depth: 0.5100804321544685; Shapes 9 and 13 overlap! Depth: 0.4212198406866494; Shapes 9 and 14 overlap! Depth: 0.5929738347684429; Shapes 10 and 11 overlap! Depth: 0.5725718378586417; Shapes 10 and 15 overlap! Depth: 0.4716674485322143; Shapes 10 and 16 overlap! Depth: 0.17299361864706087; Shapes 11 and 12 overlap! Depth: 0.5933632129271199; Shapes 11 and 15 overlap! Depth: 0.24069097381962387; Shapes 11 and 16 overlap! Depth: 0.4775585128952035; Shapes 11 and 17 overlap! Depth: 0.011445439065446622; Shapes 12 and 13 overlap! Depth: 0.31007379049821715; Shapes 12 and 17 overlap! Depth: 0.9171901687090638; Shapes 12 and 18 overlap! Depth: 0.0010863850968437783; Shapes 13 and 14 overlap! Depth: 0.462633334091872; Shapes 13 and 17 overlap! Depth: 0.3823721690786297; Shapes 13 and 18 overlap! Depth: 0.5926184582832872; Shapes 14 and 18 overlap! Depth: 0.012967539330333677; Shapes 14 and 19 overlap! Depth: 0.7765678816279515; Shapes 15 and 16 overlap! Depth: 0.4979380591324385; Shapes 15 and 20 overlap! Depth: 0.5551247727175468; Shapes 16 and 17 overlap! Depth: 0.25383477370017715; Shapes 16 and 20 overlap! Depth: 0.08988529530427591; Shapes 16 and 21 overlap! Depth: 0.726555809757147; Shapes 16 and 22 overlap! Depth: 0.2533133342611895; Shapes 17 and 18 overlap! Depth: 0.5017427442744433; Shapes 17 and 21 overlap! Depth: 0.4428248432694586; Shapes 17 and 22 overlap! Depth: 0.8965060793087032; Shapes 18 and 19 overlap! Depth: 0.48844879181103407; Shapes 20 and 21 overlap! Depth: 0.28389357502507684; Shapes 21 and 22 overlap! Depth: 0.6703434512272348
+[23_DOMINO_in_5] Success!
+[Main] Worker finished 23_5_in_6 with score 4.42567836789445[19_DOMINO_in_CIRCLE] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=4.441477536678243
+Injecting --target-s 3.8821543436158765 (from Friedman best_score 3.8821543436158765)
+[16_5_in_5] Success!
+
+[Main] Worker finished 22_5_in_CIRCLE with score 3.9982536857362456
+[Main] Worker finished 23_DOMINO_in_5 with score 5.916404951696938
+[PASS] Valid configuration, metric s=3.832845383043779
+[18_DOMINO_in_CIRCLE] Success!
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=3.672087060604456
+[19_5_in_CIRCLE] Success!
+[PASS] Valid configuration, metric s=3.616547745836317
+[PASS] Valid configuration, metric s=3.909531959332601
+[PASS] Valid configuration, metric s=6.281444977619111
+[18_5_in_CIRCLE] Success!
+[29_DOMINO_in_5] Success!
+[PASS] Valid configuration, metric s=4.626301058318689
+[19_6_in_6] Success!
+[21_5_in_CIRCLE] Success!
+[PASS] Valid configuration, metric s=4.124710422965860
+[24_5_in_CIRCLE] Success!
+[PASS] Valid configuration, metric s=5.425165163298882
+[23_6_in_6] Success!
+[PASS] Valid configuration, metric s=5.291310888280076
+[27_6_in_CIRCLE] Success!
+[PASS] Valid configuration, metric s=3.641260813961986
+[29_5_in_8] Success!
+[PASS] Valid configuration, metric s=5.746679693947278
+[27_6_in_6] Success!
+[PASS] Valid configuration, metric s=5.705107689893281
+[26_5_in_5] Success!
+[PASS] Valid configuration, metric s=4.974408251907489
+[30_5_in_6] Success!
+[PASS] Valid configuration, metric s=6.300619479013313
+[32_6_in_6] Success!
