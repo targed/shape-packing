@@ -16,6 +16,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import numpy as np
 from dataclasses import dataclass
 from typing import Any, List, Optional, Tuple
 
@@ -367,6 +368,29 @@ def verify_solution(
 # --------------- Plotting helpers ---------------
 
 
+def get_container_rotation_offset(token: str) -> float:
+    """
+    Returns rotation angle in radians to rotate the container (and all packed shapes)
+    so that the container has a horizontal flat edge at the bottom, matching
+    Erich Friedman's standard visual orientation.
+    """
+    t = str(token).strip().upper()
+    if t in ("CIRCLE", "CIR", "DOMINO", "TAN", "L"):
+        return 0.0
+    try:
+        sides = int(t)
+    except ValueError:
+        return 0.0
+
+    if sides % 2 == 1:
+        return math.pi / 2.0
+    else:
+        if (sides // 2) % 2 == 0:
+            return math.pi / sides
+        else:
+            return 0.0
+
+
 def to_plot_data(sol: "Solution") -> Any:
     """
     Prepare geometry for plotting from a Solution.
@@ -376,15 +400,34 @@ def to_plot_data(sol: "Solution") -> Any:
       - polygons: list of list of (x, y)
       - centers: list of (cx, cy)
     """
-    _, unit_container, _, _ = get_shape_geometry(sol.container_token)
-    container_vertices = unit_container * sol.S
-    polygons = build_polygons(sol)
+    rot = get_container_rotation_offset(sol.container_token)
+    cosa = math.cos(rot)
+    sina = math.sin(rot)
 
+    _, unit_container, _, _ = get_shape_geometry(sol.container_token)
+    if rot != 0.0:
+        unit_container = np.array([
+            [vx * cosa - vy * sina, vx * sina + vy * cosa]
+            for vx, vy in unit_container
+        ])
+    container_vertices = unit_container * sol.S
+
+    _, unit_inner, _, _ = get_shape_geometry(sol.inner_token)
+    polygons: List[List[Tuple[float, float]]] = []
     centers: List[Tuple[float, float]] = []
+
     for i in range(sol.N):
-        cx = sol.values[i * 3]
-        cy = sol.values[i * 3 + 1]
-        centers.append((cx, cy))
+        x = sol.values[i * 3]
+        y = sol.values[i * 3 + 1]
+        a = sol.values[i * 3 + 2]
+
+        rx = x * cosa - y * sina
+        ry = x * sina + y * cosa
+        ra = a + rot
+
+        poly = transform_polygon(unit_inner, rx, ry, ra)
+        polygons.append([(float(v[0]), float(v[1])) for v in poly])
+        centers.append((rx, ry))
 
     return {
         "container_vertices": [

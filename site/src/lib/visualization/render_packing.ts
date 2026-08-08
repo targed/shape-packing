@@ -40,6 +40,20 @@ export function getRegularPolygonVertices(sides: number, radius: number = 1.0, o
   return points;
 }
 
+export function getContainerRotationOffset(val: any): number {
+  if (typeof val === 'number') {
+    if (val % 2 === 1) return Math.PI / 2.0;
+    if (Math.floor(val / 2) % 2 === 0) return Math.PI / val;
+    return 0.0;
+  }
+  const s = String(val).trim().toUpperCase();
+  const sides = parseInt(s, 10);
+  if (isNaN(sides)) return 0.0;
+  if (sides % 2 === 1) return Math.PI / 2.0;
+  if (Math.floor(sides / 2) % 2 === 0) return Math.PI / sides;
+  return 0.0;
+}
+
 export function transformPoint(pt: PolygonPoint, cx: number, cy: number, angle: number): PolygonPoint {
   const cos = Math.cos(angle);
   const sin = Math.sin(angle);
@@ -70,13 +84,21 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
   ];
 
   const shapes: Array<{ cx: number; cy: number; angle: number; color: string }> = [];
+  const rot = getContainerRotationOffset(containerSides);
+  const cos = Math.cos(rot);
+  const sin = Math.sin(rot);
   const stride = Math.floor(values.length / N);
-  
+
   for (let i = 0; i < N; i++) {
     const idx = i * stride;
-    const cx = values[idx] || 0;
-    const cy = values[idx + 1] || 0;
-    const angle = stride >= 3 ? (values[idx + 2] || 0) : 0;
+    const rawCx = values[idx] || 0;
+    const rawCy = values[idx + 1] || 0;
+    const rawAngle = stride >= 3 ? (values[idx + 2] || 0) : 0;
+
+    const cx = rawCx * cos - rawCy * sin;
+    const cy = rawCx * sin + rawCy * cos;
+    const angle = rawAngle + rot;
+
     shapes.push({
       cx,
       cy,
@@ -99,6 +121,7 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
   return {
     viewBox,
     containerSides,
+    containerOffsetAngle: rot,
     innerSides,
     shapes,
     S,

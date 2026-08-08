@@ -28,7 +28,7 @@ const svgData = generatePackingSvgElements(mergedSolution);
         <!-- Container Boundary -->
         {typeof svgData.containerSides === 'number' && svgData.containerSides > 2 ? (
           <polygon
-            points={getRegularPolygonVertices(svgData.containerSides, svgData.S)
+            points={getRegularPolygonVertices(svgData.containerSides, svgData.S, svgData.containerOffsetAngle || 0)
               .map(p => `${p.x},${p.y}`)
               .join(' ')}
             fill="none"
