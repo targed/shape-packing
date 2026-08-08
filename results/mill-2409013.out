@@ -14537,3 +14537,82 @@ Injecting --target-s 2.910251349425008 (from Friedman best_score 1.6802344)
 [16_3_in_8] Success!
 [PASS] Valid configuration, metric s=3.795780038200155
 [31_4_in_6] Success!
+[main cadc430d] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 21 files changed, 252 insertions(+)
+ create mode 100644 results/10_4_in_8/20260808_102306/solution.json
+ create mode 100644 results/12_5_in_3/20260808_102306/solution.json
+ create mode 100644 results/12_5_in_4/20260808_102307/solution.json
+ create mode 100644 results/13_5_in_3/20260808_102306/solution.json
+ create mode 100644 results/13_8_in_3/20260808_102306/solution.json
+ create mode 100644 results/16_3_in_8/20260808_102313/solution.json
+ create mode 100644 results/16_4_in_5/20260808_102308/solution.json
+ create mode 100644 results/16_8_in_4/20260808_102313/solution.json
+ create mode 100644 results/16_DOMINO_in_3/20260808_102311/solution.json
+ create mode 100644 results/17_4_in_5/20260808_102309/solution.json
+ create mode 100644 results/19_DOMINO_in_3/20260808_102312/solution.json
+ create mode 100644 results/20_8_in_4/20260808_102308/solution.json
+ create mode 100644 results/21_5_in_3/20260808_102310/solution.json
+ create mode 100644 results/25_5_in_3/20260808_102307/solution.json
+ create mode 100644 results/31_4_in_6/20260808_102314/solution.json
+ create mode 100644 results/4_3_in_8/20260808_102306/solution.json
+ create mode 100644 results/4_5_in_6/20260808_102306/solution.json
+ create mode 100644 results/5_3_in_8/20260808_102306/solution.json
+ create mode 100644 results/8_6_in_3/20260808_102306/solution.json
+[18_5_in_3] Starting (50000 attempts)
+[9_3_in_8] Starting (50000 attempts)
+Injecting --target-s 2.909582091819941 (from Friedman best_score 1.2857)
+[20_8_in_3] Starting (50000 attempts)
+[18_4_in_5] Starting (50000 attempts)
+[Main] Worker finished 16_8_in_4 with score 9.656914959980716
+[12_DOMINO_in_3] Starting (50000 attempts)
+[Main] Worker finished 17_4_in_5 with score 3.542289322549211
+[Main] Worker finished 20_8_in_4 with score 11.110439200692014
+[Main] Worker finished 25_5_in_3 with score 11.34674382256974
+[Main] Worker finished 19_DOMINO_in_3 with score 10.313745474344415
+[Main] Worker finished 12_5_in_3 with score 8.191195265606687
+[Main] Worker finished 31_4_in_6 with score 3.795780038200155
+[Main] Worker finished 16_DOMINO_in_3 with score 9.477589795765269
+[Main] Worker finished 16_4_in_5 with score 3.479411307571736
+[Main] Worker finished 21_5_in_3 with score 10.198092879780287
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=0.736540014333345
+[PASS] Valid configuration, metric s=7.035633930523232
+[3_3_in_8] Success!
+[7_8_in_4] Success!
+[PASS] Valid configuration, metric s=1.574000989043629
+[8_4_in_8] Success!
+[PASS] Valid configuration, metric s=1.436907631570239
+[7_4_in_8] Success!
+[PASS] Valid configuration, metric s=4.907460511911651
+[10_5_in_4] Success!
+[PASS] Valid configuration, metric s=8.242757735313502
+[10_8_in_4] Success!
+[PASS] Valid configuration, metric s=1.434328817921533
+[9_3_in_6] Success!
+[PASS] Valid configuration, metric s=10.288910091074099
+[13_6_in_3] Success!
+[PASS] Valid configuration, metric s=11.001725534792790
+[23_5_in_3] Success!
+[PASS] Valid configuration, metric s=7.050136170984389
+[22_5_in_4] Success!
+[PASS] Valid configuration, metric s=7.473302164108981
+[25_5_in_4] Success!
+[PASS] Valid configuration, metric s=2.428795784424064
+[22_4_in_8] Success!
+[PASS] Valid configuration, metric s=6.338167468994400
+[18_5_in_4] Success!
+[PASS] Valid configuration, metric s=3.165543618305243
+[20_4_in_6] Success!
