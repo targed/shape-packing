@@ -8881,3 +8881,57 @@ After doing this, you may fix the identity used for this commit with:
 [11_6_in_3] Success!
 [PASS] Valid configuration, metric s=16.075375912419812
 [17_8_in_3] Success!
+[PASS] Valid configuration, metric s=2.793358383129364
+[10_4_in_5] Success!
+[PASS] Valid configuration, metric s=14.042399350801871
+[13_8_in_3] Success!
+[main a4deabd1] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 7 files changed, 107 insertions(+)
+ create mode 100644 results/12_5_in_3/20260808_062213/solution.json
+ create mode 100644 results/2_6_in_DOMINO/20260808_062458/solution.json
+ create mode 100644 results/7_4_in_8/20260808_062455/solution.json
+ create mode 100644 results/8_DOMINO_in_3/20260808_062455/solution.json
+ create mode 100644 results/9_5_in_3/20260808_062455/solution.json
+[9_6_in_3] Starting (50000 attempts)
+[10_5_in_4] Starting (50000 attempts)
+[4_5_in_4] Starting (5000 attempts)
+[8_3_in_6] Starting (50000 attempts)
+[12_6_in_3] Starting (50000 attempts)
+[8_3_in_8] Starting (50000 attempts)
+[18_8_in_3] Starting (50000 attempts)
+[7_3_in_6] Starting (5000 attempts)
+[16_5_in_3] Starting (50000 attempts)
+[12_8_in_4] Starting (50000 attempts)
+[3_8_in_3] Starting (5000 attempts)
+[13_5_in_3] Starting (50000 attempts)
+[17_5_in_3] Starting (50000 attempts)
+[8_4_in_5] Starting (50000 attempts)
+[8_5_in_4] Starting (50000 attempts)
+Injecting --target-s 3.645131369695823 (from Friedman best_score 4.3851)
+[13_4_in_8] Starting (50000 attempts)
+[Main] Worker finished 11_6_in_3 with score 9.548430084825512
+[Main] Worker finished 13_8_in_3 with score 14.04239935080187
+[Main] Worker finished 10_4_in_5 with score 2.793358383129364
+[Main] Worker finished 8_DOMINO_in_3 with score 7.154727598282767
+[Main] Worker finished 16_6_in_3 with score 11.364762495563992
+[Main] Worker finished 2_6_in_DOMINO with score 1.8946917763403228
+[Main] Worker finished 9_5_in_3 with score 7.090068650140846
+[Main] Worker finished 10_8_in_4 with score 8.24278481486352
+[Main] Worker finished 9_4_in_5 with score 2.6940262622228293
+[Main] Worker finished 12_5_in_3 with score 8.1914959246825
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=6.836942457137506
+[3_8_in_3] Success!
