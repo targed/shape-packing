@@ -13116,3 +13116,95 @@ Injecting --target-s 1.9396418866384895 (from Friedman best_score 0.8570982)
 [Main] Worker finished 32_4_in_6 with score 3.8504539070806487
 [Main] Worker finished 39_4_in_5 with score 5.141255845444521
 [Main] Batch committing 10 runs...
+[main 8d590b8f] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 11 files changed, 127 insertions(+)
+ create mode 100644 results/25_4_in_5/20260808_092532/solution.json
+ create mode 100644 results/28_4_in_8/20260808_092533/solution.json
+ create mode 100644 results/29_4_in_5/20260808_092531/solution.json
+ create mode 100644 results/31_4_in_5/20260808_092530/solution.json
+ create mode 100644 results/31_4_in_8/20260808_092529/solution.json
+ create mode 100644 results/32_4_in_6/20260808_092532/solution.json
+ create mode 100644 results/36_4_in_5/20260808_092534/solution.json
+ create mode 100644 results/38_4_in_8/20260808_092535/solution.json
+ create mode 100644 results/39_4_in_5/20260808_092536/solution.json
+[Main] Worker finished 36_4_in_5 with score 4.93336431580044
+[Main] Worker finished 31_4_in_5 with score 4.624846322901251
+[Main] Worker finished 25_4_in_5 with score 4.171095203880236
+[Main] Worker finished 1_8_in_8 with score 1.0560227379123676e-11
+[Main] Worker finished 31_3_in_6 with score 2.460083736734749
+[Main] Worker finished 31_4_in_8 with score 2.7920684388920995
+[Main] Worker finished 36_4_in_8 with score 2.9415702674679713
+[Main] Worker finished 28_4_in_8 with score 2.645708458553609
+[16_8_in_4] Starting (50000 attempts)
+[24_4_in_5] Starting (50000 attempts)
+[29_4_in_5] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=2.947442396851262
+[4_6_in_DOMINO] Success!
+[27_3_in_6] Starting (50000 attempts)
+[30_4_in_6] Starting (50000 attempts)
+[26_4_in_5] Starting (50000 attempts)
+[38_4_in_8] Starting (50000 attempts)
+[20_3_in_6] Starting (50000 attempts)
+[3_3_in_8] Starting (5000 attempts)
+[3_3_in_6] Starting (5000 attempts)
+[1_8_in_3] Starting (5000 attempts)
+[3_4_in_6] Starting (5000 attempts)
+[3_8_in_5] Starting (5000 attempts)
+[3_6_in_5] Starting (5000 attempts)
+Injecting --target-s 2.4376541239930067 (from Friedman best_score 3.744131632294112)
+Injecting --target-s 2.3331873035138115 (from Friedman best_score 2.742826175682922)
+[3_8_in_CIRCLE] Starting (5000 attempts)
+[3_6_in_8] Starting (5000 attempts)
+Injecting --target-s 2.0989304352628375 (from Friedman best_score 1.6064518065238693)
+[Main] Worker finished 4_6_in_DOMINO with score 2.947442396851262
+[3_8_in_8] Starting (5000 attempts)
+[32_4_in_6] Starting (50000 attempts)
+[PASS] Valid configuration, metric s=3.979900018950473
+[4_8_in_DOMINO] Success!
+[Main] Worker finished 4_8_in_DOMINO with score 3.9799000189504725
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=1.611206050015340
+[3_6_in_8] Success!
+[PASS] Valid configuration, metric s=2.747783800817909
+[3_6_in_5] Success!
+[PASS] Valid configuration, metric s=3.749785714080873
+[3_8_in_5] Success!
+[PASS] Valid configuration, metric s=1.029437500417804
+[3_4_in_8] Success!
+[PASS] Valid configuration, metric s=1.895877731964159
+[18_3_in_6] Success!
+[PASS] Valid configuration, metric s=2.936661319786652
+[PASS] Valid configuration, metric s=1.833358477961313
+[17_3_in_6] Success!
+[19_4_in_6] Success!
+[PASS] Valid configuration, metric s=10.310305194130006
+[PASS] Valid configuration, metric s=3.792088745135372
+[19_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=9.932984586741902
+[31_4_in_6] Success!
+[18_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=4.202388486768133
+[38_4_in_6] Success!
+[PASS] Valid configuration, metric s=2.899509374080003
+[34_4_in_8] Success!
+[PASS] Valid configuration, metric s=4.438082017691727
+[28_4_in_5] Success!
+[PASS] Valid configuration, metric s=2.000025568006337
+[21_3_in_6] Success!
+[PASS] Valid configuration, metric s=0.777335617602782
+[4_3_in_8] Success!
+[PASS] Valid configuration, metric s=4.828982827603958
+[34_4_in_5] Success!
