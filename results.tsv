@@ -18626,3 +18626,13 @@ auto	2.0000014092791627	0.0	discard	2_8_in_8	Parallel run loop
 auto	1.5357469254971334	0.0	discard	2_4_in_5	Parallel run loop
 auto	3.359611268263679	0.0	discard	2_8_in_5	Parallel run loop
 auto	6.404244654058302	0.0	discard	2_8_in_3	Parallel run loop
+auto	2.4689455391270005	0.0	discard	2_6_in_5	Parallel run loop
+auto	3.0633908590566556	0.0	discard	49_3_in_6	Parallel run loop
+auto	2.6399362781126556	0.0	discard	35_3_in_6	Parallel run loop
+auto	2.588275614046589	0.0	discard	34_3_in_6	Parallel run loop
+auto	2.9250076663639404	0.0	keep	45_3_in_6	Parallel run loop
+auto	2.8977835791573496	0.0	keep	44_3_in_6	Parallel run loop
+auto	0.736539920691255	0.0	keep	3_3_in_8	Parallel run loop
+auto	1.9234011199206806	0.0	discard	35_3_in_8	Parallel run loop
+auto	0.9892996509203482	0.0	keep	3_3_in_6	Parallel run loop
+auto	1.9727680284776081	0.0	keep	37_3_in_8	Parallel run loop
