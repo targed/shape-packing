@@ -13875,3 +13875,75 @@ Injecting --target-s 2.910251349425008 (from Friedman best_score 1.6802344)
 [4_8_in_DOMINO] Success!
 [PASS] Valid configuration, metric s=1.366030893749601
 [3_4_in_6] Success!
+[main a8388669] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-36.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 21 files changed, 258 insertions(+)
+ create mode 100644 results/10_4_in_8/20260808_095545/solution.json
+ create mode 100644 results/12_5_in_3/20260808_095544/solution.json
+ create mode 100644 results/13_4_in_8/20260808_095549/solution.json
+ create mode 100644 results/13_8_in_4/20260808_095545/solution.json
+ create mode 100644 results/17_5_in_3/20260808_095547/solution.json
+ create mode 100644 results/18_5_in_3/20260808_095548/solution.json
+ create mode 100644 results/19_4_in_6/20260808_095540/solution.json
+ create mode 100644 results/1_8_in_3/20260808_095541/solution.json
+ create mode 100644 results/1_8_in_8/20260808_095540/solution.json
+ create mode 100644 results/3_3_in_6/20260808_095540/solution.json
+ create mode 100644 results/3_3_in_8/20260808_095540/solution.json
+ create mode 100644 results/3_8_in_CIRCLE/20260808_095541/solution.json
+ create mode 100644 results/4_5_in_6/20260808_095542/solution.json
+ create mode 100644 results/4_6_in_DOMINO/20260808_095824/solution.json
+ create mode 100644 results/5_3_in_8/20260808_095542/solution.json
+ create mode 100644 results/6_8_in_4/20260808_095542/solution.json
+ create mode 100644 results/7_3_in_8/20260808_095546/solution.json
+ create mode 100644 results/7_4_in_8/20260808_095543/solution.json
+ create mode 100644 results/9_4_in_5/20260808_095544/solution.json
+[Main] Worker finished 3_3_in_8 with score 0.7365399711761157
+[3_4_in_8] Starting (5000 attempts)
+[8_6_in_3] Starting (50000 attempts)
+[13_6_in_3] Starting (50000 attempts)
+[14_4_in_8] Starting (50000 attempts)
+[23_5_in_3] Starting (50000 attempts)
+[Main] Worker finished 18_5_in_3 with score 9.785646148055216
+[Main] Worker finished 17_5_in_3 with score 9.581576592877832
+[Main] Worker finished 7_4_in_8 with score 1.4369086085940732
+[Main] Worker finished 4_6_in_DOMINO with score 2.947442396851262
+[Main] Worker finished 9_4_in_5 with score 2.6941044292034655
+[Main] Worker finished 12_3_in_8 with score 1.199372614553753
+[Main] Worker finished 19_4_in_6 with score 2.9368631837060795
+[Main] Worker finished 4_5_in_6 with score 1.9766904220053136
+[Main] Worker finished 3_4_in_6 with score 1.3660308937496013
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=0.777335617602782
+[PASS] Valid configuration, metric s=2.500167186661477
+[31_3_in_6] Success!
+[4_3_in_8] Success!
+[PASS] Valid configuration, metric s=2.171573234659376
+[3_8_in_8] Success!
+[PASS] Valid configuration, metric s=7.035633930523232
+[7_8_in_4] Success!
+[PASS] Valid configuration, metric s=4.906096228830717
+[10_5_in_4] Success!
+[PASS] Valid configuration, metric s=1.434328817921533
+[9_3_in_6] Success!
+[PASS] Valid configuration, metric s=14.043435996477715
+[13_8_in_3] Success!
+[PASS] Valid configuration, metric s=8.378604027727887
+[13_5_in_3] Success!
+[PASS] Valid configuration, metric s=6.245963927513365
+[17_5_in_4] Success!
+[PASS] Valid configuration, metric s=5.232457698954700
+[12_5_in_4] Success!
+[PASS] Valid configuration, metric s=1.029437500417804
+[3_4_in_8] Success!
