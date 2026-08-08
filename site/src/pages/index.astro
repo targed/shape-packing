@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PackingVisual from '../components/PackingVisual.astro';
-import siteData from '../data/site_data.json';
+import fs from 'node:fs';
+import path from 'node:path';
+const siteData = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/data/site_data.json'), 'utf-8'));
 
 const { summary, new_bests, priority_targets, problems } = siteData;
 const solvedProblems = problems.filter(p => p.solution).slice(0, 4);

@@ -2,18 +2,20 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ResultsTable from '../../components/ResultsTable.astro';
 import PackingVisual from '../../components/PackingVisual.astro';
-import siteData from '../../data/site_data.json';
+import fs from 'node:fs';
+import path from 'node:path';
 import familySlugs from '../../data/family_slugs.json';
 
 export async function getStaticPaths() {
+  const siteData = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/data/site_data.json'), 'utf-8'));
   const { families } = siteData;
   return families.map((fam) => ({
     params: { slug: fam.slug },
-    props: { family: fam },
+    props: { family: fam, siteData },
   }));
 }
 
-const { family } = Astro.props;
+const { family, siteData } = Astro.props;
 const { problems } = siteData;
 const familyProblems = problems.filter((p) => p.problem_family === family.slug);
 const reqData = (familySlugs as Record<string, any>)[family.slug];
