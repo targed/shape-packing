@@ -20140,3 +20140,5 @@ auto	8.651091643465453	0.0	discard	13_DOMINO_in_3	Parallel run loop
 auto	1.9742999424741903	0.0	discard	2_DOMINO_in_DOMINO	Parallel run loop
 auto	7.03616573595127	0.0	discard	20_DOMINO_in_4	Parallel run loop
 auto	10.651500718525643	0.0	discard	20_DOMINO_in_3	Parallel run loop
+auto	11.10639567382138	0.0	discard	22_DOMINO_in_3	Parallel run loop
+auto	3.827281560659983	0.0	discard	11_DOMINO_in_DOMINO	Parallel run loop
