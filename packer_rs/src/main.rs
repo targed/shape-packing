@@ -373,8 +373,10 @@ fn run_attempt<R: Rng>(
         out
     };
 
-    let mut last_valid_x = x0.clone();
-    let mut last_valid_s = dynamic_s;
+    // Start with "no valid packing" so we never return garbage if optimization
+    // never confirms a violation-free configuration.
+    let mut last_valid_x: Option<Vec<f64>> = None;
+    let mut last_valid_s = f64::INFINITY;
     let mut current_s = dynamic_s;
 
     loop {
@@ -412,7 +414,7 @@ fn run_attempt<R: Rng>(
 
         if minimized.max_violation <= 1e-15 {
             let new_x = minimized.x;
-            last_valid_x = new_x.clone();
+             last_valid_x = Some(new_x.clone());
             last_valid_s = current_s;
             x0 = new_x
                 .iter()
@@ -449,7 +451,7 @@ fn run_attempt<R: Rng>(
                 );
                 if bh_res.max_violation <= 1e-15 {
                     let new_x = bh_res.x;
-                    last_valid_x = new_x.clone();
+                     last_valid_x = Some(new_x.clone());
                     last_valid_s = current_s;
                     x0 = new_x
                         .iter()
@@ -472,7 +474,7 @@ fn run_attempt<R: Rng>(
         }
     }
 
-    (last_valid_s, Some(last_valid_x))
+    (last_valid_s, last_valid_x)
 }
 
 struct OptResult {
