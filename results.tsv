@@ -19945,3 +19945,4 @@ auto	8.37894264557814	0.0	discard	13_5_in_3	Parallel run loop
 auto	6.799628397946985	0.0	keep	2_8_in_3	Auto run attempts=5000
 auto	3.1195152873008425	0.0	discard	39_4_in_8	Auto run attempts=5000
 auto	3.1195152873008425	0.0	discard	39_4_in_8	Auto run attempts=50000
+auto	3.1195152873008425	0.0	discard	39_4_in_8	Auto run attempts=500000
