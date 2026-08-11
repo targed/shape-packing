@@ -64,6 +64,7 @@ from .packing_config import (
     QUEUE_FAMILY_CAP1,
     QUEUE_FAMILY_CAP2,
     PRIORITY_QUEUE_PATH,
+    RESULTS_TSV_PATH,
 )
 
 
@@ -747,15 +748,29 @@ def should_switch_radically(
 # --------------- Logging / decision ---------------
 
 
+@dataclass
+class ExperimentLogContext:
+    """Context information for logging an experiment result to results.tsv."""
+    problem: str
+    score: float
+    seconds: float = 0.0
+    description: str = ""
+    commit: str = "HEAD"
+    memory_gb: float = 0.0
+    path: str = RESULTS_TSV_PATH
+    history: Optional[List[ExperimentResult]] = None
+
+
 def log_result(
-    history: Optional[List[ExperimentResult]],
-    problem: str,
-    score: float,
-    seconds: float,
-    description: str,
+    history: Optional[List[ExperimentResult]] = None,
+    problem: Optional[str] = None,
+    score: Optional[float] = None,
+    seconds: float = 0.0,
+    description: str = "",
     commit: str = "HEAD",
     memory_gb: float = 0.0,
-    path: str = "results.tsv",
+    path: str = RESULTS_TSV_PATH,
+    context: Optional[ExperimentLogContext] = None,
 ) -> str:
     """
     Log result to results.tsv and decide status:
@@ -763,33 +778,49 @@ def log_result(
     - "discard"  if no improvement
     - "crash"    if score <= 0 or missing
 
-    If history is None, it will be loaded from path.
+    Accepts either a structured ExperimentLogContext object or individual keyword arguments.
     """
-    if history is None:
-        history = load_history(path)
+    if context is None:
+        if problem is None or score is None:
+            raise ValueError("Must provide either an ExperimentLogContext object or problem and score arguments.")
+        context = ExperimentLogContext(
+            history=history,
+            problem=problem,
+            score=score,
+            seconds=seconds,
+            description=description,
+            commit=commit,
+            memory_gb=memory_gb,
+            path=path,
+        )
 
-    best = current_best_scores(history)
-    current_best = best.get(problem, float("inf"))
+    hist = context.history
+    if hist is None:
+        hist = load_history(context.path)
 
-    if score is None or score <= 0:
+    best = current_best_scores(hist)
+    current_best = best.get(context.problem, float("inf"))
+
+    log_score = context.score
+    if log_score is None or log_score <= 0:
         status = "crash"
-        score = 0.0
-    elif score < current_best:
+        log_score = 0.0
+    elif log_score < current_best:
         status = "keep"
     else:
         status = "discard"
 
     result = ExperimentResult(
-        problem=problem,
-        score=score,
+        problem=context.problem,
+        score=log_score,
         status=status,
-        description=description or "",
-        seconds=seconds,
-        commit=commit,
-        memory_gb=memory_gb,
+        description=context.description or "",
+        seconds=context.seconds,
+        commit=context.commit,
+        memory_gb=context.memory_gb,
     )
 
-    append_result(path, result)
+    append_result(context.path, result)
     return status
 
 

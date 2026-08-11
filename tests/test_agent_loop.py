@@ -20,6 +20,8 @@ from shape_packing.agent_loop import (
     is_reference_blocked,
     is_preferred_reference,
     recent_problems,
+    log_result,
+    ExperimentLogContext,
 )
 
 
@@ -230,5 +232,39 @@ class TestFilterJsonAndProblemSelection:
             exclude_problems=set(),
         )
         assert isinstance(p, str) and len(p) > 0
+
+
+class TestLogResult:
+    def test_log_result_with_context_object(self, tmp_path):
+        tsv_path = str(tmp_path / "test_results.tsv")
+        ctx = ExperimentLogContext(
+            problem="10_DOMINO_in_5",
+            score=2.15,
+            seconds=5.0,
+            description="Test run",
+            path=tsv_path,
+        )
+        status = log_result(context=ctx)
+        assert status == "keep"
+        hist = load_history(tsv_path)
+        assert len(hist) == 1
+        assert hist[0].problem == "10_DOMINO_in_5"
+        assert hist[0].score == 2.15
+
+    def test_log_result_with_kwargs(self, tmp_path):
+        tsv_path = str(tmp_path / "test_results.tsv")
+        status = log_result(
+            history=None,
+            problem="5_3_in_4",
+            score=1.5,
+            seconds=2.0,
+            description="Kwargs run",
+            path=tsv_path,
+        )
+        assert status == "keep"
+        hist = load_history(tsv_path)
+        assert len(hist) == 1
+        assert hist[0].problem == "5_3_in_4"
+
 
 
