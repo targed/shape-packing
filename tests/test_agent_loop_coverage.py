@@ -19,7 +19,32 @@ from shape_packing.agent_loop import (
     should_switch_radically,
     log_result,
     make_loop_candidate,
+    is_physically_valid_score,
 )
+
+
+class TestIsPhysicallyValidScore:
+    def test_negative_or_zero_score_is_invalid(self):
+        assert is_physically_valid_score("3_3_in_4", 0.0) is False
+        assert is_physically_valid_score("3_3_in_4", -1.5) is False
+
+    def test_circle_container_below_min_threshold_is_invalid(self):
+        assert is_physically_valid_score("5_3_in_CIRCLE", 0.05) is False
+        assert is_physically_valid_score("5_3_in_CIR", 0.099) is False
+        assert is_physically_valid_score("5_3_in_0", 0.01) is False
+
+    def test_circle_container_above_min_threshold_is_valid(self):
+        assert is_physically_valid_score("5_3_in_CIRCLE", 0.1) is True
+        assert is_physically_valid_score("5_3_in_CIR", 0.5) is True
+        assert is_physically_valid_score("5_3_in_0", 1.2) is True
+
+    def test_polygon_container_valid(self):
+        assert is_physically_valid_score("5_3_in_4", 0.05) is True
+        assert is_physically_valid_score("10_SQUARE_in_HEXAGON", 2.5) is True
+
+    def test_non_standard_problem_format_valid(self):
+        assert is_physically_valid_score("malformed_problem", 1.0) is True
+
 
 
 class TestAppendResult:
