@@ -50,7 +50,9 @@ import csv
 import json
 import os
 from dataclasses import dataclass, asdict
+from collections import Counter
 from typing import List, Dict, Optional, Tuple, Any
+
 
 from .packing_config import (
     CIRCLE_SIDES,
@@ -371,7 +373,9 @@ def choose_problem(
         return QUEUE_FALLBACK_PROBLEM
 
     recent = recent_problems(history, last=QUEUE_RECENT_WINDOW)
+    recent_counts = Counter(normalize_problem_name(r) for r in recent)
     our_best = current_best_scores(history)
+
 
     problem_runs, family_runs, problem_last_k = _build_problem_stats(history)
 
@@ -547,7 +551,7 @@ def choose_problem(
             continue
 
         # Diversity / history-based penalties.
-        stagnation = sum(1 for r in recent if normalize_problem_name(r) == p_str)
+        stagnation = recent_counts.get(p_str, 0)
         penalty = stagnation * 0.05
 
         total_runs = problem_runs.get(p_str, 0)
@@ -601,8 +605,9 @@ def choose_problem(
 
         # Prefer_different: heavier penalty on recent problems.
         if prefer_different:
-            if p_str in recent:
+            if p_str in recent_counts:
                 penalty += 3.0
+
 
         scored_candidates.append((p_str, base_density + penalty))
 
