@@ -476,12 +476,12 @@ def render_solution(
             [v[0] for v in container],
             [v[1] for v in container],
             color="#000000",
-            linewidth=0.5,
+            linewidth=1,
         )
 
     if is_inner_circle:
         for center in data["centers"]:
-            c = plt.Circle(center, 1.0, facecolor="#CCCCCC", edgecolor="black", linewidth=0.5)
+            c = plt.Circle(center, 1.0, facecolor="#CCCCCC", edgecolor="black", linewidth=1)
             ax.add_patch(c)
     else:
         for poly in data["polygons"]:
@@ -491,7 +491,7 @@ def render_solution(
                 [v[1] for v in poly_plot],
                 "#CCCCCC",
                 edgecolor="black",
-                linewidth=0.5,
+                linewidth=1,
             )
 
     ax.autoscale_view()
