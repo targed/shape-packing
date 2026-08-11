@@ -75,16 +75,18 @@ def handle_run(args, history_cache=None, direct_call=False):
             
     # 2. Extract problem parts
     from .problems import parse_problem
+    from .agent_loop import normalize_problem_name, load_history, current_best_scores
     p = parse_problem(args.problem)
     N = p.N
     inner = p.inner_token
     container = p.container_token
+    p_clean = normalize_problem_name(f"{N}_{inner}_in_{container}")
     
     import os
     from datetime import datetime
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    result_dir = os.path.join("results", args.problem, timestamp)
+    result_dir = os.path.join("results", p_clean, timestamp)
     os.makedirs(result_dir, exist_ok=True)
     solution_file = os.path.join(result_dir, "solution.json")
     
@@ -121,6 +123,7 @@ def handle_run(args, history_cache=None, direct_call=False):
         except Exception:
             pass
 
+    # 3. Run solver
     res = run_solver(
         n_shapes=N,
         inner_shape=str(inner),
@@ -138,6 +141,13 @@ def handle_run(args, history_cache=None, direct_call=False):
             if direct_call:
                 return {"success": False, "error": "No valid packing found", "returncode": 42}
             sys.exit(0)
+
+        if res.get("status") == "trivial":
+            out = {"status": "trivial", "score": res.get("score")}
+            if direct_call:
+                return {"success": True, **out}
+            print(json.dumps(out))
+            sys.exit(0)
         
         err = f"Rust solver failed: {res.get('error', 'Unknown error')}"
         eprint(err)
@@ -150,7 +160,7 @@ def handle_run(args, history_cache=None, direct_call=False):
             
     # Verify and render
     if os.path.exists(solution_file):
-        verify_cmd = [sys.executable, os.path.join("scripts", "verify_solution.py"), solution_file, args.problem]
+        verify_cmd = [sys.executable, os.path.join("scripts", "verify_solution.py"), solution_file, p_clean]
         subprocess.run(verify_cmd)
         
         if not getattr(args, "no_png", False):
@@ -160,11 +170,11 @@ def handle_run(args, history_cache=None, direct_call=False):
     # 4. Log to TSV
     if not args.no_commit:
         from .agent_loop import log_result
-        log_result(None, args.problem, score, 0.0, f"Auto run attempts={args.attempts}", commit="auto")
+        log_result(None, p_clean, score, 0.0, f"Auto run attempts={args.attempts}", commit="auto")
         
         # 5. Git commit
         subprocess.run(["git", "add", "results.tsv", "results/"])
-        subprocess.run(["git", "commit", "-m", f"auto: run {args.problem} score {score}"])
+        subprocess.run(["git", "commit", "-m", f"auto: run {p_clean} score {score}", "--"])
     
     out = {"score": score}
     if direct_call:
