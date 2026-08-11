@@ -402,6 +402,38 @@ def choose_problem(
             return True
         return False
 
+    # Pre-parse filter sets once outside the queue loop
+    inc_inner = set()
+    exc_inner = set()
+    inc_cont = set()
+    exc_cont = set()
+
+    if filters:
+        def _to_set(v):
+            if isinstance(v, str):
+                raw = [x.strip() for x in v.split(",") if x.strip()]
+            elif isinstance(v, list):
+                raw = [str(x).strip() for x in v]
+            else:
+                raw = [str(v)]
+            res = set(t.upper() for t in raw)
+            if "CIRCLE" in res or "CIR" in res:
+                res.add("CIRCLE")
+                res.add("CIR")
+            if "3" in res or "TRIANGLE" in res:
+                res.add("3")
+                res.add("TRIANGLE")
+            return res
+
+        if filters.get("include_inner"):
+            inc_inner = _to_set(filters["include_inner"])
+        if filters.get("exclude_inner"):
+            exc_inner = _to_set(filters["exclude_inner"])
+        if filters.get("include_container"):
+            inc_cont = _to_set(filters["include_container"])
+        if filters.get("exclude_container"):
+            exc_cont = _to_set(filters["exclude_container"])
+
     scored_candidates = []
 
     for item in queue:
@@ -466,56 +498,18 @@ def choose_problem(
                 if item_container == "TRIANGLE": item_container = "3"
                 if item_inner == "TRIANGLE": item_inner = "3"
 
-                def _to_list(v):
-                    # Normalize: if a comma-separated string, split into list.
-                    if isinstance(v, str):
-                        return [x.strip() for x in v.split(",") if x.strip()]
-                    if isinstance(v, list):
-                        return v
-                    return [str(v)]
+                if inc_inner and (inner_token not in inc_inner and p0_inner not in inc_inner and item_inner not in inc_inner):
+                    continue
 
-                inc_inner = []
-                if filters.get("include_inner"):
-                    raw = _to_list(filters["include_inner"])
-                    inc_inner = [t.upper() for t in raw]
-                    if "CIRCLE" in inc_inner: inc_inner.append("CIR")
-                    if "CIR" in inc_inner: inc_inner.append("CIRCLE")
-                    if "3" in inc_inner: inc_inner.append("TRIANGLE")
-                    if "TRIANGLE" in inc_inner: inc_inner.append("3")
+                if exc_inner and (inner_token in exc_inner or p0_inner in exc_inner or item_inner in exc_inner):
+                    continue
 
-                    if inner_token not in inc_inner and p0_inner not in inc_inner and item_inner not in inc_inner:
-                        continue
+                if inc_cont and (container_token not in inc_cont and p0_cont not in inc_cont and item_container not in inc_cont):
+                    continue
 
-                if filters.get("exclude_inner"):
-                    raw = _to_list(filters["exclude_inner"])
-                    exc_inner = [t.upper() for t in raw]
-                    if "CIRCLE" in exc_inner: exc_inner.append("CIR")
-                    if "CIR" in exc_inner: exc_inner.append("CIRCLE")
-                    if "3" in exc_inner: exc_inner.append("TRIANGLE")
-                    if "TRIANGLE" in exc_inner: exc_inner.append("3")
-                    if inner_token in exc_inner or p0_inner in exc_inner or item_inner in exc_inner:
-                        continue
+                if exc_cont and (container_token in exc_cont or p0_cont in exc_cont or item_container in exc_cont):
+                    continue
 
-                inc_cont = []
-                if filters.get("include_container"):
-                    raw = _to_list(filters["include_container"])
-                    inc_cont = [t.upper() for t in raw]
-                    if "CIRCLE" in inc_cont: inc_cont.append("CIR")
-                    if "CIR" in inc_cont: inc_cont.append("CIRCLE")
-                    if "3" in inc_cont: inc_cont.append("TRIANGLE")
-                    if "TRIANGLE" in inc_cont: inc_cont.append("3")
-                    if container_token not in inc_cont and p0_cont not in inc_cont and item_container not in inc_cont:
-                        continue
-
-                if filters.get("exclude_container"):
-                    raw = _to_list(filters["exclude_container"])
-                    exc_cont = [t.upper() for t in raw]
-                    if "CIRCLE" in exc_cont: exc_cont.append("CIR")
-                    if "CIR" in exc_cont: exc_cont.append("CIRCLE")
-                    if "3" in exc_cont: exc_cont.append("TRIANGLE")
-                    if "TRIANGLE" in exc_cont: exc_cont.append("3")
-                    if container_token in exc_cont or p0_cont in exc_cont or item_container in exc_cont:
-                        continue
 
                 if inner_token == "CIRCLE":
                     inner_sides = CIRCLE_SIDES
