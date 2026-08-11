@@ -24,7 +24,38 @@ from shape_packing.solution_tools import (
     TOLERANCE,
     inverse_friedman_metric,
     compute_friedman_metric,
+    get_container_rotation_offset,
 )
+import math
+
+
+class TestGetContainerRotationOffset:
+    def test_special_tokens_return_zero(self):
+        for token in ("CIRCLE", "CIR", "DOMINO", "TAN", "L", "  circle  ", "tan"):
+            assert get_container_rotation_offset(token) == 0.0
+
+    def test_odd_sides_return_pi_over_2(self):
+        for token in ("3", "5", "7", "9"):
+            assert get_container_rotation_offset(token) == pytest.approx(math.pi / 2.0)
+
+    def test_even_sides_multiple_of_4_return_pi_over_n(self):
+        # 4 // 2 = 2 (even) -> pi / 4
+        assert get_container_rotation_offset("4") == pytest.approx(math.pi / 4.0)
+        # 8 // 2 = 4 (even) -> pi / 8
+        assert get_container_rotation_offset("8") == pytest.approx(math.pi / 8.0)
+        # 12 // 2 = 6 (even) -> pi / 12
+        assert get_container_rotation_offset("12") == pytest.approx(math.pi / 12.0)
+
+    def test_even_sides_not_multiple_of_4_return_zero(self):
+        # 6 // 2 = 3 (odd) -> 0.0
+        assert get_container_rotation_offset("6") == 0.0
+        # 10 // 2 = 5 (odd) -> 0.0
+        assert get_container_rotation_offset("10") == 0.0
+
+    def test_invalid_tokens_return_zero(self):
+        for token in ("invalid", "abc", "", "   "):
+            assert get_container_rotation_offset(token) == 0.0
+
 
 def test_inverse_friedman_metric():
     # Regular polygon
