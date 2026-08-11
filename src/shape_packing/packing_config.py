@@ -9,6 +9,7 @@ The agent (you / Cline) uses this to:
 
 You can edit this file to add new shape families or tune defaults.
 """
+from typing import Optional
 
 # ---------------------------------------------------------------------------
 # Shape token -> side count (for regular polygons).

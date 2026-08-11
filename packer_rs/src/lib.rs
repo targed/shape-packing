@@ -1,9 +1,18 @@
 pub mod solver;
 
+#[cfg(feature = "python")]
+use solver as _solver_for_py;
+
+#[cfg(feature = "python")]
 use pyo3::prelude::*;
+
+#[cfg(feature = "python")]
 use pyo3::types::PyDict;
+
+#[cfg(feature = "python")]
 use solver::{solve, SolveConfig};
 
+#[cfg(feature = "python")]
 #[pyfunction]
 #[pyo3(signature = (
     inner_polygons,
@@ -56,6 +65,7 @@ fn solve_py<'py>(
     }
 }
 
+#[cfg(feature = "python")]
 #[pymodule]
 fn packer_rs(_py: Python, m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(solve_py, m)?)?;

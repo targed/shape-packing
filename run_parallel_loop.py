@@ -192,17 +192,18 @@ def run_loop():
     num_cores = get_available_cores()
     print(f"[Main] Starting parallel loop on {num_cores} cores.")
     
-    print("[Main] Compiling Rust solver once before spawning workers...")
+    print("[Main] Compiling Rust solver binary once before spawning workers...")
     try:
         subprocess.run(
-            ["cargo", "build", "--release"],
+            ["cargo", "build", "--release", "--bin", "packer_rs"],
             cwd="packer_rs",
             check=True,
             stdout=subprocess.DEVNULL,
         )
+        print("[Main] Rust solver binary compiled successfully.")
     except Exception as e:
-        print(f"[Main] Failed to compile Rust solver: {e}")
-        print("[Main] Continuing anyway, assuming the binary is already compiled...")
+        print(f"[Main] Failed to compile Rust solver binary: {e}")
+        raise SystemExit("[Main] Aborting: Rust solver binary is required.")
     
     in_flight = {} # Map of Future -> problem_name
     results_since_commit = 0
