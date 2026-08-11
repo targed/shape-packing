@@ -386,3 +386,28 @@ class TestRenderSolution:
         render_solution(sample_solution_values, show_axes=True, show_grid=True)
         assert os.path.exists("solution.png")
         os.remove("solution.png")
+
+    def test_render_with_custom_styling_and_dimensions(self, sample_solution_values, tmp_path):
+        from shape_packing.solution_tools import render_solution
+        from PIL import Image
+        out_png = str(tmp_path / "custom_243.png")
+
+        render_solution(
+            sample_solution_values,
+            out_png=out_png,
+            size_px=243,
+            crop_mode="tight",
+            container_lw=2.0,
+            inner_lw=1.0,
+            pad_px=1.0,
+            container_color="#000000",
+            inner_face_color="#CCCCCC",
+            inner_edge_color="#000000",
+            bg_color="#FFFFFF",
+            align_container=True,
+        )
+
+        assert (tmp_path / "custom_243.png").exists()
+        img = Image.open(out_png)
+        assert img.size == (243, 243)
+

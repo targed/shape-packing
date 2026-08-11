@@ -332,5 +332,35 @@ RENDER_DPI: int = 300
 #: Matplotlib figure size in inches for solution renders.
 RENDER_FIGURE_SIZE: tuple = (6, 6)
 
+#: Bounding crop mode for solution PNG renders ("tight", "circumradius", "autoscale").
+RENDER_CROP_MODE: str = "tight"
+
+#: Container boundary line thickness (points).
+RENDER_CONTAINER_LINEWIDTH: float = 2.0
+
+#: Inner shape border line thickness (points).
+RENDER_INNER_LINEWIDTH: float = 1.0
+
+#: Optional exact pixel size (width and height in px, e.g. 243, 240, 500). None = use RENDER_FIGURE_SIZE & RENDER_DPI.
+RENDER_SIZE_PX: Optional[int] = None
+
+#: Padding in pixels around tight container bounds.
+RENDER_PAD_PX: float = 1.0
+
+#: Fill color for packed inner shapes.
+RENDER_INNER_FACE_COLOR: str = "#CCCCCC"
+
+#: Edge color for packed inner shapes.
+RENDER_INNER_EDGE_COLOR: str = "#000000"
+
+#: Container stroke color.
+RENDER_CONTAINER_COLOR: str = "#000000"
+
+#: Background color for rendered images (None = white).
+RENDER_BG_COLOR: Optional[str] = "#FFFFFF"
+
+#: Whether to align regular polygon containers with horizontal top/bottom edges.
+RENDER_ALIGN_CONTAINER: bool = True
+
 #: DPI for analysis charts produced by scripts/analyze_mill_log.py.
 ANALYSIS_PLOT_DPI: int = 200

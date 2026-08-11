@@ -35,23 +35,23 @@ except ImportError:
     from src.shape_packing.solution_tools import render_solution
 
 
-def _worker_render(args_tuple: Tuple[str, str, bool]) -> Tuple[str, bool, str]:
-    json_path, png_path, overwrite = args_tuple
+def _worker_render(args_tuple: Tuple[str, str, bool, dict]) -> Tuple[str, bool, str]:
+    json_path, png_path, overwrite, kwargs = args_tuple
     if not overwrite and os.path.exists(png_path):
         return (json_path, True, "skipped (exists)")
     try:
-        render_solution(json_path, out_png=png_path)
+        render_solution(json_path, out_png=png_path, **kwargs)
         return (json_path, True, "rendered")
     except Exception as e:
         return (json_path, False, str(e))
 
 
-def render_single(json_path: str, png_path: str, overwrite: bool = True) -> bool:
+def render_single(json_path: str, png_path: str, overwrite: bool = True, **kwargs) -> bool:
     if not overwrite and os.path.exists(png_path):
         print(f"[SKIP] {png_path} already exists.")
         return True
     try:
-        render_solution(json_path, out_png=png_path)
+        render_solution(json_path, out_png=png_path, **kwargs)
         print(f"[RENDERED] {json_path} -> {png_path}")
         return True
     except Exception as e:
@@ -59,12 +59,12 @@ def render_single(json_path: str, png_path: str, overwrite: bool = True) -> bool
         return False
 
 
-def render_batch(json_paths: List[str], overwrite: bool = False, jobs: int = 1) -> None:
-    tasks: List[Tuple[str, str, bool]] = []
+def render_batch(json_paths: List[str], overwrite: bool = False, jobs: int = 1, **kwargs) -> None:
+    tasks: List[Tuple[str, str, bool, dict]] = []
     for j_path in json_paths:
         p = Path(j_path)
         png_path = str(p.parent / "solution.png")
-        tasks.append((j_path, png_path, overwrite))
+        tasks.append((j_path, png_path, overwrite, kwargs))
 
     print(f"Found {len(tasks)} solution JSON files to process (jobs={jobs}, overwrite={overwrite})...")
 
@@ -132,13 +132,102 @@ def main() -> None:
         help="Number of parallel worker processes (default: 1)",
     )
 
+    # Rendering Customizations
+    parser.add_argument(
+        "--size-px",
+        type=int,
+        default=None,
+        help="Exact output image width and height in pixels (e.g. 243, 240, 500)",
+    )
+    parser.add_argument(
+        "--width-px",
+        type=int,
+        default=None,
+        help="Exact output image width in pixels",
+    )
+    parser.add_argument(
+        "--height-px",
+        type=int,
+        default=None,
+        help="Exact output image height in pixels",
+    )
+    parser.add_argument(
+        "--crop-mode",
+        choices=["tight", "circumradius", "autoscale"],
+        default=None,
+        help="Bounding crop mode: 'tight' (container edge-to-edge), 'circumradius' ([-S, S]), or 'autoscale'",
+    )
+    parser.add_argument(
+        "--container-lw",
+        type=float,
+        default=None,
+        help="Line thickness/width for container boundary (e.g. 2.0, 1.8)",
+    )
+    parser.add_argument(
+        "--inner-lw",
+        type=float,
+        default=None,
+        help="Line thickness/width for inner shapes (e.g. 1.0, 0.5)",
+    )
+    parser.add_argument(
+        "--pad-px",
+        type=float,
+        default=None,
+        help="Padding in pixels around tight container bounds (e.g. 1.0 for stroke alignment, 0.0 for zero inset)",
+    )
+    parser.add_argument(
+        "--no-align",
+        dest="align_container",
+        action="store_false",
+        help="Disable automatic regular polygon container visual rotation alignment",
+    )
+    parser.add_argument(
+        "--container-color",
+        type=str,
+        default=None,
+        help="Hex/named color for container stroke (e.g. '#000000')",
+    )
+    parser.add_argument(
+        "--face-color",
+        type=str,
+        default=None,
+        help="Hex/named color for inner shape fill (e.g. '#CCCCCC')",
+    )
+    parser.add_argument(
+        "--edge-color",
+        type=str,
+        default=None,
+        help="Hex/named color for inner shape edge (e.g. '#000000')",
+    )
+    parser.add_argument(
+        "--bg-color",
+        type=str,
+        default=None,
+        help="Hex/named background color (e.g. '#FFFFFF')",
+    )
+
     args = parser.parse_args()
     target_path = Path(args.target)
+
+    # Build render options dict from CLI flags (only pass non-None values)
+    render_opts = {}
+    if args.size_px is not None: render_opts["size_px"] = args.size_px
+    if args.width_px is not None: render_opts["width_px"] = args.width_px
+    if args.height_px is not None: render_opts["height_px"] = args.height_px
+    if args.crop_mode is not None: render_opts["crop_mode"] = args.crop_mode
+    if args.container_lw is not None: render_opts["container_lw"] = args.container_lw
+    if args.inner_lw is not None: render_opts["inner_lw"] = args.inner_lw
+    if args.pad_px is not None: render_opts["pad_px"] = args.pad_px
+    if args.align_container is False: render_opts["align_container"] = False
+    if args.container_color is not None: render_opts["container_color"] = args.container_color
+    if args.face_color is not None: render_opts["inner_face_color"] = args.face_color
+    if args.edge_color is not None: render_opts["inner_edge_color"] = args.edge_color
+    if args.bg_color is not None: render_opts["bg_color"] = args.bg_color
 
     # 1. Single File Mode
     if target_path.is_file():
         out_png = args.output_png or str(target_path.parent / "solution.png")
-        render_single(str(target_path), out_png, overwrite=True)
+        render_single(str(target_path), out_png, overwrite=True, **render_opts)
 
     # 2. Directory / Recursive Mode
     elif target_path.is_dir():
@@ -147,7 +236,7 @@ def main() -> None:
             if not found_jsons:
                 print(f"No solution.json files found in {target_path}")
                 sys.exit(0)
-            render_batch(found_jsons, overwrite=args.overwrite, jobs=args.jobs)
+            render_batch(found_jsons, overwrite=args.overwrite, jobs=args.jobs, **render_opts)
         else:
             print(f"Error: {target_path} is a directory. Use --recursive / -r to process directories.")
             sys.exit(1)

@@ -33,6 +33,16 @@ from .packing_config import (
     VERIFY_METRIC_TOLERANCE,
     RENDER_DPI,
     RENDER_FIGURE_SIZE,
+    RENDER_CROP_MODE,
+    RENDER_CONTAINER_LINEWIDTH,
+    RENDER_INNER_LINEWIDTH,
+    RENDER_SIZE_PX,
+    RENDER_PAD_PX,
+    RENDER_INNER_FACE_COLOR,
+    RENDER_INNER_EDGE_COLOR,
+    RENDER_CONTAINER_COLOR,
+    RENDER_BG_COLOR,
+    RENDER_ALIGN_CONTAINER,
 )
 
 TOLERANCE: float = VERIFY_SAT_TOLERANCE  # Re-exported for backward compatibility
@@ -391,7 +401,7 @@ def get_container_rotation_offset(token: str) -> float:
             return 0.0
 
 
-def to_plot_data(sol: "Solution") -> Any:
+def to_plot_data(sol: "Solution", align_container: bool = RENDER_ALIGN_CONTAINER) -> Any:
     """
     Prepare geometry for plotting from a Solution.
 
@@ -400,7 +410,7 @@ def to_plot_data(sol: "Solution") -> Any:
       - polygons: list of list of (x, y)
       - centers: list of (cx, cy)
     """
-    rot = get_container_rotation_offset(sol.container_token)
+    rot = get_container_rotation_offset(sol.container_token) if align_container else 0.0
     cosa = math.cos(rot)
     sina = math.sin(rot)
 
@@ -445,11 +455,23 @@ def render_solution(
     sol_path: str,
     out_png: str = "solution.png",
     dpi: int = RENDER_DPI,
+    size_px: Optional[int] = RENDER_SIZE_PX,
+    width_px: Optional[int] = None,
+    height_px: Optional[int] = None,
+    crop_mode: str = RENDER_CROP_MODE,
+    container_lw: float = RENDER_CONTAINER_LINEWIDTH,
+    inner_lw: float = RENDER_INNER_LINEWIDTH,
+    pad_px: float = RENDER_PAD_PX,
+    align_container: bool = RENDER_ALIGN_CONTAINER,
+    container_color: str = RENDER_CONTAINER_COLOR,
+    inner_face_color: str = RENDER_INNER_FACE_COLOR,
+    inner_edge_color: str = RENDER_INNER_EDGE_COLOR,
+    bg_color: Optional[str] = RENDER_BG_COLOR,
     show_axes: bool = False,
     show_grid: bool = False,
 ) -> None:
     """
-    Render a solution JSON to a PNG.
+    Render a solution JSON to a PNG with configurable resolution, line widths, crop modes, and styling.
     """
     try:
         import matplotlib
@@ -460,28 +482,43 @@ def render_solution(
         return
 
     sol = load_solution(sol_path)
-    data = to_plot_data(sol)
+    data = to_plot_data(sol, align_container=align_container)
 
-    fig, ax = plt.subplots(figsize=RENDER_FIGURE_SIZE)
+    target_w = width_px or size_px
+    target_h = height_px or size_px
+
+    if target_w and target_h:
+        fig = plt.figure(figsize=(target_w / 72.0, target_h / 72.0), dpi=72)
+        ax = fig.add_axes([0, 0, 1, 1])
+        render_dpi = 72
+    else:
+        fig, ax = plt.subplots(figsize=RENDER_FIGURE_SIZE)
+        render_dpi = dpi
+
+    if bg_color:
+        fig.patch.set_facecolor(bg_color)
+        ax.set_facecolor(bg_color)
 
     is_inner_circle = sol.inner_token.upper() in ["CIRCLE", "CIR"]
     is_container_circle = sol.container_token.upper() in ["CIRCLE", "CIR"]
 
     if is_container_circle:
-        c = plt.Circle((0, 0), sol.S, color="#000000", fill=False, linewidth=0.5)
+        c = plt.Circle((0, 0), sol.S, color=container_color, fill=False, linewidth=container_lw)
         ax.add_patch(c)
     else:
         container = list(data["container_vertices"]) + [data["container_vertices"][0]]
         ax.plot(
             [v[0] for v in container],
             [v[1] for v in container],
-            color="#000000",
-            linewidth=1,
+            color=container_color,
+            linewidth=container_lw,
+            solid_capstyle="projecting",
+            solid_joinstyle="miter",
         )
 
     if is_inner_circle:
         for center in data["centers"]:
-            c = plt.Circle(center, 1.0, facecolor="#CCCCCC", edgecolor="black", linewidth=1)
+            c = plt.Circle(center, 1.0, facecolor=inner_face_color, edgecolor=inner_edge_color, linewidth=inner_lw)
             ax.add_patch(c)
     else:
         for poly in data["polygons"]:
@@ -489,12 +526,30 @@ def render_solution(
             ax.fill(
                 [v[0] for v in poly_plot],
                 [v[1] for v in poly_plot],
-                "#CCCCCC",
-                edgecolor="black",
-                linewidth=1,
+                inner_face_color,
+                edgecolor=inner_edge_color,
+                linewidth=inner_lw,
             )
 
-    ax.autoscale_view()
+    crop = (crop_mode or "tight").lower().strip()
+    if crop in ("tight", "container"):
+        c_verts = np.array(data["container_vertices"])
+        xmin, xmax = c_verts[:, 0].min(), c_verts[:, 0].max()
+        ymin, ymax = c_verts[:, 1].min(), c_verts[:, 1].max()
+
+        if target_w:
+            w_data = xmax - xmin
+            pad_data = (pad_px / float(target_w)) * w_data
+        else:
+            pad_data = pad_px * 0.01 * (xmax - xmin)
+
+        ax.set_xlim(xmin - pad_data, xmax + pad_data)
+        ax.set_ylim(ymin - pad_data, ymax + pad_data)
+    elif crop in ("circumradius", "radius", "s"):
+        ax.set_xlim(-sol.S, sol.S)
+        ax.set_ylim(-sol.S, sol.S)
+    else:
+        ax.autoscale_view()
 
     ax.set_aspect("equal")
     if not show_axes:
@@ -502,8 +557,10 @@ def render_solution(
     if show_grid:
         ax.grid(True, linestyle="--", alpha=0.3)
 
-    plt.tight_layout()
-    fig.savefig(out_png, dpi=dpi)
+    if not (target_w and target_h):
+        plt.tight_layout()
+
+    fig.savefig(out_png, dpi=render_dpi, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
 
 
