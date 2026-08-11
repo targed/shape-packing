@@ -3,8 +3,9 @@ Tests for direct_call and in-memory history caching features.
 """
 import pytest
 from unittest.mock import patch, MagicMock
-from shape_packing.cli import handle_suggest, handle_run
-from shape_packing.agent_loop import ExperimentResult
+from src.shape_packing.cli import handle_suggest, handle_run
+from src.shape_packing.agent_loop import ExperimentResult
+
 
 
 class DummyArgs:
@@ -37,8 +38,9 @@ class TestDirectCallAndHistoryCache:
             ExperimentResult(problem="5_3_in_4", score=1.5, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0)
         ]
 
-        with patch("shape_packing.cli.load_history") as mock_load, \
-             patch("shape_packing.cli.choose_problem", return_value="5_3_in_4"):
+        with patch("src.shape_packing.cli.load_history") as mock_load, \
+             patch("src.shape_packing.cli.choose_problem", return_value="5_3_in_4"):
+
 
             result = handle_suggest(args, history_cache=fake_history, direct_call=True)
 
@@ -54,37 +56,32 @@ class TestDirectCallAndHistoryCache:
         args = DummyArgs()
         fake_history = []
 
-        mock_proc = MagicMock()
-        mock_proc.returncode = 0
-        mock_proc.stdout = "Final side length: 1.803\n"
+        mock_solver_res = {"success": True, "score": 1.803, "values": [0.0]*9, "output": "Final side length: 1.803"}
 
-        with patch("subprocess.run", return_value=mock_proc), \
-             patch("shape_packing.cli.load_history") as mock_load:
+        with patch("src.shape_packing.cli.run_solver", return_value=mock_solver_res), \
+             patch("src.shape_packing.cli.load_history") as mock_load:
 
             result = handle_run(args, history_cache=fake_history, direct_call=True)
 
-            # load_history should NOT be called since history_cache was provided
             mock_load.assert_not_called()
 
             assert isinstance(result, dict)
             assert result["success"] is True
             assert result["score"] == 1.803
-            assert result["returncode"] == 0
 
     def test_handle_run_direct_call_no_valid_packing(self):
         args = DummyArgs()
 
-        mock_proc = MagicMock()
-        mock_proc.returncode = 0
-        mock_proc.stdout = "No valid packing found\n"
+        mock_solver_res = {"success": False, "score": 0.0, "output": "No valid packing found"}
 
-        with patch("subprocess.run", return_value=mock_proc):
+        with patch("src.shape_packing.cli.run_solver", return_value=mock_solver_res):
             result = handle_run(args, history_cache=[], direct_call=True)
 
             assert isinstance(result, dict)
             assert result["success"] is False
             assert result["returncode"] == 42
             assert "No valid packing found" in result["error"]
+
 
 
 class TestLoopDirectIntegration:

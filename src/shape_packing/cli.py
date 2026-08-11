@@ -3,6 +3,8 @@ import sys
 import json
 import subprocess
 from .agent_loop import load_history, choose_problem, current_best_scores
+from .solver_interface import run_solver
+
 
 def handle_suggest(args, history_cache=None, direct_call=False):
     if history_cache is not None:
@@ -70,36 +72,17 @@ def handle_run(args, history_cache=None, direct_call=False):
     os.makedirs(result_dir, exist_ok=True)
     solution_file = os.path.join(result_dir, "solution.json")
     
-    # 3. Call Rust solver
-    if not getattr(args, "no_build", False):
-        eprint("Compiling Rust solver...")
-        subprocess.run(
-            ["cargo", "build", "--release"],
-            cwd="packer_rs",
-            check=True,
-            stdout=subprocess.DEVNULL,
-        )
-    
-    cmd = [
-        "packer_rs/target/release/packer_rs",
-        str(N), str(inner), str(container),
-        "--attempts", str(args.attempts),
-        "--solution-file", solution_file
-    ]
-    if init_json_path:
-        cmd.extend(["--initial-positions", init_json_path])
-        
     from .solution_tools import inverse_friedman_metric
     from .agent_loop import load_history, current_best_scores
-    
-    # Fetch best score and inject target-s
+
+
+    target_s = None
     try:
         if history_cache is not None:
             history = history_cache
         else:
             history = load_history("results.tsv")
             
-        # Ignore fake/verification rows so we never inject an impossible target-s.
         history = [
             r for r in history
             if r.commit.lower() not in ("verify", "auto-verify", "test")
@@ -110,38 +93,44 @@ def handle_run(args, history_cache=None, direct_call=False):
         
         if best_score != "None":
             target_s = inverse_friedman_metric(float(best_score), inner, container)
-            cmd.extend(["--target-s", str(target_s)])
             eprint(f"Injecting --target-s {target_s} (from Friedman best_score {best_score})")
     except Exception as e:
         eprint(f"Could not inject target_s: {e}")
 
-    proc = subprocess.run(cmd, capture_output=True, text=True)
-    
-    if proc.returncode != 0:
-        err = f"Rust solver failed with exit code {proc.returncode}\n{proc.stderr}"
+    init_positions_list = None
+    if init_json_path and os.path.exists(init_json_path):
+        try:
+            with open(init_json_path, "r") as f:
+                init_positions_list = json.load(f)
+        except Exception:
+            pass
+
+    res = run_solver(
+        n_shapes=N,
+        inner_shape=str(inner),
+        container_shape=str(container),
+        attempts=args.attempts,
+        initial_positions=init_positions_list,
+        target_s=target_s,
+        solution_file=solution_file,
+        no_build=getattr(args, "no_build", False),
+    )
+
+    if not res.get("success"):
+        if res.get("output") and "No valid packing found" in res.get("output"):
+            eprint("Solver reported: No valid packing found. Refusing to log 0.0 score.")
+            if direct_call:
+                return {"success": False, "error": "No valid packing found", "returncode": 42}
+            sys.exit(0)
+        
+        err = f"Rust solver failed: {res.get('error', 'Unknown error')}"
         eprint(err)
         if direct_call:
-            return {"success": False, "error": err, "returncode": proc.returncode}
+            return {"success": False, "error": err, "returncode": res.get("returncode", 1)}
         sys.exit(1)
 
-    # Detect if solver reported no valid packing.
-    solver_output = proc.stdout.strip()
-    if "No valid packing found" in solver_output:
-        eprint("Solver reported: No valid packing found. Refusing to log 0.0 score.")
-        if direct_call:
-            return {"success": False, "error": "No valid packing found", "returncode": 42}
-        sys.exit(0)
+    score = res.get("score", 0.0)
 
-    # Extract score
-    score = 0.0
-    found_score = False
-    for line in solver_output.splitlines():
-        if "Final side length:" in line:
-            score = float(line.split(":")[1].strip())
-            found_score = True
-
-    if not found_score:
-        eprint("Warning: 'Final side length' not found in solver output.")
             
     # Verify and render
     if os.path.exists(solution_file):
