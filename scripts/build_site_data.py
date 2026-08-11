@@ -371,6 +371,61 @@ def load_priority_queue() -> Dict[str, Dict[str, Any]]:
     return pq_dict
 
 
+SHAPE_VARIANTS = {
+    "3": ["3", "TRIANGLE", "tri"],
+    "TRIANGLE": ["3", "TRIANGLE", "tri"],
+    "4": ["4", "SQUARE", "squ"],
+    "SQUARE": ["4", "SQUARE", "squ"],
+    "5": ["5", "PENTAGON", "pen"],
+    "PENTAGON": ["5", "PENTAGON", "pen"],
+    "6": ["6", "HEXAGON", "hex"],
+    "HEXAGON": ["6", "HEXAGON", "hex"],
+    "8": ["8", "OCTAGON", "oct"],
+    "OCTAGON": ["8", "OCTAGON", "oct"],
+    "CIRCLE": ["CIRCLE", "CIR", "cir"],
+    "CIR": ["CIRCLE", "CIR", "cir"],
+    "DOMINO": ["DOMINO", "domino", "dom"],
+    "L": ["L", "l"],
+    "TAN": ["TAN", "tan"],
+}
+
+
+def generate_key_variants(entry: Dict[str, Any]) -> List[str]:
+    prob_n = entry.get("N")
+    raw_family = entry.get("problem_family", "")
+    family_slug = normalize_family_slug(raw_family)
+    inner_token = str(entry.get("inner_shape", "")).upper()
+    container_token = str(entry.get("container_shape", "")).upper()
+    our_prob_key = entry.get("our_problem")
+
+    inner_vars = SHAPE_VARIANTS.get(inner_token, [inner_token, inner_token.lower()])
+    container_vars = SHAPE_VARIANTS.get(container_token, [container_token, container_token.lower()])
+
+    keys = []
+    if our_prob_key:
+        keys.extend([our_prob_key, our_prob_key.lower(), our_prob_key.upper()])
+
+    keys.extend([
+        f"{prob_n}_{raw_family}",
+        f"{prob_n}_{raw_family.lower()}",
+        f"{prob_n}_{raw_family.upper()}",
+        f"{prob_n}_{family_slug}",
+        f"{prob_n}_{family_slug.upper()}",
+    ])
+
+    for iv in inner_vars:
+        for cv in container_vars:
+            keys.append(f"{prob_n}_{iv}_in_{cv}")
+
+    seen = set()
+    res = []
+    for k in keys:
+        if k and k not in seen:
+            seen.add(k)
+            res.append(k)
+    return res
+
+
 def main():
     ref_entries = load_reference_entries()
     if not ref_entries:
@@ -436,12 +491,7 @@ def main():
         container_token = entry.get("container_shape")
         our_prob_key = entry.get("our_problem") or f"{prob_n}_{raw_family}"
 
-        possible_folder_keys = [
-            f"{prob_n}_{inner_token}_in_{container_token}",
-            f"{prob_n}_{raw_family}",
-            our_prob_key,
-            f"{prob_n}_{family_slug}",
-        ]
+        possible_folder_keys = generate_key_variants(entry)
 
         sol_data = None
         for pk in possible_folder_keys:
@@ -450,10 +500,18 @@ def main():
                 break
 
         # Check execution logs
-        l_stat = log_stats.get(our_prob_key) or log_stats.get(f"{prob_n}_{family_slug}") or {}
+        l_stat = {}
+        for pk in possible_folder_keys:
+            if pk and pk in log_stats:
+                l_stat = log_stats[pk]
+                break
 
         # Check priority queue
-        pq_item = pq_dict.get(our_prob_key) or pq_dict.get(f"{prob_n}_{raw_family}") or pq_dict.get(f"{prob_n}_{family_slug}")
+        pq_item = None
+        for pk in possible_folder_keys:
+            if pk and pk in pq_dict:
+                pq_item = pq_dict[pk]
+                break
 
         attempted = (sol_data is not None) or (l_stat.get("starts", 0) > 0)
         if attempted:
