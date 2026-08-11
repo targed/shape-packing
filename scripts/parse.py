@@ -1,4 +1,3 @@
-import html.parser
 class Parser(html.parser.HTMLParser):
     def __init__(self):
         super().__init__()

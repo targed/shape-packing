@@ -11,8 +11,6 @@ Scripts verify_solution.py and render_solution.py should become
 thin entrypoints that import from here.
 """
 
-from __future__ import annotations
-
 import json
 import math
 import os
@@ -24,13 +22,11 @@ from .geometry import (
     polygon_normals,
     get_shape_geometry,
     sat_check_overlap,
-    sat_check_overlap,
     transform_polygon,
 )
 
 from .packing_config import (
     VERIFY_SAT_TOLERANCE,
-    VERIFY_METRIC_TOLERANCE,
     RENDER_DPI,
     RENDER_FIGURE_SIZE,
     RENDER_CROP_MODE,
