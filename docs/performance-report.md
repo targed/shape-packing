@@ -326,8 +326,9 @@ Expected: 30–60 % reduction in orchestrator overhead; 15–30 % reduction in s
 
 - [ ] Add criterion-based microbenchmarks for `penalty_and_gradient` and `run_attempt`.
 - [ ] Implement simple spatial broadphase (grid hashing) for pairwise overlap checks.
-- [ ] In parallel loop, import orchestrator logic directly into worker processes instead of forking via CLI subprocess.
-- [ ] Maintain an in-memory history index instead of full TSV re-reads.
+- [x] In parallel loop, import orchestrator logic directly into worker processes instead of forking via CLI subprocess.
+- [x] Maintain an in-memory history index instead of full TSV re-reads.
+
 
 Expected: further 20–40 % solver acceleration for larger N; significant orchestrator simplification.
 
