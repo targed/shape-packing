@@ -322,16 +322,11 @@ def project_polygon(normal, vertices):
     Project polygon onto a given axis.
     Returns (min_proj, max_proj).
     """
-    min_proj = float("inf")
-    max_proj = float("-inf")
-    nx, ny = normal[0], normal[1]
-    for v in vertices:
-        p = nx * v[0] + ny * v[1]
-        if p < min_proj:
-            min_proj = p
-        if p > max_proj:
-            max_proj = p
-    return min_proj, max_proj
+    v = _ensure_array(vertices)
+    n = _ensure_array(normal)
+    dots = v @ n
+    return float(dots.min()), float(dots.max())
+
 
 
 def polygon_normals(vertices):
