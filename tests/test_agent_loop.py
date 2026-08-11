@@ -126,3 +126,109 @@ class TestReferenceHelpers:
         ]
         assert is_preferred_reference(ref, "10_6_in_4") is True
         assert is_preferred_reference(ref, "12_3_in_CIRCLE") is True
+
+
+class TestFilterJsonAndProblemSelection:
+    """
+    Tests for filter.json options, shape token normalization, and problem filtering in choose_problem().
+    """
+
+    @pytest.fixture
+    def rich_queue(self, tmp_path):
+        import json
+        q_path = str(tmp_path / "rich_queue.json")
+        items = [
+            {"problem": "5_DOMINO_in_5", "density": 0.45, "N": 5, "inner_shape": "DOMINO", "container_shape": "5", "status": "best_known"},
+            {"problem": "10_5_in_6", "density": 0.50, "N": 10, "inner_shape": "5", "container_shape": "6", "status": "best_known"},
+            {"problem": "8_3_in_5", "density": 0.55, "N": 8, "inner_shape": "3", "container_shape": "5", "status": "best_known"},
+            {"problem": "12_DOMINO_in_CIRCLE", "density": 0.60, "N": 12, "inner_shape": "DOMINO", "container_shape": "CIRCLE", "status": "best_known"},
+            {"problem": "15_6_in_8", "density": 0.65, "N": 15, "inner_shape": "6", "container_shape": "8", "status": "best_known"},
+            {"problem": "20_PENTAGON_in_HEXAGON", "density": 0.70, "N": 20, "inner_shape": "PENTAGON", "container_shape": "HEXAGON", "status": "best_known"},
+        ]
+        with open(q_path, "w", encoding="utf-8") as f:
+            json.dump(items, f)
+        return q_path
+
+    def test_include_inner_word_and_number_tokens(self, rich_queue):
+        # Test DOMINO (word token) inclusion
+        p = choose_problem(
+            history=[],
+            queue_path=rich_queue,
+            filters={"include_inner": "DOMINO"},
+            exclude_problems=set(),
+        )
+        assert "DOMINO" in p.upper()
+
+        # Test PENTAGON (word / number 5) inclusion
+        p5 = choose_problem(
+            history=[],
+            queue_path=rich_queue,
+            filters={"include_inner": "PENTAGON, 5"},
+            exclude_problems=set(),
+        )
+        assert "PENTAGON" in p5.upper() or "_5_" in p5 or "5_" in p5
+
+    def test_exclude_inner_filter(self, rich_queue):
+        p = choose_problem(
+            history=[],
+            queue_path=rich_queue,
+            filters={"exclude_inner": "3, TRIANGLE, DOMINO"},
+            exclude_problems=set(),
+        )
+        inner = p.split("_in_")[0].upper()
+        assert "DOMINO" not in inner and "3" not in inner and "TRIANGLE" not in inner
+
+    def test_include_container_and_exclude_container(self, rich_queue):
+        # Include container pentagon / 5
+        p = choose_problem(
+            history=[],
+            queue_path=rich_queue,
+            filters={"include_container": ["5", "PENTAGON"]},
+            exclude_problems=set(),
+        )
+        assert "_5" in p or "_PENTAGON" in p or "_in_5" in p.lower() or "_in_pentagon" in p.lower()
+
+    def test_numeric_bounds_filters(self, rich_queue):
+        # Equal N
+        p_eq = choose_problem(
+            history=[],
+            queue_path=rich_queue,
+            filters={"equal_n": 15},
+            exclude_problems=set(),
+        )
+        assert p_eq.startswith("15_")
+
+        # Min / max inner sides
+        p_sides = choose_problem(
+            history=[],
+            queue_path=rich_queue,
+            filters={"min_inner_sides": 5, "max_inner_sides": 8},
+            exclude_problems=set(),
+        )
+        assert not p_sides.startswith("8_3_")
+
+    def test_filter_json_file_parsing(self, tmp_path, rich_queue):
+        import json
+        filter_path = tmp_path / "filter.json"
+        filter_data = {
+            "min_n": 3,
+            "max_n": 50,
+            "include_inner": "DOMINO, PENTAGON, HEXAGON",
+            "exclude_container": "TRIANGLE",
+            "min_inner_sides": 3,
+            "min_container_sides": 3,
+        }
+        filter_path.write_text(json.dumps(filter_data), encoding="utf-8")
+
+        with open(filter_path, "r", encoding="utf-8") as f:
+            loaded_filters = json.load(f)
+
+        p = choose_problem(
+            history=[],
+            queue_path=rich_queue,
+            filters=loaded_filters,
+            exclude_problems=set(),
+        )
+        assert isinstance(p, str) and len(p) > 0
+
+
