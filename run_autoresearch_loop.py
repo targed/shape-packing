@@ -28,6 +28,10 @@ from src.shape_packing.packing_config import (
     LOOP_MAX_BACKOFF as MAX_BACKOFF,
 )
 
+FORCE_DIVERSE = False
+
+
+
 class DummyArgs:
     pass
 
