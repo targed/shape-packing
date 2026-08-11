@@ -21,10 +21,43 @@ from shape_packing.agent_loop import (
     make_loop_candidate,
     is_physically_valid_score,
     last_experiments_for,
+    _get_inner_shape_area,
+    _get_container_shape_area,
 )
+import math
+
+
+class TestGetInnerShapeArea:
+    def test_known_inner_shapes(self):
+        assert _get_inner_shape_area("3") == pytest.approx(math.sqrt(3) / 4.0)
+        assert _get_inner_shape_area("TRIANGLE") == pytest.approx(math.sqrt(3) / 4.0)
+        assert _get_inner_shape_area("4") == 1.0
+        assert _get_inner_shape_area("SQUARE") == 1.0
+        assert _get_inner_shape_area("5") == pytest.approx(0.25 * math.sqrt(5.0 * (5.0 + 2.0 * math.sqrt(5.0))))
+        assert _get_inner_shape_area("6") == pytest.approx(1.5 * math.sqrt(3))
+        assert _get_inner_shape_area("8") == pytest.approx(2.0 * (1.0 + math.sqrt(2.0)))
+
+    def test_unknown_or_unsupported_shapes_return_none(self):
+        assert _get_inner_shape_area("UNKNOWN") is None
+        assert _get_inner_shape_area("CIRCLE") is None
+        assert _get_inner_shape_area("99") is None
+        assert _get_inner_shape_area("") is None
+
+
+class TestGetContainerShapeArea:
+    def test_known_container_shapes(self):
+        assert _get_container_shape_area(2.0, "CIRCLE") == pytest.approx(math.pi * 4.0)
+        assert _get_container_shape_area(2.0, "4") == 4.0
+        assert _get_container_shape_area(3.0, "TRIANGLE") == pytest.approx((math.sqrt(3) / 4.0) * 9.0)
+
+    def test_unknown_container_shapes_return_none(self):
+        assert _get_container_shape_area(2.0, "UNKNOWN") is None
+        assert _get_container_shape_area(2.0, "99") is None
+        assert _get_container_shape_area(2.0, "") is None
 
 
 class TestLastExperimentsFor:
+
     def test_filters_by_problem_name(self):
         h = [
             ExperimentResult(problem="3_3_in_4", score=1.5, status="keep", description="1", seconds=0.1, commit="auto", memory_gb=0.0),
