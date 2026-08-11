@@ -1209,6 +1209,29 @@ class TestChooseProblemUnsupportedShape:
         )
         assert p == "8_3_in_5"
 
+    def test_unrecognized_shape_token_skipped(self, tmp_path):
+        import json
+        path = tmp_path / "pq.json"
+        items = [
+            {
+                "problem": "1_XXX_in_4",
+                "density": 0.9,
+                "status": "best_known",
+                "inner_shape": "XXX",
+                "container_shape": "4",
+                "best_value": 2.0,
+                "N": 1,
+            },
+        ]
+        path.write_text(json.dumps(items))
+        p = choose_problem(
+            history=[],
+            queue_path=str(path),
+            exclude_problems=set(),
+        )
+        assert p == "8_3_in_5"
+
+
 
 class TestChooseProblemCircleSides:
     def test_circle_inner_sides_mapped(self, tmp_path):
