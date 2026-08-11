@@ -348,6 +348,19 @@ def normalize_problem_name(p_str: str) -> str:
         return f"{N}_{c_inner}_in_{c_container}"
     return p_str
 
+@dataclass
+class ProblemSelectionConfig:
+    """Configuration options for choosing the next problem from priority queue."""
+    queue_path: str = PRIORITY_QUEUE_PATH
+    prefer_different: bool = False
+    filters: Optional[dict] = None
+    exclude_problems: Optional[set] = None
+    problem_cap1: int = QUEUE_PROBLEM_CAP1
+    problem_cap2: int = QUEUE_PROBLEM_CAP2
+    family_cap1: int = QUEUE_FAMILY_CAP1
+    family_cap2: int = QUEUE_FAMILY_CAP2
+
+
 def load_priority_queue(path: str = "priority_queue.json") -> List[Dict[str, float]]:
     if not os.path.exists(path):
         return []
@@ -357,83 +370,240 @@ def load_priority_queue(path: str = "priority_queue.json") -> List[Dict[str, flo
     except Exception:
         return []
 
+
+def _is_shape_unsupported(token: str, filters: dict) -> bool:
+    from .problems import is_special_shape
+    t = str(token).upper().replace(" (COVERING)", "")
+    if t == "CIR":
+        t = "CIRCLE"
+    if t == "DOM":
+        t = "DOMINO"
+
+    if is_special_shape(t):
+        if t == "DOMINO":
+            return False
+        if (filters or {}).get("include_inner") or (filters or {}).get("include_container"):
+            return False
+        return True
+    allowed = {
+        "3", "4", "5", "6", "7", "8", "9", "10",
+        "CIRCLE", "SQUARE", "DOMINO", "L", "TRIANGLE", "PENTAGON", "HEXAGON", "OCTAGON",
+    }
+    return t not in allowed
+
+
+def _parse_filter_sets(filters: Optional[dict]) -> Tuple[Set[str], Set[str], Set[str], Set[str]]:
+    if not filters:
+        return set(), set(), set(), set()
+
+    def _to_set(v) -> Set[str]:
+        if isinstance(v, str):
+            raw = [x.strip() for x in v.split(",") if x.strip()]
+        elif isinstance(v, list):
+            raw = [str(x).strip() for x in v]
+        else:
+            raw = [str(v)]
+        res = set(t.upper() for t in raw)
+        if "CIRCLE" in res or "CIR" in res:
+            res.add("CIRCLE")
+            res.add("CIR")
+        if "3" in res or "TRIANGLE" in res:
+            res.add("3")
+            res.add("TRIANGLE")
+        return res
+
+    inc_inner = _to_set(filters["include_inner"]) if filters.get("include_inner") else set()
+    exc_inner = _to_set(filters["exclude_inner"]) if filters.get("exclude_inner") else set()
+    inc_cont = _to_set(filters["include_container"]) if filters.get("include_container") else set()
+    exc_cont = _to_set(filters["exclude_container"]) if filters.get("exclude_container") else set()
+
+    return inc_inner, exc_inner, inc_cont, exc_cont
+
+
+def _matches_external_filters(
+    p0: Any,
+    item: Dict[str, Any],
+    filters: dict,
+    inc_inner: Set[str],
+    exc_inner: Set[str],
+    inc_cont: Set[str],
+    exc_cont: Set[str],
+) -> bool:
+    from .problems import shape_token_to_sides
+
+    try:
+        inner_token = p0.inner_token.upper()
+        container_token = p0.container_token.upper()
+        n = p0.N
+
+        if inner_token == "CIR": inner_token = "CIRCLE"
+        if container_token == "CIR": container_token = "CIRCLE"
+        if container_token == "TRIANGLE": container_token = "3"
+        if inner_token == "TRIANGLE": inner_token = "3"
+
+        p0_inner = p0.inner_token.upper()
+        p0_cont = p0.container_token.upper()
+        if p0_inner == "CIR": p0_inner = "CIRCLE"
+        if p0_cont == "CIR": p0_cont = "CIRCLE"
+        if p0_cont == "TRIANGLE": p0_cont = "3"
+        if p0_inner == "TRIANGLE": p0_inner = "3"
+
+        inner_sides = shape_token_to_sides(inner_token)
+        container_sides = shape_token_to_sides(container_token)
+
+        if filters.get("min_n") is not None and n < filters["min_n"]:
+            return False
+        if filters.get("max_n") is not None and n > filters["max_n"]:
+            return False
+        if filters.get("equal_n") is not None and n != filters["equal_n"]:
+            return False
+
+        item_inner = str(item.get("inner_shape", "")).upper()
+        item_container = str(item.get("container_shape", "")).upper().replace(" (COVERING)", "")
+
+        if item_inner == "CIR": item_inner = "CIRCLE"
+        if item_container == "CIR": item_container = "CIRCLE"
+        if item_container == "3": item_container = "TRIANGLE"
+        if item_inner == "3": item_inner = "TRIANGLE"
+        if item_container == "TRIANGLE": item_container = "3"
+        if item_inner == "TRIANGLE": item_inner = "3"
+
+        if inc_inner and (inner_token not in inc_inner and p0_inner not in inc_inner and item_inner not in inc_inner):
+            return False
+        if exc_inner and (inner_token in exc_inner or p0_inner in exc_inner or item_inner in exc_inner):
+            return False
+
+        if inc_cont and (container_token not in inc_cont and p0_cont not in inc_cont and item_container not in inc_cont):
+            return False
+        if exc_cont and (container_token in exc_cont or p0_cont in exc_cont or item_container in exc_cont):
+            return False
+
+        if inner_token == "CIRCLE":
+            inner_sides = CIRCLE_SIDES
+        if container_token == "CIRCLE":
+            container_sides = CIRCLE_SIDES
+
+        if inner_sides is not None:
+            if filters.get("min_inner_sides") is not None and inner_sides < filters["min_inner_sides"]:
+                return False
+            if filters.get("max_inner_sides") is not None and inner_sides > filters["max_inner_sides"]:
+                return False
+        if container_sides is not None:
+            if filters.get("min_container_sides") is not None and container_sides < filters["min_container_sides"]:
+                return False
+            if filters.get("max_container_sides") is not None and container_sides > filters["max_container_sides"]:
+                return False
+
+        return True
+    except Exception:
+        return False
+
+
+def _calculate_candidate_score(
+    item: Dict[str, Any],
+    p_str: str,
+    base_density: float,
+    recent_counts: Counter,
+    our_best: Dict[str, float],
+    problem_runs: Dict[str, int],
+    family_runs: Dict[str, int],
+    problem_last_k: Dict[str, List[float]],
+    config: ProblemSelectionConfig,
+) -> Optional[float]:
+    ref_status = str(item.get("status") or "").strip().lower()
+
+    if ref_status in ("trivial", "proved_optimal"):
+        return None
+
+    best_value = item.get("best_value")
+    try:
+        best_value = float(best_value) if best_value is not None else None
+    except ValueError:
+        best_value = None
+
+    stagnation = recent_counts.get(p_str, 0)
+    penalty = stagnation * 0.05
+
+    total_runs = problem_runs.get(p_str, 0)
+    penalty += total_runs * 0.01
+
+    if total_runs > config.problem_cap1:
+        penalty += 5.0
+    if total_runs > config.problem_cap2:
+        penalty += 15.0
+
+    family = extract_problem_family(p_str)
+    fam_runs = family_runs.get(family, 0)
+    if fam_runs > config.family_cap1:
+        penalty += 5.0
+    if fam_runs > config.family_cap2:
+        penalty += 15.0
+
+    if total_runs == 0:
+        penalty -= 3.0
+    elif total_runs <= 5:
+        penalty -= 1.5
+
+    if is_stuck(problem_last_k, p_str, threshold_no_improve=5):
+        penalty += 10.0
+
+    our = our_best.get(p_str, float("inf"))
+    if best_value is not None and our != float("inf"):
+        rel_gap = (our - best_value) / best_value if best_value > 0 else 0.0
+        if rel_gap < 0.002:
+            penalty += 5.0
+        if rel_gap > 0.10 and total_runs < 30:
+            penalty -= 0.3
+
+    if ref_status == "best_known":
+        penalty -= 0.5
+    else:
+        source_note = (item.get("source_note") or "").strip().lower()
+        if "found by" in source_note or "erich friedman" in source_note:
+            penalty -= 0.3
+
+    if config.prefer_different and p_str in recent_counts:
+        penalty += 3.0
+
+    return base_density + penalty
+
+
 def choose_problem(
     history: List[ExperimentResult],
+    config: Optional[ProblemSelectionConfig] = None,
     queue_path: str = PRIORITY_QUEUE_PATH,
     prefer_different: bool = False,
-    filters: dict = None,
-    exclude_problems: set = None,
+    filters: Optional[dict] = None,
+    exclude_problems: Optional[set] = None,
     problem_cap1: int = QUEUE_PROBLEM_CAP1,
     problem_cap2: int = QUEUE_PROBLEM_CAP2,
     family_cap1: int = QUEUE_FAMILY_CAP1,
     family_cap2: int = QUEUE_FAMILY_CAP2,
 ) -> str:
-    queue = load_priority_queue(queue_path)
+    if config is None:
+        config = ProblemSelectionConfig(
+            queue_path=queue_path,
+            prefer_different=prefer_different,
+            filters=filters,
+            exclude_problems=exclude_problems,
+            problem_cap1=problem_cap1,
+            problem_cap2=problem_cap2,
+            family_cap1=family_cap1,
+            family_cap2=family_cap2,
+        )
+
+    queue = load_priority_queue(config.queue_path)
     if not queue:
         return QUEUE_FALLBACK_PROBLEM
 
     recent = recent_problems(history, last=QUEUE_RECENT_WINDOW)
     recent_counts = Counter(normalize_problem_name(r) for r in recent)
     our_best = current_best_scores(history)
-
-
     problem_runs, family_runs, problem_last_k = _build_problem_stats(history)
 
-    # We no longer need to load_packing_reference here because queue has the metadata directly.
-    # reference_rows = load_packing_reference()
+    from .problems import parse_problem
 
-    from .problems import parse_problem, shape_token_to_sides, is_special_shape
-
-    # By default, skip special (non-polygon) shapes not wired into the Rust solver.
-    # To allow them, explicitly list them in include_inner / include_container.
-    def is_unsupported(token: str, f: dict) -> bool:
-        t = token.upper().replace(" (COVERING)", "")
-        if t == "CIR": t = "CIRCLE"
-        if t == "DOM": t = "DOMINO"
-        
-        if is_special_shape(t):
-            if t == "DOMINO":
-                return False
-            if f.get("include_inner") or f.get("include_container"):
-                return False
-            return True
-        allowed = {"3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "SQUARE", "DOMINO", "L", "TRIANGLE", "PENTAGON", "HEXAGON", "OCTAGON"}
-        if t not in allowed:
-            return True
-        return False
-
-    # Pre-parse filter sets once outside the queue loop
-    inc_inner = set()
-    exc_inner = set()
-    inc_cont = set()
-    exc_cont = set()
-
-    if filters:
-        def _to_set(v):
-            if isinstance(v, str):
-                raw = [x.strip() for x in v.split(",") if x.strip()]
-            elif isinstance(v, list):
-                raw = [str(x).strip() for x in v]
-            else:
-                raw = [str(v)]
-            res = set(t.upper() for t in raw)
-            if "CIRCLE" in res or "CIR" in res:
-                res.add("CIRCLE")
-                res.add("CIR")
-            if "3" in res or "TRIANGLE" in res:
-                res.add("3")
-                res.add("TRIANGLE")
-            return res
-
-        if filters.get("include_inner"):
-            inc_inner = _to_set(filters["include_inner"])
-        if filters.get("exclude_inner"):
-            exc_inner = _to_set(filters["exclude_inner"])
-        if filters.get("include_container"):
-            inc_cont = _to_set(filters["include_container"])
-        if filters.get("exclude_container"):
-            exc_cont = _to_set(filters["exclude_container"])
-
+    inc_inner, exc_inner, inc_cont, exc_cont = _parse_filter_sets(config.filters)
     scored_candidates = []
 
     for item in queue:
@@ -441,176 +611,43 @@ def choose_problem(
         p_str = normalize_problem_name(raw_p_str)
         base_density = item["density"]
 
-        # Skip problems explicitly excluded (e.g. in-flight parallel jobs).
-        if exclude_problems and p_str in exclude_problems:
+        if config.exclude_problems and p_str in config.exclude_problems:
             continue
 
-        # Parse and basic pre-filter.
         try:
             p0 = parse_problem(p_str)
-        except Exception as e:
-            # print(f"Error parsing {p_str}: {e}")
+        except Exception:
             continue
 
-        if is_unsupported(item.get("inner_shape", "").upper(), filters or {}):
+        if _is_shape_unsupported(item.get("inner_shape", ""), config.filters or {}):
             continue
-        if is_unsupported(item.get("container_shape", "").upper(), filters or {}):
-            continue
-
-        # External filters (filter.json style).
-        if filters:
-            try:
-                inner_token = p0.inner_token.upper()
-                container_token = p0.container_token.upper()
-                n = p0.N
-                
-                # Check for standard aliases
-                if inner_token == "CIR": inner_token = "CIRCLE"
-                if container_token == "CIR": container_token = "CIRCLE"
-                if container_token == "TRIANGLE": container_token = "3"
-                if inner_token == "TRIANGLE": inner_token = "3"
-                
-                # Try falling back to p0 entirely if aliases somehow break
-                p0_inner = p0.inner_token.upper()
-                p0_cont = p0.container_token.upper()
-                if p0_inner == "CIR": p0_inner = "CIRCLE"
-                if p0_cont == "CIR": p0_cont = "CIRCLE"
-                if p0_cont == "TRIANGLE": p0_cont = "3"
-                if p0_inner == "TRIANGLE": p0_inner = "3"
-                inner_sides = shape_token_to_sides(inner_token)
-                container_sides = shape_token_to_sides(container_token)
-
-                if filters.get("min_n") is not None and n < filters["min_n"]:
-                    continue
-                if filters.get("max_n") is not None and n > filters["max_n"]:
-                    continue
-                if filters.get("equal_n") is not None and n != filters["equal_n"]:
-                    continue
-
-                # Also check aliases from item properties
-                item_inner = item.get("inner_shape", "").upper()
-                item_container = item.get("container_shape", "").upper().replace(" (COVERING)", "")
-                
-                if item_inner == "CIR": item_inner = "CIRCLE"
-                if item_container == "CIR": item_container = "CIRCLE"
-                if item_container == "3": item_container = "TRIANGLE"
-                if item_inner == "3": item_inner = "TRIANGLE"
-                if item_container == "TRIANGLE": item_container = "3"
-                if item_inner == "TRIANGLE": item_inner = "3"
-
-                if inc_inner and (inner_token not in inc_inner and p0_inner not in inc_inner and item_inner not in inc_inner):
-                    continue
-
-                if exc_inner and (inner_token in exc_inner or p0_inner in exc_inner or item_inner in exc_inner):
-                    continue
-
-                if inc_cont and (container_token not in inc_cont and p0_cont not in inc_cont and item_container not in inc_cont):
-                    continue
-
-                if exc_cont and (container_token in exc_cont or p0_cont in exc_cont or item_container in exc_cont):
-                    continue
-
-
-                if inner_token == "CIRCLE":
-                    inner_sides = CIRCLE_SIDES
-                if container_token == "CIRCLE":
-                    container_sides = CIRCLE_SIDES
-                    
-                # Only apply min/max sides filters to regular polygons (numeric sides).
-                # Special shapes (DOMINO, TAN, L) use their identity for include/exclude,
-                # not their "side count", so don't exclude them based on sides.
-                if inner_sides is not None:
-                    if filters.get("min_inner_sides") is not None and inner_sides < filters["min_inner_sides"]:
-                        continue
-                    if filters.get("max_inner_sides") is not None and inner_sides > filters["max_inner_sides"]:
-                        continue
-                if container_sides is not None:
-                    if filters.get("min_container_sides") is not None and container_sides < filters["min_container_sides"]:
-                        continue
-                    if filters.get("max_container_sides") is not None and container_sides > filters["max_container_sides"]:
-                        continue
-            except Exception:
-                continue
-
-        # Reference-based decisions.
-        ref_status = str(item.get("status") or "").strip().lower()
-        best_value = item.get("best_value")
-        try:
-            best_value = float(best_value) if best_value is not None else None
-        except ValueError:
-            best_value = None
-
-        # Massive penalty for trivial / proved_optimal: essentially block.
-        if ref_status in ("trivial", "proved_optimal"):
+        if _is_shape_unsupported(item.get("container_shape", ""), config.filters or {}):
             continue
 
-        # Diversity / history-based penalties.
-        stagnation = recent_counts.get(p_str, 0)
-        penalty = stagnation * 0.05
+        if config.filters and not _matches_external_filters(
+            p0, item, config.filters, inc_inner, exc_inner, inc_cont, exc_cont
+        ):
+            continue
 
-        total_runs = problem_runs.get(p_str, 0)
-        penalty += total_runs * 0.01
-
-        # Phase 2a: Per-problem run cap
-        if total_runs > problem_cap1:
-            penalty += 5.0
-        if total_runs > problem_cap2:
-            penalty += 15.0
-
-        # Phase 2b: Per-family run cap
-        family = extract_problem_family(p_str)
-        fam_runs = family_runs.get(family, 0)
-        if fam_runs > family_cap1:
-            penalty += 5.0
-        if fam_runs > family_cap2:
-            penalty += 15.0
-
-        # Phase 3: Boost low-run problems
-        if total_runs == 0:
-            penalty -= 3.0
-        elif total_runs <= 5:
-            penalty -= 1.5
-
-        # If stuck: strong penalty.
-        if is_stuck(problem_last_k, p_str, threshold_no_improve=5):
-            penalty += 10.0
-
-        # Our-best vs reference-best_value: prefer problems with room to improve.
-        our = our_best.get(p_str, float("inf"))
-        if best_value is not None and our != float("inf"):
-            # If we are already within 0.2% of the reference best_value,
-            # likely diminishing returns; downrank.
-            rel_gap = (our - best_value) / best_value if best_value > 0 else 0.0
-            if rel_gap < 0.002:
-                # Near reference; add penalty.
-                penalty += 5.0
-            
-            # Phase 4: Reduce aggressive best_value-gap bonuses
-            if rel_gap > 0.10 and total_runs < 30:
-                penalty -= 0.3  # Reduced from 1.0, and conditional
-
-        # Soft preference: best_known or human-found problems are interesting.
-        if ref_status == "best_known":
-            penalty -= 0.5  # mild bonus
-        else:
-            source_note = (item.get("source_note") or "").strip().lower()
-            if "found by" in source_note or "erich friedman" in source_note:
-                penalty -= 0.3  # mild bonus
-
-        # Prefer_different: heavier penalty on recent problems.
-        if prefer_different:
-            if p_str in recent_counts:
-                penalty += 3.0
-
-
-        scored_candidates.append((p_str, base_density + penalty))
+        score = _calculate_candidate_score(
+            item,
+            p_str,
+            base_density,
+            recent_counts,
+            our_best,
+            problem_runs,
+            family_runs,
+            problem_last_k,
+            config,
+        )
+        if score is not None:
+            scored_candidates.append((p_str, score))
 
     if not scored_candidates:
         import sys
         print("No candidates matched filters!", file=sys.stderr)
-        return "8_3_in_5"
+        return QUEUE_FALLBACK_PROBLEM
 
-    # Lower is better: density + penalties
     scored_candidates.sort(key=lambda x: x[1])
     return scored_candidates[0][0]
 
