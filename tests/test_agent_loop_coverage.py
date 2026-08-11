@@ -20,10 +20,41 @@ from shape_packing.agent_loop import (
     log_result,
     make_loop_candidate,
     is_physically_valid_score,
+    last_experiments_for,
 )
 
 
+class TestLastExperimentsFor:
+    def test_filters_by_problem_name(self):
+        h = [
+            ExperimentResult(problem="3_3_in_4", score=1.5, status="keep", description="1", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="4_3_in_4", score=1.8, status="keep", description="2", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="3_3_in_4", score=1.4, status="keep", description="3", seconds=0.1, commit="auto", memory_gb=0.0),
+        ]
+        res = last_experiments_for(h, "3_3_in_4")
+        assert len(res) == 2
+        assert res[0].description == "1"
+        assert res[1].description == "3"
+
+    def test_limits_to_last_n_entries(self):
+        h = [
+            ExperimentResult(problem="3_3_in_4", score=float(i), status="keep", description=str(i), seconds=0.1, commit="auto", memory_gb=0.0)
+            for i in range(10)
+        ]
+        res = last_experiments_for(h, "3_3_in_4", last=3)
+        assert len(res) == 3
+        assert [r.description for r in res] == ["7", "8", "9"]
+
+    def test_returns_empty_when_no_match(self):
+        h = [
+            ExperimentResult(problem="3_3_in_4", score=1.5, status="keep", description="1", seconds=0.1, commit="auto", memory_gb=0.0)
+        ]
+        assert last_experiments_for(h, "99_99_in_99") == []
+        assert last_experiments_for([], "3_3_in_4") == []
+
+
 class TestIsPhysicallyValidScore:
+
     def test_negative_or_zero_score_is_invalid(self):
         assert is_physically_valid_score("3_3_in_4", 0.0) is False
         assert is_physically_valid_score("3_3_in_4", -1.5) is False
