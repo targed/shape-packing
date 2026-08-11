@@ -2,6 +2,7 @@ import argparse
 import sys
 import json
 import subprocess
+from pathlib import Path
 from .agent_loop import load_history, choose_problem, current_best_scores
 from .solver_interface import run_solver
 
@@ -48,8 +49,23 @@ def handle_run(args, history_cache=None, direct_call=False):
     # 1. Run init script if provided
     init_json_path = None
     if args.init_script:
+        script_path = Path(args.init_script).resolve()
+        if not script_path.is_file():
+            err = f"Error: Init script '{args.init_script}' does not exist or is not a file."
+            eprint(err)
+            if direct_call:
+                return {"success": False, "error": err, "returncode": 1}
+            sys.exit(1)
+
+        if script_path.suffix.lower() not in (".py", ".pyw"):
+            err = f"Error: Init script '{args.init_script}' must be a Python (.py) file."
+            eprint(err)
+            if direct_call:
+                return {"success": False, "error": err, "returncode": 1}
+            sys.exit(1)
+
         init_json_path = "initial_positions.json"
-        res = subprocess.run([sys.executable, args.init_script, init_json_path], capture_output=True, text=True)
+        res = subprocess.run([sys.executable, str(script_path), init_json_path], capture_output=True, text=True)
         if res.returncode != 0:
             err = "Init script failed:\n" + res.stderr
             eprint(err)
@@ -58,7 +74,7 @@ def handle_run(args, history_cache=None, direct_call=False):
             sys.exit(1)
             
     # 2. Extract problem parts
-    from .problems import parse_problem, shape_token_to_sides
+    from .problems import parse_problem
     p = parse_problem(args.problem)
     N = p.N
     inner = p.inner_token
