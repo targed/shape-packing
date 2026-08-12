@@ -21,6 +21,9 @@ RUST_PROJECT_PATH = "packer_rs"
 RUST_RELEASE_BIN = os.path.join(
     RUST_PROJECT_PATH, "target", "release", "packer_rs"
 )
+
+# Alias used elsewhere
+RUST_BINARY = RUST_RELEASE_BIN
 RESULTS_DIR = "results"
 RESULTS_TSV = "results.tsv"
 PACKING_VERIFICATION_DIR = "packingVerification"
@@ -551,3 +554,33 @@ QUEUE_FAMILY_CAP2 = 6
 
 PRIORITY_QUEUE_PATH = "priority_queue.json"
 RESULTS_TSV_PATH = "results.tsv"
+
+# =====================
+# Shape metadata
+# =====================
+
+SHAPE_TO_SIDES = {
+    "TRIANGLE": 3,
+    "SQUARE": 4,
+    "PENTAGON": 5,
+    "HEXAGON": 6,
+    "HEPTAGON": 7,
+    "OCTAGON": 8,
+    "ENNEAGON": 9,
+    "DECAGON": 10,
+}
+
+SPECIAL_SHAPES = ["TAN", "DOMINO", "L"]
+
+ALL_FAMILIES = [
+    "TRIANGLE", "SQUARE", "PENTAGON", "HEXAGON",
+    "OCTAGON", "CIRCLE",
+    "TAN", "DOMINO", "L"
+]
+
+# =====================
+# Geometry tolerances
+# =====================
+
+GEOMETRY_SAT_TOLERANCE = 1e-12
+ANALYSIS_PLOT_DPI = 150
