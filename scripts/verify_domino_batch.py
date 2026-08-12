@@ -44,7 +44,7 @@ def gather_domino_solutions():
     return solutions
 
 def verify_single(path, problem_str=None):
-    cmd = ["python3", "scripts/verify_solution.py", path]
+    cmd = [sys.executable, "scripts/verify_solution.py", path]
     if problem_str:
         cmd.append(problem_str)
     r = subprocess.run(cmd, capture_output=True, text=True, timeout=30)

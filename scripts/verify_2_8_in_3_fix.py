@@ -5,14 +5,16 @@ Ad-hoc verification for 2_8_in_3 and dyld-fix:
 - 4_3_in_3 normal run must succeed and be valid.
 - No dyld / PyExc_AttributeError crashes.
 """
+import os
+import sys
+import tempfile
 import subprocess
 import json
-import sys
-import os
-import time
 from datetime import datetime
 
-SOLVER = "/Users/kaiserluke/Documents/Git/shape-packing/packer_rs/target/release/packer_rs"
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from src.shape_packing.packing_config import RUST_RELEASE_BIN
+SOLVER = RUST_RELEASE_BIN if not os.name == 'nt' else RUST_RELEASE_BIN + ".exe"
 TOLERANCE = 1e-5
 
 def run_solver(args_list, out_json):
@@ -24,15 +26,15 @@ def verify_no_solution(stdout):
     return "No valid packing found" in stdout
 
 def verify_solution_json(path, problem_str=None):
-    sys.path.insert(0, "/Users/kaiserluke/Documents/Git/shape-packing/src")
-    from shape_packing.solution_tools import verify_solution
+    from src.shape_packing.solution_tools import verify_solution
     return verify_solution(path, problem_str=problem_str)
 
 def main():
     errors = []
 
     # TEST 1: 2_8_in_3 with aggressive target-s should NOT produce a solution
-    tmp1 = "/var/folders/ks/b7lrd1rs1fg40rsmsm8r770m0000gq/T/hermes-verify-2_8_in_3.json"
+    tmp_dir = tempfile.gettempdir()
+    tmp1 = os.path.join(tmp_dir, "hermes-verify-2_8_in_3.json")
     out, err, rc, _ = run_solver(
         ["2", "8", "3", "--attempts", "2000", "--target-s", "2.83"],
         tmp1
@@ -51,7 +53,7 @@ def main():
         errors.append(msg)
 
     # TEST 2: Normal run on easy problem (4_3_in_3) should still succeed
-    tmp2 = "/var/folders/ks/b7lrd1rs1fg40rsmsm8r770m0000gq/T/hermes-verify-4_3_in_3.json"
+    tmp2 = os.path.join(tmp_dir, "hermes-verify-4_3_in_3.json")
     out2, err2, rc2, _ = run_solver(
         ["4", "3", "3", "--attempts", "5000"],
         tmp2
