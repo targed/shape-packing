@@ -23,29 +23,74 @@ RUST_RELEASE_BIN = os.path.join(
 )
 
 # Alias used elsewhere
-RUST_BINARY = RUST_RELEASE_BIN
-RESULTS_DIR = "results"
-RESULTS_TSV = "results.tsv"
-PACKING_VERIFICATION_DIR = "packingVerification"
+RUST_BINARY: str = RUST_RELEASE_BIN
+RUST_TOLERANCE: str = "1e-28"
+RUST_DEFAULT_ATTEMPTS: int = 1000
+RUST_DEFAULT_TIME_LIMIT: int = 1000
+
+# =====================
+# Python optimizer constants
+# =====================
+OPTIMIZER_ATTEMPTS: int = 1000
+OPTIMIZER_TOLERANCE: float = 1e-8
+OPTIMIZER_FINAL_STEP: float = 0.0001
+OPTIMIZER_N_JOBS: int = -1
+
+# =====================
+# Verification tolerances
+# =====================
+VERIFY_SAT_TOLERANCE: float = 1e-5
+VERIFY_METRIC_TOLERANCE: float = 1e-6
+GEOMETRY_SAT_TOLERANCE: float = 1e-12
+MIN_VALID_CIRCLE_SCORE: float = 0.1
+
+# =====================
+# File paths
+# =====================
+RESULTS_DIR: str = "results"
+RESULTS_TSV: str = "results.tsv"
+RESULTS_TSV_PATH: str = "results.tsv"
+PRIORITY_QUEUE_PATH: str = "priority_queue.json"
+PACKING_VERIFICATION_DIR: str = "packingVerification"
+FILTER_JSON_PATH: str = "filter.json"
+PACKING_REFERENCE_TSV: str = "PACKING_REFERENCE.tsv"
+
+# =====================
+# Rendering & plot settings
+# =====================
+RENDER_DPI: int = 300
+RENDER_FIGURE_SIZE: Tuple[int, int] = (6, 6)
+RENDER_CROP_MODE: str = "tight"
+RENDER_CONTAINER_LINEWIDTH: float = 2.0
+RENDER_INNER_LINEWIDTH: float = 1.0
+RENDER_SIZE_PX: Optional[int] = None
+RENDER_PAD_PX: float = 1.0
+RENDER_INNER_FACE_COLOR: str = "#CCCCCC"
+RENDER_INNER_EDGE_COLOR: str = "#000000"
+RENDER_CONTAINER_COLOR: str = "#000000"
+RENDER_BG_COLOR: Optional[str] = "#FFFFFF"
+RENDER_ALIGN_CONTAINER: bool = True
+ANALYSIS_PLOT_DPI: int = 200
 
 # =====================
 # Loop / runtime behavior
 # =====================
 
-LOOP_MAX_CONSECUTIVE_FAILURES = 30
-LOOP_BASE_BACKOFF = 1.0
-LOOP_MAX_BACKOFF = 60.0
+LOOP_SLEEP_BETWEEN_RUNS: int = 2
+LOOP_MAX_CONSECUTIVE_FAILURES: int = 30
+LOOP_BASE_BACKOFF: float = 1.0
+LOOP_MAX_BACKOFF: float = 60.0
 
-LOOP_DEFAULT_ATTEMPTS = 5_000
-LOOP_HIGH_N_THRESHOLD = 10
-LOOP_HIGH_N_ATTEMPTS = 50_000
-LOOP_STUCK_ATTEMPTS = 100_000
+LOOP_DEFAULT_ATTEMPTS: int = 5_000
+LOOP_HIGH_N_THRESHOLD: int = 10
+LOOP_HIGH_N_ATTEMPTS: int = 50_000
+LOOP_STUCK_ATTEMPTS: int = 100_000
 
-LOOP_STUCK_SWARM_COUNT = 20
-LOOP_HARD_SWARM_COUNT = 15
+LOOP_STUCK_SWARM_COUNT: int = 20
+LOOP_HARD_SWARM_COUNT: int = 15
 
-LOOP_MIN_ATTEMPTS = 500
-LOOP_MAX_ATTEMPTS = 200_000
+LOOP_MIN_ATTEMPTS: int = 500
+LOOP_MAX_ATTEMPTS: int = 200_000
 
 # =====================
 # Shape geometry
@@ -539,29 +584,35 @@ def compute_adaptive_attempts(
 # Queue / priority / misc
 # =====================
 
-CIRCLE_SIDES = 64
+CIRCLE_SIDES = 32
 
-MIN_VALID_CIRCLE_SCORE = 0.95
+MIN_VALID_CIRCLE_SCORE = 0.1
 
-QUEUE_FALLBACK_PROBLEM = "1_3_in_3"
+QUEUE_FALLBACK_PROBLEM = "8_3_in_5"
 
-QUEUE_RECENT_WINDOW = 30
+QUEUE_RECENT_WINDOW = 10
 
-QUEUE_PROBLEM_CAP1 = 3
-QUEUE_PROBLEM_CAP2 = 5
-QUEUE_FAMILY_CAP1 = 4
-QUEUE_FAMILY_CAP2 = 6
+QUEUE_PROBLEM_CAP1 = 60
+QUEUE_PROBLEM_CAP2 = 100
+QUEUE_FAMILY_CAP1 = 400
+QUEUE_FAMILY_CAP2 = 800
 
 PRIORITY_QUEUE_PATH = "priority_queue.json"
 RESULTS_TSV_PATH = "results.tsv"
 
 # =====================
-# Shape metadata
+# Shape metadata & Families
 # =====================
 
 SHAPE_TO_SIDES = {
-    "TRIANGLE": 3,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "8": 8,
+    "CIRCLE": CIRCLE_SIDES,
     "SQUARE": 4,
+    "TRIANGLE": 3,
     "PENTAGON": 5,
     "HEXAGON": 6,
     "HEPTAGON": 7,
@@ -570,17 +621,87 @@ SHAPE_TO_SIDES = {
     "DECAGON": 10,
 }
 
-SPECIAL_SHAPES = ["TAN", "DOMINO", "L"]
+SPECIAL_SHAPES = {
+    "TAN",
+    "DOMINO",
+    "L",
+}
 
-ALL_FAMILIES = [
-    "TRIANGLE", "SQUARE", "PENTAGON", "HEXAGON",
-    "OCTAGON", "CIRCLE",
-    "TAN", "DOMINO", "L"
+CIRCLE_FAMILIES = [
+    "Circles in Circles", "Triangles in Circles", "Squares in Circles",
+    "Pentagons in Circles", "Hexagons in Circles", "Octagons in Circles",
+    "Tans in Circles", "Dominoes in Circles", "L's in Circles",
 ]
+
+TRIANGLE_FAMILIES = [
+    "Circles in Triangles", "Triangles in Triangles", "Squares in Triangles",
+    "Pentagons in Triangles", "Hexagons in Triangles", "Octagons in Triangles",
+    "Tans in Triangles", "Dominoes in Triangles", "L's in Triangles",
+]
+
+SQUARE_FAMILIES = [
+    "Circles in Squares", "Triangles in Squares", "Squares in Squares",
+    "Pentagons in Squares", "Hexagons in Squares", "Octagons in Squares",
+    "Tans in Squares", "Dominoes in Squares", "L's in Squares",
+]
+
+PENTAGON_FAMILIES = [
+    "Circles in Pentagons", "Triangles in Pentagons", "Squares in Pentagons",
+    "Pentagons in Pentagons", "Hexagons in Pentagons", "Octagons in Pentagons",
+    "Tans in Pentagons", "Dominoes in Pentagons", "L's in Pentagons",
+]
+
+HEXAGON_FAMILIES = [
+    "Circles in Hexagons", "Triangles in Hexagons", "Squares in Hexagons",
+    "Pentagons in Hexagons", "Hexagons in Hexagons", "Octagons in Hexagons",
+    "Tans in Hexagons", "Dominoes in Hexagons", "L's in Hexagons",
+]
+
+OCTAGON_FAMILIES = [
+    "Circles in Octagons", "Triangles in Octagons", "Squares in Octagons",
+    "Pentagons in Octagons", "Hexagons in Octagons", "Octagons in Octagons",
+    "Tans in Octagons", "Dominoes in Octagons", "L's in Octagons",
+]
+
+TAN_FAMILIES = [
+    "Circles in Tans", "Triangles in Tans", "Squares in Tans",
+    "Pentagons in Tans", "Hexagons in Tans", "Octagons in Tans",
+    "Tans in Tans", "Dominoes in Tans", "L's in Tans",
+]
+
+DOMINO_FAMILIES = [
+    "Circles in Dominoes", "Triangles in Dominoes", "Squares in Dominoes",
+    "Pentagons in Dominoes", "Hexagons in Dominoes", "Octagons in Dominoes",
+    "Tans in Dominoes", "Dominoes in Dominoes", "L's in Dominoes",
+]
+
+L_FAMILIES = [
+    "Circles in L's", "Triangles in L's", "Squares in L's",
+    "Pentagons in L's", "Hexagons in L's", "Octagons in L's",
+    "Tans in L's", "Dominoes in L's", "L's in L's",
+]
+
+ALL_FAMILIES = (
+    CIRCLE_FAMILIES
+    + TRIANGLE_FAMILIES
+    + SQUARE_FAMILIES
+    + PENTAGON_FAMILIES
+    + HEXAGON_FAMILIES
+    + OCTAGON_FAMILIES
+    + TAN_FAMILIES
+    + DOMINO_FAMILIES
+    + L_FAMILIES
+)
+
+DEFAULT_EXPERIMENT_KWARGS = {
+    "attempts": 1000,
+    "tolerance": 1e-8,
+    "finalstep": 0.0001,
+}
 
 # =====================
 # Geometry tolerances
 # =====================
 
 GEOMETRY_SAT_TOLERANCE = 1e-12
-ANALYSIS_PLOT_DPI = 150
+ANALYSIS_PLOT_DPI = 200
