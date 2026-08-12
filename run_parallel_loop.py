@@ -17,6 +17,10 @@ from src.shape_packing.packing_config import (
     LOOP_STUCK_ATTEMPTS,
     LOOP_STUCK_SWARM_COUNT,
     LOOP_HARD_SWARM_COUNT,
+    get_problem_history_stats,
+    get_friedman_best_for_problem,
+    compute_problem_difficulty_score,
+    compute_adaptive_attempts,
 )
 
 # Global shutdown flag for graceful exit
@@ -92,31 +96,45 @@ def get_state(in_flight=None):
 
 def analyze_difficulty(problem_state):
     """
-    Returns (attempts, swarm_count) based on difficulty.
+    Returns (attempts, swarm_count) based on difficulty and history.
+    Uses adaptive scaling instead of fixed bins.
     """
     problem = problem_state.get("problem", "")
-    
-    # Try to extract N
-    try:
-        n = int(problem.split("_")[0])
-    except Exception:
-        n = 5
-        
-    attempts = LOOP_DEFAULT_ATTEMPTS
-    if n >= LOOP_HIGH_N_THRESHOLD:
-        attempts = LOOP_HIGH_N_ATTEMPTS  # Harder problems get more attempts
-        
-    # Heuristic based on state (e.g., if CLI flagged it as 'stuck')
     status = problem_state.get("status", "normal")
+
+    # Gather history-based stats
+    stats = get_problem_history_stats(problem)
+    friedman_best = get_friedman_best_for_problem(problem)
+
+    # Compute difficulty [0,1] from history, N, and gap to Friedman
+    difficulty = compute_problem_difficulty_score(
+        problem,
+        stats,
+        friedman_best
+    )
+
+    # Adaptive attempt count
+    attempts = compute_adaptive_attempts(
+        difficulty=difficulty,
+        status=status
+    )
+
+    # Swarm count: scale up for harder or stuck problems
     swarm_count = 1
-    
-    if status == "stuck":
-        attempts = LOOP_STUCK_ATTEMPTS
-        swarm_count = LOOP_STUCK_SWARM_COUNT # Swarm it!
-    elif status == "hard":
-        attempts = LOOP_HIGH_N_ATTEMPTS
+    if status in ("stuck", "hard"):
+        swarm_count = LOOP_STUCK_SWARM_COUNT
+    elif difficulty >= 0.8:
         swarm_count = LOOP_HARD_SWARM_COUNT
-        
+
+    # Logging (concise, visible in loop output)
+    print(
+        f"[diff] {problem}: "
+        f"diff={difficulty:.2f} "
+        f"hist={stats['total_runs']} "
+        f"fr_best={friedman_best}"
+        f" -> attempts={attempts} swarm={swarm_count}"
+    )
+
     return attempts, swarm_count
 
 def worker_task(problem, attempts):
