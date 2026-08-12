@@ -220,6 +220,20 @@ def shape_to_vertices(shape: str, size: float = 1.0) -> List[Tuple[float, float]
 # History-based stats
 # =====================
 
+def _normalize_key(p_str: str) -> str:
+    """Normalize problem token for robust key matching across case and shape synonyms."""
+    s = str(p_str).strip().lower()
+    return (
+        s.replace("pentagon", "5")
+        .replace("hexagon", "6")
+        .replace("triangle", "3")
+        .replace("square", "4")
+        .replace("octagon", "8")
+        .replace("circle", "circle")
+        .replace("cir", "circle")
+    )
+
+
 def get_problem_history_stats(
     problem: str,
     history_path: str = "results.tsv",
@@ -246,11 +260,12 @@ def get_problem_history_stats(
         return stats
 
     # If cache provided and has this problem, return it
+    target_key = _normalize_key(problem)
     if cache is not None:
-        if problem in cache:
-            return cache[problem]
+        if target_key in cache:
+            return cache[target_key]
 
-    with open(history_path, "r", encoding="utf-8") as f:
+    with open(history_path, "r", encoding="utf-8", errors="ignore") as f:
         reader = csv.reader(f, delimiter="\t")
         header = next(reader, None)
         if not header:
@@ -279,7 +294,7 @@ def get_problem_history_stats(
                 continue
 
             p = row[prob_idx].strip()
-            if p != problem:
+            if _normalize_key(p) != target_key:
                 continue
 
             stats["total_runs"] += 1
@@ -396,7 +411,7 @@ def _load_friedman_verification_jsons():
                         if isinstance(bs, (int, float)):
                             score = float(bs)
                 if score is not None:
-                    _FRIEDMAN_BEST_CACHE[prob.lower()] = score
+                    _FRIEDMAN_BEST_CACHE[_normalize_key(prob)] = score
 
         # Case 2: dict keyed by problem token
         elif isinstance(data, dict):
@@ -414,7 +429,7 @@ def _load_friedman_verification_jsons():
                         score = float(bs)
 
                 if score is not None:
-                    _FRIEDMAN_BEST_CACHE[prob.lower()] = score
+                    _FRIEDMAN_BEST_CACHE[_normalize_key(prob)] = score
 
 def get_friedman_best_for_problem(problem: str) -> float | None:
     """
@@ -431,7 +446,7 @@ def get_friedman_best_for_problem(problem: str) -> float | None:
         _load_friedman_verification_jsons()
         _FRIEDMAN_BEST_LOADED = True
 
-    return _FRIEDMAN_BEST_CACHE.get(problem.lower())
+    return _FRIEDMAN_BEST_CACHE.get(_normalize_key(problem))
 
 # =====================
 # Difficulty scoring
