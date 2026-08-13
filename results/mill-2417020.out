@@ -8819,3 +8819,93 @@ Injecting --target-s 4.766469079887361 (from Friedman best_score 6.2276919730092
 [20_8_in_DOMINO] Success!
 [PASS] Valid configuration, metric s=5.102893955208136
 [20_8_in_8] Success!
+[PASS] Valid configuration, metric s=11.780137268247289
+[25_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=11.106395673821380
+[PASS] Valid configuration, metric s=13.820493131853882
+[22_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=5.333864130364130
+[25_6_in_3] Success!
+[38_4_in_5] Success!
+Solver reported: No valid packing found. Refusing to log 0.0 score.
+[30_4_in_5] Solution valid but NOT an improvement.
+[PASS] Valid configuration, metric s=12.910495881561323
+[33_5_in_3] Success!
+[PASS] Valid configuration, metric s=6.835647451099712
+[19_DOMINO_in_4] Success!
+[main 49976ec9] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 24 files changed, 309 insertions(+)
+ create mode 100644 results/10_8_in_CIRCLE/20260813_045142/solution.json
+ create mode 100644 results/11_8_in_5/20260813_045141/solution.json
+ create mode 100644 results/13_8_in_6/20260813_045143/solution.json
+ create mode 100644 results/13_DOMINO_in_3/20260813_045137/solution.json
+ create mode 100644 results/15_6_in_6/20260813_045141/solution.json
+ create mode 100644 results/18_6_in_3/20260813_045137/solution.json
+ create mode 100644 results/19_5_in_DOMINO/20260813_045140/solution.json
+ create mode 100644 results/20_5_in_DOMINO/20260813_045145/solution.json
+ create mode 100644 results/20_8_in_8/20260813_045141/solution.json
+ create mode 100644 results/20_8_in_DOMINO/20260813_045139/solution.json
+ create mode 100644 results/20_DOMINO_in_3/20260813_045136/solution.json
+ create mode 100644 results/24_4_in_6/20260813_045136/solution.json
+ create mode 100644 results/24_DOMINO_in_3/20260813_045138/solution.json
+ create mode 100644 results/26_DOMINO_in_3/20260813_045139/solution.json
+ create mode 100644 results/27_4_in_6/20260813_045136/solution.json
+ create mode 100644 results/27_DOMINO_in_3/20260813_045137/solution.json
+ create mode 100644 results/32_4_in_5/20260813_045137/solution.json
+ create mode 100644 results/32_4_in_8/20260813_045136/solution.json
+ create mode 100644 results/33_4_in_5/20260813_045139/solution.json
+ create mode 100644 results/38_5_in_3/20260813_045136/solution.json
+ create mode 100644 results/39_5_in_3/20260813_045137/solution.json
+ create mode 100644 results/40_4_in_6/20260813_045136/solution.json
+[diff] 24_4_in_6: diff=0.55 hist=35 fr_best=3.4029 -> attempts=65167 swarm=1
+[24_4_in_6] Starting (65167 attempts)
+Injecting --target-s 4.830939818840444 (from Friedman best_score 3.415990305406189)
+[diff] 32_5_in_3: diff=0.55 hist=33 fr_best=12.7112 -> attempts=65163 swarm=1
+[32_5_in_3] Starting (65163 attempts)
+Injecting --target-s 8.658505943860753 (from Friedman best_score 12.757186535314492)
+[diff] 37_4_in_5: diff=0.55 hist=25 fr_best=4.97801 -> attempts=65114 swarm=1
+[37_4_in_5] Starting (65114 attempts)
+Injecting --target-s 6.040373830401661 (from Friedman best_score 5.021084156321819)
+[diff] 35_4_in_5: diff=0.55 hist=26 fr_best=4.86283 -> attempts=65240 swarm=1
+[35_4_in_5] Starting (65240 attempts)
+Injecting --target-s 5.881245452079035 (from Friedman best_score 4.888808075130369)
+[diff] 25_6_in_6: diff=0.55 hist=35 fr_best=5.624 -> attempts=65115 swarm=1
+[Main] Worker finished 33_4_in_5 with score 5.005146389003712
+[25_6_in_6] Starting (65115 attempts)
+Injecting --target-s 5.638356292340858 (from Friedman best_score 5.638356292340858)
+[Main] Worker finished 38_5_in_3 with score 13.884493816920813
+[Main] Worker finished 26_DOMINO_in_3 with score 11.966322751034012
+[Main] Worker finished 38_4_in_5 with score 5.33386413036413
+[Main] Worker finished 20_8_in_DOMINO with score 8.102774853359481
+[Main] Worker finished 13_8_in_6 with score 5.790189669490146
+[Main] Worker failed on 30_4_in_5: No valid packing found
+[Main] Worker finished 32_4_in_8 with score 2.989736754164845
+[PASS] Valid configuration, metric s=5.994170884047151
+[9_8_in_5] Success!
+[Main] Worker finished 40_4_in_6 with score 4.456305253160654
+[Main] Worker finished 27_4_in_6 with score 3.6066797412045304
+[Main] Worker finished 20_8_in_8 with score 5.102893955208136
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=7.006137796323920
+[46_3_in_3] Success!
+[PASS] Valid configuration, metric s=5.777467632032182
+[26_8_in_8] Success!
+[PASS] Valid configuration, metric s=10.953332235928990
+[21_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=4.904537362780794
+[21_5_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=6.247863980777248
+[16_8_in_6] Success!
