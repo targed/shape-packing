@@ -5504,3 +5504,81 @@ Injecting --target-s 8.752833505121306 (from Friedman best_score 12.896165973825
 [PASS] Valid configuration, metric s=11.881182844607538
 [25_DOMINO_in_3] Success!
 [PASS] Valid configuration, metric s=12.771121686878123
+[32_5_in_3] Success!
+[PASS] Valid configuration, metric s=3.178905265988797
+[40_4_in_8] Success!
+[PASS] Valid configuration, metric s=4.894582139316073
+[35_4_in_5] Success!
+[PASS] Valid configuration, metric s=10.953332235928990
+[21_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=4.669097318272951
+[19_3_in_3] Success!
+[PASS] Valid configuration, metric s=2.770296494305709
+[30_4_in_8] Success!
+Solver reported: No valid packing found. Refusing to log 0.0 score.
+[32_4_in_8] Solution valid but NOT an improvement.
+[PASS] Valid configuration, metric s=5.442588749725697
+[40_4_in_5] Success!
+[PASS] Valid configuration, metric s=4.534482956184558
+[40_4_in_6] Success!
+[PASS] Valid configuration, metric s=14.056784438041310
+[39_5_in_3] Success!
+[main 8e5e78a3] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 20 files changed, 276 insertions(+)
+ create mode 100644 results/13_DOMINO_in_3/20260813_024259/solution.json
+ create mode 100644 results/16_DOMINO_in_6/20260813_024300/solution.json
+ create mode 100644 results/18_6_in_3/20260813_024257/solution.json
+ create mode 100644 results/21_4_in_8/20260813_024300/solution.json
+ create mode 100644 results/22_DOMINO_in_3/20260813_024301/solution.json
+ create mode 100644 results/24_4_in_6/20260813_024256/solution.json
+ create mode 100644 results/25_4_in_8/20260813_024258/solution.json
+ create mode 100644 results/25_6_in_3/20260813_024256/solution.json
+ create mode 100644 results/26_4_in_6/20260813_024301/solution.json
+ create mode 100644 results/26_DOMINO_in_3/20260813_024257/solution.json
+ create mode 100644 results/27_4_in_6/20260813_024300/solution.json
+ create mode 100644 results/28_4_in_6/20260813_024257/solution.json
+ create mode 100644 results/33_4_in_5/20260813_024300/solution.json
+ create mode 100644 results/35_4_in_6/20260813_024256/solution.json
+ create mode 100644 results/35_4_in_8/20260813_024258/solution.json
+ create mode 100644 results/36_4_in_6/20260813_024258/solution.json
+ create mode 100644 results/38_4_in_5/20260813_024256/solution.json
+ create mode 100644 results/38_5_in_3/20260813_024257/solution.json
+[diff] 26_DOMINO_in_3: diff=0.55 hist=18 fr_best=11.7942 -> attempts=65657 swarm=1
+[26_DOMINO_in_3] Starting (65657 attempts)
+Injecting --target-s 6.9560046586584585 (from Friedman best_score 12.048153486482255)
+[diff] 20_DOMINO_in_3: diff=0.55 hist=18 fr_best=10.4641 -> attempts=65730 swarm=1
+[20_DOMINO_in_3] Starting (65730 attempts)
+Injecting --target-s 6.139391859565484 (from Friedman best_score 10.633738628342188)
+[diff] 27_DOMINO_in_3: diff=0.55 hist=17 fr_best=12.0829 -> attempts=65585 swarm=1
+[Main] Worker finished 21_DOMINO_in_3 with score 10.95333223592899
+[27_DOMINO_in_3] Starting (65585 attempts)
+[Main] Worker finished 32_5_in_3 with score 12.771121686878123
+[Main] Worker finished 19_3_in_3 with score 4.669097318272951
+Injecting --target-s 7.066801321729175 (from Friedman best_score 12.240058936229826)
+[Main] Worker finished 40_4_in_6 with score 4.534482956184558
+[Main] Worker finished 27_4_in_6 with score 3.5576027200941724
+[Main] Worker finished 38_5_in_3 with score 13.884493816920813
+[Main] Worker finished 21_4_in_8 with score 2.382191620351339
+[Main] Worker finished 38_4_in_5 with score 5.33386413036413
+[Main] Worker finished 26_4_in_6 with score 3.504561196287405
+[Main] Worker finished 40_4_in_5 with score 5.442588749725697
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=3.451960018884007
+[PASS] Valid configuration, metric s=2.722864029207813
+[24_4_in_6] Success!
+[29_4_in_8] Success!
+[PASS] Valid configuration, metric s=12.910495881561323
+[33_5_in_3] Success!
