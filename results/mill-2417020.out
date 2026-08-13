@@ -2646,3 +2646,93 @@ Solver reported: No valid packing found. Refusing to log 0.0 score.
 [40_4_in_8] Solution valid but NOT an improvement.
 [PASS] Valid configuration, metric s=5.280266465267401
 [40_4_in_5] Success!
+[main 93c93489] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 18 files changed, 268 insertions(+)
+ create mode 100644 results/13_3_in_DOMINO/20260813_005055/solution.json
+ create mode 100644 results/20_DOMINO_in_4/20260813_005103/solution.json
+ create mode 100644 results/21_3_in_8/20260813_005051/solution.json
+ create mode 100644 results/21_4_in_8/20260813_005052/solution.json
+ create mode 100644 results/25_3_in_8/20260813_005052/solution.json
+ create mode 100644 results/25_6_in_3/20260813_005052/solution.json
+ create mode 100644 results/27_3_in_8/20260813_005051/solution.json
+ create mode 100644 results/29_3_in_6/20260813_005051/solution.json
+ create mode 100644 results/29_4_in_6/20260813_005105/solution.json
+ create mode 100644 results/31_3_in_8/20260813_005051/solution.json
+ create mode 100644 results/33_4_in_5/20260813_005054/solution.json
+ create mode 100644 results/35_4_in_5/20260813_005058/solution.json
+ create mode 100644 results/35_4_in_6/20260813_005057/solution.json
+ create mode 100644 results/36_3_in_8/20260813_005051/solution.json
+ create mode 100644 results/37_4_in_5/20260813_005051/solution.json
+ create mode 100644 results/40_4_in_5/20260813_005100/solution.json
+[Main] Worker finished 21_4_in_8 with score 2.382191620351339
+[Main] Worker finished 31_3_in_8 with score 1.8262321636215084
+[diff] 31_3_in_8: diff=0.55 hist=13 fr_best=1.80338 -> attempts=65050 swarm=1
+[31_3_in_8] Starting (65050 attempts)
+Injecting --target-s 4.106061915719123 (from Friedman best_score 1.8144062062665383)
+[diff] 25_4_in_8: diff=0.55 hist=12 fr_best=2.48959 -> attempts=65166 swarm=1
+[25_4_in_8] Starting (65166 attempts)
+Injecting --target-s 4.617090860873073 (from Friedman best_score 2.498751567925155)
+[diff] 33_4_in_8: diff=0.55 hist=12 fr_best=2.85903 -> attempts=65561 swarm=1
+[Main] Worker finished 36_3_in_8 with score 1.9582229879796893
+[33_4_in_8] Starting (65561 attempts)
+Injecting --target-s 5.348662395751322 (from Friedman best_score 2.894675229579231)
+[Main] Worker failed on 40_4_in_8: No valid packing found
+[Main] Worker finished 33_4_in_5 with score 5.005146389003712
+[Main] Worker finished 29_4_in_6 with score 3.7196445790114643
+[Main] Worker finished 35_4_in_5 with score 5.1332484788868875
+[Main] Worker finished 20_DOMINO_in_4 with score 7.03616573595127
+[Main] Worker finished 25_6_in_3 with score 13.946930352147506
+[Main] Worker finished 35_4_in_6 with score 4.038580838360076
+[Main] Worker finished 40_4_in_5 with score 5.280266465267401
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=1.480122466433822
+[PASS] Valid configuration, metric s=2.414954769629309
+[PASS] Valid configuration, metric s=1.794834884542398
+[30_3_in_8] Success!
+[30_3_in_6] Success!
+[19_3_in_8] Success!
+[PASS] Valid configuration, metric s=1.510442907783986
+[20_3_in_8] Success!
+[PASS] Valid configuration, metric s=12.910495881561323
+[33_5_in_3] Success!
+[PASS] Valid configuration, metric s=3.445062653636714
+[24_4_in_6] Success!
+[PASS] Valid configuration, metric s=11.960108969580684
+[18_6_in_3] Success!
+[PASS] Valid configuration, metric s=1.763418900084060
+[28_3_in_8] Success!
+[PASS] Valid configuration, metric s=2.722864029207813
+[29_4_in_8] Success!
+[PASS] Valid configuration, metric s=2.899361748311006
+[30_4_in_8] Success!
+[PASS] Valid configuration, metric s=4.959061015645470
+[32_4_in_5] Success!
+[PASS] Valid configuration, metric s=3.657357456511554
+[28_4_in_6] Success!
+[PASS] Valid configuration, metric s=2.918027744296042
+[32_4_in_8] Success!
+[PASS] Valid configuration, metric s=4.410638612632372
+[40_4_in_6] Success!
+[PASS] Valid configuration, metric s=14.056784438041310
+[39_5_in_3] Success!
+[PASS] Valid configuration, metric s=4.786866784335104
+[30_4_in_5] Success!
+[PASS] Valid configuration, metric s=2.678787108720950
+[38_3_in_6] Success!
+[PASS] Valid configuration, metric s=2.347682524556638
+[28_3_in_6] Success!
+[PASS] Valid configuration, metric s=12.771121686878123
+[32_5_in_3] Success!
