@@ -11482,3 +11482,96 @@ After doing this, you may fix the identity used for this commit with:
 [39_5_in_3] Success!
 [PASS] Valid configuration, metric s=5.843412668798321
 [20_6_in_DOMINO] Success!
+[main 6dc07e6c] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 88 insertions(+)
+ create mode 100644 results/16_5_in_DOMINO/20260813_063325/solution.json
+ create mode 100644 results/20_6_in_DOMINO/20260813_063721/solution.json
+ create mode 100644 results/27_DOMINO_in_3/20260813_063720/solution.json
+ create mode 100644 results/39_5_in_3/20260813_063720/solution.json
+[Main] Worker finished 10_8_in_5 with score 6.3086008314667135
+[Main] Worker finished 11_DOMINO_in_DOMINO with score 3.827281560659983
+[Main] Worker finished 32_5_in_3 with score 12.771121686878123
+[diff] 25_6_in_3: diff=0.55 hist=40 fr_best=13.7768 -> attempts=65100 swarm=1
+[25_6_in_3] Starting (65100 attempts)
+Injecting --target-s 7.9717853650802475 (from Friedman best_score 13.807537279353001)
+[diff] 38_5_in_3: diff=0.55 hist=38 fr_best=13.8397 -> attempts=65096 swarm=1
+[38_5_in_3] Starting (65096 attempts)
+Injecting --target-s 9.413253826198895 (from Friedman best_score 13.86920973938104)
+[diff] 33_5_in_3: diff=0.55 hist=38 fr_best=12.8639 -> attempts=65113 swarm=1
+[33_5_in_3] Starting (65113 attempts)
+Injecting --target-s 8.752833505121306 (from Friedman best_score 12.89616597382552)
+[diff] 23_6_in_5: diff=0.55 hist=40 fr_best=6.6627 -> attempts=65102 swarm=1
+[23_6_in_5] Starting (65102 attempts)
+Injecting --target-s 5.680424591811493 (from Friedman best_score 6.677739603652575)
+[diff] 13_5_in_8: diff=0.45 hist=44 fr_best=2.4978 -> attempts=42567 swarm=1
+[13_5_in_8] Starting (42567 attempts)
+Injecting --target-s 3.8479618529607666 (from Friedman best_score 2.5052538214555913)
+[diff] 19_6_in_DOMINO: diff=0.55 hist=41 fr_best=5.6523 -> attempts=65233 swarm=1
+[19_6_in_DOMINO] Starting (65233 attempts)
+Injecting --target-s 5.681535284189752 (from Friedman best_score 5.681535284189753)
+[diff] 25_5_in_5: diff=0.55 hist=38 fr_best=5.581 -> attempts=65112 swarm=1
+[25_5_in_5] Starting (65112 attempts)
+Injecting --target-s 5.594858087107836 (from Friedman best_score 5.594858087107836)
+[diff] 22_5_in_5: diff=0.55 hist=39 fr_best=5.2664 -> attempts=65101 swarm=1
+[22_5_in_5] Starting (65101 attempts)
+Injecting --target-s 5.278208251889842 (from Friedman best_score 5.278208251889842)
+[diff] 26_DOMINO_in_3: diff=0.55 hist=32 fr_best=11.7942 -> attempts=65657 swarm=1
+[26_DOMINO_in_3] Starting (65657 attempts)
+Injecting --target-s 6.9560046586584585 (from Friedman best_score 12.048153486482255)
+[diff] 21_DOMINO_in_3: diff=0.55 hist=33 fr_best=10.6603 -> attempts=66161 swarm=1
+[21_DOMINO_in_3] Starting (66161 attempts)
+Injecting --target-s 6.313517085481875 (from Friedman best_score 10.935332366508785)
+[diff] 31_6_in_5: diff=0.55 hist=38 fr_best=7.6326 -> attempts=65095 swarm=1
+[31_6_in_5] Starting (65095 attempts)
+Injecting --target-s 6.506403762772657 (from Friedman best_score 7.648736354436046)
+[diff] 22_8_in_DOMINO: diff=0.55 hist=42 fr_best=8.34 -> attempts=65152 swarm=1
+[22_8_in_DOMINO] Starting (65152 attempts)
+Injecting --target-s 6.404755635999327 (from Friedman best_score 8.368216513079963)
+[diff] 20_DOMINO_in_3: diff=0.55 hist=34 fr_best=10.4641 -> attempts=65730 swarm=1
+[20_DOMINO_in_3] Starting (65730 attempts)
+Injecting --target-s 6.139391859565484 (from Friedman best_score 10.633738628342188)
+[diff] 20_DOMINO_in_DOMINO: diff=0.55 hist=37 fr_best=4.95714 -> attempts=65284 swarm=1
+[20_DOMINO_in_DOMINO] Starting (65284 attempts)
+Injecting --target-s 4.988412006379245 (from Friedman best_score 4.988412006379245)
+[diff] 12_DOMINO_in_CIRCLE: diff=0.45 hist=42 fr_best=3.1623 -> attempts=42888 swarm=1
+[12_DOMINO_in_CIRCLE] Starting (42888 attempts)
+Injecting --target-s 3.2168355077568664 (from Friedman best_score 3.2168355077568664)
+[diff] 20_6_in_5: diff=0.55 hist=41 fr_best=6.2467 -> attempts=65103 swarm=1
+[20_6_in_5] Starting (65103 attempts)
+Injecting --target-s 5.325928851557496 (from Friedman best_score 6.261004867408969)
+[diff] 11_6_in_6: diff=0.45 hist=47 fr_best=3.925 -> attempts=42565 swarm=1
+[11_6_in_6] Starting (42565 attempts)
+Injecting --target-s 3.9362699149929097 (from Friedman best_score 3.9362699149929097)
+[diff] 11_DOMINO_in_CIRCLE: diff=0.45 hist=45 fr_best=3.0883 -> attempts=42801 swarm=1
+[11_DOMINO_in_CIRCLE] Starting (42801 attempts)
+Injecting --target-s 3.129593114964544 (from Friedman best_score 3.129593114964544)
+[diff] 23_5_in_5: diff=0.55 hist=38 fr_best=5.347 -> attempts=65102 swarm=1
+[23_5_in_5] Starting (65102 attempts)
+Injecting --target-s 5.359098940898318 (from Friedman best_score 5.359098940898318)
+[diff] 16_8_in_DOMINO: diff=0.55 hist=42 fr_best=7.1046 -> attempts=65276 swarm=1
+[16_8_in_DOMINO] Starting (65276 attempts)
+Injecting --target-s 5.470925887175401 (from Friedman best_score 7.148109147766812)
+[diff] 25_DOMINO_in_3: diff=0.55 hist=33 fr_best=11.6188 -> attempts=65625 swarm=1
+[Main] Worker finished 18_5_in_DOMINO with score 4.569815862524372
+[25_DOMINO_in_3] Starting (65625 attempts)
+Injecting --target-s 6.848054926933973 (from Friedman best_score 11.861179066472017)
+[Main] Worker finished 27_DOMINO_in_3 with score 12.261313043390997
+[Main] Worker finished 22_3_in_DOMINO with score 2.4195050032821817
+[Main] Worker finished 39_5_in_3 with score 14.05678443804131
+[Main] Worker finished 32_6_in_5 with score 7.812784092602333
+[Main] Worker finished 20_6_in_DOMINO with score 5.8434126687983206
+[Main] Worker finished 19_8_in_CIRCLE with score 6.0953254095291225
+[Main] Batch committing 10 runs...
