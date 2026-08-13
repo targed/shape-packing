@@ -11019,3 +11019,71 @@ Injecting --target-s 3.832922516215725 (from Friedman best_score 3.8329225162157
 [27_DOMINO_in_3] Success!
 [PASS] Valid configuration, metric s=13.884493816920813
 [38_5_in_3] Success!
+[main 65d5d073] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 27 files changed, 342 insertions(+)
+ create mode 100644 results/10_8_in_5/20260813_061505/solution.json
+ create mode 100644 results/13_5_in_8/20260813_061509/solution.json
+ create mode 100644 results/13_DOMINO_in_3/20260813_061505/solution.json
+ create mode 100644 results/16_5_in_DOMINO/20260813_061506/solution.json
+ create mode 100644 results/17_5_in_DOMINO/20260813_061506/solution.json
+ create mode 100644 results/18_5_in_DOMINO/20260813_061505/solution.json
+ create mode 100644 results/19_6_in_DOMINO/20260813_061509/solution.json
+ create mode 100644 results/19_8_in_CIRCLE/20260813_061507/solution.json
+ create mode 100644 results/19_DOMINO_in_4/20260813_061509/solution.json
+ create mode 100644 results/20_6_in_DOMINO/20260813_061508/solution.json
+ create mode 100644 results/20_DOMINO_in_3/20260813_061513/solution.json
+ create mode 100644 results/20_DOMINO_in_DOMINO/20260813_061515/solution.json
+ create mode 100644 results/21_DOMINO_in_3/20260813_061510/solution.json
+ create mode 100644 results/22_3_in_DOMINO/20260813_061508/solution.json
+ create mode 100644 results/22_5_in_5/20260813_061510/solution.json
+ create mode 100644 results/22_8_in_DOMINO/20260813_061512/solution.json
+ create mode 100644 results/23_6_in_5/20260813_061508/solution.json
+ create mode 100644 results/25_5_in_5/20260813_061509/solution.json
+ create mode 100644 results/26_DOMINO_in_3/20260813_061510/solution.json
+ create mode 100644 results/28_6_in_6/20260813_061508/solution.json
+ create mode 100644 results/31_6_in_5/20260813_061512/solution.json
+ create mode 100644 results/32_5_in_3/20260813_061505/solution.json
+ create mode 100644 results/32_6_in_5/20260813_061505/solution.json
+ create mode 100644 results/33_4_in_5/20260813_061505/solution.json
+ create mode 100644 results/9_6_in_8/20260813_061507/solution.json
+[diff] 12_5_in_8: diff=0.45 hist=43 fr_best=2.3933 -> attempts=42547 swarm=1
+[Main] Worker finished 26_DOMINO_in_3 with score 11.966322751034012
+[12_5_in_8] Starting (42547 attempts)
+[Main] Worker finished 23_6_in_5 with score 6.700106835949054
+Injecting --target-s 3.683685394637525 (from Friedman best_score 2.3983)
+[Main] Worker finished 38_5_in_3 with score 13.884493816920813
+[Main] Worker finished 19_8_in_CIRCLE with score 6.0953254095291225
+[Main] Worker finished 12_DOMINO_in_CIRCLE with score 3.2342712519580337
+[Main] Worker finished 20_DOMINO_in_DOMINO with score 5.012765064798198
+[Main] Worker finished 25_5_in_5 with score 5.6215705425904785
+[Main] Worker finished 20_DOMINO_in_3 with score 10.651500718525643
+[Main] Worker finished 11_DOMINO_in_CIRCLE with score 3.1860393694450497
+[Main] Worker finished 22_8_in_DOMINO with score 8.382506079934158
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=7.160232969366078
+[PASS] Valid configuration, metric s=6.835647451099712
+[PASS] Valid configuration, metric s=11.780137268247289
+[16_8_in_DOMINO] Success!
+[19_DOMINO_in_4] Success!
+[25_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=6.281350871924349
+[PASS] Valid configuration, metric s=5.384931350321754
+[20_6_in_5] Success!
+[23_5_in_5] Success!
+[PASS] Valid configuration, metric s=3.836933648427895
+[13_6_in_CIRCLE] Success!
+[PASS] Valid configuration, metric s=14.056784438041310
+[39_5_in_3] Success!
