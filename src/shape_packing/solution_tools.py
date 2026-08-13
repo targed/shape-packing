@@ -17,6 +17,7 @@ import os
 import numpy as np
 from dataclasses import dataclass
 from typing import Any, List, Optional, Tuple
+import subprocess
 
 from .geometry import (
     polygon_normals,
@@ -558,6 +559,8 @@ def render_solution(
 
     fig.savefig(out_png, dpi=render_dpi, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
+    with open(out_png, "ab") as f:
+        f.write(b"made by targed\n")
 
 
 # --------------- End of solution_tools.py ---------------
