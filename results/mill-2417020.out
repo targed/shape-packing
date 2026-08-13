@@ -5858,3 +5858,85 @@ Solver reported: No valid packing found. Refusing to log 0.0 score.
 [35_4_in_6] Success!
 [PASS] Valid configuration, metric s=3.178905265988797
 [40_4_in_8] Success!
+[PASS] Valid configuration, metric s=3.444029238189058
+[24_4_in_6] Success!
+[PASS] Valid configuration, metric s=11.966322751034012
+[26_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=3.876893078138110
+[16_DOMINO_in_6] Success!
+[PASS] Valid configuration, metric s=2.947605389122943
+[35_4_in_8] Success!
+[PASS] Valid configuration, metric s=4.726818672940521
+[32_4_in_5] Success!
+[PASS] Valid configuration, metric s=4.786866784335104
+[30_4_in_5] Success!
+[main 56d5c825] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 27 files changed, 330 insertions(+)
+ create mode 100644 results/13_DOMINO_in_3/20260813_025643/solution.json
+ create mode 100644 results/14_DOMINO_in_4/20260813_025650/solution.json
+ create mode 100644 results/18_6_in_3/20260813_025642/solution.json
+ create mode 100644 results/19_DOMINO_in_4/20260813_025646/solution.json
+ create mode 100644 results/21_4_in_8/20260813_025645/solution.json
+ create mode 100644 results/21_DOMINO_in_3/20260813_025646/solution.json
+ create mode 100644 results/22_DOMINO_in_3/20260813_025646/solution.json
+ create mode 100644 results/24_DOMINO_in_3/20260813_025649/solution.json
+ create mode 100644 results/25_4_in_8/20260813_025642/solution.json
+ create mode 100644 results/25_6_in_3/20260813_025641/solution.json
+ create mode 100644 results/26_4_in_6/20260813_025645/solution.json
+ create mode 100644 results/27_4_in_6/20260813_025641/solution.json
+ create mode 100644 results/32_4_in_8/20260813_025642/solution.json
+ create mode 100644 results/32_5_in_3/20260813_025643/solution.json
+ create mode 100644 results/33_4_in_5/20260813_025644/solution.json
+ create mode 100644 results/33_4_in_6/20260813_025648/solution.json
+ create mode 100644 results/33_4_in_8/20260813_025643/solution.json
+ create mode 100644 results/35_4_in_5/20260813_025642/solution.json
+ create mode 100644 results/35_4_in_6/20260813_025648/solution.json
+ create mode 100644 results/37_4_in_5/20260813_025643/solution.json
+ create mode 100644 results/38_4_in_5/20260813_025643/solution.json
+ create mode 100644 results/38_5_in_3/20260813_025642/solution.json
+ create mode 100644 results/40_4_in_6/20260813_025646/solution.json
+ create mode 100644 results/40_4_in_8/20260813_025645/solution.json
+ create mode 100644 results/46_3_in_3/20260813_025651/solution.json
+[diff] 33_5_in_3: diff=0.55 hist=22 fr_best=12.8639 -> attempts=65113 swarm=1
+[Main] Worker finished 37_4_in_5 with score 5.000616751278545
+[33_5_in_3] Starting (65113 attempts)
+[Main] Worker finished 32_4_in_8 with score 2.989736754164845
+Injecting --target-s 8.752833505121306 (from Friedman best_score 12.89616597382552)
+[Main] Worker finished 18_6_in_3 with score 11.960108969580684
+[Main] Worker finished 26_DOMINO_in_3 with score 11.966322751034012
+[Main] Worker finished 40_4_in_8 with score 3.178905265988797
+[Main] Worker finished 35_4_in_8 with score 2.9476053891229426
+[Main] Worker finished 40_4_in_6 with score 4.362821338449023
+[Main] Worker finished 32_4_in_5 with score 4.726818672940521
+[Main] Worker finished 30_4_in_5 with score 4.786866784335104
+[Main] Worker finished 38_5_in_3 with score 13.884493816920813
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=11.780137268247289
+[PASS] Valid configuration, metric s=2.770296494305709
+[25_DOMINO_in_3] Success!
+[30_4_in_8] Success!
+[PASS] Valid configuration, metric s=4.894244699598238
+[20_3_in_3] Success!
+[PASS] Valid configuration, metric s=12.261313043390997
+[27_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=10.651500718525643
+[20_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=2.722864029207813
+[29_4_in_8] Success!
+[PASS] Valid configuration, metric s=14.056784438041310
+[PASS] Valid configuration, metric s=4.041621768437455
+[39_5_in_3] Success!
+[36_4_in_6] Success!
