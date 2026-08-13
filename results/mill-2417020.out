@@ -9622,3 +9622,83 @@ Injecting --target-s 4.662921180020725 (from Friedman best_score 6.0924001219527
 [20_8_in_8] Success!
 [PASS] Valid configuration, metric s=5.972896101075706
 [14_DOMINO_in_4] Success!
+[PASS] Valid configuration, metric s=11.960108969580684
+[PASS] Valid configuration, metric s=11.106395673821380
+[18_6_in_3] Success!
+[22_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=10.953332235928990
+[21_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=4.904537362780794
+[21_5_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=5.442588749725697
+[40_4_in_5] Success!
+[PASS] Valid configuration, metric s=13.820493131853882
+[25_6_in_3] Success!
+[PASS] Valid configuration, metric s=4.726818672940521
+[32_4_in_5] Success!
+[PASS] Valid configuration, metric s=12.771121686878123
+[32_5_in_3] Success!
+[PASS] Valid configuration, metric s=14.056784438041310
+[39_5_in_3] Success!
+[PASS] Valid configuration, metric s=6.247863980777248
+[16_8_in_6] Success!
+[PASS] Valid configuration, metric s=4.569815862524372
+[18_5_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=5.663881359656193
+[25_6_in_6] Success!
+[PASS] Valid configuration, metric s=4.558228051991228
+[16_6_in_6] Success!
+[PASS] Valid configuration, metric s=6.308600831466713
+[10_8_in_5] Success!
+[PASS] Valid configuration, metric s=7.812784092602333
+[32_6_in_5] Success!
+[PASS] Valid configuration, metric s=4.409839693042728
+[17_5_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=4.309862100185108
+[16_5_in_DOMINO] Success!
+[main 785e0eca] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 15 files changed, 236 insertions(+)
+ create mode 100644 results/10_8_in_CIRCLE/20260813_052316/solution.json
+ create mode 100644 results/11_8_in_5/20260813_052316/solution.json
+ create mode 100644 results/13_8_in_6/20260813_052317/solution.json
+ create mode 100644 results/15_6_in_6/20260813_052316/solution.json
+ create mode 100644 results/20_5_in_DOMINO/20260813_052317/solution.json
+ create mode 100644 results/20_8_in_8/20260813_052316/solution.json
+ create mode 100644 results/26_8_in_8/20260813_052317/solution.json
+ create mode 100644 results/27_DOMINO_in_3/20260813_052315/solution.json
+ create mode 100644 results/33_4_in_5/20260813_052316/solution.json
+ create mode 100644 results/33_5_in_3/20260813_052315/solution.json
+ create mode 100644 results/35_4_in_5/20260813_052315/solution.json
+ create mode 100644 results/38_5_in_3/20260813_052315/solution.json
+ create mode 100644 results/9_8_in_5/20260813_052317/solution.json
+[diff] 9_6_in_8: diff=0.30 hist=45 fr_best=2.6267 -> attempts=20063 swarm=1
+[Main] Worker finished 33_4_in_5 with score 4.817105164761469
+[9_6_in_8] Starting (20063 attempts)
+[Main] Worker finished 9_8_in_5 with score 5.994170884047151
+[Main] Worker finished 20_5_in_DOMINO with score 4.8203042879733635
+Injecting --target-s 3.441631772358436 (from Friedman best_score 2.6341109191657477)
+[Main] Worker finished 27_DOMINO_in_3 with score 12.261313043390997
+[Main] Worker finished 22_DOMINO_in_3 with score 11.10639567382138
+[Main] Worker finished 32_6_in_5 with score 7.812784092602333
+[Main] Worker finished 21_DOMINO_in_3 with score 10.95333223592899
+[Main] Worker finished 33_5_in_3 with score 12.910495881561323
+[Main] Worker finished 40_4_in_5 with score 5.442588749725697
+[Main] Worker finished 15_6_in_6 with score 4.475245630635559
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=6.095325409529122
+[19_8_in_CIRCLE] Success!
+[PASS] Valid configuration, metric s=2.644773883416180
+[9_6_in_8] Success!
