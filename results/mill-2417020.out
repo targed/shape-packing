@@ -7956,3 +7956,210 @@ After doing this, you may fix the identity used for this commit with:
 [Main] Worker finished 30_4_in_8 with score 2.8993617483110063
 [Main] Worker finished 32_4_in_5 with score 4.95906101564547
 [Main] Batch committing 10 runs...
+[main 4d53dd8d] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 37 insertions(+)
+[Main] Worker finished 39_5_in_3 with score 14.05678443804131
+[diff] 38_4_in_5: diff=0.55 hist=23 fr_best=5.04838 -> attempts=65281 swarm=1
+[38_4_in_5] Starting (65281 attempts)
+Injecting --target-s 6.111094034846697 (from Friedman best_score 5.07987060034679)
+[diff] 33_4_in_5: diff=0.55 hist=25 fr_best=4.75331 -> attempts=65128 swarm=1
+[33_4_in_5] Starting (65128 attempts)
+Injecting --target-s 5.734476824644382 (from Friedman best_score 4.766806084765439)
+[diff] 35_4_in_5: diff=0.55 hist=24 fr_best=4.86283 -> attempts=65240 swarm=1
+[35_4_in_5] Starting (65240 attempts)
+Injecting --target-s 5.881245452079035 (from Friedman best_score 4.888808075130369)
+[diff] 19_DOMINO_in_4: diff=0.55 hist=26 fr_best=6.7143 -> attempts=65813 swarm=1
+[19_DOMINO_in_4] Starting (65813 attempts)
+Injecting --target-s 4.8434576104586196 (from Friedman best_score 6.849683441489762)
+[diff] 40_4_in_5: diff=0.55 hist=20 fr_best=5.16849 -> attempts=65130 swarm=1
+[40_4_in_5] Starting (65130 attempts)
+Injecting --target-s 6.235661582234916 (from Friedman best_score 5.183417856881617)
+[diff] 24_4_in_6: diff=0.55 hist=31 fr_best=3.4029 -> attempts=65172 swarm=1
+[24_4_in_6] Starting (65172 attempts)
+Injecting --target-s 4.830939818840444 (from Friedman best_score 3.415990305406189)
+[diff] 38_5_in_3: diff=0.55 hist=28 fr_best=13.8397 -> attempts=65096 swarm=1
+[38_5_in_3] Starting (65096 attempts)
+Injecting --target-s 9.413253826198895 (from Friedman best_score 13.86920973938104)
+[diff] 32_4_in_8: diff=0.55 hist=25 fr_best=2.8398 -> attempts=65120 swarm=1
+[32_4_in_8] Starting (65120 attempts)
+Injecting --target-s 5.261250656704054 (from Friedman best_score 2.8473683372998524)
+[diff] 33_5_in_3: diff=0.55 hist=28 fr_best=12.8639 -> attempts=65113 swarm=1
+[33_5_in_3] Starting (65113 attempts)
+Injecting --target-s 8.752833505121306 (from Friedman best_score 12.89616597382552)
+[diff] 36_4_in_6: diff=0.55 hist=22 fr_best=4.0204 -> attempts=65236 swarm=1
+[36_4_in_6] Starting (65236 attempts)
+Injecting --target-s 5.715499736303231 (from Friedman best_score 4.041468621409939)
+[diff] 40_4_in_8: diff=0.55 hist=24 fr_best=3.1412 -> attempts=65120 swarm=1
+[40_4_in_8] Starting (65120 attempts)
+Injecting --target-s 5.819624402414128 (from Friedman best_score 3.1495580309021682)
+[diff] 18_6_in_3: diff=0.55 hist=32 fr_best=11.9142 -> attempts=65134 swarm=1
+[18_6_in_3] Starting (65134 attempts)
+Injecting --target-s 6.8991544032053636 (from Friedman best_score 11.949685955614227)
+[diff] 25_4_in_8: diff=0.55 hist=25 fr_best=2.48959 -> attempts=65166 swarm=1
+[25_4_in_8] Starting (65166 attempts)
+Injecting --target-s 4.617090860873073 (from Friedman best_score 2.498751567925155)
+[diff] 35_4_in_8: diff=0.55 hist=23 fr_best=2.90678 -> attempts=65097 swarm=1
+[35_4_in_8] Starting (65097 attempts)
+Injecting --target-s 5.3826639323231635 (from Friedman best_score 2.9130767285708896)
+[diff] 29_4_in_8: diff=0.55 hist=27 fr_best=2.70553 -> attempts=65098 swarm=1
+[29_4_in_8] Starting (65098 attempts)
+Injecting --target-s 5.010094673204393 (from Friedman best_score 2.711443698501453)
+[diff] 30_4_in_5: diff=0.55 hist=25 fr_best=4.54753 -> attempts=65113 swarm=1
+[30_4_in_5] Starting (65113 attempts)
+Injecting --target-s 5.48439036623136 (from Friedman best_score 4.558920746985814)
+[diff] 21_DOMINO_in_3: diff=0.55 hist=24 fr_best=10.6603 -> attempts=66161 swarm=1
+[21_DOMINO_in_3] Starting (66161 attempts)
+Injecting --target-s 6.313517085481875 (from Friedman best_score 10.935332366508785)
+[diff] 20_DOMINO_in_3: diff=0.55 hist=25 fr_best=10.4641 -> attempts=65730 swarm=1
+[20_DOMINO_in_3] Starting (65730 attempts)
+Injecting --target-s 6.139391859565484 (from Friedman best_score 10.633738628342188)
+[diff] 27_DOMINO_in_3: diff=0.55 hist=24 fr_best=12.0829 -> attempts=65585 swarm=1
+[27_DOMINO_in_3] Starting (65585 attempts)
+Injecting --target-s 7.066801321729175 (from Friedman best_score 12.240058936229826)
+[diff] 32_5_in_3: diff=0.55 hist=31 fr_best=12.7112 -> attempts=65163 swarm=1
+[32_5_in_3] Starting (65163 attempts)
+Injecting --target-s 8.658505943860753 (from Friedman best_score 12.757186535314492)
+[diff] 27_4_in_6: diff=0.55 hist=26 fr_best=3.5207 -> attempts=65100 swarm=1
+[27_4_in_6] Starting (65100 attempts)
+Injecting --target-s 5.00165756114052 (from Friedman best_score 3.53670597865543)
+[diff] 21_4_in_8: diff=0.55 hist=29 fr_best=2.31833 -> attempts=65326 swarm=1
+[21_4_in_8] Starting (65326 attempts)
+Injecting --target-s 4.314776413412045 (from Friedman best_score 2.335140167941394)
+[diff] 26_4_in_6: diff=0.55 hist=28 fr_best=3.4928 -> attempts=65149 swarm=1
+[26_4_in_6] Starting (65149 attempts)
+Injecting --target-s 4.955926565595984 (from Friedman best_score 3.5043692815954772)
+[diff] 40_4_in_6: diff=0.55 hist=27 fr_best=4.3017 -> attempts=65113 swarm=1
+[40_4_in_6] Starting (65113 attempts)
+Injecting --target-s 6.1073593285579495 (from Friedman best_score 4.318555196366246)
+[diff] 24_DOMINO_in_3: diff=0.55 hist=24 fr_best=11.3094 -> attempts=65699 swarm=1
+[24_DOMINO_in_3] Starting (65699 attempts)
+Injecting --target-s 6.63089192633567 (from Friedman best_score 11.485041715911644)
+[diff] 33_4_in_6: diff=0.55 hist=26 fr_best=3.8663 -> attempts=65111 swarm=1
+[33_4_in_6] Starting (65111 attempts)
+Injecting --target-s 5.506934550299989 (from Friedman best_score 3.8939907640676124)
+[diff] 26_DOMINO_in_3: diff=0.55 hist=25 fr_best=11.7942 -> attempts=65657 swarm=1
+[26_DOMINO_in_3] Starting (65657 attempts)
+Injecting --target-s 6.9560046586584585 (from Friedman best_score 12.048153486482255)
+[diff] 25_DOMINO_in_3: diff=0.55 hist=26 fr_best=11.6188 -> attempts=65625 swarm=1
+[25_DOMINO_in_3] Starting (65625 attempts)
+Injecting --target-s 6.848054926933973 (from Friedman best_score 11.861179066472017)
+[diff] 46_3_in_3: diff=0.55 hist=18 fr_best=6.99837 -> attempts=65047 swarm=1
+[46_3_in_3] Starting (65047 attempts)
+Injecting --target-s 7.0057225950403 (from Friedman best_score 7.0057225950403)
+[diff] 20_3_in_3: diff=0.55 hist=28 fr_best=4.861 -> attempts=65042 swarm=1
+[20_3_in_3] Starting (65042 attempts)
+Injecting --target-s 4.865553552550122 (from Friedman best_score 4.865553552550122)
+[diff] 9_5_in_6: diff=0.30 hist=41 fr_best=2.8697 -> attempts=20057 swarm=1
+[9_5_in_6] Starting (20057 attempts)
+[Main] Worker finished 13_DOMINO_in_3 with score 8.651091643465453
+Injecting --target-s 3.3820767916055066 (from Friedman best_score 2.8769663566878974)
+[diff] 22_DOMINO_in_3: diff=0.55 hist=25 fr_best=10.9282 -> attempts=65345 swarm=1
+[22_DOMINO_in_3] Starting (65345 attempts)
+Injecting --target-s 6.401325323126436 (from Friedman best_score 11.087420695432247)
+[PASS] Valid configuration, metric s=6.835647451099712
+[19_DOMINO_in_4] Success!
+[Main] Worker finished 19_DOMINO_in_4 with score 6.835647451099712
+[diff] 19_DOMINO_in_4: diff=0.55 hist=27 fr_best=6.7143 -> attempts=65813 swarm=1
+[19_DOMINO_in_4] Starting (65813 attempts)
+Injecting --target-s 4.8434576104586196 (from Friedman best_score 6.849683441489762)
+[PASS] Valid configuration, metric s=3.439554685537472
+[24_4_in_6] Success!
+[Main] Worker finished 24_4_in_6 with score 3.439554685537472
+[PASS] Valid configuration, metric s=10.953332235928990
+[21_DOMINO_in_3] Success!
+[diff] 24_4_in_6: diff=0.55 hist=32 fr_best=3.4029 -> attempts=65172 swarm=1
+[24_4_in_6] Starting (65172 attempts)
+[Main] Worker finished 21_DOMINO_in_3 with score 10.95333223592899
+Injecting --target-s 4.830939818840444 (from Friedman best_score 3.415990305406189)
+[PASS] Valid configuration, metric s=12.852061883041317
+[27_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=2.382191620351339
+[21_4_in_8] Success!
+[PASS] Valid configuration, metric s=11.712797716181479
+[24_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=2.519017470378839
+[25_4_in_8] Success!
+[diff] 33_4_in_8: diff=0.55 hist=26 fr_best=2.85903 -> attempts=65561 swarm=1
+[Main] Worker finished 24_DOMINO_in_3 with score 11.712797716181479[33_4_in_8] Starting (65561 attempts)
+
+[PASS] Valid configuration, metric s=4.916221201185569
+Injecting --target-s 5.348662395751322 (from Friedman best_score 2.894675229579231)
+[Main] Worker finished 25_4_in_8 with score 2.519017470378839
+[33_4_in_5] Success!
+[Main] Worker finished 27_DOMINO_in_3 with score 12.852061883041317
+[Main] Worker finished 21_4_in_8 with score 2.382191620351339
+[diff] 37_4_in_5: diff=0.55 hist=23 fr_best=4.97801 -> attempts=65114 swarm=1
+[37_4_in_5] Starting (65114 attempts)
+Injecting --target-s 6.040373830401661 (from Friedman best_score 5.021084156321819)
+[diff] 30_4_in_8: diff=0.55 hist=27 fr_best=2.73879 -> attempts=65370 swarm=1
+[30_4_in_8] Starting (65370 attempts)
+Injecting --target-s 5.1022113840203405 (from Friedman best_score 2.761296903153339)
+[PASS] Valid configuration, metric s=13.884493816920813
+[38_5_in_3] Success!
+[PASS] Valid configuration, metric s=2.989736754164845
+[PASS] Valid configuration, metric s=11.960108969580684
+[18_6_in_3] Success!
+[diff] 25_6_in_3: diff=0.55 hist=31 fr_best=13.7768 -> attempts=65100 swarm=1
+[25_6_in_3] Starting (65100 attempts)
+Injecting --target-s 7.9717853650802475 (from Friedman best_score 13.807537279353001)
+[32_4_in_8] Success!
+[PASS] Valid configuration, metric s=10.651500718525643
+[20_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=3.586179123899204
+[27_4_in_6] Success!
+[PASS] Valid configuration, metric s=2.847015883426526
+[29_4_in_8] Success!
+[PASS] Valid configuration, metric s=2.890014895496662
+[PASS] Valid configuration, metric s=5.333864130364130
+[diff] 20_6_in_5: diff=0.55 hist=36 fr_best=6.2467 -> attempts=65103 swarm=1
+[Main] Worker finished 32_4_in_8 with score 2.989736754164845
+[20_6_in_5] Starting (65103 attempts)
+[38_4_in_5] Success!
+Injecting --target-s 5.325928851557496 (from Friedman best_score 6.261004867408969)
+[9_5_in_6] Success!
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=4.894244699598238
+[PASS] Valid configuration, metric s=5.133248478886888
+[20_3_in_3] Success!
+[35_4_in_5] Success!
+[PASS] Valid configuration, metric s=4.786866784335104
+[30_4_in_5] Success!
+[PASS] Valid configuration, metric s=3.504561196287405
+[PASS] Valid configuration, metric s=11.881182844607538
+[PASS] Valid configuration, metric s=4.041621768437455
+[26_4_in_6] Success!
+[25_DOMINO_in_3] Success!
+[36_4_in_6] Success!
+[PASS] Valid configuration, metric s=12.910495881561323
+[PASS] Valid configuration, metric s=11.966322751034012
+[PASS] Valid configuration, metric s=3.892580900886920
+[33_4_in_6] Success!
+[26_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=2.947605389122943
+[33_5_in_3] Success!
+[35_4_in_8] Success!
+[PASS] Valid configuration, metric s=12.771121686878123
+[PASS] Valid configuration, metric s=5.442588749725697
+[32_5_in_3] Success!
+[40_4_in_5] Success!
+[PASS] Valid configuration, metric s=3.307035932447277
+[40_4_in_8] Success!
+[PASS] Valid configuration, metric s=7.006137796323920
+[46_3_in_3] Success!
+[PASS] Valid configuration, metric s=11.106395673821380
+[PASS] Valid configuration, metric s=4.314227940762382
+[40_4_in_6] Success!
+[22_DOMINO_in_3] Success!
