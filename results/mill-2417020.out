@@ -252,3 +252,76 @@ Solver reported: No valid packing found. Refusing to log 0.0 score.
 [9_3_in_circle] Success!
 [PASS] Valid configuration, metric s=1.743105432432337
 [28_3_in_8] Success!
+[main f5a40004] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 36 files changed, 536 insertions(+)
+ create mode 100644 results/13_3_in_circle/20260812_232029/solution.json
+ create mode 100644 results/14_3_in_circle/20260812_232020/solution.json
+ create mode 100644 results/17_3_in_8/20260812_232020/solution.json
+ create mode 100644 results/17_3_in_circle/20260812_232050/solution.json
+ create mode 100644 results/17_4_in_6/20260812_232021/solution.json
+ create mode 100644 results/18_6_in_3/20260812_232049/solution.json
+ create mode 100644 results/19_3_in_8/20260812_232021/solution.json
+ create mode 100644 results/20_3_in_8/20260812_232036/solution.json
+ create mode 100644 results/21_3_in_8/20260812_232045/solution.json
+ create mode 100644 results/21_4_in_8/20260812_232041/solution.json
+ create mode 100644 results/22_4_in_CIRCLE/20260812_232020/solution.json
+ create mode 100644 results/23_3_in_8/20260812_232019/solution.json
+ create mode 100644 results/24_4_in_6/20260812_232038/solution.json
+ create mode 100644 results/24_4_in_CIRCLE/20260812_232030/solution.json
+ create mode 100644 results/25_3_in_6/20260812_232019/solution.json
+ create mode 100644 results/25_6_in_3/20260812_232033/solution.json
+ create mode 100644 results/26_3_in_6/20260812_232019/solution.json
+ create mode 100644 results/26_3_in_8/20260812_232019/solution.json
+ create mode 100644 results/26_4_in_6/20260812_232054/solution.json
+ create mode 100644 results/28_4_in_6/20260812_232106/solution.json
+ create mode 100644 results/32_4_in_8/20260812_232101/solution.json
+ create mode 100644 results/32_5_in_3/20260812_232023/solution.json
+ create mode 100644 results/33_3_in_6/20260812_232019/solution.json
+ create mode 100644 results/33_4_in_6/20260812_232019/solution.json
+ create mode 100644 results/33_5_in_3/20260812_232021/solution.json
+ create mode 100644 results/34_3_in_8/20260812_232019/solution.json
+ create mode 100644 results/36_3_in_6/20260812_232019/solution.json
+ create mode 100644 results/38_5_in_3/20260812_232026/solution.json
+ create mode 100644 results/39_5_in_3/20260812_232102/solution.json
+ create mode 100644 results/40_4_in_8/20260812_232020/solution.json
+ create mode 100644 results/42_3_in_6/20260812_232019/solution.json
+ create mode 100644 results/7_3_in_circle/20260812_232515/solution.json
+ create mode 100644 results/8_4_in_CIRCLE/20260812_232521/solution.json
+ create mode 100644 results/9_3_in_circle/20260812_232523/solution.json
+ create mode 100644 results/mill-2417020.out
+[Main] Worker finished 33_4_in_6 with score 3.9775795791883204
+[Main] Worker finished 24_4_in_CIRCLE with score 3.1518433100634002
+[Main] Worker finished 36_3_in_6 with score 2.735670313730879
+[diff] 26_3_in_8: diff=0.55 hist=14 fr_best=1.67455 -> attempts=65099 swarm=1
+[26_3_in_8] Starting (65099 attempts)
+Injecting --target-s 3.7978878983789683 (from Friedman best_score 1.6782288029177286)
+[diff] 14_3_in_circle: diff=0.45 hist=11 fr_best=1.60448 -> attempts=42540 swarm=1
+[14_3_in_circle] Starting (42540 attempts)
+Injecting --target-s 2.783979070024647 (from Friedman best_score 1.607331065497014)
+[diff] 17_4_in_6: diff=0.55 hist=7 fr_best=2.8726 -> attempts=65223 swarm=1
+[17_4_in_6] Starting (65223 attempts)
+Injecting --target-s 4.0825773822189415 (from Friedman best_score 2.8868181516858367)
+[diff] 25_4_in_8: diff=0.55 hist=6 fr_best=2.48959 -> attempts=65166 swarm=1
+[Main] Worker finished 40_4_in_8 with score 3.307035932447277
+[25_4_in_8] Starting (65166 attempts)
+[Main] Worker finished 25_6_in_3 with score 13.820493131853882
+[Main] Worker finished 28_4_in_CIRCLE with score 3.3833817024149666
+[Main] Worker finished 26_3_in_6 with score 2.2226394223292862
+Injecting --target-s 4.617090860873073 (from Friedman best_score 2.498751567925155)
+[Main] Worker finished 29_4_in_6 with score 3.684473523968721
+[Main] Worker finished 24_4_in_6 with score 3.4474751624012594
+[Main] Worker finished 39_5_in_3 with score 14.05678443804131
+[Main] Batch committing 10 runs...
