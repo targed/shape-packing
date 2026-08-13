@@ -10312,3 +10312,89 @@ Injecting --target-s 5.680424591811493 (from Friedman best_score 6.6777396036525
 [20_8_in_8] Success!
 [PASS] Valid configuration, metric s=12.059293801707227
 [24_DOMINO_in_3] Success!
+[PASS] Valid configuration, metric s=13.820493131853882
+[25_6_in_3] Success!
+[PASS] Valid configuration, metric s=4.786866784335104
+[30_4_in_5] Success!
+[PASS] Valid configuration, metric s=12.910495881561323
+[33_5_in_3] Success!
+[PASS] Valid configuration, metric s=4.309862100185108
+[16_5_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=4.409839693042728
+[17_5_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=6.308600831466713
+[10_8_in_5] Success!
+[PASS] Valid configuration, metric s=7.812784092602333
+[32_6_in_5] Success!
+[PASS] Valid configuration, metric s=6.095325409529122
+[19_8_in_CIRCLE] Success!
+[main acd80bd3] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 25 files changed, 313 insertions(+)
+ create mode 100644 results/10_8_in_CIRCLE/20260813_054738/solution.json
+ create mode 100644 results/11_8_in_5/20260813_054737/solution.json
+ create mode 100644 results/13_8_in_6/20260813_054738/solution.json
+ create mode 100644 results/13_DOMINO_in_3/20260813_054736/solution.json
+ create mode 100644 results/15_6_in_6/20260813_054737/solution.json
+ create mode 100644 results/16_6_in_6/20260813_054742/solution.json
+ create mode 100644 results/16_8_in_6/20260813_054741/solution.json
+ create mode 100644 results/18_5_in_DOMINO/20260813_054742/solution.json
+ create mode 100644 results/20_5_in_DOMINO/20260813_054739/solution.json
+ create mode 100644 results/20_8_in_8/20260813_054738/solution.json
+ create mode 100644 results/20_DOMINO_in_3/20260813_054736/solution.json
+ create mode 100644 results/21_5_in_DOMINO/20260813_054740/solution.json
+ create mode 100644 results/25_6_in_6/20260813_054742/solution.json
+ create mode 100644 results/26_8_in_8/20260813_054739/solution.json
+ create mode 100644 results/27_DOMINO_in_3/20260813_054736/solution.json
+ create mode 100644 results/32_4_in_5/20260813_054736/solution.json
+ create mode 100644 results/33_4_in_5/20260813_054735/solution.json
+ create mode 100644 results/35_4_in_5/20260813_054742/solution.json
+ create mode 100644 results/38_4_in_5/20260813_054736/solution.json
+ create mode 100644 results/38_5_in_3/20260813_054735/solution.json
+ create mode 100644 results/39_5_in_3/20260813_054735/solution.json
+ create mode 100644 results/40_4_in_5/20260813_054735/solution.json
+ create mode 100644 results/9_8_in_5/20260813_054739/solution.json
+[Main] Worker finished 9_8_in_5 with score 5.994170884047151
+[diff] 18_6_in_3: diff=0.55 hist=39 fr_best=11.9142 -> attempts=65134 swarm=1
+[18_6_in_3] Starting (65134 attempts)
+Injecting --target-s 6.8991544032053636 (from Friedman best_score 11.949685955614227)
+[diff] 13_5_in_8: diff=0.45 hist=42 fr_best=2.4978 -> attempts=42567 swarm=1
+[13_5_in_8] Starting (42567 attempts)
+Injecting --target-s 3.8479618529607666 (from Friedman best_score 2.5052538214555913)
+[diff] 19_6_in_DOMINO: diff=0.55 hist=39 fr_best=5.6523 -> attempts=65233 swarm=1
+[Main] Worker finished 20_5_in_DOMINO with score 4.8203042879733635[19_6_in_DOMINO] Starting (65233 attempts)
+
+Injecting --target-s 5.681535284189752 (from Friedman best_score 5.681535284189753)
+[Main] Worker finished 10_8_in_5 with score 6.3086008314667135
+[Main] Worker finished 19_8_in_CIRCLE with score 6.0953254095291225
+[Main] Worker finished 18_5_in_DOMINO with score 4.569815862524372
+[Main] Worker finished 26_8_in_8 with score 5.777467632032182
+[Main] Worker finished 40_4_in_5 with score 5.442588749725697
+[Main] Worker finished 30_4_in_5 with score 4.786866784335104
+[Main] Worker finished 16_8_in_6 with score 6.2478639807772485
+[Main] Worker finished 33_5_in_3 with score 12.910495881561323
+[Main] Batch committing 10 runs...
+[PASS] Valid configuration, metric s=2.644773883416180
+[9_6_in_8] Success!
+[PASS] Valid configuration, metric s=2.419505003282182
+[22_3_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=6.700106835949054
+[23_6_in_5] Success!
+[PASS] Valid configuration, metric s=5.843412668798321
+[20_6_in_DOMINO] Success!
+[PASS] Valid configuration, metric s=5.949837118888085
+[28_6_in_6] Success!
+[PASS] Valid configuration, metric s=12.771121686878123
+[32_5_in_3] Success!
