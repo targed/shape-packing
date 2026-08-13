@@ -698,3 +698,111 @@ After doing this, you may fix the identity used for this commit with:
 [Main] Batch committing 10 runs...
 [PASS] Valid configuration, metric s=12.771121686878123
 [32_5_in_3] Success!
+[main a082eb92] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@gpu-15-32.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 73 insertions(+)
+ create mode 100644 results/20_3_in_8/20260812_233957/solution.json
+ create mode 100644 results/25_3_in_6/20260812_233958/solution.json
+ create mode 100644 results/26_3_in_6/20260812_234000/solution.json
+ create mode 100644 results/32_5_in_3/20260812_234257/solution.json
+[Main] Worker finished 33_5_in_3 with score 12.910495881561323
+[Main] Worker finished 32_4_in_5 with score 4.95906101564547
+[Main] Worker finished 34_3_in_8 with score 1.8935679633476563
+[Main] Worker finished 17_3_in_8 with score 1.4029233710948728
+[Main] Worker finished 33_3_in_6 with score 2.5174869510822515
+[Main] Worker finished 26_4_in_6 with score 3.504561196287405
+[diff] 42_3_in_6: diff=0.55 hist=10 fr_best=2.75 -> attempts=66459 swarm=1
+[42_3_in_6] Starting (66459 attempts)
+Injecting --target-s 4.94522253215237 (from Friedman best_score 2.8551255601407735)
+[diff] 33_3_in_6: diff=0.55 hist=13 fr_best=2.49038 -> attempts=65206 swarm=1
+[33_3_in_6] Starting (65206 attempts)
+Injecting --target-s 4.3331994558797815 (from Friedman best_score 2.5017738723045313)
+[diff] 9_3_in_circle: diff=0.30 hist=13 fr_best=1.314 -> attempts=20023 swarm=1
+[9_3_in_circle] Starting (20023 attempts)
+Injecting --target-s 2.278238994516918 (from Friedman best_score 1.3153418967626451)
+[diff] 22_4_in_CIRCLE: diff=0.55 hist=9 fr_best=3.0324 -> attempts=65034 swarm=1
+[22_4_in_CIRCLE] Starting (65034 attempts)
+Injecting --target-s 4.291656350912505 (from Friedman best_score 3.034659308252546)
+[diff] 14_3_in_circle: diff=0.45 hist=12 fr_best=1.60448 -> attempts=42540 swarm=1
+[14_3_in_circle] Starting (42540 attempts)
+Injecting --target-s 2.783979070024647 (from Friedman best_score 1.607331065497014)
+[diff] 19_3_in_8: diff=0.55 hist=8 fr_best=1.46678 -> attempts=65133 swarm=1
+[19_3_in_8] Starting (65133 attempts)
+Injecting --target-s 3.3291632772216153 (from Friedman best_score 1.4711065336694122)
+[diff] 13_3_in_circle: diff=0.45 hist=11 fr_best=1.527 -> attempts=42510 swarm=1
+[13_3_in_circle] Starting (42510 attempts)
+Injecting --target-s 2.646064816229655 (from Friedman best_score 1.527706233943389)
+[diff] 24_4_in_CIRCLE: diff=0.55 hist=9 fr_best=3.1094 -> attempts=65004 swarm=1
+[24_4_in_CIRCLE] Starting (65004 attempts)
+Injecting --target-s 4.397788484603705 (from Friedman best_score 3.1097060596873907)
+[diff] 25_6_in_3: diff=0.55 hist=9 fr_best=13.7768 -> attempts=65100 swarm=1
+[25_6_in_3] Starting (65100 attempts)
+Injecting --target-s 7.9717853650802475 (from Friedman best_score 13.807537279353001)
+[diff] 18_6_in_3: diff=0.55 hist=12 fr_best=11.9142 -> attempts=65134 swarm=1
+[18_6_in_3] Starting (65134 attempts)
+Injecting --target-s 6.8991544032053636 (from Friedman best_score 11.949685955614227)
+[diff] 24_4_in_6: diff=0.55 hist=9 fr_best=3.4029 -> attempts=65173 swarm=1
+[24_4_in_6] Starting (65173 attempts)
+Injecting --target-s 4.830939818840444 (from Friedman best_score 3.415990305406189)
+[diff] 29_4_in_8: diff=0.55 hist=7 fr_best=2.70553 -> attempts=65098 swarm=1
+[29_4_in_8] Starting (65098 attempts)
+Injecting --target-s 5.010094673204393 (from Friedman best_score 2.711443698501453)
+[diff] 17_3_in_circle: diff=0.55 hist=11 fr_best=1.73 -> attempts=65044 swarm=1
+[17_3_in_circle] Starting (65044 attempts)
+Injecting --target-s 2.999385959985392 (from Friedman best_score 1.7316962914011502)
+[diff] 32_4_in_8: diff=0.55 hist=8 fr_best=2.8398 -> attempts=65120 swarm=1
+[32_4_in_8] Starting (65120 attempts)
+Injecting --target-s 5.261250656704054 (from Friedman best_score 2.8473683372998524)
+[diff] 39_5_in_3: diff=0.55 hist=11 fr_best=13.9843 -> attempts=65183 swarm=1
+[39_5_in_3] Starting (65183 attempts)
+Injecting --target-s 9.53003552052681 (from Friedman best_score 14.041272433350503)
+[diff] 28_4_in_6: diff=0.55 hist=8 fr_best=3.6198 -> attempts=65140 swarm=1
+[28_4_in_6] Starting (65140 attempts)
+Injecting --target-s 5.135075434571785 (from Friedman best_score 3.6310466616901667)
+[diff] 25_4_in_8: diff=0.55 hist=7 fr_best=2.48959 -> attempts=65166 swarm=1
+[25_4_in_8] Starting (65166 attempts)
+Injecting --target-s 4.617090860873073 (from Friedman best_score 2.498751567925155)
+[diff] 30_4_in_8: diff=0.55 hist=8 fr_best=2.73879 -> attempts=65370 swarm=1
+[30_4_in_8] Starting (65370 attempts)
+Injecting --target-s 5.1022113840203405 (from Friedman best_score 2.761296903153339)
+[diff] 27_4_in_6: diff=0.55 hist=7 fr_best=3.5207 -> attempts=65205 swarm=1
+[27_4_in_6] Starting (65205 attempts)
+Injecting --target-s 5.00165756114052 (from Friedman best_score 3.53670597865543)
+[diff] 33_4_in_5: diff=0.55 hist=6 fr_best=4.75331 -> attempts=65128 swarm=1
+[33_4_in_5] Starting (65128 attempts)
+Injecting --target-s 5.734476824644382 (from Friedman best_score 4.766806084765439)
+[diff] 40_4_in_8: diff=0.55 hist=7 fr_best=3.1412 -> attempts=65120 swarm=1
+[40_4_in_8] Starting (65120 attempts)
+Injecting --target-s 5.819624402414128 (from Friedman best_score 3.1495580309021682)
+[diff] 35_4_in_6: diff=0.55 hist=6 fr_best=3.982 -> attempts=65211 swarm=1
+[35_4_in_6] Starting (65211 attempts)
+Injecting --target-s 5.657762973292019 (from Friedman best_score 4.00064256476095)
+[diff] 30_3_in_8: diff=0.55 hist=6 fr_best=1.77911 -> attempts=65632 swarm=1
+[30_3_in_8] Starting (65632 attempts)
+Injecting --target-s 4.082767785490857 (from Friedman best_score 1.8041128849958712)
+[diff] 29_4_in_6: diff=0.55 hist=8 fr_best=3.6644 -> attempts=65157 swarm=1
+[29_4_in_6] Starting (65157 attempts)
+Injecting --target-s 5.2003029326406285 (from Friedman best_score 3.677169467894478)
+[diff] 28_3_in_8: diff=0.55 hist=8 fr_best=1.73796 -> attempts=65133 swarm=1
+[28_3_in_8] Starting (65133 attempts)
+Injecting --target-s 3.9654791696382525 (from Friedman best_score 1.7522848324980056)
+[diff] 40_4_in_6: diff=0.55 hist=8 fr_best=4.3017 -> attempts=65176 swarm=1
+[40_4_in_6] Starting (65176 attempts)
+[Main] Worker finished 20_3_in_8 with score 1.5104429077839856
+Injecting --target-s 6.1073593285579495 (from Friedman best_score 4.318555196366246)
+[Main] Worker finished 32_4_in_CIRCLE with score 3.6247657643574387
+[Main] Worker finished 26_3_in_6 with score 2.248775566670574
+[Main] Worker finished 38_5_in_3 with score 13.884493816920813
+[Main] Batch committing 10 runs...
