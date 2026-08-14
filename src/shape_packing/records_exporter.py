@@ -214,3 +214,116 @@ def generate_verification_text(cand: RecordCandidate, sol: Any, v_res: Any) -> s
     return "\n".join(lines)
 
 
+from collections import defaultdict
+
+
+def generate_manifest(records: List[RecordCandidate], output_dir: str) -> str:
+    """Generate structured JSON index of all exported records."""
+    manifest_path = os.path.join(output_dir, "manifest.json")
+    os.makedirs(output_dir, exist_ok=True)
+
+    data = {
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "total_records": len(records),
+        "records": [
+            {
+                "problem": r.problem,
+                "N": r.N,
+                "inner_token": r.inner_token,
+                "container_token": r.container_token,
+                "family_code": r.family_code,
+                "family_url": r.family_url,
+                "solver_S": r.S,
+                "metric": r.metric,
+                "friedman_best": r.friedman_best,
+                "improvement": r.improvement,
+                "folder": f"{r.family_code}/{r.problem}",
+            }
+            for r in records
+        ],
+    }
+    with open(manifest_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
+    return manifest_path
+
+
+def generate_summary_markdown(records: List[RecordCandidate], output_dir: str) -> str:
+    """Generate human-readable summary table of all broken records."""
+    summary_path = os.path.join(output_dir, "summary.md")
+    os.makedirs(output_dir, exist_ok=True)
+
+    lines = [
+        "# Shape Packing World Records Summary",
+        "",
+        f"**Generated:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}  ",
+        f"**Total Verified Record Improvements:** {len(records)}",
+        "",
+        "| Problem | Family | N | Solver $S$ | Our Metric $s$ | Friedman Best | Improvement $\\Delta s$ | Folder Link |",
+        "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |",
+    ]
+
+    for r in records:
+        folder_link = f"[{r.problem}](./{r.family_code}/{r.problem})"
+        lines.append(
+            f"| `{r.problem}` | [`{r.family_code}`]({r.family_url}) | {r.N} | {r.S:.6f} | **{r.metric:.6f}** | {r.friedman_best:.6f} | **{r.improvement:+.6f}** | {folder_link} |"
+        )
+
+    lines.append("")
+    with open(summary_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    return summary_path
+
+
+def generate_email_drafts(records: List[RecordCandidate], output_dir: str) -> List[str]:
+    """Generate ready-to-send submission email templates grouped per shape family."""
+    sub_dir = os.path.join(output_dir, "submissions")
+    os.makedirs(sub_dir, exist_ok=True)
+
+    by_family = defaultdict(list)
+    for r in records:
+        by_family[r.family_code].append(r)
+
+    draft_files = []
+    for fam, fam_records in by_family.items():
+        fam_records.sort(key=lambda x: x.N)
+        draft_path = os.path.join(sub_dir, f"{fam}_submission.md")
+        first_r = fam_records[0]
+
+        lines = [
+            f"# Submission Draft: {fam}",
+            "",
+            f"**To:** Erich Friedman (via packing website contact)",
+            f"**Subject:** New packing record(s) for {fam} ({first_r.inner_token} in {first_r.container_token})",
+            f"**Problem Page:** {first_r.family_url}",
+            "",
+            "---",
+            "",
+            "Dear Professor Friedman,",
+            "",
+            f"We have found improved packing configurations for **{fam}** ({first_r.inner_token} in {first_r.container_token}):",
+            "",
+            "| N | Our Metric (s) | Current Best | Improvement |",
+            "| :---: | :---: | :---: | :---: |",
+        ]
+
+        for r in fam_records:
+            lines.append(f"| {r.N} | {r.metric:.6f} | {r.friedman_best:.6f} | {r.improvement:+.6f} |")
+
+        lines.extend([
+            "",
+            "All configurations have been verified with Separating Axis Theorem (SAT) collision detection and boundary containment.",
+            "Coordinates and high-resolution diagrams for each solution are attached / included in the submission folder.",
+            "",
+            "Best regards,",
+            "[Your Name / Research Group]",
+            "",
+        ])
+
+        with open(draft_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines))
+        draft_files.append(draft_path)
+
+    return draft_files
+
+
+

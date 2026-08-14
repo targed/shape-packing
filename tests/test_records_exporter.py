@@ -117,3 +117,42 @@ def test_generate_verification_text(tmp_path):
     assert "GEOMETRIC VALIDATION CERTIFICATE" in v_txt
     assert "Problem: 2_DOMINO_in_6" in v_txt
     assert "Collision Check" in v_txt
+
+from src.shape_packing.records_exporter import (
+    generate_manifest,
+    generate_summary_markdown,
+    generate_email_drafts,
+)
+
+def test_manifest_and_summary_generation(tmp_path):
+    cand = RecordCandidate(
+        problem="21_DOMINO_in_5",
+        N=21,
+        inner_token="DOMINO",
+        container_token="5",
+        solution_path="mock/path",
+        run_dir="mock/dir",
+        S=4.603855,
+        metric=5.412156,
+        friedman_best=5.553080,
+        improvement=-0.140924,
+    )
+    manifest_path = generate_manifest([cand], str(tmp_path))
+    assert os.path.exists(manifest_path)
+    with open(manifest_path) as f:
+        data = json.load(f)
+    assert data["total_records"] == 1
+    assert data["records"][0]["problem"] == "21_DOMINO_in_5"
+
+    summary_path = generate_summary_markdown([cand], str(tmp_path))
+    assert os.path.exists(summary_path)
+    with open(summary_path) as f:
+        md = f.read()
+    assert "21_DOMINO_in_5" in md
+    assert "-0.140924" in md
+
+    drafts = generate_email_drafts([cand], str(tmp_path))
+    assert len(drafts) == 1
+    with open(drafts[0]) as f:
+        email = f.read()
+    assert "dominpen" in email
