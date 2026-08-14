@@ -54,3 +54,66 @@ def test_find_all_records_discovery(tmp_path):
     rec = next(r for r in records if r.problem == "21_DOMINO_in_5")
     assert rec.N == 21
     assert rec.improvement < -0.1
+
+from src.shape_packing.solution_tools import load_solution, verify_solution
+from src.shape_packing.records_exporter import (
+    generate_coordinates_text,
+    generate_verification_text,
+)
+
+def test_generate_coordinates_text(tmp_path):
+    p_file = tmp_path / "solution.json"
+    p_file.write_text(json.dumps({
+        "N": 2,
+        "inner_token": "DOMINO",
+        "container_token": "6",
+        "S": 1.519672,
+        "final_metric": 1.519672,
+        "values": [0.0, 0.0, 0.0, 0.5, 0.5, 1.570796]
+    }))
+    sol = load_solution(str(p_file))
+    cand = RecordCandidate(
+        problem="2_DOMINO_in_6",
+        N=2,
+        inner_token="DOMINO",
+        container_token="6",
+        solution_path=str(p_file),
+        run_dir=str(tmp_path),
+        S=1.519672,
+        metric=1.519672,
+        friedman_best=1.519700,
+        improvement=-0.000028,
+    )
+    coord_txt = generate_coordinates_text(cand, sol)
+    assert "RECORD SUBMISSION: 2_DOMINO_in_6" in coord_txt
+    assert "Pieces (2 total):" in coord_txt
+    assert "Center (x, y)" in coord_txt
+
+def test_generate_verification_text(tmp_path):
+    p_file = tmp_path / "solution.json"
+    p_file.write_text(json.dumps({
+        "N": 2,
+        "inner_token": "DOMINO",
+        "container_token": "6",
+        "S": 1.519672,
+        "final_metric": 1.519672,
+        "values": [0.0, 0.0, 0.0, 0.5, 0.5, 1.570796]
+    }))
+    sol = load_solution(str(p_file))
+    cand = RecordCandidate(
+        problem="2_DOMINO_in_6",
+        N=2,
+        inner_token="DOMINO",
+        container_token="6",
+        solution_path=str(p_file),
+        run_dir=str(tmp_path),
+        S=1.519672,
+        metric=1.519672,
+        friedman_best=1.519700,
+        improvement=-0.000028,
+    )
+    v_res = verify_solution(str(p_file), "2_DOMINO_in_6")
+    v_txt = generate_verification_text(cand, sol, v_res)
+    assert "GEOMETRIC VALIDATION CERTIFICATE" in v_txt
+    assert "Problem: 2_DOMINO_in_6" in v_txt
+    assert "Collision Check" in v_txt

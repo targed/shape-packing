@@ -7,7 +7,7 @@ import math
 import glob
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple, Any
-from datetime import datetime
+from datetime import datetime, timezone
 
 SIDES_TO_NAME = {
     "3": "tri",
@@ -140,4 +140,77 @@ def find_all_records(
 
     candidates.sort(key=lambda c: (c.family_code, c.N, c.problem))
     return candidates
+
+
+from .solution_tools import build_polygons, VerifyResult
+
+
+def generate_coordinates_text(cand: RecordCandidate, sol: Any) -> str:
+    """Format piece centers, angles, and vertex coordinates in clean tabular plaintext for Erich Friedman."""
+    polygons = build_polygons(sol)
+    pct_imp = (cand.improvement / cand.friedman_best) * 100.0 if cand.friedman_best else 0.0
+
+    lines = [
+        "=" * 80,
+        f"RECORD SUBMISSION: {cand.problem}",
+        "=" * 80,
+        f"Problem: {cand.problem}",
+        f"Family: {cand.family_code} ({cand.family_url})",
+        f"Inner Shape: {cand.inner_token}",
+        f"Container: {cand.container_token}",
+        f"Solver Circumradius S: {cand.S:.12f}",
+        f"Reported Metric s: {cand.metric:.12f}",
+        f"Previous Friedman Benchmark: {cand.friedman_best:.12f}",
+        f"Improvement Delta: {cand.improvement:+.12f} ({pct_imp:+.3f}%)",
+        "",
+        f"Pieces ({sol.N} total):",
+        f"{'#':<3} | {'Center (x, y)':<25} | {'Angle (deg)':<12} | {'Vertices [(x,y), ...]'}",
+        "-" * 80,
+    ]
+
+    for i in range(sol.N):
+        cx = sol.values[i * 3]
+        cy = sol.values[i * 3 + 1]
+        a_rad = sol.values[i * 3 + 2]
+        a_deg = math.degrees(a_rad) % 360.0
+        poly = polygons[i] if i < len(polygons) else []
+        poly_str = ", ".join(f"({x:+.6f}, {y:+.6f})" for x, y in poly)
+        lines.append(f"{i+1:<3} | ({cx:+10.6f}, {cy:+10.6f}) | {a_deg:>8.2f} deg | [{poly_str}]")
+
+    lines.extend(["=" * 80, ""])
+    return "\n".join(lines)
+
+
+def generate_verification_text(cand: RecordCandidate, sol: Any, v_res: Any) -> str:
+    """Generate formal verification certificate detailing SAT overlap and containment results."""
+    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    status_str = "VALID" if v_res.valid else "INVALID"
+
+    lines = [
+        "=" * 80,
+        "GEOMETRIC VALIDATION CERTIFICATE",
+        "=" * 80,
+        f"Problem: {cand.problem}",
+        f"Verified At: {now_utc}",
+        f"Validation Status: {status_str}",
+        f"Result Metric: {v_res.metric:.12f}",
+        "",
+        "1. Geometry Checks:",
+        f"   - Piece Count: {sol.N}",
+        f"   - Geometric Valid Flag: {v_res.valid}",
+        "",
+        "2. Collision Check (Separating Axis Theorem):",
+        f"   - Pairwise Overlap Status: {'PASS (0 overlaps)' if v_res.valid else 'FAIL'}",
+        "",
+        "3. Verification Messages:",
+    ]
+    if v_res.errors:
+        for err in v_res.errors:
+            lines.append(f"   - ERROR: {err}")
+    else:
+        lines.append(f"   - {v_res.message}")
+
+    lines.extend(["=" * 80, ""])
+    return "\n".join(lines)
+
 
