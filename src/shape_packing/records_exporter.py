@@ -107,7 +107,9 @@ def find_all_records(
             except Exception:
                 continue
 
-            p_token = f"{sol.N}_{sol.inner_token}_in_{sol.container_token}"
+            inner_u = str(sol.inner_token).upper()
+            container_u = str(sol.container_token).upper()
+            p_token = f"{sol.N}_{inner_u}_in_{container_u}"
             if p_token not in best_per_problem or sol.S < best_per_problem[p_token][0]:
                 best_per_problem[p_token] = (sol.S, run_dir, sol_path, sol)
 
@@ -324,6 +326,91 @@ def generate_email_drafts(records: List[RecordCandidate], output_dir: str) -> Li
         draft_files.append(draft_path)
 
     return draft_files
+
+
+import shutil
+from .solution_tools import verify_solution, render_solution
+
+
+def export_records(
+    results_dir: str = "results",
+    output_dir: str = "records",
+    min_improvement: float = 1e-5,
+    family_filter: Optional[str] = None,
+    clean: bool = False,
+    dpi: int = 300,
+    quiet: bool = False,
+) -> Dict[str, Any]:
+    """
+    Audit results_dir, filter all genuine world records beating Friedman benchmarks,
+    verify geometries, render tight PNGs, and package full submission kits into output_dir.
+    """
+    if clean and os.path.exists(output_dir):
+        shutil.rmtree(output_dir)
+
+    os.makedirs(output_dir, exist_ok=True)
+    candidates = find_all_records(results_dir, min_improvement, family_filter)
+
+    if not quiet:
+        print(f"Found {len(candidates)} record candidate(s) to verify and export.")
+
+    exported: List[RecordCandidate] = []
+    failed: List[Tuple[RecordCandidate, List[str]]] = []
+
+    for cand in candidates:
+        cand_out_dir = os.path.join(output_dir, cand.family_code, cand.problem)
+        os.makedirs(cand_out_dir, exist_ok=True)
+
+        # 1. Verify geometry
+        v_res = verify_solution(cand.solution_path, cand.problem)
+        if not v_res.valid:
+            failed.append((cand, v_res.errors))
+            if not quiet:
+                print(f"  [FAIL] {cand.problem}: invalid geometry ({v_res.errors})")
+            continue
+
+        try:
+            sol = load_solution(cand.solution_path)
+        except Exception as e:
+            failed.append((cand, [f"load_solution failed: {e}"]))
+            continue
+
+        # 2. Copy raw solution.json
+        shutil.copy2(cand.solution_path, os.path.join(cand_out_dir, "solution.json"))
+
+        # 3. Write coordinates.txt
+        coord_txt = generate_coordinates_text(cand, sol)
+        with open(os.path.join(cand_out_dir, "coordinates.txt"), "w", encoding="utf-8") as f:
+            f.write(coord_txt)
+
+        # 4. Write verification.txt
+        v_txt = generate_verification_text(cand, sol, v_res)
+        with open(os.path.join(cand_out_dir, "verification.txt"), "w", encoding="utf-8") as f:
+            f.write(v_txt)
+
+        # 5. Render tight-cropped render.png
+        render_path = os.path.join(cand_out_dir, "render.png")
+        render_solution(cand.solution_path, render_path, crop_mode="tight", dpi=dpi)
+
+        exported.append(cand)
+        if not quiet:
+            print(f"  [OK] {cand.problem}: metric={cand.metric:.6f} vs {cand.friedman_best:.6f} ({cand.improvement:+.6f}) -> {cand_out_dir}")
+
+    # 6. Generate manifests & drafts
+    manifest_path = generate_manifest(exported, output_dir)
+    summary_path = generate_summary_markdown(exported, output_dir)
+    email_drafts = generate_email_drafts(exported, output_dir)
+
+    return {
+        "candidates_count": len(candidates),
+        "exported_count": len(exported),
+        "failed_count": len(failed),
+        "manifest_path": manifest_path,
+        "summary_path": summary_path,
+        "email_drafts": email_drafts,
+        "exported_records": exported,
+    }
+
 
 
 

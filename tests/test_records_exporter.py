@@ -156,3 +156,41 @@ def test_manifest_and_summary_generation(tmp_path):
     with open(drafts[0]) as f:
         email = f.read()
     assert "dominpen" in email
+
+from src.shape_packing.records_exporter import export_records
+
+def test_export_records_e2e(tmp_path):
+    res_dir = tmp_path / "results"
+    p_dir = res_dir / "21_DOMINO_in_5" / "20260806_230206"
+    p_dir.mkdir(parents=True)
+    
+    real_sol_path = "results/21_DOMINO_in_5/20260806_230206/solution.json"
+    if os.path.exists(real_sol_path):
+        with open(real_sol_path) as f:
+            sol_data = json.load(f)
+    else:
+        sol_data = {
+            "N": 21,
+            "inner_token": "DOMINO",
+            "container_token": "5",
+            "S": 4.603855,
+            "final_metric": 5.412156,
+            "values": [0.0] * 63
+        }
+
+    (p_dir / "solution.json").write_text(json.dumps(sol_data))
+
+    out_dir = tmp_path / "records"
+    summary = export_records(
+        results_dir=str(res_dir),
+        output_dir=str(out_dir),
+        min_improvement=1e-5,
+        family_filter="dominpen",
+    )
+    assert summary["exported_count"] >= 1
+    assert os.path.exists(out_dir / "manifest.json")
+    assert os.path.exists(out_dir / "summary.md")
+    assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "solution.json")
+    assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "coordinates.txt")
+    assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "verification.txt")
+    assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "render.png")
