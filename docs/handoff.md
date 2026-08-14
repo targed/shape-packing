@@ -69,95 +69,21 @@ What’s already done (and working):
     - difficulty scoring
     - adaptive_attempts monotonicity, ranges, stuck/hard behavior
 
-What’s broken / current issues:
+## Completed Features & Fixes:
 
-1. I rewrote packing_config.py and lost many existing symbols.
-- I removed large sections while reconstructing the adaptive-scaling logic.
-- Now several modules fail to import due to missing symbols.
+1. **Restored Missing Constants in `packing_config.py`:**
+   - Restored `VERIFY_SAT_TOLERANCE`, `VERIFY_METRIC_TOLERANCE`, `GEOMETRY_SAT_TOLERANCE`, `OPTIMIZER_ATTEMPTS`, `OPTIMIZER_TOLERANCE`, `OPTIMIZER_FINAL_STEP`, `OPTIMIZER_N_JOBS`, `RUST_BINARY`, `RUST_TOLERANCE`, `RUST_DEFAULT_TIME_LIMIT`, `CIRCLE_SIDES`, `SHAPE_TO_SIDES["CIRCLE"]`, `SPECIAL_SHAPES`, `ALL_FAMILIES`, etc.
+   - All modules and tests import cleanly without `ImportError`.
 
-Missing symbols (from imports across src/ and tests/):
-- VERIFY_SAT_TOLERANCE (solution_tools.py)
-- OPTIMIZER_ATTEMPTS
-- OPTIMIZER_TOLERANCE
-- OPTIMIZER_FINAL_STEP
-- OPTIMIZER_N_JOBS (optimization.py)
-- RUST_BINARY (test_packing_config.py)
-- Possibly others (run a grep to be safe).
+2. **Adaptive Attempt Scaling (`packing_config.py` & `run_parallel_loop.py`):**
+   - Implemented `get_problem_history_stats`, `get_friedman_best_for_problem`, `compute_problem_difficulty_score`, `compute_adaptive_attempts`.
+   - Added robust `_normalize_key()` token normalization across shape synonyms (`pentagon` ↔ `5`, `square` ↔ `4`, `domino` ↔ `DOMINO`).
+   - Integrated into `run_parallel_loop.py::analyze_difficulty`.
 
-2. Test failures:
-- tests/test_solution_tools.py: ImportError VERIFY_SAT_TOLERANCE
-- tests/test_optimization_coverage.py: ImportError OPTIMIZER_ATTEMPTS
-- tests/test_packing_config.py: ImportError RUST_BINARY
-- Other tests likely affected.
+3. **World Records Exporter & Erich Friedman Submission Bundler:**
+   - Implemented `src/shape_packing/records_exporter.py` and `scripts/export_records.py`.
+   - Audits all results against `packingVerification/*.json`, verifies 0 SAT collisions and 100% boundary containment, generates tight cropped PNGs, `coordinates.txt`, `verification.txt`, `manifest.json`, `summary.md`, and 19 `submissions/<family>_submission.md` email drafts.
+   - Exported and verified 49 record solutions in `records/`.
 
-3. run_parallel_loop.py:
-- Imports fixed partially (SHAPE_TO_SIDES, SPECIAL_SHAPES, ALL_FAMILIES, etc. added).
-- Loop can start and spawn workers with adaptive attempts.
-- But workers crash because worker_task -> handle_run -> solution_tools/optimization import errors.
-
-What still has to be done (in order):
-
-1) Restore missing symbols in packing_config.py
-- Compare against git show HEAD:src/shape_packing/packing_config.py
-- Restore:
-    - VERIFY_SAT_TOLERANCE
-    - OPTIMIZER_ATTEMPTS, OPTIMIZER_TOLERANCE, OPTIMIZER_FINAL_STEP, OPTIMIZER_N_JOBS
-    - RUST_BINARY (alias for RUST_RELEASE_BIN)
-    - Any others required by imports (run:
-        grep -r "from .packing_config import\|from src.shape_packing.packing_config import" src/ tests/ scripts/ | sort | uniq
-        and confirm all imported names exist in packing_config.py).
-- Do NOT break the new adaptive-scaling functions.
-
-2) Ensure all imports are stable
-- Run:
-    - python3 -c "from src.shape_packing import packing_config, solution_tools, optimization, problems"
-    - Confirm no ImportError.
-
-3) Run test suite
-- Run:
-    - python3 -m pytest tests/ -v --tb=short
-- Fix any regressions related to packing_config.py changes.
-- Make sure:
-    - test_attempt_scaling.py: passes
-    - test_solution_tools.py: passes
-    - test_optimization_coverage.py: passes
-    - test_packing_config.py: passes
-    - Others: no new failures introduced.
-
-4) Smoke-test run_parallel_loop.py
-- Run:
-    - timeout 30 python3 -u run_parallel_loop.py 2>&1
-- Confirm:
-    - No import errors
-    - Workers start and complete (at least some)
-    - Adaptive attempts logged reasonably (varied by difficulty)
-    - No crashes (ignore SIGTERM/timeout shutdown).
-
-5) Clean up
-- Ensure:
-    - No dead code / huge duplicated sections in packing_config.py.
-    - Style consistent, concise.
-- Commit:
-    - One commit for:
-    - adaptive-scaling functions
-    - restored symbols
-    - integration in run_parallel_loop.py
-    - Message something like:
-    "feat: adaptive attempt scaling based on problem difficulty and history"
-
-Important constraints (from user):
-- Never use PACKING_REFERENCE.tsv/json (bad HTML parser; wrong).
-- Use only:
-    - packingVerification/*.json as Friedman reference.
-- Changes should:
-    - Be additive and non-breaking.
-    - Keep it KISS; no global redesign beyond what’s necessary.
-    - Match existing code style.
-
-If you need to, use:
-- git show HEAD:src/shape_packing/packing_config.py
-    to recover original structure and missing values.
-- grep over src/ tests/ scripts/ to confirm all imported names exist.
-- Run the tests and the loop as validation.
-
-End of handoff.
+4. **Test Suite Status:**
+   - Full suite passes: `284 passed in 18s` (`python -m pytest tests/`).

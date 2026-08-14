@@ -68,10 +68,46 @@ Because the orchestrator writes the results safely to the disk on the cluster, y
 ---
 
 ## 📂 Core Files
-- `run_parallel_loop.py`: The new cluster-aware multiprocess orchestrator.
+- `run_parallel_loop.py`: The cluster-aware multiprocess orchestrator.
+- `scripts/export_records.py`: The world records exporter and Erich Friedman submission bundle packager.
+- `src/shape_packing/records_exporter.py`: Core record discovery, geometric validation, and packaging engine.
 - `mill_runner.sub`: The SLURM job submission script.
-- `src/shape_packing/cli.py`: The command-line interface. (Updated with `--no-commit` and `--json-out` flags to support silent worker isolation).
+- `src/shape_packing/cli.py`: The command-line interface.
 - `packer_rs/`: The compiled Rust solver that actually does the heavy lifting.
+
+---
+
+## 🏆 Exporting Records for Erich Friedman Submission
+
+When research loops discover new best packings that beat Erich Friedman's published world benchmarks (`packingVerification/*.json`), use the Records Exporter CLI:
+
+```bash
+# Audit all solutions, verify geometries, and export complete submission bundle
+python scripts/export_records.py --clean
+
+# Export only a specific family (e.g. dominpen, dominhex, squincir)
+python scripts/export_records.py --family dominpen
+
+# Export with custom minimum improvement delta (e.g. 1e-4)
+python scripts/export_records.py --min-improvement 1e-4
+```
+
+### Generated Submission Kit Layout (`records/`)
+```text
+records/
+├── summary.md                    # Markdown summary table of all broken records
+├── manifest.json                 # Structured JSON index of records & metrics
+├── submissions/                  # Ready-to-send email drafts grouped per family
+│   ├── dominpen_submission.md
+│   ├── dominhex_submission.md
+│   └── ...
+└── <family_code>/                # e.g., dominpen, dominhex, squincir
+    └── <N>_<inner>_in_<container>/ # e.g., 21_DOMINO_in_5
+        ├── solution.json         # Raw solver output
+        ├── render.png            # High-res tight-cropped render (no extra margins)
+        ├── coordinates.txt       # Plaintext table of piece centers & vertices
+        └── verification.txt      # SAT overlap & container containment certificate
+```
 
 ---
 
