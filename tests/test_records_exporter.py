@@ -34,3 +34,23 @@ def test_get_family_info():
 
     code, url = get_family_info("4", "CIRCLE")
     assert code == "squincir"
+
+def test_find_all_records_discovery(tmp_path):
+    p_dir = tmp_path / "results" / "21_DOMINO_in_5" / "20260806_230206"
+    p_dir.mkdir(parents=True)
+    sol_file = p_dir / "solution.json"
+    sol_file.write_text(json.dumps({
+        "N": 21,
+        "inner_token": "DOMINO",
+        "container_token": "5",
+        "S": 4.603855,
+        "final_metric": 5.412156,
+        "values": [0.0] * 63
+    }))
+
+    from src.shape_packing.records_exporter import find_all_records
+    records = find_all_records(str(tmp_path / "results"), min_improvement=1e-5)
+    assert len(records) >= 1
+    rec = next(r for r in records if r.problem == "21_DOMINO_in_5")
+    assert rec.N == 21
+    assert rec.improvement < -0.1
