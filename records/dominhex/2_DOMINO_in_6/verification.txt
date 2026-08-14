@@ -1,0 +1,18 @@
+================================================================================
+GEOMETRIC VALIDATION CERTIFICATE
+================================================================================
+Problem: 2_DOMINO_in_6
+Verified At: 2026-08-14T14:37:17Z
+Validation Status: VALID
+Result Metric: 1.519671772343
+
+1. Geometry Checks:
+   - Piece Count: 2
+   - Geometric Valid Flag: True
+
+2. Collision Check (Separating Axis Theorem):
+   - Pairwise Overlap Status: PASS (0 overlaps)
+
+3. Verification Messages:
+   - Valid configuration, metric s=1.519671772342637
+================================================================================
