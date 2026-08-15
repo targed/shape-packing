@@ -389,8 +389,20 @@ def export_records(
             f.write(v_txt)
 
         # 5. Render tight-cropped render.png
-        render_path = os.path.join(cand_out_dir, "render.png")
-        render_solution(cand.solution_path, render_path, crop_mode="tight", dpi=dpi)
+        render_path_full = os.path.join(cand_out_dir, "renderFull.png")
+        render_solution(cand.solution_path, render_path_full, crop_mode="tight", dpi=dpi)
+        
+        render_path_240 = os.path.join(cand_out_dir, "render240x240.png")
+        render_solution(cand.solution_path, render_path_240, crop_mode="tight", size_px=240)
+        
+        render_path_243 = os.path.join(cand_out_dir, "render243x243.png")
+        render_solution(cand.solution_path, render_path_243, crop_mode="tight", size_px=243)
+        
+        render_path_245 = os.path.join(cand_out_dir, "render245x245.png")
+        render_solution(cand.solution_path, render_path_245, crop_mode="tight", size_px=245)
+        
+        render_path_250 = os.path.join(cand_out_dir, "render250x250.png")
+        render_solution(cand.solution_path, render_path_250, crop_mode="tight", size_px=250)
 
         exported.append(cand)
         if not quiet:
