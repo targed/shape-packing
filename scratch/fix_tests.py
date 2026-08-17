@@ -17,17 +17,21 @@ for file_name in ["test_geometry.py", "test_geometry_coverage.py", "test_geometr
     
     # GeoConfig
     content = content.replace("unit_container_apothem", "unit_container_radii")
-    content = content.replace("g.unit_container_radii == 1.0", "np.all(g.unit_container_radii == 1.0)")
+    if "np.all(g.unit_container_radii == 1.0)" not in content:
+        content = content.replace("g.unit_container_radii == 1.0", "np.all(g.unit_container_radii == 1.0)")
     
     # Fix apothem = 1.0 -> edge_radii = np.ones(...)
     # In tests, container vectors is usually length 4
     content = content.replace("apothem = 1.0", "edge_radii = np.ones(4)")
     content = content.replace("apothem = 0.5", "edge_radii = np.full(4, 0.5)")
-    content = content.replace("unit_container_radii = 1.0", "unit_container_radii = np.ones(4)")
+    if "unit_container_radii = np.ones(4)" not in content:
+        content = content.replace("unit_container_radii = 1.0", "unit_container_radii = np.ones(4)")
     
     # Fix argument passing
     content = content.replace("unit_container_vectors, apothem", "unit_container_vectors, edge_radii")
     content = content.replace("cv, apothem", "cv, edge_radii")
+    content = content.replace("unit_container_vectors, unit_container_apothem", "unit_container_vectors, edge_radii")
+    content = content.replace("container_vectors, apothem", "container_vectors, edge_radii")
 
     with open(path, "w") as f:
         f.write(content)

@@ -53,7 +53,7 @@ class TestGeoConfig:
         assert g.N == 2
         assert g.nsi == 3
         assert g.nsc == 4
-        assert np.all(g.unit_container_radii == 1.0)
+        assert np.all(np.all(g.unit_container_radii == 1.0))
 
     def test_slots_enforcement(self):
         g = GeoConfig(
