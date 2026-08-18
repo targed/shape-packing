@@ -40,6 +40,7 @@ from .packing_config import (
     RENDER_CONTAINER_COLOR,
     RENDER_BG_COLOR,
     RENDER_ALIGN_CONTAINER,
+    get_family_colors,
 )
 
 TOLERANCE: float = VERIFY_SAT_TOLERANCE  # Re-exported for backward compatibility
@@ -461,14 +462,17 @@ def render_solution(
     pad_px: float = RENDER_PAD_PX,
     align_container: bool = RENDER_ALIGN_CONTAINER,
     container_color: str = RENDER_CONTAINER_COLOR,
-    inner_face_color: str = RENDER_INNER_FACE_COLOR,
+    inner_face_color: Optional[str] = None,
     inner_edge_color: str = RENDER_INNER_EDGE_COLOR,
-    bg_color: Optional[str] = RENDER_BG_COLOR,
+    container_face_color: Optional[str] = None,
+    bg_color: Optional[str] = None,
     show_axes: bool = False,
     show_grid: bool = False,
 ) -> None:
     """
     Render a solution JSON to a PNG with configurable resolution, line widths, crop modes, and styling.
+    Automatically applies authentic shape-family color schemes from Erich Friedman's benchmark pages
+    unless explicitly overridden.
     """
     try:
         import matplotlib
@@ -480,6 +484,15 @@ def render_solution(
 
     sol = load_solution(sol_path)
     data = to_plot_data(sol, align_container=align_container)
+
+    # Auto-resolve colors from shape family configuration if not explicitly specified
+    fam_colors = get_family_colors(sol.inner_token, sol.container_token)
+    if inner_face_color is None:
+        inner_face_color = fam_colors.get("inner", RENDER_INNER_FACE_COLOR)
+    if container_face_color is None:
+        container_face_color = fam_colors.get("container", RENDER_BG_COLOR or "#FFFFFF")
+    if bg_color is None:
+        bg_color = fam_colors.get("container", RENDER_BG_COLOR or "#FFFFFF")
 
     target_w = width_px or size_px
     target_h = height_px or size_px
@@ -500,18 +513,31 @@ def render_solution(
     is_container_circle = sol.container_token.upper() in ["CIRCLE", "CIR"]
 
     if is_container_circle:
-        c = plt.Circle((0, 0), sol.S, color=container_color, fill=False, linewidth=container_lw)
-        ax.add_patch(c)
+        if container_face_color and container_face_color.lower() != "none":
+            c = plt.Circle((0, 0), sol.S, facecolor=container_face_color, edgecolor=container_color, linewidth=container_lw)
+            ax.add_patch(c)
+        else:
+            c = plt.Circle((0, 0), sol.S, color=container_color, fill=False, linewidth=container_lw)
+            ax.add_patch(c)
     else:
         container = list(data["container_vertices"]) + [data["container_vertices"][0]]
-        ax.plot(
-            [v[0] for v in container],
-            [v[1] for v in container],
-            color=container_color,
-            linewidth=container_lw,
-            solid_capstyle="projecting",
-            solid_joinstyle="miter",
-        )
+        if container_face_color and container_face_color.lower() != "none":
+            ax.fill(
+                [v[0] for v in container],
+                [v[1] for v in container],
+                facecolor=container_face_color,
+                edgecolor=container_color,
+                linewidth=container_lw,
+            )
+        else:
+            ax.plot(
+                [v[0] for v in container],
+                [v[1] for v in container],
+                color=container_color,
+                linewidth=container_lw,
+                solid_capstyle="projecting",
+                solid_joinstyle="miter",
+            )
 
     if is_inner_circle:
         for center in data["centers"]:
@@ -523,7 +549,7 @@ def render_solution(
             ax.fill(
                 [v[0] for v in poly_plot],
                 [v[1] for v in poly_plot],
-                inner_face_color,
+                facecolor=inner_face_color,
                 edgecolor=inner_edge_color,
                 linewidth=inner_lw,
             )

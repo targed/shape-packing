@@ -72,6 +72,97 @@ RENDER_BG_COLOR: Optional[str] = "#FFFFFF"
 RENDER_ALIGN_CONTAINER: bool = True
 ANALYSIS_PLOT_DPI: int = 200
 
+FAMILY_COLORS_PATH: str = os.path.join(os.path.dirname(__file__), "family_colors.json")
+_FAMILY_COLORS_CACHE: Optional[Dict[str, Dict[str, str]]] = None
+
+_FAMILY_TOKEN_NAME_MAP = {
+    "3": "tri",
+    "4": "squ",
+    "5": "pen",
+    "6": "hex",
+    "7": "hep",
+    "8": "oct",
+    "9": "non",
+    "10": "dec",
+    "triangle": "tri",
+    "square": "squ",
+    "pentagon": "pen",
+    "hexagon": "hex",
+    "heptagon": "hep",
+    "octagon": "oct",
+    "nonagon": "non",
+    "decagon": "dec",
+    "circle": "cir",
+    "cir": "cir",
+    "tan": "tan",
+    "domino": "dom",
+    "dom": "dom",
+    "l": "l",
+    "l-tromino": "l",
+    "el": "el",
+    "ttt": "ttt",
+}
+
+
+def _normalize_family_token(token: str) -> str:
+    s = str(token).strip().lower()
+    return _FAMILY_TOKEN_NAME_MAP.get(s, s)
+
+
+def load_family_colors(json_path: Optional[str] = None) -> Dict[str, Dict[str, str]]:
+    """Load the shape family colors configuration mapping from JSON."""
+    global _FAMILY_COLORS_CACHE
+    if json_path is None and _FAMILY_COLORS_CACHE is not None:
+        return _FAMILY_COLORS_CACHE
+
+    target_path = json_path or FAMILY_COLORS_PATH
+    if os.path.exists(target_path):
+        import json
+        with open(target_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            colors = {str(k).strip().lower(): v for k, v in data.items()}
+            if json_path is None:
+                _FAMILY_COLORS_CACHE = colors
+            return colors
+    return {}
+
+
+def get_family_colors(
+    inner_or_family: str,
+    container: Optional[str] = None,
+    json_path: Optional[str] = None,
+) -> Dict[str, str]:
+    """
+    Get inner shape face color and container color for a given family or inner/container tokens.
+    Returns: {'inner': str, 'container': str}
+    """
+    colors_map = load_family_colors(json_path)
+
+    if container is not None:
+        inner_token = _normalize_family_token(str(inner_or_family))
+        container_token = _normalize_family_token(str(container))
+        family_key = f"{inner_token}in{container_token}"
+    else:
+        raw = str(inner_or_family).strip()
+        if "_in_" in raw:
+            parts = raw.split("_in_")
+            inner_part = parts[0].split("_")[-1]
+            container_part = parts[1]
+            inner_token = _normalize_family_token(inner_part)
+            container_token = _normalize_family_token(container_part)
+            family_key = f"{inner_token}in{container_token}"
+        else:
+            family_key = raw.lower()
+
+    if family_key in colors_map:
+        return colors_map[family_key]
+
+    return {
+        "inner": RENDER_INNER_FACE_COLOR,
+        "container": RENDER_BG_COLOR or "#FFFFFF",
+    }
+
+
 # =====================
 # Loop / runtime behavior
 # =====================

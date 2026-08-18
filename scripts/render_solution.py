@@ -188,10 +188,16 @@ def main() -> None:
         help="Hex/named color for container stroke (e.g. '#000000')",
     )
     parser.add_argument(
+        "--container-face-color",
+        type=str,
+        default=None,
+        help="Hex/named color for container fill (e.g. '#FFF3E6', '#FFFFFF')",
+    )
+    parser.add_argument(
         "--face-color",
         type=str,
         default=None,
-        help="Hex/named color for inner shape fill (e.g. '#CCCCCC')",
+        help="Hex/named color for inner shape fill (e.g. '#CCCCCC', '#FED4D1')",
     )
     parser.add_argument(
         "--edge-color",
@@ -220,6 +226,7 @@ def main() -> None:
     if args.pad_px is not None: render_opts["pad_px"] = args.pad_px
     if args.align_container is False: render_opts["align_container"] = False
     if args.container_color is not None: render_opts["container_color"] = args.container_color
+    if args.container_face_color is not None: render_opts["container_face_color"] = args.container_face_color
     if args.face_color is not None: render_opts["inner_face_color"] = args.face_color
     if args.edge_color is not None: render_opts["inner_edge_color"] = args.edge_color
     if args.bg_color is not None: render_opts["bg_color"] = args.bg_color

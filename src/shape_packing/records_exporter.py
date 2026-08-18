@@ -388,7 +388,10 @@ def export_records(
         with open(os.path.join(cand_out_dir, "verification.txt"), "w", encoding="utf-8") as f:
             f.write(v_txt)
 
-        # 5. Render tight-cropped render.png
+        # 5. Render tight-cropped render.png & resolution variants
+        render_path = os.path.join(cand_out_dir, "render.png")
+        render_solution(cand.solution_path, render_path, crop_mode="tight", dpi=dpi)
+
         render_path_full = os.path.join(cand_out_dir, "renderFull.png")
         render_solution(cand.solution_path, render_path_full, crop_mode="tight", dpi=dpi)
         
