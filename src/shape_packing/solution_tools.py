@@ -274,8 +274,8 @@ def verify_solution(
     nsc, _, unit_container_vectors, unit_container_radii = get_shape_geometry(sol.container_token)
     S = sol.S
 
-    is_inner_circle = sol.inner_token.upper() in ["CIRCLE", "CIR"]
-    is_container_circle = sol.container_token.upper() in ["CIRCLE", "CIR"]
+    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
+    is_container_circle = sol.container_token.upper() in ("CIRCLE", "CIR")
 
     # 1. Metric scaling verification
     calc_metric = compute_friedman_metric(S, sol.inner_token, sol.container_token)
@@ -509,8 +509,8 @@ def render_solution(
         fig.patch.set_facecolor(bg_color)
         ax.set_facecolor(bg_color)
 
-    is_inner_circle = sol.inner_token.upper() in ["CIRCLE", "CIR"]
-    is_container_circle = sol.container_token.upper() in ["CIRCLE", "CIR"]
+    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
+    is_container_circle = sol.container_token.upper() in ("CIRCLE", "CIR")
 
     if is_container_circle:
         if container_face_color and container_face_color.lower() != "none":
