@@ -91,27 +91,30 @@ def find_all_records(
     # Map problem -> best (S, run_dir, solution_path, sol_obj)
     best_per_problem: Dict[str, Tuple[float, str, str, Any]] = {}
 
-    for folder in os.listdir(results_dir):
-        p_path = os.path.join(results_dir, folder)
-        if not os.path.isdir(p_path):
-            continue
-
-        for run in os.listdir(p_path):
-            run_dir = os.path.join(p_path, run)
-            sol_path = os.path.join(run_dir, "solution.json")
-            if not os.path.isfile(sol_path):
+    with os.scandir(results_dir) as entries:
+        for folder_entry in entries:
+            if not folder_entry.is_dir():
                 continue
 
-            try:
-                sol = load_solution(sol_path)
-            except Exception:
-                continue
+            with os.scandir(folder_entry.path) as run_entries:
+                for run_entry in run_entries:
+                    if not run_entry.is_dir():
+                        continue
 
-            inner_u = str(sol.inner_token).upper()
-            container_u = str(sol.container_token).upper()
-            p_token = f"{sol.N}_{inner_u}_in_{container_u}"
-            if p_token not in best_per_problem or sol.S < best_per_problem[p_token][0]:
-                best_per_problem[p_token] = (sol.S, run_dir, sol_path, sol)
+                    sol_path = os.path.join(run_entry.path, "solution.json")
+                    if not os.path.isfile(sol_path):
+                        continue
+
+                    try:
+                        sol = load_solution(sol_path)
+                    except Exception:
+                        continue
+
+                    inner_u = str(sol.inner_token).upper()
+                    container_u = str(sol.container_token).upper()
+                    p_token = f"{sol.N}_{inner_u}_in_{container_u}"
+                    if p_token not in best_per_problem or sol.S < best_per_problem[p_token][0]:
+                        best_per_problem[p_token] = (sol.S, run_entry.path, sol_path, sol)
 
     candidates: List[RecordCandidate] = []
     for p_token, (best_s, run_dir, sol_path, sol) in best_per_problem.items():
