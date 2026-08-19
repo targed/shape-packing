@@ -442,3 +442,11 @@ class TestRenderSolution:
         img = Image.open(out_png)
         assert img.size == (243, 243)
 
+    def test_render_import_error(self, sample_solution_values, monkeypatch, capsys):
+        from shape_packing.solution_tools import render_solution
+        import sys
+        monkeypatch.setitem(sys.modules, "matplotlib", None)
+        render_solution(sample_solution_values, "dummy.png")
+        captured = capsys.readouterr()
+        assert "[WARN] matplotlib is not installed" in captured.out
+

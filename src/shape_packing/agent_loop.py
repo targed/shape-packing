@@ -49,7 +49,7 @@ from __future__ import annotations
 import csv
 import json
 import os
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from collections import Counter
 from typing import List, Dict, Optional, Tuple, Any
 

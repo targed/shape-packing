@@ -1283,3 +1283,29 @@ class TestChooseProblemGeneralException:
             exclude_problems=set(),
         )
         assert p == "8_3_in_5"
+
+
+class TestCalculateCandidateScoreValueError:
+    def test_invalid_best_value_handled_gracefully(self):
+        from shape_packing.agent_loop import _calculate_candidate_score, ProblemSelectionConfig
+        from collections import Counter
+
+        item = {
+            "problem": "3_3_in_4",
+            "status": "best_known",
+            "best_value": "invalid_not_a_float",
+            "density": 0.5,
+        }
+        score = _calculate_candidate_score(
+            item=item,
+            p_str="3_3_in_4",
+            base_density=0.5,
+            recent_counts=Counter(),
+            our_best={},
+            problem_runs={},
+            family_runs={},
+            problem_last_k={},
+            config=ProblemSelectionConfig(),
+        )
+        assert score is not None
+        assert isinstance(score, float)

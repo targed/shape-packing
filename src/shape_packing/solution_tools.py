@@ -17,7 +17,6 @@ import os
 import numpy as np
 from dataclasses import dataclass
 from typing import Any, List, Optional, Tuple
-import subprocess
 
 from .geometry import (
     polygon_normals,
