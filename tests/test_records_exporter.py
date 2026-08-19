@@ -124,7 +124,43 @@ from src.shape_packing.records_exporter import (
     generate_email_drafts,
 )
 
-def test_manifest_and_summary_generation(tmp_path):
+def test_generate_manifest(tmp_path):
+    cand1 = RecordCandidate(
+        problem="21_DOMINO_in_5",
+        N=21,
+        inner_token="DOMINO",
+        container_token="5",
+        solution_path="mock/path/1",
+        run_dir="mock/dir/1",
+        S=4.603855,
+        metric=5.412156,
+        friedman_best=5.553080,
+        improvement=-0.140924,
+    )
+    cand2 = RecordCandidate(
+        problem="2_DOMINO_in_6",
+        N=2,
+        inner_token="DOMINO",
+        container_token="6",
+        solution_path="mock/path/2",
+        run_dir="mock/dir/2",
+        S=1.519672,
+        metric=1.519672,
+        friedman_best=1.519700,
+        improvement=-0.000028,
+    )
+    manifest_path = generate_manifest([cand1, cand2], str(tmp_path))
+    assert os.path.exists(manifest_path)
+    with open(manifest_path, encoding="utf-8") as f:
+        data = json.load(f)
+    assert data["total_records"] == 2
+    assert "generated_at" in data
+    assert data["records"][0]["problem"] == "21_DOMINO_in_5"
+    assert data["records"][0]["family_code"] == "dominpen"
+    assert data["records"][1]["problem"] == "2_DOMINO_in_6"
+    assert data["records"][1]["family_code"] == "dominhex"
+
+def test_generate_summary_markdown(tmp_path):
     cand = RecordCandidate(
         problem="21_DOMINO_in_5",
         N=21,
@@ -137,25 +173,72 @@ def test_manifest_and_summary_generation(tmp_path):
         friedman_best=5.553080,
         improvement=-0.140924,
     )
-    manifest_path = generate_manifest([cand], str(tmp_path))
-    assert os.path.exists(manifest_path)
-    with open(manifest_path) as f:
-        data = json.load(f)
-    assert data["total_records"] == 1
-    assert data["records"][0]["problem"] == "21_DOMINO_in_5"
-
     summary_path = generate_summary_markdown([cand], str(tmp_path))
     assert os.path.exists(summary_path)
-    with open(summary_path) as f:
+    with open(summary_path, encoding="utf-8") as f:
         md = f.read()
-    assert "21_DOMINO_in_5" in md
+    assert "# Shape Packing World Records Summary" in md
+    assert "Total Verified Record Improvements:** 1" in md
+    assert "| `21_DOMINO_in_5` |" in md
+    assert "| [`dominpen`](https://erich-friedman.github.io/packing/dominpen/index.html) |" in md
+    assert "5.412156" in md
     assert "-0.140924" in md
 
-    drafts = generate_email_drafts([cand], str(tmp_path))
-    assert len(drafts) == 1
-    with open(drafts[0]) as f:
-        email = f.read()
-    assert "dominpen" in email
+def test_generate_email_drafts(tmp_path):
+    cand1 = RecordCandidate(
+        problem="21_DOMINO_in_5",
+        N=21,
+        inner_token="DOMINO",
+        container_token="5",
+        solution_path="mock/path/1",
+        run_dir="mock/dir/1",
+        S=4.603855,
+        metric=5.412156,
+        friedman_best=5.553080,
+        improvement=-0.140924,
+    )
+    cand2 = RecordCandidate(
+        problem="22_DOMINO_in_5",
+        N=22,
+        inner_token="DOMINO",
+        container_token="5",
+        solution_path="mock/path/2",
+        run_dir="mock/dir/2",
+        S=4.708042,
+        metric=5.534635,
+        friedman_best=5.645510,
+        improvement=-0.110875,
+    )
+    cand3 = RecordCandidate(
+        problem="2_DOMINO_in_6",
+        N=2,
+        inner_token="DOMINO",
+        container_token="6",
+        solution_path="mock/path/3",
+        run_dir="mock/dir/3",
+        S=1.519672,
+        metric=1.519672,
+        friedman_best=1.519700,
+        improvement=-0.000028,
+    )
+    draft_files = generate_email_drafts([cand1, cand2, cand3], str(tmp_path))
+    assert len(draft_files) == 2  # 2 families: dominpen, dominhex
+    
+    # Check dominpen draft
+    pen_draft = next(d for d in draft_files if "dominpen_submission.md" in d)
+    with open(pen_draft, encoding="utf-8") as f:
+        pen_content = f.read()
+    assert "# Submission Draft: dominpen" in pen_content
+    assert "To:** Erich Friedman" in pen_content
+    assert "| 21 | 5.412156 | 5.553080 | -0.140924 |" in pen_content
+    assert "| 22 | 5.534635 | 5.645510 | -0.110875 |" in pen_content
+
+    # Check dominhex draft
+    hex_draft = next(d for d in draft_files if "dominhex_submission.md" in d)
+    with open(hex_draft, encoding="utf-8") as f:
+        hex_content = f.read()
+    assert "# Submission Draft: dominhex" in hex_content
+    assert "| 2 | 1.519672 | 1.519700 | -0.000028 |" in hex_content
 
 from src.shape_packing.records_exporter import export_records
 
