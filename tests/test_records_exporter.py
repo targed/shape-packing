@@ -278,11 +278,12 @@ def test_export_records_e2e(tmp_path):
     assert os.path.exists(out_dir / "manifest.json")
     assert os.path.exists(out_dir / "summary.md")
     assert os.path.exists(out_dir / "dominpen" / "21.png")
+    assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "21.png")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "solution.json")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "coordinates.txt")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "verification.txt")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "render.png")
     
     # Verify exact resolution of dominpen (250x237)
-    img = Image.open(out_dir / "dominpen" / "21.png")
+    img = Image.open(out_dir / "dominpen" / "21_DOMINO_in_5" / "21.png")
     assert img.size == (250, 237)
