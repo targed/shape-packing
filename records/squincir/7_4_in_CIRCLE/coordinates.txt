@@ -5,9 +5,9 @@ Problem: 7_4_in_CIRCLE
 Family: squincir (https://erich-friedman.github.io/packing/squincir/index.html)
 Inner Shape: 4
 Container: CIRCLE
-Solver Circumradius S: 2.549516168531
-Reported Metric s: 1.802780171513
-Previous Friedman Benchmark: 1.802800000000
+Reported Side Length / Radius s (5 dec): 1.80278+
+Exact Metric s: 1.802780171513
+Previous Friedman Benchmark: 1.80280+ (exact: 1.802800000000)
 Improvement Delta: -0.000019828487 (-0.001%)
 
 Pieces (7 total):

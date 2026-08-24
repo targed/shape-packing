@@ -57,6 +57,7 @@ def test_get_family_colors_fallback():
     assert "container" in c
 
 def test_render_solution_applies_family_colors(tmp_path):
+    from PIL import Image
     sol_file = tmp_path / "solution.json"
     sol_file.write_text(json.dumps({
         "N": 2,
@@ -70,3 +71,6 @@ def test_render_solution_applies_family_colors(tmp_path):
     render_solution(str(sol_file), str(out_png))
     assert os.path.exists(out_png)
     assert os.path.getsize(out_png) > 0
+    img = Image.open(out_png)
+    # dominpen default resolution is 250x237
+    assert img.size == (250, 237)

@@ -5,9 +5,9 @@ Problem: 6_8_in_3
 Family: octintri (https://erich-friedman.github.io/packing/octintri/index.html)
 Inner Shape: 8
 Container: 3
-Solver Circumradius S: 4.116501160858
-Reported Metric s: 9.315779776455
-Previous Friedman Benchmark: 9.315800000000
+Reported Side Length / Radius s (5 dec): 9.31578+
+Exact Metric s: 9.315779776455
+Previous Friedman Benchmark: 9.31580+ (exact: 9.315800000000)
 Improvement Delta: -0.000020223545 (-0.000%)
 
 Pieces (6 total):

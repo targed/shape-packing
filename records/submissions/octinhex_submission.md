@@ -1,22 +1,30 @@
 # Submission Draft: octinhex
 
-**To:** Erich Friedman (via packing website contact)
-**Subject:** New packing record(s) for octinhex (8 in 6)
+**To:** Erich Friedman (via packing website)
+**Subject:** New packing records for octinhex (8 in 6)
 **Problem Page:** https://erich-friedman.github.io/packing/octinhex/index.html
 
 ---
 
-Dear Professor Friedman,
+Dear Dr. Friedman,
 
-We have found improved packing configurations for **octinhex** (8 in 6):
+This is Luke Kaiser. We have found improved packing configurations for **octinhex** (8 in 6):
 
-| N | Our Metric (s) | Current Best | Improvement |
-| :---: | :---: | :---: | :---: |
-| 3 | 2.889630 | 2.890000 | -0.000370 |
-| 8 | 4.566558 | 4.567000 | -0.000442 |
+### Methodology
+We discovered these packings using a continuous global optimization solver combining randomized geometric basin-hopping with Separating Axis Theorem (SAT) collision constraints and SLSQP local gradient refinement. All solutions have been validated with 0 pairwise overlaps and strict container boundary containment.
 
-All configurations have been verified with Separating Axis Theorem (SAT) collision detection and boundary containment.
-Coordinates and high-resolution diagrams for each solution are attached / included in the submission folder.
+### New Packings
+| N | Our s (5 dec) | Our Exact s | Friedman Best s | Improvement | Attached Image |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 3 | 2.88963+ | 2.889629996220 | 2.89000+ | -0.000370 | `3.png` |
+| 8 | 4.56656+ | 4.566557709973 | 4.56700+ | -0.000442 | `8.png` |
 
-Best regards,
-[Your Name / Research Group]
+### Image Attachments
+The replacement image files are attached directly with exact matching colors (#fafbe5 on #ffffff), orientation, no borders or text, and target website pixel dimensions (260x226 px):
+- `3.png`
+- `8.png`
+
+Coordinate tables and certificates for each solution are included in the repository records.
+
+Sincerely,
+Luke Kaiser

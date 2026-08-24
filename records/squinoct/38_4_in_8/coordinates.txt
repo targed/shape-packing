@@ -5,9 +5,9 @@ Problem: 38_4_in_8
 Family: squinoct (https://erich-friedman.github.io/packing/squinoct/index.html)
 Inner Shape: 4
 Container: 8
-Solver Circumradius S: 5.581354872462
-Reported Metric s: 3.020607490508
-Previous Friedman Benchmark: 3.021130000000
+Reported Side Length / Radius s (5 dec): 3.02061+
+Exact Metric s: 3.020607490508
+Previous Friedman Benchmark: 3.02113+ (exact: 3.021130000000)
 Improvement Delta: -0.000522509492 (-0.017%)
 
 Pieces (38 total):

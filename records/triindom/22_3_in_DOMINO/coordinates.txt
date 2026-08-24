@@ -5,9 +5,9 @@ Problem: 22_3_in_DOMINO
 Family: triindom (https://erich-friedman.github.io/packing/triindom/index.html)
 Inner Shape: 3
 Container: DOMINO
-Solver Circumradius S: 4.190705594852
-Reported Metric s: 2.419505003282
-Previous Friedman Benchmark: 2.422120000000
+Reported Side Length / Radius s (5 dec): 2.41951+
+Exact Metric s: 2.419505003282
+Previous Friedman Benchmark: 2.42212+ (exact: 2.422120000000)
 Improvement Delta: -0.002614996718 (-0.108%)
 
 Pieces (22 total):

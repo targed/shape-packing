@@ -131,10 +131,10 @@ def get_family_colors(
     inner_or_family: str,
     container: Optional[str] = None,
     json_path: Optional[str] = None,
-) -> Dict[str, str]:
+) -> Dict[str, Any]:
     """
-    Get inner shape face color and container color for a given family or inner/container tokens.
-    Returns: {'inner': str, 'container': str}
+    Get inner shape face color, container color, and target pixel dimensions for a given family.
+    Returns: {'inner': str, 'container': str, 'width': int, 'height': int}
     """
     colors_map = load_family_colors(json_path)
 
@@ -155,11 +155,19 @@ def get_family_colors(
             family_key = raw.lower()
 
     if family_key in colors_map:
-        return colors_map[family_key]
+        cfg = colors_map[family_key]
+        return {
+            "inner": cfg.get("inner", RENDER_INNER_FACE_COLOR),
+            "container": cfg.get("container", RENDER_BG_COLOR or "#FFFFFF"),
+            "width": cfg.get("width", 240),
+            "height": cfg.get("height", 240),
+        }
 
     return {
         "inner": RENDER_INNER_FACE_COLOR,
         "container": RENDER_BG_COLOR or "#FFFFFF",
+        "width": 240,
+        "height": 240,
     }
 
 

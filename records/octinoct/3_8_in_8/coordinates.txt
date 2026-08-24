@@ -5,9 +5,9 @@ Problem: 3_8_in_8
 Family: octinoct (https://erich-friedman.github.io/packing/octinoct/index.html)
 Inner Shape: 8
 Container: 8
-Solver Circumradius S: 2.171573234659
-Reported Metric s: 2.171573234659
-Previous Friedman Benchmark: 2.171600000000
+Reported Side Length / Radius s (5 dec): 2.17157+
+Exact Metric s: 2.171573234659
+Previous Friedman Benchmark: 2.17160+ (exact: 2.171600000000)
 Improvement Delta: -0.000026765341 (-0.001%)
 
 Pieces (3 total):

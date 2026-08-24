@@ -5,9 +5,9 @@ Problem: 6_6_in_3
 Family: hexintri (https://erich-friedman.github.io/packing/hexintri/index.html)
 Inner Shape: 6
 Container: 3
-Solver Circumradius S: 3.983128129500
-Reported Metric s: 6.898980293351
-Previous Friedman Benchmark: 6.899000000000
+Reported Side Length / Radius s (5 dec): 6.89898+
+Exact Metric s: 6.898980293351
+Previous Friedman Benchmark: 6.89900+ (exact: 6.899000000000)
 Improvement Delta: -0.000019706649 (-0.000%)
 
 Pieces (6 total):

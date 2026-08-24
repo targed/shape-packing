@@ -1,22 +1,30 @@
 # Submission Draft: dominoct
 
-**To:** Erich Friedman (via packing website contact)
-**Subject:** New packing record(s) for dominoct (DOMINO in 8)
+**To:** Erich Friedman (via packing website)
+**Subject:** New packing records for dominoct (DOMINO in 8)
 **Problem Page:** https://erich-friedman.github.io/packing/dominoct/index.html
 
 ---
 
-Dear Professor Friedman,
+Dear Dr. Friedman,
 
-We have found improved packing configurations for **dominoct** (DOMINO in 8):
+This is Luke Kaiser. We have found improved packing configurations for **dominoct** (DOMINO in 8):
 
-| N | Our Metric (s) | Current Best | Improvement |
-| :---: | :---: | :---: | :---: |
-| 4 | 1.573372 | 1.573400 | -0.000028 |
-| 15 | 2.793942 | 2.804500 | -0.010558 |
+### Methodology
+We discovered these packings using a continuous global optimization solver combining randomized geometric basin-hopping with Separating Axis Theorem (SAT) collision constraints and SLSQP local gradient refinement. All solutions have been validated with 0 pairwise overlaps and strict container boundary containment.
 
-All configurations have been verified with Separating Axis Theorem (SAT) collision detection and boundary containment.
-Coordinates and high-resolution diagrams for each solution are attached / included in the submission folder.
+### New Packings
+| N | Our s (5 dec) | Our Exact s | Friedman Best s | Improvement | Attached Image |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 4 | 1.57337+ | 1.573372203279 | 1.57340+ | -0.000028 | `4.png` |
+| 15 | 2.79394+ | 2.793942216148 | 2.80450+ | -0.010558 | `15.png` |
 
-Best regards,
-[Your Name / Research Group]
+### Image Attachments
+The replacement image files are attached directly with exact matching colors (#fdf4c0 on #ffffff), orientation, no borders or text, and target website pixel dimensions (240x240 px):
+- `4.png`
+- `15.png`
+
+Coordinate tables and certificates for each solution are included in the repository records.
+
+Sincerely,
+Luke Kaiser

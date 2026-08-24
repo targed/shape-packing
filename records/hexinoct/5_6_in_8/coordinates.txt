@@ -5,9 +5,9 @@ Problem: 5_6_in_8
 Family: hexinoct (https://erich-friedman.github.io/packing/hexinoct/index.html)
 Inner Shape: 6
 Container: 8
-Solver Circumradius S: 2.596240966535
-Reported Metric s: 1.987076808641
-Previous Friedman Benchmark: 1.987100000000
+Reported Side Length / Radius s (5 dec): 1.98708+
+Exact Metric s: 1.987076808641
+Previous Friedman Benchmark: 1.98710+ (exact: 1.987100000000)
 Improvement Delta: -0.000023191359 (-0.001%)
 
 Pieces (5 total):

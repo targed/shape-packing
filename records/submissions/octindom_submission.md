@@ -1,21 +1,28 @@
 # Submission Draft: octindom
 
-**To:** Erich Friedman (via packing website contact)
-**Subject:** New packing record(s) for octindom (8 in DOMINO)
+**To:** Erich Friedman (via packing website)
+**Subject:** New packing records for octindom (8 in DOMINO)
 **Problem Page:** https://erich-friedman.github.io/packing/octindom/index.html
 
 ---
 
-Dear Professor Friedman,
+Dear Dr. Friedman,
 
-We have found improved packing configurations for **octindom** (8 in DOMINO):
+This is Luke Kaiser. We have found improved packing configurations for **octindom** (8 in DOMINO):
 
-| N | Our Metric (s) | Current Best | Improvement |
-| :---: | :---: | :---: | :---: |
-| 3 | 3.513677 | 3.513700 | -0.000023 |
+### Methodology
+We discovered these packings using a continuous global optimization solver combining randomized geometric basin-hopping with Separating Axis Theorem (SAT) collision constraints and SLSQP local gradient refinement. All solutions have been validated with 0 pairwise overlaps and strict container boundary containment.
 
-All configurations have been verified with Separating Axis Theorem (SAT) collision detection and boundary containment.
-Coordinates and high-resolution diagrams for each solution are attached / included in the submission folder.
+### New Packings
+| N | Our s (5 dec) | Our Exact s | Friedman Best s | Improvement | Attached Image |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 3 | 3.51368+ | 3.513677405489 | 3.51370+ | -0.000023 | `3.png` |
 
-Best regards,
-[Your Name / Research Group]
+### Image Attachments
+The replacement image files are attached directly with exact matching colors (#feffe9 on #ffffff), orientation, no borders or text, and target website pixel dimensions (280x140 px):
+- `3.png`
+
+Coordinate tables and certificates for each solution are included in the repository records.
+
+Sincerely,
+Luke Kaiser

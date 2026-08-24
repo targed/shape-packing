@@ -1,21 +1,28 @@
 # Submission Draft: peninhex
 
-**To:** Erich Friedman (via packing website contact)
-**Subject:** New packing record(s) for peninhex (5 in 6)
+**To:** Erich Friedman (via packing website)
+**Subject:** New packing records for peninhex (5 in 6)
 **Problem Page:** https://erich-friedman.github.io/packing/peninhex/index.html
 
 ---
 
-Dear Professor Friedman,
+Dear Dr. Friedman,
 
-We have found improved packing configurations for **peninhex** (5 in 6):
+This is Luke Kaiser. We have found improved packing configurations for **peninhex** (5 in 6):
 
-| N | Our Metric (s) | Current Best | Improvement |
-| :---: | :---: | :---: | :---: |
-| 7 | 2.365289 | 2.365300 | -0.000011 |
+### Methodology
+We discovered these packings using a continuous global optimization solver combining randomized geometric basin-hopping with Separating Axis Theorem (SAT) collision constraints and SLSQP local gradient refinement. All solutions have been validated with 0 pairwise overlaps and strict container boundary containment.
 
-All configurations have been verified with Separating Axis Theorem (SAT) collision detection and boundary containment.
-Coordinates and high-resolution diagrams for each solution are attached / included in the submission folder.
+### New Packings
+| N | Our s (5 dec) | Our Exact s | Friedman Best s | Improvement | Attached Image |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 7 | 2.36529+ | 2.365289384810 | 2.36530+ | -0.000011 | `7.png` |
 
-Best regards,
-[Your Name / Research Group]
+### Image Attachments
+The replacement image files are attached directly with exact matching colors (#cccccc on #ffffff), orientation, no borders or text, and target website pixel dimensions (260x226 px):
+- `7.png`
+
+Coordinate tables and certificates for each solution are included in the repository records.
+
+Sincerely,
+Luke Kaiser

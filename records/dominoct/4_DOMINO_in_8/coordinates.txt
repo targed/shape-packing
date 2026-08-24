@@ -5,9 +5,9 @@ Problem: 4_DOMINO_in_8
 Family: dominoct (https://erich-friedman.github.io/packing/dominoct/index.html)
 Inner Shape: DOMINO
 Container: 8
-Solver Circumradius S: 2.055709850771
-Reported Metric s: 1.573372203279
-Previous Friedman Benchmark: 1.573400000000
+Reported Side Length / Radius s (5 dec): 1.57337+
+Exact Metric s: 1.573372203279
+Previous Friedman Benchmark: 1.57340+ (exact: 1.573400000000)
 Improvement Delta: -0.000027796721 (-0.002%)
 
 Pieces (4 total):

@@ -5,9 +5,9 @@ Problem: 20_DOMINO_in_5
 Family: dominpen (https://erich-friedman.github.io/packing/dominpen/index.html)
 Inner Shape: DOMINO
 Container: 5
-Solver Circumradius S: 4.492157097579
-Reported Metric s: 5.280847385876
-Previous Friedman Benchmark: 5.301590000000
+Reported Side Length / Radius s (5 dec): 5.28085+
+Exact Metric s: 5.280847385876
+Previous Friedman Benchmark: 5.30159+ (exact: 5.301590000000)
 Improvement Delta: -0.020742614124 (-0.391%)
 
 Pieces (20 total):

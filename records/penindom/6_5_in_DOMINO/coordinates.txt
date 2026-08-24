@@ -5,9 +5,9 @@ Problem: 6_5_in_DOMINO
 Family: penindom (https://erich-friedman.github.io/packing/penindom/index.html)
 Inner Shape: 5
 Container: DOMINO
-Solver Circumradius S: 3.164970045785
-Reported Metric s: 2.692284327857
-Previous Friedman Benchmark: 2.692300000000
+Reported Side Length / Radius s (5 dec): 2.69228+
+Exact Metric s: 2.692284327857
+Previous Friedman Benchmark: 2.69230+ (exact: 2.692300000000)
 Improvement Delta: -0.000015672143 (-0.001%)
 
 Pieces (6 total):

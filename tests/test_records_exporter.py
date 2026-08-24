@@ -230,17 +230,21 @@ def test_generate_email_drafts(tmp_path):
         pen_content = f.read()
     assert "# Submission Draft: dominpen" in pen_content
     assert "To:** Erich Friedman" in pen_content
-    assert "| 21 | 5.412156 | 5.553080 | -0.140924 |" in pen_content
-    assert "| 22 | 5.534635 | 5.645510 | -0.110875 |" in pen_content
+    assert "Luke Kaiser" in pen_content
+    assert "Methodology" in pen_content
+    assert "| 21 | 5.41216+ | 5.412156000000 | 5.55308+ | -0.140924 | `21.png` |" in pen_content
+    assert "| 22 | 5.53463+ | 5.534635000000 | 5.64551+ | -0.110875 | `22.png` |" in pen_content
+    assert "- `21.png`" in pen_content
 
     # Check dominhex draft
     hex_draft = next(d for d in draft_files if "dominhex_submission.md" in d)
     with open(hex_draft, encoding="utf-8") as f:
         hex_content = f.read()
     assert "# Submission Draft: dominhex" in hex_content
-    assert "| 2 | 1.519672 | 1.519700 | -0.000028 |" in hex_content
+    assert "| 2 | 1.51967+ | 1.519672000000 | 1.51970+ | -0.000028 | `2.png` |" in hex_content
 
 from src.shape_packing.records_exporter import export_records
+from PIL import Image
 
 def test_export_records_e2e(tmp_path):
     res_dir = tmp_path / "results"
@@ -273,7 +277,12 @@ def test_export_records_e2e(tmp_path):
     assert summary["exported_count"] >= 1
     assert os.path.exists(out_dir / "manifest.json")
     assert os.path.exists(out_dir / "summary.md")
+    assert os.path.exists(out_dir / "dominpen" / "21.png")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "solution.json")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "coordinates.txt")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "verification.txt")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "render.png")
+    
+    # Verify exact resolution of dominpen (250x237)
+    img = Image.open(out_dir / "dominpen" / "21.png")
+    assert img.size == (250, 237)

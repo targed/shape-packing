@@ -5,9 +5,9 @@ Problem: 18_DOMINO_in_CIRCLE
 Family: domincir (https://erich-friedman.github.io/packing/domincir/index.html)
 Inner Shape: DOMINO
 Container: CIRCLE
-Solver Circumradius S: 3.779156069737
-Reported Metric s: 3.779156069737
-Previous Friedman Benchmark: 3.781200000000
+Reported Side Length / Radius s (5 dec): 3.77916+
+Exact Metric s: 3.779156069737
+Previous Friedman Benchmark: 3.78120+ (exact: 3.781200000000)
 Improvement Delta: -0.002043930263 (-0.054%)
 
 Pieces (18 total):

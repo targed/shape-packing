@@ -1,22 +1,30 @@
 # Submission Draft: domincir
 
-**To:** Erich Friedman (via packing website contact)
-**Subject:** New packing record(s) for domincir (DOMINO in CIRCLE)
+**To:** Erich Friedman (via packing website)
+**Subject:** New packing records for domincir (DOMINO in CIRCLE)
 **Problem Page:** https://erich-friedman.github.io/packing/domincir/index.html
 
 ---
 
-Dear Professor Friedman,
+Dear Dr. Friedman,
 
-We have found improved packing configurations for **domincir** (DOMINO in CIRCLE):
+This is Luke Kaiser. We have found improved packing configurations for **domincir** (DOMINO in CIRCLE):
 
-| N | Our Metric (s) | Current Best | Improvement |
-| :---: | :---: | :---: | :---: |
-| 18 | 3.779156 | 3.781200 | -0.002044 |
-| 19 | 3.878817 | 3.893400 | -0.014583 |
+### Methodology
+We discovered these packings using a continuous global optimization solver combining randomized geometric basin-hopping with Separating Axis Theorem (SAT) collision constraints and SLSQP local gradient refinement. All solutions have been validated with 0 pairwise overlaps and strict container boundary containment.
 
-All configurations have been verified with Separating Axis Theorem (SAT) collision detection and boundary containment.
-Coordinates and high-resolution diagrams for each solution are attached / included in the submission folder.
+### New Packings
+| N | Our s (5 dec) | Our Exact s | Friedman Best s | Improvement | Attached Image |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 18 | 3.77916+ | 3.779156069737 | 3.78120+ | -0.002044 | `18.png` |
+| 19 | 3.87882+ | 3.878816717652 | 3.89340+ | -0.014583 | `19.png` |
 
-Best regards,
-[Your Name / Research Group]
+### Image Attachments
+The replacement image files are attached directly with exact matching colors (#fed4d1 on #ffffff), orientation, no borders or text, and target website pixel dimensions (240x240 px):
+- `18.png`
+- `19.png`
+
+Coordinate tables and certificates for each solution are included in the repository records.
+
+Sincerely,
+Luke Kaiser

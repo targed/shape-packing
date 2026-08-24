@@ -5,9 +5,9 @@ Problem: 3_8_in_6
 Family: octinhex (https://erich-friedman.github.io/packing/octinhex/index.html)
 Inner Shape: 8
 Container: 6
-Solver Circumradius S: 2.211627050437
-Reported Metric s: 2.889629996220
-Previous Friedman Benchmark: 2.890000000000
+Reported Side Length / Radius s (5 dec): 2.88963+
+Exact Metric s: 2.889629996220
+Previous Friedman Benchmark: 2.89000+ (exact: 2.890000000000)
 Improvement Delta: -0.000370003780 (-0.013%)
 
 Pieces (3 total):

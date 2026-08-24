@@ -5,9 +5,9 @@ Problem: 7_5_in_6
 Family: peninhex (https://erich-friedman.github.io/packing/peninhex/index.html)
 Inner Shape: 5
 Container: 6
-Solver Circumradius S: 2.780564435591
-Reported Metric s: 2.365289384810
-Previous Friedman Benchmark: 2.365300000000
+Reported Side Length / Radius s (5 dec): 2.36529+
+Exact Metric s: 2.365289384810
+Previous Friedman Benchmark: 2.36530+ (exact: 2.365300000000)
 Improvement Delta: -0.000010615190 (-0.000%)
 
 Pieces (7 total):

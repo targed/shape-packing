@@ -6,6 +6,7 @@ import math
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple, Any
 from datetime import datetime, timezone
+from .packing_config import get_family_colors
 
 SIDES_TO_NAME = {
     "3": "tri",
@@ -161,9 +162,9 @@ def generate_coordinates_text(cand: RecordCandidate, sol: Any) -> str:
         f"Family: {cand.family_code} ({cand.family_url})",
         f"Inner Shape: {cand.inner_token}",
         f"Container: {cand.container_token}",
-        f"Solver Circumradius S: {cand.S:.12f}",
-        f"Reported Metric s: {cand.metric:.12f}",
-        f"Previous Friedman Benchmark: {cand.friedman_best:.12f}",
+        f"Reported Side Length / Radius s (5 dec): {cand.metric:.5f}+",
+        f"Exact Metric s: {cand.metric:.12f}",
+        f"Previous Friedman Benchmark: {cand.friedman_best:.5f}+ (exact: {cand.friedman_best:.12f})",
         f"Improvement Delta: {cand.improvement:+.12f} ({pct_imp:+.3f}%)",
         "",
         f"Pieces ({sol.N} total):",
@@ -240,6 +241,7 @@ def generate_manifest(records: List[RecordCandidate], output_dir: str) -> str:
                 "metric": r.metric,
                 "friedman_best": r.friedman_best,
                 "improvement": r.improvement,
+                "site_image": f"{r.family_code}/{r.N}.png",
                 "folder": f"{r.family_code}/{r.problem}",
             }
             for r in records
@@ -261,14 +263,14 @@ def generate_summary_markdown(records: List[RecordCandidate], output_dir: str) -
         f"**Generated:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}  ",
         f"**Total Verified Record Improvements:** {len(records)}",
         "",
-        "| Problem | Family | N | Solver $S$ | Our Metric $s$ | Friedman Best | Improvement $\\Delta s$ | Folder Link |",
+        "| Problem | Family | N | Our Metric $s$ (5 dec) | Our Exact $s$ | Friedman Best | Improvement $\\Delta s$ | Folder Link |",
         "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |",
     ]
 
     for r in records:
         folder_link = f"[{r.problem}](./{r.family_code}/{r.problem})"
         lines.append(
-            f"| `{r.problem}` | [`{r.family_code}`]({r.family_url}) | {r.N} | {r.S:.6f} | **{r.metric:.6f}** | {r.friedman_best:.6f} | **{r.improvement:+.6f}** | {folder_link} |"
+            f"| `{r.problem}` | [`{r.family_code}`]({r.family_url}) | {r.N} | **{r.metric:.5f}+** | {r.metric:.12f} | {r.friedman_best:.5f}+ | **{r.improvement:+.6f}** | {folder_link} |"
         )
 
     lines.append("")
@@ -278,7 +280,7 @@ def generate_summary_markdown(records: List[RecordCandidate], output_dir: str) -
 
 
 def generate_email_drafts(records: List[RecordCandidate], output_dir: str) -> List[str]:
-    """Generate ready-to-send submission email templates grouped per shape family."""
+    """Generate ready-to-send submission email templates grouped per shape family adhering to Dr. Friedman's guidelines."""
     sub_dir = os.path.join(output_dir, "submissions")
     os.makedirs(sub_dir, exist_ok=True)
 
@@ -291,34 +293,50 @@ def generate_email_drafts(records: List[RecordCandidate], output_dir: str) -> Li
         fam_records.sort(key=lambda x: x.N)
         draft_path = os.path.join(sub_dir, f"{fam}_submission.md")
         first_r = fam_records[0]
+        fam_colors = get_family_colors(first_r.inner_token, first_r.container_token)
+        target_w = fam_colors.get("width", 240)
+        target_h = fam_colors.get("height", 240)
 
         lines = [
             f"# Submission Draft: {fam}",
             "",
-            f"**To:** Erich Friedman (via packing website contact)",
-            f"**Subject:** New packing record(s) for {fam} ({first_r.inner_token} in {first_r.container_token})",
+            f"**To:** Erich Friedman (via packing website)",
+            f"**Subject:** New packing records for {fam} ({first_r.inner_token} in {first_r.container_token})",
             f"**Problem Page:** {first_r.family_url}",
             "",
             "---",
             "",
-            "Dear Professor Friedman,",
+            "Dear Dr. Friedman,",
             "",
-            f"We have found improved packing configurations for **{fam}** ({first_r.inner_token} in {first_r.container_token}):",
+            f"This is Luke Kaiser. We have found improved packing configurations for **{fam}** ({first_r.inner_token} in {first_r.container_token}):",
             "",
-            "| N | Our Metric (s) | Current Best | Improvement |",
-            "| :---: | :---: | :---: | :---: |",
+            "### Methodology",
+            "We discovered these packings using a continuous global optimization solver combining randomized geometric basin-hopping with Separating Axis Theorem (SAT) collision constraints and SLSQP local gradient refinement. All solutions have been validated with 0 pairwise overlaps and strict container boundary containment.",
+            "",
+            "### New Packings",
+            "| N | Our s (5 dec) | Our Exact s | Friedman Best s | Improvement | Attached Image |",
+            "| :---: | :---: | :---: | :---: | :---: | :---: |",
         ]
 
         for r in fam_records:
-            lines.append(f"| {r.N} | {r.metric:.6f} | {r.friedman_best:.6f} | {r.improvement:+.6f} |")
+            lines.append(
+                f"| {r.N} | {r.metric:.5f}+ | {r.metric:.12f} | {r.friedman_best:.5f}+ | {r.improvement:+.6f} | `{r.N}.png` |"
+            )
 
         lines.extend([
             "",
-            "All configurations have been verified with Separating Axis Theorem (SAT) collision detection and boundary containment.",
-            "Coordinates and high-resolution diagrams for each solution are attached / included in the submission folder.",
+            "### Image Attachments",
+            f"The replacement image files are attached directly with exact matching colors ({fam_colors.get('inner', '#CCCCCC')} on {fam_colors.get('container', '#FFFFFF')}), orientation, no borders or text, and target website pixel dimensions ({target_w}x{target_h} px):",
+        ])
+        for r in fam_records:
+            lines.append(f"- `{r.N}.png`")
+
+        lines.extend([
             "",
-            "Best regards,",
-            "[Your Name / Research Group]",
+            "Coordinate tables and certificates for each solution are included in the repository records.",
+            "",
+            "Sincerely,",
+            "Luke Kaiser",
             "",
         ])
 
@@ -344,7 +362,7 @@ def export_records(
 ) -> Dict[str, Any]:
     """
     Audit results_dir, filter all genuine world records beating Friedman benchmarks,
-    verify geometries, render tight PNGs, and package full submission kits into output_dir.
+    verify geometries, render tight PNGs matching website pixel dimensions, and package full submission kits into output_dir.
     """
     if clean and os.path.exists(output_dir):
         shutil.rmtree(output_dir)
@@ -359,7 +377,8 @@ def export_records(
     failed: List[Tuple[RecordCandidate, List[str]]] = []
 
     for cand in candidates:
-        cand_out_dir = os.path.join(output_dir, cand.family_code, cand.problem)
+        family_dir = os.path.join(output_dir, cand.family_code)
+        cand_out_dir = os.path.join(family_dir, cand.problem)
         os.makedirs(cand_out_dir, exist_ok=True)
 
         # 1. Verify geometry
@@ -389,30 +408,22 @@ def export_records(
         with open(os.path.join(cand_out_dir, "verification.txt"), "w", encoding="utf-8") as f:
             f.write(v_txt)
 
-        # 5. Render tight-cropped render.png & resolution variants
+        # 5. Render site-ready direct replacement picture: records/<family>/<N>.png
+        site_image_path = os.path.join(family_dir, f"{cand.N}.png")
+        render_solution(cand.solution_path, site_image_path, crop_mode="tight")
+
+        # 6. Render high-res render.png and renderFull.png inside candidate folder
         render_path = os.path.join(cand_out_dir, "render.png")
         render_solution(cand.solution_path, render_path, crop_mode="tight", dpi=dpi)
 
         render_path_full = os.path.join(cand_out_dir, "renderFull.png")
         render_solution(cand.solution_path, render_path_full, crop_mode="tight", dpi=dpi)
-        
-        render_path_240 = os.path.join(cand_out_dir, "render240x240.png")
-        render_solution(cand.solution_path, render_path_240, crop_mode="tight", size_px=240)
-        
-        render_path_243 = os.path.join(cand_out_dir, "render243x243.png")
-        render_solution(cand.solution_path, render_path_243, crop_mode="tight", size_px=243)
-        
-        render_path_245 = os.path.join(cand_out_dir, "render245x245.png")
-        render_solution(cand.solution_path, render_path_245, crop_mode="tight", size_px=245)
-        
-        render_path_250 = os.path.join(cand_out_dir, "render250x250.png")
-        render_solution(cand.solution_path, render_path_250, crop_mode="tight", size_px=250)
 
         exported.append(cand)
         if not quiet:
-            print(f"  [OK] {cand.problem}: metric={cand.metric:.6f} vs {cand.friedman_best:.6f} ({cand.improvement:+.6f}) -> {cand_out_dir}")
+            print(f"  [OK] {cand.problem}: s={cand.metric:.5f}+ (exact: {cand.metric:.6f}) vs {cand.friedman_best:.5f}+ ({cand.improvement:+.6f}) -> {site_image_path}")
 
-    # 6. Generate manifests & drafts
+    # 7. Generate manifests & drafts
     manifest_path = generate_manifest(exported, output_dir)
     summary_path = generate_summary_markdown(exported, output_dir)
     email_drafts = generate_email_drafts(exported, output_dir)

@@ -493,8 +493,8 @@ def render_solution(
     if bg_color is None:
         bg_color = fam_colors.get("container", RENDER_BG_COLOR or "#FFFFFF")
 
-    target_w = width_px or size_px
-    target_h = height_px or size_px
+    target_w = width_px or (size_px if size_px else fam_colors.get("width", 240))
+    target_h = height_px or (size_px if size_px else fam_colors.get("height", 240))
 
     if target_w and target_h:
         fig = plt.figure(figsize=(target_w / 72.0, target_h / 72.0), dpi=72)

@@ -1,22 +1,30 @@
 # Submission Draft: hexinhex
 
-**To:** Erich Friedman (via packing website contact)
-**Subject:** New packing record(s) for hexinhex (6 in 6)
+**To:** Erich Friedman (via packing website)
+**Subject:** New packing records for hexinhex (6 in 6)
 **Problem Page:** https://erich-friedman.github.io/packing/hexinhex/index.html
 
 ---
 
-Dear Professor Friedman,
+Dear Dr. Friedman,
 
-We have found improved packing configurations for **hexinhex** (6 in 6):
+This is Luke Kaiser. We have found improved packing configurations for **hexinhex** (6 in 6):
 
-| N | Our Metric (s) | Current Best | Improvement |
-| :---: | :---: | :---: | :---: |
-| 5 | 2.666678 | 2.667000 | -0.000322 |
-| 12 | 3.941649 | 3.942000 | -0.000351 |
+### Methodology
+We discovered these packings using a continuous global optimization solver combining randomized geometric basin-hopping with Separating Axis Theorem (SAT) collision constraints and SLSQP local gradient refinement. All solutions have been validated with 0 pairwise overlaps and strict container boundary containment.
 
-All configurations have been verified with Separating Axis Theorem (SAT) collision detection and boundary containment.
-Coordinates and high-resolution diagrams for each solution are attached / included in the submission folder.
+### New Packings
+| N | Our s (5 dec) | Our Exact s | Friedman Best s | Improvement | Attached Image |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| 5 | 2.66668+ | 2.666678387864 | 2.66700+ | -0.000322 | `5.png` |
+| 12 | 3.94165+ | 3.941648986550 | 3.94200+ | -0.000351 | `12.png` |
 
-Best regards,
-[Your Name / Research Group]
+### Image Attachments
+The replacement image files are attached directly with exact matching colors (#fdadac on #ffffff), orientation, no borders or text, and target website pixel dimensions (260x226 px):
+- `5.png`
+- `12.png`
+
+Coordinate tables and certificates for each solution are included in the repository records.
+
+Sincerely,
+Luke Kaiser

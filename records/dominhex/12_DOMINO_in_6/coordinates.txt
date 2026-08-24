@@ -5,9 +5,9 @@ Problem: 12_DOMINO_in_6
 Family: dominhex (https://erich-friedman.github.io/packing/dominhex/index.html)
 Inner Shape: DOMINO
 Container: 6
-Solver Circumradius S: 3.443042419757
-Reported Metric s: 3.443042419757
-Previous Friedman Benchmark: 3.460800000000
+Reported Side Length / Radius s (5 dec): 3.44304+
+Exact Metric s: 3.443042419757
+Previous Friedman Benchmark: 3.46080+ (exact: 3.460800000000)
 Improvement Delta: -0.017757580243 (-0.513%)
 
 Pieces (12 total):
