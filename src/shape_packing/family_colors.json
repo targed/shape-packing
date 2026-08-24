@@ -11,7 +11,7 @@
   "cirintri": { "inner": "#cecece", "container": "#ffffff", "width": 260, "height": 225 },
   "cirinttt": { "inner": "#cccccc", "container": "#ffffff", "width": 240, "height": 240 },
   "domindom": { "inner": "#feffdc", "container": "#ffffff", "width": 280, "height": 140 },
-  "dominhex": { "inner": "#fed4d1", "container": "#ffffff", "width": 260, "height": 226 },
+  "dominhex": { "inner": "#fed4d1", "container": "#ffffff", "width": 260, "height": 225 },
   "dominl": { "inner": "#feffdc", "container": "#ffffff", "width": 240, "height": 240 },
   "dominoct": { "inner": "#fdf4c0", "container": "#ffffff", "width": 240, "height": 240 },
   "dominpen": { "inner": "#fed4d1", "container": "#ffffff", "width": 250, "height": 237 },

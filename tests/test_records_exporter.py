@@ -277,7 +277,7 @@ def test_export_records_e2e(tmp_path):
     assert summary["exported_count"] >= 1
     assert os.path.exists(out_dir / "manifest.json")
     assert os.path.exists(out_dir / "summary.md")
-    assert os.path.exists(out_dir / "dominpen" / "21.png")
+    assert not os.path.exists(out_dir / "dominpen" / "21.png")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "21.png")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "solution.json")
     assert os.path.exists(out_dir / "dominpen" / "21_DOMINO_in_5" / "coordinates.txt")

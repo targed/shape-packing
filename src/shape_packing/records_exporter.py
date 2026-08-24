@@ -241,7 +241,7 @@ def generate_manifest(records: List[RecordCandidate], output_dir: str) -> str:
                 "metric": r.metric,
                 "friedman_best": r.friedman_best,
                 "improvement": r.improvement,
-                "site_image": f"{r.family_code}/{r.N}.png",
+                "site_image": f"{r.family_code}/{r.problem}/{r.N}.png",
                 "folder": f"{r.family_code}/{r.problem}",
             }
             for r in records
@@ -408,12 +408,9 @@ def export_records(
         with open(os.path.join(cand_out_dir, "verification.txt"), "w", encoding="utf-8") as f:
             f.write(v_txt)
 
-        # 5. Render site-ready direct replacement picture: records/<family>/<N>.png and records/<family>/<problem>/<N>.png
-        site_image_path = os.path.join(family_dir, f"{cand.N}.png")
+        # 5. Render site-ready direct replacement picture: records/<family>/<problem>/<N>.png
+        site_image_path = os.path.join(cand_out_dir, f"{cand.N}.png")
         render_solution(cand.solution_path, site_image_path, crop_mode="tight")
-        
-        cand_site_image = os.path.join(cand_out_dir, f"{cand.N}.png")
-        shutil.copy2(site_image_path, cand_site_image)
 
         # 6. Render high-res render.png and renderFull.png inside candidate folder
         render_path = os.path.join(cand_out_dir, "render.png")

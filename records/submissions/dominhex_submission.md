@@ -28,7 +28,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 28 | 5.07599+ | 5.075988007438 | 5.14000+ | -0.064012 | `28.png` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#fed4d1 on #ffffff), orientation, no borders or text, and target website pixel dimensions (260x226 px):
+The replacement image files are attached directly with exact matching colors (#fed4d1 on #ffffff), orientation, no borders or text, and target website pixel dimensions (260x225 px):
 - `2.png`
 - `11.png`
 - `12.png`

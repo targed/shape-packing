@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T18:00:15Z",
+  "generated_at": "2026-08-24T19:59:33Z",
   "total_records": 49,
   "records": [
     {
@@ -13,7 +13,7 @@
       "metric": 5.9518626702293895,
       "friedman_best": 5.952,
       "improvement": -0.00013732977061042817,
-      "site_image": "cirinhex/22.png",
+      "site_image": "cirinhex/22_CIRCLE_in_6/22.png",
       "folder": "cirinhex/22_CIRCLE_in_6"
     },
     {
@@ -27,7 +27,7 @@
       "metric": 3.7791560697370707,
       "friedman_best": 3.7812,
       "improvement": -0.002043930262929372,
-      "site_image": "domincir/18.png",
+      "site_image": "domincir/18_DOMINO_in_CIRCLE/18.png",
       "folder": "domincir/18_DOMINO_in_CIRCLE"
     },
     {
@@ -41,7 +41,7 @@
       "metric": 3.8788167176520854,
       "friedman_best": 3.8934,
       "improvement": -0.014583282347914839,
-      "site_image": "domincir/19.png",
+      "site_image": "domincir/19_DOMINO_in_CIRCLE/19.png",
       "folder": "domincir/19_DOMINO_in_CIRCLE"
     },
     {
@@ -55,7 +55,7 @@
       "metric": 1.5196717723426367,
       "friedman_best": 1.5197,
       "improvement": -2.8227657363322223e-05,
-      "site_image": "dominhex/2.png",
+      "site_image": "dominhex/2_DOMINO_in_6/2.png",
       "folder": "dominhex/2_DOMINO_in_6"
     },
     {
@@ -69,7 +69,7 @@
       "metric": 3.3339172668580326,
       "friedman_best": 3.3479,
       "improvement": -0.013982733141967518,
-      "site_image": "dominhex/11.png",
+      "site_image": "dominhex/11_DOMINO_in_6/11.png",
       "folder": "dominhex/11_DOMINO_in_6"
     },
     {
@@ -83,7 +83,7 @@
       "metric": 3.443042419757034,
       "friedman_best": 3.4608,
       "improvement": -0.017757580242965698,
-      "site_image": "dominhex/12.png",
+      "site_image": "dominhex/12_DOMINO_in_6/12.png",
       "folder": "dominhex/12_DOMINO_in_6"
     },
     {
@@ -97,7 +97,7 @@
       "metric": 3.6508051620464856,
       "friedman_best": 3.6723,
       "improvement": -0.021494837953514256,
-      "site_image": "dominhex/14.png",
+      "site_image": "dominhex/14_DOMINO_in_6/14.png",
       "folder": "dominhex/14_DOMINO_in_6"
     },
     {
@@ -111,7 +111,7 @@
       "metric": 3.8703076298444965,
       "friedman_best": 3.9029,
       "improvement": -0.032592370155503314,
-      "site_image": "dominhex/16.png",
+      "site_image": "dominhex/16_DOMINO_in_6/16.png",
       "folder": "dominhex/16_DOMINO_in_6"
     },
     {
@@ -125,7 +125,7 @@
       "metric": 4.002423086172512,
       "friedman_best": 4.0116,
       "improvement": -0.009176913827487532,
-      "site_image": "dominhex/17.png",
+      "site_image": "dominhex/17_DOMINO_in_6/17.png",
       "folder": "dominhex/17_DOMINO_in_6"
     },
     {
@@ -139,7 +139,7 @@
       "metric": 4.3510465326757455,
       "friedman_best": 4.3672,
       "improvement": -0.016153467324254933,
-      "site_image": "dominhex/20.png",
+      "site_image": "dominhex/20_DOMINO_in_6/20.png",
       "folder": "dominhex/20_DOMINO_in_6"
     },
     {
@@ -153,7 +153,7 @@
       "metric": 4.439495793991655,
       "friedman_best": 4.5981,
       "improvement": -0.15860420600834502,
-      "site_image": "dominhex/21.png",
+      "site_image": "dominhex/21_DOMINO_in_6/21.png",
       "folder": "dominhex/21_DOMINO_in_6"
     },
     {
@@ -167,7 +167,7 @@
       "metric": 4.542298637201905,
       "friedman_best": 4.5981,
       "improvement": -0.055801362798094445,
-      "site_image": "dominhex/22.png",
+      "site_image": "dominhex/22_DOMINO_in_6/22.png",
       "folder": "dominhex/22_DOMINO_in_6"
     },
     {
@@ -181,7 +181,7 @@
       "metric": 5.075988007438324,
       "friedman_best": 5.14,
       "improvement": -0.06401199256167533,
-      "site_image": "dominhex/28.png",
+      "site_image": "dominhex/28_DOMINO_in_6/28.png",
       "folder": "dominhex/28_DOMINO_in_6"
     },
     {
@@ -195,7 +195,7 @@
       "metric": 1.5733722032791817,
       "friedman_best": 1.5734,
       "improvement": -2.7796720818207277e-05,
-      "site_image": "dominoct/4.png",
+      "site_image": "dominoct/4_DOMINO_in_8/4.png",
       "folder": "dominoct/4_DOMINO_in_8"
     },
     {
@@ -209,7 +209,7 @@
       "metric": 2.793942216148419,
       "friedman_best": 2.8045,
       "improvement": -0.010557783851580904,
-      "site_image": "dominoct/15.png",
+      "site_image": "dominoct/15_DOMINO_in_8/15.png",
       "folder": "dominoct/15_DOMINO_in_8"
     },
     {
@@ -223,7 +223,7 @@
       "metric": 4.138864111453027,
       "friedman_best": 4.15223,
       "improvement": -0.013365888546973181,
-      "site_image": "dominpen/12.png",
+      "site_image": "dominpen/12_DOMINO_in_5/12.png",
       "folder": "dominpen/12_DOMINO_in_5"
     },
     {
@@ -237,7 +237,7 @@
       "metric": 4.606373481567585,
       "friedman_best": 4.60972,
       "improvement": -0.0033465184324148467,
-      "site_image": "dominpen/15.png",
+      "site_image": "dominpen/15_DOMINO_in_5/15.png",
       "folder": "dominpen/15_DOMINO_in_5"
     },
     {
@@ -251,7 +251,7 @@
       "metric": 4.732386229840239,
       "friedman_best": 4.73459,
       "improvement": -0.0022037701597605874,
-      "site_image": "dominpen/16.png",
+      "site_image": "dominpen/16_DOMINO_in_5/16.png",
       "folder": "dominpen/16_DOMINO_in_5"
     },
     {
@@ -265,7 +265,7 @@
       "metric": 5.165308566590611,
       "friedman_best": 5.17002,
       "improvement": -0.004711433409388732,
-      "site_image": "dominpen/19.png",
+      "site_image": "dominpen/19_DOMINO_in_5/19.png",
       "folder": "dominpen/19_DOMINO_in_5"
     },
     {
@@ -279,7 +279,7 @@
       "metric": 5.280847385875782,
       "friedman_best": 5.30159,
       "improvement": -0.020742614124218406,
-      "site_image": "dominpen/20.png",
+      "site_image": "dominpen/20_DOMINO_in_5/20.png",
       "folder": "dominpen/20_DOMINO_in_5"
     },
     {
@@ -293,7 +293,7 @@
       "metric": 5.4121555761458735,
       "friedman_best": 5.55308,
       "improvement": -0.14092442385412607,
-      "site_image": "dominpen/21.png",
+      "site_image": "dominpen/21_DOMINO_in_5/21.png",
       "folder": "dominpen/21_DOMINO_in_5"
     },
     {
@@ -307,7 +307,7 @@
       "metric": 5.534635079960305,
       "friedman_best": 5.64551,
       "improvement": -0.11087492003969501,
-      "site_image": "dominpen/22.png",
+      "site_image": "dominpen/22_DOMINO_in_5/22.png",
       "folder": "dominpen/22_DOMINO_in_5"
     },
     {
@@ -321,7 +321,7 @@
       "metric": 5.634671382568513,
       "friedman_best": 5.6542,
       "improvement": -0.019528617431487483,
-      "site_image": "dominpen/23.png",
+      "site_image": "dominpen/23_DOMINO_in_5/23.png",
       "folder": "dominpen/23_DOMINO_in_5"
     },
     {
@@ -335,7 +335,7 @@
       "metric": 5.7454528433662935,
       "friedman_best": 5.82279,
       "improvement": -0.07733715663370688,
-      "site_image": "dominpen/24.png",
+      "site_image": "dominpen/24_DOMINO_in_5/24.png",
       "folder": "dominpen/24_DOMINO_in_5"
     },
     {
@@ -349,7 +349,7 @@
       "metric": 5.858720112624396,
       "friedman_best": 5.91914,
       "improvement": -0.060419887375603665,
-      "site_image": "dominpen/25.png",
+      "site_image": "dominpen/25_DOMINO_in_5/25.png",
       "folder": "dominpen/25_DOMINO_in_5"
     },
     {
@@ -363,7 +363,7 @@
       "metric": 5.957935855677186,
       "friedman_best": 6.01674,
       "improvement": -0.058804144322814444,
-      "site_image": "dominpen/26.png",
+      "site_image": "dominpen/26_DOMINO_in_5/26.png",
       "folder": "dominpen/26_DOMINO_in_5"
     },
     {
@@ -377,7 +377,7 @@
       "metric": 6.057691663763417,
       "friedman_best": 6.15422,
       "improvement": -0.09652833623658275,
-      "site_image": "dominpen/27.png",
+      "site_image": "dominpen/27_DOMINO_in_5/27.png",
       "folder": "dominpen/27_DOMINO_in_5"
     },
     {
@@ -391,7 +391,7 @@
       "metric": 6.222518488602049,
       "friedman_best": 6.2326,
       "improvement": -0.010081511397951104,
-      "site_image": "dominpen/28.png",
+      "site_image": "dominpen/28_DOMINO_in_5/28.png",
       "folder": "dominpen/28_DOMINO_in_5"
     },
     {
@@ -405,7 +405,7 @@
       "metric": 6.2814449776191115,
       "friedman_best": 6.41839,
       "improvement": -0.13694502238088813,
-      "site_image": "dominpen/29.png",
+      "site_image": "dominpen/29_DOMINO_in_5/29.png",
       "folder": "dominpen/29_DOMINO_in_5"
     },
     {
@@ -419,7 +419,7 @@
       "metric": 6.431834494380972,
       "friedman_best": 6.60518,
       "improvement": -0.17334550561902784,
-      "site_image": "dominpen/30.png",
+      "site_image": "dominpen/30_DOMINO_in_5/30.png",
       "folder": "dominpen/30_DOMINO_in_5"
     },
     {
@@ -433,7 +433,7 @@
       "metric": 2.666678387864216,
       "friedman_best": 2.667,
       "improvement": -0.0003216121357838553,
-      "site_image": "hexinhex/5.png",
+      "site_image": "hexinhex/5_6_in_6/5.png",
       "folder": "hexinhex/5_6_in_6"
     },
     {
@@ -447,7 +447,7 @@
       "metric": 3.941648986549848,
       "friedman_best": 3.942,
       "improvement": -0.00035101345015231544,
-      "site_image": "hexinhex/12.png",
+      "site_image": "hexinhex/12_6_in_6/12.png",
       "folder": "hexinhex/12_6_in_6"
     },
     {
@@ -461,7 +461,7 @@
       "metric": 1.987076808641154,
       "friedman_best": 1.9871,
       "improvement": -2.3191358845986443e-05,
-      "site_image": "hexinoct/5.png",
+      "site_image": "hexinoct/5_6_in_8/5.png",
       "folder": "hexinoct/5_6_in_8"
     },
     {
@@ -475,7 +475,7 @@
       "metric": 6.898980293351454,
       "friedman_best": 6.899,
       "improvement": -1.970664854589188e-05,
-      "site_image": "hexintri/6.png",
+      "site_image": "hexintri/6_6_in_3/6.png",
       "folder": "hexintri/6_6_in_3"
     },
     {
@@ -489,7 +489,7 @@
       "metric": 3.5136774054888793,
       "friedman_best": 3.5137,
       "improvement": -2.2594511120743732e-05,
-      "site_image": "octindom/3.png",
+      "site_image": "octindom/3_8_in_DOMINO/3.png",
       "folder": "octindom/3_8_in_DOMINO"
     },
     {
@@ -503,7 +503,7 @@
       "metric": 2.889629996220031,
       "friedman_best": 2.89,
       "improvement": -0.0003700037799689859,
-      "site_image": "octinhex/3.png",
+      "site_image": "octinhex/3_8_in_6/3.png",
       "folder": "octinhex/3_8_in_6"
     },
     {
@@ -517,7 +517,7 @@
       "metric": 4.566557709972744,
       "friedman_best": 4.567,
       "improvement": -0.0004422900272560426,
-      "site_image": "octinhex/8.png",
+      "site_image": "octinhex/8_8_in_6/8.png",
       "folder": "octinhex/8_8_in_6"
     },
     {
@@ -531,7 +531,7 @@
       "metric": 2.1715732346593764,
       "friedman_best": 2.1716,
       "improvement": -2.6765340623846612e-05,
-      "site_image": "octinoct/3.png",
+      "site_image": "octinoct/3_8_in_8/3.png",
       "folder": "octinoct/3_8_in_8"
     },
     {
@@ -545,7 +545,7 @@
       "metric": 9.315779776455196,
       "friedman_best": 9.3158,
       "improvement": -2.0223544803243954e-05,
-      "site_image": "octintri/6.png",
+      "site_image": "octintri/6_8_in_3/6.png",
       "folder": "octintri/6_8_in_3"
     },
     {
@@ -559,7 +559,7 @@
       "metric": 2.481283560845094,
       "friedman_best": 2.4813,
       "improvement": -1.643915490623371e-05,
-      "site_image": "penincir/8.png",
+      "site_image": "penincir/8_5_in_CIRCLE/8.png",
       "folder": "penincir/8_5_in_CIRCLE"
     },
     {
@@ -573,7 +573,7 @@
       "metric": 2.6922843278571964,
       "friedman_best": 2.6923,
       "improvement": -1.5672142803513367e-05,
-      "site_image": "penindom/6.png",
+      "site_image": "penindom/6_5_in_DOMINO/6.png",
       "folder": "penindom/6_5_in_DOMINO"
     },
     {
@@ -587,7 +587,7 @@
       "metric": 2.919773978455972,
       "friedman_best": 2.9198,
       "improvement": -2.6021544027976518e-05,
-      "site_image": "penindom/7.png",
+      "site_image": "penindom/7_5_in_DOMINO/7.png",
       "folder": "penindom/7_5_in_DOMINO"
     },
     {
@@ -601,7 +601,7 @@
       "metric": 2.365289384810053,
       "friedman_best": 2.3653,
       "improvement": -1.0615189947049686e-05,
-      "site_image": "peninhex/7.png",
+      "site_image": "peninhex/7_5_in_6/7.png",
       "folder": "peninhex/7_5_in_6"
     },
     {
@@ -615,7 +615,7 @@
       "metric": 2.236068067823152,
       "friedman_best": 2.2361,
       "improvement": -3.19321768480485e-05,
-      "site_image": "peninpen/3.png",
+      "site_image": "peninpen/3_5_in_5/3.png",
       "folder": "peninpen/3_5_in_5"
     },
     {
@@ -629,7 +629,7 @@
       "metric": 1.2884705122360107,
       "friedman_best": 1.2885,
       "improvement": -2.9487763989255455e-05,
-      "site_image": "squincir/3.png",
+      "site_image": "squincir/3_4_in_CIRCLE/3.png",
       "folder": "squincir/3_4_in_CIRCLE"
     },
     {
@@ -643,7 +643,7 @@
       "metric": 1.802780171513069,
       "friedman_best": 1.8028,
       "improvement": -1.982848693105055e-05,
-      "site_image": "squincir/7.png",
+      "site_image": "squincir/7_4_in_CIRCLE/7.png",
       "folder": "squincir/7_4_in_CIRCLE"
     },
     {
@@ -657,7 +657,7 @@
       "metric": 2.213886888270671,
       "friedman_best": 2.2139,
       "improvement": -1.3111729329384758e-05,
-      "site_image": "squincir/11.png",
+      "site_image": "squincir/11_4_in_CIRCLE/11.png",
       "folder": "squincir/11_4_in_CIRCLE"
     },
     {
@@ -671,7 +671,7 @@
       "metric": 3.020607490508436,
       "friedman_best": 3.02113,
       "improvement": -0.0005225094915637385,
-      "site_image": "squinoct/38.png",
+      "site_image": "squinoct/38_4_in_8/38.png",
       "folder": "squinoct/38_4_in_8"
     },
     {
@@ -685,7 +685,7 @@
       "metric": 2.4195050032821817,
       "friedman_best": 2.42212,
       "improvement": -0.0026149967178183964,
-      "site_image": "triindom/22.png",
+      "site_image": "triindom/22_3_in_DOMINO/22.png",
       "folder": "triindom/22_3_in_DOMINO"
     }
   ]
