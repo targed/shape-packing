@@ -8,7 +8,7 @@
     "total_attempted": 1090,
     "total_new_bests": 57,
     "total_matches": 132,
-    "total_visualizations": 1087,
+    "total_visualizations": 1088,
     "total_slurm_starts": 21145,
     "total_slurm_attempts": 1003617021
   },
@@ -18018,11 +18018,11 @@
       "ref_status": "best_known",
       "status": "best_known",
       "attempted": true,
-      "our_best_metric": null,
-      "our_best_s": null,
-      "comparison_status": "unattempted",
-      "diff": null,
-      "closeness_pct": null,
+      "our_best_metric": 1.482663,
+      "our_best_s": 1.815883,
+      "comparison_status": "worse_than_best_known",
+      "diff": 0.004663,
+      "closeness_pct": 99.69,
       "starts": 4,
       "attempts": 20000,
       "successes": 4,
@@ -18031,7 +18031,26 @@
       "density": 0.5947,
       "source_url": "https://erich-friedman.github.io/packing/triinsqu/index.html",
       "source_note": "Found by Erich Friedman in 1996.",
-      "solution": null
+      "solution": {
+        "S": 1.8158834318176202,
+        "final_metric": 1.4826626134423926,
+        "values": [
+          0.7064075011354425,
+          0.3946081262871088,
+          -0.2610730952838215,
+          0.0015923048825627144,
+          -0.8147116617193939,
+          0.5228107453438183,
+          -0.7117039717713479,
+          0.3949558162320823,
+          -0.7838236888763462
+        ],
+        "N": 3,
+        "inner_token": "3",
+        "container_token": "4",
+        "computed_metric": 1.4826626134423926,
+        "folder_name": "3_3_in_4"
+      }
     },
     {
       "id": "3_in_4_4",
