@@ -65,6 +65,18 @@ class TestRunSingleAttempt:
         assert S == float("inf")
         assert values is None
 
+    def test_extracted_helpers(self):
+        from shape_packing.optimization import (
+            _generate_initial_configuration,
+            _calculate_shrink_multiplier,
+        )
+        dynamic_S, lowest_S, range_val, x0 = _generate_initial_configuration(4)
+        assert dynamic_S > lowest_S
+        assert len(x0) == 12
+
+        mult = _calculate_shrink_multiplier(dynamic_S, lowest_S, range_val, 0.001)
+        assert 0.0 < mult < 1.0
+
 
 class TestRunAllAttempts:
     def test_minimal_run(self):
