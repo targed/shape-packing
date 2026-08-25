@@ -1,4 +1,3 @@
-import pytest
 from src.shape_packing.solver_interface import run_solver
 
 def test_run_solver_fallback_or_pyo3():

@@ -1,7 +1,6 @@
 import json
 import subprocess
 import time
-import sys
 import os
 import signal
 import concurrent.futures
@@ -182,7 +181,7 @@ def process_result(result):
         print(f"[Main] Worker finished {prob} with score {score}")
         
         # Centralized logging and committing
-        from src.shape_packing.agent_loop import load_history, append_result, ExperimentResult
+        from src.shape_packing.agent_loop import ExperimentResult
         global _GLOBAL_HISTORY
         
         log_result(_GLOBAL_HISTORY, prob, score, 0.0, "Parallel run loop", commit="auto")

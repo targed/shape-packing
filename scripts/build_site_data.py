@@ -18,7 +18,7 @@ import math
 import os
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 PACKING_VERIFICATION_DIR = ROOT_DIR / "packingVerification"

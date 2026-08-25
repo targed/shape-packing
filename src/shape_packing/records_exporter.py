@@ -150,7 +150,7 @@ def find_all_records(
     return candidates
 
 
-from .solution_tools import build_polygons, VerifyResult
+from .solution_tools import build_polygons
 
 
 def generate_coordinates_text(cand: RecordCandidate, sol: Any) -> str:

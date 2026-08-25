@@ -26,7 +26,7 @@ from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
 # ProblemModule: single source of truth for problem names, tokens, and validation.
-from shape_packing.problems import parse_problem, shape_token_to_sides, is_special_shape
+from shape_packing.problems import parse_problem, shape_token_to_sides
 
 # ---------------------------------------------------------------------------
 # CONFIG: edit this section to choose/switch problems
