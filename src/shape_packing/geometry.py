@@ -333,16 +333,15 @@ def polygon_normals(vertices):
     """
     is_list = not isinstance(vertices, np.ndarray)
     v = _ensure_array(vertices)
-    normals = []
-    n = v.shape[0]
-    for i in range(n):
-        p1 = v[i]
-        p2 = v[(i + 1) % n]
-        dx = p2[0] - p1[0]
-        dy = p2[1] - p1[1]
-        length = math.hypot(dx, dy)
-        normals.append((dy / length, -dx / length))
-    return normals
+    diffs = np.roll(v, -1, axis=0) - v
+    dx = diffs[:, 0]
+    dy = diffs[:, 1]
+    lengths = np.hypot(dx, dy)
+    lengths = np.where(lengths == 0, 1.0, lengths)
+    out = np.column_stack((dy / lengths, -dx / lengths))
+    if is_list:
+        return [(float(x), float(y)) for x, y in out]
+    return out
 
 
 def sat_check_overlap(poly1, poly2, normals1, normals2,
