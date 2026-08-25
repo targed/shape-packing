@@ -1214,10 +1214,10 @@ class TestChooseProblemUnsupportedShape:
         path = tmp_path / "pq.json"
         items = [
             {
-                "problem": "1_XXX_in_4",
+                "problem": "1_INVALID_SHAPE_TOKEN_in_4",
                 "density": 0.9,
                 "status": "best_known",
-                "inner_shape": "XXX",
+                "inner_shape": "INVALID_SHAPE_TOKEN",
                 "container_shape": "4",
                 "best_value": 2.0,
                 "N": 1,
@@ -1266,17 +1266,17 @@ class TestChooseProblemGeneralException:
         path = tmp_path / "pq.json"
         items = [
             {
-                "problem": "1_XXX_in_4",
+                "problem": "1_INVALID_SHAPE_TOKEN_in_4",
                 "density": 0.9,
                 "status": "best_known",
-                "inner_shape": "XXX",
+                "inner_shape": "INVALID_SHAPE_TOKEN",
                 "container_shape": "4",
                 "best_value": 2.0,
                 "N": 1,
             },
         ]
         path.write_text(json.dumps(items))
-        # XXX not recognized -> parse may fail or token_to_sides raises
+        # INVALID_SHAPE_TOKEN not recognized -> parse may fail or token_to_sides raises
         p = choose_problem(
             history=[],
             queue_path=str(path),
