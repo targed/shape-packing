@@ -383,6 +383,19 @@ class TestVerifyRecordCheck:
         )
         assert val is None
 
+    def test_load_reference_map_caching(self, tmp_path):
+        from src.shape_packing.solution_tools import load_reference_map
+        ref = tmp_path / "ref.tsv"
+        ref.write_text("id\tfamily\t1.2345\tstatus\tsource\t1_3_in_3\n")
+        
+        m1 = load_reference_map(str(ref))
+        assert m1.get("1_3_in_3") == 1.2345
+        
+        # Second call returns cached dictionary
+        m2 = load_reference_map(str(ref))
+        assert m1 is m2
+        assert load_best_value(str(ref), "1_3_in_3") == 1.2345
+
     def test_unsupported_format(self, tmp_path):
         # Missing both 'values' and 'positions'
         data = {"N": 2}

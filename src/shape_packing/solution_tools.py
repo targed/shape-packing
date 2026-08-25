@@ -219,30 +219,51 @@ def build_polygons(sol: "Solution") -> List[List[Tuple[float, float]]]:
 
 # --------------- Reference helpers ---------------
 
+_REFERENCE_CACHE: Dict[str, Dict[str, float]] = {}
 
-def load_best_value(
+
+def load_reference_map(
     reference_path: str = "PACKING_REFERENCE.tsv",
-    problem_str: str = "",
-) -> Optional[float]:
+) -> Dict[str, float]:
     """
-    Load best known value for a problem from PACKING_REFERENCE.tsv.
-    Returns None if not found.
+    Load all problem -> best_value mappings from reference TSV with in-memory caching.
     """
     if not os.path.exists(reference_path):
-        return None
+        return {}
 
+    abs_path = os.path.abspath(reference_path)
+    mtime = os.path.getmtime(abs_path)
+    cache_key = f"{abs_path}:{mtime}"
+
+    if cache_key in _REFERENCE_CACHE:
+        return _REFERENCE_CACHE[cache_key]
+
+    ref_map: Dict[str, float] = {}
     with open(reference_path, "r", encoding="utf-8") as f:
         for line in f:
             parts = line.strip().split("\t")
             if len(parts) < 6:
                 continue
             our_prob = parts[5]
-            if our_prob == problem_str:
-                try:
-                    return float(parts[2])
-                except ValueError:
-                    return None
-    return None
+            try:
+                ref_map[our_prob] = float(parts[2])
+            except ValueError:
+                pass
+
+    _REFERENCE_CACHE[cache_key] = ref_map
+    return ref_map
+
+
+def load_best_value(
+    reference_path: str = "PACKING_REFERENCE.tsv",
+    problem_str: str = "",
+) -> Optional[float]:
+    """
+    Load best known value for a problem from PACKING_REFERENCE.tsv using cached map.
+    Returns None if not found.
+    """
+    ref_map = load_reference_map(reference_path)
+    return ref_map.get(problem_str)
 
 
 # --------------- Verification ---------------
