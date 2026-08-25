@@ -109,11 +109,8 @@ def transform_polygon(vertices, cx: float, cy: float, a: float):
     cosa = math.cos(a)
     sina = math.sin(a)
     out = np.empty_like(v)
-    for i in range(v.shape[0]):
-        vx = v[i, 0]
-        vy = v[i, 1]
-        out[i, 0] = cx + (vx * cosa - vy * sina)
-        out[i, 1] = cy + (vx * sina + vy * cosa)
+    out[:, 0] = cx + (v[:, 0] * cosa - v[:, 1] * sina)
+    out[:, 1] = cy + (v[:, 0] * sina + v[:, 1] * cosa)
     if is_list:
         return [(float(x), float(y)) for x, y in out]
     return out
