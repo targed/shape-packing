@@ -404,6 +404,40 @@ class TestVerifyRecordCheck:
         with pytest.raises(ValueError, match="Unsupported solution JSON format"):
             load_solution(str(p))
 
+    def test_extracted_verification_helpers(self, sample_solution_values):
+        from src.shape_packing.solution_tools import (
+            _verify_metric_scaling,
+            _verify_container_bounds,
+            _verify_overlap,
+            _check_new_record,
+            get_shape_geometry,
+            build_polygons,
+        )
+        sol = load_solution(sample_solution_values)
+        _, _, unit_container_vectors, unit_container_radii = get_shape_geometry(sol.container_token)
+        polygons = build_polygons(sol)
+
+        # Metric scaling
+        errs_metric = _verify_metric_scaling(sol, sol.final_metric)
+        assert len(errs_metric) == 0
+
+        errs_metric_bad = _verify_metric_scaling(sol, sol.final_metric + 1.0)
+        assert len(errs_metric_bad) == 1
+
+        # Bounds
+        errs_bounds = _verify_container_bounds(
+            sol, polygons, unit_container_vectors, unit_container_radii, 1e-6
+        )
+        assert isinstance(errs_bounds, list)
+
+        # Overlap
+        errs_overlap = _verify_overlap(sol, polygons, 1e-6)
+        assert isinstance(errs_overlap, list)
+
+        # Record check
+        is_rec = _check_new_record(sol.final_metric, None, False, "nonexistent.tsv", 1e-6)
+        assert is_rec is False
+
 
 class TestToPlotData:
     def test_structure(self, sample_solution_values):

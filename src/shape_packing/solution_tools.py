@@ -266,56 +266,41 @@ def load_best_value(
     return ref_map.get(problem_str)
 
 
-# --------------- Verification ---------------
+# --------------- Verification helpers ---------------
 
 
-def verify_solution(
-    sol_path: str,
-    problem_str: Optional[str] = None,
-    tolerance: float = TOLERANCE,
-    check_record: bool = True,
-    reference_path: str = "PACKING_REFERENCE.tsv",
-) -> "VerifyResult":
-    """
-    Verify a solution JSON:
-      - metric scaling consistency
-      - container bounds
-      - pairwise overlap (SAT)
-      - optional record comparison
-
-    Returns a VerifyResult.
-    """
+def _verify_metric_scaling(sol: Solution, calc_metric: float) -> List[str]:
+    """Verify that calculated Friedman metric matches the solution JSON's final_metric."""
     errors: List[str] = []
-    new_record = False
-
-    sol = load_solution(sol_path)
-    N = sol.N
-    nsi, _, _, _ = get_shape_geometry(sol.inner_token)
-    nsc, _, unit_container_vectors, unit_container_radii = get_shape_geometry(sol.container_token)
-    S = sol.S
-
-    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
-    is_container_circle = sol.container_token.upper() in ("CIRCLE", "CIR")
-
-    # 1. Metric scaling verification
-    calc_metric = compute_friedman_metric(S, sol.inner_token, sol.container_token)
     diff = abs(calc_metric - sol.final_metric)
     if diff > 1e-10:
         errors.append(
             f"Metric scaling is incorrect. Computed: {calc_metric}, "
             f"JSON says: {sol.final_metric}"
         )
+    return errors
 
-    # 2. Container bounds verification
+
+def _verify_container_bounds(
+    sol: Solution,
+    polygons: List[Any],
+    unit_container_vectors: Any,
+    unit_container_radii: Any,
+    tolerance: float,
+) -> List[str]:
+    """Verify that all shapes lie within the container boundaries."""
+    errors: List[str] = []
+    S = sol.S
+    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
+    is_container_circle = sol.container_token.upper() in ("CIRCLE", "CIR")
+
     container_limits = unit_container_radii * S
     container_normals = [(float(v[0]), float(v[1])) for v in unit_container_vectors]
-
-    polygons = build_polygons(sol)
 
     for i, poly in enumerate(polygons):
         posx = sol.values[i * 3]
         posy = sol.values[i * 3 + 1]
-        
+
         if is_container_circle:
             if is_inner_circle:
                 dist = math.hypot(posx, posy)
@@ -341,9 +326,20 @@ def verify_solution(
                         if dist > container_limits[n_idx] + tolerance:
                             violation = dist - container_limits[n_idx]
                             errors.append(f"Shape {i} is out of bounds! Violation margin: {violation}")
+    return errors
 
-    # 3. Overlap verification (SAT)
+
+def _verify_overlap(
+    sol: Solution,
+    polygons: List[Any],
+    tolerance: float,
+) -> List[str]:
+    """Verify pairwise overlap among all inner shapes using circle distance or SAT."""
+    errors: List[str] = []
+    N = sol.N
+    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
     poly_normals_list = [polygon_normals(p) for p in polygons]
+
     for i in range(N):
         for j in range(i + 1, N):
             if is_inner_circle:
@@ -366,15 +362,67 @@ def verify_solution(
                 errors.append(
                     f"Shapes {i} and {j} overlap! Depth: {depth}"
                 )
+    return errors
+
+
+def _check_new_record(
+    calc_metric: float,
+    problem_str: Optional[str],
+    check_record: bool,
+    reference_path: str,
+    tolerance: float,
+) -> bool:
+    """Check if the solution improves upon the known best benchmark value."""
+    if not (problem_str and check_record):
+        return False
+    best = load_best_value(reference_path, problem_str)
+    if best is not None and calc_metric < best - tolerance:
+        return True
+    return False
+
+
+# --------------- Verification ---------------
+
+
+def verify_solution(
+    sol_path: str,
+    problem_str: Optional[str] = None,
+    tolerance: float = TOLERANCE,
+    check_record: bool = True,
+    reference_path: str = "PACKING_REFERENCE.tsv",
+) -> "VerifyResult":
+    """
+    Verify a solution JSON:
+      - metric scaling consistency
+      - container bounds
+      - pairwise overlap (SAT)
+      - optional record comparison
+
+    Returns a VerifyResult.
+    """
+    sol = load_solution(sol_path)
+    _, _, unit_container_vectors, unit_container_radii = get_shape_geometry(sol.container_token)
+    polygons = build_polygons(sol)
+
+    calc_metric = compute_friedman_metric(sol.S, sol.inner_token, sol.container_token)
+
+    errors: List[str] = []
+    errors.extend(_verify_metric_scaling(sol, calc_metric))
+    errors.extend(
+        _verify_container_bounds(
+            sol, polygons, unit_container_vectors, unit_container_radii, tolerance
+        )
+    )
+    errors.extend(_verify_overlap(sol, polygons, tolerance))
 
     valid = len(errors) == 0
-
-    # 4. Record check
-    if problem_str and check_record and valid:
-        best = load_best_value(reference_path, problem_str)
-        if best is not None:
-            if calc_metric < best - tolerance:
-                new_record = True
+    new_record = (
+        _check_new_record(
+            calc_metric, problem_str, check_record, reference_path, tolerance
+        )
+        if valid
+        else False
+    )
 
     if valid:
         if new_record:
