@@ -65,13 +65,26 @@ def handle_run(args, history_cache=None, direct_call=False):
             sys.exit(1)
 
         init_json_path = "initial_positions.json"
-        res = subprocess.run([sys.executable, str(script_path), init_json_path], capture_output=True, text=True)
-        if res.returncode != 0:
-            err = "Init script failed:\n" + res.stderr
+        import runpy
+        old_argv = sys.argv
+        try:
+            sys.argv = [str(script_path), init_json_path]
+            runpy.run_path(str(script_path), run_name="__main__")
+        except SystemExit as se:
+            if se.code not in (0, None):
+                err = f"Init script exited with code {se.code}"
+                eprint(err)
+                if direct_call:
+                    return {"success": False, "error": err, "returncode": se.code or 1}
+                sys.exit(se.code or 1)
+        except Exception as e:
+            err = f"Init script failed:\n{e}"
             eprint(err)
             if direct_call:
                 return {"success": False, "error": err, "returncode": 1}
             sys.exit(1)
+        finally:
+            sys.argv = old_argv
             
     # 2. Extract problem parts
     from .problems import parse_problem
@@ -90,7 +103,7 @@ def handle_run(args, history_cache=None, direct_call=False):
     os.makedirs(result_dir, exist_ok=True)
     solution_file = os.path.join(result_dir, "solution.json")
     
-    from .solution_tools import inverse_friedman_metric
+    from .solution_tools import inverse_friedman_metric, verify_solution, render_solution
     from .agent_loop import load_history, current_best_scores
 
 
@@ -101,20 +114,13 @@ def handle_run(args, history_cache=None, direct_call=False):
         else:
             history = load_history("results.tsv")
             
-        history = [
-            r for r in history
-            if r.commit.lower() not in ("verify", "auto-verify", "test")
-            and "verify" not in (r.description or "").lower()
-        ]
         best = current_best_scores(history)
-        best_score = best.get(args.problem, "None")
+        if p_clean in best:
+            target_metric = best[p_clean]
+            target_s = inverse_friedman_metric(target_metric, inner, container)
+    except Exception:
+        target_s = None
         
-        if best_score != "None":
-            target_s = inverse_friedman_metric(float(best_score), inner, container)
-            eprint(f"Injecting --target-s {target_s} (from Friedman best_score {best_score})")
-    except Exception as e:
-        eprint(f"Could not inject target_s: {e}")
-
     init_positions_list = None
     if init_json_path and os.path.exists(init_json_path):
         try:
@@ -123,7 +129,7 @@ def handle_run(args, history_cache=None, direct_call=False):
         except Exception:
             pass
 
-    # 3. Run solver
+    # 3. Call solver
     res = run_solver(
         n_shapes=N,
         inner_shape=str(inner),
@@ -134,7 +140,7 @@ def handle_run(args, history_cache=None, direct_call=False):
         solution_file=solution_file,
         no_build=getattr(args, "no_build", False),
     )
-
+    
     if not res.get("success"):
         if res.get("output") and "No valid packing found" in res.get("output"):
             eprint("Solver reported: No valid packing found. Refusing to log 0.0 score.")
@@ -148,6 +154,11 @@ def handle_run(args, history_cache=None, direct_call=False):
                 return {"success": True, **out}
             print(json.dumps(out))
             sys.exit(0)
+
+        if res.get("returncode") == 0:
+            if direct_call:
+                return {"success": True, "score": 0.0, "returncode": 0}
+            sys.exit(0)
         
         err = f"Rust solver failed: {res.get('error', 'Unknown error')}"
         eprint(err)
@@ -160,12 +171,10 @@ def handle_run(args, history_cache=None, direct_call=False):
             
     # Verify and render
     if os.path.exists(solution_file):
-        verify_cmd = [sys.executable, os.path.join("scripts", "verify_solution.py"), solution_file, p_clean]
-        subprocess.run(verify_cmd)
+        verify_solution(solution_file, p_clean)
         
         if not getattr(args, "no_png", False):
-            render_cmd = [sys.executable, os.path.join("scripts", "render_solution.py"), solution_file, os.path.join(result_dir, "solution.png")]
-            subprocess.run(render_cmd)
+            render_solution(solution_file, os.path.join(result_dir, "solution.png"))
             
     # 4. Log to TSV
     if not args.no_commit:
