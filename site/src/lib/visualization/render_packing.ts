@@ -16,16 +16,28 @@ export interface PolygonPoint {
   y: number;
 }
 
-export function parseSides(val: any): number | string {
+export interface TransformedShape {
+  cx: number;
+  cy: number;
+  angle: number;
+  isCircle: boolean;
+  vertices: PolygonPoint[] | null;
+  color: string;
+}
+
+export function parseShapeToken(val: any): string | number {
   if (val === undefined || val === null) return 3;
   const s = String(val).trim().toUpperCase();
   if (s === 'CIRCLE' || s === 'CIR' || s === '0') return 'CIRCLE';
-  if (s === 'TAN') return 'TAN';
   if (s === 'DOMINO' || s === 'DOM') return 'DOMINO';
-  if (s === 'L') return 'L';
+  if (s === 'TAN') return 'TAN';
+  if (s === 'L' || s === 'L-TROMINO' || s === 'EL') return 'L';
   const num = parseInt(s, 10);
   return isNaN(num) ? s : num;
 }
+
+// Backward compatibility
+export const parseSides = parseShapeToken;
 
 export function getRegularPolygonVertices(sides: number, radius: number = 1.0, offsetAngle: number = 0): PolygonPoint[] {
   const points: PolygonPoint[] = [];
@@ -40,18 +52,46 @@ export function getRegularPolygonVertices(sides: number, radius: number = 1.0, o
   return points;
 }
 
-export function getContainerRotationOffset(val: any): number {
-  if (typeof val === 'number') {
-    if (val % 2 === 1) return Math.PI / 2.0;
-    if (Math.floor(val / 2) % 2 === 0) return Math.PI / val;
+export function getUnitShapeVertices(token: string | number): PolygonPoint[] | null {
+  const parsed = parseShapeToken(token);
+  if (parsed === 'CIRCLE') {
+    return null; // Circles are rendered via SVG <circle>
+  }
+  if (parsed === 'DOMINO') {
+    return [
+      { x: -1.0, y: -0.5 },
+      { x: 1.0, y: -0.5 },
+      { x: 1.0, y: 0.5 },
+      { x: -1.0, y: 0.5 },
+    ];
+  }
+  if (parsed === 'TAN') {
+    const r = 1.0 - Math.SQRT2 / 2.0;
+    return [
+      { x: -r, y: -r },
+      { x: 1.0 - r, y: -r },
+      { x: -r, y: 1.0 - r },
+    ];
+  }
+  const sides = typeof parsed === 'number' && parsed >= 3 ? parsed : 3;
+  return getRegularPolygonVertices(sides, 1.0, 0);
+}
+
+export function getContainerRotationOffset(token: any): number {
+  const parsed = parseShapeToken(token);
+  if (typeof parsed === 'string') {
     return 0.0;
   }
-  const s = String(val).trim().toUpperCase();
-  const sides = parseInt(s, 10);
-  if (isNaN(sides)) return 0.0;
-  if (sides % 2 === 1) return Math.PI / 2.0;
-  if (Math.floor(sides / 2) % 2 === 0) return Math.PI / sides;
-  return 0.0;
+  const sides = parsed;
+  if (sides % 2 === 1) {
+    return Math.PI / 2.0;
+  } else {
+    if (Math.floor(sides / 2) % 2 === 0) {
+      return Math.PI / sides;
+    } else {
+      return 0.0;
+    }
+  }
 }
 
 export function transformPoint(pt: PolygonPoint, cx: number, cy: number, angle: number): PolygonPoint {
@@ -70,11 +110,11 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
 
   const N = solution.N;
   const values = solution.values;
-  const rawContainer = solution.container_sides ?? solution.container_token ?? solution.nsc;
-  const rawInner = solution.inner_sides ?? solution.inner_token ?? solution.nsi;
+  const rawContainer = solution.container_token ?? solution.container_sides ?? solution.nsc;
+  const rawInner = solution.inner_token ?? solution.inner_sides ?? solution.nsi;
 
-  const containerSides = parseSides(rawContainer);
-  const innerSides = parseSides(rawInner);
+  const containerToken = parseShapeToken(rawContainer);
+  const innerToken = parseShapeToken(rawInner);
   const S = solution.S || 1.0;
   const finalMetric = solution.final_metric || S;
 
@@ -83,10 +123,30 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
     '#06b6d4', '#3b82f6', '#f59e0b', '#84cc16', '#a855f7'
   ];
 
-  const shapes: Array<{ cx: number; cy: number; angle: number; color: string }> = [];
-  const rot = getContainerRotationOffset(containerSides);
+  const rot = getContainerRotationOffset(containerToken);
   const cos = Math.cos(rot);
   const sin = Math.sin(rot);
+
+  // 1. Build Container Vertices / Bounds
+  const isContainerCircle = containerToken === 'CIRCLE';
+  let containerVertices: PolygonPoint[] | null = null;
+  if (!isContainerCircle) {
+    const unitContainer = getUnitShapeVertices(containerToken) || getRegularPolygonVertices(3, 1.0, 0);
+    containerVertices = unitContainer.map(pt => {
+      const rx = pt.x * cos - pt.y * sin;
+      const ry = pt.x * sin + pt.y * cos;
+      return {
+        x: rx * S,
+        y: ry * S,
+      };
+    });
+  }
+
+  // 2. Build Inner Shapes
+  const isInnerCircle = innerToken === 'CIRCLE';
+  const unitInnerVertices = isInnerCircle ? null : (getUnitShapeVertices(innerToken) || getRegularPolygonVertices(3, 1.0, 0));
+
+  const shapes: TransformedShape[] = [];
   const stride = Math.floor(values.length / N);
 
   for (let i = 0; i < N; i++) {
@@ -99,30 +159,65 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
     const cy = rawCx * sin + rawCy * cos;
     const angle = rawAngle + rot;
 
+    let shapeVertices: PolygonPoint[] | null = null;
+    if (!isInnerCircle && unitInnerVertices) {
+      shapeVertices = unitInnerVertices.map(v => transformPoint(v, cx, cy, angle));
+    }
+
     shapes.push({
       cx,
       cy,
       angle,
+      isCircle: isInnerCircle,
+      vertices: shapeVertices,
       color: colors[i % colors.length]
     });
   }
 
-  let minX = -S, maxX = S, minY = -S, maxY = S;
+  // 3. Compute ViewBox
+  let minX = isContainerCircle ? -S : Infinity;
+  let maxX = isContainerCircle ? S : -Infinity;
+  let minY = isContainerCircle ? -S : Infinity;
+  let maxY = isContainerCircle ? S : -Infinity;
+
+  if (containerVertices) {
+    containerVertices.forEach(pt => {
+      minX = Math.min(minX, pt.x);
+      maxX = Math.max(maxX, pt.x);
+      minY = Math.min(minY, pt.y);
+      maxY = Math.max(maxY, pt.y);
+    });
+  }
+
   shapes.forEach(s => {
-    minX = Math.min(minX, s.cx - 1.5);
-    maxX = Math.max(maxX, s.cx + 1.5);
-    minY = Math.min(minY, s.cy - 1.5);
-    maxY = Math.max(maxY, s.cy + 1.5);
+    if (s.isCircle) {
+      minX = Math.min(minX, s.cx - 1.0);
+      maxX = Math.max(maxX, s.cx + 1.0);
+      minY = Math.min(minY, s.cy - 1.0);
+      maxY = Math.max(maxY, s.cy + 1.0);
+    } else if (s.vertices) {
+      s.vertices.forEach(pt => {
+        minX = Math.min(minX, pt.x);
+        maxX = Math.max(maxX, pt.x);
+        minY = Math.min(minY, pt.y);
+        maxY = Math.max(maxY, pt.y);
+      });
+    }
   });
 
-  const padding = 0.5;
-  const viewBox = `${minX - padding} ${minY - padding} ${(maxX - minX) + 2 * padding} ${(maxY - minY) + 2 * padding}`;
+  const spanX = maxX - minX;
+  const spanY = maxY - minY;
+  const padding = Math.max(spanX, spanY) * 0.06 || 0.5;
+
+  const viewBox = `${(minX - padding).toFixed(4)} ${(minY - padding).toFixed(4)} ${(spanX + 2 * padding).toFixed(4)} ${(spanY + 2 * padding).toFixed(4)}`;
 
   return {
     viewBox,
-    containerSides,
+    isContainerCircle,
+    containerVertices,
+    containerSides: containerToken,
     containerOffsetAngle: rot,
-    innerSides,
+    innerSides: innerToken,
     shapes,
     S,
     finalMetric

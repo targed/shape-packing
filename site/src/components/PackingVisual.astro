@@ -1,5 +1,5 @@
 ---
-import { generatePackingSvgElements, getRegularPolygonVertices, transformPoint, parseSides, type SolutionData } from '../lib/visualization/render_packing';
+import { generatePackingSvgElements, type SolutionData } from '../lib/visualization/render_packing';
 
 interface Props {
   solution: SolutionData;
@@ -26,11 +26,9 @@ const svgData = generatePackingSvgElements(mergedSolution);
     <div class="w-full aspect-square max-w-[280px] relative flex items-center justify-center bg-slate-950/60 rounded-lg border border-slate-800/60 p-2">
       <svg viewBox={svgData.viewBox} class="w-full h-full transform scale-y-[-1] overflow-visible">
         <!-- Container Boundary -->
-        {typeof svgData.containerSides === 'number' && svgData.containerSides > 2 ? (
+        {!svgData.isContainerCircle && svgData.containerVertices ? (
           <polygon
-            points={getRegularPolygonVertices(svgData.containerSides, svgData.S, svgData.containerOffsetAngle || 0)
-              .map(p => `${p.x},${p.y}`)
-              .join(' ')}
+            points={svgData.containerVertices.map(p => `${p.x.toFixed(4)},${p.y.toFixed(4)}`).join(' ')}
             fill="none"
             stroke="#64748b"
             stroke-width="0.04"
@@ -50,25 +48,22 @@ const svgData = generatePackingSvgElements(mergedSolution);
 
         <!-- Inner Shapes -->
         {svgData.shapes.map((shape) => {
-          const numSides = typeof svgData.innerSides === 'number' ? svgData.innerSides : 3;
-          if (typeof numSides === 'number' && numSides > 2) {
-            const vertices = getRegularPolygonVertices(numSides, 1.0);
-            const transformed = vertices.map(v => transformPoint(v, shape.cx, shape.cy, shape.angle));
+          if (shape.isCircle) {
             return (
-              <polygon
-                points={transformed.map(p => `${p.x},${p.y}`).join(' ')}
+              <circle
+                cx={shape.cx}
+                cy={shape.cy}
+                r="1"
                 fill={shape.color}
                 fill-opacity="0.4"
                 stroke={shape.color}
                 stroke-width="0.03"
               />
             );
-          } else {
+          } else if (shape.vertices) {
             return (
-              <circle
-                cx={shape.cx}
-                cy={shape.cy}
-                r="0.5"
+              <polygon
+                points={shape.vertices.map(p => `${p.x.toFixed(4)},${p.y.toFixed(4)}`).join(' ')}
                 fill={shape.color}
                 fill-opacity="0.4"
                 stroke={shape.color}
