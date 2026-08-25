@@ -3,33 +3,66 @@ import os
 import json
 from src.shape_packing.packing_config import (
     load_family_colors,
+    load_family_properties,
     get_family_colors,
+    get_family_properties,
+    get_family_target_filename,
+    FAMILY_PROPERTIES_PATH,
     FAMILY_COLORS_PATH,
 )
 from src.shape_packing.solution_tools import render_solution
 
-def test_family_colors_json_exists():
-    assert os.path.exists(FAMILY_COLORS_PATH)
-    colors = load_family_colors()
-    assert len(colors) >= 60
-    assert "dominpen" in colors
-    assert "cirinpen" in colors
-    assert "dominhex" in colors
+def test_family_properties_json_exists():
+    assert os.path.exists(FAMILY_PROPERTIES_PATH)
+    props = load_family_properties()
+    assert len(props) >= 60
+    assert "dominpen" in props
+    assert "cirinpen" in props
+    assert "dominhex" in props
+    assert "cirinhex" in props
 
-def test_get_family_colors_by_family_name():
+def test_get_family_properties_by_family_name():
     # Regular family
-    c = get_family_colors("dominpen")
-    assert c["inner"].lower() == "#fed4d1"
-    assert c["container"].lower() == "#ffffff"
+    p = get_family_properties("dominpen")
+    assert p["inner"].lower() == "#fed4d1"
+    assert p["container"].lower() == "#ffffff"
+    assert p["width"] == 250
+    assert p["height"] == 237
+    assert p["file_format"] == "png"
+    assert p["filename_template"] == "{n}.png"
 
-    # cirinpen with special container color
-    c_pen = get_family_colors("cirinpen")
-    assert c_pen["inner"].lower() == "#99ff99"
-    assert c_pen["container"].lower() == "#fff3e6"
+    # cirinpen with special container color and pent.<n>.png naming
+    p_pen = get_family_properties("cirinpen")
+    assert p_pen["inner"].lower() == "#99ff99"
+    assert p_pen["container"].lower() == "#fff3e6"
+    assert p_pen["width"] == 212
+    assert p_pen["height"] == 201
+    assert p_pen["filename_template"] == "pent.{n}.png"
 
-    # Mixed case family name
-    c_l = get_family_colors("dominL")
-    assert c_l["inner"].lower() == "#feffdc"
+    # cirinhex with hc<n>.gif naming
+    p_hex = get_family_properties("cirinhex")
+    assert p_hex["file_format"] == "gif"
+    assert p_hex["filename_template"] == "hc{n}.gif"
+    assert p_hex["width"] == 180
+    assert p_hex["height"] == 156
+
+def test_get_family_target_filename():
+    assert get_family_target_filename("cirinpen", 21) == "pent.21.png"
+    assert get_family_target_filename("cirinhex", 22) == "hc22.gif"
+    assert get_family_target_filename("cirincir", 5) == "ccc5.gif"
+    assert get_family_target_filename("squintri", 6) == "ts6.gif"
+    assert get_family_target_filename("triinsqu", 4) == "t4.gif"
+    assert get_family_target_filename("dominhex", 2) == "2.png"
+    assert get_family_target_filename("dominpen", 21) == "21.png"
+
+def test_get_family_properties_variable_warning(capsys):
+    p = get_family_properties("cirinel")
+    captured = capsys.readouterr()
+    assert "[WARN]" in captured.out
+    assert "cirinel" in captured.out
+    assert p["variable_dimensions"] is True
+    assert p["manual_check_required"] is True
+    assert p["filename_template"] == "e{n}.gif"
 
 def test_get_family_colors_by_tokens():
     c = get_family_colors("DOMINO", "5")

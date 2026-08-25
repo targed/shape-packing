@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T20:00:18Z",
+  "generated_at": "2026-08-25T20:01:21Z",
   "total_records": 49,
   "records": [
     {
@@ -13,7 +13,7 @@
       "metric": 5.9518626702293895,
       "friedman_best": 5.952,
       "improvement": -0.00013732977061042817,
-      "site_image": "cirinhex/22_CIRCLE_in_6/22.png",
+      "site_image": "cirinhex/22_CIRCLE_in_6/hc22.gif",
       "folder": "cirinhex/22_CIRCLE_in_6"
     },
     {
@@ -433,7 +433,7 @@
       "metric": 2.666678387864216,
       "friedman_best": 2.667,
       "improvement": -0.0003216121357838553,
-      "site_image": "hexinhex/5_6_in_6/5.png",
+      "site_image": "hexinhex/5_6_in_6/5.gif",
       "folder": "hexinhex/5_6_in_6"
     },
     {
@@ -447,7 +447,7 @@
       "metric": 3.941648986549848,
       "friedman_best": 3.942,
       "improvement": -0.00035101345015231544,
-      "site_image": "hexinhex/12_6_in_6/12.png",
+      "site_image": "hexinhex/12_6_in_6/12.gif",
       "folder": "hexinhex/12_6_in_6"
     },
     {
@@ -629,7 +629,7 @@
       "metric": 1.2884705122360107,
       "friedman_best": 1.2885,
       "improvement": -2.9487763989255455e-05,
-      "site_image": "squincir/3_4_in_CIRCLE/3.png",
+      "site_image": "squincir/3_4_in_CIRCLE/3.gif",
       "folder": "squincir/3_4_in_CIRCLE"
     },
     {
@@ -643,7 +643,7 @@
       "metric": 1.802780171513069,
       "friedman_best": 1.8028,
       "improvement": -1.982848693105055e-05,
-      "site_image": "squincir/7_4_in_CIRCLE/7.png",
+      "site_image": "squincir/7_4_in_CIRCLE/7.gif",
       "folder": "squincir/7_4_in_CIRCLE"
     },
     {
@@ -657,7 +657,7 @@
       "metric": 2.213886888270671,
       "friedman_best": 2.2139,
       "improvement": -1.3111729329384758e-05,
-      "site_image": "squincir/11_4_in_CIRCLE/11.png",
+      "site_image": "squincir/11_4_in_CIRCLE/11.gif",
       "folder": "squincir/11_4_in_CIRCLE"
     },
     {
@@ -671,7 +671,7 @@
       "metric": 3.020607490508436,
       "friedman_best": 3.02113,
       "improvement": -0.0005225094915637385,
-      "site_image": "squinoct/38_4_in_8/38.png",
+      "site_image": "squinoct/38_4_in_8/38.gif",
       "folder": "squinoct/38_4_in_8"
     },
     {

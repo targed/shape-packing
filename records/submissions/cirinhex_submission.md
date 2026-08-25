@@ -16,11 +16,11 @@ We discovered these packings using a continuous global optimization solver combi
 ### New Packings
 | N | Our s (5 dec) | Our Exact s | Friedman Best s | Improvement | Attached Image |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| 22 | 5.95186+ | 5.951862670229 | 5.95200+ | -0.000137 | `22.png` |
+| 22 | 5.95186+ | 5.951862670229 | 5.95200+ | -0.000137 | `hc22.gif` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#b5b5b5 on #ffffff), orientation, no borders or text, and target website pixel dimensions (260x226 px):
-- `22.png`
+The replacement image files are attached directly with exact matching colors (#b5b5b5 on #ffffff), orientation, no borders or text, and target website pixel dimensions (180x156 px):
+- `hc22.gif`
 
 Coordinate tables and certificates for each solution are included in the repository records.
 

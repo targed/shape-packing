@@ -72,8 +72,10 @@ RENDER_BG_COLOR: Optional[str] = "#FFFFFF"
 RENDER_ALIGN_CONTAINER: bool = True
 ANALYSIS_PLOT_DPI: int = 200
 
-FAMILY_COLORS_PATH: str = os.path.join(os.path.dirname(__file__), "family_colors.json")
-_FAMILY_COLORS_CACHE: Optional[Dict[str, Dict[str, str]]] = None
+FAMILY_PROPERTIES_PATH: str = os.path.join(os.path.dirname(__file__), "family_properties.json")
+FAMILY_COLORS_PATH: str = FAMILY_PROPERTIES_PATH
+_FAMILY_PROPERTIES_CACHE: Optional[Dict[str, Dict[str, Any]]] = None
+_FAMILY_COLORS_CACHE: Optional[Dict[str, Dict[str, Any]]] = None
 
 _FAMILY_TOKEN_NAME_MAP = {
     "3": "tri",
@@ -109,34 +111,43 @@ def _normalize_family_token(token: str) -> str:
     return _FAMILY_TOKEN_NAME_MAP.get(s, s)
 
 
-def load_family_colors(json_path: Optional[str] = None) -> Dict[str, Dict[str, str]]:
-    """Load the shape family colors configuration mapping from JSON."""
-    global _FAMILY_COLORS_CACHE
-    if json_path is None and _FAMILY_COLORS_CACHE is not None:
-        return _FAMILY_COLORS_CACHE
+def load_family_properties(json_path: Optional[str] = None) -> Dict[str, Dict[str, Any]]:
+    """Load the shape family properties configuration mapping from JSON."""
+    global _FAMILY_PROPERTIES_CACHE, _FAMILY_COLORS_CACHE
+    if json_path is None and _FAMILY_PROPERTIES_CACHE is not None:
+        return _FAMILY_PROPERTIES_CACHE
 
-    target_path = json_path or FAMILY_COLORS_PATH
+    target_path = json_path or FAMILY_PROPERTIES_PATH
+    if not os.path.exists(target_path) and os.path.exists(os.path.join(os.path.dirname(__file__), "family_colors.json")):
+        target_path = os.path.join(os.path.dirname(__file__), "family_colors.json")
+
     if os.path.exists(target_path):
         import json
         with open(target_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-            colors = {str(k).strip().lower(): v for k, v in data.items()}
+            props = {str(k).strip().lower(): v for k, v in data.items()}
             if json_path is None:
-                _FAMILY_COLORS_CACHE = colors
-            return colors
+                _FAMILY_PROPERTIES_CACHE = props
+                _FAMILY_COLORS_CACHE = props
+            return props
     return {}
 
 
-def get_family_colors(
+def load_family_colors(json_path: Optional[str] = None) -> Dict[str, Dict[str, Any]]:
+    """Alias for load_family_properties for backward compatibility."""
+    return load_family_properties(json_path)
+
+
+def get_family_properties(
     inner_or_family: str,
     container: Optional[str] = None,
     json_path: Optional[str] = None,
 ) -> Dict[str, Any]:
     """
-    Get inner shape face color, container color, and target pixel dimensions for a given family.
-    Returns: {'inner': str, 'container': str, 'width': int, 'height': int}
+    Get full properties for a given shape family (colors, dimensions, format, filename template).
+    Logs a warning if dimensions are variable or unconfirmed.
     """
-    colors_map = load_family_colors(json_path)
+    props_map = load_family_properties(json_path)
 
     if container is not None:
         inner_token = _normalize_family_token(str(inner_or_family))
@@ -154,21 +165,66 @@ def get_family_colors(
         else:
             family_key = raw.lower()
 
-    if family_key in colors_map:
-        cfg = colors_map[family_key]
+    if family_key in props_map:
+        cfg = props_map[family_key]
+        width = cfg.get("width")
+        height = cfg.get("height")
+        file_format = cfg.get("file_format", "png").lower()
+        template = cfg.get("filename_template", "{n}.png")
+        manual_check = cfg.get("manual_check_required", False) or cfg.get("variable_dimensions", False)
+
+        if manual_check or width is None or height is None:
+            print(f"[WARN] Shape family '{family_key}' has variable or unconfirmed dimensions ({width}x{height}, format={file_format}). Please manually check Friedman's page.")
+            # Fallback default geometry dimensions if None
+            if width is None:
+                width = 240
+            if height is None:
+                height = 240
+
         return {
+            "family_code": family_key,
             "inner": cfg.get("inner", RENDER_INNER_FACE_COLOR),
             "container": cfg.get("container", RENDER_BG_COLOR or "#FFFFFF"),
-            "width": cfg.get("width", 240),
-            "height": cfg.get("height", 240),
+            "width": width,
+            "height": height,
+            "file_format": file_format,
+            "filename_template": template,
+            "variable_dimensions": cfg.get("variable_dimensions", False),
+            "manual_check_required": manual_check,
         }
 
     return {
+        "family_code": family_key,
         "inner": RENDER_INNER_FACE_COLOR,
         "container": RENDER_BG_COLOR or "#FFFFFF",
         "width": 240,
         "height": 240,
+        "file_format": "png",
+        "filename_template": "{n}.png",
+        "variable_dimensions": False,
+        "manual_check_required": False,
     }
+
+
+def get_family_colors(
+    inner_or_family: str,
+    container: Optional[str] = None,
+    json_path: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Get color and dimension dictionary for a family (backward compatible with get_family_properties)."""
+    return get_family_properties(inner_or_family, container, json_path)
+
+
+def get_family_target_filename(
+    inner_or_family: str,
+    N: int,
+    container: Optional[str] = None,
+    json_path: Optional[str] = None,
+) -> str:
+    """Resolve the exact website target filename for a problem and piece count N (e.g. 'pent.21.png', 'hc22.gif', '21.png')."""
+    props = get_family_properties(inner_or_family, container, json_path)
+    tmpl = props.get("filename_template", "{n}.png")
+    return tmpl.replace("{n}", str(N)).replace("<n>", str(N)).replace("<# of shapes>", str(N))
 
 
 # =====================

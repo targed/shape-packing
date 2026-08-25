@@ -19,7 +19,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 22 | 2.41951+ | 2.419505003282 | 2.42212+ | -0.002615 | `22.png` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#dee1f1 on #ffffff), orientation, no borders or text, and target website pixel dimensions (280x140 px):
+The replacement image files are attached directly with exact matching colors (#dee1f1 on #ffffff), orientation, no borders or text, and target website pixel dimensions (250x125 px):
 - `22.png`
 
 Coordinate tables and certificates for each solution are included in the repository records.

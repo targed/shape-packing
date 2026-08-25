@@ -20,7 +20,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 19 | 3.87882+ | 3.878816717652 | 3.89340+ | -0.014583 | `19.png` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#fed4d1 on #ffffff), orientation, no borders or text, and target website pixel dimensions (240x240 px):
+The replacement image files are attached directly with exact matching colors (#fed4d1 on #ffffff), orientation, no borders or text, and target website pixel dimensions (250x250 px):
 - `18.png`
 - `19.png`
 

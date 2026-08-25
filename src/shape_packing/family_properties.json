@@ -1,0 +1,752 @@
+{
+  "cirincir": {
+    "inner": "#b5b5b5",
+    "container": "#ffffff",
+    "width": 214,
+    "height": 214,
+    "file_format": "gif",
+    "filename_template": "ccc{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "domincir": {
+    "inner": "#fed4d1",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 250,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "cirinel": {
+    "inner": "#b5b5b5",
+    "container": "#ffffff",
+    "width": null,
+    "height": null,
+    "file_format": "gif",
+    "filename_template": "e{n}.gif",
+    "variable_dimensions": true,
+    "manual_check_required": true
+  },
+  "cirinhex": {
+    "inner": "#b5b5b5",
+    "container": "#ffffff",
+    "width": 180,
+    "height": 156,
+    "file_format": "gif",
+    "filename_template": "hc{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "cirinl": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 166,
+    "height": 166,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "cirinoct": {
+    "inner": "#b5b5b5",
+    "container": "#ffffff",
+    "width": null,
+    "height": null,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": true,
+    "manual_check_required": true
+  },
+  "cirinpen": {
+    "inner": "#99ff99",
+    "container": "#fff3e6",
+    "width": 212,
+    "height": 201,
+    "file_format": "png",
+    "filename_template": "pent.{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "cirinsqu": {
+    "inner": "#b5b5b5",
+    "container": "#ffffff",
+    "width": 172,
+    "height": 172,
+    "file_format": "gif",
+    "filename_template": "cs{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "cirintan": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 191,
+    "height": 191,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "cirintri": {
+    "inner": "#cecece",
+    "container": "#ffffff",
+    "width": 179,
+    "height": 157,
+    "file_format": "gif",
+    "filename_template": "ct{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "cirinttt": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": null,
+    "height": null,
+    "file_format": "gif",
+    "filename_template": "c{n}.gif",
+    "variable_dimensions": true,
+    "manual_check_required": true
+  },
+  "domindom": {
+    "inner": "#feffdc",
+    "container": "#ffffff",
+    "width": 272,
+    "height": 138,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "dominhex": {
+    "inner": "#fed4d1",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 225,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "dominl": {
+    "inner": "#feffdc",
+    "container": "#ffffff",
+    "width": 240,
+    "height": 240,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "dominoct": {
+    "inner": "#fdf4c0",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 260,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "dominpen": {
+    "inner": "#fed4d1",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 237,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "dominsqu": {
+    "inner": "#fed4d1",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 250,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "domintan": {
+    "inner": "#fed4d1",
+    "container": "#ffffff",
+    "width": 300,
+    "height": 300,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "domintri": {
+    "inner": "#fed4d1",
+    "container": "#ffffff",
+    "width": 200,
+    "height": 173,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "hexincir": {
+    "inner": "#eaf1de",
+    "container": "#ffffff",
+    "width": 193,
+    "height": 193,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "hexindom": {
+    "inner": "#fee9db",
+    "container": "#ffffff",
+    "width": 275,
+    "height": 137,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "hexinhex": {
+    "inner": "#fdadac",
+    "container": "#ffffff",
+    "width": 189,
+    "height": 164,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "hexinl": {
+    "inner": "#fee9db",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 260,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "hexinoct": {
+    "inner": "#fee9db",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 250,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "hexinpen": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 202,
+    "height": 192,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "hexinsqu": {
+    "inner": "#eaf1de",
+    "container": "#ffffff",
+    "width": 191,
+    "height": 191,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "linoct": {
+    "inner": "#fee9db",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 260,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "linpen": {
+    "inner": "#fee9db",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 237,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "linsqu": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 166,
+    "height": 166,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "lintan": {
+    "inner": "#dff0fe",
+    "container": "#ffffff",
+    "width": 216,
+    "height": 216,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "lintri": {
+    "inner": "#fee9db",
+    "container": "#ffffff",
+    "width": 248,
+    "height": 214,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "octincir": {
+    "inner": "#feffe9",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 250,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "octindom": {
+    "inner": "#feffe9",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 125,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "octinhex": {
+    "inner": "#fafbe5",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 216,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "octinl": {
+    "inner": "#feffe9",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 250,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "octinoct": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 234,
+    "height": 233,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "octinpen": {
+    "inner": "#feffe9",
+    "container": "#ffffff",
+    "width": 240,
+    "height": 227,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "octinsqu": {
+    "inner": "#feffe9",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 250,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "octintan": {
+    "inner": "#feffe9",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 260,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "octintri": {
+    "inner": "#feffe9",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 216,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "penincir": {
+    "inner": "#cae6f8",
+    "container": "#ffffff",
+    "width": 220,
+    "height": 220,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "penindom": {
+    "inner": "#cae6f8",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 125,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "peninhex": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 202,
+    "height": 176,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "peninl": {
+    "inner": "#cae6f8",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 260,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "peninoct": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 202,
+    "height": 202,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "peninpen": {
+    "inner": "#cae6f8",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 237,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "peninsqu": {
+    "inner": "#cae6f8",
+    "container": "#ffffff",
+    "width": 220,
+    "height": 220,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "penintan": {
+    "inner": "#cae6f8",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 260,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "penintri": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 200,
+    "height": 173,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "squincir": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 166,
+    "height": 166,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "squindom": {
+    "inner": "#cefefe",
+    "container": "#ffffff",
+    "width": 229,
+    "height": 115,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "squinhex": {
+    "inner": "#fceadb",
+    "container": "#ffffff",
+    "width": 192,
+    "height": 166,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "squinl": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 166,
+    "height": 166,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "squinoct": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 234,
+    "height": 233,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "squinpen": {
+    "inner": "#fdce9e",
+    "container": "#ffffff",
+    "width": 241,
+    "height": 229,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "squintan": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 191,
+    "height": 191,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "squintri": {
+    "inner": "#b5b5b5",
+    "container": "#ffffff",
+    "width": 148,
+    "height": 125,
+    "file_format": "gif",
+    "filename_template": "ts{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "tanincir": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 191,
+    "height": 191,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "tanindom": {
+    "inner": "#fdf4c0",
+    "container": "#ffffff",
+    "width": 271,
+    "height": 137,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "taninhex": {
+    "inner": "#dee1f1",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 217,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "taninl": {
+    "inner": "#f0e0ef",
+    "container": "#ffffff",
+    "width": 216,
+    "height": 216,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "taninoct": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 237,
+    "height": 237,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "taninpen": {
+    "inner": "#dee1f1",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 247,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "taninsqu": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 191,
+    "height": 191,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "tanintan": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 191,
+    "height": 191,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "tanintri": {
+    "inner": "#dee1f1",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 225,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "triincir": {
+    "inner": "#b5b5b5",
+    "container": "#ffffff",
+    "width": 215,
+    "height": 215,
+    "file_format": "gif",
+    "filename_template": "tc{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "triindom": {
+    "inner": "#dee1f1",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 125,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "triinhex": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 194,
+    "height": 167,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "triinl": {
+    "inner": "#dee1f1",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 260,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "triinoct": {
+    "inner": "#cccccc",
+    "container": "#ffffff",
+    "width": 250,
+    "height": 250,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "triinpen": {
+    "inner": "#ccffcf",
+    "container": "#ffffff",
+    "width": 241,
+    "height": 229,
+    "file_format": "gif",
+    "filename_template": "{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "triinsqu": {
+    "inner": "#cecece",
+    "container": "#ffffff",
+    "width": 205,
+    "height": 205,
+    "file_format": "gif",
+    "filename_template": "t{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "triintan": {
+    "inner": "#dee1f1",
+    "container": "#ffffff",
+    "width": 260,
+    "height": 260,
+    "file_format": "png",
+    "filename_template": "{n}.png",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  },
+  "triintri": {
+    "inner": "#b5b5b5",
+    "container": "#ffffff",
+    "width": 182,
+    "height": 159,
+    "file_format": "gif",
+    "filename_template": "tt{n}.gif",
+    "variable_dimensions": false,
+    "manual_check_required": false
+  }
+}

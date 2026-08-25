@@ -1,6 +1,6 @@
 # Shape Packing World Records Summary
 
-**Generated:** 2026-08-24 20:00:18 UTC  
+**Generated:** 2026-08-25 20:01:21 UTC  
 **Total Verified Record Improvements:** 49
 
 | Problem | Family | N | Our Metric $s$ (5 dec) | Our Exact $s$ | Friedman Best | Improvement $\Delta s$ | Folder Link |

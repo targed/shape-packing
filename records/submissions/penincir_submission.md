@@ -19,7 +19,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 8 | 2.48128+ | 2.481283560845 | 2.48130+ | -0.000016 | `8.png` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#cae6f8 on #ffffff), orientation, no borders or text, and target website pixel dimensions (240x240 px):
+The replacement image files are attached directly with exact matching colors (#cae6f8 on #ffffff), orientation, no borders or text, and target website pixel dimensions (220x220 px):
 - `8.png`
 
 Coordinate tables and certificates for each solution are included in the repository records.

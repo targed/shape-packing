@@ -20,7 +20,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 7 | 2.91977+ | 2.919773978456 | 2.91980+ | -0.000026 | `7.png` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#cae6f8 on #ffffff), orientation, no borders or text, and target website pixel dimensions (280x140 px):
+The replacement image files are attached directly with exact matching colors (#cae6f8 on #ffffff), orientation, no borders or text, and target website pixel dimensions (250x125 px):
 - `6.png`
 - `7.png`
 

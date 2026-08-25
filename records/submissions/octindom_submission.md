@@ -19,7 +19,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 3 | 3.51368+ | 3.513677405489 | 3.51370+ | -0.000023 | `3.png` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#feffe9 on #ffffff), orientation, no borders or text, and target website pixel dimensions (280x140 px):
+The replacement image files are attached directly with exact matching colors (#feffe9 on #ffffff), orientation, no borders or text, and target website pixel dimensions (250x125 px):
 - `3.png`
 
 Coordinate tables and certificates for each solution are included in the repository records.

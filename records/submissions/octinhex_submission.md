@@ -20,7 +20,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 8 | 4.56656+ | 4.566557709973 | 4.56700+ | -0.000442 | `8.png` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#fafbe5 on #ffffff), orientation, no borders or text, and target website pixel dimensions (260x226 px):
+The replacement image files are attached directly with exact matching colors (#fafbe5 on #ffffff), orientation, no borders or text, and target website pixel dimensions (250x216 px):
 - `3.png`
 - `8.png`
 

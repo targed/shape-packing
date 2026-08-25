@@ -19,7 +19,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 5 | 1.98708+ | 1.987076808641 | 1.98710+ | -0.000023 | `5.png` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#fee9db on #ffffff), orientation, no borders or text, and target website pixel dimensions (240x240 px):
+The replacement image files are attached directly with exact matching colors (#fee9db on #ffffff), orientation, no borders or text, and target website pixel dimensions (250x250 px):
 - `5.png`
 
 Coordinate tables and certificates for each solution are included in the repository records.

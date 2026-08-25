@@ -6,7 +6,11 @@ import math
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple, Any
 from datetime import datetime, timezone
-from .packing_config import get_family_colors
+from .packing_config import (
+    get_family_colors,
+    get_family_properties,
+    get_family_target_filename,
+)
 
 SIDES_TO_NAME = {
     "3": "tri",
@@ -241,7 +245,7 @@ def generate_manifest(records: List[RecordCandidate], output_dir: str) -> str:
                 "metric": r.metric,
                 "friedman_best": r.friedman_best,
                 "improvement": r.improvement,
-                "site_image": f"{r.family_code}/{r.problem}/{r.N}.png",
+                "site_image": f"{r.family_code}/{r.problem}/{get_family_target_filename(r.family_code, r.N)}",
                 "folder": f"{r.family_code}/{r.problem}",
             }
             for r in records
@@ -293,9 +297,9 @@ def generate_email_drafts(records: List[RecordCandidate], output_dir: str) -> Li
         fam_records.sort(key=lambda x: x.N)
         draft_path = os.path.join(sub_dir, f"{fam}_submission.md")
         first_r = fam_records[0]
-        fam_colors = get_family_colors(first_r.inner_token, first_r.container_token)
-        target_w = fam_colors.get("width", 240)
-        target_h = fam_colors.get("height", 240)
+        fam_props = get_family_properties(first_r.inner_token, first_r.container_token)
+        target_w = fam_props.get("width", 240)
+        target_h = fam_props.get("height", 240)
 
         lines = [
             f"# Submission Draft: {fam}",
@@ -319,17 +323,19 @@ def generate_email_drafts(records: List[RecordCandidate], output_dir: str) -> Li
         ]
 
         for r in fam_records:
+            target_fn = get_family_target_filename(r.family_code, r.N)
             lines.append(
-                f"| {r.N} | {r.metric:.5f}+ | {r.metric:.12f} | {r.friedman_best:.5f}+ | {r.improvement:+.6f} | `{r.N}.png` |"
+                f"| {r.N} | {r.metric:.5f}+ | {r.metric:.12f} | {r.friedman_best:.5f}+ | {r.improvement:+.6f} | `{target_fn}` |"
             )
 
         lines.extend([
             "",
             "### Image Attachments",
-            f"The replacement image files are attached directly with exact matching colors ({fam_colors.get('inner', '#CCCCCC')} on {fam_colors.get('container', '#FFFFFF')}), orientation, no borders or text, and target website pixel dimensions ({target_w}x{target_h} px):",
+            f"The replacement image files are attached directly with exact matching colors ({fam_props.get('inner', '#CCCCCC')} on {fam_props.get('container', '#FFFFFF')}), orientation, no borders or text, and target website pixel dimensions ({target_w}x{target_h} px):",
         ])
         for r in fam_records:
-            lines.append(f"- `{r.N}.png`")
+            target_fn = get_family_target_filename(r.family_code, r.N)
+            lines.append(f"- `{target_fn}`")
 
         lines.extend([
             "",
@@ -408,8 +414,9 @@ def export_records(
         with open(os.path.join(cand_out_dir, "verification.txt"), "w", encoding="utf-8") as f:
             f.write(v_txt)
 
-        # 5. Render site-ready direct replacement picture: records/<family>/<problem>/<N>.png
-        site_image_path = os.path.join(cand_out_dir, f"{cand.N}.png")
+        # 5. Render site-ready direct replacement picture: records/<family>/<problem>/<target_filename>
+        target_fn = get_family_target_filename(cand.family_code, cand.N)
+        site_image_path = os.path.join(cand_out_dir, target_fn)
         render_solution(cand.solution_path, site_image_path, crop_mode="tight")
 
         # 6. Render high-res render.png and renderFull.png inside candidate folder

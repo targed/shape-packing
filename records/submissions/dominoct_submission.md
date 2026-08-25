@@ -20,7 +20,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 15 | 2.79394+ | 2.793942216148 | 2.80450+ | -0.010558 | `15.png` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#fdf4c0 on #ffffff), orientation, no borders or text, and target website pixel dimensions (240x240 px):
+The replacement image files are attached directly with exact matching colors (#fdf4c0 on #ffffff), orientation, no borders or text, and target website pixel dimensions (260x260 px):
 - `4.png`
 - `15.png`
 
