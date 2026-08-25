@@ -12,6 +12,7 @@ import csv
 import math
 import os
 from typing import Any, Dict, List, Optional, Tuple
+from collections import defaultdict
 
 # =====================
 # General configuration
@@ -375,6 +376,9 @@ def shape_to_vertices(shape: str, size: float = 1.0) -> List[Tuple[float, float]
 # History-based stats
 # =====================
 
+_HISTORY_STATS_CACHE: Dict[str, Dict[str, Dict[str, Any]]] = {}
+
+
 def _normalize_key(p_str: str) -> str:
     """Normalize problem token for robust key matching across case and shape synonyms."""
     s = str(p_str).strip().lower()
@@ -389,42 +393,38 @@ def _normalize_key(p_str: str) -> str:
     )
 
 
-def get_problem_history_stats(
-    problem: str,
+def load_all_problem_history_stats(
     history_path: str = "results.tsv",
-    cache: Optional[Dict] = None
-) -> Dict[str, Any]:
+) -> Dict[str, Dict[str, Any]]:
     """
-    Compute history stats for a problem from results.tsv.
-    Returns:
-        {
-            "total_runs": int,
-            "success_count": int,
-            "failure_count": int,
-            "best_score": float | None
-        }
+    Parse results.tsv once and cache all per-problem stats in memory.
+    Returns mapping from normalized problem key -> stats dictionary.
     """
-    stats: Dict[str, Any] = {
-        "total_runs": 0,
-        "success_count": 0,
-        "failure_count": 0,
-        "best_score": None,
-    }
-
     if not os.path.isfile(history_path):
-        return stats
+        return {}
 
-    # If cache provided and has this problem, return it
-    target_key = _normalize_key(problem)
-    if cache is not None:
-        if target_key in cache:
-            return cache[target_key]
+    abs_path = os.path.abspath(history_path)
+    mtime = os.path.getmtime(abs_path)
+    cache_key = f"{abs_path}:{mtime}"
+
+    if cache_key in _HISTORY_STATS_CACHE:
+        return _HISTORY_STATS_CACHE[cache_key]
+
+    stats_by_key: Dict[str, Dict[str, Any]] = defaultdict(
+        lambda: {
+            "total_runs": 0,
+            "success_count": 0,
+            "failure_count": 0,
+            "best_score": None,
+        }
+    )
 
     with open(history_path, "r", encoding="utf-8", errors="ignore") as f:
         reader = csv.reader(f, delimiter="\t")
         header = next(reader, None)
         if not header:
-            return stats
+            _HISTORY_STATS_CACHE[cache_key] = {}
+            return {}
 
         prob_idx = None
         score_idx = None
@@ -440,26 +440,23 @@ def get_problem_history_stats(
                 status_idx = i
 
         if prob_idx is None:
-            return stats
+            _HISTORY_STATS_CACHE[cache_key] = {}
+            return {}
 
         for row in reader:
-            if not row:
-                continue
-            if prob_idx >= len(row):
+            if not row or prob_idx >= len(row):
                 continue
 
             p = row[prob_idx].strip()
-            if _normalize_key(p) != target_key:
-                continue
-
-            stats["total_runs"] += 1
+            norm_key = _normalize_key(p)
+            entry = stats_by_key[norm_key]
+            entry["total_runs"] += 1
 
             # Extract score
             score = None
             if score_idx is not None and score_idx < len(row):
                 try:
-                    s = float(row[score_idx])
-                    score = s
+                    score = float(row[score_idx])
                 except ValueError:
                     score = None
 
@@ -475,13 +472,50 @@ def get_problem_history_stats(
             )
 
             if score is not None and not is_fail_keywords:
-                stats["success_count"] += 1
-                if stats["best_score"] is None or score < stats["best_score"]:
-                    stats["best_score"] = score
+                entry["success_count"] += 1
+                if entry["best_score"] is None or score < entry["best_score"]:
+                    entry["best_score"] = score
             else:
-                stats["failure_count"] += 1
+                entry["failure_count"] += 1
 
-    # Cache if provided
+    result = dict(stats_by_key)
+    _HISTORY_STATS_CACHE[cache_key] = result
+    return result
+
+
+def get_problem_history_stats(
+    problem: str,
+    history_path: str = "results.tsv",
+    cache: Optional[Dict] = None,
+) -> Dict[str, Any]:
+    """
+    Compute history stats for a problem from results.tsv with in-memory caching.
+    Returns:
+        {
+            "total_runs": int,
+            "success_count": int,
+            "failure_count": int,
+            "best_score": float | None
+        }
+    """
+    target_key = _normalize_key(problem)
+    if cache is not None:
+        if target_key in cache:
+            return cache[target_key]
+        if problem in cache:
+            return cache[problem]
+
+    all_stats = load_all_problem_history_stats(history_path)
+    if target_key in all_stats:
+        stats = dict(all_stats[target_key])
+    else:
+        stats = {
+            "total_runs": 0,
+            "success_count": 0,
+            "failure_count": 0,
+            "best_score": None,
+        }
+
     if cache is not None:
         cache[problem] = stats
 

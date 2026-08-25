@@ -120,6 +120,22 @@ def test_get_problem_history_stats_missing_file():
     assert stats["best_score"] is None
 
 
+def test_load_all_problem_history_stats_caching(tmp_path):
+    from src.shape_packing.packing_config import load_all_problem_history_stats
+    tsv = tmp_path / "results.tsv"
+    tsv.write_text("problem\tscore\tstatus\n1_3_in_3\t2.5\tsuccess\n1_3_in_3\t2.1\tsuccess\n2_3_in_3\t3.0\tFAIL\n")
+
+    s1 = load_all_problem_history_stats(str(tsv))
+    norm_k = "1_3_in_3"
+    assert s1[norm_k]["total_runs"] == 2
+    assert s1[norm_k]["success_count"] == 2
+    assert s1[norm_k]["best_score"] == 2.1
+
+    # Second call returns identical cached dictionary
+    s2 = load_all_problem_history_stats(str(tsv))
+    assert s1 is s2
+
+
 # ---- Friedman best lookup tests ----
 
 
