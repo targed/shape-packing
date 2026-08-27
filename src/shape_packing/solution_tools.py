@@ -21,6 +21,7 @@ from typing import Any, List, Optional, Tuple
 from .geometry import (
     polygon_normals,
     get_shape_geometry,
+    get_shape_convex_parts,
     sat_check_overlap,
     transform_polygon,
 )
@@ -340,6 +341,31 @@ def _verify_overlap(
     errors: List[str] = []
     N = sol.N
     is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
+
+    parts = get_shape_convex_parts(sol.inner_token)
+    if len(parts) > 1:
+        # Multi-part compound shape (e.g. L-tromino)
+        transformed_parts = []
+        for i in range(N):
+            posx = sol.values[i * 3]
+            posy = sol.values[i * 3 + 1]
+            rot = sol.values[i * 3 + 2]
+            shape_parts = []
+            for (p_v, _) in parts:
+                t_v = transform_polygon(p_v, posx, posy, rot)
+                t_n = polygon_normals(t_v)
+                shape_parts.append((t_v, t_n))
+            transformed_parts.append(shape_parts)
+
+        for i in range(N):
+            for j in range(i + 1, N):
+                for (p1_v, p1_n) in transformed_parts[i]:
+                    for (p2_v, p2_n) in transformed_parts[j]:
+                        overlap, depth = sat_check_overlap(p1_v, p2_v, p1_n, p2_n)
+                        if overlap and depth > tolerance:
+                            errors.append(f"Shapes {i} and {j} overlap! Depth: {depth}")
+        return errors
+
     poly_normals_list = [polygon_normals(p) for p in polygons]
 
     for i in range(N):

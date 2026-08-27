@@ -1191,17 +1191,17 @@ class TestChooseProblemUnsupportedShape:
         path = tmp_path / "pq.json"
         items = [
             {
-                "problem": "1_L_in_4",
+                "problem": "1_CROSS_in_4",
                 "density": 0.9,
                 "status": "best_known",
-                "inner_shape": "L",
+                "inner_shape": "CROSS",
                 "container_shape": "4",
                 "best_value": 2.0,
                 "N": 1,
             },
         ]
         path.write_text(json.dumps(items))
-        # L is special non-convex and not explicitly included -> skipped
+        # CROSS is special non-convex and not explicitly included -> skipped
         p = choose_problem(
             history=[],
             queue_path=str(path),

@@ -830,6 +830,9 @@ SHAPE_TO_SIDES = {
     "OCTAGON": 8,
     "ENNEAGON": 9,
     "DECAGON": 10,
+    "DOMINO": 4,
+    "TAN": 3,
+    "L": 6,
 }
 
 SPECIAL_SHAPES = {

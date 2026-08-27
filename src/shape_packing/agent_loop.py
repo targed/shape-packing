@@ -228,6 +228,8 @@ def _get_inner_shape_area(inner_token: str) -> Optional[float]:
         return 2.0 * (1.0 + math.sqrt(2.0))
     if t in ("TAN", "TANGRAM"):
         return 0.5
+    if t in ("L", "LTROMINO", "L-TROMINO"):
+        return 3.0
     return None
 
 
@@ -249,6 +251,8 @@ def _get_container_shape_area(s: float, container_token: str) -> Optional[float]
         return 0.5 * (s ** 2)
     if t in ("DOMINO", "DOM"):
         return 2.0 * (s ** 2)
+    if t in ("L", "LTROMINO", "L-TROMINO"):
+        return 3.0 * (s ** 2)
     return None
 
 
@@ -387,9 +391,11 @@ def _is_shape_unsupported(token: str, filters: dict) -> bool:
         t = "DOMINO"
     if t in ("TAN", "TANGRAM"):
         t = "TAN"
+    if t in ("L", "LTROMINO", "L-TROMINO"):
+        t = "L"
 
     if is_special_shape(t):
-        if t in ("DOMINO", "TAN"):
+        if t in ("DOMINO", "TAN", "L"):
             return False
         if (filters or {}).get("include_inner") or (filters or {}).get("include_container"):
             return False
@@ -422,6 +428,10 @@ def _parse_filter_sets(filters: Optional[dict]) -> Tuple[Set[str], Set[str], Set
         if "TAN" in res or "TANGRAM" in res:
             res.add("TAN")
             res.add("TANGRAM")
+        if "L" in res or "LTROMINO" in res or "L-TROMINO" in res:
+            res.add("L")
+            res.add("LTROMINO")
+            res.add("L-TROMINO")
         return res
 
     inc_inner = _to_set(filters["include_inner"]) if filters.get("include_inner") else set()

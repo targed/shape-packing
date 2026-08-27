@@ -543,3 +543,52 @@ class TestDecoupledRecordImprovement:
         assert res.valid is True
         assert res.new_record is True
 
+
+class TestLTrominoVerification:
+    def test_verify_l_tromino_solution(self, tmp_path):
+        # 1 L-tromino inside a square container
+        S = 3.0
+        final_metric = 2 * S * math.sin(math.pi / 4)
+        data = {
+            "N": 1,
+            "inner_token": "L",
+            "container_token": "4",
+            "S": S,
+            "final_metric": final_metric,
+            "values": [0.0, 0.0, 0.0],
+        }
+        p = tmp_path / "l_sol.json"
+        p.write_text(json.dumps(data))
+
+        res = verify_solution(
+            sol_path=str(p),
+            problem_str="1_L_in_4",
+            check_record=False,
+        )
+        assert res.valid is True
+        assert len(res.errors) == 0
+
+    def test_verify_l_tromino_overlap(self, tmp_path):
+        # 2 L-trominoes colliding directly at origin
+        S = 10.0
+        final_metric = 2 * S * math.sin(math.pi / 4)
+        data = {
+            "N": 2,
+            "inner_token": "L",
+            "container_token": "4",
+            "S": S,
+            "final_metric": final_metric,
+            "values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        }
+        p = tmp_path / "l_overlap.json"
+        p.write_text(json.dumps(data))
+
+        res = verify_solution(
+            sol_path=str(p),
+            problem_str="2_L_in_4",
+            check_record=False,
+        )
+        assert res.valid is False
+        assert any("overlap" in e for e in res.errors)
+
+

@@ -276,4 +276,31 @@ class TestTanShapeSupport:
         assert p == "2_TAN_in_4"
 
 
+class TestLTrominoSupport:
+    def test_l_shape_supported_in_agent_loop(self):
+        from shape_packing.agent_loop import _is_shape_unsupported, _get_inner_shape_area, _get_container_shape_area
+        assert not _is_shape_unsupported("L", {})
+        assert not _is_shape_unsupported("l", {})
+        assert not _is_shape_unsupported("ltromino", {})
+        assert not _is_shape_unsupported("l-tromino", {})
+        assert _get_inner_shape_area("L") == 3.0
+        assert _get_container_shape_area(2.0, "L") == 12.0
+
+    def test_l_problem_selection(self, tmp_path):
+        import json
+        q_path = str(tmp_path / "l_queue.json")
+        items = [
+            {"problem": "1_L_in_4", "density": 0.75, "status": "best_known", "N": 1, "inner_shape": "L", "container_shape": "4", "best_value": 2.0},
+        ]
+        with open(q_path, "w") as f:
+            json.dump(items, f)
+        p = choose_problem(
+            history=[],
+            queue_path=q_path,
+            exclude_problems=set(),
+        )
+        assert p == "1_L_in_4"
+
+
+
 
