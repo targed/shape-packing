@@ -5,10 +5,10 @@
     "proved_optimal": 48,
     "best_known": 1733,
     "trivial": 461,
-    "total_attempted": 1090,
+    "total_attempted": 1091,
     "total_new_bests": 57,
     "total_matches": 132,
-    "total_visualizations": 1088,
+    "total_visualizations": 1089,
     "total_slurm_starts": 21145,
     "total_slurm_attempts": 1003617021
   },
@@ -14220,7 +14220,7 @@
       "proved_optimal_count": 0,
       "best_known_count": 17,
       "trivial_count": 7,
-      "attempted_count": 1,
+      "attempted_count": 2,
       "new_best_count": 0
     },
     {
@@ -139260,12 +139260,12 @@
       "best_value": 1.0,
       "ref_status": "trivial",
       "status": "trivial",
-      "attempted": false,
-      "our_best_metric": null,
-      "our_best_s": null,
-      "comparison_status": "unattempted",
-      "diff": null,
-      "closeness_pct": null,
+      "attempted": true,
+      "our_best_metric": 1.35732,
+      "our_best_s": 0.95977,
+      "comparison_status": "worse_than_best_known",
+      "diff": 0.35732,
+      "closeness_pct": 73.67,
       "starts": 0,
       "attempts": 0,
       "successes": 0,
@@ -139274,7 +139274,23 @@
       "density": null,
       "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html",
       "source_note": "s = 1 Trivial.",
-      "solution": null
+      "solution": {
+        "S": 0.9597704984366313,
+        "final_metric": 1.3573204556546694,
+        "values": [
+          -0.08178043742554353,
+          -0.3645951748556919,
+          0.5024204447117231,
+          0.08256412622072459,
+          0.19886981090782507,
+          -0.2846133567323535
+        ],
+        "N": 2,
+        "inner_token": "tan",
+        "container_token": "4",
+        "computed_metric": 1.3573204556546694,
+        "folder_name": "2_tan_in_4"
+      }
     },
     {
       "id": "tan_in_4_3",
