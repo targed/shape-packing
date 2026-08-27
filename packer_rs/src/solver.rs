@@ -68,6 +68,7 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
     let N_f64 = config.inner_polygons as f64;
     let is_inner_circle = config.inner_shape.to_uppercase() == "CIRCLE" || config.inner_shape.to_uppercase() == "CIR";
     let is_container_circle = config.container_shape.to_uppercase() == "CIRCLE" || config.container_shape.to_uppercase() == "CIR";
+    let is_inner_l = config.inner_shape.to_uppercase() == "L";
 
     (0..config.attempts)
         .into_par_iter()
@@ -86,8 +87,9 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
                 &config.target_s,
                 is_inner_circle,
                 is_container_circle,
+                is_inner_l,
             ),
-            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions, target_s, is_inner_circle, is_container_circle), seed| {
+            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions, target_s, is_inner_circle, is_container_circle, is_inner_l), seed| {
                 let mut rng = ChaCha8Rng::seed_from_u64(seed as u64);
                 let (s, x) = run_attempt(
                     &mut rng,
@@ -107,6 +109,7 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
                     **target_s,
                     *is_inner_circle,
                     *is_container_circle,
+                    *is_inner_l,
                 );
                 if s.is_finite() && x.is_some() {
                     loop {
@@ -219,6 +222,28 @@ pub fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64
         return (n, vertices, vectors, apothem);
     }
     
+    if token.to_uppercase() == "L" {
+        let n = 6;
+        let vertices = vec![
+            (-5.0/6.0, -5.0/6.0),
+            (7.0/6.0, -5.0/6.0),
+            (7.0/6.0, 1.0/6.0),
+            (1.0/6.0, 1.0/6.0),
+            (1.0/6.0, 7.0/6.0),
+            (-5.0/6.0, 7.0/6.0),
+        ];
+        let vectors = vec![
+            (0.0, -1.0),
+            (1.0, 0.0),
+            (0.0, -1.0),
+            (1.0, 0.0),
+            (0.0, 1.0),
+            (-1.0, 0.0),
+        ];
+        let apothem = vec![5.0/6.0, 7.0/6.0, 1.0/6.0, 1.0/6.0, 7.0/6.0, 5.0/6.0];
+        return (n, vertices, vectors, apothem);
+    }
+    
     if token.to_uppercase() == "CIRCLE" || token.to_uppercase() == "CIR" {
         let sides = 32;
         let radius = 1.0;
@@ -255,6 +280,7 @@ fn run_attempt<R: Rng>(
     target_s: Option<f64>,
     is_inner_circle: bool,
     is_container_circle: bool,
+    is_inner_l: bool,
 ) -> (f64, Option<Vec<f64>>) {
     if stop_flag.load(Ordering::Relaxed) {
         return (f64::INFINITY, None);
@@ -334,6 +360,7 @@ fn run_attempt<R: Rng>(
             unit_container_apothem,
             is_inner_circle,
             is_container_circle,
+            is_inner_l,
             &mut polygon_array,
             &mut vector_array,
             &mut grad_buffer,
@@ -374,6 +401,7 @@ fn run_attempt<R: Rng>(
                     unit_container_apothem,
                     is_inner_circle,
                     is_container_circle,
+                    is_inner_l,
                     &mut polygon_array,
                     &mut vector_array,
                     &mut grad_buffer,
@@ -425,6 +453,7 @@ fn minimize_gradient(
     unit_container_apothem: &[f64],
     is_inner_circle: bool,
     is_container_circle: bool,
+    is_inner_l: bool,
     polygon_array: &mut [(f64, f64)],
     vector_array: &mut [(f64, f64)],
     grad_buffer: &mut [f64],
@@ -435,7 +464,7 @@ fn minimize_gradient(
     let mut x = x0.to_vec();
     let mut best_x = x.clone();
     let (mut best_fun, mut best_max_violation) = penalty_and_gradient(
-        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
+        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
     );
 
     let mut m = vec![0.0f64; n];
@@ -452,7 +481,7 @@ fn minimize_gradient(
 
     for _iter in 1..=3000 {
         let (fun, _max_violation) = penalty_and_gradient(
-            &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
+            &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
         );
 
         if fun < best_fun_iter * 0.9999 {
@@ -480,7 +509,7 @@ fn minimize_gradient(
         beta2_t *= beta2;
 
         let (new_fx, new_max_violation) = penalty_and_gradient(
-            &new_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
+            &new_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
         );
 
         x = new_x;
@@ -506,6 +535,7 @@ fn penalty_and_gradient(
     unit_container_apothem: &[f64],
     is_inner_circle: bool,
     is_container_circle: bool,
+    is_inner_l: bool,
     compute_grad: bool,
     polygon_array: &mut [(f64, f64)],
     vector_array: &mut [(f64, f64)],
@@ -684,6 +714,137 @@ fn penalty_and_gradient(
                         
                         grad[j * 3] -= term * nx;
                         grad[j * 3 + 1] -= term * ny;
+                    }
+                }
+                continue;
+            }
+
+            if is_inner_l {
+                let posx_i = values[i * 3];
+                let posy_i = values[i * 3 + 1];
+                let rot_i = values[i * 3 + 2];
+                let sin_i = rot_i.sin();
+                let cos_i = rot_i.cos();
+
+                let posx_j = values[j * 3];
+                let posy_j = values[j * 3 + 1];
+                let rot_j = values[j * 3 + 2];
+                let sin_j = rot_j.sin();
+                let cos_j = rot_j.cos();
+
+                let p_split_i = (posx_i + (1.0/6.0 * cos_i - (-5.0/6.0) * sin_i), posy_i + (1.0/6.0 * sin_i + (-5.0/6.0) * cos_i));
+                let p_split_j = (posx_j + (1.0/6.0 * cos_j - (-5.0/6.0) * sin_j), posy_j + (1.0/6.0 * sin_j + (-5.0/6.0) * cos_j));
+
+                let rects_i = [
+                    [polygon_array[i * 6 + 0], p_split_i, polygon_array[i * 6 + 4], polygon_array[i * 6 + 5]],
+                    [p_split_i, polygon_array[i * 6 + 1], polygon_array[i * 6 + 2], polygon_array[i * 6 + 3]],
+                ];
+                let rects_j = [
+                    [polygon_array[j * 6 + 0], p_split_j, polygon_array[j * 6 + 4], polygon_array[j * 6 + 5]],
+                    [p_split_j, polygon_array[j * 6 + 1], polygon_array[j * 6 + 2], polygon_array[j * 6 + 3]],
+                ];
+
+                let axes = [
+                    (cos_i, sin_i),
+                    (-sin_i, cos_i),
+                    (cos_j, sin_j),
+                    (-sin_j, cos_j),
+                ];
+
+                for ra in 0..2 {
+                    let r1 = &rects_i[ra];
+                    for rb in 0..2 {
+                        let r2 = &rects_j[rb];
+                        let mut sub_collision = true;
+                        let mut sub_min_overlap = 1e30f64;
+                        let mut sub_best_axis_idx = 0;
+                        let mut sub_v1_min = 0;
+                        let mut sub_v1_max = 0;
+                        let mut sub_v2_min = 0;
+                        let mut sub_v2_max = 0;
+
+                        for (ax_idx, &(ax, ay)) in axes.iter().enumerate() {
+                            let mut min_1 = 1e30f64;
+                            let mut max_1 = -1e30f64;
+                            let mut v1_min = 0;
+                            let mut v1_max = 0;
+                            for (v_idx, &(px, py)) in r1.iter().enumerate() {
+                                let dot = px * ax + py * ay;
+                                if dot < min_1 { min_1 = dot; v1_min = v_idx; }
+                                if dot > max_1 { max_1 = dot; v1_max = v_idx; }
+                            }
+
+                            let mut min_2 = 1e30f64;
+                            let mut max_2 = -1e30f64;
+                            let mut v2_min = 0;
+                            let mut v2_max = 0;
+                            for (v_idx, &(px, py)) in r2.iter().enumerate() {
+                                let dot = px * ax + py * ay;
+                                if dot < min_2 { min_2 = dot; v2_min = v_idx; }
+                                if dot > max_2 { max_2 = dot; v2_max = v_idx; }
+                            }
+
+                            let overlap = max_1.min(max_2) - min_1.max(min_2);
+                            if overlap <= 0.0 {
+                                sub_collision = false;
+                                break;
+                            }
+                            if overlap < sub_min_overlap {
+                                sub_min_overlap = overlap;
+                                sub_best_axis_idx = ax_idx;
+                                sub_v1_min = v1_min;
+                                sub_v1_max = v1_max;
+                                sub_v2_min = v2_min;
+                                sub_v2_max = v2_max;
+                            }
+                        }
+
+                        if sub_collision {
+                            penalty += sub_min_overlap * sub_min_overlap;
+                            if sub_min_overlap > max_violation {
+                                max_violation = sub_min_overlap;
+                            }
+
+                            if compute_grad {
+                                let term = 2.0 * sub_min_overlap;
+                                let (ax, ay) = axes[sub_best_axis_idx];
+
+                                let p1_max = r1[sub_v1_max];
+                                let max_1 = p1_max.0 * ax + p1_max.1 * ay;
+                                let p2_max = r2[sub_v2_max];
+                                let max_2 = p2_max.0 * ax + p2_max.1 * ay;
+                                let p1_min = r1[sub_v1_min];
+                                let min_1 = p1_min.0 * ax + p1_min.1 * ay;
+                                let p2_min = r2[sub_v2_min];
+                                let min_2 = p2_min.0 * ax + p2_min.1 * ay;
+
+                                let (p_upper, upper_poly_idx) = if max_1 < max_2 {
+                                    (p1_max, i)
+                                } else {
+                                    (p2_max, j)
+                                };
+
+                                let (p_lower, lower_poly_idx) = if min_1 > min_2 {
+                                    (p1_min, i)
+                                } else {
+                                    (p2_min, j)
+                                };
+
+                                let mut add_grad = |poly_idx: usize, sign: f64, p: (f64, f64)| {
+                                    let posx = values[poly_idx * 3];
+                                    let posy = values[poly_idx * 3 + 1];
+                                    let dp_drot_x = -(p.1 - posy);
+                                    let dp_drot_y = p.0 - posx;
+
+                                    grad[poly_idx * 3] += term * sign * ax;
+                                    grad[poly_idx * 3 + 1] += term * sign * ay;
+                                    grad[poly_idx * 3 + 2] += term * sign * (dp_drot_x * ax + dp_drot_y * ay);
+                                };
+
+                                add_grad(upper_poly_idx, 1.0, p_upper);
+                                add_grad(lower_poly_idx, -1.0, p_lower);
+                            }
+                        }
                     }
                 }
                 continue;

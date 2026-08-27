@@ -36,3 +36,20 @@ def test_run_solver_tan(tmp_path):
         # Verify solution file passes verifier
         v_res = verify_solution(sol_file, "1_tan_in_4", check_record=False)
         assert v_res.valid is True
+
+
+def test_run_solver_l_tromino(tmp_path):
+    sol_file = str(tmp_path / "l_sol.json")
+    result = run_solver(
+        n_shapes=1,
+        inner_shape="L",
+        container_shape="4",
+        attempts=20,
+        time_limit=5.0,
+        solution_file=sol_file,
+    )
+    assert isinstance(result, dict)
+    assert "success" in result
+    if result["success"]:
+        assert result["score"] > 0
+        assert len(result["values"]) == 3
