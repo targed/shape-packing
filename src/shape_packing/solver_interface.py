@@ -62,6 +62,8 @@ def run_solver(
                 target_s=target_s,
             )
             if res is not None:
+                if "N" not in res:
+                    res["N"] = n_shapes
                 S = res.get("S", 0.0)
                 final_metric = res.get("final_metric", 0.0)
                 values = res.get("values", [])
