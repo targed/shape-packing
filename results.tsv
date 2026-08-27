@@ -21811,3 +21811,4 @@ auto	1.3368758283548057	0.0	keep	6_TAN_in_DOMINO	Auto run attempts=500
 auto	0.9585657974618701	0.0	keep	6_TAN_in_8	Auto run attempts=500
 auto	4.95506179472005	0.0	keep	6_L_in_4	Auto run attempts=50
 auto	3.0013166125544877	0.0	keep	2_L_in_4	Auto run attempts=20
+auto	7.009349846310128	0.0	keep	6_L_in_TAN	Auto run attempts=50
