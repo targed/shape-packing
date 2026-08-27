@@ -116,3 +116,17 @@ def test_normalize_key_circle_substring_bug_fixed():
     assert _normalize_key("20_PENTAGON_in_HEXAGON") == "20_5_in_6"
     assert _normalize_key("21_DOMINO_in_PENTAGON") == "21_domino_in_5"
     assert _normalize_key("21_dom_in_5") == "21_domino_in_5"
+
+
+def test_tangram_triangle_vertices_canonical():
+    import math
+    from src.shape_packing.packing_config import tangram_triangle_vertices
+    verts = tangram_triangle_vertices(1.0)
+    assert len(verts) == 3
+    # Verify right isosceles triangle with legs of length 1.0
+    dx1 = verts[1][0] - verts[0][0]
+    dy1 = verts[1][1] - verts[0][1]
+    dx2 = verts[2][0] - verts[0][0]
+    dy2 = verts[2][1] - verts[0][1]
+    assert abs(math.hypot(dx1, dy1) - 1.0) < 1e-6
+    assert abs(math.hypot(dx2, dy2) - 1.0) < 1e-6

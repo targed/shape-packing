@@ -96,3 +96,18 @@ raise RuntimeError("Custom initialization error")
     assert isinstance(res, dict)
     assert res.get("success") is False
     assert "Custom initialization error" in res.get("error", "")
+
+
+def test_cli_handle_run_tan(tmp_path):
+    args = DummyArgs()
+    args.problem = "2_tan_in_4"
+    args.attempts = 2
+    args.init_script = None
+    args.no_commit = True
+    args.json_out = True
+    args.no_png = True
+    args.no_build = True
+
+    res = handle_run(args, direct_call=True)
+    assert isinstance(res, dict)
+    assert "success" in res

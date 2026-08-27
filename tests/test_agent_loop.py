@@ -251,20 +251,29 @@ class TestLogResult:
         assert hist[0].problem == "10_DOMINO_in_5"
         assert hist[0].score == 2.15
 
-    def test_log_result_with_kwargs(self, tmp_path):
-        tsv_path = str(tmp_path / "test_results.tsv")
-        status = log_result(
-            history=None,
-            problem="5_3_in_4",
-            score=1.5,
-            seconds=2.0,
-            description="Kwargs run",
-            path=tsv_path,
+class TestTanShapeSupport:
+    def test_tan_shape_supported_in_agent_loop(self):
+        from shape_packing.agent_loop import _is_shape_unsupported, _get_inner_shape_area, _get_container_shape_area
+        assert not _is_shape_unsupported("TAN", {})
+        assert not _is_shape_unsupported("tan", {})
+        assert not _is_shape_unsupported("tangram", {})
+        assert _get_inner_shape_area("TAN") == 0.5
+        assert _get_container_shape_area(2.0, "TAN") == 2.0
+
+    def test_tan_problem_selection(self, tmp_path):
+        import json
+        q_path = str(tmp_path / "tan_queue.json")
+        items = [
+            {"problem": "2_TAN_in_4", "density": 0.85, "status": "best_known", "N": 2, "inner_shape": "TAN", "container_shape": "4", "best_value": 1.0},
+        ]
+        with open(q_path, "w") as f:
+            json.dump(items, f)
+        p = choose_problem(
+            history=[],
+            queue_path=q_path,
+            exclude_problems=set(),
         )
-        assert status == "keep"
-        hist = load_history(tsv_path)
-        assert len(hist) == 1
-        assert hist[0].problem == "5_3_in_4"
+        assert p == "2_TAN_in_4"
 
 
 

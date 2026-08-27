@@ -278,13 +278,13 @@ def l_shape_vertices(size: float = 1.0) -> List[Tuple[float, float]]:
         (0.0, size),
     ]
 
-# Tangram triangle
+# Tangram triangle (45-45-90 right isosceles triangle with incenter at origin)
 def tangram_triangle_vertices(size: float = 1.0) -> List[Tuple[float, float]]:
-    s = size
+    r = (1.0 - math.sqrt(2.0) / 2.0) * size
     return [
-        (0.0, 0.0),
-        (s, 0.0),
-        (0.0, s),
+        (-r, -r),
+        (size - r, -r),
+        (-r, size - r),
     ]
 
 # Tangram parallelogram

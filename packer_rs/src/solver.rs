@@ -288,15 +288,18 @@ fn run_attempt<R: Rng>(
             .collect()
     } else {
         let grid_size = (N as f64).sqrt().ceil() as usize;
-        let grid_size = grid_size.max(1);
         let mut grid = Vec::new();
-        for _y in 0..grid_size {
-            for _x in 0..grid_size {
-                let x = -dynamic_s / 2.0 * 0.9
-                    + (dynamic_s * 0.9) * (_x as f64) / (grid_size.max(1) - 1) as f64;
-                let y = -dynamic_s / 2.0 * 0.9
-                    + (dynamic_s * 0.9) * (_y as f64) / (grid_size.max(1) - 1) as f64;
-                grid.push((x, y));
+        if grid_size <= 1 {
+            grid.push((0.0, 0.0));
+        } else {
+            for _y in 0..grid_size {
+                for _x in 0..grid_size {
+                    let x = -dynamic_s / 2.0 * 0.9
+                        + (dynamic_s * 0.9) * (_x as f64) / (grid_size - 1) as f64;
+                    let y = -dynamic_s / 2.0 * 0.9
+                        + (dynamic_s * 0.9) * (_y as f64) / (grid_size - 1) as f64;
+                    grid.push((x, y));
+                }
             }
         }
         let mut out = vec![0.0f64; N * 3];
