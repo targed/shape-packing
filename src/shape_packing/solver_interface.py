@@ -19,18 +19,20 @@ def _try_import_pyo3_packer():
         os.path.join(repo_root, "packer_rs", "target", "release", "libpacker_rs.dylib"),
         os.path.join(repo_root, "packer_rs", "target", "release", "packer_rs.so"),
     ]
-    for p in possible_paths:
-        if os.path.exists(p):
-            try:
-                spec = importlib.util.spec_from_file_location("packer_rs", p)
-                if spec and spec.loader:
-                    mod = importlib.util.module_from_spec(spec)
-                    spec.loader.exec_module(mod)
-                    if hasattr(mod, "solve_py"):
-                        _LOADED_PYO3_MODULE = mod
-                        return mod
-            except Exception:
-                pass
+    existing_paths = [p for p in possible_paths if os.path.exists(p)]
+    # Sort by newest modification time so newly built binaries always take precedence over older files
+    existing_paths.sort(key=lambda p: os.path.getmtime(p), reverse=True)
+    for p in existing_paths:
+        try:
+            spec = importlib.util.spec_from_file_location("packer_rs", p)
+            if spec and spec.loader:
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                if hasattr(mod, "solve_py"):
+                    _LOADED_PYO3_MODULE = mod
+                    return mod
+        except Exception:
+            pass
     return None
 
 def run_solver(
