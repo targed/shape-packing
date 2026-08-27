@@ -11,6 +11,7 @@ This file:
 import csv
 import math
 import os
+import re
 from typing import Any, Dict, List, Optional, Tuple
 from collections import defaultdict
 
@@ -382,15 +383,20 @@ _HISTORY_STATS_CACHE: Dict[str, Dict[str, Dict[str, Any]]] = {}
 def _normalize_key(p_str: str) -> str:
     """Normalize problem token for robust key matching across case and shape synonyms."""
     s = str(p_str).strip().lower()
-    return (
-        s.replace("pentagon", "5")
-        .replace("hexagon", "6")
-        .replace("triangle", "3")
-        .replace("square", "4")
-        .replace("octagon", "8")
-        .replace("circle", "circle")
-        .replace("cir", "circle")
-    )
+    replacements = {
+        "pentagon": "5",
+        "hexagon": "6",
+        "triangle": "3",
+        "square": "4",
+        "octagon": "8",
+        "cir": "circle",
+        "circ": "circle",
+        "dom": "domino",
+    }
+    # Split by delimiters while preserving tokens
+    parts = re.split(r"(_|\s+)", s)
+    norm_parts = [replacements.get(p, p) for p in parts]
+    return "".join(norm_parts)
 
 
 def load_all_problem_history_stats(

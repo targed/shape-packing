@@ -27,6 +27,7 @@ from .geometry import (
 
 from .packing_config import (
     VERIFY_SAT_TOLERANCE,
+    VERIFY_METRIC_TOLERANCE,
     RENDER_DPI,
     RENDER_FIGURE_SIZE,
     RENDER_CROP_MODE,
@@ -273,7 +274,7 @@ def _verify_metric_scaling(sol: Solution, calc_metric: float) -> List[str]:
     """Verify that calculated Friedman metric matches the solution JSON's final_metric."""
     errors: List[str] = []
     diff = abs(calc_metric - sol.final_metric)
-    if diff > 1e-10:
+    if diff > VERIFY_METRIC_TOLERANCE:
         errors.append(
             f"Metric scaling is incorrect. Computed: {calc_metric}, "
             f"JSON says: {sol.final_metric}"

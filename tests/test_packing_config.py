@@ -106,3 +106,13 @@ def test_render_constants():
     assert isinstance(RENDER_DPI, int) and RENDER_DPI > 0
     assert len(RENDER_FIGURE_SIZE) == 2
     assert isinstance(ANALYSIS_PLOT_DPI, int) and ANALYSIS_PLOT_DPI > 0
+
+
+def test_normalize_key_circle_substring_bug_fixed():
+    from src.shape_packing.packing_config import _normalize_key
+    assert _normalize_key("1_CIRCLE_in_CIRCLE") == "1_circle_in_circle"
+    assert _normalize_key("1_cir_in_cir") == "1_circle_in_circle"
+    assert _normalize_key("1_CIRC_in_CIRC") == "1_circle_in_circle"
+    assert _normalize_key("20_PENTAGON_in_HEXAGON") == "20_5_in_6"
+    assert _normalize_key("21_DOMINO_in_PENTAGON") == "21_domino_in_5"
+    assert _normalize_key("21_dom_in_5") == "21_domino_in_5"
