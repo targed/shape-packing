@@ -497,3 +497,49 @@ class TestRenderSolution:
         captured = capsys.readouterr()
         assert "[WARN] matplotlib is not installed" in captured.out
 
+
+class TestDecoupledRecordImprovement:
+    def test_check_new_record_decoupled(self, tmp_path):
+        from shape_packing.solution_tools import _check_new_record
+        ref_file = tmp_path / "ref.tsv"
+        ref_file.write_text("id\tfamily\t1.500000\tbest_known\tnote\t3_3_in_4\n")
+
+        # Metric slightly better than 1.500000 by 1e-6 (less than default 1e-5 min_improvement)
+        calc_metric = 1.499999
+        assert not _check_new_record(calc_metric, "3_3_in_4", True, str(ref_file), min_improvement=1e-5)
+
+        # But with min_improvement=1e-7, it is recognized
+        assert _check_new_record(calc_metric, "3_3_in_4", True, str(ref_file), min_improvement=1e-7)
+
+        # Metric better by 1e-4 is recognized under default 1e-5
+        assert _check_new_record(1.499900, "3_3_in_4", True, str(ref_file))
+
+    def test_verify_solution_with_custom_min_improvement(self, tmp_path):
+        ref = tmp_path / "ref.tsv"
+        ref.write_text("id\tfamily\t10.0\tbest_known\tnote\t1_3_in_4\n")
+
+        S = 5.0
+        nsi = 3
+        nsc = 4
+        final_metric = S * math.sin(math.pi / nsc) / math.sin(math.pi / nsi)
+
+        data = {
+            "N": 1,
+            "inner_token": "3",
+            "container_token": "4",
+            "S": S,
+            "final_metric": final_metric,
+            "values": [0.0, 0.0, 0.0],
+        }
+        p = tmp_path / "sol.json"
+        p.write_text(json.dumps(data))
+
+        res = verify_solution(
+            sol_path=str(p),
+            problem_str="1_3_in_4",
+            reference_path=str(ref),
+            min_improvement=1e-5,
+        )
+        assert res.valid is True
+        assert res.new_record is True
+

@@ -28,6 +28,7 @@ from .geometry import (
 from .packing_config import (
     VERIFY_SAT_TOLERANCE,
     VERIFY_METRIC_TOLERANCE,
+    RECORD_MIN_IMPROVEMENT,
     RENDER_DPI,
     RENDER_FIGURE_SIZE,
     RENDER_CROP_MODE,
@@ -371,13 +372,13 @@ def _check_new_record(
     problem_str: Optional[str],
     check_record: bool,
     reference_path: str,
-    tolerance: float,
+    min_improvement: float = RECORD_MIN_IMPROVEMENT,
 ) -> bool:
     """Check if the solution improves upon the known best benchmark value."""
     if not (problem_str and check_record):
         return False
     best = load_best_value(reference_path, problem_str)
-    if best is not None and calc_metric < best - tolerance:
+    if best is not None and calc_metric < best - min_improvement:
         return True
     return False
 
@@ -391,6 +392,7 @@ def verify_solution(
     tolerance: float = TOLERANCE,
     check_record: bool = True,
     reference_path: str = "PACKING_REFERENCE.tsv",
+    min_improvement: float = RECORD_MIN_IMPROVEMENT,
 ) -> "VerifyResult":
     """
     Verify a solution JSON:
@@ -419,7 +421,7 @@ def verify_solution(
     valid = len(errors) == 0
     new_record = (
         _check_new_record(
-            calc_metric, problem_str, check_record, reference_path, tolerance
+            calc_metric, problem_str, check_record, reference_path, min_improvement
         )
         if valid
         else False
