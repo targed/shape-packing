@@ -78,6 +78,27 @@ def get_shape_geometry(token: str):
         sides = 3
         return sides, vertices, vectors, edge_radii
         
+    if token == "L":
+        vertices = np.array([
+            [-5.0/6.0, -5.0/6.0],
+            [7.0/6.0, -5.0/6.0],
+            [7.0/6.0, 1.0/6.0],
+            [1.0/6.0, 1.0/6.0],
+            [1.0/6.0, 7.0/6.0],
+            [-5.0/6.0, 7.0/6.0],
+        ])
+        vectors = np.array([
+            [0.0, -1.0],
+            [1.0, 0.0],
+            [0.0, -1.0],
+            [1.0, 0.0],
+            [0.0, 1.0],
+            [-1.0, 0.0],
+        ])
+        edge_radii = np.array([5.0/6.0, 7.0/6.0, 1.0/6.0, 1.0/6.0, 7.0/6.0, 5.0/6.0])
+        sides = 6
+        return sides, vertices, vectors, edge_radii
+
     if token in ("CIRCLE", "CIR"):
         sides = CIRCLE_SIDES
         vertices = regular_polygon_vertices(sides, 1.0)
@@ -97,6 +118,45 @@ def get_shape_geometry(token: str):
     apothem = float(np.cos(np.pi / sides))
     edge_radii = np.full(sides, apothem)
     return sides, vertices, vectors, edge_radii
+
+
+def get_shape_convex_parts(token: str) -> List[Tuple[np.ndarray, np.ndarray]]:
+    """
+    Return a list of (vertices, outward_normals) for each convex component of the shape.
+    For convex shapes (polygons, domino, tan), returns a 1-element list with the shape itself.
+    For non-convex shapes (like L-tromino), returns the 2-rectangle convex decomposition.
+    """
+    token = str(token).upper()
+    if token == "L":
+        part_a_v = np.array([
+            [-5.0/6.0, -5.0/6.0],
+            [1.0/6.0, -5.0/6.0],
+            [1.0/6.0, 7.0/6.0],
+            [-5.0/6.0, 7.0/6.0],
+        ])
+        part_a_n = np.array([
+            [0.0, -1.0],
+            [1.0, 0.0],
+            [0.0, 1.0],
+            [-1.0, 0.0],
+        ])
+
+        part_b_v = np.array([
+            [1.0/6.0, -5.0/6.0],
+            [7.0/6.0, -5.0/6.0],
+            [7.0/6.0, 1.0/6.0],
+            [1.0/6.0, 1.0/6.0],
+        ])
+        part_b_n = np.array([
+            [0.0, -1.0],
+            [1.0, 0.0],
+            [0.0, 1.0],
+            [-1.0, 0.0],
+        ])
+        return [(part_a_v, part_a_n), (part_b_v, part_b_n)]
+
+    sides, verts, vecs, _ = get_shape_geometry(token)
+    return [(verts, vecs)]
 
 
 def transform_polygon(vertices, cx: float, cy: float, a: float):

@@ -157,11 +157,38 @@ class TestBHObjective:
                                             [0.0, -1.0]])
         edge_radii = np.ones(4)
         S = 100.0
-        x0 = np.array([0.0, 0.0, 0.0,
-                       1.0, 0.0, 0.0])
+        x0 = np.array([0.0, 0.0, 0.0, 1.0, 0.0, 0.0])
         penalty = bh_objective(
             x0, S, N, nsi,
             unit_polys, unit_vectors,
             unit_container_vectors, edge_radii
         )
         assert penalty < 1e-4
+
+
+def test_l_tromino_geometry_and_convex_parts():
+    from shape_packing.geometry import get_shape_geometry, get_shape_convex_parts
+    sides, verts, vecs, radii = get_shape_geometry("L")
+    assert sides == 6
+    assert verts.shape == (6, 2)
+    # Verify 6 outer vertices and area = 3.0
+    # Center of mass:
+    # vertices: (-5/6, -5/6), (7/6, -5/6), (7/6, 1/6), (1/6, 1/6), (1/6, 7/6), (-5/6, 7/6)
+    expected_v = np.array([
+        [-5.0/6.0, -5.0/6.0],
+        [7.0/6.0, -5.0/6.0],
+        [7.0/6.0, 1.0/6.0],
+        [1.0/6.0, 1.0/6.0],
+        [1.0/6.0, 7.0/6.0],
+        [-5.0/6.0, 7.0/6.0],
+    ])
+    np.testing.assert_allclose(verts, expected_v, atol=1e-6)
+
+    parts = get_shape_convex_parts("L")
+    assert len(parts) == 2  # 2 convex rectangles
+    rect_a_verts, rect_a_normals = parts[0]
+    rect_b_verts, rect_b_normals = parts[1]
+    assert rect_a_verts.shape == (4, 2)
+    assert rect_b_verts.shape == (4, 2)
+    assert rect_a_normals.shape == (4, 2)
+    assert rect_b_normals.shape == (4, 2)
