@@ -296,6 +296,76 @@ def _verify_container_bounds(
     S = sol.S
     is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
     is_container_circle = sol.container_token.upper() in ("CIRCLE", "CIR")
+    is_container_l = sol.container_token.upper() == "L"
+
+    if is_container_l:
+        r_cutout = np.array([
+            [1.0 / 6.0 * S, 1.0 / 6.0 * S],
+            [7.0 / 6.0 * S, 1.0 / 6.0 * S],
+            [7.0 / 6.0 * S, 7.0 / 6.0 * S],
+            [1.0 / 6.0 * S, 7.0 / 6.0 * S],
+        ])
+        r_cutout_normals = polygon_normals(r_cutout)
+        inner_parts = get_shape_convex_parts(sol.inner_token)
+
+        for i, poly in enumerate(polygons):
+            posx = sol.values[i * 3]
+            posy = sol.values[i * 3 + 1]
+            rot = sol.values[i * 3 + 2]
+
+            if is_inner_circle:
+                # Bounding box
+                if posx < -5.0 / 6.0 * S + 1.0 - tolerance:
+                    errors.append(f"Shape {i} (circle) out of L-bounds (left)! Margin: {-5.0 / 6.0 * S + 1.0 - posx}")
+                if posx > 7.0 / 6.0 * S - 1.0 + tolerance:
+                    errors.append(f"Shape {i} (circle) out of L-bounds (right)! Margin: {posx - (7.0 / 6.0 * S - 1.0)}")
+                if posy < -5.0 / 6.0 * S + 1.0 - tolerance:
+                    errors.append(f"Shape {i} (circle) out of L-bounds (bottom)! Margin: {-5.0 / 6.0 * S + 1.0 - posy}")
+                if posy > 7.0 / 6.0 * S - 1.0 + tolerance:
+                    errors.append(f"Shape {i} (circle) out of L-bounds (top)! Margin: {posy - (7.0 / 6.0 * S - 1.0)}")
+
+                # Reflex corner cut-out obstacle
+                if posx > 1.0 / 6.0 * S - 1.0 + tolerance and posy > 1.0 / 6.0 * S - 1.0 + tolerance:
+                    if posx >= 1.0 / 6.0 * S and posy >= 1.0 / 6.0 * S:
+                        errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out!")
+                    elif posx > 1.0 / 6.0 * S:
+                        dist = 1.0 / 6.0 * S - posy
+                        if dist < 1.0 - tolerance:
+                            errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out! Margin: {1.0 - dist}")
+                    elif posy > 1.0 / 6.0 * S:
+                        dist = 1.0 / 6.0 * S - posx
+                        if dist < 1.0 - tolerance:
+                            errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out! Margin: {1.0 - dist}")
+                    else:
+                        corner_dist = math.hypot(posx - 1.0 / 6.0 * S, posy - 1.0 / 6.0 * S)
+                        if corner_dist < 1.0 - tolerance:
+                            errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out! Margin: {1.0 - corner_dist}")
+            else:
+                # 1. Bounding box check on vertices
+                for v in poly:
+                    if v[0] < -5.0 / 6.0 * S - tolerance:
+                        errors.append(f"Shape {i} is out of L-bounds (left)! Violation margin: {-5.0 / 6.0 * S - v[0]}")
+                    if v[0] > 7.0 / 6.0 * S + tolerance:
+                        errors.append(f"Shape {i} is out of L-bounds (right)! Violation margin: {v[0] - 7.0 / 6.0 * S}")
+                    if v[1] < -5.0 / 6.0 * S - tolerance:
+                        errors.append(f"Shape {i} is out of L-bounds (bottom)! Violation margin: {-5.0 / 6.0 * S - v[1]}")
+                    if v[1] > 7.0 / 6.0 * S + tolerance:
+                        errors.append(f"Shape {i} is out of L-bounds (top)! Violation margin: {v[1] - 7.0 / 6.0 * S}")
+
+                # 2. SAT check against cut-out square obstacle
+                if len(inner_parts) > 1:
+                    for (p_v, _) in inner_parts:
+                        t_v = transform_polygon(p_v, posx, posy, rot)
+                        t_n = polygon_normals(t_v)
+                        overlap, depth = sat_check_overlap(t_v, r_cutout, t_n, r_cutout_normals)
+                        if overlap and depth > tolerance:
+                            errors.append(f"Shape {i} intersects L-container reflex cut-out! Depth: {depth}")
+                else:
+                    poly_n = polygon_normals(poly)
+                    overlap, depth = sat_check_overlap(poly, r_cutout, poly_n, r_cutout_normals)
+                    if overlap and depth > tolerance:
+                        errors.append(f"Shape {i} intersects L-container reflex cut-out! Depth: {depth}")
+        return errors
 
     container_limits = unit_container_radii * S
     container_normals = [(float(v[0]), float(v[1])) for v in unit_container_vectors]

@@ -591,4 +591,52 @@ class TestLTrominoVerification:
         assert res.valid is False
         assert any("overlap" in e for e in res.errors)
 
+    def test_verify_l_container_valid(self, tmp_path):
+        # 1 TAN triangle in horizontal branch of L container
+        # Horizontal branch: [1/6 S, 7/6 S] x [-5/6 S, 1/6 S]
+        # At S = 3.0: [0.5, 3.5] x [-2.5, 0.5]
+        # Place TAN centered at (1.5, -1.0)
+        data = {
+            "N": 1,
+            "inner_token": "TAN",
+            "container_token": "L",
+            "S": 3.0,
+            "final_metric": 3.0,
+            "values": [1.5, -1.0, 0.0],
+        }
+        p = tmp_path / "tan_in_l.json"
+        p.write_text(json.dumps(data))
+
+        res = verify_solution(
+            sol_path=str(p),
+            problem_str="1_TAN_in_L",
+            check_record=False,
+        )
+        assert res.valid is True
+        assert len(res.errors) == 0
+
+    def test_verify_l_container_cutout_violation(self, tmp_path):
+        # Place shape in top-right reflex cut-out: [1/6 S, 7/6 S] x [1/6 S, 7/6 S]
+        # At S = 3.0: [0.5, 3.5] x [0.5, 3.5]
+        # Place shape centered at (2.0, 2.0)
+        data = {
+            "N": 1,
+            "inner_token": "TAN",
+            "container_token": "L",
+            "S": 3.0,
+            "final_metric": 3.0,
+            "values": [2.0, 2.0, 0.0],
+        }
+        p = tmp_path / "tan_in_l_cutout.json"
+        p.write_text(json.dumps(data))
+
+        res = verify_solution(
+            sol_path=str(p),
+            problem_str="1_TAN_in_L",
+            check_record=False,
+        )
+        assert res.valid is False
+        assert any("reflex cut-out" in e for e in res.errors)
+
+
 

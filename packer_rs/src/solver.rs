@@ -69,6 +69,7 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
     let is_inner_circle = config.inner_shape.to_uppercase() == "CIRCLE" || config.inner_shape.to_uppercase() == "CIR";
     let is_container_circle = config.container_shape.to_uppercase() == "CIRCLE" || config.container_shape.to_uppercase() == "CIR";
     let is_inner_l = config.inner_shape.to_uppercase() == "L";
+    let is_container_l = config.container_shape.to_uppercase() == "L";
 
     (0..config.attempts)
         .into_par_iter()
@@ -88,8 +89,9 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
                 is_inner_circle,
                 is_container_circle,
                 is_inner_l,
+                is_container_l,
             ),
-            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions, target_s, is_inner_circle, is_container_circle, is_inner_l), seed| {
+            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions, target_s, is_inner_circle, is_container_circle, is_inner_l, is_container_l), seed| {
                 let mut rng = ChaCha8Rng::seed_from_u64(seed as u64);
                 let (s, x) = run_attempt(
                     &mut rng,
@@ -110,6 +112,7 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
                     *is_inner_circle,
                     *is_container_circle,
                     *is_inner_l,
+                    *is_container_l,
                 );
                 if s.is_finite() && x.is_some() {
                     loop {
@@ -281,6 +284,7 @@ fn run_attempt<R: Rng>(
     is_inner_circle: bool,
     is_container_circle: bool,
     is_inner_l: bool,
+    is_container_l: bool,
 ) -> (f64, Option<Vec<f64>>) {
     if stop_flag.load(Ordering::Relaxed) {
         return (f64::INFINITY, None);
@@ -361,6 +365,7 @@ fn run_attempt<R: Rng>(
             is_inner_circle,
             is_container_circle,
             is_inner_l,
+            is_container_l,
             &mut polygon_array,
             &mut vector_array,
             &mut grad_buffer,
@@ -402,6 +407,7 @@ fn run_attempt<R: Rng>(
                     is_inner_circle,
                     is_container_circle,
                     is_inner_l,
+                    is_container_l,
                     &mut polygon_array,
                     &mut vector_array,
                     &mut grad_buffer,
@@ -454,6 +460,7 @@ fn minimize_gradient(
     is_inner_circle: bool,
     is_container_circle: bool,
     is_inner_l: bool,
+    is_container_l: bool,
     polygon_array: &mut [(f64, f64)],
     vector_array: &mut [(f64, f64)],
     grad_buffer: &mut [f64],
@@ -464,7 +471,7 @@ fn minimize_gradient(
     let mut x = x0.to_vec();
     let mut best_x = x.clone();
     let (mut best_fun, mut best_max_violation) = penalty_and_gradient(
-        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
+        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
     );
 
     let mut m = vec![0.0f64; n];
@@ -481,7 +488,7 @@ fn minimize_gradient(
 
     for _iter in 1..=3000 {
         let (fun, _max_violation) = penalty_and_gradient(
-            &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
+            &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
         );
 
         if fun < best_fun_iter * 0.9999 {
@@ -509,7 +516,7 @@ fn minimize_gradient(
         beta2_t *= beta2;
 
         let (new_fx, new_max_violation) = penalty_and_gradient(
-            &new_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
+            &new_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
         );
 
         x = new_x;
@@ -536,6 +543,7 @@ fn penalty_and_gradient(
     is_inner_circle: bool,
     is_container_circle: bool,
     is_inner_l: bool,
+    is_container_l: bool,
     compute_grad: bool,
     polygon_array: &mut [(f64, f64)],
     vector_array: &mut [(f64, f64)],
@@ -572,9 +580,9 @@ fn penalty_and_gradient(
 
         if is_container_circle {
             if is_inner_circle {
-                let limit = S - 1.0;
-                let dist_sq = posx*posx + posy*posy;
+                let dist_sq = posx * posx + posy * posy;
                 let dist = dist_sq.sqrt();
+                let limit = S - 1.0;
                 if dist > limit {
                     let diff = dist - limit;
                     penalty += diff * diff;
@@ -607,6 +615,227 @@ fn penalty_and_gradient(
                             grad[i * 3] += term * nx;
                             grad[i * 3 + 1] += term * ny;
                             grad[i * 3 + 2] += term * (nx * dx_drot + ny * dy_drot);
+                        }
+                    }
+                }
+            }
+        } else if is_container_l {
+            let x_min = -5.0 / 6.0 * S;
+            let x_max = 7.0 / 6.0 * S;
+            let y_min = -5.0 / 6.0 * S;
+            let y_max = 7.0 / 6.0 * S;
+            let cut_min_x = 1.0 / 6.0 * S;
+            let cut_min_y = 1.0 / 6.0 * S;
+
+            if is_inner_circle {
+                let r = 1.0;
+                if posx < x_min + r {
+                    let diff = (x_min + r) - posx;
+                    penalty += diff * diff;
+                    if diff > max_violation { max_violation = diff; }
+                    if compute_grad { grad[i * 3] -= 2.0 * diff; }
+                }
+                if posx > x_max - r {
+                    let diff = posx - (x_max - r);
+                    penalty += diff * diff;
+                    if diff > max_violation { max_violation = diff; }
+                    if compute_grad { grad[i * 3] += 2.0 * diff; }
+                }
+                if posy < y_min + r {
+                    let diff = (y_min + r) - posy;
+                    penalty += diff * diff;
+                    if diff > max_violation { max_violation = diff; }
+                    if compute_grad { grad[i * 3 + 1] -= 2.0 * diff; }
+                }
+                if posy > y_max - r {
+                    let diff = posy - (y_max - r);
+                    penalty += diff * diff;
+                    if diff > max_violation { max_violation = diff; }
+                    if compute_grad { grad[i * 3 + 1] += 2.0 * diff; }
+                }
+
+                if posx > cut_min_x - r && posy > cut_min_y - r {
+                    if posx >= cut_min_x && posy >= cut_min_y {
+                        let dx = posx - cut_min_x + r;
+                        let dy = posy - cut_min_y + r;
+                        let (diff, push_x) = if dx < dy { (dx, true) } else { (dy, false) };
+                        penalty += diff * diff;
+                        if diff > max_violation { max_violation = diff; }
+                        if compute_grad {
+                            if push_x { grad[i * 3] += 2.0 * diff; }
+                            else { grad[i * 3 + 1] += 2.0 * diff; }
+                        }
+                    } else if posx > cut_min_x {
+                        let dist = cut_min_y - posy;
+                        if dist < r {
+                            let diff = r - dist;
+                            penalty += diff * diff;
+                            if diff > max_violation { max_violation = diff; }
+                            if compute_grad { grad[i * 3 + 1] -= 2.0 * diff; }
+                        }
+                    } else if posy > cut_min_y {
+                        let dist = cut_min_x - posx;
+                        if dist < r {
+                            let diff = r - dist;
+                            penalty += diff * diff;
+                            if diff > max_violation { max_violation = diff; }
+                            if compute_grad { grad[i * 3] -= 2.0 * diff; }
+                        }
+                    } else {
+                        let dx = posx - cut_min_x;
+                        let dy = posy - cut_min_y;
+                        let dist = (dx * dx + dy * dy).sqrt();
+                        if dist < r {
+                            let diff = r - dist;
+                            penalty += diff * diff;
+                            if diff > max_violation { max_violation = diff; }
+                            if compute_grad {
+                                let term = 2.0 * diff;
+                                let nx = if dist > 1e-12 { dx / dist } else { 1.0 };
+                                let ny = if dist > 1e-12 { dy / dist } else { 0.0 };
+                                grad[i * 3] -= term * nx;
+                                grad[i * 3 + 1] -= term * ny;
+                            }
+                        }
+                    }
+                }
+            } else {
+                for v in 0..nsi {
+                    let (tx, ty) = polygon_array[i * nsi + v];
+                    if tx < x_min {
+                        let diff = x_min - tx;
+                        penalty += diff * diff;
+                        if diff > max_violation { max_violation = diff; }
+                        if compute_grad {
+                            let term = 2.0 * diff;
+                            grad[i * 3] -= term;
+                            grad[i * 3 + 2] += term * (ty - posy);
+                        }
+                    }
+                    if tx > x_max {
+                        let diff = tx - x_max;
+                        penalty += diff * diff;
+                        if diff > max_violation { max_violation = diff; }
+                        if compute_grad {
+                            let term = 2.0 * diff;
+                            grad[i * 3] += term;
+                            grad[i * 3 + 2] += term * -(ty - posy);
+                        }
+                    }
+                    if ty < y_min {
+                        let diff = y_min - ty;
+                        penalty += diff * diff;
+                        if diff > max_violation { max_violation = diff; }
+                        if compute_grad {
+                            let term = 2.0 * diff;
+                            grad[i * 3 + 1] -= term;
+                            grad[i * 3 + 2] += term * -(tx - posx);
+                        }
+                    }
+                    if ty > y_max {
+                        let diff = ty - y_max;
+                        penalty += diff * diff;
+                        if diff > max_violation { max_violation = diff; }
+                        if compute_grad {
+                            let term = 2.0 * diff;
+                            grad[i * 3 + 1] += term;
+                            grad[i * 3 + 2] += term * (tx - posx);
+                        }
+                    }
+                }
+
+                let r_cutout_pts = [
+                    (cut_min_x, cut_min_y),
+                    (x_max, cut_min_y),
+                    (x_max, y_max),
+                    (cut_min_x, y_max),
+                ];
+
+                let num_subparts = if is_inner_l { 2 } else { 1 };
+                for sub_idx in 0..num_subparts {
+                    let (sub_pts, sub_normals): (Vec<(f64, f64)>, Vec<(f64, f64)>) = if is_inner_l {
+                        let rot_i = values[i * 3 + 2];
+                        let sin_i = rot_i.sin();
+                        let cos_i = rot_i.cos();
+                        let p_split_i = (posx + (1.0/6.0 * cos_i - (-5.0/6.0) * sin_i), posy + (1.0/6.0 * sin_i + (-5.0/6.0) * cos_i));
+                        let pts = if sub_idx == 0 {
+                            vec![polygon_array[i * 6 + 0], p_split_i, polygon_array[i * 6 + 4], polygon_array[i * 6 + 5]]
+                        } else {
+                            vec![p_split_i, polygon_array[i * 6 + 1], polygon_array[i * 6 + 2], polygon_array[i * 6 + 3]]
+                        };
+                        let normals = vec![(cos_i, sin_i), (-sin_i, cos_i)];
+                        (pts, normals)
+                    } else {
+                        let pts = (0..nsi).map(|v| polygon_array[i * nsi + v]).collect();
+                        let normals = (0..nsi).map(|v| vector_array[i * nsi + v]).collect();
+                        (pts, normals)
+                    };
+
+                    let mut axes = sub_normals;
+                    axes.push((1.0, 0.0));
+                    axes.push((0.0, 1.0));
+
+                    let mut obstacle_collision = true;
+                    let mut min_overlap = 1e30f64;
+                    let mut best_axis = (0.0, 0.0);
+                    let mut best_v_min = 0;
+                    let mut best_v_max = 0;
+                    let mut best_is_max = true;
+
+                    for &(ax, ay) in axes.iter() {
+                        let mut min_1 = 1e30f64;
+                        let mut max_1 = -1e30f64;
+                        let mut v1_min = 0;
+                        let mut v1_max = 0;
+                        for (v_idx, &(px, py)) in sub_pts.iter().enumerate() {
+                            let dot = px * ax + py * ay;
+                            if dot < min_1 { min_1 = dot; v1_min = v_idx; }
+                            if dot > max_1 { max_1 = dot; v1_max = v_idx; }
+                        }
+
+                        let mut min_2 = 1e30f64;
+                        let mut max_2 = -1e30f64;
+                        for &(px, py) in r_cutout_pts.iter() {
+                            let dot = px * ax + py * ay;
+                            if dot < min_2 { min_2 = dot; }
+                            if dot > max_2 { max_2 = dot; }
+                        }
+
+                        let overlap = max_1.min(max_2) - min_1.max(min_2);
+                        if overlap <= 0.0 {
+                            obstacle_collision = false;
+                            break;
+                        }
+                        if overlap < min_overlap {
+                            min_overlap = overlap;
+                            best_axis = (ax, ay);
+                            best_v_min = v1_min;
+                            best_v_max = v1_max;
+                            best_is_max = max_1 < max_2;
+                        }
+                    }
+
+                    if obstacle_collision {
+                        penalty += min_overlap * min_overlap;
+                        if min_overlap > max_violation {
+                            max_violation = min_overlap;
+                        }
+                        if compute_grad {
+                            let term = 2.0 * min_overlap;
+                            let (ax, ay) = best_axis;
+                            if best_is_max {
+                                let p = sub_pts[best_v_max];
+                                let drot = -(p.1 - posy) * ax + (p.0 - posx) * ay;
+                                grad[i * 3] += term * ax;
+                                grad[i * 3 + 1] += term * ay;
+                                grad[i * 3 + 2] += term * drot;
+                            } else {
+                                let p = sub_pts[best_v_min];
+                                let drot = -(p.1 - posy) * ax + (p.0 - posx) * ay;
+                                grad[i * 3] -= term * ax;
+                                grad[i * 3 + 1] -= term * ay;
+                                grad[i * 3 + 2] -= term * drot;
+                            }
                         }
                     }
                 }
