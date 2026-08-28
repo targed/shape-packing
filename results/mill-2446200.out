@@ -3153,3 +3153,59 @@ After doing this, you may fix the identity used for this commit with:
 [Main] Worker finished 11_TAN_in_8 with score 1.1970834389028067
 [Main] Worker finished 12_TAN_in_6 with score 1.6997701539863892
 [Main] Batch committing 10 runs...
+[17_TAN_in_5] Success!
+[main b20444b8d] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 19 files changed, 967 insertions(+)
+ create mode 100644 results/10_TAN_in_3/20260828_024008/solution.json
+ create mode 100644 results/10_TAN_in_5/20260828_024022/solution.json
+ create mode 100644 results/10_TAN_in_8/20260828_024006/solution.json
+ create mode 100644 results/11_TAN_in_3/20260828_024014/solution.json
+ create mode 100644 results/11_TAN_in_5/20260828_023954/solution.json
+ create mode 100644 results/11_TAN_in_6/20260828_023955/solution.json
+ create mode 100644 results/11_TAN_in_8/20260828_023957/solution.json
+ create mode 100644 results/12_TAN_in_3/20260828_024005/solution.json
+ create mode 100644 results/12_TAN_in_6/20260828_024019/solution.json
+ create mode 100644 results/13_tan_in_cir/20260828_024017/solution.json
+ create mode 100644 results/14_TAN_in_5/20260828_024011/solution.json
+ create mode 100644 results/15_TAN_in_5/20260828_024000/solution.json
+ create mode 100644 results/15_TAN_in_6/20260828_023955/solution.json
+ create mode 100644 results/20_TAN_in_5/20260828_023956/solution.json
+ create mode 100644 results/20_tan_in_cir/20260828_024014/solution.json
+ create mode 100644 results/21_TAN_in_5/20260828_024002/solution.json
+ create mode 100644 results/25_3_in_tan/20260828_024014/solution.json
+[Main] Worker finished 28_3_in_tan with score 5.342002460317513
+[Main] Worker finished 20_TAN_in_5 with score 2.6697872839424672
+[Main] Worker finished 12_TAN_in_3 with score 4.118261553339798
+[Main] Worker finished 10_TAN_in_3 with score 3.760439063866493
+[Main] Worker finished 15_TAN_in_5 with score 2.3317001406671167
+[Main] Worker finished 21_TAN_in_5 with score 2.708856093603248
+[Main] Worker finished 10_TAN_in_8 with score 1.137270275289659
+[Main] Worker finished 11_TAN_in_6 with score 1.626611168274944
+[Main] Worker finished 11_TAN_in_3 with score 3.9369058626833966
+[Main] Worker finished 25_3_in_tan with score 5.068071312299632
+[Main] Batch committing 10 runs...
+[12_TAN_in_5] Success!
+[19_tan_in_cir] Success!
+[19_TAN_in_5] Success!
+[26_4_in_tan] Success!
+[16_TAN_in_5] Success!
+[12_tan_in_cir] Success!
+[13_TAN_in_5] Success!
+[16_tan_in_cir] Success!
+[16_3_in_tan] Success!
+[17_DOMINO_in_TAN] Success!
+[29_3_in_tan] Success!
+[22_TAN_in_5] Success!
