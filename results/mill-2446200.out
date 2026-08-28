@@ -1729,3 +1729,76 @@ After doing this, you may fix the identity used for this commit with:
 [8_TAN_in_6] Success!
 [13_DOMINO_in_TAN] Success!
 [16_DOMINO_in_TAN] Success!
+[main 56f0b8da] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 18 files changed, 811 insertions(+)
+ create mode 100644 results/10_tan_in_cir/20260828_013816/solution.json
+ create mode 100644 results/16_4_in_tan/20260828_013818/solution.json
+ create mode 100644 results/19_6_in_TAN/20260828_013807/solution.json
+ create mode 100644 results/20_6_in_TAN/20260828_013808/solution.json
+ create mode 100644 results/22_4_in_tan/20260828_013836/solution.json
+ create mode 100644 results/24_4_in_tan/20260828_013833/solution.json
+ create mode 100644 results/6_TAN_in_5/20260828_013810/solution.json
+ create mode 100644 results/6_TAN_in_6/20260828_013823/solution.json
+ create mode 100644 results/7_TAN_in_5/20260828_013812/solution.json
+ create mode 100644 results/7_TAN_in_6/20260828_013821/solution.json
+ create mode 100644 results/8_TAN_in_5/20260828_013814/solution.json
+ create mode 100644 results/8_TAN_in_6/20260828_013839/solution.json
+ create mode 100644 results/8_tan_in_cir/20260828_013807/solution.json
+ create mode 100644 results/9_TAN_in_5/20260828_013830/solution.json
+ create mode 100644 results/9_TAN_in_8/20260828_013825/solution.json
+ create mode 100644 results/9_tan_in_cir/20260828_013809/solution.json
+[Main] Worker finished 8_tan_in_cir with score 1.3230763515031798
+[Main] Worker finished 7_TAN_in_8 with score 0.9896175122548959
+[Main] Worker finished 17_5_in_TAN with score 8.920621241935889
+[Main] Worker finished 19_5_in_TAN with score 9.424438859419284
+[Main] Worker finished 6_TAN_in_5 with score 1.5105495647610865
+[Main] Worker finished 9_tan_in_cir with score 1.390167778937827
+[Main] Worker finished 20_6_in_TAN with score 11.843471290376822
+[Main] Worker finished 20_5_in_TAN with score 9.655712941895908
+[Main] Worker finished 8_TAN_in_5 with score 1.7376607751745106
+[diff] 6_tan_in_cir: diff=0.30 hist=2 fr_best=1.198 -> attempts=20210 swarm=1
+[6_tan_in_cir] Starting (20210 attempts)
+[diff] 11_8_in_TAN: diff=0.45 hist=2 fr_best=12.3333 -> attempts=42553 swarm=1
+[11_8_in_TAN] Starting (42553 attempts)
+[diff] 7_tan_in_cir: diff=0.30 hist=2 fr_best=1.26287 -> attempts=20146 swarm=1
+[7_tan_in_cir] Starting (20146 attempts)
+[diff] 4_TAN_in_8: diff=0.31 hist=2 fr_best=0.76537 -> attempts=21698 swarm=1
+[4_TAN_in_8] Starting (21698 attempts)
+[diff] 17_6_in_TAN: diff=0.55 hist=2 fr_best=10.9788 -> attempts=65092 swarm=1
+[17_6_in_TAN] Starting (65092 attempts)
+[diff] 18_6_in_TAN: diff=0.55 hist=2 fr_best=11.273 -> attempts=65121 swarm=1
+[18_6_in_TAN] Starting (65121 attempts)
+[diff] 7_TAN_in_5: diff=0.30 hist=2 fr_best=1.6269 -> attempts=20126 swarm=1
+[7_TAN_in_5] Starting (20126 attempts)
+[diff] 11_TAN_in_5: diff=0.45 hist=1 fr_best=1.9564 -> attempts=42886 swarm=1
+[11_TAN_in_5] Starting (42886 attempts)
+[diff] 11_TAN_in_6: diff=0.45 hist=1 fr_best=1.59198 -> attempts=42913 swarm=1
+[11_TAN_in_6] Starting (42913 attempts)
+[diff] 12_tan_in_cir: diff=0.46 hist=1 fr_best=1.50878 -> attempts=43463 swarm=1
+[12_tan_in_cir] Starting (43463 attempts)
+[diff] 16_tan_in_cir: diff=0.56 hist=1 fr_best=1.7418 -> attempts=66566 swarm=1
+[Main] Worker finished 10_tan_in_cir with score 1.447046343723036
+[16_tan_in_cir] Starting (66566 attempts)
+[Main] Batch committing 10 runs...
+[8_TAN_in_3] Success!
+[14_DOMINO_in_TAN] Success!
+[10_TAN_in_5] Success!
+[9_TAN_in_6] Success!
+[20_DOMINO_in_TAN] Success!
+[19_3_in_tan] Success!
+[20_3_in_tan] Success!
+[17_3_in_tan] Success!
+[17_tan_in_cir] Success!
