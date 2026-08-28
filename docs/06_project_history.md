@@ -58,3 +58,15 @@ This document tracks the chronological history, major milestones, past bug resol
   - Added `default = ["python"]` feature to `Cargo.toml` so standard `cargo build --release` compiles native PyO3 modules.
   - Added dynamic `mtime`-based sorting in `solver_interface.py` to ensure newest compiled native binaries always take precedence.
 
+### Milestone 10: Criterion Microbenchmarking Suite & Performance Baselines
+- **Statistical Microbenchmarking Framework**:
+  - Added Criterion.rs suite (`packer_rs/benches/solver_benchmarks.rs`) with the `plotters` backend for statistical nanosecond profiling and regression testing.
+  - Formulated 5 distinct hot-loop scenarios (`penalty_and_gradient`) and 2 multi-start macrobenchmarks (`run_attempt`).
+- **Baseline Verification**:
+  - Verified standard polygon SAT at **1.09–1.14 µs** (~900k–1M SAT evals/sec/core).
+  - Verified compound $2 \times 2$ non-convex L-tromino SAT at **1.48–1.57 µs**.
+  - Verified non-convex obstacle confinement at **1.16–2.26 µs**.
+  - Verified Sweep & Prune broadphase scaling ($N=25$) at **7.30–7.77 µs**.
+  - Established automated visual HTML reports generated under `packer_rs/target/criterion/report/index.html`.
+
+

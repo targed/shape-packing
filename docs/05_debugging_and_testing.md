@@ -109,3 +109,64 @@ python -m pytest tests/
 
 1. **God Modules**: `geometry.py`, `optimization.py`, `problems.py`, `agent_loop.py`, and `solution_tools.py` should maintain $>90\%$ line coverage.
 2. **Never Ignore Test Failures**: Fix underlying contracts instead of commenting out assertions or adding silent fallback wrappers.
+
+---
+
+## 4. Criterion Microbenchmarking & Performance Testing
+
+The native Rust solver includes a statistical microbenchmarking suite built on **Criterion.rs** to measure nanosecond execution times and prevent performance regressions in hot loops.
+
+### Running Benchmarks
+
+```bash
+# Navigate to Rust crate directory:
+cd packer_rs
+
+# Run full microbenchmark suite:
+cargo bench
+
+# Run a specific benchmark group:
+cargo bench --bench solver_benchmarks -- penalty_and_gradient
+cargo bench --bench solver_benchmarks -- run_attempt
+```
+
+### Benchmark Cases & Scopes
+
+| Benchmark Case | Scope / Geometry Tested | Target Execution Time |
+| :--- | :--- | :--- |
+| **`penalty_and_gradient/4_6_in_5_with_grad`** | $N=4$ Regular Polygons (Hexagon in Pentagon) | ~`1.1 µs` (1,100 ns) |
+| **`penalty_and_gradient/6_TAN_in_L_container`** | Non-convex L-container reflex cut-out obstacle SAT | ~`1.2–2.2 µs` |
+| **`penalty_and_gradient/6_L_in_4_compound_sat`** | Non-Convex L-Tromino ($2 \times 2$ compound sub-parts) | ~`1.5–2.7 µs` |
+| **`penalty_and_gradient/12_3_in_circle_with_grad`**| Circle Container (32 inner normal projections) | ~`2.0–2.8 µs` |
+| **`penalty_and_gradient/25_4_in_4_broadphase`** | Sweep & Prune Spatial Broadphase ($N=25$, 300 pairs) | ~`7.3–13.6 µs` |
+| **`run_attempt/4_6_in_5_single_attempt`** | Full multi-start attempt convergence on polygon | ~`44–91 ms` |
+| **`run_attempt/6_TAN_in_L_single_attempt`** | Full multi-start attempt on non-convex container | ~`1.0–1.4 s` |
+
+### Interpreting Benchmark Output
+
+When running `cargo bench`, Criterion outputs statistical metrics:
+
+```text
+penalty_and_gradient/4_6_in_5_with_grad
+                        time:   [1.0911 µs 1.0950 µs 1.0992 µs]
+                        change: [-3.1199% -2.0658% -1.1287%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+```
+
+1. **Time Triplet `[Lower Bound, Median Estimate, Upper Bound]`**:
+   - Criterion runs thousands of iterations across 100 sample batches, using bootstrap resampling to compute a **95% confidence interval**.
+   - `1.0911 µs` is the lower bound, `1.0950 µs` is the point estimate (median), and `1.0992 µs` is the upper bound.
+2. **Performance Change & Statistical Significance (`change: [...] (p = ...)` )**:
+   - Compares the current run against the saved baseline in `target/criterion/.../base/`.
+   - `p = 0.00 < 0.05`: The two-tailed hypothesis test confirms the speedup/slowdown is statistically significant and not background OS noise.
+3. **Outlier Detection (Tukey's Box Plot)**:
+   - Identifies samples distorted by OS context switches or thread scheduling, reporting mild ($1.5 \times \text{IQR}$) and severe ($3.0 \times \text{IQR}$) outliers.
+
+### Visual HTML Reports
+
+Criterion generates visual SVG charts and regression graphs at:
+- **`packer_rs/target/criterion/report/index.html`**
+
+Open this file in any web browser to view probability density functions (PDF), iteration vs time scatter plots, and violin distribution charts.

@@ -53,6 +53,12 @@ cd packer_rs && cargo build --release && cd ..
 python -m pytest tests/
 ```
 
+### 7. Run Criterion Microbenchmarks
+```bash
+# Run statistical nanosecond microbenchmarks on solver hot loops:
+cd packer_rs && cargo bench && cd ..
+```
+
 ---
 
 ## 📖 Command Index
@@ -68,7 +74,8 @@ python -m pytest tests/
 9. [`scripts/run_parallel_loop.py`](#9-scriptsrun_parallel_looppy-multi-process-parallel-search) — High-throughput multi-worker swarm.
 10. [`scripts/analyze_mill_log.py`](#10-scriptsanalyze_mill_logpy-hpc-log-analyzer) — HPC Slurm cluster log analyzer.
 11. [`packer_rs` (Rust Native Binary)](#11-packer_rs-direct-rust-cli-binary) — Direct CLI access to compiled Rust solver.
-12. [`site/` (Astro Web Dashboard)](#12-site-astro-interactive-web-dashboard) — Web UI development and build.
+12. [`cargo bench` (Criterion Microbenchmarks)](#12-cargo-bench-criterion-microbenchmarks) — Nanosecond microbenchmark performance profiling.
+13. [`site/` (Astro Web Dashboard)](#13-site-astro-interactive-web-dashboard) — Web UI development and build.
 
 ---
 
@@ -341,7 +348,28 @@ packer_rs/target/release/packer_rs <N> <INNER_TOKEN> <CONTAINER_TOKEN> [FLAGS]
 
 ---
 
-## 12. `site/` (Astro Interactive Web Dashboard)
+## 12. `cargo bench` (Criterion Microbenchmarks)
+
+Executes statistical nanosecond/microsecond benchmarks using Criterion.rs across core solver math (SAT overlap calculations, normal projections, spatial broadphase, compound polyform decomposition, and end-to-end attempts).
+
+```bash
+# Run all solver benchmarks:
+cd packer_rs && cargo bench
+
+# Run specific microbenchmark group:
+cargo bench --bench solver_benchmarks -- penalty_and_gradient
+
+# Run specific attempt group:
+cargo bench --bench solver_benchmarks -- run_attempt
+```
+
+### Visual Reports
+HTML charts and regression curves are automatically generated and saved to:
+- `packer_rs/target/criterion/report/index.html`
+
+---
+
+## 13. `site/` (Astro Interactive Web Dashboard)
 
 The web dashboard provides real-time visualization of all packings, family comparison tables, metric graphs, and interactive SVG diagrams.
 
@@ -358,3 +386,4 @@ npm run dev
 # Build production bundle:
 npm run build
 ```
+

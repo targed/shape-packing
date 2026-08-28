@@ -19,7 +19,7 @@ Full specification of the Erich Friedman benchmark dataset (`packingVerification
 Guide for running massive parallel searches on Slurm/HPC clusters. Explains `mill-*.out` log parsing via `analyze_mill_log.py`, worker execution, job batching, and high-performance compute scaling protocols.
 
 ### 5. [Debugging, Testing & Solution Verification](05_debugging_and_testing.md)
-Systematic debugging workflows, solution verification engine (`verify_solution`), physical area bound checks, pytest suite organization, and test coverage policies.
+Systematic debugging workflows, solution verification engine (`verify_solution`), physical area bound checks, pytest suite organization, test coverage policies, and **Criterion.rs statistical microbenchmarking suite**.
 
 ### 6. [Project Milestone History & Handoffs](06_project_history.md)
 Chronological record of major development milestones, design evolutions, past bug resolutions, and handoff summaries.
