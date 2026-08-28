@@ -9233,3 +9233,99 @@ After doing this, you may fix the identity used for this commit with:
 Solver reported: No valid packing found. Refusing to log 0.0 score.
 [5_TAN_in_4] Solution valid but NOT an improvement.
 [8_DOMINO_in_TAN] Success!
+[main bd0738aef] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 13 files changed, 689 insertions(+)
+ create mode 100644 results/10_3_in_tan/20260828_065703/solution.json
+ create mode 100644 results/12_3_in_tan/20260828_065707/solution.json
+ create mode 100644 results/13_5_in_TAN/20260828_065702/solution.json
+ create mode 100644 results/14_4_in_tan/20260828_065704/solution.json
+ create mode 100644 results/15_3_in_tan/20260828_065709/solution.json
+ create mode 100644 results/18_4_in_tan/20260828_065703/solution.json
+ create mode 100644 results/18_8_in_TAN/20260828_065703/solution.json
+ create mode 100644 results/19_8_in_TAN/20260828_065703/solution.json
+ create mode 100644 results/20_8_in_TAN/20260828_065703/solution.json
+ create mode 100644 results/22_8_in_TAN/20260828_065703/solution.json
+ create mode 100644 results/8_DOMINO_in_TAN/20260828_070154/solution.json
+[Main] Worker finished 7_3_in_tan with score 2.7901743930726672
+[Main] Worker finished 22_8_in_TAN with score 16.806765620515144
+[Main] Worker finished 18_5_in_TAN with score 9.093691284787404
+[Main] Worker finished 12_3_in_tan with score 3.630524336664464
+[Main] Worker finished 9_DOMINO_in_TAN with score 6.8329913630729875
+[Main] Worker finished 15_3_in_tan with score 3.9916785160884403
+[Main] Worker finished 20_8_in_TAN with score 15.98701049064933
+[diff] 5_TAN_in_5: diff=0.30 hist=3 fr_best=1.3861 -> attempts=20004 swarm=1
+[5_TAN_in_5] Starting (20004 attempts)
+[diff] 11_4_in_tan: diff=0.45 hist=4 fr_best=5.414 -> attempts=42501 swarm=1
+[11_4_in_tan] Starting (42501 attempts)
+[diff] 17_8_in_TAN: diff=0.55 hist=4 fr_best=14.7782 -> attempts=65008 swarm=1
+[17_8_in_TAN] Starting (65008 attempts)
+[diff] 18_4_in_tan: diff=0.55 hist=3 fr_best=6.828 -> attempts=65005 swarm=1
+[18_4_in_tan] Starting (65005 attempts)
+[diff] 10_3_in_tan: diff=0.45 hist=3 fr_best=3.34084 -> attempts=42537 swarm=1
+[10_3_in_tan] Starting (42537 attempts)
+[diff] 14_4_in_tan: diff=0.45 hist=3 fr_best=6.0 -> attempts=42502 swarm=1
+[14_4_in_tan] Starting (42502 attempts)
+[diff] 9_3_in_tan: diff=0.30 hist=4 fr_best=3.18252 -> attempts=20010 swarm=1
+[9_3_in_tan] Starting (20010 attempts)
+[diff] 7_TAN_in_3: diff=0.30 hist=2 fr_best=3.17427 -> attempts=20012 swarm=1
+[7_TAN_in_3] Starting (20012 attempts)
+[diff] 6_TAN_in_3: diff=0.30 hist=2 fr_best=2.93781 -> attempts=20002 swarm=1
+[6_TAN_in_3] Starting (20002 attempts)
+[diff] 6_TAN_in_4: diff=0.30 hist=3 fr_best=1.937 -> attempts=20012 swarm=1
+[6_TAN_in_4] Starting (20012 attempts)
+[diff] 20_4_in_tan: diff=0.55 hist=2 fr_best=7.0 -> attempts=65010 swarm=1
+[20_4_in_tan] Starting (65010 attempts)
+[diff] 13_3_in_tan: diff=0.45 hist=2 fr_best=3.71163 -> attempts=42519 swarm=1
+[13_3_in_tan] Starting (42519 attempts)
+[diff] 6_tan_in_tan: diff=0.30 hist=1 fr_best=2.69 -> attempts=20044 swarm=1
+[6_tan_in_tan] Starting (20044 attempts)
+[diff] 23_4_in_tan: diff=0.55 hist=1 fr_best=7.414 -> attempts=65009 swarm=1
+[23_4_in_tan] Starting (65009 attempts)
+[diff] 21_3_in_tan: diff=0.55 hist=1 fr_best=4.64141 -> attempts=65078 swarm=1
+[21_3_in_tan] Starting (65078 attempts)
+[diff] 10_TAN_in_DOMINO: diff=0.45 hist=1 fr_best=1.7071 -> attempts=42501 swarm=1
+[10_TAN_in_DOMINO] Starting (42501 attempts)
+[diff] 17_3_in_tan: diff=0.55 hist=4 fr_best=4.20127 -> attempts=65083 swarm=1
+[Main] Worker finished 8_DOMINO_in_TAN with score 6.414429819711533
+[17_3_in_tan] Starting (65083 attempts)
+[Main] Worker failed on 5_TAN_in_4: No valid packing found
+[diff] 3_TAN_in_DOMINO: diff=0.30 hist=4 fr_best=0.999 -> attempts=20001 swarm=1
+[3_TAN_in_DOMINO] Starting (20001 attempts)
+[diff] 5_TAN_in_4: diff=0.30 hist=1 fr_best=1.788 -> attempts=20000 swarm=1
+[5_TAN_in_4] Starting (20000 attempts)
+[13_4_in_tan] Success!
+[Main] Worker finished 13_4_in_tan with score 5.829251457657059
+[diff] 5_tan_in_tan: diff=0.30 hist=1 fr_best=2.405 -> attempts=20026 swarm=1
+[5_tan_in_tan] Starting (20026 attempts)
+[5_TAN_in_6] Success!
+[Main] Worker finished 5_TAN_in_6 with score 1.139798427055632
+[Main] Batch committing 10 runs...
+[16_5_in_TAN] Success!
+[5_TAN_in_3] Success!
+[12_4_in_tan] Success!
+[12_DOMINO_in_TAN] Success!
+[14_8_in_TAN] Success!
+[11_3_in_tan] Success!
+[11_DOMINO_in_TAN] Success!
+[19_4_in_tan] Success!
+[14_3_in_tan] Success!
+[13_DOMINO_in_TAN] Success!
+[17_4_in_tan] Success!
+[5_tan_in_tan] Success!
+Solver reported: No valid packing found. Refusing to log 0.0 score.
+[5_TAN_in_4] Solution valid but NOT an improvement.
+[6_tan_in_tan] Success!
+[3_TAN_in_DOMINO] Success!
