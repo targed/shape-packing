@@ -23178,3 +23178,13 @@ auto	15.98701049064933	0.0	discard	20_8_in_TAN	Parallel run loop
 auto	7.830883474428317	0.0	discard	13_5_in_TAN	Parallel run loop
 auto	6.8329913630729875	0.0	discard	9_DOMINO_in_TAN	Parallel run loop
 auto	1.9617957927965048	0.0	discard	3_tan_in_tan	Parallel run loop
+auto	1.9380628930945585	0.0	keep	6_TAN_in_4	Parallel run loop
+auto	3.630911188977506	0.0	discard	12_3_in_tan	Parallel run loop
+auto	15.352631895501817	0.0	discard	18_8_in_TAN	Parallel run loop
+auto	16.795324632209066	0.0	discard	22_8_in_TAN	Parallel run loop
+auto	15.717327236785252	0.0	discard	19_8_in_TAN	Parallel run loop
+auto	3.1839953516248816	0.0	discard	9_3_in_tan	Parallel run loop
+auto	3.4706595787487813	0.0	keep	11_3_in_tan	Parallel run loop
+auto	5.656970416589561	0.0	discard	12_4_in_tan	Parallel run loop
+auto	6.962713780428193	0.0	discard	19_4_in_tan	Parallel run loop
+auto	6.414429819711533	0.0	discard	8_DOMINO_in_TAN	Parallel run loop
