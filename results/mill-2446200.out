@@ -2383,3 +2383,62 @@ After doing this, you may fix the identity used for this commit with:
 [10_TAN_in_5] Success!
 [9_TAN_in_6] Success!
 [20_DOMINO_in_TAN] Success!
+[main 714d74ece] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 16 files changed, 851 insertions(+)
+ create mode 100644 results/10_TAN_in_3/20260828_020801/solution.json
+ create mode 100644 results/11_tan_in_cir/20260828_020759/solution.json
+ create mode 100644 results/12_TAN_in_6/20260828_020803/solution.json
+ create mode 100644 results/16_4_in_tan/20260828_020759/solution.json
+ create mode 100644 results/18_6_in_TAN/20260828_020759/solution.json
+ create mode 100644 results/20_DOMINO_in_TAN/20260828_020805/solution.json
+ create mode 100644 results/20_tan_in_cir/20260828_020803/solution.json
+ create mode 100644 results/22_4_in_tan/20260828_020800/solution.json
+ create mode 100644 results/24_4_in_tan/20260828_020800/solution.json
+ create mode 100644 results/25_3_in_tan/20260828_020802/solution.json
+ create mode 100644 results/4_TAN_in_8/20260828_020759/solution.json
+ create mode 100644 results/7_TAN_in_5/20260828_020759/solution.json
+ create mode 100644 results/8_TAN_in_6/20260828_020800/solution.json
+ create mode 100644 results/9_TAN_in_6/20260828_020804/solution.json
+[diff] 16_3_in_tan: diff=0.55 hist=1 fr_best=4.03901 -> attempts=65102 swarm=1
+[Main] Worker finished 18_6_in_TAN with score 11.310223927437338
+[16_3_in_tan] Starting (65102 attempts)
+[Main] Worker finished 25_3_in_tan with score 5.068071312299632
+[Main] Worker finished 20_DOMINO_in_TAN with score 9.99316640007752
+[Main] Worker finished 11_tan_in_cir with score 1.5105941147975273
+[Main] Worker finished 8_TAN_in_6 with score 1.3883118882843977
+[Main] Worker finished 10_TAN_in_5 with score 1.8977361788735476
+[Main] Worker finished 7_TAN_in_5 with score 1.6397363084911005
+[Main] Worker finished 10_TAN_in_3 with score 3.7734263999297917
+[Main] Worker finished 16_4_in_tan with score 6.376015494322555
+[Main] Worker finished 9_TAN_in_6 with score 1.4638645831566406
+[Main] Batch committing 10 runs...
+[6_tan_in_cir] Success!
+[8_tan_in_cir] Success!
+[9_tan_in_cir] Success!
+[6_TAN_in_5] Success!
+[8_TAN_in_5] Success!
+[10_tan_in_cir] Success!
+[9_TAN_in_8] Success!
+[9_TAN_in_5] Success!
+[8_TAN_in_3] Success!
+[14_DOMINO_in_TAN] Success!
+[19_tan_in_cir] Success!
+[19_3_in_tan] Success!
+[12_TAN_in_5] Success!
+[26_4_in_tan] Success!
+[12_tan_in_cir] Success!
+[13_TAN_in_5] Success!
+[16_tan_in_cir] Success!
