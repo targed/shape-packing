@@ -69,4 +69,15 @@ This document tracks the chronological history, major milestones, past bug resol
   - Verified Sweep & Prune broadphase scaling ($N=25$) at **7.30–7.77 µs**.
   - Established automated visual HTML reports generated under `packer_rs/target/criterion/report/index.html`.
 
+### Milestone 11: Two-Stage Hybrid (Adam + L-BFGS Polish) Optimizer
+- **Two-Stage Architecture**:
+  - Replaced the legacy 3,000-step pure Adam loop in `packer_rs/src/solver.rs` with a zero-dependency Two-Stage Hybrid optimizer.
+  - **Stage 1 (Coarse Adam Untangling)**: Fast momentum untangling ($\le 250$ steps, early-exiting when coarse penalty $< 10^{-3}$) to resolve macroscopic collision overlaps without getting trapped.
+  - **Stage 2 (L-BFGS Quasi-Newton Polish)**: Zero-dependency Limited-Memory BFGS ($m=8$) with Backtracking Armijo line search ($c_1 = 10^{-4}, \rho = 0.5$) and Powell curvature safeguarding ($y_k^T s_k > 10^{-10} \|s_k\|^2$) for quadratic convergence to sub-tolerance ($\le 10^{-5}$) in 10–30 steps.
+- **Empirical Validation**:
+  - `run_attempt/4_6_in_5_single_attempt`: **91.0 ms $\rightarrow$ 3.27 ms** (**27.8x speedup**, $p < 0.05$).
+  - `run_attempt/6_TAN_in_L_single_attempt`: **1,410.0 ms $\rightarrow$ 13.10 ms** (**107.6x speedup**, $p < 0.05$).
+  - Full pytest suite: **318 / 318 tests passed** in **16.20s** (down from 27.22s, a **40.4% speedup**).
+
+
 

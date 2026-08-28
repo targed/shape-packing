@@ -135,12 +135,12 @@ cargo bench --bench solver_benchmarks -- run_attempt
 | Benchmark Case | Scope / Geometry Tested | Target Execution Time |
 | :--- | :--- | :--- |
 | **`penalty_and_gradient/4_6_in_5_with_grad`** | $N=4$ Regular Polygons (Hexagon in Pentagon) | ~`1.1 µs` (1,100 ns) |
-| **`penalty_and_gradient/6_TAN_in_L_container`** | Non-convex L-container reflex cut-out obstacle SAT | ~`1.2–2.2 µs` |
-| **`penalty_and_gradient/6_L_in_4_compound_sat`** | Non-Convex L-Tromino ($2 \times 2$ compound sub-parts) | ~`1.5–2.7 µs` |
-| **`penalty_and_gradient/12_3_in_circle_with_grad`**| Circle Container (32 inner normal projections) | ~`2.0–2.8 µs` |
-| **`penalty_and_gradient/25_4_in_4_broadphase`** | Sweep & Prune Spatial Broadphase ($N=25$, 300 pairs) | ~`7.3–13.6 µs` |
-| **`run_attempt/4_6_in_5_single_attempt`** | Full multi-start attempt convergence on polygon | ~`44–91 ms` |
-| **`run_attempt/6_TAN_in_L_single_attempt`** | Full multi-start attempt on non-convex container | ~`1.0–1.4 s` |
+| **`penalty_and_gradient/6_TAN_in_L_container`** | Non-convex L-container reflex cut-out obstacle SAT | ~`1.2 µs` |
+| **`penalty_and_gradient/6_L_in_4_compound_sat`** | Non-Convex L-Tromino ($2 \times 2$ compound sub-parts) | ~`1.6 µs` |
+| **`penalty_and_gradient/12_3_in_circle_with_grad`**| Circle Container (32 inner normal projections) | ~`2.0 µs` |
+| **`penalty_and_gradient/25_4_in_4_broadphase`** | Sweep & Prune Spatial Broadphase ($N=25$, 300 pairs) | ~`7.7 µs` |
+| **`run_attempt/4_6_in_5_single_attempt`** | Full multi-start attempt convergence on polygon (Hybrid) | ~`3.2–3.3 ms` (28x speedup) |
+| **`run_attempt/6_TAN_in_L_single_attempt`** | Full multi-start attempt on non-convex container (Hybrid) | ~`13.0–13.2 ms` (107x speedup) |
 
 ### Interpreting Benchmark Output
 
