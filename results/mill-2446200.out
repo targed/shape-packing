@@ -10415,3 +10415,81 @@ After doing this, you may fix the identity used for this commit with:
 Solver reported: No valid packing found. Refusing to log 0.0 score.
 [5_TAN_in_4] Solution valid but NOT an improvement.
 [3_TAN_in_6] Success!
+[4_TAN_in_6] Success!
+[main 9fd6dd428] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 22 files changed, 932 insertions(+)
+ create mode 100644 results/11_3_in_tan/20260828_074721/solution.json
+ create mode 100644 results/12_CIRCLE_in_TAN/20260828_074718/solution.json
+ create mode 100644 results/13_5_in_TAN/20260828_074719/solution.json
+ create mode 100644 results/16_5_in_TAN/20260828_074715/solution.json
+ create mode 100644 results/17_4_in_tan/20260828_074717/solution.json
+ create mode 100644 results/17_6_in_TAN/20260828_074719/solution.json
+ create mode 100644 results/18_5_in_TAN/20260828_074716/solution.json
+ create mode 100644 results/19_6_in_TAN/20260828_074723/solution.json
+ create mode 100644 results/20_5_in_TAN/20260828_074721/solution.json
+ create mode 100644 results/3_TAN_in_6/20260828_074715/solution.json
+ create mode 100644 results/4_6_in_TAN/20260828_075040/solution.json
+ create mode 100644 results/5_6_in_TAN/20260828_075039/solution.json
+ create mode 100644 results/5_TAN_in_5/20260828_074716/solution.json
+ create mode 100644 results/5_TAN_in_6/20260828_074720/solution.json
+ create mode 100644 results/6_TAN_in_5/20260828_074725/solution.json
+ create mode 100644 results/6_TAN_in_8/20260828_075056/solution.json
+ create mode 100644 results/7_TAN_in_4/20260828_074717/solution.json
+ create mode 100644 results/7_TAN_in_5/20260828_074726/solution.json
+ create mode 100644 results/8_tan_in_cir/20260828_074722/solution.json
+ create mode 100644 results/9_tan_in_cir/20260828_074724/solution.json
+[Main] Worker finished 11_3_in_tan with score 3.4706595787487813
+[Main] Worker finished 18_5_in_TAN with score 9.093691284787404
+[Main] Worker finished 5_TAN_in_6 with score 1.139798427055632
+[Main] Worker finished 13_5_in_TAN with score 7.8334472095262315
+[Main] Worker finished 5_TAN_in_5 with score 1.3865637832098754
+[Main] Worker finished 7_TAN_in_4 with score 2.0001054630464767
+[diff] 17_6_in_TAN: diff=0.55 hist=9 fr_best=10.9788 -> attempts=65042 swarm=1
+[17_6_in_TAN] Starting (65042 attempts)
+[diff] 18_5_in_TAN: diff=0.55 hist=8 fr_best=9.08713 -> attempts=65032 swarm=1
+[18_5_in_TAN] Starting (65032 attempts)
+[diff] 5_TAN_in_6: diff=0.30 hist=9 fr_best=1.13976 -> attempts=20001 swarm=1
+[5_TAN_in_6] Starting (20001 attempts)
+[diff] 11_3_in_tan: diff=0.45 hist=7 fr_best=3.46951 -> attempts=42507 swarm=1
+[11_3_in_tan] Starting (42507 attempts)
+[diff] 8_TAN_in_6: diff=0.30 hist=5 fr_best=1.37728 -> attempts=20141 swarm=1
+[8_TAN_in_6] Starting (20141 attempts)
+[diff] 8_TAN_in_3: diff=0.30 hist=5 fr_best=3.35224 -> attempts=20123 swarm=1
+[8_TAN_in_3] Starting (20123 attempts)
+[diff] 9_TAN_in_6: diff=0.30 hist=5 fr_best=1.44631 -> attempts=20174 swarm=1
+[9_TAN_in_6] Starting (20174 attempts)
+[diff] 20_DOMINO_in_TAN: diff=0.55 hist=5 fr_best=9.8284 -> attempts=65162 swarm=1
+[Main] Worker finished 19_6_in_TAN with score 11.51922073240496
+[20_DOMINO_in_TAN] Starting (65162 attempts)
+[Main] Worker finished 9_tan_in_cir with score 1.3934990720453515
+[Main] Worker finished 20_5_in_TAN with score 9.659307591070704
+[Main] Worker failed on 5_TAN_in_4: No valid packing found
+[Main] Worker finished 7_TAN_in_5 with score 1.6397363084911005
+[Main] Batch committing 10 runs...
+[14_4_in_tan] Success!
+[23_4_in_tan] Success!
+[12_CIRCLE_in_TAN] Success!
+[11_8_in_TAN] Success!
+[11_5_in_TAN] Success!
+[8_TAN_in_5] Success!
+[7_TAN_in_6] Success!
+[17_5_in_TAN] Success!
+[16_4_in_tan] Success!
+[6_TAN_in_6] Success!
+[9_TAN_in_5] Success!
+[24_4_in_tan] Success!
+[16_5_in_TAN] Success!
+slurmstepd: error: *** JOB 2446200 ON compute-14-04 CANCELLED AT 2026-08-28T07:58:08 DUE TO TIME LIMIT ***
