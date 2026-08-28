@@ -16,7 +16,10 @@ Design goals:
 - No changes to numerical behavior.
 """
 
+from __future__ import annotations
+
 import math
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 import numpy as np
 from .packing_config import CIRCLE_SIDES, GEOMETRY_SAT_TOLERANCE
 

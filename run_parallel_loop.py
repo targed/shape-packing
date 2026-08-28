@@ -1,9 +1,12 @@
+from __future__ import annotations
+
 import json
 import subprocess
 import time
 import os
 import signal
 import concurrent.futures
+from typing import Any, Dict, List, Optional, Tuple, Set, Union
 from src.shape_packing.agent_loop import log_result
 
 from src.shape_packing.packing_config import (

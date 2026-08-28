@@ -1,8 +1,10 @@
+from __future__ import annotations
+
 import os
 import json
 import subprocess
 import importlib.util
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Tuple, Set, Union, Callable
 
 _LOADED_PYO3_MODULE = None
 

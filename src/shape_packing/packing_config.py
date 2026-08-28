@@ -8,11 +8,13 @@ This file:
 - Defines difficulty scoring and adaptive attempt scaling.
 """
 
+from __future__ import annotations
+
 import csv
 import math
 import os
 import re
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Set, Callable, Sequence, Union
 from collections import defaultdict
 
 # =====================

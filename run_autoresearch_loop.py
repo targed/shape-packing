@@ -1,8 +1,11 @@
+from __future__ import annotations
+
 import json
 import subprocess
 import time
 import sys
 import os
+from typing import Any, Dict, List, Optional, Tuple, Set, Union
 
 # This is the canonical pure-code, no-LLM autonomous research loop.
 #

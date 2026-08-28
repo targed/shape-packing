@@ -15,9 +15,11 @@ Design goals:
 - No geometry duplication; imports from geometry.py.
 """
 
+from __future__ import annotations
+
 import time
 from dataclasses import dataclass
-from typing import Callable, Optional, Tuple
+from typing import Callable, Optional, Tuple, List, Dict, Any, Union
 
 import numpy as np
 from joblib import Parallel, delayed

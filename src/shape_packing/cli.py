@@ -1,8 +1,11 @@
+from __future__ import annotations
+
 import argparse
 import sys
 import json
 import subprocess
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Set, Union
 from .agent_loop import load_history, choose_problem, current_best_scores
 from .solver_interface import run_solver
 

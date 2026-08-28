@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 import json
 import math
 import os
 import glob
+from typing import Any, Dict, List, Optional, Tuple, Set, Union
 
 def polygon_area(sides: int, side_length: float) -> float:
     # Area = (1/4) * n * s^2 * cot(pi/n)

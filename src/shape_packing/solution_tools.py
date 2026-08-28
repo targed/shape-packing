@@ -11,12 +11,14 @@ Scripts verify_solution.py and render_solution.py should become
 thin entrypoints that import from here.
 """
 
+from __future__ import annotations
+
 import json
 import math
 import os
 import numpy as np
 from dataclasses import dataclass
-from typing import Any, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence, Set, Tuple, Union
 
 from .geometry import (
     polygon_normals,
