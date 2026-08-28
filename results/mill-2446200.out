@@ -408,3 +408,49 @@ After doing this, you may fix the identity used for this commit with:
 [18_5_in_TAN] Success!
 [20_6_in_TAN] Success!
 [3_TAN_in_DOMINO] Success!
+[main 05f847aa] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 201 insertions(+)
+ create mode 100644 results/5_TAN_in_6/20260828_004123/solution.json
+ create mode 100644 results/5_TAN_in_DOMINO/20260828_004119/solution.json
+ create mode 100644 results/7_TAN_in_8/20260828_004127/solution.json
+ create mode 100644 results/8_tan_in_cir/20260828_004135/solution.json
+[Main] Worker finished 9_4_in_tan with score 4.953480532948613
+[diff] 6_TAN_in_5: diff=0.30 hist=0 fr_best=1.5066 -> attempts=20000 swarm=1
+[6_TAN_in_5] Starting (20000 attempts)
+[diff] 7_TAN_in_5: diff=0.30 hist=0 fr_best=1.6269 -> attempts=20000 swarm=1
+[7_TAN_in_5] Starting (20000 attempts)
+[diff] 9_3_in_tan: diff=0.30 hist=0 fr_best=3.18252 -> attempts=20000 swarm=1
+[Main] Worker finished 13_5_in_TAN with score 7.8334472095262315
+[9_3_in_tan] Starting (20000 attempts)
+[Main] Worker finished 17_5_in_TAN with score 8.920269498222936
+[Main] Worker finished 15_6_in_TAN with score 10.34430868882364
+[Main] Worker finished 20_5_in_TAN with score 9.64854002812037
+[Main] Worker finished 14_8_in_TAN with score 13.57244125419423
+[Main] Worker finished 5_TAN_in_DOMINO with score 1.3015884503782176
+[Main] Worker finished 19_5_in_TAN with score 9.419461214920503
+[Main] Worker finished 16_5_in_TAN with score 8.671368230469906
+[Main] Worker finished 5_TAN_in_6 with score 1.1399124299546186
+[Main] Batch committing 10 runs...
+[9_3_in_tan] Success!
+[12_4_in_tan] Success!
+[11_4_in_tan] Success!
+[17_8_in_TAN] Success!
+[22_8_in_TAN] Success!
+[20_8_in_TAN] Success!
+[5_TAN_in_5] Success!
+[9_tan_in_cir] Success!
+[13_4_in_tan] Success!
+[5_TAN_in_3] Success!
