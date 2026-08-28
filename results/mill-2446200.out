@@ -9878,3 +9878,73 @@ After doing this, you may fix the identity used for this commit with:
 [18_8_in_TAN] Success!
 [6_tan_in_tan] Success!
 [6_TAN_in_8] Success!
+[main a76e2f3b6] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 11 files changed, 433 insertions(+)
+ create mode 100644 results/12_3_in_tan/20260828_072131/solution.json
+ create mode 100644 results/13_5_in_TAN/20260828_072135/solution.json
+ create mode 100644 results/15_3_in_tan/20260828_072132/solution.json
+ create mode 100644 results/18_5_in_TAN/20260828_072130/solution.json
+ create mode 100644 results/3_TAN_in_6/20260828_072445/solution.json
+ create mode 100644 results/6_TAN_in_4/20260828_072442/solution.json
+ create mode 100644 results/6_TAN_in_8/20260828_072752/solution.json
+ create mode 100644 results/6_tan_in_tan/20260828_072750/solution.json
+ create mode 100644 results/7_TAN_in_4/20260828_072443/solution.json
+[Main] Worker finished 18_5_in_TAN with score 9.093691284787404
+[Main] Worker finished 13_5_in_TAN with score 7.830883474428317
+[Main] Worker finished 15_3_in_tan with score 3.9874362125382268
+[Main] Worker finished 12_3_in_tan with score 3.630524336664464
+[Main] Worker finished 7_tan_in_tan with score 2.8282425559498208
+[Main] Worker finished 7_3_in_tan with score 2.7901743930726672
+[Main] Worker failed on 5_TAN_in_4: No valid packing found
+[Main] Worker finished 4_6_in_TAN with score 5.750980409876445
+[diff] 5_TAN_in_4: diff=0.30 hist=1 fr_best=1.788 -> attempts=20000 swarm=1
+[5_TAN_in_4] Starting (20000 attempts)
+[diff] 18_4_in_tan: diff=0.55 hist=5 fr_best=6.828 -> attempts=65004 swarm=1
+[18_4_in_tan] Starting (65004 attempts)
+[diff] 14_4_in_tan: diff=0.45 hist=5 fr_best=6.0 -> attempts=42502 swarm=1
+[14_4_in_tan] Starting (42502 attempts)
+[diff] 7_TAN_in_3: diff=0.30 hist=4 fr_best=3.17427 -> attempts=20012 swarm=1
+[7_TAN_in_3] Starting (20012 attempts)
+[diff] 23_4_in_tan: diff=0.55 hist=3 fr_best=7.414 -> attempts=65009 swarm=1
+[23_4_in_tan] Starting (65009 attempts)
+[diff] 21_3_in_tan: diff=0.55 hist=3 fr_best=4.64141 -> attempts=65078 swarm=1
+[21_3_in_tan] Starting (65078 attempts)
+[diff] 4_TAN_in_6: diff=0.30 hist=7 fr_best=1.05845 -> attempts=20044 swarm=1
+[4_TAN_in_6] Starting (20044 attempts)
+[diff] 11_8_in_TAN: diff=0.45 hist=7 fr_best=12.3333 -> attempts=42532 swarm=1
+[11_8_in_TAN] Starting (42532 attempts)
+[diff] 11_5_in_TAN: diff=0.45 hist=7 fr_best=7.34729 -> attempts=42521 swarm=1
+[11_5_in_TAN] Starting (42521 attempts)
+[diff] 12_3_in_tan: diff=0.45 hist=5 fr_best=3.62487 -> attempts=42535 swarm=1
+[Main] Worker finished 16_5_in_TAN with score 8.6707017776518
+[12_3_in_tan] Starting (42535 attempts)
+[Main] Worker finished 6_TAN_in_4 with score 1.9381847875892406
+[Main] Worker finished 6_tan_in_tan with score 2.6952092734837074
+[Main] Batch committing 10 runs...
+Solver reported: No valid packing found. Refusing to log 0.0 score.
+[5_TAN_in_4] Solution valid but NOT an improvement.
+[13_DOMINO_in_TAN] Success!
+[11_3_in_tan] Success!
+[12_DOMINO_in_TAN] Success!
+[11_DOMINO_in_TAN] Success!
+[6_TAN_in_3] Success!
+[20_4_in_tan] Success!
+[17_4_in_tan] Success!
+[10_TAN_in_DOMINO] Success!
+[24_3_in_tan] Success!
+[12_CIRCLE_in_TAN] Success!
+[5_TAN_in_6] Success!
+[5_TAN_in_5] Success!
