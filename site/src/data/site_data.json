@@ -139365,11 +139365,11 @@
       "ref_status": "trivial",
       "status": "trivial",
       "attempted": true,
-      "our_best_metric": 1.35732,
-      "our_best_s": 0.95977,
+      "our_best_metric": 1.357254,
+      "our_best_s": 0.959723,
       "comparison_status": "worse_than_best_known",
-      "diff": 0.35732,
-      "closeness_pct": 73.67,
+      "diff": 0.357254,
+      "closeness_pct": 73.68,
       "starts": 0,
       "attempts": 0,
       "successes": 0,
@@ -139379,20 +139379,21 @@
       "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html",
       "source_note": "s = 1 Trivial.",
       "solution": {
-        "S": 0.9597704984366313,
-        "final_metric": 1.3573204556546694,
-        "values": [
-          -0.08178043742554353,
-          -0.3645951748556919,
-          0.5024204447117231,
-          0.08256412622072459,
-          0.19886981090782507,
-          -0.2846133567323535
-        ],
         "N": 2,
+        "S": 0.9597231663422363,
+        "best_s": 0.9597231663422363,
         "inner_token": "tan",
         "container_token": "4",
-        "computed_metric": 1.3573204556546694,
+        "final_metric": 1.3572535179648406,
+        "values": [
+          -0.08229613165719037,
+          -0.3634960781850678,
+          0.5005648296229227,
+          0.08229632775134334,
+          0.19879088954300433,
+          -0.28496792222764145
+        ],
+        "computed_metric": 1.3572535179648406,
         "folder_name": "2_tan_in_4"
       }
     },
