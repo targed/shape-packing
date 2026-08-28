@@ -9803,3 +9803,78 @@ Solver reported: No valid packing found. Refusing to log 0.0 score.
 [13_5_in_TAN] Success!
 [7_tan_in_tan] Success!
 [7_3_in_tan] Success!
+[main 0fb04d609] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 13 files changed, 542 insertions(+)
+ create mode 100644 results/11_5_in_TAN/20260828_071810/solution.json
+ create mode 100644 results/11_8_in_TAN/20260828_071809/solution.json
+ create mode 100644 results/12_CIRCLE_in_TAN/20260828_071807/solution.json
+ create mode 100644 results/14_4_in_tan/20260828_071754/solution.json
+ create mode 100644 results/18_4_in_tan/20260828_071753/solution.json
+ create mode 100644 results/19_4_in_tan/20260828_071755/solution.json
+ create mode 100644 results/4_6_in_TAN/20260828_072446/solution.json
+ create mode 100644 results/5_6_in_TAN/20260828_072445/solution.json
+ create mode 100644 results/5_tan_in_tan/20260828_072443/solution.json
+ create mode 100644 results/7_3_in_tan/20260828_072441/solution.json
+ create mode 100644 results/7_tan_in_tan/20260828_072444/solution.json
+[Main] Worker finished 7_TAN_in_3 with score 3.176015968000912
+[Main] Worker finished 14_4_in_tan with score 6.000475455864383
+[Main] Worker finished 21_3_in_tan with score 4.649426124422304
+[Main] Worker finished 18_4_in_tan with score 6.828631161708708
+[Main] Worker finished 4_TAN_in_6 with score 1.060533204507968
+[Main] Worker finished 11_5_in_TAN with score 7.354278105218379
+[Main] Worker finished 11_8_in_TAN with score 12.362131078860386
+[Main] Worker finished 19_4_in_tan with score 6.953395668051402
+[diff] 12_DOMINO_in_TAN: diff=0.45 hist=4 fr_best=7.8284 -> attempts=42503 swarm=1
+[12_DOMINO_in_TAN] Starting (42503 attempts)
+[diff] 11_3_in_tan: diff=0.45 hist=4 fr_best=3.46951 -> attempts=42507 swarm=1
+[11_3_in_tan] Starting (42507 attempts)
+[diff] 11_DOMINO_in_TAN: diff=0.45 hist=4 fr_best=7.4142 -> attempts=42508 swarm=1
+[11_DOMINO_in_TAN] Starting (42508 attempts)
+[diff] 6_TAN_in_3: diff=0.30 hist=4 fr_best=2.93781 -> attempts=20002 swarm=1
+[6_TAN_in_3] Starting (20002 attempts)
+[diff] 13_DOMINO_in_TAN: diff=0.45 hist=4 fr_best=8.0 -> attempts=42515 swarm=1
+[13_DOMINO_in_TAN] Starting (42515 attempts)
+[diff] 20_4_in_tan: diff=0.55 hist=4 fr_best=7.0 -> attempts=65010 swarm=1
+[20_4_in_tan] Starting (65010 attempts)
+[diff] 17_4_in_tan: diff=0.55 hist=3 fr_best=6.414 -> attempts=65038 swarm=1
+[17_4_in_tan] Starting (65038 attempts)
+[diff] 6_tan_in_tan: diff=0.30 hist=4 fr_best=2.69 -> attempts=20044 swarm=1
+[6_tan_in_tan] Starting (20044 attempts)
+[diff] 10_TAN_in_DOMINO: diff=0.45 hist=3 fr_best=1.7071 -> attempts=42501 swarm=1
+[10_TAN_in_DOMINO] Starting (42501 attempts)
+[diff] 24_3_in_tan: diff=0.55 hist=4 fr_best=4.91168 -> attempts=65008 swarm=1
+[24_3_in_tan] Starting (65008 attempts)
+[diff] 12_CIRCLE_in_TAN: diff=0.45 hist=7 fr_best=10.422 -> attempts=42506 swarm=1
+[12_CIRCLE_in_TAN] Starting (42506 attempts)
+[diff] 6_TAN_in_8: diff=0.30 hist=7 fr_best=0.92388 -> attempts=20045 swarm=1
+[6_TAN_in_8] Starting (20045 attempts)
+[diff] 5_TAN_in_6: diff=0.30 hist=6 fr_best=1.13976 -> attempts=20001 swarm=1
+[5_TAN_in_6] Starting (20001 attempts)
+[diff] 5_TAN_in_5: diff=0.30 hist=5 fr_best=1.3861 -> attempts=20004 swarm=1
+[Main] Worker finished 5_tan_in_tan with score 2.4077404425018814
+[5_TAN_in_5] Starting (20004 attempts)
+[Main] Worker finished 5_6_in_TAN with score 6.502700541228166
+[Main] Batch committing 10 runs...
+[3_TAN_in_6] Success!
+[14_3_in_tan] Success!
+[6_TAN_in_4] Success!
+[13_3_in_tan] Success!
+[7_TAN_in_4] Success!
+[16_5_in_TAN] Success!
+[17_6_in_TAN] Success!
+[18_8_in_TAN] Success!
+[6_tan_in_tan] Success!
+[6_TAN_in_8] Success!
