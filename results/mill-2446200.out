@@ -9329,3 +9329,64 @@ Solver reported: No valid packing found. Refusing to log 0.0 score.
 [5_TAN_in_4] Solution valid but NOT an improvement.
 [6_tan_in_tan] Success!
 [3_TAN_in_DOMINO] Success!
+[9_3_in_tan] Success!
+[main bfb9987ac] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 17 files changed, 776 insertions(+)
+ create mode 100644 results/11_3_in_tan/20260828_070155/solution.json
+ create mode 100644 results/11_DOMINO_in_TAN/20260828_070156/solution.json
+ create mode 100644 results/12_4_in_tan/20260828_070152/solution.json
+ create mode 100644 results/12_DOMINO_in_TAN/20260828_070153/solution.json
+ create mode 100644 results/13_4_in_tan/20260828_070153/solution.json
+ create mode 100644 results/13_DOMINO_in_TAN/20260828_070158/solution.json
+ create mode 100644 results/14_3_in_tan/20260828_070157/solution.json
+ create mode 100644 results/14_8_in_TAN/20260828_070152/solution.json
+ create mode 100644 results/16_5_in_TAN/20260828_070152/solution.json
+ create mode 100644 results/17_4_in_tan/20260828_070158/solution.json
+ create mode 100644 results/19_4_in_tan/20260828_070154/solution.json
+ create mode 100644 results/5_TAN_in_3/20260828_070153/solution.json
+ create mode 100644 results/5_TAN_in_6/20260828_070152/solution.json
+ create mode 100644 results/5_tan_in_tan/20260828_070530/solution.json
+ create mode 100644 results/6_tan_in_tan/20260828_070506/solution.json
+[diff] 3_tan_in_tan: diff=0.30 hist=3 fr_best=1.961 -> attempts=20009 swarm=1
+[3_tan_in_tan] Starting (20009 attempts)
+[Main] Worker finished 19_4_in_tan with score 6.960801483157487
+[Main] Worker finished 5_TAN_in_3 with score 2.7415424589234503
+[Main] Worker finished 14_8_in_TAN with score 13.57244125419423
+[Main] Worker failed on 5_TAN_in_4: No valid packing found
+[Main] Worker finished 6_tan_in_tan with score 2.6952092734837074
+[Main] Worker finished 12_4_in_tan with score 5.656970416589561
+[Main] Worker finished 11_3_in_tan with score 3.470875010729649
+[Main] Worker finished 11_DOMINO_in_TAN with score 7.416821744050934
+[Main] Worker finished 9_3_in_tan with score 3.1839953516248816
+[Main] Worker finished 12_DOMINO_in_TAN with score 7.829292204562744
+[Main] Worker finished 5_tan_in_tan with score 2.4077404425018814
+[Main] Batch committing 10 runs...
+[5_TAN_in_5] Success!
+[11_4_in_tan] Success!
+[18_4_in_tan] Success!
+[10_3_in_tan] Success!
+[14_4_in_tan] Success!
+[17_8_in_TAN] Success!
+[7_TAN_in_3] Success!
+[6_TAN_in_3] Success!
+[6_TAN_in_4] Success!
+[20_4_in_tan] Success!
+[13_3_in_tan] Success!
+[3_tan_in_tan] Success!
+[23_4_in_tan] Success!
+[21_3_in_tan] Success!
+[10_TAN_in_DOMINO] Success!
+[17_3_in_tan] Success!
