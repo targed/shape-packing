@@ -69,15 +69,19 @@ This document tracks the chronological history, major milestones, past bug resol
   - Verified Sweep & Prune broadphase scaling ($N=25$) at **7.30–7.77 µs**.
   - Established automated visual HTML reports generated under `packer_rs/target/criterion/report/index.html`.
 
-### Milestone 11: Two-Stage Hybrid (Adam + L-BFGS Polish) Optimizer
-- **Two-Stage Architecture**:
-  - Replaced the legacy 3,000-step pure Adam loop in `packer_rs/src/solver.rs` with a zero-dependency Two-Stage Hybrid optimizer.
-  - **Stage 1 (Coarse Adam Untangling)**: Fast momentum untangling ($\le 250$ steps, early-exiting when coarse penalty $< 10^{-3}$) to resolve macroscopic collision overlaps without getting trapped.
-  - **Stage 2 (L-BFGS Quasi-Newton Polish)**: Zero-dependency Limited-Memory BFGS ($m=8$) with Backtracking Armijo line search ($c_1 = 10^{-4}, \rho = 0.5$) and Powell curvature safeguarding ($y_k^T s_k > 10^{-10} \|s_k\|^2$) for quadratic convergence to sub-tolerance ($\le 10^{-5}$) in 10–30 steps.
-- **Empirical Validation**:
-  - `run_attempt/4_6_in_5_single_attempt`: **91.0 ms $\rightarrow$ 3.27 ms** (**27.8x speedup**, $p < 0.05$).
-  - `run_attempt/6_TAN_in_L_single_attempt`: **1,410.0 ms $\rightarrow$ 13.10 ms** (**107.6x speedup**, $p < 0.05$).
-  - Full pytest suite: **318 / 318 tests passed** in **16.20s** (down from 27.22s, a **40.4% speedup**).
+### Milestone 12: Exhaustive Per-Image Dimension Database & Exact Per-$N$ Lookup
+- **Friedman Image Catalog Parser (`scripts/generate_image_properties.py`)**:
+  - Scanned all 74 packing family folders in `docs/erich-friedman.github.io/packing-with-images/` across **2,040+ individual benchmark images** using PIL.
+  - Automatically extracted exact pixel `(width, height)` and format (`png`, `gif`) for each individual problem ($N=1 \dots 50+$) across all families.
+  - Augmented `src/shape_packing/family_properties.json` with an `images` dictionary per family while maintaining family colors (`inner`, `container`), filename templates, and median dimension fallbacks.
+- **Dynamic Accessor APIs (`src/shape_packing/packing_config.py` & `solution_tools.py`)**:
+  - Updated `get_family_properties(family, N=...)` and `get_family_colors` to look up exact per-$N$ dimensions on demand.
+  - Added `get_problem_image_dimensions(problem: str) -> Tuple[int, int]` for instantaneous dimension retrieval from problem strings (e.g. `"21_DOMINO_in_5"` $\rightarrow (250, 237)$).
+  - Updated `render_solution` to automatically pass $N=\text{sol.N}$, ensuring exported solution PNGs match the exact native website pixel dimensions.
+- **Verification**:
+  - Cross-verified random sample of 25 images across diverse families directly against disk files with 100% precision.
+  - Full test suite passing (319/319 tests).
+
 
 
 
