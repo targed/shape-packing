@@ -102,18 +102,32 @@ def run_loop():
     _GLOBAL_HISTORY = load_history("results.tsv")
     print(f"[Loop] Mode: {'Radical/Diverse' if FORCE_DIVERSE else 'Incremental/Exploitative'}")
 
-    results_since_commit = 0
-    print("[Loop] Compiling Rust solver once before starting...")
-    try:
-        subprocess.run(
-            ["cargo", "build", "--release"],
-            cwd="packer_rs",
-            check=True,
-            stdout=subprocess.DEVNULL,
-        )
-    except Exception as e:
-        print(f"[Loop] Failed to compile Rust solver: {e}")
-        print("[Loop] Continuing anyway, assuming the binary is already compiled...")
+    bin_candidates = [
+        os.path.join("packer_rs", "target", "release", "packer_rs"),
+        os.path.join("packer_rs", "target", "release", "packer_rs.exe"),
+        os.path.join("packer_rs", "target", "release", "libpacker_rs.so"),
+        os.path.join("packer_rs", "target", "release", "packer_rs.so"),
+        os.path.join("packer_rs", "target", "release", "packer_rs.pyd"),
+        os.path.join("packer_rs", "target", "release", "packer_rs.dll"),
+    ]
+    has_compiled = any(os.path.exists(p) for p in bin_candidates)
+
+    if has_compiled:
+        print("[Loop] Compiled Rust solver binary / library found. Skipping recompilation.")
+    else:
+        print("[Loop] Compiling Rust solver once before starting...")
+        try:
+            env = os.environ.copy()
+            subprocess.run(
+                ["cargo", "build", "--release"],
+                cwd="packer_rs",
+                check=True,
+                stdout=subprocess.DEVNULL,
+                env=env,
+            )
+            print("[Loop] Rust solver compiled successfully.")
+        except Exception as e:
+            print(f"[Loop] Note: cargo build returned {e}. Continuing assuming binary exists...")
 
     while True:
         try:

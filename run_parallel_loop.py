@@ -212,17 +212,33 @@ def run_loop():
     num_cores = get_available_cores()
     print(f"[Main] Starting parallel loop on {num_cores} cores.")
     
-    print("[Main] Compiling Rust solver once before spawning workers...")
-    try:
-        subprocess.run(
-            ["cargo", "build", "--release"],
-            cwd="packer_rs",
-            check=True,
-            stdout=subprocess.DEVNULL,
-        )
-    except Exception as e:
-        print(f"[Main] Failed to compile Rust solver: {e}")
-        print("[Main] Continuing anyway, assuming the binary is already compiled...")
+    bin_candidates = [
+        os.path.join("packer_rs", "target", "release", "packer_rs"),
+        os.path.join("packer_rs", "target", "release", "packer_rs.exe"),
+        os.path.join("packer_rs", "target", "release", "libpacker_rs.so"),
+        os.path.join("packer_rs", "target", "release", "packer_rs.so"),
+        os.path.join("packer_rs", "target", "release", "packer_rs.pyd"),
+        os.path.join("packer_rs", "target", "release", "packer_rs.dll"),
+    ]
+    has_compiled = any(os.path.exists(p) for p in bin_candidates)
+    
+    if has_compiled:
+        print("[Main] Compiled Rust solver binary / library found. Skipping recompilation.")
+    else:
+        print("[Main] Compiling Rust solver once before spawning workers...")
+        try:
+            # Clean LD_LIBRARY_PATH if Anaconda injected paths that break rustc dynamic linking
+            env = os.environ.copy()
+            subprocess.run(
+                ["cargo", "build", "--release"],
+                cwd="packer_rs",
+                check=True,
+                stdout=subprocess.DEVNULL,
+                env=env,
+            )
+            print("[Main] Rust solver compiled successfully.")
+        except Exception as e:
+            print(f"[Main] Note: cargo build returned {e}. Continuing assuming binary exists...")
     
     in_flight = {} # Map of Future -> problem_name
     results_since_commit = 0
