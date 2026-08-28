@@ -146,14 +146,17 @@ def load_family_colors(json_path: Optional[str] = None) -> Dict[str, Dict[str, A
 def get_family_properties(
     inner_or_family: str,
     container: Optional[str] = None,
+    N: Optional[int] = None,
     json_path: Optional[str] = None,
 ) -> Dict[str, Any]:
     """
-    Get full properties for a given shape family (colors, dimensions, format, filename template).
-    Logs a warning if dimensions are variable or unconfirmed.
+    Get full properties for a given shape family (colors, dimensions, format, filename template, images).
+    If N is specified (or embedded in a problem string like '21_DOMINO_in_5'), exact per-N image dimensions
+    are resolved from the image database.
     """
     props_map = load_family_properties(json_path)
 
+    extracted_n: Optional[int] = N
     if container is not None:
         inner_token = _normalize_family_token(str(inner_or_family))
         container_token = _normalize_family_token(str(container))
@@ -162,8 +165,14 @@ def get_family_properties(
         raw = str(inner_or_family).strip()
         if "_in_" in raw:
             parts = raw.split("_in_")
-            inner_part = parts[0].split("_")[-1]
             container_part = parts[1]
+            n_inner_parts = parts[0].split("_")
+            if len(n_inner_parts) >= 2 and extracted_n is None:
+                try:
+                    extracted_n = int(n_inner_parts[0])
+                except ValueError:
+                    pass
+            inner_part = n_inner_parts[-1]
             inner_token = _normalize_family_token(inner_part)
             container_token = _normalize_family_token(container_part)
             family_key = f"{inner_token}in{container_token}"
@@ -176,15 +185,23 @@ def get_family_properties(
         height = cfg.get("height")
         file_format = cfg.get("file_format", "png").lower()
         template = cfg.get("filename_template", "{n}.png")
-        manual_check = cfg.get("manual_check_required", False) or cfg.get("variable_dimensions", False)
+        images = cfg.get("images", {})
+        variable_dims = cfg.get("variable_dimensions", False)
+        manual_check = cfg.get("manual_check_required", False)
 
-        if manual_check or width is None or height is None:
+        # If specific N is known, look up exact image dimensions
+        if extracted_n is not None and str(extracted_n) in images:
+            img_entry = images[str(extracted_n)]
+            width = img_entry.get("width", width)
+            height = img_entry.get("height", height)
+            file_format = img_entry.get("format", file_format)
+        elif (manual_check or width is None or height is None) and extracted_n is None:
             print(f"[WARN] Shape family '{family_key}' has variable or unconfirmed dimensions ({width}x{height}, format={file_format}). Please manually check Friedman's page.")
-            # Fallback default geometry dimensions if None
-            if width is None:
-                width = 240
-            if height is None:
-                height = 240
+
+        if width is None:
+            width = 240
+        if height is None:
+            height = 240
 
         return {
             "family_code": family_key,
@@ -194,8 +211,9 @@ def get_family_properties(
             "height": height,
             "file_format": file_format,
             "filename_template": template,
-            "variable_dimensions": cfg.get("variable_dimensions", False),
+            "variable_dimensions": variable_dims,
             "manual_check_required": manual_check,
+            "images": images,
         }
 
     return {
@@ -208,16 +226,29 @@ def get_family_properties(
         "filename_template": "{n}.png",
         "variable_dimensions": False,
         "manual_check_required": False,
+        "images": {},
     }
 
 
 def get_family_colors(
     inner_or_family: str,
     container: Optional[str] = None,
+    N: Optional[int] = None,
     json_path: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Get color and dimension dictionary for a family (backward compatible with get_family_properties)."""
-    return get_family_properties(inner_or_family, container, json_path)
+    return get_family_properties(inner_or_family, container, N, json_path)
+
+
+def get_problem_image_dimensions(
+    problem: str,
+    json_path: Optional[str] = None,
+) -> Tuple[int, int]:
+    """
+    Get exact (width, height) pixel dimensions for a problem (e.g. '21_DOMINO_in_5' -> (250, 237)).
+    """
+    props = get_family_properties(problem, json_path=json_path)
+    return int(props["width"]), int(props["height"])
 
 
 def get_family_target_filename(
@@ -227,7 +258,7 @@ def get_family_target_filename(
     json_path: Optional[str] = None,
 ) -> str:
     """Resolve the exact website target filename for a problem and piece count N (e.g. 'pent.21.png', 'hc22.gif', '21.png')."""
-    props = get_family_properties(inner_or_family, container, json_path)
+    props = get_family_properties(inner_or_family, container, N=N, json_path=json_path)
     tmpl = props.get("filename_template", "{n}.png")
     return tmpl.replace("{n}", str(N)).replace("<n>", str(N)).replace("<# of shapes>", str(N))
 

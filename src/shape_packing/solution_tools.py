@@ -654,8 +654,8 @@ def render_solution(
     sol = load_solution(sol_path)
     data = to_plot_data(sol, align_container=align_container)
 
-    # Auto-resolve colors from shape family configuration if not explicitly specified
-    fam_colors = get_family_colors(sol.inner_token, sol.container_token)
+    # Auto-resolve colors and exact per-N dimensions from shape family configuration if not explicitly specified
+    fam_colors = get_family_colors(sol.inner_token, sol.container_token, N=sol.N)
     if inner_face_color is None:
         inner_face_color = fam_colors.get("inner", RENDER_INNER_FACE_COLOR)
     if container_face_color is None:

@@ -6,6 +6,7 @@ from src.shape_packing.packing_config import (
     load_family_properties,
     get_family_colors,
     get_family_properties,
+    get_problem_image_dimensions,
     get_family_target_filename,
     FAMILY_PROPERTIES_PATH,
     FAMILY_COLORS_PATH,
@@ -30,6 +31,8 @@ def test_get_family_properties_by_family_name():
     assert p["height"] == 237
     assert p["file_format"] == "png"
     assert p["filename_template"] == "{n}.png"
+    assert "images" in p
+    assert len(p["images"]) > 0
 
     # cirinpen with special container color and pent.<n>.png naming
     p_pen = get_family_properties("cirinpen")
@@ -43,8 +46,8 @@ def test_get_family_properties_by_family_name():
     p_hex = get_family_properties("cirinhex")
     assert p_hex["file_format"] == "gif"
     assert p_hex["filename_template"] == "hc{n}.gif"
-    assert p_hex["width"] == 180
-    assert p_hex["height"] == 156
+    assert p_hex["width"] == 181
+    assert p_hex["height"] == 158
 
 def test_get_family_target_filename():
     assert get_family_target_filename("cirinpen", 21) == "pent.21.png"
@@ -55,14 +58,35 @@ def test_get_family_target_filename():
     assert get_family_target_filename("dominhex", 2) == "2.png"
     assert get_family_target_filename("dominpen", 21) == "21.png"
 
-def test_get_family_properties_variable_warning(capsys):
-    p = get_family_properties("cirinel")
-    captured = capsys.readouterr()
-    assert "[WARN]" in captured.out
-    assert "cirinel" in captured.out
-    assert p["variable_dimensions"] is True
-    assert p["manual_check_required"] is True
-    assert p["filename_template"] == "e{n}.gif"
+def test_exact_image_dimensions_per_n():
+    # cirinhex: N=1 is 181x156, N=2 is 180x155, N=21 is 182x158
+    p1 = get_family_properties("cirinhex", N=1)
+    assert (p1["width"], p1["height"]) == (181, 156)
+    assert p1["file_format"] == "gif"
+
+    p2 = get_family_properties("cirinhex", N=2)
+    assert (p2["width"], p2["height"]) == (180, 155)
+
+    p21 = get_family_properties("cirinhex", N=21)
+    assert (p21["width"], p21["height"]) == (182, 158)
+
+    # Problem string lookup with embedded N
+    p_prob = get_family_properties("21_CIRCLE_in_6")
+    assert (p_prob["width"], p_prob["height"]) == (182, 158)
+
+    # dominpen N=1 (250x238) vs N=2 (250x237)
+    p_dom1 = get_family_properties("dominpen", N=1)
+    assert (p_dom1["width"], p_dom1["height"]) == (250, 238)
+
+    p_dom2 = get_family_properties("dominpen", N=2)
+    assert (p_dom2["width"], p_dom2["height"]) == (250, 237)
+
+def test_problem_image_dimensions_helper():
+    w, h = get_problem_image_dimensions("21_CIRCLE_in_6")
+    assert (w, h) == (182, 158)
+
+    w_dom, h_dom = get_problem_image_dimensions("1_DOMINO_in_5")
+    assert (w_dom, h_dom) == (250, 238)
 
 def test_get_family_colors_by_tokens():
     c = get_family_colors("DOMINO", "5")
@@ -80,14 +104,18 @@ def test_get_family_colors_by_tokens():
 def test_get_family_colors_by_problem_string():
     c = get_family_colors("21_DOMINO_in_5")
     assert c["inner"].lower() == "#fed4d1"
+    assert (c["width"], c["height"]) == (250, 237)
 
     c2 = get_family_colors("22_CIRCLE_in_6")
     assert c2["inner"].lower() == "#b5b5b5"
+    assert (c2["width"], c2["height"]) == (182, 158)
 
 def test_get_family_colors_fallback():
     c = get_family_colors("nonexistent_shape", "nonexistent_container")
     assert "inner" in c
     assert "container" in c
+    assert c["width"] == 240
+    assert c["height"] == 240
 
 def test_render_solution_applies_family_colors(tmp_path):
     from PIL import Image
@@ -105,5 +133,5 @@ def test_render_solution_applies_family_colors(tmp_path):
     assert os.path.exists(out_png)
     assert os.path.getsize(out_png) > 0
     img = Image.open(out_png)
-    # dominpen default resolution is 250x237
+    # dominpen N=2 resolution is 250x237
     assert img.size == (250, 237)
