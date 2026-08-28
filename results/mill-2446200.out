@@ -257,3 +257,78 @@ After doing this, you may fix the identity used for this commit with:
 [12_8_in_TAN] Success!
 [16_6_in_TAN] Success!
 [12_5_in_TAN] Success!
+[main 828d1df2] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 4 files changed, 165 insertions(+)
+ create mode 100644 results/13_8_in_TAN/20260828_003251/solution.json
+ create mode 100644 results/19_CIRCLE_in_TAN/20260828_003633/solution.json
+[Main] Worker finished 7_tan_in_cir with score 1.2710691866826518
+[Main] Worker finished 12_6_in_TAN with score 9.420968794476451
+[Main] Worker finished 13_6_in_TAN with score 9.70387788182012
+[Main] Worker finished 11_6_in_TAN with score 9.067003345140972
+[Main] Worker finished 13_CIRCLE_in_TAN with score 10.79951154399235
+[Main] Worker finished 16_CIRCLE_in_TAN with score 11.895634001108402
+[Main] Worker finished 4_TAN_in_8 with score 0.8231141511692444
+[Main] Worker finished 3_TAN_in_5 with score 1.1058007189045806
+[diff] 13_5_in_TAN: diff=0.45 hist=0 fr_best=7.82906 -> attempts=42500 swarm=1
+[13_5_in_TAN] Starting (42500 attempts)
+[diff] 15_6_in_TAN: diff=0.55 hist=0 fr_best=10.3292 -> attempts=65000 swarm=1
+[15_6_in_TAN] Starting (65000 attempts)
+[diff] 17_6_in_TAN: diff=0.55 hist=0 fr_best=10.9788 -> attempts=65000 swarm=1
+[17_6_in_TAN] Starting (65000 attempts)
+[diff] 20_CIRCLE_in_TAN: diff=0.55 hist=0 fr_best=13.092 -> attempts=65000 swarm=1
+[20_CIRCLE_in_TAN] Starting (65000 attempts)
+[diff] 8_3_in_tan: diff=0.30 hist=0 fr_best=3.07313 -> attempts=20000 swarm=1
+[8_3_in_tan] Starting (20000 attempts)
+[diff] 14_8_in_TAN: diff=0.45 hist=0 fr_best=13.5711 -> attempts=42500 swarm=1
+[14_8_in_TAN] Starting (42500 attempts)
+[diff] 16_5_in_TAN: diff=0.55 hist=0 fr_best=8.66023 -> attempts=65000 swarm=1
+[16_5_in_TAN] Starting (65000 attempts)
+[diff] 9_4_in_tan: diff=0.30 hist=0 fr_best=4.949 -> attempts=20000 swarm=1
+[9_4_in_tan] Starting (20000 attempts)
+[diff] 18_6_in_TAN: diff=0.55 hist=0 fr_best=11.273 -> attempts=65000 swarm=1
+[18_6_in_TAN] Starting (65000 attempts)
+[diff] 5_TAN_in_DOMINO: diff=0.30 hist=0 fr_best=1.30157 -> attempts=20000 swarm=1
+[5_TAN_in_DOMINO] Starting (20000 attempts)
+[diff] 18_8_in_TAN: diff=0.55 hist=0 fr_best=15.3472 -> attempts=65000 swarm=1
+[18_8_in_TAN] Starting (65000 attempts)
+[diff] 17_5_in_TAN: diff=0.55 hist=0 fr_best=8.89755 -> attempts=65000 swarm=1
+[17_5_in_TAN] Starting (65000 attempts)
+[diff] 5_TAN_in_6: diff=0.30 hist=0 fr_best=1.13976 -> attempts=20000 swarm=1
+[5_TAN_in_6] Starting (20000 attempts)
+[diff] 19_5_in_TAN: diff=0.55 hist=0 fr_best=9.38489 -> attempts=65000 swarm=1
+[19_5_in_TAN] Starting (65000 attempts)
+[diff] 20_5_in_TAN: diff=0.55 hist=0 fr_best=9.61296 -> attempts=65000 swarm=1
+[20_5_in_TAN] Starting (65000 attempts)
+[diff] 7_TAN_in_8: diff=0.30 hist=0 fr_best=0.98623 -> attempts=20000 swarm=1
+[7_TAN_in_8] Starting (20000 attempts)
+[diff] 6_3_in_tan: diff=0.30 hist=0 fr_best=2.63895 -> attempts=20000 swarm=1
+[6_3_in_tan] Starting (20000 attempts)
+[diff] 19_8_in_TAN: diff=0.55 hist=0 fr_best=15.6805 -> attempts=65000 swarm=1
+[19_8_in_TAN] Starting (65000 attempts)
+[diff] 8_tan_in_cir: diff=0.30 hist=0 fr_best=1.306 -> attempts=20000 swarm=1
+[8_tan_in_cir] Starting (20000 attempts)
+[diff] 19_6_in_TAN: diff=0.55 hist=0 fr_best=11.4901 -> attempts=65000 swarm=1
+[19_6_in_TAN] Starting (65000 attempts)
+[diff] 18_5_in_TAN: diff=0.55 hist=0 fr_best=9.08713 -> attempts=65000 swarm=1
+[18_5_in_TAN] Starting (65000 attempts)
+[diff] 20_6_in_TAN: diff=0.55 hist=0 fr_best=11.7704 -> attempts=65000 swarm=1
+[20_6_in_TAN] Starting (65000 attempts)
+[Main] Worker finished 19_CIRCLE_in_TAN with score 12.799619338927066
+[Main] Worker finished 16_6_in_TAN with score 10.723932220391713
+[Main] Batch committing 10 runs...
+[6_3_in_tan] Success!
+[8_3_in_tan] Success!
+[9_4_in_tan] Success!
