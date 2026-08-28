@@ -31,37 +31,47 @@ When encountering unexpected behavior, solver crashes, or invalid metric scores,
 
 ### Common Root Causes & Diagnostics
 
-1. **Solver Returns Score 0.0 Immediately**:
+1. **Solver Returns Score 0.0 Immediately ("No valid packing found")**:
    - *Cause*: Injected `--target-s` is physically impossible due to a corrupt legacy score in `results.tsv`.
    - *Fix*: Clean corrupt rows from `results.tsv` using `is_physically_valid_score()`.
 
-2. **Shapes Extend Outside Boundary in Visualizer**:
-   - *Cause*: `container_sides` token was unparsed or missing, causing visualizer to fallback to a 3-sided polygon.
-   - *Fix*: Ensure `parseSides()` or `get_shape_geometry()` parses container token (`circle` $\rightarrow 32$).
+2. **Shapes Massively Overlapping or Stale Solver Logic Active**:
+   - *Cause*: Python loaded a stale `.pyd` compiled weeks ago instead of the freshly built `.dll`.
+   - *Fix*: Ensure `default = ["python"]` in `packer_rs/Cargo.toml` and use `solver_interface.py`'s automatic `mtime`-based newest binary sorting.
 
-3. **Metric Discrepancy between JSON and Verification**:
+3. **Shapes Squeezed into Top-Left Corner of L-Containers**:
+   - *Cause*: Applying linear half-plane intersection to non-convex containers chops off reflex arms.
+   - *Fix*: Treat non-convex containers as an outer bounding box with a fixed reflex cut-out obstacle ($R_{\text{cutout}}$) checked via SAT.
+
+4. **Shapes Extend Outside Boundary in Visualizer**:
+   - *Cause*: `container_sides` token was unparsed or missing, causing visualizer to fallback to a 3-sided polygon.
+   - *Fix*: Ensure `parseSides()` or `get_shape_geometry()` parses container token (`circle` $\rightarrow 32$, `L` $\rightarrow 6$).
+
+5. **Metric Discrepancy between JSON and Verification**:
    - *Cause*: Using raw container scale $S$ instead of converted Friedman metric $s$.
    - *Fix*: Always verify with `compute_friedman_metric(S, inner_token, container_token)`.
 
-4. **Unexpected behavior from stale constants**:
-   - *Cause*: Constants edited in one place but not reflected elsewhere due to duplicate definitions.
-   - *Fix*: All constants now live in `packing_config.py`. If a behavioral parameter seems wrong, check there first.
+6. **Sub-Precision Record Churn**:
+   - *Cause*: Reusing geometric SAT tolerance as the record-beating threshold.
+   - *Fix*: Decouple into `RECORD_MIN_IMPROVEMENT` ($10^{-5}$) in `packing_config.py`.
 
 ---
 
 ## 2. Solution Verification Engine (`solution_tools.py`)
 
-Every generated solution is verified by `verify_solution(sol_path)` using 4 strict criteria:
+Every generated solution is verified by `verify_solution(sol_path)` using 5 strict criteria:
 
 ```text
-┌───────────────────────────┬──────────────────────────────────────────┐
-│ Verification Step         │ Condition Checked                        │
-├───────────────────────────┼──────────────────────────────────────────┤
-│ 1. Metric Consistency     |abs(calc_metric - sol.final_metric)| < 1e-6│
-│ 2. Container Bounds       │ All shape vertices v satisfy v · n <= S  │
-│ 3. Overlap Check (SAT)    │ SAT penetration depth <= 1e-5 for all i,j│
-│ 4. Physical Area Check    │ N * Area(inner) <= Area(container)       │
-└───────────────────────────┴──────────────────────────────────────────┘
+┌───────────────────────────┬────────────────────────────────────────────────────────┐
+│ Verification Step         │ Condition Checked                                      │
+├───────────────────────────┼────────────────────────────────────────────────────────┤
+│ 1. Metric Consistency     │ |calc_metric - sol.final_metric| < 1e-6                │
+│ 2. Container Bounds       │ Convex: v · n <= S | Non-Convex (L): BoundingBox &     │
+│                           │ zero SAT overlap with reflex cut-out obstacle          │
+│ 3. Overlap Check (SAT)    │ Compound SAT penetration depth <= 1e-5 across all pairs│
+│ 4. Physical Area Check    │ N * Area(inner) <= Area(container)                     │
+│ 5. Record Validation      │ calc_metric < best_known - 1e-5 (RECORD_MIN_IMPROVEMENT)│
+└───────────────────────────┴────────────────────────────────────────────────────────┘
 ```
 
 ### Running Verification via CLI

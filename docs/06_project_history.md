@@ -44,14 +44,17 @@ This document tracks the chronological history, major milestones, past bug resol
   - Refactored `cli.py` to expose direct Python invocation functions (`direct_call=True`) avoiding subprocess execution overhead.
   - Added global in-memory caching of `results.tsv` across process pools in `run_parallel_loop.py` and `run_autoresearch_loop.py`.
 
----
+### Milestone 8: Universal Configuration & Tan Shape Enablement
+- Centralized all system parameters, tolerances, and thresholds into `src/shape_packing/packing_config.py`.
+- Enabled right isosceles triangle (`TAN`) across geometry engine, Python verifiers, Rust solver, benchmark ingestor, and web visualization.
+- Decoupled `RECORD_MIN_IMPROVEMENT` ($10^{-5}$) from physical overlap tolerance to eliminate micro-churn.
 
-## Historical Handoff Logs Summary
+### Milestone 9: Non-Convex L-Tromino Support & PyO3 Build Hygiene
+- **L-Tromino Non-Convex Decomposition**:
+  - Solved SAT limitation on concave shapes by splitting L-tromino into 2 convex sub-rectangles ($1 \times 2$ domino + $1 \times 1$ square) for $2 \times 2$ compound SAT collision detection in Rust and Python.
+- **Non-Convex L-Container Confinement**:
+  - Replaced linear half-plane intersection with **Bounding Box + Reflex Cut-Out Obstacle ($R_{\text{cutout}}$)** model, unlocking both horizontal and vertical arms in problems like `6_TAN_in_L`.
+- **PyO3 Native Extension Hardening**:
+  - Added `default = ["python"]` feature to `Cargo.toml` so standard `cargo build --release` compiles native PyO3 modules.
+  - Added dynamic `mtime`-based sorting in `solver_interface.py` to ensure newest compiled native binaries always take precedence.
 
-### Session Handoff: Testing & Background Scheduler
-- Established unit testing guidelines and coverage standards using `pytest`.
-- Integrated background task handling and process execution controls.
-
-### Session Handoff: Shape Packing System State
-- Verified SAT overlap detection and poking penalty stability.
-- Ensured `verify_solution()` validates solution JSON files against strict boundary and overlap tolerances.

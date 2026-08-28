@@ -24,6 +24,9 @@ Systematic debugging workflows, solution verification engine (`verify_solution`)
 ### 6. [Project Milestone History & Handoffs](06_project_history.md)
 Chronological record of major development milestones, design evolutions, past bug resolutions, and handoff summaries.
 
+### 7. [CLI Commands Reference & User Manual](07_cli_and_commands.md)
+Complete quick-start guide, detailed argument and option specifications for all CLI subcommands (`run`, `loop`, `verify`, `site-data`, `export-records`, `compare`, `suggest`), utility scripts, native Rust solver commands, and Astro web dashboard workflows.
+
 ---
 
 ## Directory Organization
@@ -34,6 +37,8 @@ Chronological record of major development milestones, design evolutions, past bu
 - `docs/04_hpc_and_cluster_execution.md` - HPC Slurm batching and log analysis.
 - `docs/05_debugging_and_testing.md` - Verification engine and testing policies.
 - `docs/06_project_history.md` - Historical milestones and handoffs.
+- `docs/07_cli_and_commands.md` - Comprehensive CLI command reference & user manual.
 - `docs/erich-friedman.github.io/` - Local mirror of Erich Friedman's Packing Center pages.
 - `docs/graphify-out/` - Graphify knowledge graph outputs.
 - `docs/superpowers/` - System customization and feature specs.
+

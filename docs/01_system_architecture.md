@@ -69,10 +69,10 @@ src/shape_packing/packing_config.py
 
 | Section | Constants | Controls |
 |---|---|---|
-| 1. Geometry | `CIRCLE_SIDES` | Circle polygon approximation resolution |
-| 2. Rust Solver | `RUST_BINARY`, `RUST_TOLERANCE`, etc. | Rust packer_rs execution |
-| 3. Python Optimizer | `OPTIMIZER_ATTEMPTS`, `OPTIMIZER_TOLERANCE`, etc. | Scipy basinhopping |
-| 4. Verification | `VERIFY_SAT_TOLERANCE`, `GEOMETRY_SAT_TOLERANCE`, etc. | Solution validity checks |
+| 1. Geometry | `CIRCLE_SIDES`, `SHAPE_TO_SIDES` | Circle polygon approximation & token-to-sides mapping |
+| 2. Rust Solver | `RUST_BINARY`, `RUST_TOLERANCE`, etc. | Rust packer_rs execution & parameters |
+| 3. Python Optimizer | `OPTIMIZER_ATTEMPTS`, `OPTIMIZER_TOLERANCE`, etc. | Scipy basinhopping fallback |
+| 4. Verification | `VERIFY_SAT_TOLERANCE`, `RECORD_MIN_IMPROVEMENT`, etc. | Physical overlap tolerance & record threshold |
 | 5. Loop & Scheduling | `LOOP_*` constants | Backoff, attempts, swarm sizes |
 | 6. Priority Queue | `QUEUE_*` constants | Problem selection and diversity |
 | 7. File Paths | `RESULTS_TSV_PATH`, `RESULTS_DIR`, etc. | All data file locations |
@@ -98,39 +98,43 @@ The auto-researcher operates as an autonomous continuous improvement loop:
 ```
 
 1. **Select Target**: `agent_loop.choose_problem()` selects the next highest priority problem from `priority_queue.json` or `results.tsv`.
-2. **Execute Solver**: Calls `packer_rs` (Rust solver binary) via subprocess with `--attempts N` and `--target-s <target_scale>`.
-3. **Verify Solution**: `verify_solution()` inspects `solution.json` using SAT overlap and boundary normal checks.
+2. **Execute Solver**: Calls `solver_interface.run_solver()` which communicates directly with `packer_rs` via PyO3 in-process native bindings (or falls back to the compiled CLI binary).
+3. **Verify Solution**: `verify_solution()` inspects `solution.json` using exact compound SAT overlap, container boundary containment, metric scaling, and physical area checks.
 4. **Log Result**: `log_result()` appends the experiment score to `results.tsv` with status `keep`, `discard`, or `crash`.
 5. **Update Site Data**: `scripts/build_site_data.py` aggregates `packingVerification/*.json`, `results/`, `results.tsv`, and `priority_queue.json` to produce `site/src/data/site_data.json` for the Astro web dashboard.
 
 ---
 
-## 3. Solver Integration & Inter-Process Communication (IPC)
+## 3. Solver Integration & Native PyO3 Bridge
 
-The system supports two optimization backends:
+The system features two interconnected solver execution modes:
 
-- **Python Backend (`optimization.py`)**: Uses SciPy `L-BFGS-B` or `basinhopping` with Numba-accelerated geometry functions.
-- **Rust Backend (`packer_rs`)**: High-performance multi-threaded solver binary located in `packer_rs/`.
+- **In-Process PyO3 Native Extension (`packer_rs`)**:
+  - High-performance Rust solver compiled as a native Python extension module (`.pyd` on Windows, `.so` on Linux, `.dylib` on macOS).
+  - Configured with `default = ["python"]` in `packer_rs/Cargo.toml` so all standard `cargo build --release` runs build the native extension.
+  - `solver_interface.py` dynamically inspects candidate extension paths and sorts them by **modification timestamp (`mtime` descending)**, guaranteeing that the freshest compiled binary is always loaded.
+- **CLI Subprocess Fallback (`packer_rs.exe` / `packer_rs`)**:
+  - Standalone compiled Rust executable used in headless cluster environments or subprocess pipelines.
 
-### Subprocess Invocation Protocol
+### Compound SAT & Non-Convex Shape Decompositions
 
-When invoked via `src.shape_packing.cli run`:
+1. **Non-Convex Inner Shapes (L-Tromino `L`)**:
+   - Decomposed into 2 convex sub-rectangles: Part A ($1 \times 2$ domino) and Part B ($1 \times 1$ square).
+   - Pairwise collision evaluates 4 sub-rectangle SAT checks ($2 \times 2$), allowing non-convex pieces to interlock accurately with zero false positives.
 
-```bash
-packer_rs/target/release/packer_rs <N> <inner_token> <container_token> \
-  --attempts <attempts> \
-  --solution-file <path_to_solution.json> \
-  --target-s <target_scale>
-```
+2. **Non-Convex Container Confinement (L-Container `L`)**:
+   - Confinement is enforced using the **Bounding Box + Reflex Cut-Out Obstacle** model:
+     - Outer Bounding Box: $\left[-\frac{5}{6}S, \frac{7}{6}S\right] \times \left[-\frac{5}{6}S, \frac{7}{6}S\right]$
+     - Fixed Cut-Out Obstacle Square: $R_{\text{cutout}} = \left[\frac{1}{6}S, \frac{7}{6}S\right] \times \left[\frac{1}{6}S, \frac{7}{6}S\right]$
+   - Shapes are free to pack throughout both the vertical and horizontal arms of the L without being trapped by artificial half-plane intersections.
 
 ### PNG Rendering Control & Storage Optimization
 
-To prevent high-volume parallel runs (e.g., thousands of Slurm worker iterations) from consuming excessive disk space and slowing down Git commits with `solution.png` files, the runner CLI supports skipping PNG generation:
+To prevent high-volume parallel runs from consuming excessive disk space and slowing down Git commits, the runner CLI supports skipping PNG generation:
 
 - **Disable PNG Output**: Pass `--no-png` to `python -m src.shape_packing.cli run --problem 4_3_in_circle --no-png` to output ONLY `solution.json`.
 - **Batch / Recursive Rendering**: Use `scripts/render_solution.py` to recursively generate PNGs on demand for JSON solutions:
   ```bash
-  # Batch render missing solution.png images across results/ in parallel (4 cores):
   python scripts/render_solution.py results/ --recursive --jobs 4
   ```
 
@@ -169,10 +173,11 @@ Problem strings follow strict naming conventions across the system:
 | `4_6_in_5` | 4 Hexagons in Pentagon | `6` | `5` |
 | `5_3_in_circle` | 5 Triangles in Circle | `3` | `circle` |
 | `3_L_in_4` | 3 L-Trominoes in Square | `L` | `4` |
+| `6_TAN_in_L` | 6 Tans in L-Tromino | `TAN` | `L` |
 | `2_domino_in_circle` | 2 Dominoes in Circle | `domino` | `circle` |
 | `5_tan_in_5` | 5 Tans in Pentagon | `tan` | `5` |
 
-The `normalize_family_slug()` function handles converting legacy Friedman folder names (e.g. `hexinpen` $\rightarrow$ `6_in_5`, `squincir` $\rightarrow$ `4_in_circle`).
+The `normalize_family_slug()` function handles converting legacy Friedman folder names (e.g. `hexinpen` $\rightarrow$ `6_in_5`, `squincir` $\rightarrow$ `4_in_circle`, `taninL` $\rightarrow$ `TAN_in_L`).
 
 ---
 
@@ -187,4 +192,5 @@ To handle high-throughput autonomous search across thousands of configurations, 
 2. **Rust Solver Sweep & Prune Broadphase**:
    - For $N > 20$, the Rust solver (`packer_rs`) dynamically calculates bounding boxes for each transformed polygon and sorts them along the X-axis.
    - Overlap checks prune non-overlapping candidate pairs early (`min_x2 > max_x1`), avoiding expensive SAT projections and scaling from $O(N^2)$ to $O(N \log N)$.
+
 
