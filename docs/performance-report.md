@@ -324,7 +324,15 @@ Expected: 30–60 % reduction in orchestrator overhead; 15–30 % reduction in s
 
 ### 4.2 Medium-term wins
 
-- [ ] Add criterion-based microbenchmarks for `penalty_and_gradient` and `run_attempt`.
+- [x] Add criterion-based microbenchmarks for `penalty_and_gradient` and `run_attempt`:
+  - Implemented in `packer_rs/benches/solver_benchmarks.rs`. Run via `cargo bench` in `packer_rs/`.
+  - **Baseline Microbenchmark Results**:
+    - `penalty_and_gradient/4_6_in_5_with_grad` ($N=4$): **1.14 µs**
+    - `penalty_and_gradient/12_3_in_circle_with_grad` ($N=12$): **2.80 µs**
+    - `penalty_and_gradient/25_4_in_4_broadphase` ($N=25$): **13.6 µs**
+    - `penalty_and_gradient/6_L_in_4_compound_sat` ($N=6$, $2 \times 2$ compound SAT): **2.74 µs**
+    - `penalty_and_gradient/6_TAN_in_L_container_confinement` ($N=6$, reflex cut-out obstacle): **2.37 µs**
+    - `run_attempt/4_6_in_5_single_attempt` (End-to-end single attempt): **91.0 ms**
 - [x] Implement spatial broadphase (Sweep & Prune bounding box sorting for $N > 20$) for pairwise overlap checks.
 - [x] In parallel loop, import orchestrator logic directly into worker processes instead of forking via CLI subprocess.
 - [x] Maintain an in-memory history index instead of full TSV re-reads.

@@ -265,7 +265,7 @@ pub fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64
     (sides, vertices, vectors, apothem)
 }
 
-fn run_attempt<R: Rng>(
+pub fn run_attempt<R: Rng>(
     rng: &mut R,
     N_f64: f64,
     nsi: usize,
@@ -530,7 +530,7 @@ fn minimize_gradient(
     OptResult { x: best_x, _fun: best_fun, max_violation: best_max_violation }
 }
 
-fn penalty_and_gradient(
+pub fn penalty_and_gradient(
     values: &[f64],
     S: f64,
     N: usize,

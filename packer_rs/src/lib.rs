@@ -33,6 +33,7 @@ mod python_bindings {
         initial_positions: Option<Vec<f64>>,
         target_s: Option<f64>,
     ) -> PyResult<Option<Bound<'py, PyDict>>> {
+        let _ = solution_file;
         let config = SolveConfig {
             inner_polygons,
             inner_shape,
