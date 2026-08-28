@@ -21814,3 +21814,13 @@ auto	3.0013166125544877	0.0	keep	2_L_in_4	Auto run attempts=20
 auto	7.009349846310128	0.0	keep	6_L_in_TAN	Auto run attempts=50
 auto	1.1484906287640406	0.0	keep	6_TAN_in_L	Auto run attempts=100
 auto	3.8859119431539417	0.0	keep	6_8_in_L	Auto run attempts=100
+auto	2.3660505917044126	0.0	keep	4_3_in_tan	Parallel run loop
+auto	3.5355440385160137	0.0	keep	4_4_in_tan	Parallel run loop
+auto	4.000013294015053	0.0	keep	5_4_in_tan	Parallel run loop
+auto	4.633426754255851	0.0	keep	4_5_in_TAN	Parallel run loop
+auto	5.750996554085433	0.0	keep	4_6_in_TAN	Parallel run loop
+auto	0.9428131770575349	0.0	keep	2_TAN_in_DOMINO	Parallel run loop
+auto	6.502770442991866	0.0	keep	5_6_in_TAN	Parallel run loop
+auto	8.692190453140515	0.0	keep	8_CIRCLE_in_TAN	Parallel run loop
+auto	5.165304032569934	0.0	keep	5_5_in_TAN	Parallel run loop
+auto	2.539171130737929	0.0	keep	5_3_in_tan	Parallel run loop
