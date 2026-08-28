@@ -259,7 +259,9 @@ fn bench_penalty_and_gradient(c: &mut Criterion) {
 
 fn bench_run_attempt(c: &mut Criterion) {
     let mut group = c.benchmark_group("run_attempt");
-    group.sample_size(20);
+    group.sample_size(10);
+    group.measurement_time(std::time::Duration::from_secs(12));
+
 
     // Benchmark 1: 4_6_in_5 single attempt
     {
