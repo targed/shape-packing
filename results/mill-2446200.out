@@ -10203,3 +10203,49 @@ After doing this, you may fix the identity used for this commit with:
 [4_6_in_TAN] Success!
 [5_6_in_TAN] Success!
 [7_tan_in_tan] Success!
+[4_TAN_in_6] Success!
+[main 905c83341] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 11 files changed, 464 insertions(+)
+ create mode 100644 results/10_TAN_in_DOMINO/20260828_073745/solution.json
+ create mode 100644 results/11_3_in_tan/20260828_073743/solution.json
+ create mode 100644 results/13_DOMINO_in_TAN/20260828_073744/solution.json
+ create mode 100644 results/16_5_in_TAN/20260828_073742/solution.json
+ create mode 100644 results/17_4_in_tan/20260828_073744/solution.json
+ create mode 100644 results/17_6_in_TAN/20260828_073742/solution.json
+ create mode 100644 results/4_6_in_TAN/20260828_074231/solution.json
+ create mode 100644 results/5_6_in_TAN/20260828_074231/solution.json
+ create mode 100644 results/7_tan_in_tan/20260828_074230/solution.json
+[Main] Worker finished 10_TAN_in_DOMINO with score 1.7071715795728635
+[Main] Worker finished 5_TAN_in_6 with score 1.139798427055632
+[Main] Worker finished 13_DOMINO_in_TAN with score 8.051886310393924
+[Main] Worker failed on 5_TAN_in_4: No valid packing found
+[Main] Worker finished 15_3_in_tan with score 3.990302953323464
+[Main] Worker finished 17_4_in_tan with score 6.417434227241148
+[Main] Worker finished 7_TAN_in_4 with score 1.9999939703045195
+[Main] Worker finished 17_6_in_TAN with score 10.99844234170436
+[Main] Worker finished 13_5_in_TAN with score 7.830883474428317
+[Main] Worker finished 11_3_in_tan with score 3.4706595787487813
+[Main] Worker finished 12_CIRCLE_in_TAN with score 10.425000438970166
+[Main] Batch committing 10 runs...
+[11_5_in_TAN] Success!
+[23_4_in_tan] Success!
+[21_3_in_tan] Success!
+[11_8_in_TAN] Success!
+[18_4_in_tan] Success!
+[12_3_in_tan] Success!
+[14_4_in_tan] Success!
+[18_6_in_TAN] Success!
+[17_5_in_TAN] Success!
