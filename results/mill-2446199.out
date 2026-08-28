@@ -1,0 +1,83 @@
+   Compiling pyo3-build-config v0.22.6
+   Compiling pyo3-macros-backend v0.22.6
+   Compiling pyo3-ffi v0.22.6
+   Compiling pyo3 v0.22.6
+   Compiling pyo3-macros v0.22.6
+   Compiling packer_rs v0.1.0 (/home/ltkhg4/Code/git/shape-packing/packer_rs)
+    Finished `release` profile [optimized] target(s) in 19.04s
+[Main] Starting parallel loop on 32 cores.
+[Main] Compiling Rust solver once before spawning workers...
+   Compiling pyo3-build-config v0.22.6
+/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc: error while loading shared libraries: librustc_driver-832cf6cfb1386559.so: cannot open shared object file: No such file or directory
+error: could not compile `pyo3-build-config` (lib)
+
+Caused by:
+  process didn't exit successfully: `/home/ltkhg4/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name pyo3_build_config --edition=2021 /home/ltkhg4/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pyo3-build-config-0.22.6/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C embed-bitcode=no -C debug-assertions=off --cfg 'feature="abi3"' --cfg 'feature="abi3-py310"' --cfg 'feature="abi3-py311"' --cfg 'feature="abi3-py312"' --cfg 'feature="default"' --cfg 'feature="extension-module"' --cfg 'feature="resolve-config"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("abi3", "abi3-py310", "abi3-py311", "abi3-py312", "abi3-py37", "abi3-py38", "abi3-py39", "default", "extension-module", "python3-dll-a", "resolve-config"))' -C metadata=1e3f225a9299dfb5 -C extra-filename=-1c4f73c8cca93e05 --out-dir /home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps -C strip=debuginfo -L dependency=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps --extern once_cell=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/libonce_cell-8286c25877f06821.rmeta --extern target_lexicon=/home/ltkhg4/Code/git/shape-packing/packer_rs/target/release/deps/libtarget_lexicon-d00f942316ae8017.rmeta --cap-lints allow` (exit status: 127)
+[Main] Failed to compile Rust solver: Command '['cargo', 'build', '--release']' returned non-zero exit status 101.
+[Main] Continuing anyway, assuming the binary is already compiled...
+[Main] Loading history into memory...
+[diff] 3_TAN_in_6: diff=0.30 hist=0 fr_best=0.98882 -> attempts=20000 swarm=1
+[3_TAN_in_6] Starting (20000 attempts)
+[diff] 3_TAN_in_8: diff=0.30 hist=0 fr_best=0.72389 -> attempts=20000 swarm=1
+[3_TAN_in_8] Starting (20000 attempts)
+[diff] 5_tan_in_cir: diff=0.30 hist=0 fr_best=1.125 -> attempts=20000 swarm=1
+[5_tan_in_cir] Starting (20000 attempts)
+[diff] 5_8_in_TAN: diff=0.30 hist=0 fr_best=8.7426 -> attempts=20000 swarm=1
+[5_8_in_TAN] Starting (20000 attempts)
+[diff] 7_5_in_TAN: diff=0.30 hist=0 fr_best=6.03679 -> attempts=20000 swarm=1
+[7_5_in_TAN] Starting (20000 attempts)
+[diff] 7_6_in_TAN: diff=0.30 hist=0 fr_best=7.3992 -> attempts=20000 swarm=1
+[7_6_in_TAN] Starting (20000 attempts)
+[diff] 6_tan_in_cir: diff=0.30 hist=0 fr_best=1.198 -> attempts=20000 swarm=1
+[6_tan_in_cir] Starting (20000 attempts)
+[diff] 5_TAN_in_8: diff=0.30 hist=0 fr_best=0.88072 -> attempts=20000 swarm=1
+[5_TAN_in_8] Starting (20000 attempts)
+[diff] 8_6_in_TAN: diff=0.30 hist=0 fr_best=7.8334 -> attempts=20000 swarm=1
+[8_6_in_TAN] Starting (20000 attempts)
+[diff] 8_8_in_TAN: diff=0.30 hist=0 fr_best=10.6568 -> attempts=20000 swarm=1
+[8_8_in_TAN] Starting (20000 attempts)
+[diff] 9_6_in_TAN: diff=0.30 hist=0 fr_best=8.2827 -> attempts=20000 swarm=1
+[9_6_in_TAN] Starting (20000 attempts)
+[diff] 7_8_in_TAN: diff=0.30 hist=0 fr_best=9.9497 -> attempts=20000 swarm=1
+[7_8_in_TAN] Starting (20000 attempts)
+[diff] 11_CIRCLE_in_TAN: diff=0.45 hist=0 fr_best=10.0591 -> attempts=42500 swarm=1
+[11_CIRCLE_in_TAN] Starting (42500 attempts)
+[diff] 6_6_in_TAN: diff=0.30 hist=0 fr_best=6.7429 -> attempts=20000 swarm=1
+[6_6_in_TAN] Starting (20000 attempts)
+[diff] 8_4_in_tan: diff=0.30 hist=0 fr_best=4.828 -> attempts=20000 swarm=1
+[8_4_in_tan] Starting (20000 attempts)
+[diff] 6_5_in_TAN: diff=0.30 hist=0 fr_best=5.48233 -> attempts=20000 swarm=1
+[6_5_in_TAN] Starting (20000 attempts)
+[diff] 4_TAN_in_6: diff=0.30 hist=0 fr_best=1.05845 -> attempts=20000 swarm=1
+[4_TAN_in_6] Starting (20000 attempts)
+[diff] 9_5_in_TAN: diff=0.30 hist=0 fr_best=6.69536 -> attempts=20000 swarm=1
+[9_5_in_TAN] Starting (20000 attempts)
+[diff] 8_5_in_TAN: diff=0.30 hist=0 fr_best=6.30671 -> attempts=20000 swarm=1
+[8_5_in_TAN] Starting (20000 attempts)
+[diff] 12_CIRCLE_in_TAN: diff=0.45 hist=0 fr_best=10.422 -> attempts=42500 swarm=1
+[12_CIRCLE_in_TAN] Starting (42500 attempts)
+[diff] 11_6_in_TAN: diff=0.45 hist=0 fr_best=9.0609 -> attempts=42500 swarm=1
+[11_6_in_TAN] Starting (42500 attempts)
+[diff] 11_8_in_TAN: diff=0.45 hist=0 fr_best=12.3333 -> attempts=42500 swarm=1
+[11_8_in_TAN] Starting (42500 attempts)
+[diff] 7_tan_in_cir: diff=0.30 hist=0 fr_best=1.26287 -> attempts=20000 swarm=1
+[7_tan_in_cir] Starting (20000 attempts)
+[diff] 13_CIRCLE_in_TAN: diff=0.45 hist=0 fr_best=10.798 -> attempts=42500 swarm=1
+[13_CIRCLE_in_TAN] Starting (42500 attempts)
+[diff] 11_5_in_TAN: diff=0.45 hist=0 fr_best=7.34729 -> attempts=42500 swarm=1
+[11_5_in_TAN] Starting (42500 attempts)
+[diff] 12_6_in_TAN: diff=0.45 hist=0 fr_best=9.4132 -> attempts=42500 swarm=1
+[12_6_in_TAN] Starting (42500 attempts)
+[diff] 10_5_in_TAN: diff=0.45 hist=0 fr_best=6.98078 -> attempts=42500 swarm=1
+[10_5_in_TAN] Starting (42500 attempts)
+[diff] 4_TAN_in_8: diff=0.30 hist=0 fr_best=0.76537 -> attempts=20000 swarm=1
+[4_TAN_in_8] Starting (20000 attempts)
+[diff] 14_CIRCLE_in_TAN: diff=0.45 hist=0 fr_best=11.1416 -> attempts=42500 swarm=1
+[14_CIRCLE_in_TAN] Starting (42500 attempts)
+[diff] 4_TAN_in_5: diff=0.30 hist=0 fr_best=1.2806 -> attempts=20000 swarm=1
+[4_TAN_in_5] Starting (20000 attempts)
+[diff] 16_CIRCLE_in_TAN: diff=0.55 hist=0 fr_best=11.892 -> attempts=65000 swarm=1
+[16_CIRCLE_in_TAN] Starting (65000 attempts)
+[diff] 3_TAN_in_5: diff=0.30 hist=0 fr_best=1.1058 -> attempts=20000 swarm=1
+[3_TAN_in_5] Starting (20000 attempts)
+slurmstepd: error: *** JOB 2446199 ON compute-14-04 CANCELLED AT 2026-08-28T00:26:32 ***
