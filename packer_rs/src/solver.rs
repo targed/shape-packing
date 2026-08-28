@@ -447,6 +447,92 @@ struct OptResult {
     max_violation: f64,
 }
 
+struct LbfgsHistory {
+    m: usize,
+    s_history: Vec<Vec<f64>>,
+    y_history: Vec<Vec<f64>>,
+    rho_history: Vec<f64>,
+}
+
+impl LbfgsHistory {
+    fn new(m: usize) -> Self {
+        Self {
+            m,
+            s_history: Vec::with_capacity(m),
+            y_history: Vec::with_capacity(m),
+            rho_history: Vec::with_capacity(m),
+        }
+    }
+
+    fn push(&mut self, s: Vec<f64>, y: Vec<f64>) {
+        let ys: f64 = s.iter().zip(y.iter()).map(|(a, b)| a * b).sum();
+        let s_norm_sq: f64 = s.iter().map(|a| a * a).sum();
+        // Curvature safeguard (Powell damping / positive definiteness condition)
+        if ys > 1e-10 * (s_norm_sq + 1e-12) {
+            if self.s_history.len() == self.m {
+                self.s_history.remove(0);
+                self.y_history.remove(0);
+                self.rho_history.remove(0);
+            }
+            let rho = 1.0 / ys;
+            self.s_history.push(s);
+            self.y_history.push(y);
+            self.rho_history.push(rho);
+        }
+    }
+
+    fn compute_direction(&self, grad: &[f64]) -> Vec<f64> {
+        let k = self.s_history.len();
+        let n = grad.len();
+        if k == 0 {
+            return grad.iter().map(|g| -g).collect();
+        }
+
+        let mut q = grad.to_vec();
+        let mut alphas = vec![0.0f64; k];
+
+        // First loop (backward)
+        for i in (0..k).rev() {
+            let s = &self.s_history[i];
+            let y = &self.y_history[i];
+            let rho = self.rho_history[i];
+
+            let sq: f64 = s.iter().zip(q.iter()).map(|(a, b)| a * b).sum();
+            let alpha = rho * sq;
+            alphas[i] = alpha;
+
+            for j in 0..n {
+                q[j] -= alpha * y[j];
+            }
+        }
+
+        // Initial Hessian scaling gamma = (s_last . y_last) / (y_last . y_last)
+        let s_last = &self.s_history[k - 1];
+        let y_last = &self.y_history[k - 1];
+        let sy: f64 = s_last.iter().zip(y_last.iter()).map(|(a, b)| a * b).sum();
+        let yy: f64 = y_last.iter().map(|a| a * a).sum();
+        let gamma = if yy > 1e-12 { sy / yy } else { 1.0 };
+
+        let mut r: Vec<f64> = q.iter().map(|qi| gamma * qi).collect();
+
+        // Second loop (forward)
+        for i in 0..k {
+            let s = &self.s_history[i];
+            let y = &self.y_history[i];
+            let rho = self.rho_history[i];
+
+            let yr: f64 = y.iter().zip(r.iter()).map(|(a, b)| a * b).sum();
+            let beta = rho * yr;
+
+            for j in 0..n {
+                r[j] += s[j] * (alphas[i] - beta);
+            }
+        }
+
+        r.iter().map(|ri| -ri).collect()
+    }
+}
+
 fn minimize_gradient(
     x0: &[f64],
     S: f64,
@@ -474,6 +560,13 @@ fn minimize_gradient(
         &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
     );
 
+    if best_max_violation <= 1e-15 {
+        return OptResult { x: best_x, _fun: best_fun, max_violation: best_max_violation };
+    }
+
+    // ==========================================
+    // STAGE 1: Coarse Adam Untangling
+    // ==========================================
     let mut m = vec![0.0f64; n];
     let mut v = vec![0.0f64; n];
     let beta1 = 0.9f64;
@@ -482,14 +575,18 @@ fn minimize_gradient(
     let alpha = 0.02f64;
 
     let mut no_improve: u32 = 0;
-    let mut best_fun_iter = f64::INFINITY;
+    let mut best_fun_iter = best_fun;
     let mut beta1_t = beta1;
     let mut beta2_t = beta2;
 
-    for _iter in 1..=3000 {
-        let (fun, _max_violation) = penalty_and_gradient(
+    for _iter in 1..=250 {
+        let (fun, max_violation) = penalty_and_gradient(
             &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
         );
+
+        if max_violation <= 1e-15 {
+            return OptResult { x, _fun: fun, max_violation };
+        }
 
         if fun < best_fun_iter * 0.9999 {
             no_improve = 0;
@@ -497,7 +594,9 @@ fn minimize_gradient(
         } else {
             no_improve += 1;
         }
-        if no_improve >= 300 {
+
+        // If shapes are coarse-untangled or plateaued, transition directly to L-BFGS
+        if fun < 1e-3 || no_improve >= 40 {
             break;
         }
 
@@ -527,8 +626,99 @@ fn minimize_gradient(
         }
     }
 
+    if best_max_violation <= 1e-15 {
+        return OptResult { x: best_x, _fun: best_fun, max_violation: best_max_violation };
+    }
+
+    // ==========================================
+    // STAGE 2: L-BFGS Quasi-Newton Polish
+    // ==========================================
+    let mut lbfgs_history = LbfgsHistory::new(8);
+    let (mut current_fx, mut current_max_violation) = penalty_and_gradient(
+        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
+    );
+
+    let mut current_grad = grad_buffer[..n].to_vec();
+
+    for _lbfgs_iter in 0..60 {
+        if current_max_violation <= 1e-15 {
+            return OptResult { x, _fun: current_fx, max_violation: current_max_violation };
+        }
+
+        let mut d = lbfgs_history.compute_direction(&current_grad);
+        let mut dir_deriv: f64 = current_grad.iter().zip(d.iter()).map(|(g, di)| g * di).sum();
+
+        // Ensure descent direction
+        if dir_deriv >= 0.0 {
+            d = current_grad.iter().map(|g| -g).collect();
+            dir_deriv = current_grad.iter().zip(d.iter()).map(|(g, di)| g * di).sum();
+        }
+
+        if dir_deriv.abs() < 1e-14 {
+            break;
+        }
+
+        // Backtracking Armijo Line Search
+        let c1 = 1e-4;
+        let mut step = 1.0;
+        let mut trial_x = vec![0.0f64; n];
+        let mut step_accepted = false;
+        let mut trial_fx = current_fx;
+        let mut trial_max_violation = current_max_violation;
+
+        for _ls_step in 0..10 {
+            for j in 0..n {
+                trial_x[j] = x[j] + step * d[j];
+            }
+
+            let (f_trial, max_v_trial) = penalty_and_gradient(
+                &trial_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
+            );
+
+            if f_trial <= current_fx + c1 * step * dir_deriv {
+                trial_fx = f_trial;
+                trial_max_violation = max_v_trial;
+                step_accepted = true;
+                break;
+            }
+            step *= 0.5;
+        }
+
+        if !step_accepted {
+            break;
+        }
+
+        // Compute gradient at trial_x
+        let (_f_eval, _max_v_eval) = penalty_and_gradient(
+            &trial_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
+        );
+
+        let new_grad = grad_buffer[..n].to_vec();
+        let s_k: Vec<f64> = trial_x.iter().zip(x.iter()).map(|(tx, xk)| tx - xk).collect();
+        let y_k: Vec<f64> = new_grad.iter().zip(current_grad.iter()).map(|(ng, cg)| ng - cg).collect();
+
+        lbfgs_history.push(s_k, y_k);
+
+        x = trial_x;
+        current_fx = trial_fx;
+        current_max_violation = trial_max_violation;
+        current_grad = new_grad;
+
+        if current_fx < best_fun {
+            best_fun = current_fx;
+            best_x = x.clone();
+            best_max_violation = current_max_violation;
+        }
+
+        let max_grad_norm = current_grad.iter().fold(0.0f64, |acc, g| acc.max(g.abs()));
+        if max_grad_norm < 1e-6 {
+            break;
+        }
+    }
+
     OptResult { x: best_x, _fun: best_fun, max_violation: best_max_violation }
 }
+
 
 pub fn penalty_and_gradient(
     values: &[f64],
@@ -1193,3 +1383,62 @@ pub fn penalty_and_gradient(
 
     (penalty, max_violation)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use rand_chacha::rand_core::SeedableRng;
+
+    #[test]
+    fn test_lbfgs_history_descent_direction() {
+        let mut history = LbfgsHistory::new(4);
+        let grad = vec![1.0, 2.0, -1.0];
+        let d = history.compute_direction(&grad);
+        assert_eq!(d, vec![-1.0, -2.0, 1.0]);
+
+        // Push step
+        let s = vec![-0.1, -0.2, 0.1];
+        let y = vec![-0.5, -1.0, 0.5];
+        history.push(s, y);
+
+        let d2 = history.compute_direction(&grad);
+        let dot: f64 = grad.iter().zip(d2.iter()).map(|(a, b)| a * b).sum();
+        assert!(dot < 0.0, "Direction d must be a descent direction (dot product < 0)");
+    }
+
+    #[test]
+    fn test_hybrid_optimizer_convergence() {
+        let (nsi, upv, upvectors, _) = get_shape_geometry("6");
+        let (nsc, _, ucv, uap) = get_shape_geometry("5");
+        let mut rng = ChaCha8Rng::seed_from_u64(42);
+        let start = Instant::now();
+        let stop_flag = AtomicBool::new(false);
+
+        let result = run_attempt(
+            &mut rng,
+            3.5,
+            nsi,
+            nsc,
+            &upv,
+            &upvectors,
+            &ucv,
+            &uap,
+            1e-5,
+            0.001,
+            &start,
+            &stop_flag,
+            Some(5.0),
+            None,
+            None,
+            false,
+            false,
+            false,
+            false,
+        );
+
+        assert!(result.1.is_some(), "Hybrid optimizer must find valid packing for 4_6_in_5 at S=3.5");
+        let final_s = result.0;
+        assert!(final_s < 3.5, "Final scale S should be shrunk and feasible");
+    }
+}
+
