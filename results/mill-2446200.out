@@ -6343,3 +6343,61 @@ After doing this, you may fix the identity used for this commit with:
 [2_TAN_in_6] Success!
 [5_6_in_TAN] Success!
 [6_TAN_in_DOMINO] Success!
+[9_TAN_in_8] Success!
+[23_3_in_tan] Success!
+[19_TAN_in_5] Success!
+[20_TAN_in_4] Success!
+[11_TAN_in_5] Success!
+[20_6_in_TAN] Success!
+[13_TAN_in_5] Success!
+[12_TAN_in_6] Success!
+[main c98924c36] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 21 files changed, 1074 insertions(+)
+ create mode 100644 results/10_TAN_in_5/20260828_050631/solution.json
+ create mode 100644 results/11_tan_in_cir/20260828_050634/solution.json
+ create mode 100644 results/12_TAN_in_8/20260828_050635/solution.json
+ create mode 100644 results/12_TAN_in_DOMINO/20260828_050632/solution.json
+ create mode 100644 results/14_TAN_in_DOMINO/20260828_050636/solution.json
+ create mode 100644 results/15_TAN_in_6/20260828_050631/solution.json
+ create mode 100644 results/16_DOMINO_in_TAN/20260828_050634/solution.json
+ create mode 100644 results/17_TAN_in_5/20260828_050631/solution.json
+ create mode 100644 results/18_TAN_in_6/20260828_050632/solution.json
+ create mode 100644 results/19_tan_in_cir/20260828_050631/solution.json
+ create mode 100644 results/20_TAN_in_6/20260828_050631/solution.json
+ create mode 100644 results/22_TAN_in_5/20260828_050631/solution.json
+ create mode 100644 results/22_TAN_in_6/20260828_050632/solution.json
+ create mode 100644 results/26_tan_in_tan/20260828_050633/solution.json
+ create mode 100644 results/2_TAN_in_6/20260828_051100/solution.json
+ create mode 100644 results/4_3_in_tan/20260828_051007/solution.json
+ create mode 100644 results/5_6_in_TAN/20260828_051005/solution.json
+ create mode 100644 results/6_TAN_in_DOMINO/20260828_050938/solution.json
+ create mode 100644 results/7_TAN_in_8/20260828_050631/solution.json
+[Main] Worker finished 12_TAN_in_DOMINO with score 1.886679605202572
+[Main] Worker finished 17_TAN_in_5 with score 2.4719440872562815
+[Main] Worker finished 22_TAN_in_5 with score 2.7787972337337923
+[Main] Worker finished 14_TAN_in_DOMINO with score 2.0001616407760103
+[Main] Worker finished 22_TAN_in_6 with score 2.270834691886802
+[Main] Worker finished 15_TAN_in_6 with score 1.8879231561393415
+[Main] Worker finished 26_tan_in_tan with score 5.50742494426421
+[Main] Worker finished 16_DOMINO_in_TAN with score 8.966214411204323
+[Main] Worker finished 11_tan_in_cir with score 1.5105941147975273
+[Main] Worker finished 19_tan_in_cir with score 1.9581643987272404
+[Main] Batch committing 10 runs...
+[15_tan_in_cir] Success!
+[14_TAN_in_6] Success!
+[14_TAN_in_8] Success!
+[24_TAN_in_4] Success!
+[3_TAN_in_6] Success!
