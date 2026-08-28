@@ -3896,3 +3896,80 @@ After doing this, you may fix the identity used for this commit with:
 [17_TAN_in_5] Success!
 [19_tan_in_cir] Success!
 [19_TAN_in_8] Success!
+[main a5afcd8f3] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 18 files changed, 1026 insertions(+)
+ create mode 100644 results/10_TAN_in_8/20260828_031426/solution.json
+ create mode 100644 results/11_TAN_in_3/20260828_031430/solution.json
+ create mode 100644 results/12_TAN_in_3/20260828_031426/solution.json
+ create mode 100644 results/12_TAN_in_6/20260828_031432/solution.json
+ create mode 100644 results/13_TAN_in_DOMINO/20260828_031428/solution.json
+ create mode 100644 results/13_tan_in_cir/20260828_031431/solution.json
+ create mode 100644 results/14_TAN_in_3/20260828_031426/solution.json
+ create mode 100644 results/14_TAN_in_5/20260828_031427/solution.json
+ create mode 100644 results/17_TAN_in_5/20260828_031433/solution.json
+ create mode 100644 results/18_TAN_in_3/20260828_031426/solution.json
+ create mode 100644 results/19_TAN_in_6/20260828_031425/solution.json
+ create mode 100644 results/19_TAN_in_8/20260828_031435/solution.json
+ create mode 100644 results/19_tan_in_cir/20260828_031434/solution.json
+ create mode 100644 results/21_TAN_in_3/20260828_031427/solution.json
+ create mode 100644 results/21_TAN_in_5/20260828_031425/solution.json
+ create mode 100644 results/25_3_in_tan/20260828_031429/solution.json
+[Main] Worker finished 21_TAN_in_3 with score 5.461591029659076
+[Main] Worker finished 21_TAN_in_5 with score 2.7426836742761345
+[Main] Worker finished 10_TAN_in_8 with score 1.1404790496776407
+[Main] Worker finished 13_TAN_in_DOMINO with score 1.975438014399217
+[Main] Worker finished 14_TAN_in_3 with score 4.458334011739209
+[Main] Worker finished 18_TAN_in_3 with score 5.014904097593316
+[Main] Worker finished 25_3_in_tan with score 5.09256484200645
+[diff] 9_TAN_in_DOMINO: diff=0.30 hist=3 fr_best=1.6071 -> attempts=20587 swarm=1
+[9_TAN_in_DOMINO] Starting (20587 attempts)
+[diff] 13_TAN_in_6: diff=0.45 hist=4 fr_best=1.70429 -> attempts=43248 swarm=1
+[13_TAN_in_6] Starting (43248 attempts)
+[diff] 14_tan_in_cir: diff=0.46 hist=1 fr_best=1.581 -> attempts=44068 swarm=1
+[14_tan_in_cir] Starting (44068 attempts)
+[diff] 15_tan_in_cir: diff=0.56 hist=4 fr_best=1.66443 -> attempts=67062 swarm=1
+[15_tan_in_cir] Starting (67062 attempts)
+[diff] 13_TAN_in_3: diff=0.45 hist=3 fr_best=4.14927 -> attempts=43026 swarm=1
+[13_TAN_in_3] Starting (43026 attempts)
+[diff] 18_tan_in_cir: diff=0.56 hist=5 fr_best=1.83366 -> attempts=66886 swarm=1
+[18_tan_in_cir] Starting (66886 attempts)
+[diff] 21_TAN_in_6: diff=0.56 hist=2 fr_best=2.14048 -> attempts=66633 swarm=1
+[21_TAN_in_6] Starting (66633 attempts)
+[12_TAN_in_5] Success!
+[diff] 22_TAN_in_3: diff=0.56 hist=1 fr_best=5.3358 -> attempts=67042 swarm=1
+[22_TAN_in_3] Starting (67042 attempts)
+[diff] 26_3_in_tan: diff=0.55 hist=4 fr_best=5.1096 -> attempts=65157 swarm=1
+[Main] Worker finished 17_TAN_in_5 with score 2.464327940923231
+[26_3_in_tan] Starting (65157 attempts)
+[Main] Worker finished 19_TAN_in_8 with score 1.5732939353497315
+[Main] Worker finished 13_tan_in_cir with score 1.6428236255252964
+[Main] Batch committing 10 runs...
+[19_TAN_in_5] Success!
+[16_TAN_in_5] Success!
+[17_TAN_in_3] Success!
+[19_TAN_in_3] Success!
+[13_TAN_in_5] Success!
+[29_3_in_tan] Success!
+[22_TAN_in_5] Success!
+[12_TAN_in_4] Success!
+[15_TAN_in_3] Success!
+[20_TAN_in_6] Success!
+[17_TAN_in_6] Success!
+[16_TAN_in_3] Success!
+[22_TAN_in_6] Success!
+[16_TAN_in_8] Success!
+[22_3_in_tan] Success!
+[30_3_in_tan] Success!
