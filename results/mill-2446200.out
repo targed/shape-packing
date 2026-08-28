@@ -8323,3 +8323,66 @@ After doing this, you may fix the identity used for this commit with:
 [6_TAN_in_8] Success!
 [6_3_in_tan] Success!
 [3_TAN_in_5] Success!
+[main 0ed1b71ca] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 23 files changed, 1035 insertions(+)
+ create mode 100644 results/10_6_in_TAN/20260828_062206/solution.json
+ create mode 100644 results/11_8_in_TAN/20260828_062208/solution.json
+ create mode 100644 results/12_8_in_TAN/20260828_062222/solution.json
+ create mode 100644 results/13_5_in_TAN/20260828_062214/solution.json
+ create mode 100644 results/13_6_in_TAN/20260828_062207/solution.json
+ create mode 100644 results/13_CIRCLE_in_TAN/20260828_062206/solution.json
+ create mode 100644 results/14_5_in_TAN/20260828_062218/solution.json
+ create mode 100644 results/14_CIRCLE_in_TAN/20260828_062211/solution.json
+ create mode 100644 results/15_5_in_TAN/20260828_062216/solution.json
+ create mode 100644 results/16_CIRCLE_in_TAN/20260828_062206/solution.json
+ create mode 100644 results/17_CIRCLE_in_TAN/20260828_062219/solution.json
+ create mode 100644 results/18_CIRCLE_in_TAN/20260828_062214/solution.json
+ create mode 100644 results/19_CIRCLE_in_TAN/20260828_062212/solution.json
+ create mode 100644 results/20_CIRCLE_in_TAN/20260828_062220/solution.json
+ create mode 100644 results/3_TAN_in_5/20260828_062527/solution.json
+ create mode 100644 results/4_TAN_in_5/20260828_062212/solution.json
+ create mode 100644 results/4_TAN_in_6/20260828_062206/solution.json
+ create mode 100644 results/5_TAN_in_6/20260828_062215/solution.json
+ create mode 100644 results/6_3_in_tan/20260828_062531/solution.json
+ create mode 100644 results/6_TAN_in_8/20260828_062532/solution.json
+ create mode 100644 results/8_3_in_tan/20260828_062528/solution.json
+[diff] 4_TAN_in_3: diff=0.30 hist=4 fr_best=2.53732 -> attempts=20000 swarm=1
+[Main] Worker finished 13_6_in_TAN with score 9.711935082220293
+[4_TAN_in_3] Starting (20000 attempts)
+[Main] Worker finished 12_8_in_TAN with score 12.65723687109974
+[Main] Worker finished 4_TAN_in_5 with score 1.2806341809933837
+[Main] Worker finished 17_CIRCLE_in_TAN with score 12.16139000744225
+[Main] Worker finished 13_5_in_TAN with score 7.8326848923957355
+[Main] Worker finished 20_CIRCLE_in_TAN with score 13.093800411987209
+[Main] Worker finished 19_CIRCLE_in_TAN with score 12.799619338927066
+[Main] Worker finished 18_CIRCLE_in_TAN with score 12.55271851177001
+[Main] Worker finished 10_6_in_TAN with score 8.537188004091725
+[Main] Worker finished 6_3_in_tan with score 2.6389756176142947
+[Main] Batch committing 10 runs...
+[12_CIRCLE_in_TAN] Success!
+[10_5_in_TAN] Success!
+[7_tan_in_cir] Success!
+[13_8_in_TAN] Success!
+[15_6_in_TAN] Success!
+[14_6_in_TAN] Success!
+[14_8_in_TAN] Success!
+[16_5_in_TAN] Success!
+[19_8_in_TAN] Success!
+[11_5_in_TAN] Success!
+[12_6_in_TAN] Success!
+[11_6_in_TAN] Success!
+[16_6_in_TAN] Success!
+[18_8_in_TAN] Success!
