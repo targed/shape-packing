@@ -4538,3 +4538,71 @@ After doing this, you may fix the identity used for this commit with:
 [20_TAN_in_6] Success!
 [22_TAN_in_6] Success!
 [30_3_in_tan] Success!
+[main fcf2d8199] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 12 files changed, 641 insertions(+)
+ create mode 100644 results/11_TAN_in_DOMINO/20260828_034412/solution.json
+ create mode 100644 results/13_TAN_in_4/20260828_034417/solution.json
+ create mode 100644 results/13_TAN_in_DOMINO/20260828_034409/solution.json
+ create mode 100644 results/14_TAN_in_3/20260828_034407/solution.json
+ create mode 100644 results/17_TAN_in_3/20260828_034416/solution.json
+ create mode 100644 results/17_TAN_in_5/20260828_034410/solution.json
+ create mode 100644 results/17_TAN_in_8/20260828_034414/solution.json
+ create mode 100644 results/19_TAN_in_3/20260828_034417/solution.json
+ create mode 100644 results/19_TAN_in_8/20260828_034411/solution.json
+ create mode 100644 results/21_TAN_in_3/20260828_034408/solution.json
+[Main] Worker finished 14_TAN_in_6 with score 1.8314591832860605
+[diff] 22_TAN_in_5: diff=0.55 hist=5 fr_best=2.7112 -> attempts=66062 swarm=1
+[22_TAN_in_5] Starting (66062 attempts)
+[diff] 15_TAN_in_3: diff=0.56 hist=3 fr_best=4.41143 -> attempts=66884 swarm=1
+[15_TAN_in_3] Starting (66884 attempts)
+[diff] 17_TAN_in_6: diff=0.55 hist=5 fr_best=1.93877 -> attempts=66163 swarm=1
+[17_TAN_in_6] Starting (66163 attempts)
+[diff] 16_TAN_in_8: diff=0.56 hist=3 fr_best=1.36396 -> attempts=66563 swarm=1
+[16_TAN_in_8] Starting (66563 attempts)
+[diff] 21_TAN_in_6: diff=0.55 hist=4 fr_best=2.14048 -> attempts=66301 swarm=1
+[21_TAN_in_6] Starting (66301 attempts)
+[diff] 22_TAN_in_3: diff=0.56 hist=3 fr_best=5.3358 -> attempts=66793 swarm=1
+[22_TAN_in_3] Starting (66793 attempts)
+[diff] 20_TAN_in_8: diff=0.56 hist=4 fr_best=1.53147 -> attempts=66511 swarm=1
+[20_TAN_in_8] Starting (66511 attempts)
+[diff] 18_TAN_in_6: diff=0.55 hist=5 fr_best=1.99031 -> attempts=66308 swarm=1
+[18_TAN_in_6] Starting (66308 attempts)
+[diff] 12_TAN_in_DOMINO: diff=0.46 hist=1 fr_best=1.81066 -> attempts=43926 swarm=1
+[12_TAN_in_DOMINO] Starting (43926 attempts)
+[diff] 12_TAN_in_8: diff=0.46 hist=2 fr_best=1.17157 -> attempts=43994 swarm=1
+[12_TAN_in_8] Starting (43994 attempts)
+[diff] 18_TAN_in_3: diff=0.56 hist=4 fr_best=4.84346 -> attempts=66593 swarm=1
+[18_TAN_in_3] Starting (66593 attempts)
+[diff] 13_TAN_in_8: diff=0.46 hist=2 fr_best=1.21868 -> attempts=43676 swarm=1
+[13_TAN_in_8] Starting (43676 attempts)
+[diff] 14_TAN_in_4: diff=0.45 hist=1 fr_best=2.76345 -> attempts=43039 swarm=1
+[14_TAN_in_4] Starting (43039 attempts)
+[diff] 9_TAN_in_4: diff=0.31 hist=1 fr_best=2.207107 -> attempts=21131 swarm=1
+[9_TAN_in_4] Starting (21131 attempts)
+[diff] 19_TAN_in_4: diff=0.56 hist=1 fr_best=3.201 -> attempts=67387 swarm=1
+[19_TAN_in_4] Starting (67387 attempts)
+[diff] 18_TAN_in_8: diff=0.56 hist=1 fr_best=1.41421 -> attempts=67617 swarm=1
+[18_TAN_in_8] Starting (67617 attempts)
+[Main] Worker finished 19_TAN_in_8 with score 1.548022063259148
+[Main] Worker finished 14_TAN_in_3 with score 4.462618174279335
+[Main] Worker finished 17_TAN_in_5 with score 2.469872431236893
+[Main] Worker finished 21_TAN_in_3 with score 5.423048127583488
+[Main] Worker finished 20_TAN_in_3 with score 5.322553130781406
+[Main] Worker finished 20_TAN_in_6 with score 2.1647660274754026
+[Main] Worker finished 17_TAN_in_3 with score 4.899588578872381
+[Main] Worker finished 13_TAN_in_DOMINO with score 1.975438014399217
+[Main] Worker finished 10_tan_in_tan with score 3.3825725227330152
+[Main] Batch committing 10 runs...
