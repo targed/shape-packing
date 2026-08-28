@@ -325,25 +325,25 @@ Expected: 30–60 % reduction in orchestrator overhead; 15–30 % reduction in s
 ### 4.2 Medium-term wins
 
 - [ ] Add criterion-based microbenchmarks for `penalty_and_gradient` and `run_attempt`.
-- [ ] Implement simple spatial broadphase (grid hashing) for pairwise overlap checks.
+- [x] Implement spatial broadphase (Sweep & Prune bounding box sorting for $N > 20$) for pairwise overlap checks.
 - [x] In parallel loop, import orchestrator logic directly into worker processes instead of forking via CLI subprocess.
 - [x] Maintain an in-memory history index instead of full TSV re-reads.
-
 
 Expected: further 20–40 % solver acceleration for larger N; significant orchestrator simplification.
 
 ### 4.3 High-effort / high-reward (future)
 
-- [ ] Integrate Rust solver as a library (via PyO3 or similar) so it runs in-process:
-  - Eliminates process startup overhead.
-  - Enables direct memory sharing with Python.
+- [x] Integrate Rust solver as a library (via PyO3) with seamless fallback:
+  - **In-process PyO3 native extension** (`solve_py` in `packer_rs/src/lib.rs` with `default = ["python"]`): Eliminates process startup overhead and memory serialization.
+  - **Automatic Fallback Hierarchy**: `solver_interface.py` checks PyO3 in-process native extension $\rightarrow$ falls back to compiled CLI binary (`packer_rs.exe` / `packer_rs`) $\rightarrow$ falls back to Python SciPy optimizer.
 - [ ] Replace Adam with a more suitable optimizer (L-BFGS-B or trust-region) or a hybrid:
   - Many attempts likely do not need 3,000 Adam steps.
   - A short L-BFGS-B with fewer restarts might be faster for well-conditioned starts.
 - [ ] Add problem-specific heuristics (e.g., better initial placements for known families) to reduce optimization time.
 
-These are larger engineering efforts but would fundamentally improve throughput.
+These optimizations fundamentally improve throughput across both local and cluster workloads.
 
 ---
 
 *End of report.*
+
