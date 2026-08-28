@@ -5742,3 +5742,71 @@ After doing this, you may fix the identity used for this commit with:
 [16_tan_in_cir] Success!
 [12_TAN_in_6] Success!
 [19_tan_in_cir] Success!
+[main 1b66f14d1] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 15 files changed, 817 insertions(+)
+ create mode 100644 results/11_tan_in_tan/20260828_044055/solution.json
+ create mode 100644 results/12_TAN_in_DOMINO/20260828_044053/solution.json
+ create mode 100644 results/12_tan_in_tan/20260828_044056/solution.json
+ create mode 100644 results/14_DOMINO_in_TAN/20260828_044109/solution.json
+ create mode 100644 results/15_TAN_in_4/20260828_044054/solution.json
+ create mode 100644 results/15_tan_in_tan/20260828_044101/solution.json
+ create mode 100644 results/16_tan_in_cir/20260828_044111/solution.json
+ create mode 100644 results/17_tan_in_tan/20260828_044057/solution.json
+ create mode 100644 results/19_tan_in_tan/20260828_044100/solution.json
+ create mode 100644 results/21_tan_in_tan/20260828_044056/solution.json
+ create mode 100644 results/23_tan_in_tan/20260828_044059/solution.json
+ create mode 100644 results/24_tan_in_tan/20260828_044103/solution.json
+ create mode 100644 results/7_TAN_in_8/20260828_044104/solution.json
+[Main] Worker finished 18_TAN_in_8 with score 1.527939558401611
+[Main] Worker finished 24_TAN_in_4 with score 3.7946345469513307
+[Main] Worker finished 14_TAN_in_8 with score 1.3382975376010209
+[Main] Worker finished 20_TAN_in_4 with score 3.4515188781164845
+[diff] 19_TAN_in_4: diff=0.56 hist=5 fr_best=3.201 -> attempts=66741 swarm=1
+[19_TAN_in_4] Starting (66741 attempts)
+[diff] 21_TAN_in_4: diff=0.56 hist=5 fr_best=3.34 -> attempts=66750 swarm=1
+[21_TAN_in_4] Starting (66750 attempts)
+[diff] 27_tan_in_tan: diff=0.56 hist=3 fr_best=5.241 -> attempts=68169 swarm=1
+[27_tan_in_tan] Starting (68169 attempts)
+[diff] 26_tan_in_tan: diff=0.56 hist=3 fr_best=5.121 -> attempts=68554 swarm=1
+[26_tan_in_tan] Starting (68554 attempts)
+[diff] 16_DOMINO_in_TAN: diff=0.55 hist=7 fr_best=8.8284 -> attempts=65680 swarm=1
+[16_DOMINO_in_TAN] Starting (65680 attempts)
+[diff] 10_TAN_in_5: diff=0.45 hist=7 fr_best=1.8739 -> attempts=42766 swarm=1
+[10_TAN_in_5] Starting (42766 attempts)
+[diff] 11_TAN_in_5: diff=0.45 hist=7 fr_best=1.9564 -> attempts=42859 swarm=1
+[11_TAN_in_5] Starting (42859 attempts)
+[diff] 13_TAN_in_5: diff=0.45 hist=6 fr_best=2.1094 -> attempts=42937 swarm=1
+[13_TAN_in_5] Starting (42937 attempts)
+[diff] 23_3_in_tan: diff=0.55 hist=6 fr_best=4.82974 -> attempts=65180 swarm=1
+[23_3_in_tan] Starting (65180 attempts)
+[12_TAN_in_5] Success!
+[diff] 11_TAN_in_8: diff=0.45 hist=6 fr_best=1.15384 -> attempts=42973 swarm=1
+[11_TAN_in_8] Starting (42973 attempts)
+[diff] 19_TAN_in_5: diff=0.55 hist=6 fr_best=2.5358 -> attempts=66212 swarm=1
+[19_TAN_in_5] Starting (66212 attempts)
+[diff] 29_3_in_tan: diff=0.55 hist=6 fr_best=5.40552 -> attempts=65170 swarm=1
+[29_3_in_tan] Starting (65170 attempts)
+[diff] 15_tan_in_cir: diff=0.56 hist=6 fr_best=1.66443 -> attempts=67062 swarm=1
+[15_tan_in_cir] Starting (67062 attempts)
+[diff] 26_3_in_tan: diff=0.55 hist=6 fr_best=5.1096 -> attempts=65157 swarm=1
+[26_3_in_tan] Starting (65157 attempts)
+[Main] Worker finished 12_TAN_in_5 with score 2.0747820758343685
+[Main] Worker finished 23_tan_in_tan with score 5.239609749535521
+[Main] Worker finished 16_tan_in_cir with score 1.7617272846212837
+[Main] Worker finished 15_TAN_in_4 with score 3.009348557252171
+[Main] Worker finished 21_tan_in_tan with score 5.035457001996874
+[Main] Worker finished 12_TAN_in_6 with score 1.6997701539863892
+[Main] Batch committing 10 runs...
