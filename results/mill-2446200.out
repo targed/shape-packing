@@ -580,3 +580,85 @@ After doing this, you may fix the identity used for this commit with:
 [8_DOMINO_in_TAN] Success!
 [7_3_in_tan] Success!
 [9_DOMINO_in_TAN] Success!
+[main 0a93a758] auto: batch update of 10 runs
+ Committer: ltkhg4 <ltkhg4@compute-14-04.mill>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 209 insertions(+)
+ create mode 100644 results/3_tan_in_tan/20260828_005027/solution.json
+ create mode 100644 results/7_3_in_tan/20260828_005027/solution.json
+ create mode 100644 results/8_DOMINO_in_TAN/20260828_005027/solution.json
+ create mode 100644 results/9_DOMINO_in_TAN/20260828_005026/solution.json
+[Main] Worker finished 5_TAN_in_3 with score 2.741501350357513
+[Main] Worker finished 9_tan_in_cir with score 1.3772652545298265
+[Main] Worker finished 9_3_in_tan with score 3.1839953516248816
+[diff] 7_TAN_in_3: diff=0.30 hist=0 fr_best=3.17427 -> attempts=20000 swarm=1
+[7_TAN_in_3] Starting (20000 attempts)
+[diff] 6_TAN_in_3: diff=0.30 hist=0 fr_best=2.93781 -> attempts=20000 swarm=1
+[6_TAN_in_3] Starting (20000 attempts)
+[diff] 14_3_in_tan: diff=0.45 hist=0 fr_best=3.88268 -> attempts=42500 swarm=1
+[14_3_in_tan] Starting (42500 attempts)
+[diff] 9_TAN_in_5: diff=0.30 hist=0 fr_best=1.7991 -> attempts=20000 swarm=1
+[9_TAN_in_5] Starting (20000 attempts)
+[diff] 24_4_in_tan: diff=0.55 hist=0 fr_best=7.707 -> attempts=65000 swarm=1
+[24_4_in_tan] Starting (65000 attempts)
+[diff] 22_4_in_tan: diff=0.55 hist=0 fr_best=7.363 -> attempts=65000 swarm=1
+[22_4_in_tan] Starting (65000 attempts)
+[diff] 8_TAN_in_6: diff=0.30 hist=0 fr_best=1.37728 -> attempts=20000 swarm=1
+[8_TAN_in_6] Starting (20000 attempts)
+[diff] 13_DOMINO_in_TAN: diff=0.45 hist=0 fr_best=8.0 -> attempts=42500 swarm=1
+[13_DOMINO_in_TAN] Starting (42500 attempts)
+[diff] 20_4_in_tan: diff=0.55 hist=0 fr_best=7.0 -> attempts=65000 swarm=1
+[20_4_in_tan] Starting (65000 attempts)
+[diff] 13_3_in_tan: diff=0.45 hist=0 fr_best=3.71163 -> attempts=42500 swarm=1
+[13_3_in_tan] Starting (42500 attempts)
+[diff] 15_3_in_tan: diff=0.55 hist=0 fr_best=3.98382 -> attempts=65000 swarm=1
+[15_3_in_tan] Starting (65000 attempts)
+[diff] 16_DOMINO_in_TAN: diff=0.55 hist=0 fr_best=8.8284 -> attempts=65000 swarm=1
+[Main] Worker finished 9_DOMINO_in_TAN with score 6.8329913630729875
+[16_DOMINO_in_TAN] Starting (65000 attempts)
+[Main] Worker finished 7_3_in_tan with score 2.7901743930726672
+[Main] Worker finished 8_DOMINO_in_TAN with score 6.414429819711533
+[Main] Worker finished 3_tan_in_tan with score 1.9617957927965048
+[diff] 8_TAN_in_3: diff=0.30 hist=0 fr_best=3.35224 -> attempts=20000 swarm=1
+[8_TAN_in_3] Starting (20000 attempts)
+[diff] 14_DOMINO_in_TAN: diff=0.45 hist=0 fr_best=8.2426 -> attempts=42500 swarm=1
+[14_DOMINO_in_TAN] Starting (42500 attempts)
+[diff] 17_4_in_tan: diff=0.55 hist=0 fr_best=6.414 -> attempts=65000 swarm=1
+[17_4_in_tan] Starting (65000 attempts)
+[diff] 10_TAN_in_5: diff=0.45 hist=0 fr_best=1.8739 -> attempts=42500 swarm=1
+[10_TAN_in_5] Starting (42500 attempts)
+[8_TAN_in_5] Success!
+[14_4_in_tan] Success!
+[Main] Worker finished 14_4_in_tan with score 6.000951581169019
+[10_3_in_tan] Success!
+[Main] Worker finished 8_TAN_in_5 with score 1.732958658283716
+[18_4_in_tan] Success!
+[12_DOMINO_in_TAN] Success!
+[10_tan_in_cir] Success!
+[19_4_in_tan] Success!
+[16_4_in_tan] Success!
+[diff] 9_TAN_in_6: diff=0.30 hist=0 fr_best=1.44631 -> attempts=20000 swarm=1
+[9_TAN_in_6] Starting (20000 attempts)
+[12_3_in_tan] Success!
+[diff] 20_DOMINO_in_TAN: diff=0.55 hist=0 fr_best=9.8284 -> attempts=65000 swarm=1
+[Main] Worker finished 12_DOMINO_in_TAN with score 7.829292204562744
+[20_DOMINO_in_TAN] Starting (65000 attempts)
+[Main] Batch committing 10 runs...
+[11_3_in_tan] Success!
+[7_TAN_in_6] Success!
+[6_TAN_in_6] Success!
+[9_TAN_in_8] Success!
+[11_tan_in_cir] Success!
+[6_TAN_in_4] Success!
+[11_DOMINO_in_TAN] Success!
