@@ -5,6 +5,7 @@ import math
 import os
 import glob
 from typing import Any, Dict, List, Optional, Tuple, Set, Union
+from .packing_config import PACKING_VERIFICATION_DIR, PRIORITY_QUEUE_PATH
 
 def polygon_area(sides: int, side_length: float) -> float:
     # Area = (1/4) * n * s^2 * cot(pi/n)
@@ -61,9 +62,19 @@ def get_shape_area(shape_token: str, size: float) -> float:
         
     return None
 
-def generate_queue(verif_dir="packingVerification", out_path="priority_queue.json"):
+def generate_queue(verif_dir=None, out_path=None):
     queue = []
     
+    if verif_dir is None:
+        verif_dir = PACKING_VERIFICATION_DIR
+        if not os.path.exists(verif_dir):
+            if os.path.exists(os.path.join("data", "packingVerification")):
+                verif_dir = os.path.join("data", "packingVerification")
+            elif os.path.exists("packingVerification"):
+                verif_dir = "packingVerification"
+    if out_path is None:
+        out_path = PRIORITY_QUEUE_PATH
+        
     if not os.path.exists(verif_dir):
         print(f"Verification directory not found: {verif_dir}")
         return

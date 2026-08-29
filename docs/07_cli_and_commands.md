@@ -162,7 +162,7 @@ python -m src.shape_packing.cli verify <PATH_TO_SOLUTION_JSON> [OPTIONS]
 | `sol_path` | `PATH` | *Positional* | Path to `solution.json` to verify. |
 | `--problem`, `-p` | `STRING` | Inferred | Problem key (e.g. `6_TAN_in_L`); auto-detected from JSON if omitted. |
 | `--tolerance` | `FLOAT` | `1e-5` | Maximum permissible SAT overlap / boundary protrusion depth. |
-| `--check-record` | `FLAG` | `False` | Also checks if metric beats known benchmark records in `packingVerification/`. |
+| `--check-record` | `FLAG` | `False` | Also checks if metric beats known benchmark records in `data/packingVerification/`. |
 | `--min-improvement` | `FLOAT` | `1e-5` | Required improvement margin to count as a new record (`RECORD_MIN_IMPROVEMENT`). |
 | `--json` | `FLAG` | `False` | Output verification verdict and error list as JSON. |
 
@@ -180,7 +180,7 @@ python -m src.shape_packing.cli verify results/6_TAN_in_L/20260827_155937/soluti
 
 ## 4. `cli site-data` (Dashboard Data Builder)
 
-Aggregates `packingVerification/*.json`, `results/`, `results.tsv`, and `priority_queue.json` into `site/src/data/site_data.json` for the interactive web frontend.
+Aggregates `data/packingVerification/*.json`, `results/`, `results.tsv`, and `priority_queue.json` into `site/src/data/site_data.json` for the interactive web frontend.
 
 ```bash
 python -m src.shape_packing.cli site-data [OPTIONS]
@@ -190,7 +190,7 @@ python -m src.shape_packing.cli site-data [OPTIONS]
 
 | Flag | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
-| `--records-dir` | `PATH` | `packingVerification/` | Directory containing Erich Friedman benchmark JSON files. |
+| `--records-dir` | `PATH` | `data/packingVerification/` | Directory containing Erich Friedman benchmark JSON files. |
 | `--results-tsv` | `PATH` | `results.tsv` | Path to the experiment history TSV file. |
 | `--output`, `-o` | `PATH` | `site/src/data/site_data.json` | Destination path for the aggregated web database. |
 | `--quiet`, `-q` | `FLAG` | `False` | Suppress progress output during aggregation. |

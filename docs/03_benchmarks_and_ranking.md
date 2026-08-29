@@ -8,8 +8,8 @@ This document details the **Erich Friedman Benchmark Dataset**, record classific
 
 The benchmark dataset represents the authoritative historical record of optimal shape packings cataloged by Dr. Erich Friedman (Stetson University).
 
-### Directory Structure: `packingVerification/`
-The verified benchmark reference data resides in `packingVerification/*.json`. Each JSON file contains an array of problem definitions for a specific shape family:
+### Directory Structure: `data/packingVerification/`
+The verified benchmark reference data resides in `data/packingVerification/*.json`. Each JSON file contains an array of problem definitions for a specific shape family:
 
 ```json
 [

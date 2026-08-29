@@ -21,7 +21,11 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
-PACKING_VERIFICATION_DIR = ROOT_DIR / "packingVerification"
+PACKING_VERIFICATION_DIR = (
+    ROOT_DIR / "data" / "packingVerification"
+    if (ROOT_DIR / "data" / "packingVerification").exists()
+    else ROOT_DIR / "packingVerification"
+)
 RESULTS_DIR = ROOT_DIR / "results"
 PRIORITY_QUEUE_PATH = ROOT_DIR / "priority_queue.json"
 OUTPUT_PATH = ROOT_DIR / "site" / "src" / "data" / "site_data.json"

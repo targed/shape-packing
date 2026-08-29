@@ -91,9 +91,11 @@ class TestGetShapeArea:
 
 class TestGenerateQueue:
     def test_generate_from_real_verification(self, project_root, tmp_path):
-        verif_dir = project_root / "packingVerification"
-        if not verif_dir.exists():
-            pytest.skip("packingVerification not present")
+        verif_dir = (
+            project_root / "data" / "packingVerification"
+            if (project_root / "data" / "packingVerification").exists()
+            else project_root / "packingVerification"
+        )
 
         out_path = tmp_path / "priority_queue.json"
         generate_queue(verif_dir=str(verif_dir), out_path=str(out_path))

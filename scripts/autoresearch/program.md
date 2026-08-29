@@ -17,11 +17,11 @@ Run until interrupted.
 
 ## Key files (only these matter)
 
-- program.md: This file. Your instruction manual.
-- train.py: Experiment runner (Mode 2).
+- scripts/autoresearch/program.md: This file. Your instruction manual.
+- scripts/autoresearch/polygon-packer/train.py: Experiment runner (Mode 2).
   - CURRENT_PROBLEM at the top: the target problem.
   - Enforces time budget, runs solver, prints summary.
-- polygon-packer/polygon_packer.py:
+- scripts/autoresearch/polygon-packer/polygon_packer.py:
   - Main algorithmic file you edit to change strategies.
 - src/shape_packing/:
   - Core modules used by the system:

@@ -3,7 +3,11 @@ import os
 from collections import defaultdict
 
 RESULTS_DIR = "results"
-PACKING_VER_DIR = "packingVerification"
+PACKING_VER_DIR = (
+    os.path.join("data", "packingVerification")
+    if os.path.exists(os.path.join("data", "packingVerification"))
+    else "packingVerification"
+)
 
 SIDES_TO_NAME = {
     "3": "tri",

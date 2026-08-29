@@ -7,10 +7,14 @@ import sys
 import os
 from typing import Any, Dict, List, Optional, Tuple, Set, Union
 
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if repo_root not in sys.path:
+    sys.path.insert(0, repo_root)
+
 # This is the canonical pure-code, no-LLM autonomous research loop.
 #
 # Usage:
-#   uv run run_autoresearch_loop.py
+#   python scripts/autoresearch/run_autoresearch_loop.py
 #
 # Behavior:
 #   - Runs forever until you stop it (Ctrl+C).

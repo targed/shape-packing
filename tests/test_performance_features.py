@@ -100,7 +100,12 @@ class TestLoopDirectIntegration:
             assert state["best_score"] == 1.2
 
     def test_autoresearch_loop_get_state_uses_history(self):
-        import run_autoresearch_loop
+        import importlib.util
+        from pathlib import Path
+        script_path = Path(__file__).resolve().parent.parent / "scripts" / "autoresearch" / "run_autoresearch_loop.py"
+        spec = importlib.util.spec_from_file_location("run_autoresearch_loop", script_path)
+        run_autoresearch_loop = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(run_autoresearch_loop)
 
         fake_history = [
             ExperimentResult(problem="4_4_in_circle", score=2.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0)

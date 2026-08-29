@@ -17,8 +17,8 @@ import pandas as pd
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Advanced Log Analysis & Visualization for Shape Packing Slurm Runs")
-    parser.add_argument("--log-file", type=str, default=None, help="Path to Slurm .out log file. If omitted, picks latest results/mill-*.out")
-    parser.add_argument("--output-dir", type=str, default="analysis", help="Directory to save report and generated charts (default: analysis)")
+    default_out = "data/analysis" if os.path.exists("data/analysis") else "analysis"
+    parser.add_argument("--output-dir", type=str, default=default_out, help="Directory to save report and generated charts (default: data/analysis)")
     parser.add_argument("--top-n", type=int, default=15, help="Number of items to show in top tables and charts (default: 15)")
     parser.add_argument("--min-runs", type=int, default=1, help="Filter out problems with total runs < MIN_RUNS (default: 1)")
     parser.add_argument("--family", type=str, default=None, help="Filter by specific problem family (e.g. '3_in_5')")

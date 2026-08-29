@@ -34,15 +34,24 @@ def extract_n_from_filename(filename: str, template: str) -> Optional[int]:
 
 def generate_database(
     family_json_path: str = "src/shape_packing/family_properties.json",
-    images_root: str = "docs/erich-friedman.github.io/packing-with-images",
+    images_root: Optional[str] = None,
     output_json_path: Optional[str] = None,
 ) -> Dict[str, Any]:
     if output_json_path is None:
         output_json_path = family_json_path
-        
+
+    if images_root is None:
+        candidates = [
+            os.path.join("data", "erich-friedman.github.io", "packing"),
+            os.path.join("data", "erich-friedman.github.io", "packing-with-images"),
+            os.path.join("docs", "erich-friedman.github.io", "packing"),
+            os.path.join("docs", "erich-friedman.github.io", "packing-with-images"),
+        ]
+        images_root = next((c for c in candidates if os.path.exists(c)), candidates[0])
+
     with open(family_json_path, "r", encoding="utf-8") as f:
         family_props = json.load(f)
-        
+
     if not os.path.exists(images_root):
         raise FileNotFoundError(f"Image directory not found at '{images_root}'")
 

@@ -79,7 +79,7 @@ Because the orchestrator writes the results safely to the disk on the cluster, y
 
 ## 🏆 Exporting Records for Erich Friedman Submission
 
-When research loops discover new best packings that beat Erich Friedman's published world benchmarks (`packingVerification/*.json`), use the Records Exporter CLI:
+When research loops discover new best packings that beat Erich Friedman's published world benchmarks (`data/packingVerification/*.json`), use the Records Exporter CLI:
 
 ```bash
 # Audit all solutions, verify geometries, and export complete submission bundle

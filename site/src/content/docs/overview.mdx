@@ -18,7 +18,7 @@ The **Shape Packing Auto-Researcher** is an autonomous search and verification f
 ## Repository Structure
 
 - `src/shape_packing/`: Python auto-researcher orchestrator, ranking logic, and problem definitions.
-- `packer_rs/` & `polygon-packer/`: Rust-compiled native solver backends.
-- `docs/requirements/60-problem-families/`: Markdown specification requirements for 80+ problem families.
-- `scripts/`: Data ingestion, verification, log analysis, and site data builder scripts.
+- `packer_rs/`: Rust-compiled native PyO3 solver extension and CLI binary.
+- `data/`: Official benchmark references (`packingVerification/`), analysis reports, and Friedman website archive.
+- `scripts/`: Data ingestion, verification, log analysis, site data builder, and `autoresearch/` prototypes.
 - `site/`: Astro static dashboard deployed to GitHub Pages.

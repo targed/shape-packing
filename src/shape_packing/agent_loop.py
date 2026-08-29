@@ -65,6 +65,7 @@ from .packing_config import (
     QUEUE_FAMILY_CAP2,
     PRIORITY_QUEUE_PATH,
     RESULTS_TSV_PATH,
+    PACKING_VERIFICATION_DIR,
 )
 
 
@@ -145,7 +146,7 @@ def append_result(path: str, result: ExperimentResult) -> None:
 # --------------- Reference utilities ---------------
 
 
-def load_packing_reference(verif_dir: str = "packingVerification") -> List[Dict[str, Any]]:
+def load_packing_reference(verif_dir: Optional[str] = None) -> List[Dict[str, Any]]:
     """
     Load all verified JSON datasets in packingVerification as list of dicts.
     Fields per entry:
@@ -154,6 +155,13 @@ def load_packing_reference(verif_dir: str = "packingVerification") -> List[Dict[
     """
     import glob
     rows = []
+    if verif_dir is None:
+        verif_dir = PACKING_VERIFICATION_DIR
+        if not os.path.exists(verif_dir):
+            if os.path.exists(os.path.join("data", "packingVerification")):
+                verif_dir = os.path.join("data", "packingVerification")
+            elif os.path.exists("packingVerification"):
+                verif_dir = "packingVerification"
     if not os.path.exists(verif_dir):
         return rows
         

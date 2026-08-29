@@ -101,7 +101,7 @@ The auto-researcher operates as an autonomous continuous improvement loop:
 2. **Execute Solver**: Calls `solver_interface.run_solver()` which communicates directly with `packer_rs` via PyO3 in-process native bindings (or falls back to the compiled CLI binary).
 3. **Verify Solution**: `verify_solution()` inspects `solution.json` using exact compound SAT overlap, container boundary containment, metric scaling, and physical area checks.
 4. **Log Result**: `log_result()` appends the experiment score to `results.tsv` with status `keep`, `discard`, or `crash`.
-5. **Update Site Data**: `scripts/build_site_data.py` aggregates `packingVerification/*.json`, `results/`, `results.tsv`, and `priority_queue.json` to produce `site/src/data/site_data.json` for the Astro web dashboard.
+5. **Update Site Data**: `scripts/build_site_data.py` aggregates `data/packingVerification/*.json`, `results/`, `results.tsv`, and `priority_queue.json` to produce `site/src/data/site_data.json` for the Astro web dashboard.
 
 ---
 

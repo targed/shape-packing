@@ -13,7 +13,7 @@ Detailed specification of the core codebase architecture, God module responsibil
 Comprehensive mathematical guide to discrete shape packing. Covers regular polygons ($n=3,4,5,6,8$), circle container & inner approximations (32-gon), special polyforms (L-trominoes, dominoes, tans, lines, ellipses), Separating Axis Theorem (SAT) overlap detection, and metric scaling ($s$ vs $S$) formulas.
 
 ### 3. [Benchmarks & Priority Queue Ranking](03_benchmarks_and_ranking.md)
-Full specification of the Erich Friedman benchmark dataset (`packingVerification/`), record classifications (Trivial, Proved Optimal, Best Known), priority queue density calculations ($\rho = N \cdot A_{inner} / A_{container}$), target selection strategies, and closeness metric math.
+Full specification of the Erich Friedman benchmark dataset (`data/packingVerification/`), record classifications (Trivial, Proved Optimal, Best Known), priority queue density calculations ($\rho = N \cdot A_{inner} / A_{container}$), target selection strategies, and closeness metric math.
 
 ### 4. [HPC & Cluster Execution Guide](04_hpc_and_cluster_execution.md)
 Guide for running massive parallel searches on Slurm/HPC clusters. Explains `mill-*.out` log parsing via `analyze_mill_log.py`, worker execution, job batching, and high-performance compute scaling protocols.

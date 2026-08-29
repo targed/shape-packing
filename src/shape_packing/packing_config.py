@@ -56,7 +56,11 @@ RESULTS_DIR: str = "results"
 RESULTS_TSV: str = "results.tsv"
 RESULTS_TSV_PATH: str = "results.tsv"
 PRIORITY_QUEUE_PATH: str = "priority_queue.json"
-PACKING_VERIFICATION_DIR: str = "packingVerification"
+PACKING_VERIFICATION_DIR: str = (
+    os.path.join("data", "packingVerification")
+    if os.path.exists(os.path.join("data", "packingVerification"))
+    else "packingVerification"
+)
 FILTER_JSON_PATH: str = "filter.json"
 PACKING_REFERENCE_TSV: str = "PACKING_REFERENCE.tsv"
 

@@ -25,6 +25,12 @@ import os
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+src_path = os.path.join(repo_root, "src")
+for p in [repo_root, src_path]:
+    if p not in sys.path:
+        sys.path.insert(0, p)
+
 # ProblemModule: single source of truth for problem names, tokens, and validation.
 from shape_packing.problems import parse_problem, shape_token_to_sides
 
@@ -41,7 +47,7 @@ TIME_BUDGET = 300
 
 SOLVER_BACKEND = "rust"
 
-PACKER_SCRIPT = "polygon-packer/polygon_packer.py"
+PACKER_SCRIPT = os.path.join(os.path.dirname(__file__), "polygon_packer.py")
 
 from shape_packing.packing_config import (
     RUST_BINARY as PACKER_RS_BIN,

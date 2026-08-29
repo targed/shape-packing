@@ -24,13 +24,15 @@ import os
 # - repo root: "python polygon-packer/polygon_packer.py"
 # - inside polygon-packer: "python polygon_packer.py"
 _SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
-_REPO_ROOT = os.path.dirname(_SCRIPT_DIR)
-for p in (_REPO_ROOT, _SCRIPT_DIR):
+_REPO_ROOT = os.path.abspath(os.path.join(_SCRIPT_DIR, "..", "..", ".."))
+_SRC_DIR = os.path.join(_REPO_ROOT, "src", "shape_packing")
+_SRC_ROOT = os.path.join(_REPO_ROOT, "src")
+for p in (_REPO_ROOT, _SRC_ROOT, _SRC_DIR, _SCRIPT_DIR):
     if p not in sys.path:
         sys.path.insert(0, p)
 
-from geometry import get_shape_geometry, transform_polygon
-from optimization import (
+from shape_packing.geometry import get_shape_geometry, transform_polygon
+from shape_packing.optimization import (
     build_objective,
     OptConfig,
     PackingProblem,
