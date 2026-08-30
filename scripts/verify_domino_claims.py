@@ -34,7 +34,11 @@ def audit_domino_solutions():
 
     _load_friedman_verification_jsons()
 
-    results_dir = os.path.join(REPO_ROOT, "results")
+    results_dir = (
+        os.path.join(REPO_ROOT, "data", "results")
+        if os.path.exists(os.path.join(REPO_ROOT, "data", "results"))
+        else os.path.join(REPO_ROOT, "results")
+    )
     if not os.path.exists(results_dir):
         print(f"ERROR: results directory not found at {results_dir}")
         return

@@ -2,7 +2,11 @@ import json
 import os
 from collections import defaultdict
 
-RESULTS_DIR = "results"
+RESULTS_DIR = (
+    os.path.join("data", "results")
+    if os.path.exists(os.path.join("data", "results"))
+    else "results"
+)
 PACKING_VER_DIR = (
     os.path.join("data", "packingVerification")
     if os.path.exists(os.path.join("data", "packingVerification"))

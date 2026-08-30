@@ -13,8 +13,8 @@ from src.shape_packing.records_exporter import export_records
 
 def main():
     parser = argparse.ArgumentParser(description="Export world-record packing solutions for submission to Erich Friedman.")
-    parser.add_argument("--results-dir", default="results", help="Path to results directory (default: results)")
-    parser.add_argument("--output-dir", default="records", help="Path to export directory (default: records)")
+    parser.add_argument("--results-dir", default=None, help="Path to results directory (default: data/results)")
+    parser.add_argument("--output-dir", default=None, help="Path to export directory (default: data/records)")
     parser.add_argument("--min-improvement", type=float, default=1e-5, help="Minimum improvement delta (default: 1e-5)")
     parser.add_argument("--family", default="all", help="Filter by shape family code (e.g. dominpen, dominhex, or all)")
     parser.add_argument("--clean", action="store_true", help="Clean output directory before exporting")

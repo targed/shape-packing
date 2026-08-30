@@ -23,6 +23,8 @@ from src.shape_packing.packing_config import (
     get_friedman_best_for_problem,
     compute_problem_difficulty_score,
     compute_adaptive_attempts,
+    RESULTS_DIR,
+    RESULTS_TSV_PATH,
 )
 
 # Global shutdown flag for graceful exit
@@ -246,7 +248,7 @@ def run_loop():
     from src.shape_packing.agent_loop import load_history
     global _GLOBAL_HISTORY
     print("[Main] Loading history into memory...")
-    _GLOBAL_HISTORY = load_history("results.tsv")
+    _GLOBAL_HISTORY = load_history(RESULTS_TSV_PATH)
     
     with concurrent.futures.ProcessPoolExecutor(max_workers=num_cores, initializer=init_worker, initargs=(_GLOBAL_HISTORY,)) as executor:
         while not _SHUTDOWN:
@@ -287,7 +289,7 @@ def run_loop():
                             results_since_commit += 1
                             if results_since_commit >= 10:
                                 print(f"[Main] Batch committing {results_since_commit} runs...")
-                                subprocess.run(["git", "add", "results.tsv", "results/"])
+                                subprocess.run(["git", "add", RESULTS_TSV_PATH, RESULTS_DIR])
                                 subprocess.run(["git", "commit", "-m", f"auto: batch update of {results_since_commit} runs"])
                                 results_since_commit = 0
                     except Exception as e:

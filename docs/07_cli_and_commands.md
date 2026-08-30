@@ -180,7 +180,7 @@ python -m src.shape_packing.cli verify results/6_TAN_in_L/20260827_155937/soluti
 
 ## 4. `cli site-data` (Dashboard Data Builder)
 
-Aggregates `data/packingVerification/*.json`, `results/`, `results.tsv`, and `priority_queue.json` into `site/src/data/site_data.json` for the interactive web frontend.
+Aggregates `data/packingVerification/*.json`, `data/results/`, `data/results.tsv`, and `data/priority_queue.json` into `site/src/data/site_data.json` for the interactive web frontend.
 
 ```bash
 python -m src.shape_packing.cli site-data [OPTIONS]
@@ -191,7 +191,7 @@ python -m src.shape_packing.cli site-data [OPTIONS]
 | Flag | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | `--records-dir` | `PATH` | `data/packingVerification/` | Directory containing Erich Friedman benchmark JSON files. |
-| `--results-tsv` | `PATH` | `results.tsv` | Path to the experiment history TSV file. |
+| `--results-tsv` | `PATH` | `data/results.tsv` | Path to the experiment history TSV file. |
 | `--output`, `-o` | `PATH` | `site/src/data/site_data.json` | Destination path for the aggregated web database. |
 | `--quiet`, `-q` | `FLAG` | `False` | Suppress progress output during aggregation. |
 

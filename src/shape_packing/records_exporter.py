@@ -75,11 +75,15 @@ class ExportResult:
 
 
 from .solution_tools import load_solution, compute_friedman_metric
-from .packing_config import get_friedman_best_for_problem, _load_friedman_verification_jsons
+from .packing_config import (
+    get_friedman_best_for_problem,
+    _load_friedman_verification_jsons,
+    RESULTS_DIR,
+)
 
 
 def find_all_records(
-    results_dir: str = "results",
+    results_dir: Optional[str] = None,
     min_improvement: float = 1e-5,
     family_filter: Optional[str] = None,
 ) -> List[RecordCandidate]:
@@ -88,6 +92,13 @@ def find_all_records(
     and returns RecordCandidates that strictly beat Erich Friedman's known benchmarks.
     """
     _load_friedman_verification_jsons()
+    if results_dir is None:
+        results_dir = RESULTS_DIR
+        if not os.path.exists(results_dir):
+            if os.path.exists(os.path.join("data", "results")):
+                results_dir = os.path.join("data", "results")
+            elif os.path.exists("results"):
+                results_dir = "results"
     if not os.path.exists(results_dir):
         return []
 
@@ -358,8 +369,8 @@ from .solution_tools import verify_solution, render_solution
 
 
 def export_records(
-    results_dir: str = "results",
-    output_dir: str = "records",
+    results_dir: Optional[str] = None,
+    output_dir: Optional[str] = None,
     min_improvement: float = 1e-5,
     family_filter: Optional[str] = None,
     clean: bool = False,
@@ -370,6 +381,17 @@ def export_records(
     Audit results_dir, filter all genuine world records beating Friedman benchmarks,
     verify geometries, render tight PNGs matching website pixel dimensions, and package full submission kits into output_dir.
     """
+    if results_dir is None:
+        results_dir = RESULTS_DIR
+        if not os.path.exists(results_dir):
+            if os.path.exists(os.path.join("data", "results")):
+                results_dir = os.path.join("data", "results")
+            elif os.path.exists("results"):
+                results_dir = "results"
+
+    if output_dir is None:
+        output_dir = os.path.join("data", "records") if os.path.exists("data") else "records"
+
     if clean and os.path.exists(output_dir):
         shutil.rmtree(output_dir)
 

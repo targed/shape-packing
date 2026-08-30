@@ -92,9 +92,9 @@ python scripts/export_records.py --family dominpen
 python scripts/export_records.py --min-improvement 1e-4
 ```
 
-### Generated Submission Kit Layout (`records/`)
+### Generated Submission Kit Layout (`data/records/`)
 ```text
-records/
+data/records/
 ├── summary.md                    # Markdown summary table of all broken records
 ├── manifest.json                 # Structured JSON index of records & metrics
 ├── submissions/                  # Ready-to-send email drafts grouped per family

@@ -100,11 +100,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Render solution JSON files to PNG visualizer images."
     )
+    default_target = "data/results" if os.path.exists("data/results") else "results"
     parser.add_argument(
         "target",
         nargs="?",
-        default="results",
-        help="Path to a solution.json file or directory (default: 'results')",
+        default=default_target,
+        help="Path to a solution.json file or directory (default: data/results)",
     )
     parser.add_argument(
         "output_png",

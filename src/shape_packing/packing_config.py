@@ -52,10 +52,22 @@ MIN_VALID_CIRCLE_SCORE: float = 0.1
 # =====================
 # File paths
 # =====================
-RESULTS_DIR: str = "results"
-RESULTS_TSV: str = "results.tsv"
-RESULTS_TSV_PATH: str = "results.tsv"
-PRIORITY_QUEUE_PATH: str = "priority_queue.json"
+RESULTS_DIR: str = (
+    os.path.join("data", "results")
+    if os.path.exists(os.path.join("data", "results"))
+    else "results"
+)
+RESULTS_TSV: str = (
+    os.path.join("data", "results.tsv")
+    if os.path.exists(os.path.join("data", "results.tsv"))
+    else "results.tsv"
+)
+RESULTS_TSV_PATH: str = RESULTS_TSV
+PRIORITY_QUEUE_PATH: str = (
+    os.path.join("data", "priority_queue.json")
+    if os.path.exists(os.path.join("data", "priority_queue.json"))
+    else "priority_queue.json"
+)
 PACKING_VERIFICATION_DIR: str = (
     os.path.join("data", "packingVerification")
     if os.path.exists(os.path.join("data", "packingVerification"))
@@ -438,12 +450,20 @@ def _normalize_key(p_str: str) -> str:
 
 
 def load_all_problem_history_stats(
-    history_path: str = "results.tsv",
+    history_path: Optional[str] = None,
 ) -> Dict[str, Dict[str, Any]]:
     """
     Parse results.tsv once and cache all per-problem stats in memory.
     Returns mapping from normalized problem key -> stats dictionary.
     """
+    if history_path is None:
+        history_path = RESULTS_TSV_PATH
+        if not os.path.exists(history_path):
+            if os.path.exists(os.path.join("data", "results.tsv")):
+                history_path = os.path.join("data", "results.tsv")
+            elif os.path.exists("results.tsv"):
+                history_path = "results.tsv"
+
     if not os.path.isfile(history_path):
         return {}
 
@@ -529,7 +549,7 @@ def load_all_problem_history_stats(
 
 def get_problem_history_stats(
     problem: str,
-    history_path: str = "results.tsv",
+    history_path: Optional[str] = None,
     cache: Optional[Dict] = None,
 ) -> Dict[str, Any]:
     """
@@ -844,9 +864,6 @@ QUEUE_PROBLEM_CAP1 = 60
 QUEUE_PROBLEM_CAP2 = 100
 QUEUE_FAMILY_CAP1 = 400
 QUEUE_FAMILY_CAP2 = 800
-
-PRIORITY_QUEUE_PATH = "priority_queue.json"
-RESULTS_TSV_PATH = "results.tsv"
 
 # =====================
 # Shape metadata & Families

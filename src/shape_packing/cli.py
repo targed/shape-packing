@@ -8,13 +8,14 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Set, Union
 from .agent_loop import load_history, choose_problem, current_best_scores
 from .solver_interface import run_solver
+from .packing_config import RESULTS_DIR, RESULTS_TSV_PATH
 
 
 def handle_suggest(args, history_cache=None, direct_call=False):
     if history_cache is not None:
         history = history_cache
     else:
-        history = load_history("results.tsv")
+        history = load_history(RESULTS_TSV_PATH)
         
     best = current_best_scores(history)
     
@@ -102,7 +103,7 @@ def handle_run(args, history_cache=None, direct_call=False):
     from datetime import datetime
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    result_dir = os.path.join("results", p_clean, timestamp)
+    result_dir = os.path.join(RESULTS_DIR, p_clean, timestamp)
     os.makedirs(result_dir, exist_ok=True)
     solution_file = os.path.join(result_dir, "solution.json")
     
@@ -115,7 +116,7 @@ def handle_run(args, history_cache=None, direct_call=False):
         if history_cache is not None:
             history = history_cache
         else:
-            history = load_history("results.tsv")
+            history = load_history(RESULTS_TSV_PATH)
             
         best = current_best_scores(history)
         if p_clean in best:
@@ -185,7 +186,7 @@ def handle_run(args, history_cache=None, direct_call=False):
         log_result(None, p_clean, score, 0.0, f"Auto run attempts={args.attempts}", commit="auto")
         
         # 5. Git commit
-        subprocess.run(["git", "add", "results.tsv", "results/"])
+        subprocess.run(["git", "add", RESULTS_TSV_PATH, RESULTS_DIR])
         subprocess.run(["git", "commit", "-m", f"auto: run {p_clean} score {score}", "--"])
     
     out = {"score": score}

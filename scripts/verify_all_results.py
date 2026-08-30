@@ -13,8 +13,11 @@ import sys
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-_SCRIPT_DIR = Path(__file__).resolve().parent
-RESULTS_DIR = _SCRIPT_DIR.parent / "results"
+RESULTS_DIR = (
+    _SCRIPT_DIR.parent / "data" / "results"
+    if (_SCRIPT_DIR.parent / "data" / "results").exists()
+    else _SCRIPT_DIR.parent / "results"
+)
 
 # Import verify_solution in-process (avoids per-file subprocess overhead)
 sys.path.insert(0, str(_SCRIPT_DIR.parent / "src"))

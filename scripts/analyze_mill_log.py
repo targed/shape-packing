@@ -27,9 +27,9 @@ def parse_args():
     return parser.parse_args()
 
 def find_latest_log():
-    log_files = glob.glob(os.path.join("results", "mill-*.out"))
+    log_files = glob.glob(os.path.join("data", "results", "mill-*.out")) + glob.glob(os.path.join("results", "mill-*.out"))
     if not log_files:
-        raise FileNotFoundError("No log files matching 'results/mill-*.out' were found.")
+        raise FileNotFoundError("No log files matching 'data/results/mill-*.out' or 'results/mill-*.out' were found.")
     log_files.sort(key=os.path.getmtime, reverse=True)
     return log_files[0]
 

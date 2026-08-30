@@ -33,6 +33,8 @@ from src.shape_packing.packing_config import (
     LOOP_MAX_CONSECUTIVE_FAILURES as MAX_CONSECUTIVE_FAILURES,
     LOOP_BASE_BACKOFF as BASE_BACKOFF,
     LOOP_MAX_BACKOFF as MAX_BACKOFF,
+    RESULTS_DIR,
+    RESULTS_TSV_PATH,
 )
 
 FORCE_DIVERSE = False
@@ -103,7 +105,7 @@ def run_loop():
     print(f"[Loop] Starting infinite search loop.")
     from src.shape_packing.agent_loop import load_history
     global _GLOBAL_HISTORY
-    _GLOBAL_HISTORY = load_history("results.tsv")
+    _GLOBAL_HISTORY = load_history(RESULTS_TSV_PATH)
     print(f"[Loop] Mode: {'Radical/Diverse' if FORCE_DIVERSE else 'Incremental/Exploitative'}")
 
     bin_candidates = [
@@ -202,7 +204,7 @@ def run_loop():
             results_since_commit += 1
             if results_since_commit >= 10:
                 print(f"[Loop] Batch committing {results_since_commit} runs...")
-                subprocess.run(["git", "add", "results.tsv", "results/"])
+                subprocess.run(["git", "add", RESULTS_TSV_PATH, RESULTS_DIR])
                 subprocess.run(["git", "commit", "-m", f"auto: batch update of {results_since_commit} runs"])
                 results_since_commit = 0
                 

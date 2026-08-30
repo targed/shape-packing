@@ -53,6 +53,7 @@ from shape_packing.packing_config import (
     RUST_BINARY as PACKER_RS_BIN,
     RUST_TOLERANCE,
     RUST_DEFAULT_TIME_LIMIT as RUST_TIME_LIMIT,
+    RESULTS_DIR,
 )
 
 EXTRA_PACKER_ARGS = [
@@ -202,8 +203,9 @@ def select_auto_target() -> Tuple[str, str]:
 
     # Filter out problems that already have at least one result directory.
     existing_problems = set()
-    if os.path.isdir("results"):
-        for d in os.listdir("results"):
+    res_dir = RESULTS_DIR if os.path.isdir(RESULTS_DIR) else ("data/results" if os.path.isdir("data/results") else "results")
+    if os.path.isdir(res_dir):
+        for d in os.listdir(res_dir):
             if d.startswith("_") or d.startswith("."):
                 continue
             if "/" in d:
@@ -290,7 +292,7 @@ def list_auto_targets() -> Tuple[List[str], List[str]]:
 
 
 def ensure_problem_output_dir(problem: str) -> str:
-    base = "results"
+    base = RESULTS_DIR
     if os.path.exists(base) and not os.path.isdir(base):
         os.remove(base)
     os.makedirs(base, exist_ok=True)

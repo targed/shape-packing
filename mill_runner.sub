@@ -7,7 +7,7 @@
 #SBATCH --mail-type=begin,end,fail
 #SBATCH --mail-user=ltkhg4@mst.edu
 #SBATCH --export=all
-#SBATCH --out=results/mill-%j.out
+#SBATCH --out=data/results/mill-%j.out
 
 # Load Rust environment and compile before Anaconda breaks LD_LIBRARY_PATH
 source "$HOME/.cargo/env"

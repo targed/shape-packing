@@ -97,11 +97,11 @@ The auto-researcher operates as an autonomous continuous improvement loop:
  └──────────────┘                          └──────────────┘
 ```
 
-1. **Select Target**: `agent_loop.choose_problem()` selects the next highest priority problem from `priority_queue.json` or `results.tsv`.
+1. **Select Target**: `agent_loop.choose_problem()` selects the next highest priority problem from `data/priority_queue.json` or `data/results.tsv`.
 2. **Execute Solver**: Calls `solver_interface.run_solver()` which communicates directly with `packer_rs` via PyO3 in-process native bindings (or falls back to the compiled CLI binary).
 3. **Verify Solution**: `verify_solution()` inspects `solution.json` using exact compound SAT overlap, container boundary containment, metric scaling, and physical area checks.
-4. **Log Result**: `log_result()` appends the experiment score to `results.tsv` with status `keep`, `discard`, or `crash`.
-5. **Update Site Data**: `scripts/build_site_data.py` aggregates `data/packingVerification/*.json`, `results/`, `results.tsv`, and `priority_queue.json` to produce `site/src/data/site_data.json` for the Astro web dashboard.
+4. **Log Result**: `log_result()` appends the experiment score to `data/results.tsv` with status `keep`, `discard`, or `crash`.
+5. **Update Site Data**: `scripts/build_site_data.py` aggregates `data/packingVerification/*.json`, `data/results/`, `data/results.tsv`, and `data/priority_queue.json` to produce `site/src/data/site_data.json` for the Astro web dashboard.
 
 ---
 

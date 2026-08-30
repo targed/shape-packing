@@ -7,12 +7,13 @@ from src.shape_packing.packing_config import (
     get_problem_history_stats,
     get_friedman_best_for_problem,
     compute_problem_difficulty_score,
+    RESULTS_TSV_PATH,
 )
 
 
 @pytest.fixture
 def history_path() -> str:
-    return "results.tsv"
+    return RESULTS_TSV_PATH
 
 
 def _min_score_for_problem(problem: str, path: str) -> float | None:

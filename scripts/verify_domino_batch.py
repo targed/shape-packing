@@ -11,7 +11,11 @@ import csv
 import subprocess
 from collections import defaultdict
 
-RESULTS_DIR = "results"
+RESULTS_DIR = (
+    os.path.join("data", "results")
+    if os.path.exists(os.path.join("data", "results"))
+    else "results"
+)
 FRIEDMAN_TSV = "scratch/PACKING_REFERENCE.tsv"
 
 def load_friedman_ref():

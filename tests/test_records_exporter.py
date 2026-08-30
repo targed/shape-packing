@@ -251,8 +251,12 @@ def test_export_records_e2e(tmp_path):
     p_dir = res_dir / "21_DOMINO_in_5" / "20260806_230206"
     p_dir.mkdir(parents=True)
     
-    real_sol_path = "results/21_DOMINO_in_5/20260806_230206/solution.json"
-    if os.path.exists(real_sol_path):
+    real_sol_candidates = [
+        "data/results/21_DOMINO_in_5/20260806_230206/solution.json",
+        "results/21_DOMINO_in_5/20260806_230206/solution.json",
+    ]
+    real_sol_path = next((p for p in real_sol_candidates if os.path.exists(p)), None)
+    if real_sol_path and os.path.exists(real_sol_path):
         with open(real_sol_path) as f:
             sol_data = json.load(f)
     else:

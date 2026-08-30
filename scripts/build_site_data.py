@@ -26,8 +26,16 @@ PACKING_VERIFICATION_DIR = (
     if (ROOT_DIR / "data" / "packingVerification").exists()
     else ROOT_DIR / "packingVerification"
 )
-RESULTS_DIR = ROOT_DIR / "results"
-PRIORITY_QUEUE_PATH = ROOT_DIR / "priority_queue.json"
+RESULTS_DIR = (
+    ROOT_DIR / "data" / "results"
+    if (ROOT_DIR / "data" / "results").exists()
+    else ROOT_DIR / "results"
+)
+PRIORITY_QUEUE_PATH = (
+    ROOT_DIR / "data" / "priority_queue.json"
+    if (ROOT_DIR / "data" / "priority_queue.json").exists()
+    else ROOT_DIR / "priority_queue.json"
+)
 OUTPUT_PATH = ROOT_DIR / "site" / "src" / "data" / "site_data.json"
 
 LEGACY_MAP = {

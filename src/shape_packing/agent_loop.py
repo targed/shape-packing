@@ -89,11 +89,18 @@ TSV_COLUMNS = ["commit", "score", "memory_gb", "status", "problem", "description
 # --------------- History I/O ---------------
 
 
-def load_history(path: str = "results.tsv") -> List[ExperimentResult]:
+def load_history(path: Optional[str] = None) -> List[ExperimentResult]:
     """
     Load results.tsv into a list of ExperimentResult.
     Skips malformed rows.
     """
+    if path is None:
+        path = RESULTS_TSV_PATH
+        if not os.path.exists(path):
+            if os.path.exists(os.path.join("data", "results.tsv")):
+                path = os.path.join("data", "results.tsv")
+            elif os.path.exists("results.tsv"):
+                path = "results.tsv"
     if not os.path.exists(path):
         return []
 
@@ -380,7 +387,14 @@ class ProblemSelectionConfig:
     family_cap2: int = QUEUE_FAMILY_CAP2
 
 
-def load_priority_queue(path: str = "priority_queue.json") -> List[Dict[str, float]]:
+def load_priority_queue(path: Optional[str] = None) -> List[Dict[str, float]]:
+    if path is None:
+        path = PRIORITY_QUEUE_PATH
+        if not os.path.exists(path):
+            if os.path.exists(os.path.join("data", "priority_queue.json")):
+                path = os.path.join("data", "priority_queue.json")
+            elif os.path.exists("priority_queue.json"):
+                path = "priority_queue.json"
     if not os.path.exists(path):
         return []
     try:
