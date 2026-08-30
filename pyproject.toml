@@ -9,11 +9,19 @@ description = "Autonomous 2D shape packing research loop (no ML)"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "numpy",
-    "scipy",
-    "matplotlib",
-    "numba",
-    "joblib",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "matplotlib>=3.7.0",
+    "numba>=0.58.0",
+    "joblib>=1.3.0",
+    "pillow>=9.5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "hypothesis>=6.100.0",
+    "pytest-cov>=4.1.0",
 ]
 
 [tool.setuptools.packages.find]

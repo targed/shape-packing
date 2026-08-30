@@ -23,12 +23,15 @@ def packing_reference_tsv(project_root):
     return os.path.join(str(project_root), "PACKING_REFERENCE.tsv")
 
 
+import sys
+
+
 def test_compare_results_runs(compare_script, project_root):
     """
     Ensure compare_results.py runs without crashing and produces output.
     """
     result = subprocess.run(
-        ["uv", "run", "python", compare_script],
+        [sys.executable, compare_script],
         cwd=str(project_root),
         capture_output=True,
         text=True,
@@ -44,7 +47,7 @@ def test_compare_results_respects_circles(compare_script, project_root):
     based on a misaligned metric.
     """
     result = subprocess.run(
-        ["uv", "run", "python", compare_script],
+        [sys.executable, compare_script],
         cwd=str(project_root),
         capture_output=True,
         text=True,
@@ -73,7 +76,7 @@ def test_compare_results_new_best_flag(compare_script, project_root):
     (and not a circle), NEW_BEST is used.
     """
     result = subprocess.run(
-        ["uv", "run", "python", compare_script],
+        [sys.executable, compare_script],
         cwd=str(project_root),
         capture_output=True,
         text=True,
