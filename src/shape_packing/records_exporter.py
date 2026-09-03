@@ -368,19 +368,12 @@ import shutil
 from .solution_tools import verify_solution, render_solution
 
 
-def export_records(
-    results_dir: Optional[str] = None,
-    output_dir: Optional[str] = None,
-    min_improvement: float = 1e-5,
-    family_filter: Optional[str] = None,
-    clean: bool = False,
-    dpi: int = 300,
-    quiet: bool = False,
-) -> Dict[str, Any]:
-    """
-    Audit results_dir, filter all genuine world records beating Friedman benchmarks,
-    verify geometries, render tight PNGs matching website pixel dimensions, and package full submission kits into output_dir.
-    """
+def _resolve_export_directories(
+    results_dir: Optional[str],
+    output_dir: Optional[str],
+    clean: bool,
+) -> Tuple[str, str]:
+    """Resolve results and output directories, creating or cleaning as needed."""
     if results_dir is None:
         results_dir = RESULTS_DIR
         if not os.path.exists(results_dir):
@@ -396,6 +389,74 @@ def export_records(
         shutil.rmtree(output_dir)
 
     os.makedirs(output_dir, exist_ok=True)
+    return results_dir, output_dir
+
+
+def _export_candidate(
+    cand: RecordCandidate,
+    output_dir: str,
+    dpi: int,
+    quiet: bool,
+) -> Tuple[bool, Optional[List[str]], Optional[str]]:
+    """Verify geometry, generate documentation, render images, and package a single record candidate."""
+    family_dir = os.path.join(output_dir, cand.family_code)
+    cand_out_dir = os.path.join(family_dir, cand.problem)
+    os.makedirs(cand_out_dir, exist_ok=True)
+
+    # 1. Verify geometry
+    v_res = verify_solution(cand.solution_path, cand.problem)
+    if not v_res.valid:
+        if not quiet:
+            print(f"  [FAIL] {cand.problem}: invalid geometry ({v_res.errors})")
+        return False, v_res.errors, None
+
+    try:
+        sol = load_solution(cand.solution_path)
+    except Exception as e:
+        return False, [f"load_solution failed: {e}"], None
+
+    # 2. Copy raw solution.json
+    shutil.copy2(cand.solution_path, os.path.join(cand_out_dir, "solution.json"))
+
+    # 3. Write coordinates.txt
+    coord_txt = generate_coordinates_text(cand, sol)
+    with open(os.path.join(cand_out_dir, "coordinates.txt"), "w", encoding="utf-8") as f:
+        f.write(coord_txt)
+
+    # 4. Write verification.txt
+    v_txt = generate_verification_text(cand, sol, v_res)
+    with open(os.path.join(cand_out_dir, "verification.txt"), "w", encoding="utf-8") as f:
+        f.write(v_txt)
+
+    # 5. Render site-ready direct replacement picture: records/<family>/<problem>/<target_filename>
+    target_fn = get_family_target_filename(cand.family_code, cand.N)
+    site_image_path = os.path.join(cand_out_dir, target_fn)
+    render_solution(cand.solution_path, site_image_path, crop_mode="tight")
+
+    # 6. Render high-res render.png and renderFull.png inside candidate folder
+    render_path = os.path.join(cand_out_dir, "render.png")
+    render_solution(cand.solution_path, render_path, crop_mode="tight", dpi=dpi)
+
+    render_path_full = os.path.join(cand_out_dir, "renderFull.png")
+    render_solution(cand.solution_path, render_path_full, crop_mode="tight", dpi=dpi)
+
+    return True, None, site_image_path
+
+
+def export_records(
+    results_dir: Optional[str] = None,
+    output_dir: Optional[str] = None,
+    min_improvement: float = 1e-5,
+    family_filter: Optional[str] = None,
+    clean: bool = False,
+    dpi: int = 300,
+    quiet: bool = False,
+) -> Dict[str, Any]:
+    """
+    Audit results_dir, filter all genuine world records beating Friedman benchmarks,
+    verify geometries, render tight PNGs matching website pixel dimensions, and package full submission kits into output_dir.
+    """
+    results_dir, output_dir = _resolve_export_directories(results_dir, output_dir, clean)
     candidates = find_all_records(results_dir, min_improvement, family_filter)
 
     if not quiet:
@@ -405,52 +466,17 @@ def export_records(
     failed: List[Tuple[RecordCandidate, List[str]]] = []
 
     for cand in candidates:
-        family_dir = os.path.join(output_dir, cand.family_code)
-        cand_out_dir = os.path.join(family_dir, cand.problem)
-        os.makedirs(cand_out_dir, exist_ok=True)
-
-        # 1. Verify geometry
-        v_res = verify_solution(cand.solution_path, cand.problem)
-        if not v_res.valid:
-            failed.append((cand, v_res.errors))
-            if not quiet:
-                print(f"  [FAIL] {cand.problem}: invalid geometry ({v_res.errors})")
+        success, errors, site_image_path = _export_candidate(cand, output_dir, dpi, quiet)
+        if not success:
+            failed.append((cand, errors or []))
             continue
-
-        try:
-            sol = load_solution(cand.solution_path)
-        except Exception as e:
-            failed.append((cand, [f"load_solution failed: {e}"]))
-            continue
-
-        # 2. Copy raw solution.json
-        shutil.copy2(cand.solution_path, os.path.join(cand_out_dir, "solution.json"))
-
-        # 3. Write coordinates.txt
-        coord_txt = generate_coordinates_text(cand, sol)
-        with open(os.path.join(cand_out_dir, "coordinates.txt"), "w", encoding="utf-8") as f:
-            f.write(coord_txt)
-
-        # 4. Write verification.txt
-        v_txt = generate_verification_text(cand, sol, v_res)
-        with open(os.path.join(cand_out_dir, "verification.txt"), "w", encoding="utf-8") as f:
-            f.write(v_txt)
-
-        # 5. Render site-ready direct replacement picture: records/<family>/<problem>/<target_filename>
-        target_fn = get_family_target_filename(cand.family_code, cand.N)
-        site_image_path = os.path.join(cand_out_dir, target_fn)
-        render_solution(cand.solution_path, site_image_path, crop_mode="tight")
-
-        # 6. Render high-res render.png and renderFull.png inside candidate folder
-        render_path = os.path.join(cand_out_dir, "render.png")
-        render_solution(cand.solution_path, render_path, crop_mode="tight", dpi=dpi)
-
-        render_path_full = os.path.join(cand_out_dir, "renderFull.png")
-        render_solution(cand.solution_path, render_path_full, crop_mode="tight", dpi=dpi)
 
         exported.append(cand)
         if not quiet:
-            print(f"  [OK] {cand.problem}: s={cand.metric:.5f}+ (exact: {cand.metric:.6f}) vs {cand.friedman_best:.5f}+ ({cand.improvement:+.6f}) -> {site_image_path}")
+            print(
+                f"  [OK] {cand.problem}: s={cand.metric:.5f}+ (exact: {cand.metric:.6f}) "
+                f"vs {cand.friedman_best:.5f}+ ({cand.improvement:+.6f}) -> {site_image_path}"
+            )
 
     # 7. Generate manifests & drafts
     manifest_path = generate_manifest(exported, output_dir)

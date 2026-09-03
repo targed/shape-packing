@@ -38,67 +38,70 @@ def _try_import_pyo3_packer():
             pass
     return None
 
-def run_solver(
+def _run_pyo3_solver(
     n_shapes: int,
     inner_shape: str,
     container_shape: str,
-    attempts: int = 1000,
-    tolerance: float = 1e-30,
-    finalstep: float = 0.0001,
-    time_limit: Optional[float] = None,
-    initial_positions: Optional[List[float]] = None,
-    target_s: Optional[float] = None,
-    solution_file: Optional[str] = None,
-    no_build: bool = True,
-) -> Dict[str, Any]:
+    attempts: int,
+    tolerance: float,
+    finalstep: float,
+    time_limit: Optional[float],
+    initial_positions: Optional[List[float]],
+    target_s: Optional[float],
+    solution_file: Optional[str],
+) -> Optional[Dict[str, Any]]:
+    """Attempt solving using direct in-process PyO3 extension module."""
     pyo3_mod = _try_import_pyo3_packer()
-    
-    if pyo3_mod is not None and hasattr(pyo3_mod, "solve_py"):
-        try:
-            res = pyo3_mod.solve_py(
-                n_shapes,
-                str(inner_shape),
-                str(container_shape),
-                attempts=attempts,
-                tolerance=tolerance,
-                finalstep=finalstep,
-                time_limit=time_limit,
-                initial_positions=initial_positions,
-                target_s=target_s,
-            )
-            if res is not None:
-                if "N" not in res:
-                    res["N"] = n_shapes
-                S = res.get("S", 0.0)
-                final_metric = res.get("final_metric", 0.0)
-                values = res.get("values", [])
-                
-                if solution_file:
-                    os.makedirs(os.path.dirname(os.path.abspath(solution_file)), exist_ok=True)
-                    with open(solution_file, "w") as f:
-                        json.dump(res, f, indent=2)
-                        
-                return {
-                    "success": True,
-                    "score": final_metric,
-                    "S": S,
-                    "values": values,
-                    "backend": "pyo3",
-                    "output": f"Final side length: {final_metric}",
-                }
-            else:
-                return {
-                    "success": False,
-                    "score": 0.0,
-                    "S": 0.0,
-                    "values": [],
-                    "backend": "pyo3",
-                    "output": "No valid packing found.",
-                }
-        except Exception:
-            pass
+    if pyo3_mod is None or not hasattr(pyo3_mod, "solve_py"):
+        return None
 
-    # Binary Subprocess Fallback
+    try:
+        res = pyo3_mod.solve_py(
+            n_shapes,
+            str(inner_shape),
+            str(container_shape),
+            attempts=attempts,
+            tolerance=tolerance,
+            finalstep=finalstep,
+            time_limit=time_limit,
+            initial_positions=initial_positions,
+            target_s=target_s,
+        )
+        if res is None:
+            return {
+                "success": False,
+                "score": 0.0,
+                "S": 0.0,
+                "values": [],
+                "backend": "pyo3",
+                "output": "No valid packing found.",
+            }
+
+        if "N" not in res:
+            res["N"] = n_shapes
+        S = res.get("S", 0.0)
+        final_metric = res.get("final_metric", 0.0)
+        values = res.get("values", [])
+
+        if solution_file:
+            os.makedirs(os.path.dirname(os.path.abspath(solution_file)), exist_ok=True)
+            with open(solution_file, "w") as f:
+                json.dump(res, f, indent=2)
+
+        return {
+            "success": True,
+            "score": final_metric,
+            "S": S,
+            "values": values,
+            "backend": "pyo3",
+            "output": f"Final side length: {final_metric}",
+        }
+    except Exception:
+        return None
+
+
+def _resolve_rust_binary(no_build: bool = True) -> str:
+    """Locate or build the Rust solver binary."""
     repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
     rust_binary = os.path.join(repo_root, "packer_rs", "target", "release", "packer_rs.exe")
     if not os.path.exists(rust_binary):
@@ -111,7 +114,44 @@ def run_solver(
             check=True,
             stdout=subprocess.DEVNULL,
         )
+    return rust_binary
 
+
+def _parse_cli_solver_output(
+    stdout: str,
+    solution_file: Optional[str],
+) -> Tuple[float, List[float]]:
+    """Parse objective score and configuration values from solver stdout and solution file."""
+    score = 0.0
+    values: List[float] = []
+    for line in stdout.splitlines():
+        if line.startswith("Final side length:"):
+            score = float(line.split(":")[-1].strip())
+
+    if solution_file and os.path.exists(solution_file):
+        try:
+            with open(solution_file, "r") as f:
+                data = json.load(f)
+                values = data.get("values", [])
+        except Exception:
+            pass
+
+    return score, values
+
+
+def _run_rust_cli_solver(
+    n_shapes: int,
+    inner_shape: str,
+    container_shape: str,
+    attempts: int,
+    time_limit: Optional[float],
+    initial_positions: Optional[List[float]],
+    target_s: Optional[float],
+    solution_file: Optional[str],
+    no_build: bool,
+) -> Dict[str, Any]:
+    """Execute solver via external standalone Rust binary CLI subprocess."""
+    rust_binary = _resolve_rust_binary(no_build=no_build)
     cmd = [
         rust_binary,
         str(n_shapes), str(inner_shape), str(container_shape),
@@ -152,19 +192,7 @@ def run_solver(
                 "output": stdout,
             }
 
-        score = 0.0
-        values = []
-        for line in stdout.splitlines():
-            if line.startswith("Final side length:"):
-                score = float(line.split(":")[-1].strip())
-
-        if solution_file and os.path.exists(solution_file):
-            try:
-                with open(solution_file, "r") as f:
-                    data = json.load(f)
-                    values = data.get("values", [])
-            except Exception:
-                pass
+        score, values = _parse_cli_solver_output(stdout, solution_file)
 
         return {
             "success": True,
@@ -185,3 +213,45 @@ def run_solver(
                 os.remove(init_json_path)
             except OSError:
                 pass
+
+
+def run_solver(
+    n_shapes: int,
+    inner_shape: str,
+    container_shape: str,
+    attempts: int = 1000,
+    tolerance: float = 1e-30,
+    finalstep: float = 0.0001,
+    time_limit: Optional[float] = None,
+    initial_positions: Optional[List[float]] = None,
+    target_s: Optional[float] = None,
+    solution_file: Optional[str] = None,
+    no_build: bool = True,
+) -> Dict[str, Any]:
+    """Execute shape packing solver using PyO3 backend if available, falling back to Rust CLI binary."""
+    pyo3_res = _run_pyo3_solver(
+        n_shapes=n_shapes,
+        inner_shape=inner_shape,
+        container_shape=container_shape,
+        attempts=attempts,
+        tolerance=tolerance,
+        finalstep=finalstep,
+        time_limit=time_limit,
+        initial_positions=initial_positions,
+        target_s=target_s,
+        solution_file=solution_file,
+    )
+    if pyo3_res is not None:
+        return pyo3_res
+
+    return _run_rust_cli_solver(
+        n_shapes=n_shapes,
+        inner_shape=inner_shape,
+        container_shape=container_shape,
+        attempts=attempts,
+        time_limit=time_limit,
+        initial_positions=initial_positions,
+        target_s=target_s,
+        solution_file=solution_file,
+        no_build=no_build,
+    )

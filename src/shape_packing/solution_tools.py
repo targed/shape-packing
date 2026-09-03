@@ -667,6 +667,151 @@ def to_plot_data(sol: "Solution", align_container: bool = RENDER_ALIGN_CONTAINER
 # --------------- Rendering ---------------
 
 
+def _resolve_render_styles(
+    sol: "Solution",
+    inner_face_color: Optional[str],
+    container_face_color: Optional[str],
+    bg_color: Optional[str],
+    width_px: Optional[int],
+    height_px: Optional[int],
+    size_px: Optional[int],
+) -> Tuple[str, str, str, Optional[int], Optional[int]]:
+    """Resolve color scheme and image dimensions using family defaults if not specified."""
+    fam_colors = get_family_colors(sol.inner_token, sol.container_token, N=sol.N)
+    resolved_inner = inner_face_color or fam_colors.get("inner", RENDER_INNER_FACE_COLOR)
+    resolved_container = container_face_color or fam_colors.get("container", RENDER_BG_COLOR or "#FFFFFF")
+    resolved_bg = bg_color or fam_colors.get("container", RENDER_BG_COLOR or "#FFFFFF")
+
+    target_w = width_px or (size_px if size_px else fam_colors.get("width", 240))
+    target_h = height_px or (size_px if size_px else fam_colors.get("height", 240))
+    return resolved_inner, resolved_container, resolved_bg, target_w, target_h
+
+
+def _create_render_figure(
+    plt: Any,
+    target_w: Optional[int],
+    target_h: Optional[int],
+    bg_color: Optional[str],
+    dpi: int,
+) -> Tuple[Any, Any, int]:
+    """Create and configure matplotlib figure and axes."""
+    if target_w and target_h:
+        fig = plt.figure(figsize=(target_w / 72.0, target_h / 72.0), dpi=72)
+        ax = fig.add_axes([0, 0, 1, 1])
+        render_dpi = 72
+    else:
+        fig, ax = plt.subplots(figsize=RENDER_FIGURE_SIZE)
+        render_dpi = dpi
+
+    if bg_color:
+        fig.patch.set_facecolor(bg_color)
+        ax.set_facecolor(bg_color)
+    return fig, ax, render_dpi
+
+
+def _draw_render_container(
+    ax: Any,
+    plt: Any,
+    sol: "Solution",
+    data: Dict[str, Any],
+    container_color: str,
+    container_face_color: str,
+    container_lw: float,
+) -> None:
+    """Draw container boundary (circle or polygon) on axes."""
+    is_container_circle = sol.container_token.upper() in ("CIRCLE", "CIR")
+    if is_container_circle:
+        if container_face_color and container_face_color.lower() != "none":
+            c = plt.Circle((0, 0), sol.S, facecolor=container_face_color, edgecolor=container_color, linewidth=container_lw)
+        else:
+            c = plt.Circle((0, 0), sol.S, color=container_color, fill=False, linewidth=container_lw)
+        ax.add_patch(c)
+    else:
+        container = list(data["container_vertices"]) + [data["container_vertices"][0]]
+        if container_face_color and container_face_color.lower() != "none":
+            ax.fill(
+                [v[0] for v in container],
+                [v[1] for v in container],
+                facecolor=container_face_color,
+                edgecolor=container_color,
+                linewidth=container_lw,
+            )
+        else:
+            ax.plot(
+                [v[0] for v in container],
+                [v[1] for v in container],
+                color=container_color,
+                linewidth=container_lw,
+                solid_capstyle="projecting",
+                solid_joinstyle="miter",
+            )
+
+
+def _draw_render_shapes(
+    ax: Any,
+    plt: Any,
+    sol: "Solution",
+    data: Dict[str, Any],
+    inner_face_color: str,
+    inner_edge_color: str,
+    inner_lw: float,
+) -> None:
+    """Draw packed inner shapes (circles or polygons) on axes."""
+    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
+    if is_inner_circle:
+        for center in data["centers"]:
+            c = plt.Circle(center, 1.0, facecolor=inner_face_color, edgecolor=inner_edge_color, linewidth=inner_lw)
+            ax.add_patch(c)
+    else:
+        for poly in data["polygons"]:
+            poly_plot = list(poly) + [poly[0]]
+            ax.fill(
+                [v[0] for v in poly_plot],
+                [v[1] for v in poly_plot],
+                facecolor=inner_face_color,
+                edgecolor=inner_edge_color,
+                linewidth=inner_lw,
+            )
+
+
+def _configure_render_view(
+    ax: Any,
+    sol: "Solution",
+    data: Dict[str, Any],
+    crop_mode: str,
+    target_w: Optional[int],
+    pad_px: float,
+    show_axes: bool,
+    show_grid: bool,
+) -> None:
+    """Configure aspect ratio, limits, axes visibility, and grid."""
+    crop = (crop_mode or "tight").lower().strip()
+    if crop in ("tight", "container"):
+        c_verts = np.array(data["container_vertices"])
+        xmin, xmax = c_verts[:, 0].min(), c_verts[:, 0].max()
+        ymin, ymax = c_verts[:, 1].min(), c_verts[:, 1].max()
+
+        if target_w:
+            w_data = xmax - xmin
+            pad_data = (pad_px / float(target_w)) * w_data
+        else:
+            pad_data = pad_px * 0.01 * (xmax - xmin)
+
+        ax.set_xlim(xmin - pad_data, xmax + pad_data)
+        ax.set_ylim(ymin - pad_data, ymax + pad_data)
+    elif crop in ("circumradius", "radius", "s"):
+        ax.set_xlim(-sol.S, sol.S)
+        ax.set_ylim(-sol.S, sol.S)
+    else:
+        ax.autoscale_view()
+
+    ax.set_aspect("equal")
+    if not show_axes:
+        ax.axis("off")
+    if show_grid:
+        ax.grid(True, linestyle="--", alpha=0.3)
+
+
 def render_solution(
     sol_path: str,
     out_png: str = "solution.png",
@@ -703,100 +848,14 @@ def render_solution(
     sol = load_solution(sol_path)
     data = to_plot_data(sol, align_container=align_container)
 
-    # Auto-resolve colors and exact per-N dimensions from shape family configuration if not explicitly specified
-    fam_colors = get_family_colors(sol.inner_token, sol.container_token, N=sol.N)
-    if inner_face_color is None:
-        inner_face_color = fam_colors.get("inner", RENDER_INNER_FACE_COLOR)
-    if container_face_color is None:
-        container_face_color = fam_colors.get("container", RENDER_BG_COLOR or "#FFFFFF")
-    if bg_color is None:
-        bg_color = fam_colors.get("container", RENDER_BG_COLOR or "#FFFFFF")
+    inner_fc, container_fc, bg_c, target_w, target_h = _resolve_render_styles(
+        sol, inner_face_color, container_face_color, bg_color, width_px, height_px, size_px
+    )
 
-    target_w = width_px or (size_px if size_px else fam_colors.get("width", 240))
-    target_h = height_px or (size_px if size_px else fam_colors.get("height", 240))
-
-    if target_w and target_h:
-        fig = plt.figure(figsize=(target_w / 72.0, target_h / 72.0), dpi=72)
-        ax = fig.add_axes([0, 0, 1, 1])
-        render_dpi = 72
-    else:
-        fig, ax = plt.subplots(figsize=RENDER_FIGURE_SIZE)
-        render_dpi = dpi
-
-    if bg_color:
-        fig.patch.set_facecolor(bg_color)
-        ax.set_facecolor(bg_color)
-
-    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
-    is_container_circle = sol.container_token.upper() in ("CIRCLE", "CIR")
-
-    if is_container_circle:
-        if container_face_color and container_face_color.lower() != "none":
-            c = plt.Circle((0, 0), sol.S, facecolor=container_face_color, edgecolor=container_color, linewidth=container_lw)
-            ax.add_patch(c)
-        else:
-            c = plt.Circle((0, 0), sol.S, color=container_color, fill=False, linewidth=container_lw)
-            ax.add_patch(c)
-    else:
-        container = list(data["container_vertices"]) + [data["container_vertices"][0]]
-        if container_face_color and container_face_color.lower() != "none":
-            ax.fill(
-                [v[0] for v in container],
-                [v[1] for v in container],
-                facecolor=container_face_color,
-                edgecolor=container_color,
-                linewidth=container_lw,
-            )
-        else:
-            ax.plot(
-                [v[0] for v in container],
-                [v[1] for v in container],
-                color=container_color,
-                linewidth=container_lw,
-                solid_capstyle="projecting",
-                solid_joinstyle="miter",
-            )
-
-    if is_inner_circle:
-        for center in data["centers"]:
-            c = plt.Circle(center, 1.0, facecolor=inner_face_color, edgecolor=inner_edge_color, linewidth=inner_lw)
-            ax.add_patch(c)
-    else:
-        for poly in data["polygons"]:
-            poly_plot = list(poly) + [poly[0]]
-            ax.fill(
-                [v[0] for v in poly_plot],
-                [v[1] for v in poly_plot],
-                facecolor=inner_face_color,
-                edgecolor=inner_edge_color,
-                linewidth=inner_lw,
-            )
-
-    crop = (crop_mode or "tight").lower().strip()
-    if crop in ("tight", "container"):
-        c_verts = np.array(data["container_vertices"])
-        xmin, xmax = c_verts[:, 0].min(), c_verts[:, 0].max()
-        ymin, ymax = c_verts[:, 1].min(), c_verts[:, 1].max()
-
-        if target_w:
-            w_data = xmax - xmin
-            pad_data = (pad_px / float(target_w)) * w_data
-        else:
-            pad_data = pad_px * 0.01 * (xmax - xmin)
-
-        ax.set_xlim(xmin - pad_data, xmax + pad_data)
-        ax.set_ylim(ymin - pad_data, ymax + pad_data)
-    elif crop in ("circumradius", "radius", "s"):
-        ax.set_xlim(-sol.S, sol.S)
-        ax.set_ylim(-sol.S, sol.S)
-    else:
-        ax.autoscale_view()
-
-    ax.set_aspect("equal")
-    if not show_axes:
-        ax.axis("off")
-    if show_grid:
-        ax.grid(True, linestyle="--", alpha=0.3)
+    fig, ax, render_dpi = _create_render_figure(plt, target_w, target_h, bg_c, dpi)
+    _draw_render_container(ax, plt, sol, data, container_color, container_fc, container_lw)
+    _draw_render_shapes(ax, plt, sol, data, inner_fc, inner_edge_color, inner_lw)
+    _configure_render_view(ax, sol, data, crop_mode, target_w, pad_px, show_axes, show_grid)
 
     if not (target_w and target_h):
         plt.tight_layout()
