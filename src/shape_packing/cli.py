@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import os
 import argparse
 import sys
 import json
 import subprocess
+import tempfile
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Set, Union
 from .agent_loop import load_history, choose_problem, current_best_scores
@@ -51,7 +53,7 @@ def handle_run(args, history_cache=None, direct_call=False):
         print(*a, **kw)
 
     # 1. Run init script if provided
-    init_json_path = None
+    init_positions_list = None
     if args.init_script:
         script_path = Path(args.init_script).resolve()
         if not script_path.is_file():
@@ -68,27 +70,48 @@ def handle_run(args, history_cache=None, direct_call=False):
                 return {"success": False, "error": err, "returncode": 1}
             sys.exit(1)
 
-        init_json_path = "initial_positions.json"
-        import runpy
-        old_argv = sys.argv
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as tmp_f:
+            init_json_path = tmp_f.name
+
         try:
-            sys.argv = [str(script_path), init_json_path]
-            runpy.run_path(str(script_path), run_name="__main__")
-        except SystemExit as se:
-            if se.code not in (0, None):
-                err = f"Init script exited with code {se.code}"
+            sub_proc = subprocess.run(
+                [sys.executable, str(script_path), init_json_path],
+                capture_output=True,
+                text=True,
+                timeout=120,
+            )
+            if sub_proc.returncode != 0:
+                err_msg = sub_proc.stderr.strip() or sub_proc.stdout.strip()
+                err = f"Init script failed:\n{err_msg}" if err_msg else f"Init script exited with code {sub_proc.returncode}"
                 eprint(err)
                 if direct_call:
-                    return {"success": False, "error": err, "returncode": se.code or 1}
-                sys.exit(se.code or 1)
+                    return {"success": False, "error": err, "returncode": sub_proc.returncode or 1}
+                sys.exit(sub_proc.returncode or 1)
+        except subprocess.TimeoutExpired:
+            err = f"Init script '{args.init_script}' timed out after 120 seconds."
+            eprint(err)
+            if direct_call:
+                return {"success": False, "error": err, "returncode": 1}
+            sys.exit(1)
         except Exception as e:
             err = f"Init script failed:\n{e}"
             eprint(err)
             if direct_call:
                 return {"success": False, "error": err, "returncode": 1}
             sys.exit(1)
+
+        try:
+            if os.path.exists(init_json_path):
+                with open(init_json_path, "r") as f:
+                    init_positions_list = json.load(f)
+        except Exception:
+            pass
         finally:
-            sys.argv = old_argv
+            if os.path.exists(init_json_path):
+                try:
+                    os.remove(init_json_path)
+                except OSError:
+                    pass
             
     # 2. Extract problem parts
     from .problems import parse_problem
@@ -99,7 +122,6 @@ def handle_run(args, history_cache=None, direct_call=False):
     container = p.container_token
     p_clean = normalize_problem_name(f"{N}_{inner}_in_{container}")
     
-    import os
     from datetime import datetime
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -125,13 +147,6 @@ def handle_run(args, history_cache=None, direct_call=False):
     except Exception:
         target_s = None
         
-    init_positions_list = None
-    if init_json_path and os.path.exists(init_json_path):
-        try:
-            with open(init_json_path, "r") as f:
-                init_positions_list = json.load(f)
-        except Exception:
-            pass
 
     # 3. Call solver
     res = run_solver(
@@ -215,7 +230,11 @@ def main():
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("--problem", required=True)
     run_parser.add_argument("--attempts", type=int, default=1000)
-    run_parser.add_argument("--init-script", type=str)
+    run_parser.add_argument(
+        "--init-script",
+        type=str,
+        help="Path to Python script to generate initial positions (executed in isolated subprocess)",
+    )
     run_parser.add_argument("--no-commit", action="store_true")
     run_parser.add_argument("--json-out", action="store_true")
     run_parser.add_argument("--no-png", action="store_true", help="Skip generating solution.png image to save disk space")

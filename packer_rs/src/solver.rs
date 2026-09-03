@@ -533,40 +533,66 @@ impl LbfgsHistory {
     }
 }
 
-fn minimize_gradient(
-    x0: &[f64],
+struct Evaluator<'a> {
     S: f64,
     N: usize,
     nsi: usize,
     nsc: usize,
-    unit_polygon_vertices: &[(f64, f64)],
-    unit_polygon_vectors: &[(f64, f64)],
-    unit_container_vectors: &[(f64, f64)],
-    unit_container_apothem: &[f64],
+    unit_polygon_vertices: &'a [(f64, f64)],
+    unit_polygon_vectors: &'a [(f64, f64)],
+    unit_container_vectors: &'a [(f64, f64)],
+    unit_container_apothem: &'a [f64],
     is_inner_circle: bool,
     is_container_circle: bool,
     is_inner_l: bool,
     is_container_l: bool,
-    polygon_array: &mut [(f64, f64)],
-    vector_array: &mut [(f64, f64)],
-    grad_buffer: &mut [f64],
-    bbox_array: &mut [(f64, f64, f64, f64)],
-    sort_indices: &mut [usize],
-) -> OptResult {
+    polygon_array: &'a mut [(f64, f64)],
+    vector_array: &'a mut [(f64, f64)],
+    grad_buffer: &'a mut [f64],
+    bbox_array: &'a mut [(f64, f64, f64, f64)],
+    sort_indices: &'a mut [usize],
+}
+
+impl<'a> Evaluator<'a> {
+    #[inline(always)]
+    fn eval(&mut self, x: &[f64], compute_grad: bool) -> (f64, f64) {
+        penalty_and_gradient(
+            x,
+            self.S,
+            self.N,
+            self.nsi,
+            self.nsc,
+            self.unit_polygon_vertices,
+            self.unit_polygon_vectors,
+            self.unit_container_vectors,
+            self.unit_container_apothem,
+            self.is_inner_circle,
+            self.is_container_circle,
+            self.is_inner_l,
+            self.is_container_l,
+            compute_grad,
+            self.polygon_array,
+            self.vector_array,
+            self.grad_buffer,
+            self.bbox_array,
+            self.sort_indices,
+        )
+    }
+}
+
+/// Stage 1: Coarse Adam untangling for escaping deep overlaps.
+fn adam_untangle(
+    evaluator: &mut Evaluator,
+    x0: &[f64],
+    initial_fun: f64,
+    initial_max_v: f64,
+) -> (Vec<f64>, f64, f64) {
     let n = x0.len();
     let mut x = x0.to_vec();
     let mut best_x = x.clone();
-    let (mut best_fun, mut best_max_violation) = penalty_and_gradient(
-        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
-    );
+    let mut best_fun = initial_fun;
+    let mut best_max_violation = initial_max_v;
 
-    if best_max_violation <= 1e-15 {
-        return OptResult { x: best_x, _fun: best_fun, max_violation: best_max_violation };
-    }
-
-    // ==========================================
-    // STAGE 1: Coarse Adam Untangling
-    // ==========================================
     let mut m = vec![0.0f64; n];
     let mut v = vec![0.0f64; n];
     let beta1 = 0.9f64;
@@ -580,12 +606,10 @@ fn minimize_gradient(
     let mut beta2_t = beta2;
 
     for _iter in 1..=250 {
-        let (fun, max_violation) = penalty_and_gradient(
-            &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
-        );
+        let (fun, max_violation) = evaluator.eval(&x, true);
 
         if max_violation <= 1e-15 {
-            return OptResult { x, _fun: fun, max_violation };
+            return (x, fun, max_violation);
         }
 
         if fun < best_fun_iter * 0.9999 {
@@ -602,8 +626,8 @@ fn minimize_gradient(
 
         let mut new_x = vec![0.0f64; n];
         for i in 0..n {
-            m[i] = beta1 * m[i] + (1.0 - beta1) * grad_buffer[i];
-            v[i] = beta2 * v[i] + (1.0 - beta2) * grad_buffer[i] * grad_buffer[i];
+            m[i] = beta1 * m[i] + (1.0 - beta1) * evaluator.grad_buffer[i];
+            v[i] = beta2 * v[i] + (1.0 - beta2) * evaluator.grad_buffer[i] * evaluator.grad_buffer[i];
 
             let m_hat = m[i] / (1.0 - beta1_t);
             let v_hat = v[i] / (1.0 - beta2_t);
@@ -614,9 +638,7 @@ fn minimize_gradient(
         beta1_t *= beta1;
         beta2_t *= beta2;
 
-        let (new_fx, new_max_violation) = penalty_and_gradient(
-            &new_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
-        );
+        let (new_fx, new_max_violation) = evaluator.eval(&new_x, false);
 
         x = new_x;
         if new_fx < best_fun {
@@ -626,19 +648,25 @@ fn minimize_gradient(
         }
     }
 
-    if best_max_violation <= 1e-15 {
-        return OptResult { x: best_x, _fun: best_fun, max_violation: best_max_violation };
-    }
+    (best_x, best_fun, best_max_violation)
+}
 
-    // ==========================================
-    // STAGE 2: L-BFGS Quasi-Newton Polish
-    // ==========================================
+/// Stage 2: L-BFGS Quasi-Newton polish with Armijo line search.
+fn lbfgs_polish(
+    evaluator: &mut Evaluator,
+    x_init: Vec<f64>,
+    best_fun_init: f64,
+    best_max_v_init: f64,
+) -> OptResult {
+    let n = x_init.len();
+    let mut x = x_init;
+    let mut best_x = x.clone();
+    let mut best_fun = best_fun_init;
+    let mut best_max_violation = best_max_v_init;
+
     let mut lbfgs_history = LbfgsHistory::new(8);
-    let (mut current_fx, mut current_max_violation) = penalty_and_gradient(
-        &x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
-    );
-
-    let mut current_grad = grad_buffer[..n].to_vec();
+    let (mut current_fx, mut current_max_violation) = evaluator.eval(&x, true);
+    let mut current_grad = evaluator.grad_buffer[..n].to_vec();
 
     for _lbfgs_iter in 0..60 {
         if current_max_violation <= 1e-15 {
@@ -671,9 +699,7 @@ fn minimize_gradient(
                 trial_x[j] = x[j] + step * d[j];
             }
 
-            let (f_trial, max_v_trial) = penalty_and_gradient(
-                &trial_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, false, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
-            );
+            let (f_trial, max_v_trial) = evaluator.eval(&trial_x, false);
 
             if f_trial <= current_fx + c1 * step * dir_deriv {
                 trial_fx = f_trial;
@@ -689,11 +715,9 @@ fn minimize_gradient(
         }
 
         // Compute gradient at trial_x
-        let (_f_eval, _max_v_eval) = penalty_and_gradient(
-            &trial_x, S, N, nsi, nsc, unit_polygon_vertices, unit_polygon_vectors, unit_container_vectors, unit_container_apothem, is_inner_circle, is_container_circle, is_inner_l, is_container_l, true, polygon_array, vector_array, grad_buffer, bbox_array, sort_indices
-        );
+        let (_f_eval, _max_v_eval) = evaluator.eval(&trial_x, true);
 
-        let new_grad = grad_buffer[..n].to_vec();
+        let new_grad = evaluator.grad_buffer[..n].to_vec();
         let s_k: Vec<f64> = trial_x.iter().zip(x.iter()).map(|(tx, xk)| tx - xk).collect();
         let y_k: Vec<f64> = new_grad.iter().zip(current_grad.iter()).map(|(ng, cg)| ng - cg).collect();
 
@@ -717,6 +741,69 @@ fn minimize_gradient(
     }
 
     OptResult { x: best_x, _fun: best_fun, max_violation: best_max_violation }
+}
+
+fn minimize_gradient(
+    x0: &[f64],
+    S: f64,
+    N: usize,
+    nsi: usize,
+    nsc: usize,
+    unit_polygon_vertices: &[(f64, f64)],
+    unit_polygon_vectors: &[(f64, f64)],
+    unit_container_vectors: &[(f64, f64)],
+    unit_container_apothem: &[f64],
+    is_inner_circle: bool,
+    is_container_circle: bool,
+    is_inner_l: bool,
+    is_container_l: bool,
+    polygon_array: &mut [(f64, f64)],
+    vector_array: &mut [(f64, f64)],
+    grad_buffer: &mut [f64],
+    bbox_array: &mut [(f64, f64, f64, f64)],
+    sort_indices: &mut [usize],
+) -> OptResult {
+    let mut evaluator = Evaluator {
+        S,
+        N,
+        nsi,
+        nsc,
+        unit_polygon_vertices,
+        unit_polygon_vectors,
+        unit_container_vectors,
+        unit_container_apothem,
+        is_inner_circle,
+        is_container_circle,
+        is_inner_l,
+        is_container_l,
+        polygon_array,
+        vector_array,
+        grad_buffer,
+        bbox_array,
+        sort_indices,
+    };
+
+    let (initial_fun, initial_max_violation) = evaluator.eval(x0, false);
+    if initial_max_violation <= 1e-15 {
+        return OptResult {
+            x: x0.to_vec(),
+            _fun: initial_fun,
+            max_violation: initial_max_violation,
+        };
+    }
+
+    // STAGE 1: Coarse Adam Untangling
+    let (adam_x, adam_fun, adam_max_v) = adam_untangle(&mut evaluator, x0, initial_fun, initial_max_violation);
+    if adam_max_v <= 1e-15 {
+        return OptResult {
+            x: adam_x,
+            _fun: adam_fun,
+            max_violation: adam_max_v,
+        };
+    }
+
+    // STAGE 2: L-BFGS Quasi-Newton Polish
+    lbfgs_polish(&mut evaluator, adam_x, adam_fun, adam_max_v)
 }
 
 

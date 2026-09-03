@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import json
 import subprocess
+import tempfile
 import importlib.util
 from typing import Optional, Dict, Any, List, Tuple, Set, Union, Callable
 
@@ -125,15 +126,13 @@ def run_solver(
 
     init_json_path = None
     if initial_positions is not None:
-        init_json_path = "tmp_init_pos.json"
-        with open(init_json_path, "w") as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             json.dump(initial_positions, f)
+            init_json_path = f.name
         cmd.extend(["--initial-positions", init_json_path])
 
     try:
         proc = subprocess.run(cmd, capture_output=True, text=True)
-        if init_json_path and os.path.exists(init_json_path):
-            os.remove(init_json_path)
 
         if proc.returncode != 0:
             return {
@@ -175,10 +174,14 @@ def run_solver(
             "output": stdout,
         }
     except Exception as e:
-        if init_json_path and os.path.exists(init_json_path):
-            os.remove(init_json_path)
         return {
             "success": False,
             "error": str(e),
             "backend": "cli",
         }
+    finally:
+        if init_json_path and os.path.exists(init_json_path):
+            try:
+                os.remove(init_json_path)
+            except OSError:
+                pass

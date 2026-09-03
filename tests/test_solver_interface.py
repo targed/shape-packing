@@ -73,3 +73,41 @@ def test_run_solver_l_container(tmp_path):
         v_res = verify_solution(sol_file, "2_tan_in_l", check_record=False)
         assert v_res.valid is True
 
+
+def test_run_solver_initial_positions_cli(monkeypatch):
+    import os
+    import subprocess
+    from unittest.mock import MagicMock
+    from src.shape_packing.solver_interface import run_solver
+
+    recorded_cmd = []
+    temp_path_during_run = []
+
+    def mock_subprocess_run(cmd, *args, **kwargs):
+        recorded_cmd.extend(cmd)
+        if "--initial-positions" in cmd:
+            idx = cmd.index("--initial-positions") + 1
+            fpath = cmd[idx]
+            temp_path_during_run.append(fpath)
+            assert os.path.exists(fpath)
+            assert not fpath.endswith("tmp_init_pos.json")
+        res = MagicMock()
+        res.returncode = 0
+        res.stdout = "Final side length: 2.0\n"
+        res.stderr = ""
+        return res
+
+    monkeypatch.setattr(subprocess, "run", mock_subprocess_run)
+    monkeypatch.setattr("src.shape_packing.solver_interface._try_import_pyo3_packer", lambda: None)
+
+    res = run_solver(
+        n_shapes=1,
+        inner_shape="3",
+        container_shape="4",
+        initial_positions=[0.1, 0.2, 0.3],
+    )
+    assert res["success"] is True
+    assert len(temp_path_during_run) == 1
+    # File must be cleaned up in finally block
+    assert not os.path.exists(temp_path_during_run[0])
+

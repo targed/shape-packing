@@ -20,9 +20,16 @@ from shape_packing.agent_loop import (
     is_reference_blocked,
     is_preferred_reference,
     recent_problems,
+    last_experiments_for,
+    has_improved,
     log_result,
     ExperimentLogContext,
+    ExperimentResult,
+    _parse_filter_sets,
+    _build_problem_stats,
+    _matches_external_filters,
 )
+from shape_packing.problems import parse_problem
 
 
 class TestLoadHistory:
@@ -61,6 +68,119 @@ class TestIsStuck:
         # So not stuck. We'll use 10_6_in_4 (single run) -> not stuck
         hist = load_history(sample_history_tsv)
         assert is_stuck(hist, "10_6_in_4") is False
+
+
+class TestLastExperimentsFor:
+    def test_empty_history(self):
+        assert last_experiments_for([], "3_3_in_4") == []
+
+    def test_no_matching_problem(self):
+        history = [
+            ExperimentResult(problem="5_3_in_3", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="8_3_in_5", score=1.2, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0),
+        ]
+        assert last_experiments_for(history, "3_3_in_4") == []
+
+    def test_filters_by_problem_name(self):
+        r1 = ExperimentResult(problem="3_3_in_4", score=1.5, status="keep", description="run 1", seconds=0.1, commit="auto", memory_gb=0.0)
+        r2 = ExperimentResult(problem="8_3_in_5", score=1.1, status="keep", description="other", seconds=0.1, commit="auto", memory_gb=0.0)
+        r3 = ExperimentResult(problem="3_3_in_4", score=1.4, status="keep", description="run 2", seconds=0.1, commit="auto", memory_gb=0.0)
+        history = [r1, r2, r3]
+
+        matches = last_experiments_for(history, "3_3_in_4")
+        assert len(matches) == 2
+        assert matches[0] == r1
+        assert matches[1] == r3
+
+    def test_default_last_limit(self):
+        # Default is last=5
+        history = [
+            ExperimentResult(problem="3_3_in_4", score=float(i), status="keep", description=f"run {i}", seconds=0.1, commit="auto", memory_gb=0.0)
+            for i in range(8)
+        ]
+        matches = last_experiments_for(history, "3_3_in_4")
+        assert len(matches) == 5
+        assert [r.score for r in matches] == [3.0, 4.0, 5.0, 6.0, 7.0]
+
+    def test_fewer_than_last(self):
+        history = [
+            ExperimentResult(problem="3_3_in_4", score=float(i), status="keep", description=f"run {i}", seconds=0.1, commit="auto", memory_gb=0.0)
+            for i in range(3)
+        ]
+        matches = last_experiments_for(history, "3_3_in_4", last=5)
+        assert len(matches) == 3
+        assert [r.score for r in matches] == [0.0, 1.0, 2.0]
+
+    def test_exact_last(self):
+        history = [
+            ExperimentResult(problem="3_3_in_4", score=float(i), status="keep", description=f"run {i}", seconds=0.1, commit="auto", memory_gb=0.0)
+            for i in range(4)
+        ]
+        matches = last_experiments_for(history, "3_3_in_4", last=4)
+        assert len(matches) == 4
+        assert [r.score for r in matches] == [0.0, 1.0, 2.0, 3.0]
+
+    def test_custom_last_slice(self):
+        history = [
+            ExperimentResult(problem="3_3_in_4", score=float(i), status="keep", description=f"run {i}", seconds=0.1, commit="auto", memory_gb=0.0)
+            for i in range(6)
+        ]
+        matches = last_experiments_for(history, "3_3_in_4", last=2)
+        assert len(matches) == 2
+        assert [r.score for r in matches] == [4.0, 5.0]
+
+    def test_order_preservation(self):
+        r1 = ExperimentResult(problem="target", score=3.0, status="keep", description="first", seconds=0.1, commit="auto", memory_gb=0.0)
+        r2 = ExperimentResult(problem="target", score=2.0, status="keep", description="second", seconds=0.2, commit="auto", memory_gb=0.0)
+        r3 = ExperimentResult(problem="target", score=1.0, status="keep", description="third", seconds=0.3, commit="auto", memory_gb=0.0)
+        history = [r1, r2, r3]
+        matches = last_experiments_for(history, "target", last=3)
+        assert matches == [r1, r2, r3]
+
+
+class TestRecentProblems:
+    def test_empty_history(self):
+        assert recent_problems([]) == []
+        assert recent_problems([], last=5) == []
+
+    def test_default_last_is_ten(self):
+        history = [
+            ExperimentResult(problem=f"prob_{i}", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0)
+            for i in range(15)
+        ]
+        res = recent_problems(history)
+        assert len(res) == 10
+        assert res == [f"prob_{i}" for i in range(5, 15)]
+
+    def test_recent_problems_fewer_than_last(self):
+        history = [
+            ExperimentResult(problem="prob_a", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0),
+        ]
+        assert recent_problems(history, last=5) == ["prob_a"]
+
+    def test_recent_problems_exact_last(self):
+        history = [
+            ExperimentResult(problem=f"prob_{i}", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0)
+            for i in range(5)
+        ]
+        assert recent_problems(history, last=5) == [f"prob_{i}" for i in range(5)]
+
+    def test_custom_last_slice(self):
+        history = [
+            ExperimentResult(problem="prob_a", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="prob_b", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="prob_c", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0),
+        ]
+        assert recent_problems(history, last=2) == ["prob_b", "prob_c"]
+        assert recent_problems(history, last=1) == ["prob_c"]
+
+    def test_preserves_order_and_duplicates(self):
+        history = [
+            ExperimentResult(problem="prob_a", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="prob_b", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="prob_a", score=1.0, status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0),
+        ]
+        assert recent_problems(history, last=3) == ["prob_a", "prob_b", "prob_a"]
 
 
 class TestChooseProblem:
@@ -300,6 +420,212 @@ class TestLTrominoSupport:
             exclude_problems=set(),
         )
         assert p == "1_L_in_4"
+
+
+class TestParseFilterSets:
+    def test_none_or_empty_filters(self):
+        assert _parse_filter_sets(None) == (set(), set(), set(), set())
+        assert _parse_filter_sets({}) == (set(), set(), set(), set())
+
+    def test_filters_with_empty_or_falsy_values(self):
+        filters = {
+            "include_inner": None,
+            "exclude_inner": "",
+            "include_container": [],
+            "exclude_container": False,
+        }
+        assert _parse_filter_sets(filters) == (set(), set(), set(), set())
+
+    def test_comma_separated_strings(self):
+        filters = {
+            "include_inner": " square , 4 , domino ",
+            "exclude_container": "circle, 5",
+        }
+        inc_i, exc_i, inc_c, exc_c = _parse_filter_sets(filters)
+        assert inc_i == {"SQUARE", "4", "DOMINO"}
+        assert exc_i == set()
+        assert inc_c == set()
+        assert exc_c == {"CIRCLE", "CIR", "5"}
+
+    def test_list_inputs_and_numeric_values(self):
+        filters = {
+            "include_container": ["triangle", 4, "octagon"],
+            "exclude_inner": ["tan"],
+        }
+        inc_i, exc_i, inc_c, exc_c = _parse_filter_sets(filters)
+        assert inc_i == set()
+        assert exc_i == {"TAN", "TANGRAM"}
+        assert inc_c == {"3", "TRIANGLE", "4", "OCTAGON"}
+        assert exc_c == set()
+
+    def test_single_non_string_non_list_value(self):
+        filters = {"include_inner": 3}
+        inc_i, exc_i, inc_c, exc_c = _parse_filter_sets(filters)
+        assert inc_i == {"3", "TRIANGLE"}
+        assert exc_i == set()
+        assert inc_c == set()
+        assert exc_c == set()
+
+    def test_synonym_expansions(self):
+        # Circle synonyms
+        filters = {"include_inner": "cir", "exclude_inner": "circle"}
+        inc_i, exc_i, _, _ = _parse_filter_sets(filters)
+        assert inc_i == {"CIR", "CIRCLE"}
+        assert exc_i == {"CIR", "CIRCLE"}
+
+        # Triangle synonyms
+        filters = {"include_inner": "3", "exclude_inner": "triangle"}
+        inc_i, exc_i, _, _ = _parse_filter_sets(filters)
+        assert inc_i == {"3", "TRIANGLE"}
+        assert exc_i == {"3", "TRIANGLE"}
+
+        # Tan synonyms
+        filters = {"include_inner": "tan", "exclude_inner": "tangram"}
+        inc_i, exc_i, _, _ = _parse_filter_sets(filters)
+        assert inc_i == {"TAN", "TANGRAM"}
+        assert exc_i == {"TAN", "TANGRAM"}
+
+        # L-tromino synonyms
+        for sym in ["l", "ltromino", "l-tromino"]:
+            inc_i, _, _, _ = _parse_filter_sets({"include_inner": sym})
+            assert inc_i == {"L", "LTROMINO", "L-TROMINO"}
+
+    def test_all_four_sets_returned_in_correct_order(self):
+        filters = {
+            "include_inner": "4",
+            "exclude_inner": "5",
+            "include_container": "6",
+            "exclude_container": "8",
+        }
+        inc_i, exc_i, inc_c, exc_c = _parse_filter_sets(filters)
+        assert inc_i == {"4"}
+        assert exc_i == {"5"}
+        assert inc_c == {"6"}
+        assert exc_c == {"8"}
+
+
+class TestBuildProblemStats:
+    def test_empty_history(self):
+        problem_runs, family_runs, problem_last_k = _build_problem_stats([])
+        assert len(problem_runs) == 0
+        assert len(family_runs) == 0
+        assert len(problem_last_k) == 0
+
+    def test_problem_and_family_runs_tallying(self):
+        h = [
+            ExperimentResult(problem="3_3_in_4", score=1.5, status="keep", description="1", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="3_3_in_4", score=1.4, status="keep", description="2", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="4_3_in_4", score=1.8, status="keep", description="3", seconds=0.1, commit="auto", memory_gb=0.0),
+            ExperimentResult(problem="5_3_in_5", score=2.0, status="keep", description="4", seconds=0.1, commit="auto", memory_gb=0.0),
+        ]
+        problem_runs, family_runs, problem_last_k = _build_problem_stats(h)
+
+        assert problem_runs["3_3_in_4"] == 2
+        assert problem_runs["4_3_in_4"] == 1
+        assert problem_runs["5_3_in_5"] == 1
+        assert problem_runs["nonexistent"] == 0
+
+        # Check family runs
+        assert family_runs["3_in_4"] == 3
+        assert family_runs["3_in_5"] == 1
+
+    def test_problem_last_k_window_capping(self):
+        h = [
+            ExperimentResult(problem="3_3_in_4", score=float(i), status="keep", description=f"run {i}", seconds=0.1, commit="auto", memory_gb=0.0)
+            for i in range(5)
+        ]
+        _, _, problem_last_k = _build_problem_stats(h, k=3)
+
+        assert len(problem_last_k["3_3_in_4"]) == 3
+        assert [r.score for r in problem_last_k["3_3_in_4"]] == [2.0, 3.0, 4.0]
+
+
+class TestMatchesExternalFilters:
+    def test_matches_with_no_filters(self):
+        p0 = parse_problem("3_3_in_4")
+        item = {"inner_shape": "3", "container_shape": "4", "N": 3}
+        assert _matches_external_filters(p0, item, {}, set(), set(), set(), set()) is True
+
+    def test_n_bounds_filters(self):
+        p0 = parse_problem("5_3_in_4")
+        item = {"inner_shape": "3", "container_shape": "4", "N": 5}
+
+        # min_n
+        assert _matches_external_filters(p0, item, {"min_n": 5}, set(), set(), set(), set()) is True
+        assert _matches_external_filters(p0, item, {"min_n": 6}, set(), set(), set(), set()) is False
+
+        # max_n
+        assert _matches_external_filters(p0, item, {"max_n": 5}, set(), set(), set(), set()) is True
+        assert _matches_external_filters(p0, item, {"max_n": 4}, set(), set(), set(), set()) is False
+
+        # equal_n
+        assert _matches_external_filters(p0, item, {"equal_n": 5}, set(), set(), set(), set()) is True
+        assert _matches_external_filters(p0, item, {"equal_n": 6}, set(), set(), set(), set()) is False
+
+    def test_include_and_exclude_inner(self):
+        p_tri = parse_problem("3_3_in_4")
+        p_sq = parse_problem("3_4_in_4")
+        item_tri = {"inner_shape": "3", "container_shape": "4", "N": 3}
+        item_sq = {"inner_shape": "4", "container_shape": "4", "N": 3}
+
+        # Include inner
+        inc_inner = {"3", "TRIANGLE"}
+        assert _matches_external_filters(p_tri, item_tri, {}, inc_inner, set(), set(), set()) is True
+        assert _matches_external_filters(p_sq, item_sq, {}, inc_inner, set(), set(), set()) is False
+
+        # Exclude inner
+        exc_inner = {"4", "SQUARE"}
+        assert _matches_external_filters(p_tri, item_tri, {}, set(), exc_inner, set(), set()) is True
+        assert _matches_external_filters(p_sq, item_sq, {}, set(), exc_inner, set(), set()) is False
+
+    def test_include_and_exclude_container(self):
+        p_cir = parse_problem("3_3_in_circle")
+        p_sq = parse_problem("3_3_in_4")
+        item_cir = {"inner_shape": "3", "container_shape": "CIRCLE (COVERING)", "N": 3}
+        item_sq = {"inner_shape": "3", "container_shape": "4", "N": 3}
+
+        # Include container
+        inc_cont = {"CIRCLE", "CIR"}
+        assert _matches_external_filters(p_cir, item_cir, {}, set(), set(), inc_cont, set()) is True
+        assert _matches_external_filters(p_sq, item_sq, {}, set(), set(), inc_cont, set()) is False
+
+        # Exclude container
+        exc_cont = {"4", "SQUARE"}
+        assert _matches_external_filters(p_cir, item_cir, {}, set(), set(), set(), exc_cont) is True
+        assert _matches_external_filters(p_sq, item_sq, {}, set(), set(), set(), exc_cont) is False
+
+    def test_sides_bounds_filters(self):
+        p_tri_sq = parse_problem("3_3_in_4")
+        item = {"inner_shape": "3", "container_shape": "4", "N": 3}
+
+        # Inner sides bounds (triangle has 3 sides)
+        assert _matches_external_filters(p_tri_sq, item, {"min_inner_sides": 3}, set(), set(), set(), set()) is True
+        assert _matches_external_filters(p_tri_sq, item, {"min_inner_sides": 4}, set(), set(), set(), set()) is False
+        assert _matches_external_filters(p_tri_sq, item, {"max_inner_sides": 3}, set(), set(), set(), set()) is True
+        assert _matches_external_filters(p_tri_sq, item, {"max_inner_sides": 2}, set(), set(), set(), set()) is False
+
+        # Container sides bounds (square has 4 sides)
+        assert _matches_external_filters(p_tri_sq, item, {"min_container_sides": 4}, set(), set(), set(), set()) is True
+        assert _matches_external_filters(p_tri_sq, item, {"min_container_sides": 5}, set(), set(), set(), set()) is False
+        assert _matches_external_filters(p_tri_sq, item, {"max_container_sides": 4}, set(), set(), set(), set()) is True
+        assert _matches_external_filters(p_tri_sq, item, {"max_container_sides": 3}, set(), set(), set(), set()) is False
+
+    def test_circle_sides_bounds(self):
+        from shape_packing.packing_config import CIRCLE_SIDES
+        p_cir = parse_problem("3_circle_in_circle")
+        item = {"inner_shape": "CIRCLE", "container_shape": "CIRCLE", "N": 3}
+
+        assert _matches_external_filters(p_cir, item, {"min_inner_sides": CIRCLE_SIDES}, set(), set(), set(), set()) is True
+        assert _matches_external_filters(p_cir, item, {"max_inner_sides": CIRCLE_SIDES - 1}, set(), set(), set(), set()) is False
+        assert _matches_external_filters(p_cir, item, {"min_container_sides": CIRCLE_SIDES}, set(), set(), set(), set()) is True
+        assert _matches_external_filters(p_cir, item, {"max_container_sides": CIRCLE_SIDES - 1}, set(), set(), set(), set()) is False
+
+    def test_exception_returns_false(self):
+        # Malformed or None input should return False without raising
+        assert _matches_external_filters(None, {}, {}, set(), set(), set(), set()) is False
+
+
+
 
 
 

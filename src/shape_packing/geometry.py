@@ -256,17 +256,33 @@ def _poking_penalty_nb(vertices, S, container_vectors, edge_radii, is_inner_circ
     if is_container_circle:
         if is_inner_circle:
             limit = S - 1.0
-            dist = math.hypot(posx, posy)
-            if dist > limit:
-                diff = dist - limit
-                penalty += diff * diff
-        else:
-            limit = S
-            for v in range(vertices.shape[0]):
-                dist = math.hypot(vertices[v, 0], vertices[v, 1])
+            if limit > 0.0:
+                dist_sq = posx * posx + posy * posy
+                if dist_sq > limit * limit:
+                    diff = math.sqrt(dist_sq) - limit
+                    penalty += diff * diff
+            else:
+                dist = math.hypot(posx, posy)
                 if dist > limit:
                     diff = dist - limit
                     penalty += diff * diff
+        else:
+            limit = S
+            if limit > 0.0:
+                limit_sq = limit * limit
+                for v in range(vertices.shape[0]):
+                    vx = vertices[v, 0]
+                    vy = vertices[v, 1]
+                    dist_sq = vx * vx + vy * vy
+                    if dist_sq > limit_sq:
+                        diff = math.sqrt(dist_sq) - limit
+                        penalty += diff * diff
+            else:
+                for v in range(vertices.shape[0]):
+                    dist = math.hypot(vertices[v, 0], vertices[v, 1])
+                    if dist > limit:
+                        diff = dist - limit
+                        penalty += diff * diff
     else:
         if is_inner_circle:
             for i in range(container_vectors.shape[0]):

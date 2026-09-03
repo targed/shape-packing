@@ -21,6 +21,7 @@ from shape_packing.agent_loop import (
     make_loop_candidate,
     is_physically_valid_score,
     last_experiments_for,
+    recent_problems,
     _get_inner_shape_area,
     _get_container_shape_area,
 )
@@ -84,6 +85,19 @@ class TestLastExperimentsFor:
         ]
         assert last_experiments_for(h, "99_99_in_99") == []
         assert last_experiments_for([], "3_3_in_4") == []
+
+
+class TestRecentProblems:
+
+    def test_recent_problems_slicing(self):
+        h = [
+            ExperimentResult(problem=f"prob_{i}", score=float(i), status="keep", description="", seconds=0.1, commit="auto", memory_gb=0.0)
+            for i in range(12)
+        ]
+        assert recent_problems(h) == [f"prob_{i}" for i in range(2, 12)]
+        assert recent_problems(h, last=3) == ["prob_9", "prob_10", "prob_11"]
+        assert recent_problems(h, last=20) == [f"prob_{i}" for i in range(12)]
+        assert recent_problems([]) == []
 
 
 class TestIsPhysicallyValidScore:

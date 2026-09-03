@@ -26,6 +26,7 @@ from .geometry import (
     get_shape_convex_parts,
     sat_check_overlap,
     transform_polygon,
+    _rotate_vectors_nb,
 )
 
 from .packing_config import (
@@ -286,6 +287,146 @@ def _verify_metric_scaling(sol: Solution, calc_metric: float) -> List[str]:
     return errors
 
 
+def _verify_l_container_bounds(
+    sol: Solution,
+    polygons: List[Any],
+    tolerance: float,
+) -> List[str]:
+    """Verify bounds and reflex cutout constraints for L-shaped containers."""
+    errors: List[str] = []
+    S = sol.S
+    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
+
+    r_cutout = np.array([
+        [1.0 / 6.0 * S, 1.0 / 6.0 * S],
+        [7.0 / 6.0 * S, 1.0 / 6.0 * S],
+        [7.0 / 6.0 * S, 7.0 / 6.0 * S],
+        [1.0 / 6.0 * S, 7.0 / 6.0 * S],
+    ])
+    r_cutout_normals = polygon_normals(r_cutout)
+    inner_parts = get_shape_convex_parts(sol.inner_token)
+
+    for i, poly in enumerate(polygons):
+        posx = sol.values[i * 3]
+        posy = sol.values[i * 3 + 1]
+        rot = sol.values[i * 3 + 2]
+
+        if is_inner_circle:
+            # Bounding box
+            if posx < -5.0 / 6.0 * S + 1.0 - tolerance:
+                errors.append(f"Shape {i} (circle) out of L-bounds (left)! Margin: {-5.0 / 6.0 * S + 1.0 - posx}")
+            if posx > 7.0 / 6.0 * S - 1.0 + tolerance:
+                errors.append(f"Shape {i} (circle) out of L-bounds (right)! Margin: {posx - (7.0 / 6.0 * S - 1.0)}")
+            if posy < -5.0 / 6.0 * S + 1.0 - tolerance:
+                errors.append(f"Shape {i} (circle) out of L-bounds (bottom)! Margin: {-5.0 / 6.0 * S + 1.0 - posy}")
+            if posy > 7.0 / 6.0 * S - 1.0 + tolerance:
+                errors.append(f"Shape {i} (circle) out of L-bounds (top)! Margin: {posy - (7.0 / 6.0 * S - 1.0)}")
+
+            # Reflex corner cut-out obstacle
+            if posx > 1.0 / 6.0 * S - 1.0 + tolerance and posy > 1.0 / 6.0 * S - 1.0 + tolerance:
+                if posx >= 1.0 / 6.0 * S and posy >= 1.0 / 6.0 * S:
+                    errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out!")
+                elif posx > 1.0 / 6.0 * S:
+                    dist = 1.0 / 6.0 * S - posy
+                    if dist < 1.0 - tolerance:
+                        errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out! Margin: {1.0 - dist}")
+                elif posy > 1.0 / 6.0 * S:
+                    dist = 1.0 / 6.0 * S - posx
+                    if dist < 1.0 - tolerance:
+                        errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out! Margin: {1.0 - dist}")
+                else:
+                    corner_dist = math.hypot(posx - 1.0 / 6.0 * S, posy - 1.0 / 6.0 * S)
+                    if corner_dist < 1.0 - tolerance:
+                        errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out! Margin: {1.0 - corner_dist}")
+        else:
+            # 1. Bounding box check on vertices
+            for v in poly:
+                if v[0] < -5.0 / 6.0 * S - tolerance:
+                    errors.append(f"Shape {i} is out of L-bounds (left)! Violation margin: {-5.0 / 6.0 * S - v[0]}")
+                if v[0] > 7.0 / 6.0 * S + tolerance:
+                    errors.append(f"Shape {i} is out of L-bounds (right)! Violation margin: {v[0] - 7.0 / 6.0 * S}")
+                if v[1] < -5.0 / 6.0 * S - tolerance:
+                    errors.append(f"Shape {i} is out of L-bounds (bottom)! Violation margin: {-5.0 / 6.0 * S - v[1]}")
+                if v[1] > 7.0 / 6.0 * S + tolerance:
+                    errors.append(f"Shape {i} is out of L-bounds (top)! Violation margin: {v[1] - 7.0 / 6.0 * S}")
+
+            # 2. SAT check against cut-out square obstacle
+            if len(inner_parts) > 1:
+                for (p_v, p_n) in inner_parts:
+                    t_v = transform_polygon(p_v, posx, posy, rot)
+                    t_n = _rotate_vectors_nb(rot, p_n) if hasattr(p_n, "shape") else polygon_normals(t_v)
+                    overlap, depth = sat_check_overlap(t_v, r_cutout, t_n, r_cutout_normals)
+                    if overlap and depth > tolerance:
+                        errors.append(f"Shape {i} intersects L-container reflex cut-out! Depth: {depth}")
+            else:
+                poly_n = polygon_normals(poly)
+                overlap, depth = sat_check_overlap(poly, r_cutout, poly_n, r_cutout_normals)
+                if overlap and depth > tolerance:
+                    errors.append(f"Shape {i} intersects L-container reflex cut-out! Depth: {depth}")
+    return errors
+
+
+def _verify_circle_container_bounds(
+    sol: Solution,
+    polygons: List[Any],
+    tolerance: float,
+) -> List[str]:
+    """Verify radial bounds for circular containers."""
+    errors: List[str] = []
+    S = sol.S
+    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
+
+    for i, poly in enumerate(polygons):
+        posx = sol.values[i * 3]
+        posy = sol.values[i * 3 + 1]
+
+        if is_inner_circle:
+            dist = math.hypot(posx, posy)
+            limit = S - 1.0
+            if dist > limit + tolerance:
+                errors.append(f"Shape {i} (circle) out of circular bounds! Margin: {dist - limit}")
+        else:
+            for v in poly:
+                dist = math.hypot(v[0], v[1])
+                if dist > S + tolerance:
+                    errors.append(f"Shape {i} out of circular bounds! Margin: {dist - S}")
+    return errors
+
+
+def _verify_polygon_container_bounds(
+    sol: Solution,
+    polygons: List[Any],
+    unit_container_vectors: Any,
+    unit_container_radii: Any,
+    tolerance: float,
+) -> List[str]:
+    """Verify half-plane boundary constraints for convex polygonal containers."""
+    errors: List[str] = []
+    S = sol.S
+    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
+    container_limits = unit_container_radii * S
+    container_normals = [(float(v[0]), float(v[1])) for v in unit_container_vectors]
+
+    for i, poly in enumerate(polygons):
+        posx = sol.values[i * 3]
+        posy = sol.values[i * 3 + 1]
+
+        if is_inner_circle:
+            for n_idx, n in enumerate(container_normals):
+                dist = posx * n[0] + posy * n[1]
+                limit = container_limits[n_idx] - 1.0
+                if dist > limit + tolerance:
+                    errors.append(f"Shape {i} (circle) out of bounds! Margin: {dist - limit}")
+        else:
+            for v in poly:
+                for n_idx, n in enumerate(container_normals):
+                    dist = v[0] * n[0] + v[1] * n[1]
+                    if dist > container_limits[n_idx] + tolerance:
+                        violation = dist - container_limits[n_idx]
+                        errors.append(f"Shape {i} is out of bounds! Violation margin: {violation}")
+    return errors
+
+
 def _verify_container_bounds(
     sol: Solution,
     polygons: List[Any],
@@ -294,114 +435,13 @@ def _verify_container_bounds(
     tolerance: float,
 ) -> List[str]:
     """Verify that all shapes lie within the container boundaries."""
-    errors: List[str] = []
-    S = sol.S
-    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
-    is_container_circle = sol.container_token.upper() in ("CIRCLE", "CIR")
-    is_container_l = sol.container_token.upper() == "L"
-
-    if is_container_l:
-        r_cutout = np.array([
-            [1.0 / 6.0 * S, 1.0 / 6.0 * S],
-            [7.0 / 6.0 * S, 1.0 / 6.0 * S],
-            [7.0 / 6.0 * S, 7.0 / 6.0 * S],
-            [1.0 / 6.0 * S, 7.0 / 6.0 * S],
-        ])
-        r_cutout_normals = polygon_normals(r_cutout)
-        inner_parts = get_shape_convex_parts(sol.inner_token)
-
-        for i, poly in enumerate(polygons):
-            posx = sol.values[i * 3]
-            posy = sol.values[i * 3 + 1]
-            rot = sol.values[i * 3 + 2]
-
-            if is_inner_circle:
-                # Bounding box
-                if posx < -5.0 / 6.0 * S + 1.0 - tolerance:
-                    errors.append(f"Shape {i} (circle) out of L-bounds (left)! Margin: {-5.0 / 6.0 * S + 1.0 - posx}")
-                if posx > 7.0 / 6.0 * S - 1.0 + tolerance:
-                    errors.append(f"Shape {i} (circle) out of L-bounds (right)! Margin: {posx - (7.0 / 6.0 * S - 1.0)}")
-                if posy < -5.0 / 6.0 * S + 1.0 - tolerance:
-                    errors.append(f"Shape {i} (circle) out of L-bounds (bottom)! Margin: {-5.0 / 6.0 * S + 1.0 - posy}")
-                if posy > 7.0 / 6.0 * S - 1.0 + tolerance:
-                    errors.append(f"Shape {i} (circle) out of L-bounds (top)! Margin: {posy - (7.0 / 6.0 * S - 1.0)}")
-
-                # Reflex corner cut-out obstacle
-                if posx > 1.0 / 6.0 * S - 1.0 + tolerance and posy > 1.0 / 6.0 * S - 1.0 + tolerance:
-                    if posx >= 1.0 / 6.0 * S and posy >= 1.0 / 6.0 * S:
-                        errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out!")
-                    elif posx > 1.0 / 6.0 * S:
-                        dist = 1.0 / 6.0 * S - posy
-                        if dist < 1.0 - tolerance:
-                            errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out! Margin: {1.0 - dist}")
-                    elif posy > 1.0 / 6.0 * S:
-                        dist = 1.0 / 6.0 * S - posx
-                        if dist < 1.0 - tolerance:
-                            errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out! Margin: {1.0 - dist}")
-                    else:
-                        corner_dist = math.hypot(posx - 1.0 / 6.0 * S, posy - 1.0 / 6.0 * S)
-                        if corner_dist < 1.0 - tolerance:
-                            errors.append(f"Shape {i} (circle) intersects L-container reflex cut-out! Margin: {1.0 - corner_dist}")
-            else:
-                # 1. Bounding box check on vertices
-                for v in poly:
-                    if v[0] < -5.0 / 6.0 * S - tolerance:
-                        errors.append(f"Shape {i} is out of L-bounds (left)! Violation margin: {-5.0 / 6.0 * S - v[0]}")
-                    if v[0] > 7.0 / 6.0 * S + tolerance:
-                        errors.append(f"Shape {i} is out of L-bounds (right)! Violation margin: {v[0] - 7.0 / 6.0 * S}")
-                    if v[1] < -5.0 / 6.0 * S - tolerance:
-                        errors.append(f"Shape {i} is out of L-bounds (bottom)! Violation margin: {-5.0 / 6.0 * S - v[1]}")
-                    if v[1] > 7.0 / 6.0 * S + tolerance:
-                        errors.append(f"Shape {i} is out of L-bounds (top)! Violation margin: {v[1] - 7.0 / 6.0 * S}")
-
-                # 2. SAT check against cut-out square obstacle
-                if len(inner_parts) > 1:
-                    for (p_v, _) in inner_parts:
-                        t_v = transform_polygon(p_v, posx, posy, rot)
-                        t_n = polygon_normals(t_v)
-                        overlap, depth = sat_check_overlap(t_v, r_cutout, t_n, r_cutout_normals)
-                        if overlap and depth > tolerance:
-                            errors.append(f"Shape {i} intersects L-container reflex cut-out! Depth: {depth}")
-                else:
-                    poly_n = polygon_normals(poly)
-                    overlap, depth = sat_check_overlap(poly, r_cutout, poly_n, r_cutout_normals)
-                    if overlap and depth > tolerance:
-                        errors.append(f"Shape {i} intersects L-container reflex cut-out! Depth: {depth}")
-        return errors
-
-    container_limits = unit_container_radii * S
-    container_normals = [(float(v[0]), float(v[1])) for v in unit_container_vectors]
-
-    for i, poly in enumerate(polygons):
-        posx = sol.values[i * 3]
-        posy = sol.values[i * 3 + 1]
-
-        if is_container_circle:
-            if is_inner_circle:
-                dist = math.hypot(posx, posy)
-                limit = S - 1.0
-                if dist > limit + tolerance:
-                    errors.append(f"Shape {i} (circle) out of circular bounds! Margin: {dist - limit}")
-            else:
-                for v in poly:
-                    dist = math.hypot(v[0], v[1])
-                    if dist > S + tolerance:
-                        errors.append(f"Shape {i} out of circular bounds! Margin: {dist - S}")
-        else:
-            if is_inner_circle:
-                for n_idx, n in enumerate(container_normals):
-                    dist = posx * n[0] + posy * n[1]
-                    limit = container_limits[n_idx] - 1.0
-                    if dist > limit + tolerance:
-                        errors.append(f"Shape {i} (circle) out of bounds! Margin: {dist - limit}")
-            else:
-                for v in poly:
-                    for n_idx, n in enumerate(container_normals):
-                        dist = v[0] * n[0] + v[1] * n[1]
-                        if dist > container_limits[n_idx] + tolerance:
-                            violation = dist - container_limits[n_idx]
-                            errors.append(f"Shape {i} is out of bounds! Violation margin: {violation}")
-    return errors
+    if sol.container_token.upper() == "L":
+        return _verify_l_container_bounds(sol, polygons, tolerance)
+    if sol.container_token.upper() in ("CIRCLE", "CIR"):
+        return _verify_circle_container_bounds(sol, polygons, tolerance)
+    return _verify_polygon_container_bounds(
+        sol, polygons, unit_container_vectors, unit_container_radii, tolerance
+    )
 
 
 def _verify_overlap(
@@ -414,6 +454,18 @@ def _verify_overlap(
     N = sol.N
     is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
 
+    if is_inner_circle:
+        for i in range(N):
+            posxi = sol.values[i * 3]
+            posyi = sol.values[i * 3 + 1]
+            for j in range(i + 1, N):
+                posxj = sol.values[j * 3]
+                posyj = sol.values[j * 3 + 1]
+                dist = math.hypot(posxi - posxj, posyi - posyj)
+                if dist < 2.0 - tolerance:
+                    errors.append(f"Shapes {i} and {j} overlap (circle)! Depth: {2.0 - dist}")
+        return errors
+
     parts = get_shape_convex_parts(sol.inner_token)
     if len(parts) > 1:
         # Multi-part compound shape (e.g. L-tromino)
@@ -423,9 +475,9 @@ def _verify_overlap(
             posy = sol.values[i * 3 + 1]
             rot = sol.values[i * 3 + 2]
             shape_parts = []
-            for (p_v, _) in parts:
+            for (p_v, p_n) in parts:
                 t_v = transform_polygon(p_v, posx, posy, rot)
-                t_n = polygon_normals(t_v)
+                t_n = _rotate_vectors_nb(rot, p_n) if hasattr(p_n, "shape") else polygon_normals(t_v)
                 shape_parts.append((t_v, t_n))
             transformed_parts.append(shape_parts)
 
@@ -438,20 +490,17 @@ def _verify_overlap(
                             errors.append(f"Shapes {i} and {j} overlap! Depth: {depth}")
         return errors
 
-    poly_normals_list = [polygon_normals(p) for p in polygons]
+    base_n = parts[0][1] if parts else None
+    if base_n is not None and len(base_n) > 0:
+        poly_normals_list = [
+            _rotate_vectors_nb(sol.values[i * 3 + 2], base_n)
+            for i in range(N)
+        ]
+    else:
+        poly_normals_list = [polygon_normals(p) for p in polygons]
 
     for i in range(N):
         for j in range(i + 1, N):
-            if is_inner_circle:
-                posxi = sol.values[i * 3]
-                posyi = sol.values[i * 3 + 1]
-                posxj = sol.values[j * 3]
-                posyj = sol.values[j * 3 + 1]
-                dist = math.hypot(posxi - posxj, posyi - posyj)
-                if dist < 2.0 - tolerance:
-                    errors.append(f"Shapes {i} and {j} overlap (circle)! Depth: {2.0 - dist}")
-                continue
-
             overlap, depth = sat_check_overlap(
                 polygons[i],
                 polygons[j],

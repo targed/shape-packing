@@ -323,11 +323,7 @@ def last_experiments_for(history: List[ExperimentResult], problem: str, last: in
     """
     Last N experiments for a given problem.
     """
-    out: List[ExperimentResult] = []
-    for r in history:
-        if r.problem != problem:
-            continue
-        out.append(r)
+    out = [r for r in history if r.problem == problem]
     return out[-last:] if len(out) >= last else out
 
 
@@ -706,15 +702,15 @@ def _build_problem_stats(
     - family_runs[family] = total count
     - problem_last_k[p] = last-k ExperimentResults for that problem
     """
-    problem_runs: Dict[str, int] = {}
-    family_runs: Dict[str, int] = {}
+    problem_runs: Counter[str] = Counter()
+    family_runs: Counter[str] = Counter()
     problem_last_k: Dict[str, List[ExperimentResult]] = {}
 
     for r in history:
         hp = normalize_problem_name(r.problem)
-        problem_runs[hp] = problem_runs.get(hp, 0) + 1
+        problem_runs[hp] += 1
         hf = extract_problem_family(hp)
-        family_runs[hf] = family_runs.get(hf, 0) + 1
+        family_runs[hf] += 1
 
         lst = problem_last_k.setdefault(hp, [])
         if len(lst) < k:
