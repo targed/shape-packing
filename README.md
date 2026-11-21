@@ -8,6 +8,7 @@ The system benchmarks solutions against Erich Friedman's comprehensive Packing C
 
 ## Key Features
 
+- Distributed Coordination Engine (`server` & `client`): Community-powered compute coordination featuring an SQLite WAL coordinator, multi-armed bandit scheduler, in-process SAT geometric verification, and zero-dependency worker daemon.
 - Fast Rust Solver (`packer_rs`): Continuous gradient-based packing engine featuring Separating Axis Theorem (SAT) overlap detection, container boundary containment, and Adam optimization.
 - Dual Execution Modes: Direct in-process native execution via PyO3 bindings for high throughput, with automated CLI subprocess fallback.
 - Smart Problem Ranking: Heuristic priority queue that prioritizes high-impact targets, unstuck problems, and near-record opportunities.
@@ -117,7 +118,21 @@ Or invoke the multiprocessing orchestrator directly:
 python run_parallel_loop.py
 ```
 
-### 5. Export World Records for Submission
+### 5. Run the Distributed Coordination System
+
+Start the central coordinator server:
+
+```bash
+uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
+```
+
+Run a volunteer worker daemon connecting to the coordinator:
+
+```bash
+python -m src.shape_packing.client.native_worker --server http://localhost:8000 --username your_name --cores 8
+```
+
+### 6. Export World Records for Submission
 
 Audit all solution runs, verify geometries against Erich Friedman benchmarks, and export submission kits:
 
@@ -127,7 +142,7 @@ python scripts/export_records.py --clean
 
 Exported artifacts are written to `data/records/` including summary tables, manifests, and email drafts.
 
-### 6. Build Web Dashboard Data
+### 7. Build Web Dashboard Data
 
 Generate the aggregated dataset for the Astro web frontend:
 
@@ -135,7 +150,7 @@ Generate the aggregated dataset for the Astro web frontend:
 python scripts/build_site_data.py
 ```
 
-### 7. Run the Test Suite
+### 8. Run the Test Suite
 
 Run the full pytest suite:
 
@@ -198,3 +213,4 @@ Comprehensive guides and architectural specifications are available in the `docs
 5. [Debugging, Testing and Verification](docs/05_debugging_and_testing.md): Solution verification certificates, physical area checks, and pytest coverage.
 6. [Project Milestone History](docs/06_project_history.md): Development chronology, design decisions, and resolved edge cases.
 7. [CLI Commands Reference and User Manual](docs/07_cli_and_commands.md): Complete reference for all CLI subcommands, flags, and options.
+8. [Distributed Shape Packing System](docs/08_distributed_system.md): Architecture, setup, API reference, and running coordinator and worker nodes.

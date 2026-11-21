@@ -407,3 +407,7 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
         return prob
 
     return app
+
+
+# Default application instance for standard ASGI servers (e.g. uvicorn)
+app = create_app()

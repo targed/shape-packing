@@ -1,7 +1,7 @@
 """Coordinator server package for distributed shape packing."""
 from __future__ import annotations
 
-from shape_packing.server.database import (
+from .database import (
     CANONICAL_SHAPE_TOKENS,
     RECORD_MIN_IMPROVEMENT,
     SCHEMA,
