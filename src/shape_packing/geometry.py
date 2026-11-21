@@ -110,11 +110,24 @@ def get_shape_geometry(token: str):
         edge_radii = np.full(sides, apothem)
         return sides, vertices, vectors, edge_radii
 
-    # Fallback for numeric tokens
-    try:
-        sides = int(token)
-    except ValueError:
-        sides = 3 # default fallback
+    # Named regular polygons or numeric tokens
+    NAMED_POLYGONS = {
+        "TRIANGLE": 3,
+        "SQUARE": 4,
+        "PENTAGON": 5,
+        "HEXAGON": 6,
+        "HEPTAGON": 7,
+        "OCTAGON": 8,
+        "NONAGON": 9,
+        "DECAGON": 10,
+    }
+    if token in NAMED_POLYGONS:
+        sides = NAMED_POLYGONS[token]
+    else:
+        try:
+            sides = int(token)
+        except ValueError:
+            sides = 3 # default fallback
         
     vertices = regular_polygon_vertices(sides, 1.0)
     vectors = regular_polygon_outward_normals(sides)

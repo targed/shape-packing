@@ -177,27 +177,37 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
         let best = best_s.lock().unwrap();
         let container_upper = config.container_shape.trim().to_uppercase();
         let inner_upper = config.inner_shape.trim().to_uppercase();
-        
-        let c_metric = match container_upper.as_str() {
-            "CIRCLE" | "CIR" | "TAN" | "DOMINO" => *best,
-            "L" => 2.0 * *best,
-            _ => {
-                if let Ok(nsc) = container_upper.parse::<usize>() {
-                    2.0 * *best * (PI / nsc as f64).sin()
-                } else {
-                    2.0 * *best * (PI / 3.0).sin()
-                }
+
+        let parse_sides = |s: &str| -> usize {
+            match s {
+                "TRIANGLE" => 3,
+                "SQUARE" => 4,
+                "PENTAGON" => 5,
+                "HEXAGON" => 6,
+                "HEPTAGON" => 7,
+                "OCTAGON" => 8,
+                "NONAGON" => 9,
+                "DECAGON" => 10,
+                other => other.parse().unwrap_or(3),
             }
         };
 
-        let i_scale = match inner_upper.as_str() {
-            "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => 1.0,
-            _ => {
-                if let Ok(nsi) = inner_upper.parse::<usize>() {
-                    2.0 * (PI / nsi as f64).sin()
-                } else {
-                    2.0 * (PI / 3.0).sin()
-                }
+        let c_metric = if container_upper == "L" && inner_upper == "L" {
+            *best
+        } else {
+            match container_upper.as_str() {
+                "CIRCLE" | "CIR" | "TAN" | "DOMINO" => *best,
+                "L" => 2.0 * *best,
+                _ => 2.0 * *best * (PI / parse_sides(&container_upper) as f64).sin(),
+            }
+        };
+
+        let i_scale = if container_upper == "L" && inner_upper == "L" {
+            1.0
+        } else {
+            match inner_upper.as_str() {
+                "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => 1.0,
+                _ => 2.0 * (PI / parse_sides(&inner_upper) as f64).sin(),
             }
         };
 
@@ -290,7 +300,17 @@ pub fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64
         return (sides, vertices, vectors, apothem);
     }
     
-    let sides: usize = token.parse().unwrap_or(3);
+    let sides: usize = match token.to_uppercase().as_str() {
+        "TRIANGLE" => 3,
+        "SQUARE" => 4,
+        "PENTAGON" => 5,
+        "HEXAGON" => 6,
+        "HEPTAGON" => 7,
+        "OCTAGON" => 8,
+        "NONAGON" => 9,
+        "DECAGON" => 10,
+        other => other.parse().unwrap_or(3),
+    };
     let radius = 1.0;
     let vertices = regular_polygon(radius, sides);
     let vectors = regular_polygon_vectors(radius, sides);
@@ -344,6 +364,28 @@ pub fn run_attempt<R: Rng>(
 
     let mut x0: Vec<f64> = if let Some(init_pos) = initial_positions {
         init_pos.iter().map(|&v| v + (rng.gen::<f64>() - 0.5) * 1e-5).collect()
+    } else if is_container_l {
+        // L-container spans [-5/6 S, 7/6 S] x [-5/6 S, 7/6 S] with cutout at [1/6 S, 7/6 S]^2.
+        // It consists of three S x S squares:
+        // Square 0 (bottom-left): [-5/6 S, 1/6 S] x [-5/6 S, 1/6 S]
+        // Square 1 (top arm):     [-5/6 S, 1/6 S] x [1/6 S, 7/6 S]
+        // Square 2 (right arm):   [1/6 S, 7/6 S] x [-5/6 S, 1/6 S]
+        let mut out = vec![0.0f64; N * 3];
+        let pad = (1.0f64).min(dynamic_s * 0.1);
+        for i in 0..N {
+            let sq = i % 3;
+            let (x_min, x_max, y_min, y_max) = match sq {
+                1 => (-5.0 / 6.0 * dynamic_s + pad, 1.0 / 6.0 * dynamic_s - pad, 1.0 / 6.0 * dynamic_s + pad, 7.0 / 6.0 * dynamic_s - pad),
+                2 => (1.0 / 6.0 * dynamic_s + pad, 7.0 / 6.0 * dynamic_s - pad, -5.0 / 6.0 * dynamic_s + pad, 1.0 / 6.0 * dynamic_s - pad),
+                _ => (-5.0 / 6.0 * dynamic_s + pad, 1.0 / 6.0 * dynamic_s - pad, -5.0 / 6.0 * dynamic_s + pad, 1.0 / 6.0 * dynamic_s - pad),
+            };
+            let x = if x_max > x_min { x_min + (x_max - x_min) * rng.gen::<f64>() } else { (x_min + x_max) / 2.0 };
+            let y = if y_max > y_min { y_min + (y_max - y_min) * rng.gen::<f64>() } else { (y_min + y_max) / 2.0 };
+            out[i * 3] = x;
+            out[i * 3 + 1] = y;
+            out[i * 3 + 2] = 2.0 * PI * rng.gen::<f64>();
+        }
+        out
     } else if rng.gen_bool(0.5) {
         (0..(N * 3))
             .map(|_| {
@@ -984,7 +1026,7 @@ pub fn penalty_and_gradient(
                             let diff = r - dist;
                             penalty += diff * diff;
                             if diff > max_violation { max_violation = diff; }
-                            if compute_grad { grad[i * 3 + 1] -= 2.0 * diff; }
+                            if compute_grad { grad[i * 3 + 1] += 2.0 * diff; }
                         }
                     } else if posy > cut_min_y {
                         let dist = cut_min_x - posx;
@@ -992,7 +1034,7 @@ pub fn penalty_and_gradient(
                             let diff = r - dist;
                             penalty += diff * diff;
                             if diff > max_violation { max_violation = diff; }
-                            if compute_grad { grad[i * 3] -= 2.0 * diff; }
+                            if compute_grad { grad[i * 3] += 2.0 * diff; }
                         }
                     } else {
                         let dx = posx - cut_min_x;

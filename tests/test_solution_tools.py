@@ -77,6 +77,17 @@ def test_inverse_friedman_metric():
     assert abs(s_squinl - 2.0) < 1e-9
     assert abs(inverse_friedman_metric(2.0, "4", "L") - math.sqrt(2.0)) < 1e-9
 
+    # 3. Named polygon tokens: "square" must match "4", "pentagon" must match "5"
+    assert compute_friedman_metric(math.sqrt(2.0), "square", "L") == pytest.approx(2.0)
+    assert inverse_friedman_metric(2.0, "square", "L") == pytest.approx(math.sqrt(2.0))
+    assert compute_friedman_metric(1.5, "pentagon", "circle") == pytest.approx(compute_friedman_metric(1.5, "5", "circle"))
+
+    # 4. LinL (L-in-L container): metric is the linear dilation factor S (Friedman 1_LinL benchmark = 1.0)
+    assert compute_friedman_metric(1.0, "L", "L") == 1.0
+    assert compute_friedman_metric(2.5, "L", "L") == 2.5
+    assert inverse_friedman_metric(1.0, "L", "L") == 1.0
+    assert inverse_friedman_metric(2.5, "L", "L") == 2.5
+
 class TestLoadSolutionValuesStyle:
     def test_load_basic(self, sample_solution_values):
         sol = load_solution(sample_solution_values)

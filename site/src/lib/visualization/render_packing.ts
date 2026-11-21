@@ -25,6 +25,17 @@ export interface TransformedShape {
   color: string;
 }
 
+export const NAMED_SHAPE_SIDES: Record<string, number> = {
+  TRIANGLE: 3,
+  SQUARE: 4,
+  PENTAGON: 5,
+  HEXAGON: 6,
+  HEPTAGON: 7,
+  OCTAGON: 8,
+  NONAGON: 9,
+  DECAGON: 10,
+};
+
 export function parseShapeToken(val: any): string | number {
   if (val === undefined || val === null) return 3;
   const s = String(val).trim().toUpperCase();
@@ -32,6 +43,7 @@ export function parseShapeToken(val: any): string | number {
   if (s === 'DOMINO' || s === 'DOM') return 'DOMINO';
   if (s === 'TAN') return 'TAN';
   if (s === 'L' || s === 'L-TROMINO' || s === 'EL') return 'L';
+  if (s in NAMED_SHAPE_SIDES) return NAMED_SHAPE_SIDES[s];
   const num = parseInt(s, 10);
   return isNaN(num) ? s : num;
 }
@@ -109,6 +121,10 @@ export function inverseFriedmanMetric(fMetric: number, innerToken: any, containe
 
   const cToken = parseShapeToken(containerToken);
   const iToken = parseShapeToken(innerToken);
+
+  if (cToken === 'L' && iToken === 'L') {
+    return fMetric;
+  }
 
   let iScale = 1.0;
   if (typeof iToken === 'number') {

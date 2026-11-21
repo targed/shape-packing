@@ -77,32 +77,52 @@ class VerifyResult:
 # --------------- Solution loading ---------------
 
 
+NAMED_POLYGONS = {
+    "TRIANGLE": 3,
+    "SQUARE": 4,
+    "PENTAGON": 5,
+    "HEXAGON": 6,
+    "HEPTAGON": 7,
+    "OCTAGON": 8,
+    "NONAGON": 9,
+    "DECAGON": 10,
+}
+
+
 def compute_friedman_metric(S: float, inner_token: str, container_token: str) -> float:
     """
     Computes the correct Friedman metric corresponding to the container and inner shapes.
     """
     container_upper = container_token.strip().upper()
     inner_upper = inner_token.strip().upper()
-    
+
+    # LinL special case: container L and inner L (dilation factor S)
+    if container_upper == "L" and inner_upper == "L":
+        return S
+
     if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO"):
         c_metric = S
     elif container_upper == "L":
         c_metric = 2.0 * S
     else:
-        try:
-            nsc = int(container_upper)
-            c_metric = 2 * S * math.sin(math.pi / nsc)
-        except ValueError:
-            c_metric = 2 * S * math.sin(math.pi / 3)
+        nsc = NAMED_POLYGONS.get(container_upper)
+        if nsc is None:
+            try:
+                nsc = int(container_upper)
+            except ValueError:
+                nsc = 3
+        c_metric = 2 * S * math.sin(math.pi / nsc)
 
     if inner_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
         i_scale = 1.0
     else:
-        try:
-            nsi = int(inner_upper)
-            i_scale = 2 * math.sin(math.pi / nsi)
-        except ValueError:
-            i_scale = 2 * math.sin(math.pi / 3)
+        nsi = NAMED_POLYGONS.get(inner_upper)
+        if nsi is None:
+            try:
+                nsi = int(inner_upper)
+            except ValueError:
+                nsi = 3
+        i_scale = 2 * math.sin(math.pi / nsi)
 
     return c_metric / i_scale
 
@@ -112,16 +132,22 @@ def inverse_friedman_metric(f_metric: float, inner_token: str, container_token: 
     """
     container_upper = container_token.strip().upper()
     inner_upper = inner_token.strip().upper()
-    
+
+    # LinL special case: container L and inner L
+    if container_upper == "L" and inner_upper == "L":
+        return f_metric
+
     # Get inner scale
     if inner_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
         i_scale = 1.0
     else:
-        try:
-            nsi = int(inner_upper)
-            i_scale = 2 * math.sin(math.pi / nsi)
-        except ValueError:
-            i_scale = 2 * math.sin(math.pi / 3)
+        nsi = NAMED_POLYGONS.get(inner_upper)
+        if nsi is None:
+            try:
+                nsi = int(inner_upper)
+            except ValueError:
+                nsi = 3
+        i_scale = 2 * math.sin(math.pi / nsi)
 
     c_metric = f_metric * i_scale
 
@@ -131,11 +157,13 @@ def inverse_friedman_metric(f_metric: float, inner_token: str, container_token: 
     elif container_upper == "L":
         return c_metric / 2.0
     else:
-        try:
-            nsc = int(container_upper)
-            return c_metric / (2 * math.sin(math.pi / nsc))
-        except ValueError:
-            return c_metric / (2 * math.sin(math.pi / 3))
+        nsc = NAMED_POLYGONS.get(container_upper)
+        if nsc is None:
+            try:
+                nsc = int(container_upper)
+            except ValueError:
+                nsc = 3
+        return c_metric / (2 * math.sin(math.pi / nsc))
 
 def load_solution(path: str) -> "Solution":
     """
