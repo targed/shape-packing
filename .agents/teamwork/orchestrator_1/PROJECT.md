@@ -35,8 +35,8 @@ Centralized coordinator REST service (FastAPI) backed by SQLite WAL mode storage
 | M1 | Coordinator Database Layer | database.py: schema, WAL mode, worker reg, solution records, seeding | none | DONE |
 | M2 | Work Scheduler & Priority Allocator | scheduler.py: bandit allocation, lease expiry, heartbeat accounting | M1 | DONE |
 | M3 | Coordinator REST API & Verifier | app.py: FastAPI endpoints, in-process SAT verification, atomic commit | M1, M2 | DONE |
-| M4 | Native Worker Client Daemon | native_worker.py: urllib networking, idle priority, signal handling | M3 | IN_PROGRESS |
-| M5 | Integrated Verification & E2E Testing | test suites, e2e integration test, adversarial verification | M1, M2, M3, M4 | PLANNED |
+| M4 | Native Worker Client Daemon | native_worker.py: urllib networking, idle priority, signal handling | M3 | DONE |
+| M5 | Integrated Verification & E2E Testing | test suites, e2e integration test, adversarial verification | M1, M2, M3, M4 | DONE |
 
 ## Interface Contracts
 ### database.py ↔ scheduler.py

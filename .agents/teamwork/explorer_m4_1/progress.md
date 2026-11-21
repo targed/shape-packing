@@ -1,13 +1,18 @@
 # Progress - explorer_m4_1
 
-Last visited: 2026-11-21T00:38:10Z
+Last visited: 2026-11-21T00:43:00Z
 
 ## Status
 - [x] Initialized DISPATCH.md and BRIEFING.md
-- [ ] Read ORIGINAL_REQUEST.md (§R4) and orchestrator_1/PROJECT.md
-- [ ] Read design doc (§4) and plan (Task 4)
-- [ ] Investigate existing codebase in `src/shape_packing/client/` or related files
-- [ ] Design standard-library urllib `send_request`, status handling, retries, and `WorkerConfig`
-- [ ] Update BRIEFING.md
-- [ ] Generate handoff.md (5 components)
-- [ ] Notify parent via send_message
+- [x] Read ORIGINAL_REQUEST.md (§R4) and orchestrator_1/PROJECT.md
+- [x] Read design doc (§4) and plan (Task 4, Task 5)
+- [x] Investigate server endpoints in `src/shape_packing/server/app.py`
+- [x] Investigate solver interface in `src/shape_packing/solver_interface.py`
+- [x] Prototype and verify urllib networking (200, 204, 400, 500, network error)
+- [x] Discovered and resolved environment proxy trap (`Direct IP access is not allowed`) via ProxyHandler
+- [x] Design AST static verification for zero external networking dependencies
+- [x] Design WorkerConfig dataclass with url aliasing and defaults
+- [x] Design comprehensive status code handling state machine (200, 204, 400, 5xx, 0)
+- [x] Update BRIEFING.md
+- [x] Write 5-component handoff.md
+- [x] Notify parent via send_message

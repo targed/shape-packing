@@ -1,4 +1,4 @@
-# BRIEFING — 2026-11-21T00:38:00Z
+# BRIEFING — 2026-11-21T00:41:40Z
 
 ## Mission
 Mine and specify all features, constraints, error conditions, and test cases for Milestone 4: Native Worker Client Daemon.
@@ -32,6 +32,9 @@ Mine and specify all features, constraints, error conditions, and test cases for
 
 ## Key Decisions Made
 - Prioritize authoritative spec files: ORIGINAL_REQUEST.md, design doc §4, plan Task 4, and existing codebase conventions.
+- Discovered signature contract discrepancy in `solver_interface.py`: `n_shapes` keyword (not `n`) and return dict key `score` (not `best_s`). Worker implementation must accommodate both to avoid runtime errors.
+- Discovered urllib HTTPError file-pointer exhaustion edge case: `err.read()` can only be read once unless buffered.
+- Identified need for platform-agnostic `set_idle_priority()` with safe fallback for Windows/permission errors.
 
 ## Artifact Index
 - DISPATCH.md — Dispatch instructions
