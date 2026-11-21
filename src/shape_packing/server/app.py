@@ -43,6 +43,10 @@ class WorkerRegisterRequest(BaseModel):
     worker_id: Optional[str] = None
 
 
+class WorkerDeregisterRequest(BaseModel):
+    worker_id: str
+
+
 class SolutionSubmitRequest(BaseModel):
     work_id: Optional[str] = None
     worker_id: str
@@ -114,6 +118,26 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
             "client_type": result["client_type"],
             "status": "registered",
         }
+
+    @app.post("/api/v1/workers/deregister", status_code=status.HTTP_200_OK)
+    def deregister(
+        req: WorkerDeregisterRequest,
+        conn: sqlite3.Connection = Depends(get_db),
+    ) -> Dict[str, Any]:
+        """Mark worker node as offline and clear its active leases on graceful shutdown."""
+        clean_worker_id = req.worker_id.strip() if req.worker_id else ""
+        if clean_worker_id:
+            cursor = conn.cursor()
+            cursor.execute(
+                "UPDATE workers SET last_seen_at = datetime('now', '-10 minutes') WHERE id = ?",
+                (clean_worker_id,),
+            )
+            cursor.execute(
+                "DELETE FROM active_leases WHERE worker_id = ?",
+                (clean_worker_id,),
+            )
+            conn.commit()
+        return {"status": "deregistered"}
 
     @app.get("/api/v1/work")
     def get_work(
@@ -333,6 +357,15 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
         cursor.execute("SELECT COUNT(*) FROM workers")
         total_workers = cursor.fetchone()[0]
 
+        # Active workers: nodes that checked in or heartbeat within the last 2 minutes
+        cursor.execute(
+            """
+            SELECT COUNT(*) FROM workers
+            WHERE last_seen_at >= datetime('now', '-2 minutes')
+            """
+        )
+        active_workers = cursor.fetchone()[0]
+
         cursor.execute("SELECT COALESCE(SUM(total_attempts), 0) FROM problems")
         total_attempts = cursor.fetchone()[0]
 
@@ -344,7 +377,8 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
 
         return {
             "total_problems": total_probs,
-            "active_workers": total_workers,
+            "active_workers": active_workers,
+            "total_workers": total_workers,
             "total_attempts": total_attempts,
             "records_broken": records_broken,
             "verified_solutions": total_solutions,

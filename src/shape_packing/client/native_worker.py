@@ -243,6 +243,23 @@ def save_cached_worker_id(username: str, worker_id: str, path: Optional[str] = N
         pass
 
 
+def deregister_with_server(
+    config: WorkerConfig,
+    request_fn: Optional[Callable] = None,
+    timeout: float = 3.0,
+) -> bool:
+    """Notify coordinator on graceful exit to release leases and mark offline."""
+    if not config.worker_id:
+        return False
+    req = request_fn or send_request
+    url = f"{config.server_url.rstrip('/')}/api/v1/workers/deregister"
+    try:
+        req(url, method="POST", payload={"worker_id": config.worker_id}, timeout=timeout)
+        return True
+    except Exception:
+        return False
+
+
 def set_process_idle_priority() -> bool:
     """Set current process to idle/lowest background OS scheduling priority.
 
@@ -723,6 +740,7 @@ def main(argv: Optional[List[str]] = None) -> None:
         run_worker_loop(config, max_cycles=args.max_cycles)
     finally:
         flush_in_flight_heartbeat(config)
+        deregister_with_server(config)
         print("[Worker] Exited cleanly.")
 
 
