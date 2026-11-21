@@ -12,13 +12,21 @@ import math
 import os
 import sqlite3
 import uuid
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 logger = logging.getLogger(__name__)
 
 # Minimum improvement delta required to break an existing solution record.
 # Consistent with shape_packing.packing_config.RECORD_MIN_IMPROVEMENT.
 RECORD_MIN_IMPROVEMENT: float = 1e-5
+
+# Set of shape tokens supported by geometry kernels and solver engines.
+# Unsupported containers (such as non-equilateral arbitrary triangles or ellipses)
+# must not be seeded or scheduled until explicit solvers are built.
+SUPPORTED_SHAPES: Set[str] = {
+    "3", "4", "5", "6", "7", "8", "9", "10",
+    "CIRCLE", "DOMINO", "TAN", "L"
+}
 
 # Map shape tokens and aliases to canonical tokens recognized by geometry.py,
 # solution_tools.py, and packer_rs.
@@ -354,7 +362,13 @@ def seed_problems_from_verification(
                     continue
 
                 raw_status = item.get("status")
-                if raw_status:
+                clean_status = str(raw_status).strip().lower() if raw_status else ""
+
+                if clean_status == "proved_optimal":
+                    status = "proved_optimal"
+                elif inner not in SUPPORTED_SHAPES or container not in SUPPORTED_SHAPES:
+                    status = "unsupported"
+                elif raw_status:
                     status = str(raw_status)
                 elif best_val is not None:
                     status = "best_known"

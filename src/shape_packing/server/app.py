@@ -26,6 +26,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from .database import (
+    SUPPORTED_SHAPES,
     get_problem,
     init_db,
     register_worker,
@@ -248,6 +249,17 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
 
         inner_token = prob["inner_token"]
         container_token = prob["container_token"]
+
+        if inner_token not in SUPPORTED_SHAPES or container_token not in SUPPORTED_SHAPES:
+            return JSONResponse(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                content={
+                    "status": "rejected",
+                    "verified": False,
+                    "message": f"Shape family with inner '{inner_token}' or container '{container_token}' is not supported.",
+                },
+            )
+
         solver_s = inverse_friedman_metric(req.s, inner_token, container_token)
 
         sol_payload = {

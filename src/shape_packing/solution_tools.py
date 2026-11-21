@@ -84,8 +84,10 @@ def compute_friedman_metric(S: float, inner_token: str, container_token: str) ->
     container_upper = container_token.strip().upper()
     inner_upper = inner_token.strip().upper()
     
-    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO"):
         c_metric = S
+    elif container_upper == "L":
+        c_metric = 2.0 * S
     else:
         try:
             nsc = int(container_upper)
@@ -124,8 +126,10 @@ def inverse_friedman_metric(f_metric: float, inner_token: str, container_token: 
     c_metric = f_metric * i_scale
 
     # Reverse container metric
-    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO"):
         return c_metric
+    elif container_upper == "L":
+        return c_metric / 2.0
     else:
         try:
             nsc = int(container_upper)

@@ -412,6 +412,71 @@ def test_submit_unknown_problem_returns_404(app_client):
     assert resp.status_code == 404
 
 
+def test_submit_unsupported_shape_rejected_with_400(app_client):
+    """Submitting a solution for an unsupported shape family is rejected with HTTP 400."""
+    client, db_path = app_client
+    reg = client.post("/api/v1/workers/register", json={"username": "unsup_tester"})
+    w_id = reg.json()["worker_id"]
+
+    # Insert an unsupported problem family into DB
+    conn = sqlite3.connect(db_path)
+    conn.execute(
+        """
+        INSERT INTO problems (id, inner_token, container_token, n, best_s, reference_s, status, density_rank)
+        VALUES ('1_cirinel', 'CIRCLE', 'EL', 1, 3.0, 3.0, 'unsupported', 0.5)
+        """
+    )
+    conn.commit()
+    conn.close()
+
+    payload = {
+        "worker_id": w_id,
+        "problem": "1_cirinel",
+        "s": 2.0,
+        "coordinates": [0.0, 0.0, 0.0],
+    }
+    resp = client.post("/api/v1/solutions", json=payload)
+    assert resp.status_code == 400
+    res_data = resp.json()
+    assert res_data["status"] == "rejected"
+    assert res_data["verified"] is False
+    assert "not supported" in res_data["message"].lower()
+
+
+def test_submit_valid_l_container_solution(app_client):
+    """Submitting a valid L-container solution correctly reverses the Friedman metric and verifies."""
+    client, db_path = app_client
+    reg = client.post("/api/v1/workers/register", json={"username": "l_tester"})
+    w_id = reg.json()["worker_id"]
+
+    conn = sqlite3.connect(db_path)
+    conn.execute(
+        """
+        INSERT INTO problems (id, inner_token, container_token, n, best_s, reference_s, status, density_rank)
+        VALUES ('1_squinl', '4', 'L', 1, 2.5, 2.0, 'best_known', 0.85)
+        """
+    )
+    conn.commit()
+    conn.close()
+
+    # Valid square in L-tromino corner with Friedman metric s = 2.0 (improving best_s from 2.5)
+    cx = -math.sqrt(2.0) / 3.0
+    cy = -math.sqrt(2.0) / 3.0
+    payload = {
+        "worker_id": w_id,
+        "problem": "1_squinl",
+        "s": 2.0,
+        "coordinates": [cx, cy, math.pi / 4.0],
+    }
+    resp = client.post("/api/v1/solutions", json=payload)
+    assert resp.status_code == 200
+    res_data = resp.json()
+    assert res_data["status"] == "accepted"
+    assert res_data["verified"] is True
+    assert res_data["is_new_record"] is True
+    assert abs(res_data["metric_s"] - 2.0) < 1e-6
+
+
 # =========================================================================
 # 4. Heartbeat Reporting Tests
 # =========================================================================

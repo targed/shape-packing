@@ -73,6 +73,16 @@ export function getUnitShapeVertices(token: string | number): PolygonPoint[] | n
       { x: -r, y: 1.0 - r },
     ];
   }
+  if (parsed === 'L') {
+    return [
+      { x: -5.0 / 6.0, y: -5.0 / 6.0 },
+      { x: 7.0 / 6.0, y: -5.0 / 6.0 },
+      { x: 7.0 / 6.0, y: 1.0 / 6.0 },
+      { x: 1.0 / 6.0, y: 1.0 / 6.0 },
+      { x: 1.0 / 6.0, y: 7.0 / 6.0 },
+      { x: -5.0 / 6.0, y: 7.0 / 6.0 },
+    ];
+  }
   const sides = typeof parsed === 'number' && parsed >= 3 ? parsed : 3;
   return getRegularPolygonVertices(sides, 1.0, 0);
 }

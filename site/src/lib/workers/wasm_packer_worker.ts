@@ -53,36 +53,45 @@ async function runLoop(serverUrl: string, username: string, workerId: string) {
         work.target_s ?? null
       );
       const result = JSON.parse(rawResult);
+      const metric_s = result.final_metric ?? result.best_s;
 
       self.postMessage({
         type: 'iteration_complete',
         work_id: work.work_id,
         problem: work.problem,
         n: work.n,
-        best_s: result.best_s,
+        best_s: metric_s,
         coordinates: result.values,
+        inner_token: work.inner_token,
+        container_token: work.container_token,
         success: result.success,
       });
 
       // 3. Submit improvement if record beaten
-      if (result.success && result.best_s < work.target_s) {
-        await fetch(`${serverUrl}/api/v1/solutions`, {
+      if (result.success && typeof metric_s === 'number' && metric_s > 0 && metric_s < work.target_s) {
+        const solRes = await fetch(`${serverUrl}/api/v1/solutions`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             work_id: work.work_id,
             worker_id: workerId,
             problem: work.problem,
-            s: result.best_s,
+            s: metric_s,
             coordinates: result.values,
           }),
         });
-        self.postMessage({
-          type: 'record_beaten',
-          problem: work.problem,
-          best_s: result.best_s,
-          coordinates: result.values,
-        });
+
+        if (solRes.ok) {
+          const solData = await solRes.json();
+          if (solData.verified) {
+            self.postMessage({
+              type: 'record_beaten',
+              problem: work.problem,
+              best_s: metric_s,
+              coordinates: result.values,
+            });
+          }
+        }
       }
 
       // 4. Heartbeat
@@ -93,7 +102,7 @@ async function runLoop(serverUrl: string, username: string, workerId: string) {
           worker_id: workerId,
           work_id: work.work_id,
           attempts_completed: attemptsToRun,
-          best_local_s: result.best_s,
+          best_local_s: typeof metric_s === 'number' && metric_s > 0 ? metric_s : null,
         }),
       });
 

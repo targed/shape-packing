@@ -271,6 +271,30 @@ def test_assign_work_returns_none_when_only_proved_optimal(conn: sqlite3.Connect
     assert work is None
 
 
+def test_assign_work_skips_unsupported(conn: sqlite3.Connection):
+    """Verify unsupported problems are strictly excluded under all allocation paths."""
+    _insert_problem(conn, "unsup_1", status="unsupported", total_attempts=0)
+    _insert_problem(conn, "unsup_2", status="UNSUPPORTED", total_attempts=0)
+    _insert_problem(conn, "cand_1", status="unattempted", total_attempts=0)
+
+    # Across 20 assignments (exploration and exploitation), unsupported problems must never be assigned
+    for i in range(20):
+        conn.execute("DELETE FROM active_leases")
+        conn.commit()
+        work = assign_work(conn, worker_id=f"w_{i}")
+        assert work is not None
+        assert work["problem"] == "cand_1"
+        assert work["problem"] not in ("unsup_1", "unsup_2")
+
+
+def test_assign_work_returns_none_when_only_unsupported(conn: sqlite3.Connection):
+    """Verify assign_work returns None cleanly when catalog contains only unsupported problems."""
+    _insert_problem(conn, "unsup_1", status="unsupported")
+    _insert_problem(conn, "unsup_2", status="UNSUPPORTED")
+    work = assign_work(conn, worker_id="w1")
+    assert work is None
+
+
 def test_assign_work_returns_none_when_db_empty(conn: sqlite3.Connection):
     """Verify assign_work returns None cleanly when database is empty."""
     work = assign_work(conn, worker_id="w1")

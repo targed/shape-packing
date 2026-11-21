@@ -179,7 +179,8 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
         let inner_upper = config.inner_shape.trim().to_uppercase();
         
         let c_metric = match container_upper.as_str() {
-            "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => *best,
+            "CIRCLE" | "CIR" | "TAN" | "DOMINO" => *best,
+            "L" => 2.0 * *best,
             _ => {
                 if let Ok(nsc) = container_upper.parse::<usize>() {
                     2.0 * *best * (PI / nsc as f64).sin()

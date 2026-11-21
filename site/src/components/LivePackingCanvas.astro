@@ -42,6 +42,9 @@
     '#06b6d4', '#3b82f6', '#f59e0b', '#84cc16', '#a855f7'
   ];
 
+  let currentInnerToken = '3';
+  let currentContainerToken = 'CIRCLE';
+
   function drawEmptyCanvas() {
     if (!ctx || !canvas) return;
     const w = canvas.width;
@@ -76,6 +79,9 @@
   window.addEventListener('update-live-packing', (e: Event) => {
     const customEvent = e as CustomEvent;
     const { problem, n, s, coordinates, inner_token, container_token, status } = customEvent.detail;
+
+    if (inner_token) currentInnerToken = inner_token;
+    if (container_token) currentContainerToken = container_token;
 
     if (problemName) problemName.textContent = problem || 'Active';
     if (scaleValue) scaleValue.textContent = typeof s === 'number' ? s.toFixed(5) : '—';
@@ -115,7 +121,7 @@
     const S = s || 2.0;
     const viewScale = (Math.min(w, h) * 0.42) / S;
 
-    const cToken = parseShapeToken(container_token || 'CIRCLE');
+    const cToken = parseShapeToken(currentContainerToken || 'CIRCLE');
     const isContainerCircle = cToken === 'CIRCLE';
 
     ctx.save();
@@ -147,7 +153,7 @@
     }
 
     // Draw inner shapes
-    const iToken = parseShapeToken(inner_token || '3');
+    const iToken = parseShapeToken(currentInnerToken || '3');
     const isInnerCircle = iToken === 'CIRCLE';
     const unitInner = getUnitShapeVertices(iToken) || getRegularPolygonVertices(3, 1.0, 0);
 

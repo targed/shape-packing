@@ -66,6 +66,17 @@ def test_inverse_friedman_metric():
     f_val = compute_friedman_metric(2.0, "TAN", "CIRCLE")
     assert abs(inverse_friedman_metric(f_val, "TAN", "CIRCLE") - 2.0) < 1e-9
 
+    # L-tromino container scaling:
+    # 1. With circle inner (i_scale = 1.0): S = 1.70710678 gives Friedman metric s = 2 * S = 3.41421356 (Friedman 1_cirinl benchmark)
+    s_cirinl = compute_friedman_metric(1.70710678, "CIRCLE", "L")
+    assert abs(s_cirinl - 3.41421356) < 1e-6
+    assert abs(inverse_friedman_metric(3.41421356, "CIRCLE", "L") - 1.70710678) < 1e-6
+
+    # 2. With square inner (i_scale = sqrt(2)): S = sqrt(2) gives Friedman metric s = 2.0 (Friedman 1_squinl benchmark)
+    s_squinl = compute_friedman_metric(math.sqrt(2.0), "4", "L")
+    assert abs(s_squinl - 2.0) < 1e-9
+    assert abs(inverse_friedman_metric(2.0, "4", "L") - math.sqrt(2.0)) < 1e-9
+
 class TestLoadSolutionValuesStyle:
     def test_load_basic(self, sample_solution_values):
         sol = load_solution(sample_solution_values)
@@ -200,6 +211,52 @@ class TestVerifySolution:
         )
         assert not res.valid
         assert any("Metric scaling" in e for e in res.errors)
+
+    def test_verify_l_container_squinl(self, tmp_path):
+        """Verify that a 1-square packing in an L-container scales as s = 2S and verifies bounds."""
+        S = math.sqrt(2.0)
+        s_metric = 2.0
+        # Square placed in lower-left arm [-5/6 S, 1/6 S] x [-5/6 S, 1/6 S]
+        cx = -math.sqrt(2.0) / 3.0
+        cy = -math.sqrt(2.0) / 3.0
+        data = {
+            "problem": "1_squinl",
+            "N": 1,
+            "inner_token": "4",
+            "container_token": "L",
+            "S": S,
+            "final_metric": s_metric,
+            "values": [cx, cy, math.pi / 4.0],
+        }
+        p = tmp_path / "sol_squinl.json"
+        p.write_text(json.dumps(data))
+        res = verify_solution(str(p), "1_squinl", check_record=False)
+        assert res.valid
+        assert res.errors == []
+        assert abs(res.metric - 2.0) < 1e-6
+
+    def test_verify_l_container_cirinl(self, tmp_path):
+        """Verify that a 1-circle packing in an L-container scales as s = 2S and verifies reflex corner."""
+        S = 1.0 + math.sqrt(2.0) / 2.0
+        s_metric = 2.0 * S
+        # Circle tangent to left and bottom walls: x = -5/6 S + 1, y = -5/6 S + 1
+        cx = -5.0 / 6.0 * S + 1.0
+        cy = -5.0 / 6.0 * S + 1.0
+        data = {
+            "problem": "1_cirinl",
+            "N": 1,
+            "inner_token": "CIRCLE",
+            "container_token": "L",
+            "S": S,
+            "final_metric": s_metric,
+            "values": [cx, cy, 0.0],
+        }
+        p = tmp_path / "sol_cirinl.json"
+        p.write_text(json.dumps(data))
+        res = verify_solution(str(p), "1_cirinl", check_record=False)
+        assert res.valid
+        assert res.errors == []
+        assert abs(res.metric - (2.0 + math.sqrt(2.0))) < 1e-6
 
 
 class TestLoadSolutionError:
@@ -452,6 +509,7 @@ class TestToPlotData:
 
 class TestRenderSolution:
     def test_render_basic(self, sample_solution_values):
+        pytest.importorskip("matplotlib")
         from shape_packing.solution_tools import render_solution
         import os
         render_solution(sample_solution_values)
@@ -459,6 +517,7 @@ class TestRenderSolution:
         os.remove("solution.png")
 
     def test_render_with_flags(self, sample_solution_values):
+        pytest.importorskip("matplotlib")
         from shape_packing.solution_tools import render_solution
         import os
         render_solution(sample_solution_values, show_axes=True, show_grid=True)
@@ -466,6 +525,7 @@ class TestRenderSolution:
         os.remove("solution.png")
 
     def test_render_with_custom_styling_and_dimensions(self, sample_solution_values, tmp_path):
+        pytest.importorskip("matplotlib")
         from shape_packing.solution_tools import render_solution
         from PIL import Image
         out_png = str(tmp_path / "custom_243.png")
@@ -596,12 +656,13 @@ class TestLTrominoVerification:
         # Horizontal branch: [1/6 S, 7/6 S] x [-5/6 S, 1/6 S]
         # At S = 3.0: [0.5, 3.5] x [-2.5, 0.5]
         # Place TAN centered at (1.5, -1.0)
+        # For L container, Friedman metric s = 2.0 * S = 6.0
         data = {
             "N": 1,
             "inner_token": "TAN",
             "container_token": "L",
             "S": 3.0,
-            "final_metric": 3.0,
+            "final_metric": 6.0,
             "values": [1.5, -1.0, 0.0],
         }
         p = tmp_path / "tan_in_l.json"
@@ -619,12 +680,13 @@ class TestLTrominoVerification:
         # Place shape in top-right reflex cut-out: [1/6 S, 7/6 S] x [1/6 S, 7/6 S]
         # At S = 3.0: [0.5, 3.5] x [0.5, 3.5]
         # Place shape centered at (2.0, 2.0)
+        # For L container, Friedman metric s = 2.0 * S = 6.0
         data = {
             "N": 1,
             "inner_token": "TAN",
             "container_token": "L",
             "S": 3.0,
-            "final_metric": 3.0,
+            "final_metric": 6.0,
             "values": [2.0, 2.0, 0.0],
         }
         p = tmp_path / "tan_in_l_cutout.json"

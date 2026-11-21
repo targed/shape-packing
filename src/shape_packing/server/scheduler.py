@@ -115,6 +115,7 @@ def assign_work(
                 FROM problems p
                 LEFT JOIN active_leases l ON p.id = l.problem_id
                 WHERE COALESCE(LOWER(p.status), '') != 'proved_optimal'
+                  AND COALESCE(LOWER(p.status), '') != 'unsupported'
                   AND (p.status = 'unattempted' OR p.total_attempts = 0)
                   AND l.work_id IS NULL
                 ORDER BY RANDOM()
@@ -132,6 +133,7 @@ def assign_work(
                 FROM problems p
                 LEFT JOIN active_leases l ON p.id = l.problem_id
                 WHERE COALESCE(LOWER(p.status), '') != 'proved_optimal'
+                  AND COALESCE(LOWER(p.status), '') != 'unsupported'
                   AND l.work_id IS NULL
                 ORDER BY
                     -- Tier 1: Stuck backoff (>50k attempts without improvement decays priority)
@@ -164,6 +166,7 @@ def assign_work(
                     SELECT p.*
                     FROM problems p
                     WHERE COALESCE(LOWER(p.status), '') != 'proved_optimal'
+                      AND COALESCE(LOWER(p.status), '') != 'unsupported'
                     ORDER BY
                         CASE
                             WHEN p.total_attempts > 50000
