@@ -31,6 +31,12 @@ harness = false
 [features]
 default = ["python"]
 python = ["pyo3"]
+wasm = ["wasm-bindgen"]
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom = { version = "0.2", features = ["js"] }
+wasm-bindgen = { version = "0.2", optional = true }
+js-sys = "0.3"
 
 [profile.release]
 opt-level = 3

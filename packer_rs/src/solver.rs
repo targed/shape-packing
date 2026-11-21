@@ -6,7 +6,36 @@ use rayon::prelude::*;
 use std::f64::consts::PI;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
-use std::time::{Duration, Instant};
+#[cfg(not(target_arch = "wasm32"))]
+use std::time::Duration;
+
+#[cfg(not(target_arch = "wasm32"))]
+use std::time::Instant;
+
+#[cfg(target_arch = "wasm32")]
+#[derive(Debug, Clone, Copy)]
+pub struct Instant(f64);
+
+#[cfg(target_arch = "wasm32")]
+impl Instant {
+    pub fn now() -> Self {
+        Instant(js_sys::Date::now())
+    }
+    pub fn elapsed(&self) -> Elapsed {
+        Elapsed((js_sys::Date::now() - self.0) / 1000.0)
+    }
+}
+
+#[cfg(target_arch = "wasm32")]
+#[derive(Debug, Clone, Copy)]
+pub struct Elapsed(f64);
+
+#[cfg(target_arch = "wasm32")]
+impl Elapsed {
+    pub fn as_secs_f64(&self) -> f64 {
+        self.0
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct SolveConfig {
@@ -53,10 +82,13 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
 
     if let Some(limit) = config.time_limit {
         let flag = Arc::clone(&stop_flag);
+        #[cfg(not(target_arch = "wasm32"))]
         std::thread::spawn(move || {
             std::thread::sleep(Duration::from_secs_f64(limit));
             flag.store(true, Ordering::Relaxed);
         });
+        #[cfg(target_arch = "wasm32")]
+        let _ = (limit, flag);
     }
 
     let (nsi, unit_polygon_vertices, unit_polygon_vectors, _) = get_shape_geometry(&config.inner_shape);

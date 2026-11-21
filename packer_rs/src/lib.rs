@@ -1,5 +1,8 @@
 pub mod solver;
 
+#[cfg(feature = "wasm")]
+pub mod wasm;
+
 #[cfg(feature = "python")]
 mod python_bindings {
     use pyo3::prelude::*;
