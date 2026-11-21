@@ -202,8 +202,9 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
         };
 
         let final_metric = c_metric / i_scale;
+        let success = config.target_s.map_or(true, |ts| *best < ts);
         SolveResult {
-            success: true,
+            success,
             best_s: *best,
             final_metric,
             values: bx.clone(),
@@ -463,7 +464,7 @@ pub fn run_attempt<R: Rng>(
             if !resolved {
                 if let Some(ts) = target_s {
                     if current_s >= ts {
-                        return (f64::INFINITY, None);
+                        return (last_valid_s, last_valid_x);
                     }
                 }
                 break;

@@ -57,6 +57,54 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               value="http://localhost:8000"
             />
           </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+                Worker Threads (Cores)
+              </label>
+              <select
+                id="worker-cores"
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+              >
+                <option value="1">1 Thread</option>
+                <option value="2">2 Threads</option>
+                <option value="4" selected>4 Threads</option>
+                <option value="8">8 Threads</option>
+                <option value="12">12 Threads</option>
+                <option value="16">16 Threads</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+                Batch Size (Attempts)
+              </label>
+              <select
+                id="worker-batch-size"
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+              >
+                <option value="100">100 attempts</option>
+                <option value="250">250 attempts</option>
+                <option value="500" selected>500 attempts</option>
+                <option value="1000">1,000 attempts</option>
+                <option value="2000">2,000 attempts</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Browser Compatibility Notice -->
+          <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] text-slate-400 space-y-1">
+            <div class="flex items-center gap-1.5 font-semibold text-slate-300">
+              <svg class="w-3.5 h-3.5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Browser Compatibility Note</span>
+            </div>
+            <p>
+              In Brave or Chromium browsers, connecting to a local coordinator (<code class="text-indigo-300 font-mono">http://localhost:8000</code>) may be blocked by Brave Shields or Private Network Access rules. If requests fail, toggle Brave Shields to "Off" for this tab, or access the dashboard via <code class="text-indigo-300 font-mono">http://localhost:4321</code>.
+            </p>
+          </div>
         </div>
 
         <div class="flex gap-3">
@@ -118,6 +166,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 <script>
   const usernameInput = document.getElementById('worker-username') as HTMLInputElement;
   const serverUrlInput = document.getElementById('worker-server-url') as HTMLInputElement;
+  const coresSelect = document.getElementById('worker-cores') as HTMLSelectElement;
+  const batchSizeSelect = document.getElementById('worker-batch-size') as HTMLSelectElement;
   const startBtn = document.getElementById('btn-start') as HTMLButtonElement;
   const stopBtn = document.getElementById('btn-stop') as HTMLButtonElement;
   const clearLogBtn = document.getElementById('btn-clear-log') as HTMLButtonElement;
@@ -125,18 +175,29 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   const metricAttempts = document.getElementById('metric-attempts') as HTMLSpanElement;
   const metricRecords = document.getElementById('metric-records') as HTMLSpanElement;
 
-  // Restore saved username/server from localStorage
+  // Restore saved settings from localStorage
   if (localStorage.getItem('shape_packing_username') && usernameInput) {
     usernameInput.value = localStorage.getItem('shape_packing_username') || 'web_volunteer';
   }
   if (localStorage.getItem('shape_packing_coordinator_url') && serverUrlInput) {
     serverUrlInput.value = localStorage.getItem('shape_packing_coordinator_url') || 'http://localhost:8000';
   }
+  if (localStorage.getItem('shape_packing_cores') && coresSelect) {
+    coresSelect.value = localStorage.getItem('shape_packing_cores') || '4';
+  } else if (typeof navigator !== 'undefined' && navigator.hardwareConcurrency && coresSelect) {
+    const hwCores = navigator.hardwareConcurrency;
+    const recCores = Math.min(4, Math.max(1, hwCores > 2 ? hwCores - 1 : hwCores));
+    coresSelect.value = String(recCores);
+  }
+  if (localStorage.getItem('shape_packing_batch_size') && batchSizeSelect) {
+    batchSizeSelect.value = localStorage.getItem('shape_packing_batch_size') || '500';
+  }
 
-  let worker: Worker | null = null;
+  let workers: Worker[] = [];
   let totalAttempts = 0;
   let totalRecordsBroken = 0;
-  const workerId = `wasm-worker-${Math.random().toString(36).substring(2, 9)}`;
+  let activeWorkerIds: string[] = [];
+  const baseWorkerId = `wasm-worker-${Math.random().toString(36).substring(2, 9)}`;
 
   function appendLog(message: string, isHighlight: boolean = false) {
     if (!logBox) return;
@@ -159,122 +220,146 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   function startCrunching() {
     const username = usernameInput?.value.trim() || 'web_volunteer';
     const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'http://localhost:8000';
+    const cores = parseInt(coresSelect?.value || '4', 10);
+    const batchSize = parseInt(batchSizeSelect?.value || '500', 10);
 
     localStorage.setItem('shape_packing_username', username);
     localStorage.setItem('shape_packing_coordinator_url', serverUrl);
+    localStorage.setItem('shape_packing_cores', String(cores));
+    localStorage.setItem('shape_packing_batch_size', String(batchSize));
 
-    appendLog(`Connecting to coordinator at ${serverUrl} as '${username}'...`);
+    appendLog(`Connecting to coordinator at ${serverUrl} as '${username}' with ${cores} worker thread(s)...`);
 
-    // Register with coordinator
-    fetch(`${serverUrl}/api/v1/workers/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        worker_id: workerId,
-        username: username,
-        cores: 1,
-      }),
-    })
-      .then((res) => res.json())
-      .then((reg) => {
-        appendLog(`Registered with cluster (Assigned ID: ${reg.worker_id})`);
+    const wasmPath = `${window.location.origin}/shape-packing/wasm/packer_rs_bg.wasm`;
+    workers = [];
+    activeWorkerIds = [];
+
+    for (let i = 0; i < cores; i++) {
+      const threadId = cores === 1 ? baseWorkerId : `${baseWorkerId}-t${i + 1}`;
+      activeWorkerIds.push(threadId);
+
+      // Register with coordinator
+      fetch(`${serverUrl}/api/v1/workers/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          worker_id: threadId,
+          username: username,
+          cores: 1,
+        }),
       })
-      .catch((err) => {
-        appendLog(`Note: Register endpoint unavailable (${err.message}). Proceeding directly.`);
-      });
+        .then((res) => res.json())
+        .then((reg) => {
+          if (i === 0) {
+            appendLog(`Registered with cluster (Assigned ID: ${reg.worker_id})`);
+          }
+        })
+        .catch((err) => {
+          if (i === 0) {
+            appendLog(`Note: Register endpoint unavailable (${err.message}). Proceeding directly.`);
+          }
+        });
 
-    // Spawn Web Worker
-    try {
-      worker = new Worker(new URL('../lib/workers/wasm_packer_worker.ts', import.meta.url), {
-        type: 'module',
-      });
+      // Spawn Web Worker for each core
+      try {
+        const w = new Worker(new URL('../lib/workers/wasm_packer_worker.ts', import.meta.url), {
+          type: 'module',
+        });
 
-      const wasmPath = `${window.location.origin}/shape-packing/wasm/packer_rs_bg.wasm`;
+        w.postMessage({
+          command: 'start',
+          serverUrl,
+          username,
+          workerId: threadId,
+          wasmUrl: wasmPath,
+          batchSize,
+        });
 
-      worker.postMessage({
-        command: 'start',
-        serverUrl,
-        username,
-        workerId,
-        wasmUrl: wasmPath,
-      });
+        w.onmessage = (e) => {
+          const data = e.data;
+          if (data.type === 'ready') {
+            if (i === 0) appendLog('Rust WebAssembly engine initialized successfully.');
+          } else if (data.type === 'task_started') {
+            appendLog(`[T${i + 1}] Leased ${data.work.problem} (Target s: ${data.work.target_s.toFixed(5)})`);
+            window.dispatchEvent(
+              new CustomEvent('update-live-packing', {
+                detail: {
+                  problem: data.work.problem,
+                  n: data.work.n,
+                  s: data.work.target_s,
+                  coordinates: [],
+                  inner_token: data.work.inner_token,
+                  container_token: data.work.container_token,
+                  status: `Solving [T${i + 1}/${cores}]`,
+                },
+              })
+            );
+          } else if (data.type === 'iteration_complete') {
+            window.dispatchEvent(
+              new CustomEvent('update-live-packing', {
+                detail: {
+                  problem: data.problem,
+                  n: data.n,
+                  s: data.best_s,
+                  coordinates: data.coordinates,
+                  inner_token: data.inner_token,
+                  container_token: data.container_token,
+                  status: `Optimizing [T${i + 1}/${cores}]`,
+                },
+              })
+            );
+          } else if (data.type === 'attempts_completed') {
+            totalAttempts += data.count;
+            if (metricAttempts) metricAttempts.textContent = totalAttempts.toLocaleString();
+          } else if (data.type === 'record_beaten') {
+            totalRecordsBroken += 1;
+            if (metricRecords) metricRecords.textContent = totalRecordsBroken.toLocaleString();
+            appendLog(`🏆 RECORD BEATEN on ${data.problem}! New best s = ${data.best_s.toFixed(5)}!`, true);
+          } else if (data.type === 'idle') {
+            appendLog(`[T${i + 1}] ${data.message}`);
+          } else if (data.type === 'error') {
+            appendLog(`[T${i + 1}] Error: ${data.error}`);
+          }
+        };
 
-      worker.onmessage = (e) => {
-        const data = e.data;
-        if (data.type === 'ready') {
-          appendLog('Rust WebAssembly engine initialized successfully.');
-        } else if (data.type === 'task_started') {
-          appendLog(`Leased ${data.work.problem} (Target s: ${data.work.target_s.toFixed(5)})`);
-          window.dispatchEvent(
-            new CustomEvent('update-live-packing', {
-              detail: {
-                problem: data.work.problem,
-                n: data.work.n,
-                s: data.work.target_s,
-                coordinates: [],
-                inner_token: data.work.inner_token,
-                container_token: data.work.container_token,
-                status: 'Solving Wasm',
-              },
-            })
-          );
-        } else if (data.type === 'iteration_complete') {
-          window.dispatchEvent(
-            new CustomEvent('update-live-packing', {
-              detail: {
-                problem: data.problem,
-                n: data.n,
-                s: data.best_s,
-                coordinates: data.coordinates,
-                status: 'Optimizing',
-              },
-            })
-          );
-        } else if (data.type === 'attempts_completed') {
-          totalAttempts += data.count;
-          if (metricAttempts) metricAttempts.textContent = totalAttempts.toLocaleString();
-        } else if (data.type === 'record_beaten') {
-          totalRecordsBroken += 1;
-          if (metricRecords) metricRecords.textContent = totalRecordsBroken.toLocaleString();
-          appendLog(`🏆 RECORD BEATEN on ${data.problem}! New best s = ${data.best_s.toFixed(5)}!`, true);
-        } else if (data.type === 'idle') {
-          appendLog(data.message);
-        } else if (data.type === 'error') {
-          appendLog(`Error: ${data.error}`);
-        }
-      };
-
-      if (startBtn) {
-        startBtn.disabled = true;
-        startBtn.className =
-          'flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-500 font-bold text-sm border border-slate-700/60 cursor-not-allowed';
+        workers.push(w);
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        appendLog(`Failed to start Web Worker T${i + 1}: ${msg}`);
       }
-      if (stopBtn) {
-        stopBtn.disabled = false;
-        stopBtn.className =
-          'flex-1 py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-lg shadow-rose-600/20 transition-all cursor-pointer';
-      }
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : String(err);
-      appendLog(`Failed to start Web Worker: ${msg}`);
+    }
+
+    if (startBtn) {
+      startBtn.disabled = true;
+      startBtn.className =
+        'flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-500 font-bold text-sm border border-slate-700/60 cursor-not-allowed';
+    }
+    if (stopBtn) {
+      stopBtn.disabled = false;
+      stopBtn.className =
+        'flex-1 py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-lg shadow-rose-600/20 transition-all cursor-pointer';
     }
   }
 
   function stopCrunching() {
-    if (worker) {
-      worker.postMessage({ command: 'stop' });
-      worker.terminate();
-      worker = null;
-    }
-
     const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'http://localhost:8000';
-    fetch(`${serverUrl}/api/v1/workers/deregister`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ worker_id: workerId }),
-    }).catch(() => {});
 
-    appendLog('Worker stopped and deregistered from coordinator.');
+    workers.forEach((w, idx) => {
+      w.postMessage({ command: 'stop' });
+      w.terminate();
+    });
+    workers = [];
+
+    activeWorkerIds.forEach((id) => {
+      fetch(`${serverUrl}/api/v1/workers/deregister`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ worker_id: id }),
+      }).catch(() => {});
+    });
+    activeWorkerIds = [];
+
+    appendLog('All worker threads stopped and deregistered from coordinator.');
 
     if (startBtn) {
       startBtn.disabled = false;
@@ -292,7 +377,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   stopBtn?.addEventListener('click', stopCrunching);
 
   window.addEventListener('beforeunload', () => {
-    if (worker) {
+    if (workers.length > 0) {
       stopCrunching();
     }
   });

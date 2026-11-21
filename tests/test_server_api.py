@@ -873,14 +873,16 @@ def test_get_db_dependency_override(tmp_path):
 
 
 def test_cors_preflight_headers(app_client):
-    """CORS middleware returns access-control headers for browser workers."""
+    """CORS middleware returns access-control headers for browser workers, including Private Network Access."""
     client, _ = app_client
     resp = client.options(
         "/api/v1/work",
         headers={
             "Origin": "http://localhost:4321",
             "Access-Control-Request-Method": "GET",
+            "Access-Control-Request-Private-Network": "true",
         },
     )
     assert resp.status_code == 200
     assert resp.headers.get("access-control-allow-origin") == "http://localhost:4321"
+    assert resp.headers.get("access-control-allow-private-network") == "true"

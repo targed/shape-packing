@@ -99,6 +99,7 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
+        allow_private_network=True,
     )
 
     @app.post("/api/v1/workers/register", status_code=status.HTTP_200_OK)

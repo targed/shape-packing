@@ -93,7 +93,7 @@
       statusDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
     }
 
-    if (!ctx || !canvas || !coordinates || coordinates.length === 0) return;
+    if (!ctx || !canvas) return;
 
     const w = canvas.width;
     const h = canvas.height;
@@ -118,7 +118,7 @@
       ctx.stroke();
     }
 
-    const S = s || 2.0;
+    const S = typeof s === 'number' && s > 0 ? s : 2.0;
     const viewScale = (Math.min(w, h) * 0.42) / S;
 
     const cToken = parseShapeToken(currentContainerToken || 'CIRCLE');
@@ -152,42 +152,53 @@
       ctx.stroke();
     }
 
-    // Draw inner shapes
-    const iToken = parseShapeToken(currentInnerToken || '3');
-    const isInnerCircle = iToken === 'CIRCLE';
-    const unitInner = getUnitShapeVertices(iToken) || getRegularPolygonVertices(3, 1.0, 0);
+    // Draw inner shapes or optimization placeholder
+    if (!coordinates || coordinates.length < 3) {
+      ctx.fillStyle = '#64748b';
+      ctx.font = '12px JetBrains Mono, monospace';
+      ctx.textAlign = 'center';
+      const shapeDesc = `${n || ''} ${currentInnerToken} in ${currentContainerToken}`;
+      ctx.fillText(`Optimizing ${shapeDesc}`, 0, -8);
+      ctx.fillStyle = '#475569';
+      ctx.font = '10px JetBrains Mono, monospace';
+      ctx.fillText('Searching configuration space...', 0, 12);
+    } else {
+      const iToken = parseShapeToken(currentInnerToken || '3');
+      const isInnerCircle = iToken === 'CIRCLE';
+      const unitInner = getUnitShapeVertices(iToken) || getRegularPolygonVertices(3, 1.0, 0);
 
-    const N = n || Math.floor(coordinates.length / 3);
-    for (let i = 0; i < N; i++) {
-      const px = coordinates[i * 3] * viewScale;
-      const py = coordinates[i * 3 + 1] * viewScale;
-      const angle = coordinates[i * 3 + 2];
-      const color = palette[i % palette.length];
+      const N = n || Math.floor(coordinates.length / 3);
+      for (let i = 0; i < N; i++) {
+        const px = coordinates[i * 3] * viewScale;
+        const py = coordinates[i * 3 + 1] * viewScale;
+        const angle = coordinates[i * 3 + 2];
+        const color = palette[i % palette.length];
 
-      ctx.save();
-      ctx.fillStyle = `${color}44`;
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 1.5;
+        ctx.save();
+        ctx.fillStyle = `${color}44`;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.5;
 
-      if (isInnerCircle) {
-        ctx.beginPath();
-        ctx.arc(px, py, 1.0 * viewScale, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-      } else {
-        ctx.beginPath();
-        unitInner.forEach((pt: PolygonPoint, idx: number) => {
-          const tpt = transformPoint(pt, 0, 0, angle);
-          const drawX = px + tpt.x * viewScale;
-          const drawY = py + tpt.y * viewScale;
-          if (idx === 0) ctx.moveTo(drawX, drawY);
-          else ctx.lineTo(drawX, drawY);
-        });
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
+        if (isInnerCircle) {
+          ctx.beginPath();
+          ctx.arc(px, py, 1.0 * viewScale, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+        } else {
+          ctx.beginPath();
+          unitInner.forEach((pt: PolygonPoint, idx: number) => {
+            const tpt = transformPoint(pt, 0, 0, angle);
+            const drawX = px + tpt.x * viewScale;
+            const drawY = py + tpt.y * viewScale;
+            if (idx === 0) ctx.moveTo(drawX, drawY);
+            else ctx.lineTo(drawX, drawY);
+          });
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+        }
+        ctx.restore();
       }
-      ctx.restore();
     }
 
     ctx.restore();

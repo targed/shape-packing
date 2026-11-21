@@ -4,7 +4,7 @@ import init, { solve_attempt_wasm } from '../../../public/wasm/packer_rs.js';
 let isRunning = false;
 
 self.onmessage = async (e: MessageEvent) => {
-  const { command, serverUrl, username, workerId, wasmUrl } = e.data;
+  const { command, serverUrl, username, workerId, wasmUrl, batchSize } = e.data;
 
   if (command === 'start') {
     isRunning = true;
@@ -15,7 +15,7 @@ self.onmessage = async (e: MessageEvent) => {
         await init();
       }
       self.postMessage({ type: 'ready' });
-      runLoop(serverUrl, username, workerId);
+      runLoop(serverUrl, username, workerId, batchSize || 500);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       self.postMessage({ type: 'error', error: msg });
@@ -26,7 +26,7 @@ self.onmessage = async (e: MessageEvent) => {
   }
 };
 
-async function runLoop(serverUrl: string, username: string, workerId: string) {
+async function runLoop(serverUrl: string, username: string, workerId: string, batchSize: number) {
   while (isRunning) {
     try {
       // 1. Fetch work
@@ -44,7 +44,7 @@ async function runLoop(serverUrl: string, username: string, workerId: string) {
       self.postMessage({ type: 'task_started', work });
 
       // 2. Run solver in Wasm
-      const attemptsToRun = Math.min(work.recommended_attempts || 500, 500);
+      const attemptsToRun = Math.max(50, Math.min(work.recommended_attempts || batchSize, batchSize));
       const rawResult = solve_attempt_wasm(
         work.inner_token,
         work.container_token,
