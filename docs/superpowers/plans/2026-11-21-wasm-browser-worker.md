@@ -30,7 +30,7 @@
 - Produces:
   - `solve_attempt_wasm(inner_shape: &str, container_shape: &str, n: usize, attempts: usize, target_s: Option<f64>) -> String` (JSON string result)
 
-- [ ] **Step 1: Write Cargo.toml configuration for Wasm**
+- [x] **Step 1: Write Cargo.toml configuration for Wasm**
 
 Update `packer_rs/Cargo.toml` to declare the optional `wasm-bindgen` dependency and `wasm` feature:
 
@@ -51,7 +51,7 @@ python = ["pyo3"]
 wasm = ["wasm-bindgen"]
 ```
 
-- [ ] **Step 2: Implement Wasm bindings in `packer_rs/src/wasm.rs`**
+- [x] **Step 2: Implement Wasm bindings in `packer_rs/src/wasm.rs`**
 
 ```rust
 use wasm_bindgen::prelude::*;
@@ -98,19 +98,19 @@ pub fn solve_attempt_wasm(
 }
 ```
 
-- [ ] **Step 3: Wire `wasm.rs` module in `packer_rs/src/lib.rs`**
+- [x] **Step 3: Wire `wasm.rs` module in `packer_rs/src/lib.rs`**
 
 ```rust
 #[cfg(feature = "wasm")]
 pub mod wasm;
 ```
 
-- [ ] **Step 4: Verify compilation under wasm32 target**
+- [x] **Step 4: Verify compilation under wasm32 target**
 
 Run: `cargo check --manifest-path packer_rs/Cargo.toml --target wasm32-unknown-unknown --no-default-features --features wasm`
 Expected: exit 0 with successful compilation.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packer_rs/Cargo.toml packer_rs/src/wasm.rs packer_rs/src/lib.rs
@@ -128,7 +128,7 @@ git commit -m "feat(packer_rs): add wasm-bindgen bindings for in-browser solver 
 - Consumes: `packer_rs` Wasm module, Coordinator REST API (`/api/v1/work`, `/api/v1/solutions`, `/api/v1/heartbeat`)
 - Produces: PostMessage interface communicating progress and state back to UI
 
-- [ ] **Step 1: Write Web Worker script**
+- [x] **Step 1: Write Web Worker script**
 
 ```typescript
 // site/src/lib/workers/wasm_packer_worker.ts
@@ -209,7 +209,7 @@ async function runLoop(serverUrl: string, username: string, workerId: string) {
 }
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add site/src/lib/workers/wasm_packer_worker.ts
@@ -228,7 +228,7 @@ git commit -m "feat(site): add background Web Worker for Wasm-based distributed 
 - Consumes: `wasm_packer_worker.ts`
 - Produces: Interactive `/contribute` UI with thread sliders, live statistics, and real-time polygon rendering.
 
-- [ ] **Step 1: Create LivePackingCanvas component**
+- [x] **Step 1: Create LivePackingCanvas component**
 
 ```astro
 ---
@@ -263,7 +263,7 @@ git commit -m "feat(site): add background Web Worker for Wasm-based distributed 
 </script>
 ```
 
-- [ ] **Step 2: Create Contribute Page**
+- [x] **Step 2: Create Contribute Page**
 
 ```astro
 ---
@@ -292,12 +292,12 @@ import LivePackingCanvas from '../components/LivePackingCanvas.astro';
 </BaseLayout>
 ```
 
-- [ ] **Step 3: Run Astro build check**
+- [x] **Step 3: Run Astro build check**
 
 Run: `cd site && npm run build`
 Expected: exit 0 with clean build.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add site/src/components/LivePackingCanvas.astro site/src/pages/contribute.astro
