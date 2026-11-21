@@ -68,6 +68,10 @@ class WorkerConfig:
         if self.cores < 1:
             raise ValueError(f"cores must be >= 1, got {self.cores}")
 
+        # Limit Rust Rayon and OpenMP concurrency to allocated cores
+        os.environ["RAYON_NUM_THREADS"] = str(self.cores)
+        os.environ["OMP_NUM_THREADS"] = str(self.cores)
+
     @classmethod
     def from_env(cls, **overrides: Any) -> WorkerConfig:
         """Construct WorkerConfig by ingesting environment variables with optional overrides."""
