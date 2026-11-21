@@ -36,6 +36,7 @@
     getUnitShapeVertices,
     getRegularPolygonVertices,
     getContainerRotationOffset,
+    inverseFriedmanMetric,
     transformPoint,
     type PolygonPoint
   } from '../lib/visualization/render_packing';
@@ -99,7 +100,7 @@
   drawEmptyCanvas();
 
   function renderPackingState(detail: any) {
-    const { problem, n, s, coordinates, inner_token, container_token, status, is_inspect } = detail;
+    const { problem, n, s, container_s, coordinates, inner_token, container_token, status, is_inspect } = detail;
 
     if (inner_token) currentInnerToken = inner_token;
     if (container_token) currentContainerToken = container_token;
@@ -120,8 +121,6 @@
 
     const w = canvas.width;
     const h = canvas.height;
-    const cx = w / 2;
-    const cy = h / 2;
 
     ctx.clearRect(0, 0, w, h);
 
@@ -141,8 +140,12 @@
       ctx.stroke();
     }
 
-    const S = typeof s === 'number' && s > 0 ? s : 2.0;
-    const viewScale = (Math.min(w, h) * 0.42) / S;
+    // Determine actual geometric container scale factor S
+    let S = typeof container_s === 'number' && container_s > 0 ? container_s : null;
+    if (!S && typeof s === 'number' && s > 0) {
+      S = inverseFriedmanMetric(s, currentInnerToken, currentContainerToken);
+    }
+    if (!S || isNaN(S) || S <= 0) S = 2.0;
 
     const cToken = parseShapeToken(currentContainerToken || 'CIRCLE');
     const isContainerCircle = cToken === 'CIRCLE';
@@ -150,9 +153,92 @@
     const cosR = Math.cos(rot);
     const sinR = Math.sin(rot);
 
-    ctx.save();
-    ctx.translate(cx, cy);
-    ctx.scale(1, -1); // Flip Y axis so positive Y points UP, matching Cartesian math!
+    // Build container boundary vertices
+    let containerVertices: PolygonPoint[] | null = null;
+    if (!isContainerCircle) {
+      const unitContainer = getUnitShapeVertices(cToken) || getRegularPolygonVertices(4, 1.0, 0);
+      containerVertices = unitContainer.map((pt) => ({
+        x: (pt.x * cosR - pt.y * sinR) * S,
+        y: (pt.x * sinR + pt.y * cosR) * S,
+      }));
+    }
+
+    // Build inner shape geometries
+    const iToken = parseShapeToken(currentInnerToken || '3');
+    const isInnerCircle = iToken === 'CIRCLE';
+    const unitInner = isInnerCircle ? null : (getUnitShapeVertices(iToken) || getRegularPolygonVertices(3, 1.0, 0));
+
+    const N = n || (coordinates ? Math.floor(coordinates.length / 3) : 0);
+    interface PreparedShape {
+      cx: number;
+      cy: number;
+      vertices: PolygonPoint[] | null;
+      color: string;
+    }
+    const shapes: PreparedShape[] = [];
+
+    if (coordinates && coordinates.length >= 3 && N > 0) {
+      for (let i = 0; i < N; i++) {
+        const rawX = coordinates[i * 3] || 0;
+        const rawY = coordinates[i * 3 + 1] || 0;
+        const rawAngle = coordinates[i * 3 + 2] || 0;
+
+        const cx = rawX * cosR - rawY * sinR;
+        const cy = rawX * sinR + rawY * cosR;
+        const angle = rawAngle + rot;
+
+        let shapeVertices: PolygonPoint[] | null = null;
+        if (!isInnerCircle && unitInner) {
+          shapeVertices = unitInner.map((pt) => transformPoint(pt, cx, cy, angle));
+        }
+
+        shapes.push({
+          cx,
+          cy,
+          vertices: shapeVertices,
+          color: palette[i % palette.length],
+        });
+      }
+    }
+
+    // Calculate bounding box derived from container boundary
+    let minX = isContainerCircle ? -S : Infinity;
+    let maxX = isContainerCircle ? S : -Infinity;
+    let minY = isContainerCircle ? -S : Infinity;
+    let maxY = isContainerCircle ? S : -Infinity;
+
+    if (containerVertices) {
+      for (const pt of containerVertices) {
+        if (pt.x < minX) minX = pt.x;
+        if (pt.x > maxX) maxX = pt.x;
+        if (pt.y < minY) minY = pt.y;
+        if (pt.y > maxY) maxY = pt.y;
+      }
+    }
+
+    const spanX = maxX - minX || 2 * S || 1;
+    const spanY = maxY - minY || 2 * S || 1;
+    const pad = Math.max(spanX, spanY) * 0.08;
+
+    const viewBoxMinX = minX - pad;
+    const viewBoxMaxX = maxX + pad;
+    const viewBoxMinY = minY - pad;
+    const viewBoxMaxY = maxY + pad;
+
+    const boxW = viewBoxMaxX - viewBoxMinX;
+    const boxH = viewBoxMaxY - viewBoxMinY;
+    const midX = (viewBoxMinX + viewBoxMaxX) / 2;
+    const midY = (viewBoxMinY + viewBoxMaxY) / 2;
+
+    const viewScale = Math.min((w * 0.90) / boxW, (h * 0.90) / boxH);
+
+    function toCanvasX(x: number): number {
+      return w / 2 + (x - midX) * viewScale;
+    }
+
+    function toCanvasY(y: number): number {
+      return h / 2 - (y - midY) * viewScale; // Inverted Y-axis: Cartesian +Y maps UP
+    }
 
     // Draw container boundary
     ctx.strokeStyle = '#38bdf8';
@@ -160,80 +246,61 @@
 
     if (isContainerCircle) {
       ctx.beginPath();
-      ctx.arc(0, 0, S * viewScale, 0, Math.PI * 2);
+      const cX = toCanvasX(0);
+      const cY = toCanvasY(0);
+      const r = S * viewScale;
+      ctx.arc(cX, cY, r, 0, Math.PI * 2);
       ctx.stroke();
-    } else {
-      const unitContainer = getUnitShapeVertices(cToken) || getRegularPolygonVertices(4, 1.0, 0);
-
+    } else if (containerVertices) {
       ctx.beginPath();
-      unitContainer.forEach((pt: PolygonPoint, i: number) => {
-        const rx = (pt.x * cosR - pt.y * sinR) * S * viewScale;
-        const ry = (pt.x * sinR + pt.y * cosR) * S * viewScale;
-        if (i === 0) ctx.moveTo(rx, ry);
-        else ctx.lineTo(rx, ry);
+      containerVertices.forEach((pt, i) => {
+        const px = toCanvasX(pt.x);
+        const py = toCanvasY(pt.y);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
       });
       ctx.closePath();
       ctx.stroke();
     }
 
-    // Draw inner shapes or placeholder
-    if (!coordinates || coordinates.length < 3) {
-      ctx.save();
-      ctx.scale(1, -1); // Un-flip for text readability
+    // Draw inner shapes or placeholder HUD
+    if (!coordinates || coordinates.length < 3 || shapes.length === 0) {
       ctx.fillStyle = '#64748b';
       ctx.font = '12px JetBrains Mono, monospace';
       ctx.textAlign = 'center';
       const shapeDesc = `${n || ''} ${currentInnerToken} in ${currentContainerToken}`;
-      ctx.fillText(`Optimizing ${shapeDesc}`, 0, -8);
+      ctx.fillText(`Optimizing ${shapeDesc}`, w / 2, h / 2 - 8);
       ctx.fillStyle = '#475569';
       ctx.font = '10px JetBrains Mono, monospace';
-      ctx.fillText('Searching configuration space...', 0, 12);
-      ctx.restore();
+      ctx.fillText('Searching configuration space...', w / 2, h / 2 + 14);
     } else {
-      const iToken = parseShapeToken(currentInnerToken || '3');
-      const isInnerCircle = iToken === 'CIRCLE';
-      const unitInner = getUnitShapeVertices(iToken) || getRegularPolygonVertices(3, 1.0, 0);
-
-      const N = n || Math.floor(coordinates.length / 3);
-      for (let i = 0; i < N; i++) {
-        const rawX = coordinates[i * 3];
-        const rawY = coordinates[i * 3 + 1];
-        const rawAngle = coordinates[i * 3 + 2];
-
-        // Rotate position and angle with container rotation offset
-        const px = (rawX * cosR - rawY * sinR) * viewScale;
-        const py = (rawX * sinR + rawY * cosR) * viewScale;
-        const angle = rawAngle + rot;
-        const color = palette[i % palette.length];
-
-        ctx.save();
-        ctx.fillStyle = `${color}44`;
-        ctx.strokeStyle = color;
+      for (const shape of shapes) {
+        ctx.fillStyle = `${shape.color}44`;
+        ctx.strokeStyle = shape.color;
         ctx.lineWidth = 1.5;
 
         if (isInnerCircle) {
+          const cx = toCanvasX(shape.cx);
+          const cy = toCanvasY(shape.cy);
+          const r = 1.0 * viewScale;
           ctx.beginPath();
-          ctx.arc(px, py, 1.0 * viewScale, 0, Math.PI * 2);
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
           ctx.fill();
           ctx.stroke();
-        } else {
+        } else if (shape.vertices) {
           ctx.beginPath();
-          unitInner.forEach((pt: PolygonPoint, idx: number) => {
-            const tpt = transformPoint(pt, 0, 0, angle);
-            const drawX = px + tpt.x * viewScale;
-            const drawY = py + tpt.y * viewScale;
-            if (idx === 0) ctx.moveTo(drawX, drawY);
-            else ctx.lineTo(drawX, drawY);
+          shape.vertices.forEach((pt, idx) => {
+            const px = toCanvasX(pt.x);
+            const py = toCanvasY(pt.y);
+            if (idx === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
           });
           ctx.closePath();
           ctx.fill();
           ctx.stroke();
         }
-        ctx.restore();
       }
     }
-
-    ctx.restore();
   }
 
   window.addEventListener('update-live-packing', (e: Event) => {

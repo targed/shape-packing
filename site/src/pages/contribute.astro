@@ -239,6 +239,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     problem: string;
     n: number;
     s: number;
+    container_s?: number;
     target_s: number;
     coordinates: number[];
     inner_token: string;
@@ -254,16 +255,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     const left = document.createElement('div');
     left.className = 'flex items-center gap-1.5 truncate text-[11px]';
 
-    const icon = data.isRecord ? '🏆' : '📦';
     const sStr = typeof data.s === 'number' && data.s > 0 ? data.s.toFixed(5) : '—';
     const targetStr = typeof data.target_s === 'number' && data.target_s > 0 ? data.target_s.toFixed(5) : '—';
+    const recordTag = data.isRecord ? '<span class="text-amber-400 font-bold">[RECORD]</span> ' : '';
 
-    left.innerHTML = `<span class="text-slate-500">[${time}]</span> <span class="text-slate-400 font-semibold">[T${data.thread}]</span> <span>${icon} <strong class="text-indigo-300">${data.problem}</strong>: calc s=<strong class="${data.isRecord ? 'text-amber-400' : 'text-emerald-400'}">${sStr}</strong> <span class="text-slate-500">(target: ${targetStr})</span></span>`;
+    left.innerHTML = `<span class="text-slate-500">[${time}]</span> <span class="text-slate-400 font-semibold">[T${data.thread}]</span> <span>${recordTag}<strong class="text-indigo-300">${data.problem}</strong>: calc s=<strong class="${data.isRecord ? 'text-amber-400' : 'text-emerald-400'}">${sStr}</strong> <span class="text-slate-500">(target: ${targetStr})</span></span>`;
 
     const btn = document.createElement('button');
     btn.className =
       'px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 group-hover:bg-indigo-600 text-slate-400 group-hover:text-white transition flex items-center gap-1 flex-shrink-0 cursor-pointer';
-    btn.innerHTML = `<span>Inspect</span> <span>👁️</span>`;
+    btn.innerHTML = 'Inspect';
 
     row.appendChild(left);
     row.appendChild(btn);
@@ -275,6 +276,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             problem: data.problem,
             n: data.n,
             s: data.s,
+            container_s: data.container_s,
             coordinates: data.coordinates,
             inner_token: data.inner_token,
             container_token: data.container_token,
@@ -385,6 +387,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               problem: data.problem,
               n: data.n,
               s: data.best_s,
+              container_s: data.container_s,
               target_s: targetS,
               coordinates: data.coordinates,
               inner_token: data.inner_token,
@@ -398,6 +401,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                   problem: data.problem,
                   n: data.n,
                   s: data.best_s,
+                  container_s: data.container_s,
                   coordinates: data.coordinates,
                   inner_token: data.inner_token,
                   container_token: data.container_token,
@@ -411,7 +415,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           } else if (data.type === 'record_beaten') {
             totalRecordsBroken += 1;
             if (metricRecords) metricRecords.textContent = totalRecordsBroken.toLocaleString();
-            appendLog(`🏆 RECORD BEATEN on ${data.problem}! New best s = ${data.best_s.toFixed(5)}!`, true);
+            appendLog(`[RECORD] New record discovered for ${data.problem}: s = ${data.best_s.toFixed(5)}!`, true);
           } else if (data.type === 'idle') {
             appendLog(`[T${i + 1}] ${data.message}`);
           } else if (data.type === 'error') {

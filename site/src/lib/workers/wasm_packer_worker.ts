@@ -60,6 +60,7 @@ async function runLoop(
       );
       const result = JSON.parse(rawResult);
       const metric_s = result.final_metric ?? result.best_s;
+      const container_s = result.circumradius_s ?? result.best_s;
 
       self.postMessage({
         type: 'iteration_complete',
@@ -67,6 +68,7 @@ async function runLoop(
         problem: work.problem,
         n: work.n,
         best_s: metric_s,
+        container_s: container_s,
         coordinates: result.values,
         inner_token: work.inner_token,
         container_token: work.container_token,

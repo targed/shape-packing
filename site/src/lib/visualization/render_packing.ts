@@ -104,6 +104,40 @@ export function getContainerRotationOffset(token: any): number {
   }
 }
 
+export function inverseFriedmanMetric(fMetric: number, innerToken: any, containerToken: any): number {
+  if (!fMetric || isNaN(fMetric) || fMetric <= 0) return 2.0;
+
+  const cToken = parseShapeToken(containerToken);
+  const iToken = parseShapeToken(innerToken);
+
+  let iScale = 1.0;
+  if (typeof iToken === 'number') {
+    iScale = 2.0 * Math.sin(Math.PI / iToken);
+  } else if (iToken === 'CIRCLE' || iToken === 'DOMINO' || iToken === 'TAN' || iToken === 'L') {
+    iScale = 1.0;
+  } else {
+    const num = parseInt(String(iToken), 10);
+    iScale = !isNaN(num) && num >= 3 ? 2.0 * Math.sin(Math.PI / num) : 1.0;
+  }
+
+  const cMetric = fMetric * iScale;
+
+  if (cToken === 'CIRCLE' || cToken === 'TAN' || cToken === 'DOMINO') {
+    return cMetric;
+  } else if (cToken === 'L') {
+    return cMetric / 2.0;
+  } else {
+    let nsc = 3;
+    if (typeof cToken === 'number') {
+      nsc = cToken;
+    } else {
+      const num = parseInt(String(cToken), 10);
+      if (!isNaN(num) && num >= 3) nsc = num;
+    }
+    return cMetric / (2.0 * Math.sin(Math.PI / nsc));
+  }
+}
+
 export function transformPoint(pt: PolygonPoint, cx: number, cy: number, angle: number): PolygonPoint {
   const cos = Math.cos(angle);
   const sin = Math.sin(angle);
