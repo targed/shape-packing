@@ -30,3 +30,5 @@ surfaces.txt
 surface-verify-prompt.md
 build-2-closeout.md
 /site/node_modules
+*.db-shm
+*.db-wal

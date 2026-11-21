@@ -325,12 +325,14 @@ pub fn run_attempt<R: Rng>(
     }
 
     let mut dynamic_s = N_f64.sqrt() * (2.0 + rng.gen::<f64>() * 2.0);
-    if let Some(ts) = target_s {
-        dynamic_s = ts * 1.05;
+    if initial_positions.is_some() {
+        if let Some(ts) = target_s {
+            dynamic_s = ts * 1.05;
+        }
     }
     
-    let lowest_s = N_f64.sqrt();
-    let range_val = dynamic_s - lowest_s;
+    let lowest_s = (dynamic_s * 0.2).min(N_f64.sqrt().max(0.1));
+    let range_val = (dynamic_s - lowest_s).max(0.01);
 
     let N = N_f64 as usize;
 

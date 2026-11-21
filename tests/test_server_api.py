@@ -886,3 +886,27 @@ def test_cors_preflight_headers(app_client):
     assert resp.status_code == 200
     assert resp.headers.get("access-control-allow-origin") == "http://localhost:4321"
     assert resp.headers.get("access-control-allow-private-network") == "true"
+
+
+def test_concurrent_worker_deregister(app_client):
+    """Concurrent worker deregistration across threadpool does not trigger SQLite cross-thread ProgrammingError."""
+    import concurrent.futures
+    client, _ = app_client
+
+    # Pre-register 20 workers
+    worker_ids = [f"thread_worker_{i}" for i in range(20)]
+    for w_id in worker_ids:
+        client.post("/api/v1/workers/register", json={"username": "tester", "worker_id": w_id})
+
+    # Deregister all 20 simultaneously
+    def do_deregister(w_id):
+        return client.post("/api/v1/workers/deregister", json={"worker_id": w_id})
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+        futures = [executor.submit(do_deregister, w_id) for w_id in worker_ids]
+        responses = [f.result() for f in futures]
+
+    for resp in responses:
+        assert resp.status_code == 200
+        assert resp.json() == {"status": "deregistered"}
+
