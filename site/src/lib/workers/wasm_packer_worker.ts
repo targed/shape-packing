@@ -4,7 +4,7 @@ import init, { solve_attempt_wasm } from '../../../public/wasm/packer_rs.js';
 let isRunning = false;
 
 self.onmessage = async (e: MessageEvent) => {
-  const { command, serverUrl, username, workerId, wasmUrl, batchSize } = e.data;
+  const { command, serverUrl, username, workerId, wasmUrl, batchSize, pacingDelay } = e.data;
 
   if (command === 'start') {
     isRunning = true;
@@ -15,7 +15,7 @@ self.onmessage = async (e: MessageEvent) => {
         await init();
       }
       self.postMessage({ type: 'ready' });
-      runLoop(serverUrl, username, workerId, batchSize || 500);
+      runLoop(serverUrl, username, workerId, batchSize || 500, typeof pacingDelay === 'number' ? pacingDelay : 800);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       self.postMessage({ type: 'error', error: msg });
@@ -26,7 +26,13 @@ self.onmessage = async (e: MessageEvent) => {
   }
 };
 
-async function runLoop(serverUrl: string, username: string, workerId: string, batchSize: number) {
+async function runLoop(
+  serverUrl: string,
+  username: string,
+  workerId: string,
+  batchSize: number,
+  pacingDelay: number
+) {
   while (isRunning) {
     try {
       // 1. Fetch work
@@ -107,7 +113,7 @@ async function runLoop(serverUrl: string, username: string, workerId: string, ba
       });
 
       self.postMessage({ type: 'attempts_completed', count: attemptsToRun });
-      await new Promise((r) => setTimeout(r, 100));
+      await new Promise((r) => setTimeout(r, Math.max(50, pacingDelay)));
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       self.postMessage({ type: 'error', error: msg });

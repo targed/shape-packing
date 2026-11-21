@@ -58,14 +58,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             />
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
               <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-                Worker Threads (Cores)
+                Threads (Cores)
               </label>
               <select
                 id="worker-cores"
-                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
               >
                 <option value="1">1 Thread</option>
                 <option value="2">2 Threads</option>
@@ -78,17 +78,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
             <div>
               <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-                Batch Size (Attempts)
+                Batch Size
               </label>
               <select
                 id="worker-batch-size"
-                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
               >
-                <option value="100">100 attempts</option>
-                <option value="250">250 attempts</option>
-                <option value="500" selected>500 attempts</option>
-                <option value="1000">1,000 attempts</option>
-                <option value="2000">2,000 attempts</option>
+                <option value="100">100 att.</option>
+                <option value="250">250 att.</option>
+                <option value="500" selected>500 att.</option>
+                <option value="1000">1,000 att.</option>
+                <option value="2000">2,000 att.</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+                Display Pacing
+              </label>
+              <select
+                id="worker-pacing"
+                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
+              >
+                <option value="150">Fast (150ms)</option>
+                <option value="800" selected>Balanced (0.8s)</option>
+                <option value="1800">Showcase (1.8s)</option>
               </select>
             </div>
           </div>
@@ -148,14 +162,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         <!-- Activity Log -->
         <div class="space-y-2">
           <div class="flex justify-between items-center">
-            <span class="text-xs uppercase font-semibold text-slate-400">Worker Activity Log</span>
-            <button id="btn-clear-log" class="text-[11px] text-slate-500 hover:text-slate-400 font-mono">Clear</button>
+            <div class="flex items-center gap-2">
+              <span class="text-xs uppercase font-semibold text-slate-400">Worker Activity & Packing History</span>
+              <span class="text-[10px] text-slate-500 font-mono hidden sm:inline">(Click any item to inspect on canvas)</span>
+            </div>
+            <button id="btn-clear-log" class="text-[11px] text-slate-500 hover:text-slate-400 font-mono cursor-pointer">Clear</button>
           </div>
           <div
             id="worker-log"
-            class="h-32 bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-[11px] text-slate-400 overflow-y-auto space-y-1"
+            class="h-44 bg-slate-950 border border-slate-800 rounded-xl p-2.5 font-mono text-[11px] text-slate-400 overflow-y-auto space-y-1.5"
           >
-            <div>[System] Worker initialized. Ready to begin optimization.</div>
+            <div class="text-slate-500 italic p-1">[System] Ready to start. Calculations and live packing logs will appear here.</div>
           </div>
         </div>
       </div>
@@ -168,6 +185,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   const serverUrlInput = document.getElementById('worker-server-url') as HTMLInputElement;
   const coresSelect = document.getElementById('worker-cores') as HTMLSelectElement;
   const batchSizeSelect = document.getElementById('worker-batch-size') as HTMLSelectElement;
+  const pacingSelect = document.getElementById('worker-pacing') as HTMLSelectElement;
   const startBtn = document.getElementById('btn-start') as HTMLButtonElement;
   const stopBtn = document.getElementById('btn-stop') as HTMLButtonElement;
   const clearLogBtn = document.getElementById('btn-clear-log') as HTMLButtonElement;
@@ -192,22 +210,82 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   if (localStorage.getItem('shape_packing_batch_size') && batchSizeSelect) {
     batchSizeSelect.value = localStorage.getItem('shape_packing_batch_size') || '500';
   }
+  if (localStorage.getItem('shape_packing_pacing') && pacingSelect) {
+    pacingSelect.value = localStorage.getItem('shape_packing_pacing') || '800';
+  }
 
   let workers: Worker[] = [];
   let totalAttempts = 0;
   let totalRecordsBroken = 0;
   let activeWorkerIds: string[] = [];
+  const targetMap: Record<string, number> = {};
   const baseWorkerId = `wasm-worker-${Math.random().toString(36).substring(2, 9)}`;
 
   function appendLog(message: string, isHighlight: boolean = false) {
     if (!logBox) return;
     const time = new Date().toLocaleTimeString();
     const line = document.createElement('div');
+    line.className = 'p-1 text-slate-400 font-mono text-[11px]';
     if (isHighlight) {
-      line.className = 'text-amber-300 font-bold';
+      line.className = 'p-1 text-amber-300 font-bold font-mono text-[11px]';
     }
     line.textContent = `[${time}] ${message}`;
     logBox.appendChild(line);
+    logBox.scrollTop = logBox.scrollHeight;
+  }
+
+  function addCalculationLog(data: {
+    thread: number;
+    problem: string;
+    n: number;
+    s: number;
+    target_s: number;
+    coordinates: number[];
+    inner_token: string;
+    container_token: string;
+    isRecord: boolean;
+  }) {
+    if (!logBox) return;
+    const time = new Date().toLocaleTimeString();
+    const row = document.createElement('div');
+    row.className =
+      'flex items-center justify-between p-1.5 rounded-lg hover:bg-slate-800/80 cursor-pointer transition group border border-slate-800/60 hover:border-slate-700';
+
+    const left = document.createElement('div');
+    left.className = 'flex items-center gap-1.5 truncate text-[11px]';
+
+    const icon = data.isRecord ? '🏆' : '📦';
+    const sStr = typeof data.s === 'number' && data.s > 0 ? data.s.toFixed(5) : '—';
+    const targetStr = typeof data.target_s === 'number' && data.target_s > 0 ? data.target_s.toFixed(5) : '—';
+
+    left.innerHTML = `<span class="text-slate-500">[${time}]</span> <span class="text-slate-400 font-semibold">[T${data.thread}]</span> <span>${icon} <strong class="text-indigo-300">${data.problem}</strong>: calc s=<strong class="${data.isRecord ? 'text-amber-400' : 'text-emerald-400'}">${sStr}</strong> <span class="text-slate-500">(target: ${targetStr})</span></span>`;
+
+    const btn = document.createElement('button');
+    btn.className =
+      'px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 group-hover:bg-indigo-600 text-slate-400 group-hover:text-white transition flex items-center gap-1 flex-shrink-0 cursor-pointer';
+    btn.innerHTML = `<span>Inspect</span> <span>👁️</span>`;
+
+    row.appendChild(left);
+    row.appendChild(btn);
+
+    row.addEventListener('click', () => {
+      window.dispatchEvent(
+        new CustomEvent('update-live-packing', {
+          detail: {
+            problem: data.problem,
+            n: data.n,
+            s: data.s,
+            coordinates: data.coordinates,
+            inner_token: data.inner_token,
+            container_token: data.container_token,
+            status: `Inspecting [Calc s: ${sStr}]`,
+            is_inspect: true,
+          },
+        })
+      );
+    });
+
+    logBox.appendChild(row);
     logBox.scrollTop = logBox.scrollHeight;
   }
 
@@ -222,11 +300,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'http://localhost:8000';
     const cores = parseInt(coresSelect?.value || '4', 10);
     const batchSize = parseInt(batchSizeSelect?.value || '500', 10);
+    const pacingDelay = parseInt(pacingSelect?.value || '800', 10);
 
     localStorage.setItem('shape_packing_username', username);
     localStorage.setItem('shape_packing_coordinator_url', serverUrl);
     localStorage.setItem('shape_packing_cores', String(cores));
     localStorage.setItem('shape_packing_batch_size', String(batchSize));
+    localStorage.setItem('shape_packing_pacing', String(pacingDelay));
 
     appendLog(`Connecting to coordinator at ${serverUrl} as '${username}' with ${cores} worker thread(s)...`);
 
@@ -273,6 +353,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           workerId: threadId,
           wasmUrl: wasmPath,
           batchSize,
+          pacingDelay,
         });
 
         w.onmessage = (e) => {
@@ -280,6 +361,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           if (data.type === 'ready') {
             if (i === 0) appendLog('Rust WebAssembly engine initialized successfully.');
           } else if (data.type === 'task_started') {
+            targetMap[data.work.problem] = data.work.target_s;
             appendLog(`[T${i + 1}] Leased ${data.work.problem} (Target s: ${data.work.target_s.toFixed(5)})`);
             window.dispatchEvent(
               new CustomEvent('update-live-packing', {
@@ -295,6 +377,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               })
             );
           } else if (data.type === 'iteration_complete') {
+            const isRecord = data.success && typeof data.best_s === 'number' && data.best_s > 0;
+            const targetS = targetMap[data.problem] || 0;
+
+            addCalculationLog({
+              thread: i + 1,
+              problem: data.problem,
+              n: data.n,
+              s: data.best_s,
+              target_s: targetS,
+              coordinates: data.coordinates,
+              inner_token: data.inner_token,
+              container_token: data.container_token,
+              isRecord,
+            });
+
             window.dispatchEvent(
               new CustomEvent('update-live-packing', {
                 detail: {
@@ -344,7 +441,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   function stopCrunching() {
     const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'http://localhost:8000';
 
-    workers.forEach((w, idx) => {
+    workers.forEach((w) => {
       w.postMessage({ command: 'stop' });
       w.terminate();
     });
