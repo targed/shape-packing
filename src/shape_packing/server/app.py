@@ -21,6 +21,7 @@ import uuid
 from typing import Any, Dict, Generator, List, Optional
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response, status
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
@@ -90,6 +91,14 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
         version="1.0.0",
     )
     app.state.db_path = db_path
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     @app.post("/api/v1/workers/register", status_code=status.HTTP_200_OK)
     def register(

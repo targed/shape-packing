@@ -1,0 +1,189 @@
+---
+// site/src/components/LivePackingCanvas.astro
+---
+
+<div class="relative w-full aspect-square max-w-md mx-auto bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col items-center justify-center p-2">
+  <canvas id="live-canvas" width="400" height="400" class="w-full h-full rounded-xl bg-slate-900/60"></canvas>
+  <div class="absolute top-4 left-4 flex items-center gap-2 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-mono text-slate-300">
+    <span id="canvas-status-dot" class="w-2 h-2 rounded-full bg-slate-500"></span>
+    <span id="canvas-status-label">Worker Idle</span>
+  </div>
+  <div id="canvas-overlay" class="absolute bottom-4 left-4 right-4 flex justify-between items-center bg-slate-950/85 backdrop-blur-md px-3 py-2 rounded-xl border border-slate-800 text-xs font-mono">
+    <div class="flex flex-col">
+      <span class="text-[10px] uppercase text-slate-500 font-semibold">Current Problem</span>
+      <span id="canvas-problem-name" class="font-bold text-slate-200">None</span>
+    </div>
+    <div class="flex flex-col text-right">
+      <span class="text-[10px] uppercase text-slate-500 font-semibold">Scale (s)</span>
+      <span id="canvas-scale-value" class="font-bold text-amber-400">0.00000</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import {
+    parseShapeToken,
+    getUnitShapeVertices,
+    getRegularPolygonVertices,
+    getContainerRotationOffset,
+    transformPoint,
+    type PolygonPoint
+  } from '../lib/visualization/render_packing';
+
+  const canvas = document.getElementById('live-canvas') as HTMLCanvasElement;
+  const statusDot = document.getElementById('canvas-status-dot');
+  const statusLabel = document.getElementById('canvas-status-label');
+  const problemName = document.getElementById('canvas-problem-name');
+  const scaleValue = document.getElementById('canvas-scale-value');
+  const ctx = canvas?.getContext('2d');
+
+  const palette = [
+    '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#10b981',
+    '#06b6d4', '#3b82f6', '#f59e0b', '#84cc16', '#a855f7'
+  ];
+
+  function drawEmptyCanvas() {
+    if (!ctx || !canvas) return;
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    // Subtle grid lines
+    ctx.strokeStyle = '#1e293b';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < w; x += 40) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, h);
+      ctx.stroke();
+    }
+    for (let y = 0; y < h; y += 40) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+    }
+
+    // Centered placeholder text
+    ctx.fillStyle = '#475569';
+    ctx.font = '13px JetBrains Mono, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('Press "Start Crunching" to begin', w / 2, h / 2);
+  }
+
+  drawEmptyCanvas();
+
+  window.addEventListener('update-live-packing', (e: Event) => {
+    const customEvent = e as CustomEvent;
+    const { problem, n, s, coordinates, inner_token, container_token, status } = customEvent.detail;
+
+    if (problemName) problemName.textContent = problem || 'Active';
+    if (scaleValue) scaleValue.textContent = typeof s === 'number' ? s.toFixed(5) : '—';
+
+    if (statusLabel && status) {
+      statusLabel.textContent = status;
+    }
+    if (statusDot) {
+      statusDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+    }
+
+    if (!ctx || !canvas || !coordinates || coordinates.length === 0) return;
+
+    const w = canvas.width;
+    const h = canvas.height;
+    const cx = w / 2;
+    const cy = h / 2;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Grid background
+    ctx.strokeStyle = '#1e293b';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < w; x += 40) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, h);
+      ctx.stroke();
+    }
+    for (let y = 0; y < h; y += 40) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+    }
+
+    const S = s || 2.0;
+    const viewScale = (Math.min(w, h) * 0.42) / S;
+
+    const cToken = parseShapeToken(container_token || 'CIRCLE');
+    const isContainerCircle = cToken === 'CIRCLE';
+
+    ctx.save();
+    ctx.translate(cx, cy);
+
+    // Draw container boundary
+    ctx.strokeStyle = '#38bdf8';
+    ctx.lineWidth = 2.5;
+
+    if (isContainerCircle) {
+      ctx.beginPath();
+      ctx.arc(0, 0, S * viewScale, 0, Math.PI * 2);
+      ctx.stroke();
+    } else {
+      const rot = getContainerRotationOffset(cToken);
+      const cosR = Math.cos(rot);
+      const sinR = Math.sin(rot);
+      const unitContainer = getUnitShapeVertices(cToken) || getRegularPolygonVertices(4, 1.0, 0);
+
+      ctx.beginPath();
+      unitContainer.forEach((pt: PolygonPoint, i: number) => {
+        const rx = (pt.x * cosR - pt.y * sinR) * S * viewScale;
+        const ry = (pt.x * sinR + pt.y * cosR) * S * viewScale;
+        if (i === 0) ctx.moveTo(rx, ry);
+        else ctx.lineTo(rx, ry);
+      });
+      ctx.closePath();
+      ctx.stroke();
+    }
+
+    // Draw inner shapes
+    const iToken = parseShapeToken(inner_token || '3');
+    const isInnerCircle = iToken === 'CIRCLE';
+    const unitInner = getUnitShapeVertices(iToken) || getRegularPolygonVertices(3, 1.0, 0);
+
+    const N = n || Math.floor(coordinates.length / 3);
+    for (let i = 0; i < N; i++) {
+      const px = coordinates[i * 3] * viewScale;
+      const py = coordinates[i * 3 + 1] * viewScale;
+      const angle = coordinates[i * 3 + 2];
+      const color = palette[i % palette.length];
+
+      ctx.save();
+      ctx.fillStyle = `${color}44`;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.5;
+
+      if (isInnerCircle) {
+        ctx.beginPath();
+        ctx.arc(px, py, 1.0 * viewScale, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      } else {
+        ctx.beginPath();
+        unitInner.forEach((pt: PolygonPoint, idx: number) => {
+          const tpt = transformPoint(pt, 0, 0, angle);
+          const drawX = px + tpt.x * viewScale;
+          const drawY = py + tpt.y * viewScale;
+          if (idx === 0) ctx.moveTo(drawX, drawY);
+          else ctx.lineTo(drawX, drawY);
+        });
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    ctx.restore();
+  });
+</script>

@@ -1,0 +1,299 @@
+---
+// site/src/pages/contribute.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LivePackingCanvas from '../components/LivePackingCanvas.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<BaseLayout title="Contribute Compute | Shape Packing Volunteer Grid">
+  <div class="space-y-8 max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="border-b border-slate-800 pb-6 space-y-2">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        WebAssembly Volunteer Node
+      </div>
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Donate Compute in Your Browser</h1>
+      <p class="text-sm text-slate-400 max-w-2xl">
+        Run mathematical shape packing optimization directly inside this browser tab. Solutions are verified locally in Rust WebAssembly and submitted to the central coordinator.
+      </p>
+    </div>
+
+    <!-- Main Grid: Visualizer & Controls -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <!-- Live Canvas -->
+      <div class="space-y-4">
+        <LivePackingCanvas />
+        <div class="text-xs text-slate-500 text-center font-mono">
+          Canvas renders intermediate continuous shrinkage states from the Rust Wasm engine.
+        </div>
+      </div>
+
+      <!-- Controls & Status -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-6 backdrop-blur-sm">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+              Volunteer Username
+            </label>
+            <input
+              id="worker-username"
+              type="text"
+              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+              placeholder="e.g. web_volunteer"
+              value="web_volunteer"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+              Coordinator URL
+            </label>
+            <input
+              id="worker-server-url"
+              type="text"
+              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+              placeholder="http://localhost:8000"
+              value="http://localhost:8000"
+            />
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            id="btn-start"
+            class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Start Crunching
+          </button>
+
+          <button
+            id="btn-stop"
+            disabled
+            class="flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-500 font-bold text-sm border border-slate-700/60 transition-all flex items-center justify-center gap-2 cursor-not-allowed"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+            </svg>
+            Stop
+          </button>
+        </div>
+
+        <!-- Telemetry Cards -->
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 flex flex-col">
+            <span class="text-[10px] uppercase font-semibold text-slate-400">Attempts Completed</span>
+            <span id="metric-attempts" class="text-xl font-bold font-mono text-indigo-400 mt-1">0</span>
+          </div>
+
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 flex flex-col">
+            <span class="text-[10px] uppercase font-semibold text-slate-400">Records Broken</span>
+            <span id="metric-records" class="text-xl font-bold font-mono text-amber-300 mt-1">0</span>
+          </div>
+        </div>
+
+        <!-- Activity Log -->
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-xs uppercase font-semibold text-slate-400">Worker Activity Log</span>
+            <button id="btn-clear-log" class="text-[11px] text-slate-500 hover:text-slate-400 font-mono">Clear</button>
+          </div>
+          <div
+            id="worker-log"
+            class="h-32 bg-slate-950 border border-slate-800 rounded-xl p-3 font-mono text-[11px] text-slate-400 overflow-y-auto space-y-1"
+          >
+            <div>[System] Worker initialized. Ready to begin optimization.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const usernameInput = document.getElementById('worker-username') as HTMLInputElement;
+  const serverUrlInput = document.getElementById('worker-server-url') as HTMLInputElement;
+  const startBtn = document.getElementById('btn-start') as HTMLButtonElement;
+  const stopBtn = document.getElementById('btn-stop') as HTMLButtonElement;
+  const clearLogBtn = document.getElementById('btn-clear-log') as HTMLButtonElement;
+  const logBox = document.getElementById('worker-log') as HTMLDivElement;
+  const metricAttempts = document.getElementById('metric-attempts') as HTMLSpanElement;
+  const metricRecords = document.getElementById('metric-records') as HTMLSpanElement;
+
+  // Restore saved username/server from localStorage
+  if (localStorage.getItem('shape_packing_username') && usernameInput) {
+    usernameInput.value = localStorage.getItem('shape_packing_username') || 'web_volunteer';
+  }
+  if (localStorage.getItem('shape_packing_coordinator_url') && serverUrlInput) {
+    serverUrlInput.value = localStorage.getItem('shape_packing_coordinator_url') || 'http://localhost:8000';
+  }
+
+  let worker: Worker | null = null;
+  let totalAttempts = 0;
+  let totalRecordsBroken = 0;
+  const workerId = `wasm-worker-${Math.random().toString(36).substring(2, 9)}`;
+
+  function appendLog(message: string, isHighlight: boolean = false) {
+    if (!logBox) return;
+    const time = new Date().toLocaleTimeString();
+    const line = document.createElement('div');
+    if (isHighlight) {
+      line.className = 'text-amber-300 font-bold';
+    }
+    line.textContent = `[${time}] ${message}`;
+    logBox.appendChild(line);
+    logBox.scrollTop = logBox.scrollHeight;
+  }
+
+  if (clearLogBtn) {
+    clearLogBtn.addEventListener('click', () => {
+      if (logBox) logBox.innerHTML = '';
+    });
+  }
+
+  function startCrunching() {
+    const username = usernameInput?.value.trim() || 'web_volunteer';
+    const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'http://localhost:8000';
+
+    localStorage.setItem('shape_packing_username', username);
+    localStorage.setItem('shape_packing_coordinator_url', serverUrl);
+
+    appendLog(`Connecting to coordinator at ${serverUrl} as '${username}'...`);
+
+    // Register with coordinator
+    fetch(`${serverUrl}/api/v1/workers/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        worker_id: workerId,
+        username: username,
+        cores: 1,
+      }),
+    })
+      .then((res) => res.json())
+      .then((reg) => {
+        appendLog(`Registered with cluster (Assigned ID: ${reg.worker_id})`);
+      })
+      .catch((err) => {
+        appendLog(`Note: Register endpoint unavailable (${err.message}). Proceeding directly.`);
+      });
+
+    // Spawn Web Worker
+    try {
+      worker = new Worker(new URL('../lib/workers/wasm_packer_worker.ts', import.meta.url), {
+        type: 'module',
+      });
+
+      const wasmPath = `${window.location.origin}/shape-packing/wasm/packer_rs_bg.wasm`;
+
+      worker.postMessage({
+        command: 'start',
+        serverUrl,
+        username,
+        workerId,
+        wasmUrl: wasmPath,
+      });
+
+      worker.onmessage = (e) => {
+        const data = e.data;
+        if (data.type === 'ready') {
+          appendLog('Rust WebAssembly engine initialized successfully.');
+        } else if (data.type === 'task_started') {
+          appendLog(`Leased ${data.work.problem} (Target s: ${data.work.target_s.toFixed(5)})`);
+          window.dispatchEvent(
+            new CustomEvent('update-live-packing', {
+              detail: {
+                problem: data.work.problem,
+                n: data.work.n,
+                s: data.work.target_s,
+                coordinates: [],
+                inner_token: data.work.inner_token,
+                container_token: data.work.container_token,
+                status: 'Solving Wasm',
+              },
+            })
+          );
+        } else if (data.type === 'iteration_complete') {
+          window.dispatchEvent(
+            new CustomEvent('update-live-packing', {
+              detail: {
+                problem: data.problem,
+                n: data.n,
+                s: data.best_s,
+                coordinates: data.coordinates,
+                status: 'Optimizing',
+              },
+            })
+          );
+        } else if (data.type === 'attempts_completed') {
+          totalAttempts += data.count;
+          if (metricAttempts) metricAttempts.textContent = totalAttempts.toLocaleString();
+        } else if (data.type === 'record_beaten') {
+          totalRecordsBroken += 1;
+          if (metricRecords) metricRecords.textContent = totalRecordsBroken.toLocaleString();
+          appendLog(`🏆 RECORD BEATEN on ${data.problem}! New best s = ${data.best_s.toFixed(5)}!`, true);
+        } else if (data.type === 'idle') {
+          appendLog(data.message);
+        } else if (data.type === 'error') {
+          appendLog(`Error: ${data.error}`);
+        }
+      };
+
+      if (startBtn) {
+        startBtn.disabled = true;
+        startBtn.className =
+          'flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-500 font-bold text-sm border border-slate-700/60 cursor-not-allowed';
+      }
+      if (stopBtn) {
+        stopBtn.disabled = false;
+        stopBtn.className =
+          'flex-1 py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-lg shadow-rose-600/20 transition-all cursor-pointer';
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      appendLog(`Failed to start Web Worker: ${msg}`);
+    }
+  }
+
+  function stopCrunching() {
+    if (worker) {
+      worker.postMessage({ command: 'stop' });
+      worker.terminate();
+      worker = null;
+    }
+
+    const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'http://localhost:8000';
+    fetch(`${serverUrl}/api/v1/workers/deregister`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ worker_id: workerId }),
+    }).catch(() => {});
+
+    appendLog('Worker stopped and deregistered from coordinator.');
+
+    if (startBtn) {
+      startBtn.disabled = false;
+      startBtn.className =
+        'flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 transition-all cursor-pointer';
+    }
+    if (stopBtn) {
+      stopBtn.disabled = true;
+      stopBtn.className =
+        'flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-500 font-bold text-sm border border-slate-700/60 cursor-not-allowed';
+    }
+  }
+
+  startBtn?.addEventListener('click', startCrunching);
+  stopBtn?.addEventListener('click', stopCrunching);
+
+  window.addEventListener('beforeunload', () => {
+    if (worker) {
+      stopCrunching();
+    }
+  });
+</script>

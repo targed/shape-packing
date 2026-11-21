@@ -805,3 +805,17 @@ def test_get_db_dependency_override(tmp_path):
     assert resp.status_code == 200
     assert resp.json()["id"] == "override_prob"
     custom_conn.close()
+
+
+def test_cors_preflight_headers(app_client):
+    """CORS middleware returns access-control headers for browser workers."""
+    client, _ = app_client
+    resp = client.options(
+        "/api/v1/work",
+        headers={
+            "Origin": "http://localhost:4321",
+            "Access-Control-Request-Method": "GET",
+        },
+    )
+    assert resp.status_code == 200
+    assert resp.headers.get("access-control-allow-origin") == "http://localhost:4321"
