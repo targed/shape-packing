@@ -215,6 +215,34 @@ def register_with_server(
     raise ValueError(f"Registration failed: invalid response {resp}")
 
 
+CONFIG_CACHE_PATH = os.path.expanduser("~/.shape_packing_worker.json")
+
+
+def load_cached_worker_id(username: str, path: Optional[str] = None) -> Optional[str]:
+    """Retrieve persisted worker_id for a username from local configuration file."""
+    cache_path = path or CONFIG_CACHE_PATH
+    try:
+        if os.path.exists(cache_path):
+            with open(cache_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, dict) and data.get("username") == username:
+                    return data.get("worker_id")
+    except Exception:
+        pass
+    return None
+
+
+def save_cached_worker_id(username: str, worker_id: str, path: Optional[str] = None) -> None:
+    """Persist worker_id for a username to local configuration file."""
+    cache_path = path or CONFIG_CACHE_PATH
+    try:
+        os.makedirs(os.path.dirname(os.path.abspath(cache_path)), exist_ok=True)
+        with open(cache_path, "w", encoding="utf-8") as f:
+            json.dump({"username": username, "worker_id": worker_id}, f)
+    except Exception:
+        pass
+
+
 def set_process_idle_priority() -> bool:
     """Set current process to idle/lowest background OS scheduling priority.
 
@@ -666,11 +694,13 @@ def main(argv: Optional[List[str]] = None) -> None:
     # Register signal handlers
     setup_signal_handlers()
 
-    # Register with coordinator
+    # Register with coordinator (using persisted worker_id if available)
+    target_worker_id = args.worker_id or load_cached_worker_id(args.username)
     try:
         worker_id = register_with_server(
-            args.server, args.username, worker_id=args.worker_id
+            args.server, args.username, worker_id=target_worker_id
         )
+        save_cached_worker_id(args.username, worker_id)
     except Exception as e:
         print(
             f"[Worker] Failed to register with coordinator at {args.server}: {e}",

@@ -649,6 +649,26 @@ def test_register_worker_duplicate_username(app_client):
     assert r1.json()["username"] == r2.json()["username"] == "common_name"
 
 
+def test_leaderboard_aggregates_multiple_workers_by_username(app_client):
+    """Multiple worker nodes for the same username are aggregated into a single leaderboard row."""
+    client, db_path = app_client
+    r1 = client.post("/api/v1/workers/register", json={"username": "fleet_user"}).json()
+    r2 = client.post("/api/v1/workers/register", json={"username": "fleet_user"}).json()
+
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE workers SET total_attempts = 15000, records_broken = 1 WHERE id = ?", (r1["worker_id"],))
+    cursor.execute("UPDATE workers SET total_attempts = 25000, records_broken = 2 WHERE id = ?", (r2["worker_id"],))
+    conn.commit()
+    conn.close()
+
+    lb = client.get("/api/v1/leaderboard").json()
+    fleet_rows = [row for row in lb if row["username"] == "fleet_user"]
+    assert len(fleet_rows) == 1
+    assert fleet_rows[0]["total_attempts"] == 40000
+    assert fleet_rows[0]["records_broken"] == 3
+
+
 def test_submit_invalid_metric_s_rejected(app_client):
     """Submissions with non-positive metric s are rejected with HTTP 400."""
     client, _ = app_client

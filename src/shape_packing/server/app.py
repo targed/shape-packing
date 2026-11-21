@@ -359,8 +359,12 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
         cursor = conn.cursor()
         cursor.execute(
             """
-            SELECT username, total_attempts, records_broken
+            SELECT 
+                username, 
+                COALESCE(SUM(total_attempts), 0) AS total_attempts, 
+                COALESCE(SUM(records_broken), 0) AS records_broken
             FROM workers
+            GROUP BY username
             ORDER BY records_broken DESC, total_attempts DESC
             LIMIT ?
             """,
