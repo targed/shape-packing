@@ -1,0 +1,99 @@
+---
+// site/src/components/LeaderboardTable.astro
+---
+
+<div class="space-y-4">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <h2 class="text-xl font-bold text-white tracking-tight">Active Contributors</h2>
+      <span id="leaderboard-count-badge" class="px-2 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+        0 Volunteers
+      </span>
+    </div>
+    <button
+      id="btn-refresh-leaderboard"
+      class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium transition-colors border border-slate-700 flex items-center gap-1.5 cursor-pointer"
+    >
+      <span>Refresh Rankings</span>
+    </button>
+  </div>
+
+  <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/60 backdrop-blur-sm shadow-xl">
+    <table class="w-full text-left text-xs text-slate-300">
+      <thead class="bg-slate-950/80 uppercase text-slate-400 border-b border-slate-800 font-semibold tracking-wider font-mono">
+        <tr>
+          <th class="px-4 py-3.5 text-center w-16">Rank</th>
+          <th class="px-5 py-3.5">Volunteer</th>
+          <th class="px-5 py-3.5 text-right">Compute Attempts</th>
+          <th class="px-5 py-3.5 text-right text-amber-400">Records Broken</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-tbody" class="divide-y divide-slate-800/60 font-mono">
+        <tr>
+          <td colspan="4" class="px-6 py-8 text-center text-slate-500">
+            Querying coordinator for active rankings...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  import { fetchLeaderboard } from '../lib/api';
+
+  const tbody = document.getElementById('leaderboard-tbody');
+  const countBadge = document.getElementById('leaderboard-count-badge');
+  const refreshBtn = document.getElementById('btn-refresh-leaderboard');
+
+  async function renderLeaderboard() {
+    const res = await fetchLeaderboard();
+    if (!tbody) return;
+
+    if (!res.ok || !res.data || res.data.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="4" class="px-6 py-8 text-center text-slate-500">
+            ${res.ok ? 'No volunteer records registered yet. Start a native or browser worker to appear here.' : 'Coordinator is offline. Connect to coordinator to view live rankings.'}
+          </td>
+        </tr>
+      `;
+      if (countBadge) countBadge.textContent = '0 Volunteers';
+      return;
+    }
+
+    if (countBadge) {
+      countBadge.textContent = `${res.data.length} Volunteers`;
+    }
+
+    tbody.innerHTML = res.data.map((row, index) => {
+      const rank = index + 1;
+      let medal = `#${rank}`;
+      if (rank === 1) medal = '#1 (Gold)';
+      else if (rank === 2) medal = '#2 (Silver)';
+      else if (rank === 3) medal = '#3 (Bronze)';
+
+      return `
+        <tr class="hover:bg-slate-800/40 transition-colors">
+          <td class="px-4 py-3.5 text-center font-bold text-slate-400">${medal}</td>
+          <td class="px-5 py-3.5 font-bold text-slate-100 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            ${escapeHtml(row.username)}
+          </td>
+          <td class="px-5 py-3.5 text-right text-slate-200">${row.total_attempts.toLocaleString()}</td>
+          <td class="px-5 py-3.5 text-right font-bold text-amber-300">${row.records_broken.toLocaleString()}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function escapeHtml(text: string): string {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', renderLeaderboard);
+  }
+
+  renderLeaderboard();
+</script>
