@@ -1,7 +1,7 @@
 // site/tests/api.test.js
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { fetchClusterStats, fetchLeaderboard } from '../src/lib/api.js';
+import { fetchClusterStats, fetchLeaderboard, fetchRecentSolutions } from '../src/lib/api.js';
 
 describe('Coordinator API Client', () => {
   it('parses cluster stats response correctly', async () => {
@@ -47,5 +47,34 @@ describe('Coordinator API Client', () => {
     assert.equal(result.data.length, 2);
     assert.equal(result.data[0].username, 'targed');
     assert.equal(result.data[0].records_broken, 2);
+  });
+
+  it('parses recent solutions correctly', async () => {
+    const mockFetch = async () => ({
+      ok: true,
+      json: async () => ([
+        {
+          id: 116,
+          problem_id: '21_dominhex',
+          n: 21,
+          inner_token: 'DOMINO',
+          container_token: '6',
+          metric_s: 4.517339,
+          reference_s: 4.5981,
+          diff: -0.080761,
+          is_current_record: true,
+          worker_username: 'web_volunteer',
+          verified_at: '2026-11-22 00:01:44',
+        },
+      ]),
+    });
+
+    const result = await fetchRecentSolutions(10, 'http://localhost:8000', mockFetch);
+    assert.equal(result.ok, true);
+    assert.equal(result.data.length, 1);
+    assert.equal(result.data[0].problem_id, '21_dominhex');
+    assert.equal(result.data[0].metric_s, 4.517339);
+    assert.equal(result.data[0].worker_username, 'web_volunteer');
+    assert.equal(result.data[0].is_current_record, true);
   });
 });

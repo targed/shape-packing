@@ -1,4 +1,4 @@
-import{f as c}from"./api.BmNrDEVQ.js";const o=document.getElementById("leaderboard-tbody"),n=document.getElementById("leaderboard-count-badge"),d=document.getElementById("btn-refresh-leaderboard");async function l(){const t=await c();if(o){if(!t.ok||!t.data||t.data.length===0){o.innerHTML=`
+import{f as c}from"./api.DbVY_Eak.js";const o=document.getElementById("leaderboard-tbody"),n=document.getElementById("leaderboard-count-badge"),d=document.getElementById("btn-refresh-leaderboard");async function l(){const t=await c();if(o){if(!t.ok||!t.data||t.data.length===0){o.innerHTML=`
         <tr>
           <td colspan="4" class="px-6 py-8 text-center text-slate-500">
             ${t.ok?"No volunteer records registered yet. Start a native or browser worker to appear here.":"Coordinator is offline. Connect to coordinator to view live rankings."}

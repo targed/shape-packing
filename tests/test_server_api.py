@@ -644,6 +644,36 @@ def test_stats_and_leaderboard_endpoints(app_client):
     assert lb1[1]["total_attempts"] == 50000
 
 
+def test_recent_solutions_endpoint(app_client):
+    """Recent solutions endpoint returns chronological stream of verified solutions."""
+    client, _ = app_client
+    r1 = client.post("/api/v1/workers/register", json={"username": "alice"}).json()
+
+    # Initial recent solutions empty on new test db
+    res0 = client.get("/api/v1/recent_solutions").json()
+    assert isinstance(res0, list)
+
+    # Submit solution
+    client.post(
+        "/api/v1/solutions",
+        json={
+            "worker_id": r1["worker_id"],
+            "problem": "3_3_in_circle",
+            "s": 2.5,
+            "coordinates": [-2.0, -1.0, 0.0, 0.0, 1.5, 0.0, 2.0, -1.0, 0.0],
+        },
+    )
+
+    res1 = client.get("/api/v1/recent_solutions?limit=10").json()
+    assert len(res1) >= 1
+    first = res1[0]
+    assert first["problem_id"] == "3_3_in_circle"
+    assert first["worker_username"] == "alice"
+    assert "metric_s" in first
+    assert "reference_s" in first
+    assert "verified_at" in first
+
+
 def test_leaderboard_limit_query(app_client):
     """Leaderboard limit query parameter caps returned list."""
     client, _ = app_client

@@ -2,11 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ResultsTable from '../components/ResultsTable.astro';
 import PackingVisual from '../components/PackingVisual.astro';
+import RecentlyUpdated from '../components/RecentlyUpdated.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 const siteData = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/data/site_data.json'), 'utf-8'));
 
-const { summary, new_bests, matches_bests, priority_targets, families, problems } = siteData;
+const { summary, new_bests, matches_bests, priority_targets, families, problems, recent_solutions = [] } = siteData;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
@@ -22,7 +23,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       </div>
       <div class="flex flex-wrap items-center gap-2">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40">
-          🏆 {summary.total_new_bests} New Bests
+          {summary.total_new_bests} New Bests
         </span>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
           {summary.total_matches} Matched Records
@@ -38,8 +39,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-indigo-500/10 border border-amber-500/30 rounded-2xl p-6 space-y-4 shadow-xl">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 text-xl font-bold">
-              🏆
+            <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 text-xs font-bold uppercase tracking-wider">
+              REC
             </div>
             <div>
               <h2 class="text-lg font-bold text-white tracking-tight">New Best Records Beat ({summary.total_new_bests} Problems)</h2>
@@ -88,6 +89,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         </div>
       </div>
     )}
+
+    <!-- Live Stream: Recently Updated Problems & Verified Records -->
+    <RecentlyUpdated initialRecent={recent_solutions} />
 
     <!-- Promising Shapes & Priority Queue Targets -->
     {priority_targets.length > 0 && (

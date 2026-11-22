@@ -19,7 +19,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 38 | 3.02061+ | 3.020607490508 | 3.02113+ | -0.000523 | `38.gif` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#cccccc on #ffffff), orientation, no borders or text, and target website pixel dimensions (234x233 px):
+The replacement image files are attached directly with exact matching colors (#cccccc on #ffffff), orientation, no borders or text, and target website pixel dimensions (234x234 px):
 - `38.gif`
 
 Coordinate tables and certificates for each solution are included in the repository records.

@@ -2,11 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PackingVisual from '../components/PackingVisual.astro';
 import LiveClusterStats from '../components/LiveClusterStats.astro';
+import RecentlyUpdated from '../components/RecentlyUpdated.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 const siteData = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/data/site_data.json'), 'utf-8'));
 
-const { summary, new_bests, priority_targets, problems } = siteData;
+const { summary, new_bests, priority_targets, problems, recent_solutions = [] } = siteData;
 const solvedProblems = problems.filter(p => p.solution).slice(0, 4);
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
@@ -38,61 +39,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       </div>
     </div>
 
-    <!-- Live Cluster Telemetry -->
-    <div class="space-y-3">
-      <div class="flex items-center justify-between">
-        <h2 class="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-          <span>Live Volunteer Grid Telemetry</span>
-        </h2>
-        <a href={`${base}/leaderboard`} class="text-xs font-semibold text-indigo-400 hover:text-indigo-300">
-          View Full Volunteer Leaderboard &rarr;
-        </a>
-      </div>
-      <LiveClusterStats
-        initialAttempts={summary.total_slurm_attempts}
-        initialRecords={summary.total_new_bests}
-      />
-    </div>
+    <!-- Unified Global Telemetry & Catalog Stats -->
+    <LiveClusterStats
+      familiesCount={summary.total_families}
+      problemsCount={summary.total_problems}
+      initialAttempts={summary.total_attempts || summary.total_slurm_attempts}
+      initialRecords={summary.total_new_bests}
+    />
 
-    <!-- Stat Cards -->
-    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
-      <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 backdrop-blur-sm flex flex-col">
-        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Problem Families</span>
-        <span class="text-3xl font-extrabold text-white mt-2">{summary.total_families}</span>
-        <span class="text-[11px] text-slate-500 mt-1">Normalized x_in_y Catalog</span>
-      </div>
-
-      <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 backdrop-blur-sm flex flex-col">
-        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Benchmark Records</span>
-        <span class="text-3xl font-extrabold text-indigo-400 mt-2">{summary.total_problems.toLocaleString()}</span>
-        <span class="text-[11px] text-slate-500 mt-1">Erich Friedman Entries</span>
-      </div>
-
-      <div class="bg-slate-900/60 border border-amber-500/30 rounded-xl p-5 bg-amber-500/5 flex flex-col">
-        <span class="text-xs uppercase tracking-wider font-bold text-amber-400">NEW BEST RECORDS</span>
-        <span class="text-3xl font-extrabold text-amber-300 mt-2">{summary.total_new_bests}</span>
-        <span class="text-[11px] text-amber-400/80 mt-1">Solver beat benchmark!</span>
-      </div>
-
-      <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 backdrop-blur-sm flex flex-col">
-        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Attempted Problems</span>
-        <span class="text-3xl font-extrabold text-emerald-400 mt-2">{summary.total_attempted}</span>
-        <span class="text-[11px] text-slate-500 mt-1">Local & Slurm Runs</span>
-      </div>
-
-      <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-5 backdrop-blur-sm flex flex-col">
-        <span class="text-xs uppercase tracking-wider font-semibold text-slate-400">Slurm Solver Runs</span>
-        <span class="text-3xl font-extrabold text-sky-400 mt-2">{summary.total_slurm_starts}</span>
-        <span class="text-[11px] text-slate-500 mt-1">{summary.total_slurm_attempts.toLocaleString()} total attempts</span>
-      </div>
-    </div>
+    <!-- Live Stream: Recently Updated Problems & Verified Records -->
+    <RecentlyUpdated initialRecent={recent_solutions} />
 
     <!-- New Best Records Banner -->
     {new_bests.length > 0 && (
       <div class="bg-gradient-to-r from-amber-500/15 via-purple-500/10 to-slate-900 border border-amber-500/30 rounded-2xl p-6 space-y-4">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <span class="text-2xl">🏆</span>
+            <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 text-xs font-bold uppercase tracking-wider">
+              REC
+            </div>
             <div>
               <h2 class="text-lg font-bold text-white tracking-tight">Record-Beating Results ({summary.total_new_bests} Problems)</h2>
               <p class="text-xs text-amber-200/80">Configurations where your solver achieved tighter scale metrics than Erich Friedman's reference</p>

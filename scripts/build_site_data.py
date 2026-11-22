@@ -332,6 +332,109 @@ def load_local_solutions() -> Dict[str, Dict[str, Any]]:
     return solutions
 
 
+def load_db_solutions() -> Dict[str, Dict[str, Any]]:
+    db_path = ROOT_DIR / "shape_packing.db"
+    solutions = {}
+    if not db_path.exists():
+        return solutions
+
+    import sqlite3
+    try:
+        conn = sqlite3.connect(db_path)
+        c = conn.cursor()
+        rows = c.execute(
+            """
+            SELECT s.problem_id, s.metric_s, s.coordinates_json, s.worker_username, s.verified_at,
+                   p.n, p.inner_token, p.container_token, p.reference_s
+            FROM solutions s
+            JOIN problems p ON s.problem_id = p.id
+            WHERE s.is_current_record = 1
+            """
+        ).fetchall()
+        for r in rows:
+            prob_id = r[0]
+            metric_s = float(r[1])
+            coords = json.loads(r[2]) if r[2] else []
+            worker_username = r[3]
+            verified_at = r[4]
+            n = r[5]
+            inner_token = r[6]
+            container_token = r[7]
+            ref_s = float(r[8]) if r[8] is not None else None
+
+            sol_data = {
+                "N": n,
+                "inner_token": inner_token,
+                "container_token": container_token,
+                "computed_metric": metric_s,
+                "S": metric_s,
+                "values": coords,
+                "worker_username": worker_username,
+                "verified_at": str(verified_at),
+                "source": "database",
+            }
+            solutions[prob_id] = sol_data
+            solutions[f"{n}_{inner_token}_in_{container_token}"] = sol_data
+            solutions[f"{n}_{inner_token.lower()}_in_{container_token.lower()}"] = sol_data
+        conn.close()
+    except Exception as exc:
+        print(f"Warning: failed reading solutions from DB: {exc}")
+    return solutions
+
+
+def load_recent_solutions(limit: int = 20) -> List[Dict[str, Any]]:
+    db_path = ROOT_DIR / "shape_packing.db"
+    if not db_path.exists():
+        return []
+
+    import sqlite3
+    try:
+        conn = sqlite3.connect(db_path)
+        c = conn.cursor()
+        rows = c.execute(
+            """
+            SELECT s.id, s.problem_id, s.metric_s, s.worker_username, s.verified_at, s.is_current_record,
+                   p.n, p.inner_token, p.container_token, p.reference_s, p.status
+            FROM solutions s
+            LEFT JOIN problems p ON s.problem_id = p.id
+            ORDER BY s.verified_at DESC, s.id DESC
+            LIMIT ?
+            """,
+            (limit,),
+        ).fetchall()
+        results = []
+        for r in rows:
+            prob_id = r[1]
+            metric_s = float(r[2])
+            worker_username = r[3]
+            verified_at = r[4]
+            is_record = bool(r[5])
+            n = r[6]
+            inner_token = r[7]
+            container_token = r[8]
+            ref_s = r[9]
+            diff = (metric_s - float(ref_s)) if (ref_s is not None) else None
+
+            results.append({
+                "id": r[0],
+                "problem_id": prob_id,
+                "n": n,
+                "inner_token": inner_token,
+                "container_token": container_token,
+                "metric_s": round(metric_s, 6),
+                "reference_s": round(float(ref_s), 6) if ref_s is not None else None,
+                "diff": round(diff, 6) if diff is not None else None,
+                "is_current_record": is_record,
+                "worker_username": worker_username,
+                "verified_at": str(verified_at),
+            })
+        conn.close()
+        return results
+    except Exception as exc:
+        print(f"Warning: could not load recent solutions: {exc}")
+        return []
+
+
 def parse_slurm_mill_logs() -> Dict[str, Dict[str, Any]]:
     log_stats = {}
     log_files = glob.glob(os.path.join(str(RESULTS_DIR), "mill-*.out"))
@@ -443,7 +546,19 @@ def main():
     if not ref_entries:
         raise FileNotFoundError("No reference benchmark entries found in packingVerification/.")
 
-    solutions = load_local_solutions()
+    local_solutions = load_local_solutions()
+    db_solutions = load_db_solutions()
+    solutions = dict(local_solutions)
+    for k, sol in db_solutions.items():
+        if k not in solutions:
+            solutions[k] = sol
+        else:
+            local_metric = solutions[k].get("computed_metric")
+            db_metric = sol.get("computed_metric")
+            if db_metric is not None and (local_metric is None or db_metric < local_metric):
+                solutions[k] = sol
+
+    recent_solutions = load_recent_solutions(limit=25)
     log_stats = parse_slurm_mill_logs()
     pq_dict = load_priority_queue()
 
@@ -623,6 +738,7 @@ def main():
         "new_bests": new_best_list,
         "matches_bests": matches_best_list,
         "priority_targets": priority_targets[:25],
+        "recent_solutions": recent_solutions,
         "families": families_list,
         "problems": problems_list,
     })

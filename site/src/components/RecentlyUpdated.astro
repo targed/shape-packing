@@ -1,0 +1,195 @@
+---
+// site/src/components/RecentlyUpdated.astro
+interface Props {
+  initialRecent?: any[];
+}
+
+const { initialRecent = [] } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+function formatDelta(diff: number | null | undefined): string {
+  if (diff === null || diff === undefined) return "—";
+  if (diff < -1e-6) return `${diff.toFixed(6)}`;
+  if (Math.abs(diff) <= 1e-4) return "0.000000";
+  return `+${diff.toFixed(6)}`;
+}
+
+function formatFamily(id: string): string {
+  if (!id) return "";
+  const parts = id.split("_");
+  const n = parts[0];
+  const rest = parts.slice(1).join(" ");
+  return `${rest} (N=${n})`;
+}
+---
+
+<div id="recent-solutions-container" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 backdrop-blur-sm space-y-4 shadow-xl">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-4">
+    <div>
+      <div class="flex items-center gap-2">
+        <h2 class="text-lg font-bold text-white tracking-tight">Recently Updated Problems & Verified Records</h2>
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+          Live Stream
+        </span>
+      </div>
+      <p class="text-xs text-slate-400 mt-0.5">
+        Real-time feed of solutions verified by SAT collision checking and accepted into the global catalog
+      </p>
+    </div>
+    <div class="flex items-center gap-2 self-start sm:self-auto">
+      <span id="recent-status-indicator" class="text-[11px] text-slate-500 font-mono">Connecting...</span>
+      <button
+        id="btn-refresh-recent"
+        class="text-xs px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium transition-colors border border-slate-700 cursor-pointer"
+        title="Refresh recently updated solutions"
+      >
+        Refresh
+      </button>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950/70">
+    <table class="w-full text-left text-xs text-slate-300">
+      <thead class="bg-slate-900/80 uppercase text-slate-400 font-semibold tracking-wider border-b border-slate-800 text-[11px]">
+        <tr>
+          <th class="px-4 py-3">Problem</th>
+          <th class="px-3 py-3 text-center">N</th>
+          <th class="px-4 py-3 text-right">Solved Metric (s)</th>
+          <th class="px-4 py-3 text-right">Friedman Bound</th>
+          <th class="px-4 py-3 text-right">Improvement (Delta)</th>
+          <th class="px-4 py-3 text-center">Contributor</th>
+          <th class="px-4 py-3 text-center">Verified At</th>
+        </tr>
+      </thead>
+      <tbody id="recent-solutions-tbody" class="divide-y divide-slate-800/60 font-mono text-[11px]">
+        {initialRecent.length === 0 ? (
+          <tr>
+            <td colspan="7" class="px-4 py-6 text-center text-slate-500 font-sans">
+              No solutions verified yet. Volunteer grid is ready for solver workers.
+            </td>
+          </tr>
+        ) : (
+          initialRecent.slice(0, 10).map((r) => {
+            const isRecord = r.is_current_record || (r.diff !== null && r.diff < -1e-6);
+            return (
+              <tr class="hover:bg-slate-900/50 transition-colors">
+                <td class="px-4 py-2.5 font-sans font-semibold text-slate-200">
+                  <a href={`${base}/results?q=${r.problem_id}`} class="hover:text-amber-300 underline underline-offset-2">
+                    {r.problem_id}
+                  </a>
+                </td>
+                <td class="px-3 py-2.5 text-center font-bold text-amber-400">{r.n}</td>
+                <td class="px-4 py-2.5 text-right font-bold text-amber-300">
+                  {r.metric_s ? r.metric_s.toFixed(6) : "—"}
+                </td>
+                <td class="px-4 py-2.5 text-right text-slate-400">
+                  {r.reference_s ? r.reference_s.toFixed(6) : "—"}
+                </td>
+                <td class="px-4 py-2.5 text-right font-semibold">
+                  {r.diff !== null && r.diff !== undefined ? (
+                    <span class={r.diff < -1e-6 ? "text-emerald-400" : "text-slate-400"}>
+                      {formatDelta(r.diff)}
+                    </span>
+                  ) : (
+                    <span class="text-slate-500">—</span>
+                  )}
+                </td>
+                <td class="px-4 py-2.5 text-center font-sans">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700/60">
+                    {r.worker_username || "volunteer"}
+                  </span>
+                </td>
+                <td class="px-4 py-2.5 text-center text-slate-400 font-sans text-[10px]">
+                  {r.verified_at ? r.verified_at.split(" ")[1] || r.verified_at : "recent"}
+                </td>
+              </tr>
+            );
+          })
+        )}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  import { fetchRecentSolutions } from '../lib/api';
+
+  const tbody = document.getElementById('recent-solutions-tbody');
+  const statusIndicator = document.getElementById('recent-status-indicator');
+  const refreshBtn = document.getElementById('btn-refresh-recent');
+
+  let pollTimer: number | null = null;
+
+  function formatDeltaJs(diff: number | null | undefined): string {
+    if (diff === null || diff === undefined) return '—';
+    if (diff < -1e-6) return diff.toFixed(6);
+    if (Math.abs(diff) <= 1e-4) return '0.000000';
+    return '+' + diff.toFixed(6);
+  }
+
+  async function updateRecent() {
+    const res = await fetchRecentSolutions(10);
+    const now = new Date().toLocaleTimeString();
+
+    if (res.ok && Array.isArray(res.data) && res.data.length > 0) {
+      if (statusIndicator) {
+        statusIndicator.textContent = 'Live · ' + now;
+        statusIndicator.className = 'text-[11px] text-emerald-400 font-mono';
+      }
+
+      if (tbody) {
+        tbody.innerHTML = '';
+        for (const r of res.data) {
+          const isBetter = r.diff !== null && r.diff !== undefined && r.diff < -1e-6;
+          const deltaClass = isBetter ? 'text-emerald-400' : 'text-slate-400';
+          const verifiedTime = r.verified_at ? (r.verified_at.split(' ')[1] || r.verified_at) : 'recent';
+          const metricText = r.metric_s ? Number(r.metric_s).toFixed(6) : '—';
+          const refText = r.reference_s ? Number(r.reference_s).toFixed(6) : '—';
+          const deltaText = formatDeltaJs(r.diff);
+          const username = r.worker_username || 'volunteer';
+
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-slate-900/50 transition-colors';
+          tr.innerHTML =
+            '<td class="px-4 py-2.5 font-sans font-semibold text-slate-200">' +
+              '<a href="/results?q=' + encodeURIComponent(r.problem_id) + '" class="hover:text-amber-300 underline underline-offset-2">' +
+                r.problem_id +
+              '</a>' +
+            '</td>' +
+            '<td class="px-3 py-2.5 text-center font-bold text-amber-400">' + r.n + '</td>' +
+            '<td class="px-4 py-2.5 text-right font-bold text-amber-300">' + metricText + '</td>' +
+            '<td class="px-4 py-2.5 text-right text-slate-400">' + refText + '</td>' +
+            '<td class="px-4 py-2.5 text-right font-semibold ' + deltaClass + '">' + deltaText + '</td>' +
+            '<td class="px-4 py-2.5 text-center font-sans">' +
+              '<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700/60">' +
+                username +
+              '</span>' +
+            '</td>' +
+            '<td class="px-4 py-2.5 text-center text-slate-400 font-sans text-[10px]">' + verifiedTime + '</td>';
+          tbody.appendChild(tr);
+        }
+      }
+    } else {
+      if (statusIndicator) {
+        statusIndicator.textContent = 'Snapshot Mode · ' + now;
+        statusIndicator.className = 'text-[11px] text-slate-500 font-mono';
+      }
+    }
+
+    scheduleNext();
+  }
+
+  function scheduleNext() {
+    if (pollTimer) clearTimeout(pollTimer);
+    pollTimer = window.setTimeout(updateRecent, 12000);
+  }
+
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      if (statusIndicator) statusIndicator.textContent = 'Refreshing...';
+      updateRecent();
+    });
+  }
+
+  updateRecent();
+</script>

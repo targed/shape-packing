@@ -1,48 +1,64 @@
 ---
 // site/src/components/LiveClusterStats.astro
 interface Props {
+  familiesCount?: number;
+  problemsCount?: number;
   initialAttempts?: number;
   initialRecords?: number;
 }
 
-const { initialAttempts = 0, initialRecords = 0 } = Astro.props;
+const {
+  familiesCount = 80,
+  problemsCount = 2242,
+  initialAttempts = 0,
+  initialRecords = 0,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<div id="live-cluster-container" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5 backdrop-blur-sm space-y-4">
-  <div class="flex items-center justify-between">
+<div id="live-cluster-container" class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 backdrop-blur-sm space-y-4 shadow-xl">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
     <div class="flex items-center gap-2.5">
       <span id="cluster-indicator" class="w-2.5 h-2.5 rounded-full bg-slate-600"></span>
       <span id="cluster-status-text" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">
         Coordinator: Checking...
       </span>
+      <span id="cluster-last-updated" class="text-[11px] text-slate-500 font-mono ml-2">Connecting</span>
     </div>
     <div class="flex items-center gap-3">
-      <span id="cluster-last-updated" class="text-[11px] text-slate-500 font-mono">Connecting</span>
       <button
         id="btn-refresh-stats"
-        class="text-xs px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium transition-colors cursor-pointer"
+        class="text-xs px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium transition-colors cursor-pointer border border-slate-700"
         title="Refresh live cluster numbers"
       >
         Refresh
       </button>
+      <a href={`${base}/leaderboard`} class="text-xs font-semibold text-indigo-400 hover:text-indigo-300">
+        Leaderboard &rarr;
+      </a>
+      <a href={`${base}/contribute`} class="text-xs font-semibold text-emerald-400 hover:text-emerald-300">
+        Join Grid &rarr;
+      </a>
     </div>
   </div>
 
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+    <!-- Problem Families -->
     <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col">
-      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Active Workers</span>
-      <span id="stat-active-workers" class="text-2xl font-extrabold text-sky-400 mt-1 font-mono">0</span>
-      <span class="text-[10px] text-slate-500 mt-1">Nodes reporting heartbeat</span>
+      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Problem Families</span>
+      <span class="text-2xl font-extrabold text-white mt-1 font-mono">{familiesCount}</span>
+      <span class="text-[10px] text-slate-500 mt-1">Normalized x_in_y Catalog</span>
     </div>
 
+    <!-- Benchmark Catalog -->
     <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col">
-      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Total Attempts</span>
-      <span id="stat-total-attempts" class="text-2xl font-extrabold text-indigo-400 mt-1 font-mono">
-        {initialAttempts.toLocaleString()}
-      </span>
-      <span class="text-[10px] text-slate-500 mt-1">Multi-start iterations</span>
+      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Benchmark Records</span>
+      <span class="text-2xl font-extrabold text-indigo-400 mt-1 font-mono">{problemsCount.toLocaleString()}</span>
+      <span class="text-[10px] text-slate-500 mt-1">Erich Friedman Entries</span>
     </div>
 
+    <!-- Records Broken -->
     <div class="bg-slate-950/70 border border-amber-500/30 rounded-xl p-4 bg-amber-500/5 flex flex-col">
       <span class="text-[11px] uppercase tracking-wider font-bold text-amber-400">Records Broken</span>
       <span id="stat-records-broken" class="text-2xl font-extrabold text-amber-300 mt-1 font-mono">
@@ -51,12 +67,20 @@ const { initialAttempts = 0, initialRecords = 0 } = Astro.props;
       <span class="text-[10px] text-amber-400/80 mt-1">Better than Friedman bound</span>
     </div>
 
+    <!-- Compute Attempts -->
     <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col">
-      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Verified Solutions</span>
-      <span id="stat-verified-solutions" class="text-2xl font-extrabold text-emerald-400 mt-1 font-mono">
-        {initialRecords}
+      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Compute Attempts</span>
+      <span id="stat-total-attempts" class="text-2xl font-extrabold text-slate-200 mt-1 font-mono">
+        {initialAttempts.toLocaleString()}
       </span>
-      <span class="text-[10px] text-slate-500 mt-1">SAT collision check passed</span>
+      <span class="text-[10px] text-slate-500 mt-1">Multi-start iterations</span>
+    </div>
+
+    <!-- Active Workers -->
+    <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col col-span-2 sm:col-span-1">
+      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Active Workers</span>
+      <span id="stat-active-workers" class="text-2xl font-extrabold text-sky-400 mt-1 font-mono">0</span>
+      <span class="text-[10px] text-slate-500 mt-1">Reporting heartbeat</span>
     </div>
   </div>
 </div>
@@ -70,7 +94,6 @@ const { initialAttempts = 0, initialRecords = 0 } = Astro.props;
   const activeWorkers = document.getElementById('stat-active-workers');
   const totalAttempts = document.getElementById('stat-total-attempts');
   const recordsBroken = document.getElementById('stat-records-broken');
-  const verifiedSolutions = document.getElementById('stat-verified-solutions');
   const refreshBtn = document.getElementById('btn-refresh-stats');
 
   let pollTimer: number | null = null;
@@ -92,7 +115,6 @@ const { initialAttempts = 0, initialRecords = 0 } = Astro.props;
       if (activeWorkers) activeWorkers.textContent = res.data.active_workers.toLocaleString();
       if (totalAttempts) totalAttempts.textContent = res.data.total_attempts.toLocaleString();
       if (recordsBroken) recordsBroken.textContent = res.data.records_broken.toLocaleString();
-      if (verifiedSolutions) verifiedSolutions.textContent = res.data.verified_solutions.toLocaleString();
       if (lastUpdated) lastUpdated.textContent = `Updated ${now}`;
     } else {
       consecutiveErrors += 1;

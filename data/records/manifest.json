@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-25T20:01:21Z",
-  "total_records": 49,
+  "generated_at": "2026-11-22T05:07:42Z",
+  "total_records": 51,
   "records": [
     {
       "problem": "22_CIRCLE_in_6",
@@ -465,6 +465,20 @@
       "folder": "hexinoct/5_6_in_8"
     },
     {
+      "problem": "4_6_in_TAN",
+      "N": 4,
+      "inner_token": "6",
+      "container_token": "TAN",
+      "family_code": "hexintan",
+      "family_url": "https://erich-friedman.github.io/packing/hexintan/index.html",
+      "solver_S": 5.750980409876444,
+      "metric": 5.750980409876445,
+      "friedman_best": 5.751,
+      "improvement": -1.9590123555346395e-05,
+      "site_image": "hexintan/4_6_in_TAN/4.png",
+      "folder": "hexintan/4_6_in_TAN"
+    },
+    {
       "problem": "6_6_in_3",
       "N": 6,
       "inner_token": "6",
@@ -626,9 +640,9 @@
       "family_code": "squincir",
       "family_url": "https://erich-friedman.github.io/packing/squincir/index.html",
       "solver_S": 1.8221724731219755,
-      "metric": 1.2884705122360107,
+      "metric": 1.288470512236011,
       "friedman_best": 1.2885,
-      "improvement": -2.9487763989255455e-05,
+      "improvement": -2.948776398903341e-05,
       "site_image": "squincir/3_4_in_CIRCLE/3.gif",
       "folder": "squincir/3_4_in_CIRCLE"
     },
@@ -640,9 +654,9 @@
       "family_code": "squincir",
       "family_url": "https://erich-friedman.github.io/packing/squincir/index.html",
       "solver_S": 2.5495161685310768,
-      "metric": 1.802780171513069,
+      "metric": 1.8027801715130694,
       "friedman_best": 1.8028,
-      "improvement": -1.982848693105055e-05,
+      "improvement": -1.982848693060646e-05,
       "site_image": "squincir/7_4_in_CIRCLE/7.gif",
       "folder": "squincir/7_4_in_CIRCLE"
     },
@@ -654,9 +668,9 @@
       "family_code": "squincir",
       "family_url": "https://erich-friedman.github.io/packing/squincir/index.html",
       "solver_S": 3.130908862952352,
-      "metric": 2.213886888270671,
+      "metric": 2.2138868882706713,
       "friedman_best": 2.2139,
-      "improvement": -1.3111729329384758e-05,
+      "improvement": -1.3111729328940669e-05,
       "site_image": "squincir/11_4_in_CIRCLE/11.gif",
       "folder": "squincir/11_4_in_CIRCLE"
     },
@@ -668,11 +682,25 @@
       "family_code": "squinoct",
       "family_url": "https://erich-friedman.github.io/packing/squinoct/index.html",
       "solver_S": 5.581354872462049,
-      "metric": 3.020607490508436,
+      "metric": 3.0206074905084366,
       "friedman_best": 3.02113,
-      "improvement": -0.0005225094915637385,
+      "improvement": -0.0005225094915632944,
       "site_image": "squinoct/38_4_in_8/38.gif",
       "folder": "squinoct/38_4_in_8"
+    },
+    {
+      "problem": "2_TAN_in_5",
+      "N": 2,
+      "inner_token": "TAN",
+      "container_token": "5",
+      "family_code": "taninpen",
+      "family_url": "https://erich-friedman.github.io/packing/taninpen/index.html",
+      "solver_S": 0.7969423983653685,
+      "metric": 0.9368619773715136,
+      "friedman_best": 0.9369,
+      "improvement": -3.802262848640048e-05,
+      "site_image": "taninpen/2_TAN_in_5/2.png",
+      "folder": "taninpen/2_TAN_in_5"
     },
     {
       "problem": "22_3_in_DOMINO",

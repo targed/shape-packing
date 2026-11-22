@@ -1,7 +1,7 @@
 # Shape Packing World Records Summary
 
-**Generated:** 2026-08-25 20:01:21 UTC  
-**Total Verified Record Improvements:** 49
+**Generated:** 2026-11-22 05:07:42 UTC  
+**Total Verified Record Improvements:** 51
 
 | Problem | Family | N | Our Metric $s$ (5 dec) | Our Exact $s$ | Friedman Best | Improvement $\Delta s$ | Folder Link |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -38,6 +38,7 @@
 | `5_6_in_6` | [`hexinhex`](https://erich-friedman.github.io/packing/hexinhex/index.html) | 5 | **2.66668+** | 2.666678387864 | 2.66700+ | **-0.000322** | [5_6_in_6](./hexinhex/5_6_in_6) |
 | `12_6_in_6` | [`hexinhex`](https://erich-friedman.github.io/packing/hexinhex/index.html) | 12 | **3.94165+** | 3.941648986550 | 3.94200+ | **-0.000351** | [12_6_in_6](./hexinhex/12_6_in_6) |
 | `5_6_in_8` | [`hexinoct`](https://erich-friedman.github.io/packing/hexinoct/index.html) | 5 | **1.98708+** | 1.987076808641 | 1.98710+ | **-0.000023** | [5_6_in_8](./hexinoct/5_6_in_8) |
+| `4_6_in_TAN` | [`hexintan`](https://erich-friedman.github.io/packing/hexintan/index.html) | 4 | **5.75098+** | 5.750980409876 | 5.75100+ | **-0.000020** | [4_6_in_TAN](./hexintan/4_6_in_TAN) |
 | `6_6_in_3` | [`hexintri`](https://erich-friedman.github.io/packing/hexintri/index.html) | 6 | **6.89898+** | 6.898980293351 | 6.89900+ | **-0.000020** | [6_6_in_3](./hexintri/6_6_in_3) |
 | `3_8_in_DOMINO` | [`octindom`](https://erich-friedman.github.io/packing/octindom/index.html) | 3 | **3.51368+** | 3.513677405489 | 3.51370+ | **-0.000023** | [3_8_in_DOMINO](./octindom/3_8_in_DOMINO) |
 | `3_8_in_6` | [`octinhex`](https://erich-friedman.github.io/packing/octinhex/index.html) | 3 | **2.88963+** | 2.889629996220 | 2.89000+ | **-0.000370** | [3_8_in_6](./octinhex/3_8_in_6) |
@@ -53,4 +54,5 @@
 | `7_4_in_CIRCLE` | [`squincir`](https://erich-friedman.github.io/packing/squincir/index.html) | 7 | **1.80278+** | 1.802780171513 | 1.80280+ | **-0.000020** | [7_4_in_CIRCLE](./squincir/7_4_in_CIRCLE) |
 | `11_4_in_CIRCLE` | [`squincir`](https://erich-friedman.github.io/packing/squincir/index.html) | 11 | **2.21389+** | 2.213886888271 | 2.21390+ | **-0.000013** | [11_4_in_CIRCLE](./squincir/11_4_in_CIRCLE) |
 | `38_4_in_8` | [`squinoct`](https://erich-friedman.github.io/packing/squinoct/index.html) | 38 | **3.02061+** | 3.020607490508 | 3.02113+ | **-0.000523** | [38_4_in_8](./squinoct/38_4_in_8) |
+| `2_TAN_in_5` | [`taninpen`](https://erich-friedman.github.io/packing/taninpen/index.html) | 2 | **0.93686+** | 0.936861977372 | 0.93690+ | **-0.000038** | [2_TAN_in_5](./taninpen/2_TAN_in_5) |
 | `22_3_in_DOMINO` | [`triindom`](https://erich-friedman.github.io/packing/triindom/index.html) | 22 | **2.41951+** | 2.419505003282 | 2.42212+ | **-0.002615** | [22_3_in_DOMINO](./triindom/22_3_in_DOMINO) |

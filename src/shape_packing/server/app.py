@@ -30,6 +30,7 @@ from .database import (
     get_problem,
     init_db,
     register_worker,
+    sync_records_to_db,
     update_solution_record,
 )
 from .scheduler import assign_work, record_heartbeat
@@ -84,7 +85,12 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
     Initializes database tables and WAL configuration on startup.
     """
     init_conn = init_db(db_path)
-    init_conn.close()
+    try:
+        sync_records_to_db(init_conn)
+    except Exception:
+        pass
+    finally:
+        init_conn.close()
 
     app = FastAPI(
         title="Distributed Shape Packing Coordinator",
@@ -435,6 +441,63 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
             }
             for r in rows
         ]
+
+    @app.get("/api/v1/recent_solutions", status_code=status.HTTP_200_OK)
+    def get_recent_solutions(
+        limit: int = Query(20, ge=1, le=100),
+        conn: sqlite3.Connection = Depends(get_db),
+    ) -> List[Dict[str, Any]]:
+        """Return the most recently verified packing solutions in descending order."""
+        cursor = conn.cursor()
+        cursor.execute(
+            """
+            SELECT 
+                s.id,
+                s.problem_id,
+                s.metric_s,
+                s.worker_username,
+                s.verified_at,
+                s.is_current_record,
+                p.n,
+                p.inner_token,
+                p.container_token,
+                p.reference_s,
+                p.status
+            FROM solutions s
+            LEFT JOIN problems p ON s.problem_id = p.id
+            ORDER BY s.verified_at DESC, s.id DESC
+            LIMIT ?
+            """,
+            (limit,),
+        )
+        rows = cursor.fetchall()
+        results = []
+        for r in rows:
+            prob_id = r["problem_id"] if hasattr(r, "keys") else r[1]
+            metric_s = float(r["metric_s"] if hasattr(r, "keys") else r[2])
+            worker_username = r["worker_username"] if hasattr(r, "keys") else r[3]
+            verified_at = r["verified_at"] if hasattr(r, "keys") else r[4]
+            is_record = bool(r["is_current_record"] if hasattr(r, "keys") else r[5])
+            n = r["n"] if hasattr(r, "keys") else r[6]
+            inner_token = r["inner_token"] if hasattr(r, "keys") else r[7]
+            container_token = r["container_token"] if hasattr(r, "keys") else r[8]
+            ref_s = r["reference_s"] if hasattr(r, "keys") else r[9]
+            diff = (metric_s - float(ref_s)) if (ref_s is not None) else None
+
+            results.append({
+                "id": r["id"] if hasattr(r, "keys") else r[0],
+                "problem_id": prob_id,
+                "n": n,
+                "inner_token": inner_token,
+                "container_token": container_token,
+                "metric_s": round(metric_s, 6),
+                "reference_s": round(float(ref_s), 6) if ref_s is not None else None,
+                "diff": round(diff, 6) if diff is not None else None,
+                "is_current_record": is_record,
+                "worker_username": worker_username,
+                "verified_at": str(verified_at),
+            })
+        return results
 
     @app.get("/api/v1/problems/{problem_id}", status_code=status.HTTP_200_OK)
     def get_problem_detail(

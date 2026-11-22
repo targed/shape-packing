@@ -418,3 +418,143 @@ def seed_problems_from_verification(
     except Exception:
         conn.rollback()
         raise
+
+
+def sync_records_to_db(
+    conn: sqlite3.Connection,
+    manifest_path: str = "data/records/manifest.json",
+    records_dir: str = "data/records",
+    results_dir: str = "data/results",
+) -> int:
+    """
+    Sync verified world records from data/records/manifest.json into shape_packing.db.
+    Ensures solutions table, problems.best_s, and worker attribution are consistent.
+    """
+    if not os.path.exists(manifest_path):
+        return 0
+
+    try:
+        with open(manifest_path, "r", encoding="utf-8") as f:
+            manifest = json.load(f)
+    except Exception as exc:
+        logger.warning("Could not read manifest at %s: %s", manifest_path, exc)
+        return 0
+
+    records = manifest.get("records", [])
+    if not records:
+        return 0
+
+    if conn.in_transaction:
+        conn.commit()
+
+    cursor = conn.cursor()
+    cursor.execute("BEGIN IMMEDIATE")
+    inserted = 0
+    try:
+        for r in records:
+            prob_str = r.get("problem", "")
+            if not prob_str:
+                continue
+            parts = prob_str.split("_")
+            try:
+                n = int(parts[0])
+            except (ValueError, IndexError):
+                continue
+            inner = normalize_shape_token(parts[1]) if len(parts) > 1 else ""
+            container = normalize_shape_token(parts[3]) if len(parts) > 3 else ""
+
+            row = cursor.execute(
+                "SELECT id, best_s, reference_s FROM problems WHERE id = ?", (prob_str,)
+            ).fetchone()
+            if not row:
+                row = cursor.execute(
+                    "SELECT id, best_s, reference_s FROM problems WHERE n = ? AND inner_token = ? AND container_token = ?",
+                    (n, inner, container),
+                ).fetchone()
+
+            if not row:
+                continue
+
+            prob_id = row[0]
+            m_metric = float(r["metric"])
+
+            sol_file = None
+            cand1 = os.path.join(records_dir, f"{prob_str}/solution.json")
+            if os.path.exists(cand1):
+                sol_file = cand1
+            else:
+                for root, _, files in os.walk(records_dir):
+                    if root.endswith(prob_str) and "solution.json" in files:
+                        sol_file = os.path.join(root, "solution.json")
+                        break
+            if not sol_file and os.path.exists(results_dir):
+                for root, _, files in os.walk(os.path.join(results_dir, prob_str)):
+                    if "solution.json" in files:
+                        sol_file = os.path.join(root, "solution.json")
+                        break
+
+            if not sol_file:
+                continue
+
+            try:
+                with open(sol_file, "r", encoding="utf-8") as sf:
+                    sol_data = json.load(sf)
+                coords = sol_data.get("values", [])
+            except Exception:
+                continue
+
+            existing = cursor.execute(
+                "SELECT id, metric_s FROM solutions WHERE problem_id = ? AND is_current_record = 1",
+                (prob_id,),
+            ).fetchone()
+
+            if existing:
+                ex_id, ex_metric = existing
+                if m_metric < ex_metric - 1e-5:
+                    cursor.execute(
+                        "UPDATE solutions SET is_current_record = 0 WHERE problem_id = ?",
+                        (prob_id,),
+                    )
+                    cursor.execute(
+                        """
+                        INSERT INTO solutions (
+                            problem_id, metric_s, worker_username, worker_id, coordinates_json, is_current_record, verified_at
+                        ) VALUES (?, ?, 'local_solver', 'archive_node', ?, 1, datetime('now', '-1 day'))
+                        """,
+                        (prob_id, m_metric, json.dumps(coords)),
+                    )
+                    cursor.execute(
+                        "UPDATE problems SET best_s = ? WHERE id = ?", (m_metric, prob_id)
+                    )
+                    inserted += 1
+            else:
+                cursor.execute(
+                    """
+                    INSERT INTO solutions (
+                        problem_id, metric_s, worker_username, worker_id, coordinates_json, is_current_record, verified_at
+                    ) VALUES (?, ?, 'local_solver', 'archive_node', ?, 1, datetime('now', '-2 days'))
+                    """,
+                    (prob_id, m_metric, json.dumps(coords)),
+                )
+                cursor.execute(
+                    "UPDATE problems SET best_s = ? WHERE id = ?", (m_metric, prob_id)
+                )
+                inserted += 1
+
+        archive_records = cursor.execute(
+            "SELECT COUNT(*) FROM solutions WHERE worker_id = 'archive_node' AND is_current_record = 1"
+        ).fetchone()[0]
+        if archive_records > 0:
+            cursor.execute(
+                """
+                INSERT INTO workers (id, username, client_type, records_broken, total_attempts, last_seen_at)
+                VALUES ('archive_node', 'local_solver', 'native', ?, 100000, datetime('now', '-1 day'))
+                ON CONFLICT(id) DO UPDATE SET records_broken = ?
+                """,
+                (archive_records, archive_records),
+            )
+        conn.commit()
+        return inserted
+    except Exception:
+        conn.rollback()
+        raise

@@ -19,7 +19,7 @@ We discovered these packings using a continuous global optimization solver combi
 | 22 | 5.95186+ | 5.951862670229 | 5.95200+ | -0.000137 | `hc22.gif` |
 
 ### Image Attachments
-The replacement image files are attached directly with exact matching colors (#b5b5b5 on #ffffff), orientation, no borders or text, and target website pixel dimensions (180x156 px):
+The replacement image files are attached directly with exact matching colors (#b5b5b5 on #ffffff), orientation, no borders or text, and target website pixel dimensions (181x158 px):
 - `hc22.gif`
 
 Coordinate tables and certificates for each solution are included in the repository records.
