@@ -178,6 +178,24 @@ pub fn run_worker_cycle_with_durations(
             hb_stop.store(true, Ordering::SeqCst);
             let _ = hb_handle.join();
 
+            // Send completion heartbeat so worker compute attempts are credited in coordinator database
+            let best_s_opt = if result.success && result.best_s.is_finite() && result.best_s > 0.0 {
+                Some(result.best_s)
+            } else {
+                None
+            };
+            if let Err(e) = client.send_heartbeat(
+                worker_id,
+                &assignment.work_id,
+                assignment.attempts,
+                best_s_opt,
+            ) {
+                eprintln!(
+                    "[HEARTBEAT WARNING] Failed to report completed attempts to coordinator: {}",
+                    e
+                );
+            }
+
             let is_improvement = match assignment.target_s {
                 Some(target) => result.best_s < target,
                 None => true,
@@ -185,9 +203,6 @@ pub fn run_worker_cycle_with_durations(
 
             if result.success && is_improvement {
                 println!("[RECORD] Found improved metric s={:.8}!", result.best_s);
-            }
-
-            if result.success {
                 match client.submit_solution(
                     worker_id,
                     Some(&assignment.work_id),
@@ -221,6 +236,11 @@ pub fn run_worker_cycle_with_durations(
                         );
                     }
                 }
+            } else if result.success {
+                println!(
+                    "[WORK] Found packing with s={:.8}, but did not improve current target (target_s={:?}). Skipping submission.",
+                    result.best_s, assignment.target_s
+                );
             } else {
                 println!(
                     "[WORK] No valid packing found for {} in {} attempts.",
@@ -585,6 +605,8 @@ mod tests {
     fn test_run_worker_cycle_lease_solve_and_submit() {
         let submit_called = Arc::new(AtomicBool::new(false));
         let submit_called_clone = Arc::clone(&submit_called);
+        let completion_heartbeat_called = Arc::new(AtomicBool::new(false));
+        let completion_heartbeat_clone = Arc::clone(&completion_heartbeat_called);
 
         let client = mock_client(move |method, url| {
             if method == "GET" && url.contains("/api/v1/work") {
@@ -617,6 +639,7 @@ mod tests {
                     .to_string(),
                 )
             } else if method == "POST" && url.contains("/heartbeat") {
+                completion_heartbeat_clone.store(true, Ordering::SeqCst);
                 (200, "OK", r#"{"status":"ack"}"#.to_string())
             } else {
                 (404, "Not Found", String::new())
@@ -633,14 +656,77 @@ mod tests {
             &running,
             &mut backoff,
             Duration::from_millis(10),
-            Duration::from_millis(50),
+            Duration::from_secs(30),
         );
 
         assert_eq!(result, Ok(true));
         assert_eq!(backoff, Duration::from_secs(2));
         assert!(
+            completion_heartbeat_called.load(Ordering::SeqCst),
+            "Expected completion heartbeat to credit compute attempts"
+        );
+        assert!(
             submit_called.load(Ordering::SeqCst),
-            "Expected solution submission to coordinator"
+            "Expected solution submission to coordinator for improving result"
+        );
+    }
+
+    #[test]
+    fn test_run_worker_cycle_non_improving_solution_not_submitted() {
+        let submit_called = Arc::new(AtomicBool::new(false));
+        let submit_called_clone = Arc::clone(&submit_called);
+        let completion_heartbeat_called = Arc::new(AtomicBool::new(false));
+        let completion_heartbeat_clone = Arc::clone(&completion_heartbeat_called);
+
+        let client = mock_client(move |method, url| {
+            if method == "GET" && url.contains("/api/v1/work") {
+                (
+                    200,
+                    "OK",
+                    r#"{
+                        "work_id": "test-work-100",
+                        "problem": "squincir_1_4_in_CIRCLE",
+                        "inner_token": "4",
+                        "container_token": "CIRCLE",
+                        "n": 1,
+                        "target_s": 0.00001,
+                        "recommended_attempts": 2,
+                        "timeout_seconds": 300
+                    }"#
+                    .to_string(),
+                )
+            } else if method == "POST" && url.contains("/api/v1/solutions") {
+                submit_called_clone.store(true, Ordering::SeqCst);
+                (200, "OK", r#"{"status":"accepted"}"#.to_string())
+            } else if method == "POST" && url.contains("/heartbeat") {
+                completion_heartbeat_clone.store(true, Ordering::SeqCst);
+                (200, "OK", r#"{"status":"ack"}"#.to_string())
+            } else {
+                (404, "Not Found", String::new())
+            }
+        });
+
+        let running = AtomicBool::new(true);
+        let mut backoff = Duration::from_secs(2);
+
+        let result = run_worker_cycle_with_durations(
+            &client,
+            "wid-solve-non-improving",
+            1,
+            &running,
+            &mut backoff,
+            Duration::from_millis(10),
+            Duration::from_secs(30),
+        );
+
+        assert_eq!(result, Ok(true));
+        assert!(
+            completion_heartbeat_called.load(Ordering::SeqCst),
+            "Expected completion heartbeat to credit attempts even when not improving"
+        );
+        assert!(
+            !submit_called.load(Ordering::SeqCst),
+            "Non-improving solution must NOT be submitted for SAT verification"
         );
     }
 
