@@ -123,7 +123,7 @@ python run_parallel_loop.py
 Start the central coordinator server:
 
 ```bash
-uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
+python -m uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
 ```
 
 Run a volunteer worker daemon connecting to the coordinator:

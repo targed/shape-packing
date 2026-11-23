@@ -53,3 +53,11 @@ npm run dev
 ```
 
 Open `http://localhost:4321` in your browser.
+
+### 5. Run Coordinator FastAPI Server
+
+Run the coordinator backend server for distributed workers:
+
+```bash
+python -m uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
+```

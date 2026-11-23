@@ -387,3 +387,40 @@ npm run dev
 npm run build
 ```
 
+---
+
+## 14. `src.shape_packing.server` (Coordinator FastAPI Service)
+
+The coordinator server orchestrates distributed worker nodes, manages the multi-armed bandit task queue, validates submitted packings via in-process SAT geometry verification, and tracks cluster-wide leaderboards.
+
+```bash
+# Run the FastAPI coordinator server (serves on http://0.0.0.0:8000):
+uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
+
+# Or via explicit Python invocation:
+python -m uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
+```
+
+### Endpoints Overview
+- `POST /api/v1/workers/register`: Register or update worker node handle.
+- `POST /api/v1/workers/deregister`: Graceful worker shutdown and lease release.
+- `GET /api/v1/work`: Lease a work unit based on bandit exploration/exploitation.
+- `POST /api/v1/solutions`: In-process geometric SAT verification and atomic solution commit.
+- `POST /api/v1/heartbeat`: Heartbeat and telemetry reporting.
+- `GET /api/v1/stats`: Cluster-wide summary statistics.
+- `GET /api/v1/leaderboard`: Contributor leaderboard ranked by records broken.
+- `GET /api/v1/recent_solutions`: Feed of verified records and recent submissions.
+
+### Environment & Troubleshooting Note
+- **`ModuleNotFoundError: No module named 'numpy'` when running uvicorn:**
+  If you have multiple Python versions installed or global CLIs (e.g. from Hermes Agent or global tools), running `uvicorn` bare in PowerShell can accidentally resolve to an external Python environment (such as Hermes Agent's Python 3.11 virtualenv) that lacks project dependencies. Always ensure you invoke uvicorn from the project's virtual environment:
+  ```bash
+  python -m uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
+  ```
+  or activate the project virtual environment before running:
+  ```bash
+  .venv\Scripts\activate
+  uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
+  ```
+
+
