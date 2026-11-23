@@ -1,0 +1,133 @@
+name: Release Standalone Worker
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TARGET_DIR: target
+  CARGO_PROFILE_RELEASE_STRIP: "true"
+
+jobs:
+  build-windows:
+    name: Build Windows (x86_64)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Build Windows binary
+        run: cargo build --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml
+
+      - name: Package Windows Archive
+        shell: pwsh
+        run: Compress-Archive -Path target/release/shape-packing-worker.exe -DestinationPath shape-packing-worker-windows-x86_64.zip -Force
+
+      - name: Upload Windows Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: shape-packing-worker-windows-x86_64
+          path: shape-packing-worker-windows-x86_64.zip
+          if-no-files-found: error
+
+  build-linux:
+    name: Build Linux (x86_64)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-unknown-linux-gnu
+
+      - name: Build Linux binary
+        run: cargo build --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml
+
+      - name: Strip Linux binary
+        run: strip target/release/shape-packing-worker
+
+      - name: Package Linux Archive
+        run: tar -czvf shape-packing-worker-linux-x86_64.tar.gz -C target/release shape-packing-worker
+
+      - name: Upload Linux Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: shape-packing-worker-linux-x86_64
+          path: shape-packing-worker-linux-x86_64.tar.gz
+          if-no-files-found: error
+
+  build-macos:
+    name: Build macOS (Universal)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-apple-darwin, aarch64-apple-darwin
+
+      - name: Build macOS binaries (x86_64 & aarch64)
+        run: |
+          cargo build --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml --target x86_64-apple-darwin
+          cargo build --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml --target aarch64-apple-darwin
+
+      - name: Create Universal Binary & Strip
+        run: |
+          lipo -create -output shape-packing-worker \
+            target/x86_64-apple-darwin/release/shape-packing-worker \
+            target/aarch64-apple-darwin/release/shape-packing-worker
+          strip shape-packing-worker
+
+      - name: Package macOS Archive
+        run: tar -czvf shape-packing-worker-macos-universal.tar.gz shape-packing-worker
+
+      - name: Upload macOS Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: shape-packing-worker-macos-universal
+          path: shape-packing-worker-macos-universal.tar.gz
+          if-no-files-found: error
+
+  release:
+    name: Publish Release
+    needs: [build-windows, build-linux, build-macos]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+          merge-multiple: true
+
+      - name: Generate SHA-256 Checksums
+        working-directory: release-assets
+        run: |
+          sha256sum shape-packing-worker-windows-x86_64.zip \
+                    shape-packing-worker-linux-x86_64.tar.gz \
+                    shape-packing-worker-macos-universal.tar.gz > checksums.sha256
+          cat checksums.sha256
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-assets/shape-packing-worker-windows-x86_64.zip
+            release-assets/shape-packing-worker-linux-x86_64.tar.gz
+            release-assets/shape-packing-worker-macos-universal.tar.gz
+            release-assets/checksums.sha256
