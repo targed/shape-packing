@@ -79,17 +79,95 @@ The coordinator is now accessible at `http://localhost:8000`. You can explore th
 
 ---
 
-## 4. Running the Native Worker Daemon
+## 4. Volunteer Worker Clients
 
-Volunteers run the native worker daemon to request work units, execute optimization batches locally, and report verified improvements.
+Volunteers can contribute compute using either the standalone Rust binary (recommended for non-technical users and headless nodes) or the Python client daemon.
 
-### Basic Execution
+### Standalone Rust Worker (`shape-packing-worker`)
+
+The standalone binary is a self-contained executable (~4 MB) compiled with zero Python runtime dependencies. It runs the native packing solver across all CPU cores using Rayon multithreading.
+
+#### Downloading Pre-Built Releases
+Download the archive for your operating system from the repository's GitHub Releases page:
+- Windows (x86_64): `shape-packing-worker-windows-x86_64.zip`
+- Linux (x86_64): `shape-packing-worker-linux-x86_64.tar.gz`
+- macOS (Universal binary for Intel and Apple Silicon): `shape-packing-worker-macos-universal.tar.gz`
+
+Extract the archive and run the executable directly.
+
+#### First-Run Setup
+Running the executable without prior configuration launches an interactive console wizard:
+
+```text
+=============================================
+    Distributed Shape Packing Worker Setup
+=============================================
+[?] Coordinator Server URL [http://localhost:8000]:
+[?] Volunteer Username [username]:
+[?] Allocated CPU Cores (1-24) [24]:
+```
+
+The worker saves your answers to `~/.shape_packing_worker.json`, registers with the coordinator, and begins solving problems. On future runs, it loads this configuration file automatically.
+
+#### Command-Line Flags
+
+```bash
+# Run with explicit server and credentials
+shape-packing-worker --server http://coordinator.example.com:8000 --username alice --cores 8
+
+# Non-interactive mode (uses environment variables or defaults, skips prompts)
+shape-packing-worker --no-interactive
+```
+
+| Flag | Default | Description |
+|---|---|---|
+| `-s, --server <URL>` | `http://localhost:8000` | Coordinator base URL |
+| `-u, --username <NAME>` | System username | Volunteer handle for rankings |
+| `-c, --cores <N>` | System CPU count | CPU threads allocated to Rayon |
+| `--config <PATH>` | `~/.shape_packing_worker.json` | Path to JSON config file |
+| `--no-interactive` | Disabled | Fail or use defaults if unconfigured |
+| `-h, --help` | | Print usage information |
+| `-V, --version` | | Print version |
+
+#### Automatic Startup on Login
+The binary can configure itself to start automatically when you log in. This requires no administrator or root privileges:
+
+```bash
+# Enable automatic startup
+shape-packing-worker autostart enable
+
+# Check current startup status
+shape-packing-worker autostart status
+
+# Disable automatic startup
+shape-packing-worker autostart disable
+```
+
+Platform mechanisms used:
+- Windows: `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` registry entry.
+- Linux: `~/.config/autostart/shape-packing-worker.desktop` XDG entry.
+- macOS: `~/Library/LaunchAgents/com.shapepacking.worker.plist` LaunchAgent.
+
+#### Compiling from Source
+To compile the standalone worker locally:
+
+```bash
+cargo build --release --bin shape-packing-worker --no-default-features --manifest-path packer_rs/Cargo.toml
+```
+
+The resulting executable is located at `packer_rs/target/release/shape-packing-worker` (or `.exe` on Windows).
+
+---
+
+### Python Worker Daemon
+
+Volunteers working within an existing Python development environment can run the Python worker script:
 
 ```bash
 python -m src.shape_packing.client.native_worker --server http://localhost:8000 --username your_name
 ```
 
-### Command-Line Options
+#### Command-Line Options
 
 | Option | Default | Description |
 |---|---|---|
@@ -100,14 +178,14 @@ python -m src.shape_packing.client.native_worker --server http://localhost:8000 
 | `--poll-interval`| `5.0` | Sleep time (seconds) when all problem leases are currently taken |
 | `--max-cycles` | None (infinite) | Exit after completing a set number of work batches |
 
-### Running at Background Idle Priority
-On Linux and macOS, the worker automatically invokes `os.nice(19)` to ensure it yields CPU cycles to foreground user applications. On Windows, it sets `IDLE_PRIORITY_CLASS`.
+#### Background Idle Priority
+On Linux and macOS, the Python worker calls `os.nice(19)` to yield CPU priority to interactive applications. On Windows, it sets `IDLE_PRIORITY_CLASS`.
 
-### Graceful Interruption
-Pressing `Ctrl+C` (`SIGINT`) or sending `SIGTERM` triggers an immediate graceful shutdown:
-1. The solver halts its active batch.
-2. Completed attempts are flushed to the coordinator via `/api/v1/heartbeat`.
-3. The process exits cleanly without losing volunteer credits.
+#### Graceful Interruption
+Pressing `Ctrl+C` (`SIGINT`) or sending `SIGTERM` triggers a clean shutdown:
+1. The solver halts the active batch.
+2. Completed attempts flush to the coordinator via `/api/v1/heartbeat`.
+3. Active problem leases release cleanly via `/api/v1/workers/deregister`.
 
 ---
 

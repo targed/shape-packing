@@ -63,19 +63,21 @@ cd packer_rs && cargo bench && cd ..
 
 ## 📖 Command Index
 
-1. [`python -m src.shape_packing.cli run`](#1-cli-run-single-problem-optimizer) — Run solver on a specific problem.
-2. [`python -m src.shape_packing.cli loop`](#2-cli-loop-autonomous-researcher-loop) — Autonomous priority queue search loop.
-3. [`python -m src.shape_packing.cli verify`](#3-cli-verify-solution-verifier) — Validate solution JSON files.
-4. [`python -m src.shape_packing.cli site-data`](#4-cli-site-data-dashboard-data-builder) — Build web dashboard database.
-5. [`python -m src.shape_packing.cli export-records`](#5-cli-export-records-benchmark-record-exporter) — Export verified records to `records/`.
-6. [`python -m src.shape_packing.cli compare`](#6-cli-compare-result-comparison-utility) — Compare results between runs or TSV files.
-7. [`python -m src.shape_packing.cli suggest`](#7-cli-suggest-priority-queue-inspector) — Suggest next target problem.
-8. [`scripts/render_solution.py`](#8-scriptsrender_solutionpy-batch-image-renderer) — Parallel/recursive PNG image renderer.
-9. [`scripts/run_parallel_loop.py`](#9-scriptsrun_parallel_looppy-multi-process-parallel-search) — High-throughput multi-worker swarm.
-10. [`scripts/analyze_mill_log.py`](#10-scriptsanalyze_mill_logpy-hpc-log-analyzer) — HPC Slurm cluster log analyzer.
-11. [`packer_rs` (Rust Native Binary)](#11-packer_rs-direct-rust-cli-binary) — Direct CLI access to compiled Rust solver.
-12. [`cargo bench` (Criterion Microbenchmarks)](#12-cargo-bench-criterion-microbenchmarks) — Nanosecond microbenchmark performance profiling.
-13. [`site/` (Astro Web Dashboard)](#13-site-astro-interactive-web-dashboard) — Web UI development and build.
+1. [`python -m src.shape_packing.cli run`](#1-cli-run-single-problem-optimizer) - Run solver on a specific problem.
+2. [`python -m src.shape_packing.cli loop`](#2-cli-loop-autonomous-researcher-loop) - Autonomous priority queue search loop.
+3. [`python -m src.shape_packing.cli verify`](#3-cli-verify-solution-verifier) - Validate solution JSON files.
+4. [`python -m src.shape_packing.cli site-data`](#4-cli-site-data-dashboard-data-builder) - Build web dashboard database.
+5. [`python -m src.shape_packing.cli export-records`](#5-cli-export-records-benchmark-record-exporter) - Export verified records to `records/`.
+6. [`python -m src.shape_packing.cli compare`](#6-cli-compare-result-comparison-utility) - Compare results between runs or TSV files.
+7. [`python -m src.shape_packing.cli suggest`](#7-cli-suggest-priority-queue-inspector) - Suggest next target problem.
+8. [`scripts/render_solution.py`](#8-scriptsrender_solutionpy-batch-image-renderer) - Parallel/recursive PNG image renderer.
+9. [`scripts/run_parallel_loop.py`](#9-scriptsrun_parallel_looppy-multi-process-parallel-search) - High-throughput multi-worker swarm.
+10. [`scripts/analyze_mill_log.py`](#10-scriptsanalyze_mill_logpy-hpc-log-analyzer) - HPC Slurm cluster log analyzer.
+11. [`packer_rs` (Rust Native Binary)](#11-packer_rs-direct-rust-cli-binary) - Direct CLI access to compiled Rust solver.
+12. [`cargo bench` (Criterion Microbenchmarks)](#12-cargo-bench-criterion-microbenchmarks) - Nanosecond microbenchmark performance profiling.
+13. [`site/` (Astro Web Dashboard)](#13-site-astro-interactive-web-dashboard) - Web UI development and build.
+14. [`src.shape_packing.server` (Coordinator FastAPI Service)](#14-srcshape_packingserver-coordinator-fastapi-service) - Distributed coordination API.
+15. [`shape-packing-worker` (Standalone Rust Worker CLI)](#15-shape-packing-worker-standalone-rust-worker-cli) - Pure Rust standalone worker binary and autostart manager.
 
 ---
 
@@ -422,5 +424,66 @@ python -m uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
   .venv\Scripts\activate
   uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
   ```
+
+---
+
+## 15. `shape-packing-worker` (Standalone Rust Worker CLI)
+
+A standalone binary that executes the native packing solver, coordinates over HTTP with the central coordinator, and runs on all CPU cores using Rayon multithreading. It has zero Python or external runtime dependencies.
+
+### Running the Worker
+
+```bash
+# Interactive setup wizard on first run (saves to ~/.shape_packing_worker.json)
+shape-packing-worker
+
+# Run with explicit coordinator server, username, and allocated cores
+shape-packing-worker --server http://localhost:8000 --username alice --cores 8
+
+# Non-interactive mode (uses config file, environment variables, or defaults)
+shape-packing-worker --no-interactive
+
+# Custom config file path
+shape-packing-worker --config /path/to/custom_worker_config.json
+```
+
+### Command-Line Arguments
+
+| Flag | Short | Default | Description |
+|---|---|---|---|
+| `--server` | `-s` | `http://localhost:8000` | Coordinator server base URL |
+| `--username` | `-u` | System username | Volunteer handle for leaderboards |
+| `--cores` | `-c` | System CPU count | CPU threads allocated to Rayon |
+| `--config` | | `~/.shape_packing_worker.json` | Path to persistent configuration file |
+| `--no-interactive` | | `false` | Fail or fallback if configuration is missing |
+| `--help` | `-h` | | Print help message |
+| `--version` | `-V` | | Print version |
+
+### Managing Automatic Startup (`autostart`)
+
+Configure the binary to start automatically on system boot or user login without requiring root or administrator elevation:
+
+```bash
+# Check current startup status
+shape-packing-worker autostart status
+
+# Enable autostart on user login
+shape-packing-worker autostart enable
+
+# Disable autostart
+shape-packing-worker autostart disable
+```
+
+Platform startup mechanisms:
+- Windows: Registry key `HKCU\Software\Microsoft\Windows\CurrentVersion\Run\ShapePackingWorker`.
+- Linux: Desktop entry `~/.config/autostart/shape-packing-worker.desktop`.
+- macOS: LaunchAgent plist `~/Library/LaunchAgents/com.shapepacking.worker.plist`.
+
+### Compiling from Source
+
+```bash
+cargo build --release --bin shape-packing-worker --no-default-features --manifest-path packer_rs/Cargo.toml
+```
+
 
 

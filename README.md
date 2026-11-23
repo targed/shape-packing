@@ -19,6 +19,27 @@ The system benchmarks solutions against Erich Friedman's comprehensive Packing C
 
 ---
 
+## Volunteer Computing (No Setup Required)
+
+If you want to contribute compute power to the distributed search, you do not need to clone this repository, set up Python, or compile Rust code.
+
+Download the standalone worker binary from the repository's **GitHub Releases**:
+- Windows: `shape-packing-worker-windows-x86_64.zip`
+- Linux: `shape-packing-worker-linux-x86_64.tar.gz`
+- macOS: `shape-packing-worker-macos-universal.tar.gz`
+
+Extract and run the executable. A one-time setup wizard asks for the coordinator URL, your username for leaderboard credit, and the CPU cores to use. Settings are saved to `~/.shape_packing_worker.json` and loaded on future runs.
+
+To run the worker automatically on login without administrator privileges:
+
+```bash
+shape-packing-worker autostart enable
+```
+
+See the [Distributed System Guide](docs/08_distributed_system.md) for full configuration options.
+
+---
+
 ## System Requirements
 
 - Python: Version 3.10 or higher
