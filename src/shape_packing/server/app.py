@@ -337,6 +337,7 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
         }
 
     @app.post("/api/v1/heartbeat", status_code=status.HTTP_200_OK)
+    @app.post("/api/v1/work/heartbeat", status_code=status.HTTP_200_OK)
     def heartbeat(
         req: HeartbeatRequest,
         conn: sqlite3.Connection = Depends(get_db),

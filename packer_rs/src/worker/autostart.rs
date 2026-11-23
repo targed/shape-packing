@@ -250,8 +250,25 @@ pub fn linux_status_in(autostart_dir: &Path) -> Result<AutostartStatus, String> 
 // macOS Implementation & Helpers
 // ---------------------------------------------------------------------------
 
+fn xml_escape(s: &str) -> String {
+    s.replace('&', "&amp;")
+        .replace('<', "&lt;")
+        .replace('>', "&gt;")
+        .replace('"', "&quot;")
+        .replace('\'', "&apos;")
+}
+
+fn xml_unescape(s: &str) -> String {
+    s.replace("&amp;", "&")
+        .replace("&lt;", "<")
+        .replace("&gt;", ">")
+        .replace("&quot;", "\"")
+        .replace("&apos;", "'")
+}
+
 pub fn generate_launchd_plist(exe_path: &str) -> String {
     let clean = exe_path.trim().trim_matches('"');
+    let escaped = xml_escape(clean);
     format!(
 r#"<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -268,23 +285,29 @@ r#"<?xml version="1.0" encoding="UTF-8"?>
 </dict>
 </plist>
 "#,
-        MACOS_PLIST_LABEL, clean
+        MACOS_PLIST_LABEL, escaped
     )
 }
 
 pub fn parse_launchd_plist(content: &str) -> (bool, Option<String>) {
     let mut in_prog_args = false;
+    let mut pending_disabled = false;
     let mut disabled = false;
     let mut target = None;
 
     for line in content.lines() {
         let trimmed = line.trim();
         if trimmed.contains("<key>Disabled</key>") {
+            pending_disabled = true;
             if trimmed.contains("<true/>") {
                 disabled = true;
             }
-        } else if disabled && trimmed.contains("<true/>") {
-            disabled = true;
+        } else if pending_disabled {
+            if trimmed.contains("<true/>") {
+                disabled = true;
+            } else if trimmed.contains("<key>") {
+                pending_disabled = false;
+            }
         }
 
         if trimmed.contains("<key>ProgramArguments</key>") {
@@ -303,7 +326,7 @@ pub fn parse_launchd_plist(content: &str) -> (bool, Option<String>) {
                     if end > s_start {
                         let path = trimmed[s_start..end].trim().trim_matches('"');
                         if !path.is_empty() && target.is_none() {
-                            target = Some(path.to_string());
+                            target = Some(xml_unescape(path));
                         }
                     }
                 }

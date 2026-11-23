@@ -5,6 +5,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release tag name (e.g. v0.1.0)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -29,9 +34,32 @@ jobs:
       - name: Build Windows binary
         run: cargo build --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml
 
+      - name: Create Package Readme
+        shell: pwsh
+        run: |
+          @"
+          Distributed Shape Packing Volunteer Worker
+          ===========================================
+          Thank you for contributing compute to distributed shape packing research!
+
+          Quick Start:
+          1. Double-click shape-packing-worker.exe or run it from PowerShell/CMD.
+          2. Follow the one-time interactive prompt (server URL, username, CPU cores).
+          3. The worker will automatically lease packing tasks, compute solutions,
+             and submit candidate records to the coordinator.
+
+          Autostart on boot (zero admin elevation required):
+            shape-packing-worker.exe autostart enable
+            shape-packing-worker.exe autostart disable
+            shape-packing-worker.exe autostart status
+
+          Options & flags:
+            shape-packing-worker.exe --help
+          "@ | Out-File -FilePath target/release/README.txt -Encoding utf8
+
       - name: Package Windows Archive
         shell: pwsh
-        run: Compress-Archive -Path target/release/shape-packing-worker.exe -DestinationPath shape-packing-worker-windows-x86_64.zip -Force
+        run: Compress-Archive -Path target/release/shape-packing-worker.exe, target/release/README.txt -DestinationPath shape-packing-worker-windows-x86_64.zip -Force
 
       - name: Upload Windows Archive
         uses: actions/upload-artifact@v4
@@ -58,8 +86,30 @@ jobs:
       - name: Strip Linux binary
         run: strip target/release/shape-packing-worker
 
+      - name: Create Package Readme
+        run: |
+          cat << 'EOF' > target/release/README.txt
+          Distributed Shape Packing Volunteer Worker
+          ===========================================
+          Thank you for contributing compute to distributed shape packing research!
+
+          Quick Start:
+          1. Run ./shape-packing-worker from terminal.
+          2. Follow the one-time interactive prompt (server URL, username, CPU cores).
+          3. The worker will automatically lease packing tasks, compute solutions,
+             and submit candidate records to the coordinator.
+
+          Autostart on login:
+            ./shape-packing-worker autostart enable
+            ./shape-packing-worker autostart disable
+            ./shape-packing-worker autostart status
+
+          Options & flags:
+            ./shape-packing-worker --help
+          EOF
+
       - name: Package Linux Archive
-        run: tar -czvf shape-packing-worker-linux-x86_64.tar.gz -C target/release shape-packing-worker
+        run: tar -czvf shape-packing-worker-linux-x86_64.tar.gz -C target/release shape-packing-worker README.txt
 
       - name: Upload Linux Archive
         uses: actions/upload-artifact@v4
@@ -92,8 +142,30 @@ jobs:
             target/aarch64-apple-darwin/release/shape-packing-worker
           strip shape-packing-worker
 
+      - name: Create Package Readme
+        run: |
+          cat << 'EOF' > README.txt
+          Distributed Shape Packing Volunteer Worker
+          ===========================================
+          Thank you for contributing compute to distributed shape packing research!
+
+          Quick Start:
+          1. Run ./shape-packing-worker from terminal.
+          2. Follow the one-time interactive prompt (server URL, username, CPU cores).
+          3. The worker will automatically lease packing tasks, compute solutions,
+             and submit candidate records to the coordinator.
+
+          Autostart on login:
+            ./shape-packing-worker autostart enable
+            ./shape-packing-worker autostart disable
+            ./shape-packing-worker autostart status
+
+          Options & flags:
+            ./shape-packing-worker --help
+          EOF
+
       - name: Package macOS Archive
-        run: tar -czvf shape-packing-worker-macos-universal.tar.gz shape-packing-worker
+        run: tar -czvf shape-packing-worker-macos-universal.tar.gz shape-packing-worker README.txt
 
       - name: Upload macOS Archive
         uses: actions/upload-artifact@v4
@@ -126,6 +198,7 @@ jobs:
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.tag_name || github.ref_name }}
           files: |
             release-assets/shape-packing-worker-windows-x86_64.zip
             release-assets/shape-packing-worker-linux-x86_64.tar.gz

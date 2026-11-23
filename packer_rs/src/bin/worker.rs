@@ -105,7 +105,7 @@ pub fn assignment_to_solve_config(assignment: &WorkAssignment) -> SolveConfig {
         attempts: assignment.attempts,
         tolerance: 1e-30,
         finalstep: 0.0001,
-        time_limit: None,
+        time_limit: Some(assignment.lease_seconds.saturating_sub(15).max(10) as f64),
         initial_positions: assignment.initial_positions.clone(),
         target_s: assignment.target_s,
     }
@@ -500,7 +500,7 @@ mod tests {
         assert_eq!(solve_cfg.initial_positions, Some(vec![0.1, 0.2, 0.3]));
         assert_eq!(solve_cfg.tolerance, 1e-30);
         assert_eq!(solve_cfg.finalstep, 0.0001);
-        assert_eq!(solve_cfg.time_limit, None);
+        assert_eq!(solve_cfg.time_limit, Some(285.0));
     }
 
     #[test]
