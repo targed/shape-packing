@@ -816,6 +816,15 @@ def test_e2e_signal_interruption_subprocess_cli_daemon(tmp_path: Path):
 
     proc: Optional[subprocess.Popen] = None
     try:
+        proc_kwargs: Dict[str, Any] = {
+            "stdout": subprocess.PIPE,
+            "stderr": subprocess.PIPE,
+            "text": True,
+            "env": {**os.environ, "PYTHONPATH": "src"},
+        }
+        if sys.platform == "win32":
+            proc_kwargs["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP
+
         proc = subprocess.Popen(
             [
                 sys.executable,
@@ -828,17 +837,17 @@ def test_e2e_signal_interruption_subprocess_cli_daemon(tmp_path: Path):
                 "--poll-interval",
                 "0.2",
             ],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            env={**os.environ, "PYTHONPATH": "src"},
+            **proc_kwargs,
         )
 
         # Allow worker daemon to register and begin loop
         time.sleep(0.8)
 
-        # Deliver real OS SIGINT
-        proc.send_signal(signal.SIGINT)
+        # Deliver real OS SIGINT / CTRL_BREAK
+        if sys.platform == "win32":
+            proc.send_signal(signal.CTRL_BREAK_EVENT)
+        else:
+            proc.send_signal(signal.SIGINT)
         stdout, stderr = proc.communicate(timeout=5.0)
 
         assert proc.returncode == 0, f"Worker process failed with code {proc.returncode}. Stderr: {stderr}"

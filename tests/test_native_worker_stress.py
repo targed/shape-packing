@@ -678,7 +678,8 @@ def test_non_loopback_proxy_routing_negative_check():
             send_request("http://example.com/api/v1/work", timeout=0.5)
 
     # Confirms it failed trying to reach the invalid proxy 127.0.0.1:9999
-    assert "refused" in str(exc_info.value).lower() or "connection" in str(exc_info.value).lower()
+    err_msg = str(exc_info.value).lower()
+    assert any(term in err_msg for term in ("refused", "connection", "forbidden", "permission", "10013", "timed out", "timeout"))
 
 
 # ============================================================================

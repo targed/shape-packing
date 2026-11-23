@@ -112,6 +112,9 @@ class TrayManager:
         try:
             # Use run_detached() so pystray manages its Win32 message loop cleanly
             self._icon.run_detached()
+            thread = getattr(self._icon, "_thread", None)
+            if thread is not None:
+                thread.daemon = True
         except Exception as exc:
             logger.warning(f"Failed to start system tray icon: {exc}")
             self._is_supported = False
@@ -131,10 +134,13 @@ class TrayManager:
 
     def stop(self) -> None:
         if self._icon:
+            thread = getattr(self._icon, "_thread", None)
             try:
                 self._icon.stop()
             except Exception:
                 pass
+            if thread is not None and thread.is_alive():
+                thread.join(timeout=1.0)
             self._icon = None
 
     def _build_menu(self):

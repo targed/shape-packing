@@ -16,20 +16,72 @@ fn default_lease_seconds() -> u64 {
 
 /// Work assignment received from the coordinator scheduler.
 #[derive(Debug, Clone, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(from = "RawWorkAssignment")]
 pub struct WorkAssignment {
     pub work_id: String,
     pub problem: String,
-    #[serde(alias = "inner_token")]
     pub shape: String,
     pub n: usize,
-    #[serde(default = "default_container", alias = "container_token")]
     pub container: String,
-    #[serde(default = "default_attempts", alias = "recommended_attempts")]
     pub attempts: usize,
     pub target_s: Option<f64>,
-    #[serde(default = "default_lease_seconds", alias = "timeout_seconds")]
     pub lease_seconds: u64,
     pub initial_positions: Option<Vec<f64>>,
+}
+
+#[derive(serde::Deserialize)]
+struct RawWorkAssignment {
+    work_id: String,
+    problem: String,
+    #[serde(default)]
+    shape: Option<String>,
+    #[serde(default)]
+    inner_token: Option<String>,
+    n: usize,
+    #[serde(default)]
+    container: Option<String>,
+    #[serde(default)]
+    container_token: Option<String>,
+    #[serde(default)]
+    attempts: Option<usize>,
+    #[serde(default)]
+    recommended_attempts: Option<usize>,
+    #[serde(default)]
+    target_s: Option<f64>,
+    #[serde(default)]
+    lease_seconds: Option<u64>,
+    #[serde(default)]
+    timeout_seconds: Option<u64>,
+    #[serde(default)]
+    initial_positions: Option<Vec<f64>>,
+}
+
+impl From<RawWorkAssignment> for WorkAssignment {
+    fn from(raw: RawWorkAssignment) -> Self {
+        WorkAssignment {
+            work_id: raw.work_id,
+            problem: raw.problem,
+            shape: raw
+                .shape
+                .or(raw.inner_token)
+                .unwrap_or_else(|| "3".to_string()),
+            n: raw.n,
+            container: raw
+                .container
+                .or(raw.container_token)
+                .unwrap_or_else(default_container),
+            attempts: raw
+                .attempts
+                .or(raw.recommended_attempts)
+                .unwrap_or_else(default_attempts),
+            target_s: raw.target_s,
+            lease_seconds: raw
+                .lease_seconds
+                .or(raw.timeout_seconds)
+                .unwrap_or_else(default_lease_seconds),
+            initial_positions: raw.initial_positions,
+        }
+    }
 }
 
 /// Verification and record status response from the coordinator.
@@ -389,6 +441,32 @@ mod tests {
         assert_eq!(assignment.target_s, Some(1.234));
         assert_eq!(assignment.lease_seconds, 300);
         assert_eq!(assignment.initial_positions, None);
+    }
+
+    #[test]
+    fn test_work_assignment_deserialization_both_lease_and_timeout_seconds() {
+        // Live coordinator app.py returns both lease_seconds AND timeout_seconds
+        let json_data = r#"{
+            "work_id": "lease-both-123",
+            "problem": "3_3_in_circle",
+            "inner_token": "3",
+            "container_token": "CIRCLE",
+            "n": 3,
+            "target_s": 3.5,
+            "recommended_attempts": 2000,
+            "lease_seconds": 300,
+            "timeout_seconds": 300
+        }"#;
+
+        let assignment: WorkAssignment = serde_json::from_str(json_data).unwrap();
+        assert_eq!(assignment.work_id, "lease-both-123");
+        assert_eq!(assignment.problem, "3_3_in_circle");
+        assert_eq!(assignment.shape, "3");
+        assert_eq!(assignment.n, 3);
+        assert_eq!(assignment.container, "CIRCLE");
+        assert_eq!(assignment.attempts, 2000);
+        assert_eq!(assignment.target_s, Some(3.5));
+        assert_eq!(assignment.lease_seconds, 300);
     }
 
     #[test]

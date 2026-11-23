@@ -32,11 +32,14 @@ class TestTrayManager(unittest.TestCase):
     def test_tray_manager_start_and_active(self):
         tray = TrayManager(on_toggle_window=lambda: None, on_quit=lambda: None)
         self.assertFalse(tray.is_active())
-        tray.start()
-        if tray.is_supported():
+        with unittest.mock.patch.object(tray, "_pystray") as mock_pystray:
+            mock_icon = unittest.mock.MagicMock()
+            mock_pystray.Icon.return_value = mock_icon
+            tray._is_supported = True
+            tray.start()
             self.assertTrue(tray.is_active())
-        tray.stop()
-        self.assertFalse(tray.is_active())
+            tray.stop()
+            self.assertFalse(tray.is_active())
 
 
 if __name__ == "__main__":

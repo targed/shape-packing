@@ -461,6 +461,8 @@ def setup_signal_handlers(
         signal.signal(signal.SIGINT, _sig_handler)
         if hasattr(signal, "SIGTERM"):
             signal.signal(signal.SIGTERM, _sig_handler)
+        if hasattr(signal, "SIGBREAK"):
+            signal.signal(signal.SIGBREAK, _sig_handler)
     except (ValueError, AttributeError):
         pass
 
