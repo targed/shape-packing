@@ -4,7 +4,9 @@ import argparse
 from dataclasses import asdict, dataclass
 import json
 import os
+import queue
 import sys
+import threading
 import tkinter as tk
 from tkinter import messagebox, ttk
 from typing import Optional
@@ -95,7 +97,8 @@ class WorkerApp:
         self.root.after(200, self._poll_events)
 
         if start_minimized or self.desktop_cfg.start_minimized:
-            self.root.withdraw()
+            if self.tray.is_active():
+                self.root.withdraw()
             self._start_crunching()
 
     def _build_ui(self) -> None:
@@ -286,27 +289,45 @@ class WorkerApp:
     def _start_crunching(self) -> None:
         username = self.user_entry.get().strip() or "volunteer"
         server = self.server_entry.get().strip() or "http://localhost:8000"
-        cached_id = load_cached_worker_id(username)
+        self.toggle_btn.configure(text="Connecting...", state=tk.DISABLED)
+        self.status_label.configure(text="CONNECTING")
+        self.status_canvas.itemconfig(self.status_dot, fill="#3b82f6")
 
-        try:
-            worker_id = register_with_server(server, username, worker_id=cached_id)
-            save_cached_worker_id(username, worker_id)
-        except Exception as exc:
-            messagebox.showerror(
-                "Coordinator Error",
-                f"Failed to register with server at {server}:\n{exc}",
-            )
-            return
+        def _bg_register() -> None:
+            cached_id = load_cached_worker_id(username)
+            try:
+                worker_id = register_with_server(
+                    server, username, worker_id=cached_id, timeout=5.0
+                )
+                save_cached_worker_id(username, worker_id)
+                cfg = WorkerConfig(
+                    server_url=server,
+                    username=username,
+                    worker_id=worker_id,
+                    cores=int(self.cores_var.get()),
+                )
+                self.root.after(0, lambda: self._on_register_success(cfg))
+            except Exception as exc:
+                err_str = str(exc)
+                self.root.after(0, lambda: self._on_register_error(server, err_str))
 
-        cfg = WorkerConfig(
-            server_url=server,
-            username=username,
-            worker_id=worker_id,
-            cores=int(self.cores_var.get()),
-        )
+        threading.Thread(
+            target=_bg_register, daemon=True, name="WorkerRegisterThread"
+        ).start()
+
+    def _on_register_success(self, cfg: WorkerConfig) -> None:
+        self.toggle_btn.configure(text="Pause Crunching", state=tk.NORMAL)
         self._on_schedule_toggle()
         self.controller.start(cfg)
-        self.toggle_btn.configure(text="Pause Crunching")
+
+    def _on_register_error(self, server: str, error_msg: str) -> None:
+        self.toggle_btn.configure(text="Start Crunching", state=tk.NORMAL)
+        self.status_label.configure(text="STOPPED")
+        self.status_canvas.itemconfig(self.status_dot, fill="#64748b")
+        messagebox.showerror(
+            "Coordinator Error",
+            f"Failed to connect to coordinator at {server}:\n{error_msg}\n\nPlease check the URL or ensure the server is running.",
+        )
 
     def _toggle_run(self) -> None:
         state = self.controller.get_state()
@@ -324,13 +345,20 @@ class WorkerApp:
             self.toggle_btn.configure(text="Pause Crunching")
 
     def _poll_events(self) -> None:
-        while not self.controller.event_queue.empty():
+        try:
+            while not self.controller.event_queue.empty():
+                try:
+                    snap: TelemetrySnapshot = self.controller.event_queue.get_nowait()
+                    self._update_display(snap)
+                except queue.Empty:
+                    break
+        except Exception:
+            pass
+        finally:
             try:
-                snap: TelemetrySnapshot = self.controller.event_queue.get_nowait()
-                self._update_display(snap)
+                self.root.after(250, self._poll_events)
             except Exception:
-                break
-        self.root.after(300, self._poll_events)
+                pass
 
     def _update_display(self, snap: TelemetrySnapshot) -> None:
         color_map = {
@@ -370,23 +398,30 @@ class WorkerApp:
         )
 
     def _toggle_window(self) -> None:
-        if self.root.state() == "withdrawn":
-            self.root.deiconify()
-            self.root.lift()
-        else:
-            self.root.withdraw()
+        def _do_toggle():
+            if self.root.state() == "withdrawn":
+                self.root.deiconify()
+                self.root.lift()
+                self.root.focus_force()
+            else:
+                self.root.withdraw()
+
+        self.root.after(0, _do_toggle)
 
     def _on_close_window(self) -> None:
-        if self.min_close_var.get() and self.tray.is_supported():
+        if self.min_close_var.get() and self.tray.is_active():
             self.root.withdraw()
         else:
             self._on_quit()
 
     def _on_quit(self) -> None:
-        self._persist_settings()
-        self.tray.stop()
-        self.controller.stop()
-        self.root.destroy()
+        def _do_quit():
+            self._persist_settings()
+            self.tray.stop()
+            self.controller.stop()
+            self.root.destroy()
+
+        self.root.after(0, _do_quit)
 
 
 def main() -> None:
@@ -395,6 +430,9 @@ def main() -> None:
     )
     parser.add_argument(
         "--minimized",
+        "--minimize",
+        "--minamize",
+        dest="minimized",
         action="store_true",
         help="Start application minimized to system tray",
     )

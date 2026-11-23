@@ -27,6 +27,16 @@ class TestTrayManager(unittest.TestCase):
         self.assertIsNotNone(tray)
         # Should gracefully report whether system tray is supported
         self.assertIsInstance(tray.is_supported(), bool)
+        self.assertFalse(tray.is_active())
+
+    def test_tray_manager_start_and_active(self):
+        tray = TrayManager(on_toggle_window=lambda: None, on_quit=lambda: None)
+        self.assertFalse(tray.is_active())
+        tray.start()
+        if tray.is_supported():
+            self.assertTrue(tray.is_active())
+        tray.stop()
+        self.assertFalse(tray.is_active())
 
 
 if __name__ == "__main__":

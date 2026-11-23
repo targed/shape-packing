@@ -49,7 +49,7 @@ mod python_bindings {
             target_s,
         };
 
-        let result = solve(&config);
+        let result = py.allow_threads(|| solve(&config));
 
         if result.success {
             let dict = PyDict::new_bound(py);

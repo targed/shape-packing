@@ -237,8 +237,17 @@ def save_cached_worker_id(username: str, worker_id: str, path: Optional[str] = N
     cache_path = path or CONFIG_CACHE_PATH
     try:
         os.makedirs(os.path.dirname(os.path.abspath(cache_path)), exist_ok=True)
+        data: Dict[str, Any] = {}
+        if os.path.exists(cache_path):
+            try:
+                with open(cache_path, "r", encoding="utf-8") as rf:
+                    data = json.load(rf)
+            except Exception:
+                data = {}
+        data["username"] = username
+        data["worker_id"] = worker_id
         with open(cache_path, "w", encoding="utf-8") as f:
-            json.dump({"username": username, "worker_id": worker_id}, f)
+            json.dump(data, f, indent=2)
     except Exception:
         pass
 

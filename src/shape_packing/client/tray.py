@@ -10,6 +10,28 @@ from .controller import WorkerController, WorkerState
 
 logger = logging.getLogger(__name__)
 
+# Fix for Windows: pystray's win32 backend calls ChangeWindowMessageFilterEx
+# which raises PermissionError: [WinError 5] Access is denied on standard Windows sessions.
+# Safely wrap it at module level so failures to modify message filters do not abort tray creation.
+try:
+    import pystray
+    import pystray._util.win32 as _pystray_win32_util
+
+    _orig_filter = getattr(_pystray_win32_util, "ChangeWindowMessageFilterEx", None)
+    if _orig_filter:
+
+        def _safe_filter(*args, **kwargs):
+            try:
+                return _orig_filter(*args, **kwargs)
+            except Exception:
+                return True
+
+        _pystray_win32_util.ChangeWindowMessageFilterEx = _safe_filter
+        if hasattr(pystray, "_win32"):
+            pystray._win32.win32.ChangeWindowMessageFilterEx = _safe_filter
+except Exception:
+    pass
+
 COLOR_MAP = {
     WorkerState.RUNNING.value: "#22c55e",  # Green
     WorkerState.PAUSED.value: "#f59e0b",  # Amber
@@ -67,6 +89,15 @@ class TrayManager:
     def is_supported(self) -> bool:
         return self._is_supported
 
+    def is_active(self) -> bool:
+        """Check whether the system tray icon is actively running and visible."""
+        if not self._is_supported or not self._icon:
+            return False
+        thread = getattr(self._icon, "_thread", None)
+        if thread is not None and not thread.is_alive():
+            return False
+        return True
+
     def start(self) -> None:
         """Start system tray icon in detached thread."""
         if not self._is_supported or not self._pystray:
@@ -78,11 +109,12 @@ class TrayManager:
             "ShapePackingWorker", icon_image, "Shape Packing Worker", menu=menu
         )
 
-        # Run pystray in background thread so it doesn't block Tkinter
-        t = threading.Thread(
-            target=self._icon.run, daemon=True, name="SystemTrayThread"
-        )
-        t.start()
+        try:
+            # Use run_detached() so pystray manages its Win32 message loop cleanly
+            self._icon.run_detached()
+        except Exception as exc:
+            logger.warning(f"Failed to start system tray icon: {exc}")
+            self._is_supported = False
 
     def update_state(
         self, state: WorkerState, tooltip_text: Optional[str] = None

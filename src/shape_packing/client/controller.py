@@ -147,6 +147,7 @@ class WorkerController:
             self._stop_event.clear()
             self._state = WorkerState.RUNNING
             self._status_message = "Starting..."
+            self._emit_event()
 
             self._thread = threading.Thread(
                 target=self._run_loop, daemon=True, name="WorkerControllerLoop"
@@ -191,12 +192,12 @@ class WorkerController:
             self._status_message = "Stopped"
 
         if self._thread and self._thread.is_alive():
-            self._thread.join(timeout=3.0)
+            self._thread.join(timeout=1.5)
             self._thread = None
 
         try:
             flush_in_flight_heartbeat(self.config)
-            deregister_with_server(self.config)
+            deregister_with_server(self.config, timeout=1.5)
         except Exception:
             pass
 
@@ -214,7 +215,7 @@ class WorkerController:
                     self._state = WorkerState.PAUSED
                     self._status_message = "Paused"
                     self._emit_event()
-                    time.sleep(0.5)
+                    self._stop_event.wait(0.5)
                     continue
 
                 # 2. Check snooze
@@ -225,7 +226,7 @@ class WorkerController:
                         rem_m = int(remaining // 60)
                         self._status_message = f"Snoozed ({rem_m}m left)"
                         self._emit_event()
-                        time.sleep(min(1.0, remaining))
+                        self._stop_event.wait(min(1.0, remaining))
                         continue
                     else:
                         self._snooze_deadline = None
@@ -239,7 +240,7 @@ class WorkerController:
                         self._state = WorkerState.SCHEDULED_IDLE
                         self._status_message = f"Sleeping (Active {self.schedule.start_time} - {self.schedule.end_time})"
                         self._emit_event()
-                        time.sleep(5.0)
+                        self._stop_event.wait(5.0)
                         continue
 
                 self._state = WorkerState.RUNNING
@@ -260,15 +261,15 @@ class WorkerController:
                         self._current_best_s = metric_s
                     if is_record:
                         self._records_broken += 1
-                    self._status_message = f"Crunching {self._current_problem}"
+                    self._status_message = f"Crunching {self._current_problem}" if self._current_problem else "Active"
                     backoff = 2.0
 
                 self._emit_event()
-                time.sleep(0.05)
+                self._stop_event.wait(0.05)
             except Exception as exc:
                 with self._lock:
                     self._state = WorkerState.ERROR
                     self._status_message = f"Connection error: {exc}"
                 self._emit_event()
-                time.sleep(min(30.0, backoff))
+                self._stop_event.wait(min(30.0, backoff))
                 backoff = min(60.0, backoff * 1.5)

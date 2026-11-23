@@ -59,6 +59,64 @@ class TestGUIConfig(unittest.TestCase):
         finally:
             root.destroy()
 
+    @patch("src.shape_packing.client.gui.TrayManager")
+    def test_window_close_minimize_to_tray(self, mock_tray_cls):
+        mock_tray = MagicMock()
+        mock_tray.is_active.return_value = True
+        mock_tray_cls.return_value = mock_tray
+
+        import tkinter as tk
+        root = tk.Tk()
+        root.withdraw()
+        try:
+            app = WorkerApp(root, start_minimized=False)
+            app.min_close_var.set(True)
+
+            # Closing window should withdraw, not quit
+            app._on_close_window()
+            self.assertEqual(root.state(), "withdrawn")
+
+            # When min_close is False, closing should trigger quit
+            app.min_close_var.set(False)
+            with patch.object(app, "_on_quit") as mock_quit:
+                app._on_close_window()
+                mock_quit.assert_called_once()
+
+            app.tray.stop()
+            app.controller.stop()
+        finally:
+            root.destroy()
+
+    @patch("src.shape_packing.client.gui.TrayManager")
+    def test_worker_app_registration_callbacks(self, mock_tray_cls):
+        mock_tray = MagicMock()
+        mock_tray_cls.return_value = mock_tray
+        import tkinter as tk
+        from src.shape_packing.client.controller import WorkerState
+        from src.shape_packing.client.native_worker import WorkerConfig
+
+        root = tk.Tk()
+        root.withdraw()
+        try:
+            app = WorkerApp(root, start_minimized=False)
+            cfg = WorkerConfig(
+                server_url="http://localhost:8000", username="tester", cores=1
+            )
+            app._on_register_success(cfg)
+            self.assertEqual(app.toggle_btn["text"], "Pause Crunching")
+            self.assertEqual(app.controller.get_state(), WorkerState.RUNNING)
+
+            # Test error handler
+            with patch("tkinter.messagebox.showerror"):
+                app._on_register_error("http://localhost:8000", "Connection error")
+                self.assertEqual(app.toggle_btn["text"], "Start Crunching")
+                self.assertEqual(app.status_label["text"], "STOPPED")
+
+            app.tray.stop()
+            app.controller.stop()
+        finally:
+            root.destroy()
+
 
 if __name__ == "__main__":
     unittest.main()
