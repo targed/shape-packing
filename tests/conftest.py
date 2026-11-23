@@ -3,12 +3,126 @@ Shared pytest fixtures for shape-packing tests.
 """
 import json
 import os
+import socket
 import sys
 import tempfile
 import textwrap
+import threading
 from pathlib import Path
 
 import pytest
+
+# Ensure default socket timeout to prevent indefinite hangs
+DEFAULT_SOCKET_TIMEOUT = float(os.environ.get("SOCKET_TIMEOUT", "10.0"))
+socket.setdefaulttimeout(DEFAULT_SOCKET_TIMEOUT)
+
+# Guard socket._fallback_socketpair with strict timeouts so accept() never hangs
+_orig_fallback_socketpair = getattr(socket, "_fallback_socketpair", None)
+if _orig_fallback_socketpair is not None:
+    def _timed_fallback_socketpair(family=socket.AF_INET, type=socket.SOCK_STREAM, proto=0):
+        lsock = socket.socket(family, type, proto)
+        try:
+            lsock.settimeout(2.0)
+            host = socket._LOCALHOST if family == socket.AF_INET else socket._LOCALHOST_V6
+            lsock.bind((host, 0))
+            lsock.listen(1)
+            addr, port = lsock.getsockname()[:2]
+            csock = socket.socket(family, type, proto)
+            try:
+                csock.settimeout(2.0)
+                csock.connect((addr, port))
+                ssock, _ = lsock.accept()
+                ssock.settimeout(None)
+                csock.settimeout(None)
+            except Exception:
+                csock.close()
+                raise
+        finally:
+            lsock.close()
+        return (ssock, csock)
+
+    socket._fallback_socketpair = _timed_fallback_socketpair
+    if hasattr(socket, "socketpair"):
+        socket.socketpair = _timed_fallback_socketpair
+
+
+def _probe_loopback_socket_access() -> bool:
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(0.5)
+        s.bind(("127.0.0.1", 0))
+        s.listen(1)
+        port = s.getsockname()[1]
+        c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        c.settimeout(0.5)
+        c.connect(("127.0.0.1", port))
+        conn, _ = s.accept()
+        conn.close()
+        c.close()
+        s.close()
+        return True
+    except Exception:
+        return False
+
+
+LOOPBACK_SOCKET_AVAILABLE = _probe_loopback_socket_access()
+
+
+@pytest.fixture(autouse=True)
+def test_timeout_timer(request):
+    """Execution timer for every test to prevent suite freezing or hanging."""
+    timeout_sec = float(os.environ.get("TEST_TIMEOUT", "20.0"))
+    marker = request.node.get_closest_marker("timeout")
+    if marker and marker.args:
+        try:
+            timeout_sec = float(marker.args[0])
+        except (ValueError, TypeError):
+            pass
+
+    target_thread_id = threading.get_ident()
+    timed_out = threading.Event()
+
+    def _on_timer_expired():
+        timed_out.set()
+        frame = sys._current_frames().get(target_thread_id)
+        if frame:
+            import traceback
+            tb_lines = traceback.format_stack(frame)
+            sys.stderr.write(
+                f"\n[TEST TIMER EXPIRED] Test '{request.node.nodeid}' exceeded timer of {timeout_sec:.1f}s!\n"
+                f"Active stack trace:\n{''.join(tb_lines)}\n"
+            )
+            sys.stderr.flush()
+        if sys.platform == "win32":
+            import ctypes
+            ctypes.pythonapi.PyThreadState_SetAsyncExc(
+                ctypes.c_ulong(target_thread_id),
+                ctypes.py_object(TimeoutError),
+            )
+
+    timer = threading.Timer(timeout_sec, _on_timer_expired)
+    timer.daemon = True
+    timer.start()
+    try:
+        # Check loopback permission for socket-dependent tests
+        if not LOOPBACK_SOCKET_AVAILABLE:
+            node_file = str(getattr(request.node, "fspath", "") or getattr(request.node, "path", ""))
+            node_name = request.node.name
+            socket_test_files = (
+                "test_distributed_e2e",
+                "test_distributed_fleet_challenge",
+                "test_native_worker_concurrency",
+                "test_server_api",
+                "test_server_api_adversarial",
+                "test_server_api_concurrency",
+                "test_rust_worker_e2e",
+            )
+            if any(name in node_file for name in socket_test_files) or "loopback" in node_name:
+                pytest.skip("Loopback socket networking is disabled or restricted in this environment")
+
+        yield
+    finally:
+        timer.cancel()
 
 # Ensure src is importable
 ROOT = Path(__file__).resolve().parent.parent
