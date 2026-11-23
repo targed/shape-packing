@@ -1,7 +1,6 @@
 use wasm_bindgen::prelude::*;
-use crate::solver::{solve, SolveConfig};
+use crate::solver::{inverse_friedman_metric, solve, SolveConfig};
 use serde::{Deserialize, Serialize};
-use std::f64::consts::PI;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct WasmSolveOutput {
@@ -21,37 +20,7 @@ pub fn solve_attempt_wasm(
     target_s: Option<f64>,
 ) -> String {
     let target_circumradius = target_s.map(|ts| {
-        let container_upper = container_shape.trim().to_uppercase();
-        let inner_upper = inner_shape.trim().to_uppercase();
-
-        let parse_sides = |s: &str| -> usize {
-            match s {
-                "TRIANGLE" => 3,
-                "SQUARE" => 4,
-                "PENTAGON" => 5,
-                "HEXAGON" => 6,
-                "HEPTAGON" => 7,
-                "OCTAGON" => 8,
-                "NONAGON" => 9,
-                "DECAGON" => 10,
-                other => other.parse().unwrap_or(3),
-            }
-        };
-
-        if container_upper == "L" && inner_upper == "L" {
-            return ts;
-        }
-
-        let i_scale = match inner_upper.as_str() {
-            "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => 1.0,
-            _ => 2.0 * (PI / parse_sides(&inner_upper) as f64).sin(),
-        };
-        let c_metric = ts * i_scale;
-        match container_upper.as_str() {
-            "CIRCLE" | "CIR" | "TAN" | "DOMINO" => c_metric,
-            "L" => c_metric / 2.0,
-            _ => c_metric / (2.0 * (PI / parse_sides(&container_upper) as f64).sin()),
-        }
+        inverse_friedman_metric(ts, inner_shape, container_shape)
     });
 
     let config = SolveConfig {

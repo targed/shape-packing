@@ -98,6 +98,9 @@ pub fn next_backoff(current: Duration) -> Duration {
 
 /// Maps a coordinator `WorkAssignment` into a solver `SolveConfig`.
 pub fn assignment_to_solve_config(assignment: &WorkAssignment) -> SolveConfig {
+    let target_circumradius = assignment.target_s.map(|ts| {
+        solver::inverse_friedman_metric(ts, &assignment.shape, &assignment.container)
+    });
     SolveConfig {
         inner_polygons: assignment.n,
         inner_shape: assignment.shape.clone(),
@@ -107,7 +110,7 @@ pub fn assignment_to_solve_config(assignment: &WorkAssignment) -> SolveConfig {
         finalstep: 0.0001,
         time_limit: Some(assignment.lease_seconds.saturating_sub(15).max(10) as f64),
         initial_positions: assignment.initial_positions.clone(),
-        target_s: assignment.target_s,
+        target_s: target_circumradius,
     }
 }
 
@@ -178,9 +181,14 @@ pub fn run_worker_cycle_with_durations(
             hb_stop.store(true, Ordering::SeqCst);
             let _ = hb_handle.join();
 
+            let has_valid_packing = !result.values.is_empty()
+                && result.best_s.is_finite()
+                && result.final_metric.is_finite()
+                && result.best_s > 0.0;
+
             // Send completion heartbeat so worker compute attempts are credited in coordinator database
-            let best_s_opt = if result.success && result.best_s.is_finite() && result.best_s > 0.0 {
-                Some(result.best_s)
+            let best_s_opt = if has_valid_packing {
+                Some(result.final_metric)
             } else {
                 None
             };
@@ -197,17 +205,17 @@ pub fn run_worker_cycle_with_durations(
             }
 
             let is_improvement = match assignment.target_s {
-                Some(target) => result.best_s < target,
-                None => true,
+                Some(target) => has_valid_packing && result.final_metric < target,
+                None => has_valid_packing,
             };
 
-            if result.success && is_improvement {
-                println!("[RECORD] Found improved metric s={:.8}!", result.best_s);
+            if is_improvement {
+                println!("[RECORD] Found improved metric s={:.8}!", result.final_metric);
                 match client.submit_solution(
                     worker_id,
                     Some(&assignment.work_id),
                     &assignment.problem,
-                    result.best_s,
+                    result.final_metric,
                     &result.values,
                 ) {
                     Ok(resp) => {
@@ -236,10 +244,10 @@ pub fn run_worker_cycle_with_durations(
                         );
                     }
                 }
-            } else if result.success {
+            } else if has_valid_packing {
                 println!(
                     "[WORK] Found packing with s={:.8}, but did not improve current target (target_s={:?}). Skipping submission.",
-                    result.best_s, assignment.target_s
+                    result.final_metric, assignment.target_s
                 );
             } else {
                 println!(
@@ -496,11 +504,35 @@ mod tests {
         assert_eq!(solve_cfg.inner_shape, "3");
         assert_eq!(solve_cfg.container_shape, "CIRCLE");
         assert_eq!(solve_cfg.attempts, 500);
-        assert_eq!(solve_cfg.target_s, Some(0.85));
+        let expected_target_circumradius = 0.85 * (std::f64::consts::PI / 3.0).sin() * 2.0;
+        assert!(
+            (solve_cfg.target_s.unwrap() - expected_target_circumradius).abs() < 1e-9,
+            "target_s should be converted to circumradius S"
+        );
         assert_eq!(solve_cfg.initial_positions, Some(vec![0.1, 0.2, 0.3]));
         assert_eq!(solve_cfg.tolerance, 1e-30);
         assert_eq!(solve_cfg.finalstep, 0.0001);
         assert_eq!(solve_cfg.time_limit, Some(285.0));
+
+        // Hexagon in triangle conversion test (e.g. 14_hexintri)
+        let hexintri = WorkAssignment {
+            work_id: "work-hex".to_string(),
+            problem: "14_hexintri".to_string(),
+            shape: "6".to_string(),
+            n: 14,
+            container: "3".to_string(),
+            attempts: 4000,
+            target_s: Some(10.3923),
+            lease_seconds: 300,
+            initial_positions: None,
+        };
+        let hex_cfg = assignment_to_solve_config(&hexintri);
+        // For 6 in 3: s = S * sqrt(3), so target S = 10.3923 / sqrt(3) ~= 6.0000
+        let expected_s = 10.3923 / 3.0f64.sqrt();
+        assert!(
+            (hex_cfg.target_s.unwrap() - expected_s).abs() < 1e-4,
+            "14_hexintri target Friedman s must be inverted to container circumradius S"
+        );
     }
 
     #[test]

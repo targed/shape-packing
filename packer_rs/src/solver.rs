@@ -175,43 +175,7 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
     let bx = best_x.lock().unwrap();
     if let Some(ref bx) = *bx {
         let best = best_s.lock().unwrap();
-        let container_upper = config.container_shape.trim().to_uppercase();
-        let inner_upper = config.inner_shape.trim().to_uppercase();
-
-        let parse_sides = |s: &str| -> usize {
-            match s {
-                "TRIANGLE" => 3,
-                "SQUARE" => 4,
-                "PENTAGON" => 5,
-                "HEXAGON" => 6,
-                "HEPTAGON" => 7,
-                "OCTAGON" => 8,
-                "NONAGON" => 9,
-                "DECAGON" => 10,
-                other => other.parse().unwrap_or(3),
-            }
-        };
-
-        let c_metric = if container_upper == "L" && inner_upper == "L" {
-            *best
-        } else {
-            match container_upper.as_str() {
-                "CIRCLE" | "CIR" | "TAN" | "DOMINO" => *best,
-                "L" => 2.0 * *best,
-                _ => 2.0 * *best * (PI / parse_sides(&container_upper) as f64).sin(),
-            }
-        };
-
-        let i_scale = if container_upper == "L" && inner_upper == "L" {
-            1.0
-        } else {
-            match inner_upper.as_str() {
-                "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => 1.0,
-                _ => 2.0 * (PI / parse_sides(&inner_upper) as f64).sin(),
-            }
-        };
-
-        let final_metric = c_metric / i_scale;
+        let final_metric = compute_friedman_metric(*best, &config.inner_shape, &config.container_shape);
         let success = config.target_s.map_or(true, |ts| *best < ts);
         SolveResult {
             success,
@@ -230,6 +194,69 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
             inner_token: config.inner_shape.clone(),
             container_token: config.container_shape.clone(),
         }
+    }
+}
+
+/// Parses a polygon token (e.g., "TRIANGLE", "3", "HEXAGON", "6") into its side count.
+pub fn parse_polygon_sides(token: &str) -> usize {
+    match token.trim().to_uppercase().as_str() {
+        "TRIANGLE" => 3,
+        "SQUARE" => 4,
+        "PENTAGON" => 5,
+        "HEXAGON" => 6,
+        "HEPTAGON" => 7,
+        "OCTAGON" => 8,
+        "NONAGON" => 9,
+        "DECAGON" => 10,
+        other => other.parse().unwrap_or(3),
+    }
+}
+
+/// Computes the published Erich Friedman metric s given the solver container circumradius S.
+pub fn compute_friedman_metric(circumradius_s: f64, inner_shape: &str, container_shape: &str) -> f64 {
+    let container_upper = container_shape.trim().to_uppercase();
+    let inner_upper = inner_shape.trim().to_uppercase();
+
+    // LinL special case: container L and inner L
+    if container_upper == "L" && inner_upper == "L" {
+        return circumradius_s;
+    }
+
+    let c_metric = match container_upper.as_str() {
+        "CIRCLE" | "CIR" | "TAN" | "DOMINO" => circumradius_s,
+        "L" => 2.0 * circumradius_s,
+        _ => 2.0 * circumradius_s * (PI / parse_polygon_sides(&container_upper) as f64).sin(),
+    };
+
+    let i_scale = match inner_upper.as_str() {
+        "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => 1.0,
+        _ => 2.0 * (PI / parse_polygon_sides(&inner_upper) as f64).sin(),
+    };
+
+    c_metric / i_scale
+}
+
+/// Converts a published Erich Friedman metric s into the solver container circumradius S.
+pub fn inverse_friedman_metric(friedman_s: f64, inner_shape: &str, container_shape: &str) -> f64 {
+    let container_upper = container_shape.trim().to_uppercase();
+    let inner_upper = inner_shape.trim().to_uppercase();
+
+    // LinL special case: container L and inner L
+    if container_upper == "L" && inner_upper == "L" {
+        return friedman_s;
+    }
+
+    let i_scale = match inner_upper.as_str() {
+        "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => 1.0,
+        _ => 2.0 * (PI / parse_polygon_sides(&inner_upper) as f64).sin(),
+    };
+
+    let c_metric = friedman_s * i_scale;
+
+    match container_upper.as_str() {
+        "CIRCLE" | "CIR" | "TAN" | "DOMINO" => c_metric,
+        "L" => c_metric / 2.0,
+        _ => c_metric / (2.0 * (PI / parse_polygon_sides(&container_upper) as f64).sin()),
     }
 }
 
@@ -1604,6 +1631,55 @@ mod tests {
         assert!(result.1.is_some(), "Hybrid optimizer must find valid packing for 4_6_in_5 at S=3.5");
         let final_s = result.0;
         assert!(final_s < 3.5, "Final scale S should be shrunk and feasible");
+    }
+
+    #[test]
+    fn test_compute_and_inverse_friedman_metric_roundtrip() {
+        // Regular polygon: triangle in square
+        let f_val = compute_friedman_metric(3.0, "3", "4");
+        let s_inv = inverse_friedman_metric(f_val, "3", "4");
+        assert!((s_inv - 3.0).abs() < 1e-9);
+
+        // Regular polygon: hexagon in triangle (14_hexintri problem)
+        // For hexagon (inner=6): i_scale = 2 * sin(PI / 6) = 1.0
+        // For triangle (container=3): c_factor = 2 * sin(PI / 3) = sqrt(3)
+        // S = 6.00128299 => final_metric s = 6.00128299 * sqrt(3) ~= 10.39453
+        let s_hexintri = 6.00128299;
+        let metric = compute_friedman_metric(s_hexintri, "6", "3");
+        let expected_metric = s_hexintri * 3.0f64.sqrt();
+        assert!((metric - expected_metric).abs() < 1e-9);
+        let s_back = inverse_friedman_metric(metric, "6", "3");
+        assert!((s_back - s_hexintri).abs() < 1e-9);
+
+        // Special shapes: TAN in CIRCLE
+        let f_val2 = compute_friedman_metric(2.0, "TAN", "CIRCLE");
+        assert!((inverse_friedman_metric(f_val2, "TAN", "CIRCLE") - 2.0).abs() < 1e-9);
+
+        // Circle in L
+        let s_cirinl = compute_friedman_metric(1.70710678, "CIRCLE", "L");
+        assert!((s_cirinl - 3.41421356).abs() < 1e-6);
+        assert!((inverse_friedman_metric(3.41421356, "CIRCLE", "L") - 1.70710678).abs() < 1e-6);
+
+        // Square in L
+        let s_squinl = compute_friedman_metric(2.0f64.sqrt(), "4", "L");
+        assert!((s_squinl - 2.0).abs() < 1e-9);
+        assert!((inverse_friedman_metric(2.0, "4", "L") - 2.0f64.sqrt()).abs() < 1e-9);
+
+        // LinL (L-in-L)
+        assert_eq!(compute_friedman_metric(1.0, "L", "L"), 1.0);
+        assert_eq!(compute_friedman_metric(2.5, "L", "L"), 2.5);
+        assert_eq!(inverse_friedman_metric(1.0, "L", "L"), 1.0);
+        assert_eq!(inverse_friedman_metric(2.5, "L", "L"), 2.5);
+
+        // Named polygon aliases
+        assert_eq!(parse_polygon_sides("triangle"), 3);
+        assert_eq!(parse_polygon_sides("SQUARE"), 4);
+        assert_eq!(parse_polygon_sides("PENTAGON"), 5);
+        assert_eq!(parse_polygon_sides("HEXAGON"), 6);
+        assert_eq!(
+            compute_friedman_metric(2.0f64.sqrt(), "square", "L"),
+            compute_friedman_metric(2.0f64.sqrt(), "4", "L")
+        );
     }
 }
 
