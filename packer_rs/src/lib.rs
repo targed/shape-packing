@@ -1,4 +1,5 @@
 pub mod solver;
+pub mod worker;
 
 #[cfg(feature = "wasm")]
 pub mod wasm;
