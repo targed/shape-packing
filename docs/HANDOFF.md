@@ -153,8 +153,10 @@ python -m src.shape_packing.client.native_worker --server http://localhost:8000 
 2. **Multi-Source Catalog Ingestors**:
    - Ingest Eckard Specht's Packomania dataset for circle packing in squares, circles, and triangles up to large $N$ ($N \ge 100$).
    - Add procedural problem generation for untested polygon combinations.
-3. **Desktop System Tray GUI**:
-   - Provide a lightweight tray application (using Tauri or PySide) wrapping `native_worker.py` for non-technical volunteers who prefer a desktop installer over a terminal.
+3. **Desktop System Tray GUI & Background Service**:
+   - Built a lightweight, cross-platform Tkinter + `pystray` + `Pillow` desktop application (`src/shape_packing/client/gui.py`) and background controller (`src/shape_packing/client/controller.py`).
+   - Features dynamic CPU core sliders (`RAYON_NUM_THREADS` and `OMP_NUM_THREADS`), active hours scheduling (including midnight-crossing intervals), pause/resume, and snooze controls (30m, 1h, 2h).
+   - Zero-elevation user-level autostart manager (`src/shape_packing/client/autostart.py`) supporting Windows Registry (`pythonw.exe`), macOS LaunchAgents, and Linux XDG Autostart with full CLI support (`status`, `enable`, `disable`).
 4. **Public Dashboard API Integration**:
    - Wire the Astro frontend to query the coordinator's live `/api/v1/leaderboard` and `/api/v1/stats` endpoints directly.
 
@@ -165,7 +167,13 @@ python -m src.shape_packing.client.native_worker --server http://localhost:8000 
 Full test suite passes with zero regressions:
 
 ```bash
-# 1. Acceptance and Unit Test Suite (177 tests)
+# 1. Desktop GUI, Controller & Autostart Tests
+pytest tests/test_client_controller.py \
+       tests/test_client_autostart.py \
+       tests/test_client_tray.py \
+       tests/test_client_gui.py -v
+
+# 2. Acceptance and Unit Test Suite (177 tests)
 pytest tests/test_server_database.py \
        tests/test_server_scheduler.py \
        tests/test_server_api.py \

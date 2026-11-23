@@ -274,10 +274,15 @@ def set_process_idle_priority() -> bool:
     if sys.platform == "win32":
         try:
             import ctypes
+            from ctypes import wintypes
 
             idle_priority_class = 0x00000040
-            handle = ctypes.windll.kernel32.GetCurrentProcess()
-            res = ctypes.windll.kernel32.SetPriorityClass(handle, idle_priority_class)
+            kernel32 = ctypes.windll.kernel32
+            kernel32.GetCurrentProcess.restype = wintypes.HANDLE
+            kernel32.SetPriorityClass.argtypes = [wintypes.HANDLE, wintypes.DWORD]
+            kernel32.SetPriorityClass.restype = wintypes.BOOL
+            handle = kernel32.GetCurrentProcess()
+            res = kernel32.SetPriorityClass(handle, idle_priority_class)
             return bool(res)
         except Exception:
             return False

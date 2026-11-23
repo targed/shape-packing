@@ -125,11 +125,58 @@ Pressing `Ctrl+C` (`SIGINT`) or sending `SIGTERM` triggers an immediate graceful
 
 ---
 
-## 6. Running the Distributed Test Suite
+## 7. Desktop System Tray GUI & Autostart Background Service
+
+For volunteers who prefer an unattended background application with visual system tray telemetry, the client package includes a cross-platform Tkinter and `pystray` application (`gui.py`) coupled with a zero-elevation autostart manager (`autostart.py`).
+
+### Key Features
+- **Zero Framework Bloat**: Powered by built-in Python Tkinter and lightweight `pystray` + `Pillow` (no heavy Qt dependencies).
+- **System Tray Integration**: Dynamic colored status dot (Green = Running, Amber = Paused/Snoozed, Blue = Scheduled Sleep, Gray = Stopped, Red = Connection Error) and quick-action context menu.
+- **Dynamic Resource Allocation**: Real-time CPU core slider that sets `RAYON_NUM_THREADS` and `OMP_NUM_THREADS` without restarting the process.
+- **Flexible Scheduling**: Set active hours (e.g. night crunching from `22:00` to `07:00`, including midnight-crossing ranges).
+- **Pause & Snooze Controls**: 1-click manual pause/resume, plus quick snooze timer options (30 min, 1 hour, 2 hours).
+- **Zero-Elevation Autostart**: 1-click toggle to run automatically on system boot:
+  - **Windows**: `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` (`pythonw.exe` for silent startup)
+  - **macOS**: `~/Library/LaunchAgents/com.shapepacking.worker.plist`
+  - **Linux**: `~/.config/autostart/shape-packing-worker.desktop`
+
+### Launching the Desktop GUI
+```bash
+# Standard interactive window mode
+python -m src.shape_packing.client.gui
+
+# Start directly minimized to the system tray (used by boot autostart)
+python -m src.shape_packing.client.gui --minimized
+```
+
+### Managing Autostart via CLI
+For headless machines, shell scripts, or cron jobs, the service can be configured directly from the command line:
+```bash
+# Check current autostart status
+python -m src.shape_packing.client.autostart status
+python -m src.shape_packing.client.autostart status --json
+
+# Enable autostart on user login
+python -m src.shape_packing.client.autostart enable
+
+# Disable autostart
+python -m src.shape_packing.client.autostart disable
+```
+All persistent settings (username, coordinator URL, allocated cores, schedule, autostart preference) are saved to `~/.shape_packing_worker.json`.
+
+---
+
+## 8. Running the Distributed Test Suite
 
 The distributed engine includes unit tests, concurrency suites, and fleet integration tests:
 
 ```bash
+# Run client GUI and background service tests
+pytest tests/test_client_controller.py \
+       tests/test_client_autostart.py \
+       tests/test_client_tray.py \
+       tests/test_client_gui.py -v
+
 # Run unit and end-to-end integration tests (177 tests)
 pytest tests/test_server_database.py \
        tests/test_server_scheduler.py \

@@ -597,35 +597,36 @@ def test_attempts_preserved_on_solution_400_rejection():
 
 def test_set_idle_priority_posix_success():
     """Test POSIX os.nice(19) priority adjustment success path."""
-    with patch("os.nice", return_value=19) as mock_nice:
-        assert set_idle_priority() is True
-        mock_nice.assert_called_with(19)
+    with patch("sys.platform", "linux"):
+        with patch("os.nice", return_value=19, create=True) as mock_nice:
+            assert set_idle_priority() is True
+            mock_nice.assert_called_with(19)
 
 
 def test_set_idle_priority_permission_error_fallback():
     """Test graceful fallback returning False when os.nice raises PermissionError."""
-    with patch("os.nice", side_effect=PermissionError("Operation not permitted")):
-        assert set_idle_priority() is False
+    with patch("sys.platform", "linux"):
+        with patch("os.nice", side_effect=PermissionError("Operation not permitted"), create=True):
+            assert set_idle_priority() is False
 
 
 def test_set_idle_priority_windows_fallback():
     """Test graceful fallback returning False when os has no nice attribute."""
     # Ensure set_idle_priority handles platforms without os.nice
     with patch("sys.platform", "linux"):
-        with patch.object(os, "nice", create=False):
-            # Temporarily remove nice from os
-            orig_nice = getattr(os, "nice", None)
-            try:
-                if hasattr(os, "nice"):
-                    delattr(os, "nice")
-                # When os.nice is absent and setpriority is absent
-                with patch.object(os, "setpriority", create=False):
-                    if hasattr(os, "setpriority"):
-                        delattr(os, "setpriority")
-                    assert set_idle_priority() is False
-            finally:
-                if orig_nice is not None:
-                    setattr(os, "nice", orig_nice)
+        orig_nice = getattr(os, "nice", None)
+        orig_setpriority = getattr(os, "setpriority", None)
+        try:
+            if hasattr(os, "nice"):
+                delattr(os, "nice")
+            if hasattr(os, "setpriority"):
+                delattr(os, "setpriority")
+            assert set_idle_priority() is False
+        finally:
+            if orig_nice is not None:
+                setattr(os, "nice", orig_nice)
+            if orig_setpriority is not None:
+                setattr(os, "setpriority", orig_setpriority)
 
 
 # ============================================================================

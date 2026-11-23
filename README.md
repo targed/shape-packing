@@ -132,6 +132,19 @@ Run a volunteer worker daemon connecting to the coordinator:
 python -m src.shape_packing.client.native_worker --server http://localhost:8000 --username your_name --cores 8
 ```
 
+Alternatively, launch the cross-platform **Desktop System Tray GUI** with automatic background startup, CPU sliders, time scheduling, and snooze controls:
+
+```bash
+python -m src.shape_packing.client.gui
+```
+
+Manage startup service / daemon configuration via CLI:
+```bash
+python -m src.shape_packing.client.autostart status --json
+python -m src.shape_packing.client.autostart enable
+python -m src.shape_packing.client.autostart disable
+```
+
 ### 6. Export World Records for Submission
 
 Audit all solution runs, verify geometries against Erich Friedman benchmarks, and export submission kits:
