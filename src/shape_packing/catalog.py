@@ -162,3 +162,116 @@ def shape_area(token: Any, size: float) -> Optional[float]:
     except ValueError:
         pass
     return None
+
+
+NAMED_POLYGONS = {
+    "TRIANGLE": 3,
+    "SQUARE": 4,
+    "PENTAGON": 5,
+    "HEXAGON": 6,
+    "HEPTAGON": 7,
+    "OCTAGON": 8,
+    "NONAGON": 9,
+    "DECAGON": 10,
+}
+
+_UNIT_SCALE_TOKENS = {
+    "CIRCLE",
+    "TAN",
+    "DOMINO",
+    "L",
+    "SEMICIRCLE",
+    "QUADRANT",
+    "RHOMBUS",
+    "PARALLELOGRAM",
+    "TRAPEZOID",
+}
+
+_UNIT_CONTAINER_METRICS = {
+    "CIRCLE",
+    "TAN",
+    "DOMINO",
+    "SEMICIRCLE",
+    "QUADRANT",
+    "RHOMBUS",
+    "PARALLELOGRAM",
+    "TRAPEZOID",
+}
+
+
+def compute_friedman_metric(S: float, inner_token: str, container_token: str) -> float:
+    """Compute the Friedman metric corresponding to the container and inner shapes."""
+    container_upper = normalize_token(container_token)
+    inner_upper = normalize_token(inner_token)
+
+    if container_upper == "L" and inner_upper == "L":
+        return S
+
+    if container_upper in _UNIT_CONTAINER_METRICS:
+        c_metric = S
+    elif container_upper == "L":
+        c_metric = 2.0 * S
+    else:
+        nsc = NAMED_POLYGONS.get(container_upper)
+        if nsc is None:
+            try:
+                nsc = int(container_upper)
+            except ValueError as exc:
+                raise ValueError(f"Unknown container shape token for metric: {container_token!r}") from exc
+        if nsc < 3:
+            raise ValueError(f"Container polygon sides must be >= 3, got {nsc}")
+        c_metric = 2 * S * math.sin(math.pi / nsc)
+
+    if inner_upper in _UNIT_SCALE_TOKENS:
+        i_scale = 1.0
+    else:
+        nsi = NAMED_POLYGONS.get(inner_upper)
+        if nsi is None:
+            try:
+                nsi = int(inner_upper)
+            except ValueError as exc:
+                raise ValueError(f"Unknown inner shape token for metric: {inner_token!r}") from exc
+        if nsi < 3:
+            raise ValueError(f"Inner polygon sides must be >= 3, got {nsi}")
+        i_scale = 2 * math.sin(math.pi / nsi)
+
+    return c_metric / i_scale
+
+
+def inverse_friedman_metric(f_metric: float, inner_token: str, container_token: str) -> float:
+    """Given a target Friedman metric, compute the corresponding solver S (circumradius)."""
+    container_upper = normalize_token(container_token)
+    inner_upper = normalize_token(inner_token)
+
+    if container_upper == "L" and inner_upper == "L":
+        return f_metric
+
+    if inner_upper in _UNIT_SCALE_TOKENS:
+        i_scale = 1.0
+    else:
+        nsi = NAMED_POLYGONS.get(inner_upper)
+        if nsi is None:
+            try:
+                nsi = int(inner_upper)
+            except ValueError as exc:
+                raise ValueError(f"Unknown inner shape token for inverse metric: {inner_token!r}") from exc
+        if nsi < 3:
+            raise ValueError(f"Inner polygon sides must be >= 3, got {nsi}")
+        i_scale = 2 * math.sin(math.pi / nsi)
+
+    c_metric = f_metric * i_scale
+
+    if container_upper in _UNIT_CONTAINER_METRICS:
+        return c_metric
+    elif container_upper == "L":
+        return c_metric / 2.0
+    else:
+        nsc = NAMED_POLYGONS.get(container_upper)
+        if nsc is None:
+            try:
+                nsc = int(container_upper)
+            except ValueError as exc:
+                raise ValueError(f"Unknown container shape token for inverse metric: {container_token!r}") from exc
+        if nsc < 3:
+            raise ValueError(f"Container polygon sides must be >= 3, got {nsc}")
+        return c_metric / (2 * math.sin(math.pi / nsc))

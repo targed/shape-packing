@@ -26,14 +26,12 @@ if str(ROOT_DIR / "src") not in sys.path:
     sys.path.insert(0, str(ROOT_DIR / "src"))
 
 from shape_packing.catalog import (
+    compute_friedman_metric,
     get_pair_tier,
+    inverse_friedman_metric,
     list_frontier_families,
     load_catalog,
     normalize_token,
-)
-from shape_packing.solution_tools import (
-    compute_friedman_metric,
-    inverse_friedman_metric,
 )
 PACKING_VERIFICATION_DIR = (
     ROOT_DIR / "data" / "packingVerification"
