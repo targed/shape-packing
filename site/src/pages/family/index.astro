@@ -1,84 +1,161 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { parseFamilySlug, getShapeBadgeSvg } from '../../lib/visualization/shape_badge';
 import fs from 'node:fs';
 import path from 'node:path';
-const siteData = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/data/site_data.json'), 'utf-8'));
 
-const { families, summary } = siteData;
+const siteData = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/data/site_data.json'), 'utf-8'));
+const { families } = siteData;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const totalProblemsCount = families.reduce((acc: number, f: any) => acc + (f.total_problems || 0), 0);
+const totalOptimalCount = families.reduce((acc: number, f: any) => acc + (f.proved_optimal_count || 0), 0);
+const totalNewBestCount = families.reduce((acc: number, f: any) => acc + (f.new_best_count || 0), 0);
 ---
 
 <BaseLayout title="Problem Family Catalog | Shape Packing">
   <div class="space-y-8">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-hairline pb-6">
       <div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Problem Family Catalog</h1>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">Problem Family Catalog</h1>
         <p class="text-xs sm:text-sm text-slate-400 mt-1">
-          Catalog of all {families.length} normalized polygon packing problem families.
+          Catalog of all {families.length} normalized polygon and curved packing problem families.
         </p>
       </div>
-      <div class="flex items-center gap-2">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-          Total Families: <strong class="ml-1 text-white">{families.length}</strong>
+
+      <!-- Technical Summary Badges -->
+      <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs">
+        <span class="inline-flex items-center px-3 py-1.5 rounded-md bg-surface border border-hairline text-slate-300">
+          Families: <strong class="ml-1 text-slate-100 font-semibold">{families.length}</strong>
         </span>
+        <span class="inline-flex items-center px-3 py-1.5 rounded-md bg-surface border border-hairline text-slate-300">
+          Problems: <strong class="ml-1 text-slate-100 font-semibold">{totalProblemsCount}</strong>
+        </span>
+        <span class="inline-flex items-center px-3 py-1.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+          Optimal: <strong class="ml-1 text-emerald-300 font-semibold">{totalOptimalCount}</strong>
+        </span>
+        {totalNewBestCount > 0 && (
+          <span class="inline-flex items-center px-3 py-1.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/30 font-semibold">
+            Records Broken: <strong class="ml-1 text-amber-300 font-bold">{totalNewBestCount}</strong>
+          </span>
+        )}
       </div>
     </div>
 
     <!-- Search / Filter Bar -->
-    <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
-      <input
-        type="text"
-        id="family-search"
-        placeholder="Filter families by name or shape code (e.g., 3_in_4, hex, circle)..."
-        class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
-      />
+    <div class="bg-surface border border-hairline rounded-lg p-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
+      <div class="relative w-full sm:w-2/3">
+        <input
+          type="text"
+          id="family-search"
+          placeholder="Filter 80 families by name, code, or shape (e.g., 3_in_4, hex, triangle, circle)..."
+          class="w-full bg-surface-elevated border border-hairline rounded-md px-4 py-2.5 text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:border-blueprint"
+          aria-label="Filter families"
+        />
+      </div>
+      <div class="text-xs font-mono text-slate-400 shrink-0 self-end sm:self-center">
+        Showing <span id="visible-count" class="text-slate-200 font-semibold">{families.length}</span> of {families.length} families
+      </div>
     </div>
 
     <!-- Family Grid -->
     <div id="family-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {families.map((fam) => (
-        <a
-          href={`${base}/family/${fam.slug}`}
-          data-family-name={`${fam.name} ${fam.slug} ${fam.inner_shape} ${fam.container_shape}`.toLowerCase()}
-          class="group p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-900 transition-all flex flex-col justify-between space-y-3"
-        >
-          <div class="space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20 font-mono">
-                {fam.slug}
-              </span>
-              <span class="text-[11px] text-slate-400 font-semibold">{fam.total_problems} problems</span>
-            </div>
-            <h2 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors">
-              {fam.name}
-            </h2>
-          </div>
+      {families.map((fam: any) => {
+        const innerToken = fam.inner_shape || parseFamilySlug(fam.slug).inner;
+        const containerToken = fam.container_shape || parseFamilySlug(fam.slug).container;
+        const hasRecords = fam.new_best_count > 0;
+        const badgeSvg = getShapeBadgeSvg(innerToken, containerToken, hasRecords);
 
-          <div class="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/80 pt-3">
-            <span class="text-emerald-400 font-medium">{fam.proved_optimal_count} Optimal</span>
-            <span class="text-indigo-400 group-hover:translate-x-1 transition-transform font-semibold">&rarr;</span>
-          </div>
-        </a>
-      ))}
+        return (
+          <a
+            href={`${base}/family/${fam.slug}`}
+            data-family-name={`${fam.name} ${fam.slug} ${fam.inner_shape} ${fam.container_shape}`.toLowerCase()}
+            class={`bg-surface border border-hairline hover:border-blueprint/50 rounded-lg p-5 group transition-colors flex flex-col justify-between space-y-4 ${
+              hasRecords ? 'hover:border-amber-500/50' : ''
+            }`}
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 rounded-md bg-canvas border border-hairline flex items-center justify-center p-0.5 shrink-0" set:html={badgeSvg} />
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-blueprint font-mono bg-blueprint/10 px-2 py-0.5 rounded-md border border-blueprint/20">
+                    {fam.slug}
+                  </span>
+                </div>
+                <span class="text-[11px] text-slate-400 font-mono font-medium">{fam.total_problems} problems</span>
+              </div>
+
+              <div>
+                <h2 class="text-base font-bold text-slate-100 group-hover:text-blueprint transition-colors tracking-tight line-clamp-1">
+                  {fam.name}
+                </h2>
+                <div class="text-[11px] text-slate-400 font-mono mt-1">
+                  <span>Inner: {fam.inner_shape}</span>
+                  <span class="mx-1">&bull;</span>
+                  <span>Container: {fam.container_shape}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400 border-t border-hairline pt-3">
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400 font-medium">{fam.proved_optimal_count} Optimal</span>
+                {hasRecords && (
+                  <>
+                    <span class="text-slate-600">&bull;</span>
+                    <span class="text-amber-400 font-semibold">{fam.new_best_count} Record{fam.new_best_count === 1 ? '' : 's'}</span>
+                  </>
+                )}
+              </div>
+              <svg class="w-4 h-4 text-slate-400 group-hover:text-blueprint group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Empty search result state -->
+    <div id="no-results" class="hidden text-center py-12 text-slate-400 font-mono text-xs bg-surface border border-hairline rounded-lg">
+      No shape families match the search query. Try searching for a different shape code or polygon name.
     </div>
   </div>
 
   <script is:inline>
     const searchInput = document.getElementById('family-search');
     const grid = document.getElementById('family-grid');
+    const visibleCount = document.getElementById('visible-count');
+    const noResults = document.getElementById('no-results');
 
-    searchInput?.addEventListener('input', () => {
-      const query = (searchInput.value || '').toLowerCase().trim();
+    function filterFamilies() {
+      const query = (searchInput?.value || '').toLowerCase().trim();
       const cards = grid?.querySelectorAll('a') || [];
+      let visible = 0;
 
       cards.forEach((card) => {
         const text = card.getAttribute('data-family-name') || '';
         if (!query || text.includes(query)) {
           card.style.display = '';
+          visible++;
         } else {
           card.style.display = 'none';
         }
       });
-    });
+
+      if (visibleCount) {
+        visibleCount.textContent = String(visible);
+      }
+      if (noResults) {
+        if (visible === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+    }
+
+    searchInput?.addEventListener('input', filterFamilies);
   </script>
 </BaseLayout>

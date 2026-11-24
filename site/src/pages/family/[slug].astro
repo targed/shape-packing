@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ResultsTable from '../../components/ResultsTable.astro';
 import PackingVisual from '../../components/PackingVisual.astro';
+import BenchmarkCurve from '../../components/BenchmarkCurve.astro';
+import { parseFamilySlug, getShapeBadgeSvg } from '../../lib/visualization/shape_badge';
 import fs from 'node:fs';
 import path from 'node:path';
 import familySlugs from '../../data/family_slugs.json';
@@ -9,7 +11,7 @@ import familySlugs from '../../data/family_slugs.json';
 export async function getStaticPaths() {
   const siteData = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/data/site_data.json'), 'utf-8'));
   const { families } = siteData;
-  return families.map((fam) => ({
+  return families.map((fam: any) => ({
     params: { slug: fam.slug },
     props: { family: fam, siteData },
   }));
@@ -17,66 +19,151 @@ export async function getStaticPaths() {
 
 const { family, siteData } = Astro.props;
 const { problems } = siteData;
-const familyProblems = problems.filter((p) => p.problem_family === family.slug);
+const familyProblems = problems.filter((p: any) => p.problem_family === family.slug);
 const reqData = (familySlugs as Record<string, any>)[family.slug];
-const solvedProblems = familyProblems.filter(p => p.solution);
+const solvedProblems = familyProblems.filter((p: any) => p.solution);
+const newBestCount = familyProblems.filter((p: any) => p.comparison_status === 'NEW_BEST').length;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// Mini shape badge
+const innerToken = family.inner_shape || parseFamilySlug(family.slug).inner;
+const containerToken = family.container_shape || parseFamilySlug(family.slug).container;
+const hasRecords = newBestCount > 0;
+const badgeSvg = getShapeBadgeSvg(innerToken, containerToken, hasRecords);
 ---
 
 <BaseLayout title={`${family.name} (${family.slug}) | Family Detail`}>
   <div class="space-y-8">
     <!-- Header -->
-    <div class="border-b border-slate-800 pb-6 space-y-4">
-      <div class="flex items-center gap-2 text-xs text-slate-400">
-        <a href={`${base}/results`} class="hover:text-indigo-400">Results</a>
-        <span>/</span>
-        <span class="text-slate-200 font-medium">{family.slug}</span>
+    <div class="border-b border-hairline pb-6 space-y-4">
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+        <a href={`${base}/results`} class="hover:text-blueprint transition-colors text-slate-300">Results</a>
+        <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+        <span class="text-slate-100 font-semibold">{family.slug}</span>
       </div>
 
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div class="space-y-2">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-md bg-canvas border border-hairline flex items-center justify-center p-1 shrink-0" set:html={badgeSvg} />
+            <div>
+              <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
+                {family.name}
+              </h1>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-slate-400 font-mono mt-1">
+                <span>Code: <code class="text-blueprint-light font-semibold">{family.slug}</code></span>
+                <span class="text-slate-600">&bull;</span>
+                <span>Inner Shape: <span class="text-slate-200 font-sans">{family.inner_shape}</span></span>
+                <span class="text-slate-600">&bull;</span>
+                <span>Container: <span class="text-slate-200 font-sans">{family.container_shape}</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Badges -->
+        <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs">
+          <span class="px-3 py-1.5 rounded-md bg-surface border border-hairline text-slate-300">
+            <strong class="text-slate-100 font-semibold">{familyProblems.length}</strong> Problems
+          </span>
+          <span class="px-3 py-1.5 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            <strong class="text-emerald-300 font-semibold">{family.proved_optimal_count}</strong> Proved Optimal
+          </span>
+          {newBestCount > 0 ? (
+            <span class="px-3 py-1.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/30 font-semibold">
+              <strong class="text-amber-300 font-bold">{newBestCount}</strong> Records Broken
+            </span>
+          ) : (
+            <span class="px-3 py-1.5 rounded-md bg-surface border border-hairline text-slate-400">
+              0 Records Broken
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Benchmark Curve Visualization (N vs. s) -->
+    <section class="space-y-3">
+      <BenchmarkCurve
+        problems={familyProblems}
+        familySlug={family.slug}
+        familyName={family.name}
+      />
+    </section>
+
+    <!-- Best Packing Visualizations Gallery -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
         <div>
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">{family.name}</h1>
-          <p class="text-xs text-slate-400 mt-1">
-            Problem Family Code: <code class="text-indigo-300 font-bold">{family.slug}</code> &bull; Inner Shape: <span class="text-slate-200">{family.inner_shape}</span> &bull; Container: <span class="text-slate-200">{family.container_shape}</span>
+          <h2 class="text-lg font-bold text-slate-100 tracking-tight">Best Packing Visualizations</h2>
+          <p class="text-xs text-slate-400 mt-0.5">
+            Architectural plates for solved instances plotted inside verified container boundaries.
           </p>
         </div>
-        <div class="flex items-center gap-3">
-          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-            {familyProblems.length} Problems
-          </span>
-          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            {family.proved_optimal_count} Optimal
-          </span>
-        </div>
+        <span class="font-mono text-xs text-slate-400">
+          {solvedProblems.length} Solved Plate{solvedProblems.length === 1 ? '' : 's'}
+        </span>
       </div>
-    </div>
 
-    <!-- Solution Visualizations (if any exist for family) -->
-    {solvedProblems.length > 0 && (
-      <div class="space-y-3">
-        <h2 class="text-lg font-bold text-white tracking-tight">Best Packing Visualizations</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {solvedProblems.map(p => (
-            <PackingVisual solution={p.solution} title={`N=${p.N}`} />
+      {solvedProblems.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {solvedProblems.map((p: any) => (
+            <PackingVisual
+              solution={p.solution}
+              title={`${family.slug} (N=${p.N})`}
+              fallbackInner={family.inner_shape}
+              fallbackContainer={family.container_shape}
+            />
           ))}
         </div>
-      </div>
-    )}
-
-    <!-- Requirements Document Section -->
-    {reqData && (
-      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-3">
-        <h2 class="text-sm uppercase tracking-wider font-semibold text-slate-400">Requirement Specification ({reqData.original_filename || reqData.slug})</h2>
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 font-mono text-xs text-slate-300 whitespace-pre-wrap overflow-x-auto leading-relaxed">
-          {reqData.content}
+      ) : (
+        <div class="bg-surface border border-hairline rounded-lg p-6 text-center text-xs font-mono text-slate-400">
+          No verified packing solution plates recorded yet for this family. All instances are queued for compute.
         </div>
-      </div>
+      )}
+    </section>
+
+    <!-- Mathematical Specification Drawer -->
+    {reqData && (
+      <section class="space-y-3">
+        <details class="group bg-surface border border-hairline rounded-lg overflow-hidden transition-all">
+          <summary class="flex items-center justify-between p-4 cursor-pointer select-none bg-surface hover:bg-surface-elevated transition-colors text-xs font-mono font-semibold text-slate-200">
+            <div class="flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-blueprint transition-transform group-open:rotate-90 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span>REQUIREMENT SPECIFICATION: {family.name.toUpperCase()} ({family.slug})</span>
+            </div>
+            <span class="text-[11px] text-slate-400 font-normal">
+              {reqData.original_filename || `${family.slug}.md`} &bull; Click to toggle
+            </span>
+          </summary>
+          <div class="p-4 pt-2 border-t border-hairline bg-canvas">
+            <div class="bg-surface-elevated p-4 rounded-md border border-hairline font-mono text-xs text-slate-300 whitespace-pre-wrap overflow-x-auto leading-relaxed">
+              {reqData.content}
+            </div>
+          </div>
+        </details>
+      </section>
     )}
 
-    <!-- Benchmark Results Table for Family -->
-    <div class="space-y-4">
-      <h2 class="text-lg font-bold text-white tracking-tight">Benchmark Results Table</h2>
+    <!-- Benchmark Results Table -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-slate-100 tracking-tight">Benchmark Results Table</h2>
+          <p class="text-xs text-slate-400 mt-0.5">
+            Numerical comparison metrics, verification statuses, and reference links for all family instances.
+          </p>
+        </div>
+        <span class="font-mono text-xs text-slate-400">
+          Showing {familyProblems.length} Instances
+        </span>
+      </div>
       <ResultsTable problems={familyProblems} limit={500} />
-    </div>
+    </section>
   </div>
 </BaseLayout>

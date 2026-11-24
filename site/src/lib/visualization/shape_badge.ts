@@ -151,3 +151,9 @@ export function generateShapeBadgeSvg(
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20" width="20" height="20" class="shrink-0 pointer-events-none" aria-hidden="true">${containerSvg}${innerSvg}</svg>`;
 }
+
+/**
+ * Alias for generateShapeBadgeSvg as requested by specification.
+ */
+export const getShapeBadgeSvg = generateShapeBadgeSvg;
+
