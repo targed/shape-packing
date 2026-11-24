@@ -325,3 +325,37 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
     padding,
   };
 }
+
+/**
+ * Render solution SVG element string for popovers and lightweight previews.
+ */
+export function renderSolutionSvgHtml(solution: SolutionData): { svgHtml: string; spanX: number; spanY: number } | null {
+  const data = generatePackingSvgElements(solution);
+  if (!data) return null;
+
+  const containerElem = data.isContainerCircle
+    ? `<circle cx="0" cy="0" r="${data.S.toFixed(4)}" fill="none" stroke="#64748b" stroke-width="0.04" stroke-dasharray="0.1,0.1" />`
+    : data.containerVertices
+      ? `<polygon points="${data.containerVertices.map(p => `${p.x.toFixed(4)},${p.y.toFixed(4)}`).join(' ')}" fill="none" stroke="#64748b" stroke-width="0.04" stroke-dasharray="0.1,0.1" />`
+      : '';
+
+  const shapesElems = data.shapes.map(s => {
+    if (s.isCircle) {
+      return `<circle cx="${s.cx.toFixed(4)}" cy="${s.cy.toFixed(4)}" r="1" fill="${s.color}" fill-opacity="0.25" stroke="${s.color}" stroke-width="0.03" />`;
+    }
+    if (s.vertices) {
+      const pts = s.vertices.map(p => `${p.x.toFixed(4)},${p.y.toFixed(4)}`).join(' ');
+      return `<polygon points="${pts}" fill="${s.color}" fill-opacity="0.25" stroke="${s.color}" stroke-width="0.03" />`;
+    }
+    return '';
+  }).join('');
+
+  const svgHtml = `<svg viewBox="${data.viewBox}" class="w-full h-full overflow-visible" style="transform: scaleY(-1); transform-origin: center;">${containerElem}${shapesElems}</svg>`;
+
+  return {
+    svgHtml,
+    spanX: data.spanX,
+    spanY: data.spanY,
+  };
+}
+

@@ -14,21 +14,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 <BaseLayout title="Results & Solver Analysis | Shape Packing">
   <div class="space-y-8">
     <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-hairline pb-6">
       <div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Results & Solver Analysis</h1>
-        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">Results &amp; Solver Analysis</h1>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1 font-sans">
           Tracking solver runs, record-beating metrics, optimization gaps, and priority targets across {summary.total_problems.toLocaleString()} problems.
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-2">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40">
+        <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/40">
           {summary.total_new_bests} New Bests
         </span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
           {summary.total_matches} Matched Records
         </span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-900 border border-slate-800 text-slate-300">
+        <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-surface border border-hairline text-slate-300">
           {summary.total_attempted} Attempted
         </span>
       </div>
@@ -36,22 +36,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
     <!-- Highlight: New Best Records Showcase -->
     {new_bests.length > 0 && (
-      <div class="bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-indigo-500/10 border border-amber-500/30 rounded-2xl p-6 space-y-4 shadow-xl">
+      <div class="bg-surface border border-amber-500/30 rounded-xl p-6 space-y-4 shadow-xl">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 text-xs font-bold uppercase tracking-wider">
+            <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/40 flex items-center justify-center text-amber-300 text-xs font-bold uppercase tracking-wider font-mono">
               REC
             </div>
             <div>
-              <h2 class="text-lg font-bold text-white tracking-tight">New Best Records Beat ({summary.total_new_bests} Problems)</h2>
-              <p class="text-xs text-amber-200/80">Configurations where your solver beat Erich Friedman's historical benchmark bounds!</p>
+              <h2 class="text-lg font-bold text-white tracking-tight font-display">New Best Records Beat ({summary.total_new_bests} Problems)</h2>
+              <p class="text-xs text-amber-200/80 font-sans">Configurations where your solver beat Erich Friedman's historical benchmark bounds.</p>
             </div>
           </div>
         </div>
 
-        <div class="overflow-x-auto rounded-xl border border-amber-500/20 bg-slate-950/80">
+        <div class="overflow-x-auto rounded-lg border border-amber-500/20 bg-canvas/80">
           <table class="w-full text-left text-xs text-slate-300">
-            <thead class="bg-slate-900/90 uppercase text-amber-300 border-b border-amber-500/20 font-semibold tracking-wider">
+            <thead class="bg-surface text-amber-300 border-b border-amber-500/20 font-semibold tracking-wider uppercase">
               <tr>
                 <th class="px-4 py-3">Problem</th>
                 <th class="px-3 py-3 text-center">N</th>
@@ -61,7 +61,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                 <th class="px-4 py-3 text-center">Visual</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-slate-800/60 font-mono">
+            <tbody class="divide-y divide-hairline font-mono">
               {new_bests.map((nb) => (
                 <tr class="hover:bg-amber-500/5 transition-colors">
                   <td class="px-4 py-2.5 font-sans font-semibold text-slate-200">
@@ -69,17 +69,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                       {nb.problem_family}
                     </a>
                   </td>
-                  <td class="px-3 py-2.5 text-center font-bold text-amber-400">{nb.N}</td>
-                  <td class="px-4 py-2.5 text-right text-slate-400">{nb.known_value ? nb.known_value.toFixed(6) : '—'}</td>
-                  <td class="px-4 py-2.5 text-right font-bold text-amber-300">{nb.our_best_metric ? nb.our_best_metric.toFixed(6) : '—'}</td>
-                  <td class="px-4 py-2.5 text-right font-bold text-emerald-400">{nb.diff ? nb.diff.toFixed(6) : '—'}</td>
+                  <td class="px-3 py-2.5 text-center font-bold text-amber-400 tabular-nums">{nb.N}</td>
+                  <td class="px-4 py-2.5 text-right text-slate-300 tabular-nums">{nb.known_value ? nb.known_value.toFixed(6) : '-'}</td>
+                  <td class="px-4 py-2.5 text-right font-bold text-amber-300 tabular-nums">{nb.our_best_metric ? nb.our_best_metric.toFixed(6) : '-'}</td>
+                  <td class="px-4 py-2.5 text-right font-bold text-emerald-400 tabular-nums">{nb.diff ? nb.diff.toFixed(6) : '-'}</td>
                   <td class="px-4 py-2.5 text-center font-sans">
                     {nb.solution ? (
-                      <span class="inline-flex items-center text-[10px] font-semibold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
+                      <span class="inline-flex items-center text-[10px] font-semibold text-blueprint bg-blueprint/10 px-2 py-0.5 rounded-md border border-blueprint/30">
                         Visual Ready
                       </span>
                     ) : (
-                      <span class="text-slate-600">—</span>
+                      <span class="text-slate-500 font-mono">-</span>
                     )}
                   </td>
                 </tr>
@@ -95,30 +95,30 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
     <!-- Promising Shapes & Priority Queue Targets -->
     {priority_targets.length > 0 && (
-      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-4">
+      <div class="bg-surface/80 border border-hairline rounded-xl p-6 space-y-4">
         <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-lg font-bold text-white tracking-tight">Most Promising Target Shapes (Priority Queue)</h2>
-            <p class="text-xs text-slate-400">Unproven problems ranked by lowest density / highest optimization potential from priority_queue.json</p>
+            <h2 class="text-lg font-bold text-white tracking-tight font-display">Most Promising Target Shapes (Priority Queue)</h2>
+            <p class="text-xs text-slate-400 font-sans">Unproven problems ranked by lowest density / highest optimization potential from priority_queue.json</p>
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {priority_targets.slice(0, 10).map((pt) => (
-            <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex flex-col justify-between space-y-2 hover:border-indigo-500/40 transition-colors">
+            <div class="bg-canvas border border-hairline rounded-lg p-3 flex flex-col justify-between space-y-2 hover:border-blueprint/40 transition-colors">
               <div class="flex items-center justify-between">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-blueprint bg-blueprint/10 px-2 py-0.5 rounded-md border border-blueprint/20 font-mono">
                   Rank #{pt.priority_rank}
                 </span>
-                <span class="text-[11px] font-mono text-emerald-400 font-bold">N={pt.N}</span>
+                <span class="text-[11px] font-mono text-emerald-400 font-bold tabular-nums">N={pt.N}</span>
               </div>
               <div>
-                <a href={`${base}/family/${pt.problem_family}`} class="text-xs font-bold text-slate-200 hover:text-indigo-400 transition-colors">
+                <a href={`${base}/family/${pt.problem_family}`} class="text-xs font-bold text-slate-200 hover:text-blueprint transition-colors font-sans">
                   {pt.problem_family}
                 </a>
-                <div class="text-[11px] text-slate-400 mt-1 flex justify-between">
+                <div class="text-[11px] text-slate-400 mt-1 flex justify-between font-mono">
                   <span>Density:</span>
-                  <span class="font-mono font-semibold text-indigo-300">{pt.density ? pt.density.toFixed(4) : 'N/A'}</span>
+                  <span class="font-semibold text-sky-300 tabular-nums">{pt.density ? pt.density.toFixed(4) : 'N/A'}</span>
                 </div>
               </div>
             </div>
@@ -130,16 +130,75 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <!-- Interactive Filters for Full Table -->
     <div class="space-y-4">
       <div class="flex items-center justify-between">
-        <h2 class="text-lg font-bold text-white tracking-tight">All Benchmark & Attempted Results</h2>
-        <span class="text-xs text-slate-400">
-          Showing: <strong id="visible-count" class="text-indigo-400">{problems.length.toLocaleString()}</strong> / {problems.length.toLocaleString()}
+        <h2 class="text-lg font-bold text-white tracking-tight font-display">All Benchmark &amp; Attempted Results</h2>
+        <span class="text-xs text-slate-400 font-sans">
+          Showing: <strong id="visible-count" class="text-blueprint font-mono">{problems.length.toLocaleString()}</strong> / <span class="font-mono">{problems.length.toLocaleString()}</span>
         </span>
       </div>
 
-      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-3 items-center justify-between">
+      <!-- Quick Filter Tabs -->
+      <div class="flex flex-wrap items-center gap-2 border-b border-hairline pb-4" role="tablist" aria-label="Filter problems by status">
+        <button
+          type="button"
+          role="tab"
+          data-tab="all"
+          aria-selected="true"
+          class="quick-filter-tab px-3.5 py-2 rounded-lg text-xs font-semibold border transition-colors flex items-center gap-2 cursor-pointer bg-surface border-slate-600 text-white font-sans"
+        >
+          <span>All Problems</span>
+          <span class="font-mono text-[11px] px-1.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 tabular-nums">
+            {problems.length.toLocaleString()}
+          </span>
+        </button>
+
+        <button
+          type="button"
+          role="tab"
+          data-tab="NEW_BEST"
+          aria-selected="false"
+          class="quick-filter-tab px-3.5 py-2 rounded-lg text-xs font-semibold border transition-colors flex items-center gap-2 cursor-pointer bg-surface/50 border-slate-800 text-slate-400 hover:text-amber-300 hover:border-amber-500/40 font-sans"
+        >
+          <span class="w-1.5 h-1.5 rounded-sm bg-amber-400 shrink-0"></span>
+          <span>Records Broken</span>
+          <span class="font-mono text-[11px] px-1.5 py-0.5 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/30 tabular-nums">
+            {summary.total_new_bests}
+          </span>
+        </button>
+
+        <button
+          type="button"
+          role="tab"
+          data-tab="proved_optimal"
+          aria-selected="false"
+          class="quick-filter-tab px-3.5 py-2 rounded-lg text-xs font-semibold border transition-colors flex items-center gap-2 cursor-pointer bg-surface/50 border-slate-800 text-slate-400 hover:text-emerald-300 hover:border-emerald-500/40 font-sans"
+        >
+          <span class="w-1.5 h-1.5 rounded-sm bg-emerald-400 shrink-0"></span>
+          <span>Proved Optimal</span>
+          <span class="font-mono text-[11px] px-1.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 tabular-nums">
+            {summary.proved_optimal}
+          </span>
+        </button>
+
+        <button
+          type="button"
+          role="tab"
+          data-tab="priority"
+          aria-selected="false"
+          class="quick-filter-tab px-3.5 py-2 rounded-lg text-xs font-semibold border transition-colors flex items-center gap-2 cursor-pointer bg-surface/50 border-slate-800 text-slate-400 hover:text-sky-300 hover:border-sky-500/40 font-sans"
+        >
+          <span class="w-1.5 h-1.5 rounded-sm bg-sky-400 shrink-0"></span>
+          <span>Priority Targets</span>
+          <span class="font-mono text-[11px] px-1.5 py-0.5 rounded-md bg-sky-500/10 text-sky-300 border border-sky-500/30 tabular-nums">
+            {priority_targets.length}
+          </span>
+        </button>
+      </div>
+
+      <!-- Secondary Controls & Search -->
+      <div class="bg-surface/80 border border-hairline rounded-lg p-4 flex flex-col md:flex-row gap-3 items-center justify-between">
         <div class="w-full flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <!-- Family Filter -->
-          <select id="family-filter" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+          <select id="family-filter" class="bg-canvas border border-hairline rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blueprint font-sans">
             <option value="">All Families ({families.length})</option>
             {families.map((f) => (
               <option value={f.slug}>{f.name} ({f.slug})</option>
@@ -147,7 +206,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           </select>
 
           <!-- Attempted Filter -->
-          <select id="attempted-filter" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+          <select id="attempted-filter" class="bg-canvas border border-hairline rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blueprint font-sans">
             <option value="">All Attempt Statuses</option>
             <option value="yes">Attempted Only ({summary.total_attempted})</option>
             <option value="NEW_BEST">NEW_BEST Records Beat ({summary.total_new_bests})</option>
@@ -157,7 +216,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           </select>
 
           <!-- Ref Status Filter -->
-          <select id="status-filter" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+          <select id="status-filter" class="bg-canvas border border-hairline rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blueprint font-sans">
             <option value="">All Benchmark Types</option>
             <option value="proved_optimal">Proved Optimal ({summary.proved_optimal})</option>
             <option value="best_known">Best Known ({summary.best_known})</option>
@@ -169,13 +228,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             type="text"
             id="search-input"
             placeholder="Search family, N, status..."
-            class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+            class="bg-canvas border border-hairline rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blueprint font-sans"
           />
         </div>
 
         <button
           id="reset-filters"
-          class="w-full md:w-auto px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 border border-slate-700 transition-colors"
+          class="w-full md:w-auto px-4 py-2 rounded-lg bg-surface-elevated hover:bg-surface-hover text-xs font-semibold text-slate-300 border border-hairline transition-colors cursor-pointer font-sans"
         >
           Reset
         </button>
@@ -196,6 +255,43 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     const resetButton = document.getElementById('reset-filters');
     const visibleCountDisplay = document.getElementById('visible-count');
     const container = document.getElementById('results-table-container');
+    const tabs = document.querySelectorAll('.quick-filter-tab');
+
+    let activeTab = 'all';
+
+    function setActiveTab(tabKey) {
+      activeTab = tabKey;
+      tabs.forEach((tab) => {
+        const isSelected = tab.getAttribute('data-tab') === tabKey;
+        tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+
+        // Reset base classes
+        tab.className = 'quick-filter-tab px-3.5 py-2 rounded-lg text-xs font-semibold border transition-colors flex items-center gap-2 cursor-pointer font-sans';
+
+        if (isSelected) {
+          if (tabKey === 'NEW_BEST') {
+            tab.classList.add('bg-amber-500/10', 'border-amber-500', 'text-amber-300');
+          } else if (tabKey === 'proved_optimal') {
+            tab.classList.add('bg-emerald-500/10', 'border-emerald-500', 'text-emerald-300');
+          } else if (tabKey === 'priority') {
+            tab.classList.add('bg-sky-500/10', 'border-sky-500', 'text-sky-300');
+          } else {
+            tab.classList.add('bg-surface', 'border-slate-600', 'text-white');
+          }
+        } else {
+          tab.classList.add('bg-surface/50', 'border-slate-800', 'text-slate-400', 'hover:text-slate-200', 'hover:border-slate-700');
+        }
+      });
+
+      applyFilters();
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const tabKey = tab.getAttribute('data-tab') || 'all';
+        setActiveTab(tabKey);
+      });
+    });
 
     function applyFilters() {
       const fam = (familyFilter?.value || '').toLowerCase().trim();
@@ -211,7 +307,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         const rowAtt = tr.getAttribute('data-attempted') || 'no';
         const rowComp = tr.getAttribute('data-comparison') || '';
         const rowStat = (tr.getAttribute('data-status') || '').toLowerCase();
+        const rowPriority = tr.getAttribute('data-priority') || 'no';
         const rowSearch = (tr.getAttribute('data-search') || tr.innerText || '').toLowerCase();
+
+        // Check active quick filter tab
+        let matchesTab = true;
+        if (activeTab === 'NEW_BEST') matchesTab = (rowComp === 'NEW_BEST');
+        else if (activeTab === 'proved_optimal') matchesTab = (rowStat === 'proved_optimal');
+        else if (activeTab === 'priority') matchesTab = (rowPriority === 'yes');
 
         const matchesFam = !fam || rowFam === fam;
 
@@ -225,7 +328,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         const matchesStat = !stat || rowStat === stat;
         const matchesQuery = !query || rowSearch.includes(query);
 
-        if (matchesFam && matchesAtt && matchesStat && matchesQuery) {
+        if (matchesTab && matchesFam && matchesAtt && matchesStat && matchesQuery) {
           tr.style.display = '';
           visibleCount++;
         } else {
@@ -247,7 +350,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       if (attemptedFilter) attemptedFilter.value = '';
       if (statusFilter) statusFilter.value = '';
       if (searchInput) searchInput.value = '';
-      applyFilters();
+      setActiveTab('all');
     });
+
+    // Check URL parameters for tab initial state (e.g. ?tab=NEW_BEST)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTab = urlParams.get('tab');
+    if (initialTab && ['all', 'NEW_BEST', 'proved_optimal', 'priority'].includes(initialTab)) {
+      setActiveTab(initialTab);
+    }
   </script>
 </BaseLayout>

@@ -1,5 +1,5 @@
 ---
-import PackingVisual from './PackingVisual.astro';
+import { parseFamilySlug, generateShapeBadgeSvg } from '../lib/visualization/shape_badge';
 
 interface Problem {
   id: string;
@@ -39,161 +39,311 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <div class="w-full space-y-4">
-  <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/60 shadow-xl backdrop-blur-sm">
+  <div class="overflow-x-auto rounded-lg border border-hairline bg-surface/80 shadow-xl backdrop-blur-sm">
     <table class="w-full text-left text-sm text-slate-300">
-      <thead class="bg-slate-950/80 text-xs uppercase text-slate-400 border-b border-slate-800 tracking-wider">
+      <thead class="bg-canvas/90 text-xs uppercase text-slate-400 border-b border-hairline tracking-wider">
         <tr>
           <th scope="col" class="px-4 py-3.5 font-semibold">Family</th>
           <th scope="col" class="px-3 py-3.5 font-semibold text-center">N</th>
           <th scope="col" class="px-4 py-3.5 font-semibold text-center">Benchmark Status</th>
           <th scope="col" class="px-4 py-3.5 font-semibold text-right">Known Ref Metric</th>
           <th scope="col" class="px-4 py-3.5 font-semibold text-right">Our Best Metric</th>
-          <th scope="col" class="px-4 py-3.5 font-semibold text-center">Solver Result & Gap</th>
+          <th scope="col" class="px-4 py-3.5 font-semibold text-center">Solver Result &amp; Gap</th>
           <th scope="col" class="px-4 py-3.5 font-semibold text-right">Visual / Ref</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-slate-800/60 font-mono text-xs">
-        {displayProblems.map((p) => (
-          <tr
-            class={`hover:bg-slate-800/40 transition-colors group ${p.comparison_status === 'NEW_BEST' ? 'bg-amber-500/5' : ''}`}
-            data-family={p.problem_family}
-            data-status={p.status}
-            data-attempted={p.attempted ? 'yes' : 'no'}
-            data-comparison={p.comparison_status}
-            data-search={`${p.problem_family} N=${p.N} ${p.status} ${p.comparison_status} ${p.known_value ?? ''} ${p.our_best_metric ?? ''}`.toLowerCase()}
-          >
-            <!-- Family -->
-            <td class="px-4 py-3.5 font-sans font-medium text-slate-200">
-              <a href={`${base}/family/${p.problem_family}`} class="hover:text-indigo-400 transition-colors flex items-center gap-2">
-                <span>{p.problem_family}</span>
-                <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </td>
+      <tbody class="divide-y divide-hairline font-mono text-xs">
+        {displayProblems.map((p) => {
+          const innerToken = p.inner_shape || parseFamilySlug(p.problem_family).inner;
+          const containerToken = p.container_shape || parseFamilySlug(p.problem_family).container;
+          const isCadmium = p.comparison_status === 'NEW_BEST';
+          const badgeSvg = generateShapeBadgeSvg(innerToken, containerToken, isCadmium);
 
-            <!-- N -->
-            <td class="px-3 py-3.5 text-center font-semibold text-indigo-300">{p.N}</td>
+          return (
+            <tr
+              class={`hover:bg-surface-hover/50 transition-colors group ${isCadmium ? 'bg-amber-500/5' : ''}`}
+              data-family={p.problem_family}
+              data-status={p.status}
+              data-attempted={p.attempted ? 'yes' : 'no'}
+              data-comparison={p.comparison_status}
+              data-priority={p.priority_rank && p.priority_rank <= 25 ? 'yes' : 'no'}
+              data-search={`${p.problem_family} N=${p.N} ${p.status} ${p.comparison_status} ${p.known_value ?? ''} ${p.our_best_metric ?? ''}`.toLowerCase()}
+            >
+              <!-- Family with Mini SVG Shape Badge -->
+              <td class="px-4 py-3 font-sans font-medium text-slate-200">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-5 h-5 shrink-0 flex items-center justify-center" set:html={badgeSvg} />
+                  <a href={`${base}/family/${p.problem_family}`} class="hover:text-blueprint transition-colors flex items-center gap-1 font-medium text-slate-200">
+                    <span>{p.problem_family}</span>
+                    <svg class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-blueprint" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </td>
 
-            <!-- Benchmark Status -->
-            <td class="px-4 py-3.5 text-center font-sans">
-              {p.status === 'proved_optimal' && (
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                  Proved Optimal
-                </span>
-              )}
-              {p.status === 'best_known' && (
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20">
-                  Best Known
-                </span>
-              )}
-              {p.status === 'trivial' && (
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-800 text-slate-400 border border-slate-700">
-                  Trivial
-                </span>
-              )}
-              {p.status !== 'proved_optimal' && p.status !== 'best_known' && p.status !== 'trivial' && (
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                  {p.status}
-                </span>
-              )}
-            </td>
+              <!-- N -->
+              <td class="px-3 py-3 text-center font-mono font-semibold text-slate-200 tabular-nums">{p.N}</td>
 
-            <!-- Known Ref -->
-            <td class="px-4 py-3.5 text-right font-semibold text-slate-300">
-              {p.known_value !== null && p.known_value !== undefined ? (
-                <span>{p.known_value.toFixed(5)}</span>
-              ) : (
-                <span class="text-slate-600">—</span>
-              )}
-            </td>
-
-            <!-- Our Best Metric -->
-            <td class="px-4 py-3.5 text-right font-semibold">
-              {p.our_best_metric !== null && p.our_best_metric !== undefined ? (
-                <div class="flex flex-col items-end">
-                  <span class={p.comparison_status === 'NEW_BEST' ? 'text-amber-400 font-bold' : p.comparison_status === 'matches_best_known' ? 'text-emerald-400' : 'text-sky-300'}>
-                    s = {p.our_best_metric.toFixed(5)}
+              <!-- Benchmark Status -->
+              <td class="px-4 py-3 text-center font-sans">
+                {p.status === 'proved_optimal' && (
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                    Proved Optimal
                   </span>
-                  {p.our_best_s && (
-                    <span class="text-[10px] text-slate-500 font-normal">S = {p.our_best_s.toFixed(4)}</span>
+                )}
+                {p.status === 'best_known' && (
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/30">
+                    Best Known
+                  </span>
+                )}
+                {p.status === 'trivial' && (
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-800 text-slate-400 border border-slate-700">
+                    Trivial
+                  </span>
+                )}
+                {p.status !== 'proved_optimal' && p.status !== 'best_known' && p.status !== 'trivial' && (
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                    {p.status}
+                  </span>
+                )}
+              </td>
+
+              <!-- Known Ref -->
+              <td class="px-4 py-3 text-right font-mono text-slate-300 tabular-nums">
+                {p.known_value !== null && p.known_value !== undefined ? (
+                  <span>{p.known_value.toFixed(5)}</span>
+                ) : (
+                  <span class="text-slate-500 font-mono">-</span>
+                )}
+              </td>
+
+              <!-- Our Best Metric -->
+              <td class="px-4 py-3 text-right font-mono tabular-nums">
+                {p.our_best_metric !== null && p.our_best_metric !== undefined ? (
+                  <div class="flex flex-col items-end">
+                    <span class={p.comparison_status === 'NEW_BEST' ? 'text-amber-300 font-bold' : p.comparison_status === 'matches_best_known' ? 'text-emerald-400 font-semibold' : 'text-sky-300'}>
+                      s = {p.our_best_metric.toFixed(5)}
+                    </span>
+                    {p.our_best_s && (
+                      <span class="text-[10px] text-slate-400 font-normal">S = {p.our_best_s.toFixed(4)}</span>
+                    )}
+                  </div>
+                ) : (
+                  <span class="text-slate-500 font-mono">-</span>
+                )}
+              </td>
+
+              <!-- Solver Result & Gap -->
+              <td class="px-4 py-3 text-center font-sans">
+                {p.comparison_status === 'NEW_BEST' && (
+                  <div class="flex flex-col items-center gap-0.5">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">
+                      NEW BEST
+                    </span>
+                    <span class="text-[10px] font-mono text-amber-300 tabular-nums">{p.diff !== null ? p.diff.toFixed(5) : ''}</span>
+                  </div>
+                )}
+                {p.comparison_status === 'matches_best_known' && (
+                  <div class="flex flex-col items-center gap-0.5">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                      Matches Record
+                    </span>
+                    <span class="text-[10px] font-mono text-slate-400 tabular-nums">100.0% match</span>
+                  </div>
+                )}
+                {p.comparison_status === 'worse_than_best_known' && (
+                  <div class="flex flex-col items-center gap-0.5">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700">
+                      Attempted
+                    </span>
+                    <span class="text-[10px] font-mono text-sky-400 tabular-nums">
+                      {p.diff !== null ? `+${p.diff.toFixed(5)}` : ''} ({p.closeness_pct ? `${p.closeness_pct.toFixed(1)}%` : ''})
+                    </span>
+                  </div>
+                )}
+                {p.comparison_status === 'unattempted' && (
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-900 text-slate-400 border border-slate-800">
+                    Unattempted
+                  </span>
+                )}
+                {p.comparison_status === 'no_best_known' && p.attempted && (
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/30">
+                    Solved
+                  </span>
+                )}
+              </td>
+
+              <!-- Visual Plate / Source Link -->
+              <td class="px-4 py-3 text-right font-sans">
+                <div class="flex items-center justify-end gap-2">
+                  {p.solution && (
+                    <button
+                      type="button"
+                      class="solution-popover-trigger inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-mono font-medium text-blueprint bg-blueprint/10 border border-blueprint/30 hover:bg-blueprint/20 hover:border-blueprint/50 transition-colors cursor-pointer"
+                      data-family={p.problem_family}
+                      data-n={p.N}
+                      data-status={p.status}
+                      data-comparison={p.comparison_status}
+                      data-metric={p.our_best_metric ?? p.solution.final_metric ?? p.solution.S ?? ''}
+                      data-solution={JSON.stringify({
+                        S: p.solution.S,
+                        N: p.solution.N,
+                        inner_token: p.solution.inner_token ?? p.inner_shape,
+                        container_token: p.solution.container_token ?? p.container_shape,
+                        final_metric: p.solution.final_metric,
+                        values: p.solution.values
+                      })}
+                      aria-label={`Preview solution vector for ${p.problem_family} N=${p.N}`}
+                    >
+                      <svg class="w-3 h-3 text-blueprint" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                      <span>Plate</span>
+                    </button>
+                  )}
+                  {p.source_url ? (
+                    <a
+                      href={p.source_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={p.source_note || 'Reference Page'}
+                      class="text-xs text-slate-400 hover:text-white transition-colors underline underline-offset-2 font-sans"
+                    >
+                      Ref &rarr;
+                    </a>
+                  ) : (
+                    <span class="text-slate-500 font-mono">-</span>
                   )}
                 </div>
-              ) : (
-                <span class="text-slate-600">—</span>
-              )}
-            </td>
-
-            <!-- Solver Result & Gap -->
-            <td class="px-4 py-3.5 text-center font-sans">
-              {p.comparison_status === 'NEW_BEST' && (
-                <div class="flex flex-col items-center gap-0.5">
-                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 shadow-sm animate-pulse">
-                    NEW BEST!
-                  </span>
-                  <span class="text-[10px] font-mono text-amber-400">{p.diff !== null ? p.diff.toFixed(5) : ''}</span>
-                </div>
-              )}
-              {p.comparison_status === 'matches_best_known' && (
-                <div class="flex flex-col items-center gap-0.5">
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    Matches Record
-                  </span>
-                  <span class="text-[10px] font-mono text-slate-400">100.0% match</span>
-                </div>
-              )}
-              {p.comparison_status === 'worse_than_best_known' && (
-                <div class="flex flex-col items-center gap-0.5">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-800/80 text-slate-300 border border-slate-700">
-                    Attempted
-                  </span>
-                  <span class="text-[10px] font-mono text-sky-400">
-                    {p.diff !== null ? `+${p.diff.toFixed(5)}` : ''} ({p.closeness_pct ? `${p.closeness_pct.toFixed(1)}%` : ''})
-                  </span>
-                </div>
-              )}
-              {p.comparison_status === 'unattempted' && (
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-slate-900 text-slate-600 border border-slate-800/60">
-                  Unattempted
-                </span>
-              )}
-              {p.comparison_status === 'no_best_known' && p.attempted && (
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                  Unindexed Solved
-                </span>
-              )}
-            </td>
-
-            <!-- Visual / Source Link -->
-            <td class="px-4 py-3.5 text-right font-sans">
-              <div class="flex items-center justify-end gap-2">
-                {p.solution && (
-                  <span class="inline-flex items-center gap-1 text-[10px] font-semibold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">
-                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                    Visual
-                  </span>
-                )}
-                {p.source_url ? (
-                  <a
-                    href={p.source_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={p.source_note || 'Reference Page'}
-                    class="text-xs text-slate-400 hover:text-white transition-colors underline underline-offset-2"
-                  >
-                    Ref &rarr;
-                  </a>
-                ) : (
-                  <span class="text-slate-600">&mdash;</span>
-                )}
-              </div>
-            </td>
-          </tr>
-        ))}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   </div>
 </div>
+
+<!-- Instant Solution Preview Hover Popover Container -->
+<div
+  id="solution-hover-popover"
+  role="tooltip"
+  class="solution-popover fixed z-50 pointer-events-none opacity-0 invisible transition-opacity duration-150 w-72 bg-surface/95 border border-hairline rounded-lg shadow-2xl p-3.5 space-y-2.5 backdrop-blur-md text-left"
+>
+  <div class="flex items-center justify-between border-b border-hairline pb-2">
+    <div class="flex items-center gap-1.5 min-w-0">
+      <span id="popover-badge-icon" class="w-4 h-4 shrink-0 flex items-center justify-center"></span>
+      <span id="popover-title" class="font-mono text-xs text-white font-semibold truncate"></span>
+    </div>
+    <span id="popover-status-badge" class="font-mono text-[10px] px-2 py-0.5 rounded-md font-semibold shrink-0"></span>
+  </div>
+
+  <div class="w-full aspect-square relative flex items-center justify-center bg-canvas border border-hairline rounded-md p-2 overflow-hidden">
+    <div class="absolute top-1.5 left-2 pointer-events-none font-mono text-[9px] text-slate-400 tracking-wider select-none z-10">
+      (0, 0)
+    </div>
+    <div id="popover-dimensions" class="absolute bottom-1.5 right-2 pointer-events-none font-mono text-[9px] text-slate-400 tracking-wider select-none z-10">
+      0.00 &times; 0.00
+    </div>
+    <div id="popover-svg-container" class="w-full h-full flex items-center justify-center"></div>
+  </div>
+
+  <div class="flex items-center justify-between text-[11px] font-mono text-slate-300 pt-0.5">
+    <div>
+      <span class="text-slate-400">Metric: </span>
+      <span id="popover-metric" class="font-semibold text-white"></span>
+    </div>
+    <div class="text-emerald-400 font-semibold text-[10px]">Verified Plate</div>
+  </div>
+</div>
+
+<script>
+  import { renderSolutionSvgHtml } from '../lib/visualization/render_packing';
+  import { parseFamilySlug, generateShapeBadgeSvg } from '../lib/visualization/shape_badge';
+
+  const popover = document.getElementById('solution-hover-popover');
+  const popoverTitle = document.getElementById('popover-title');
+  const popoverStatus = document.getElementById('popover-status-badge');
+  const popoverDim = document.getElementById('popover-dimensions');
+  const popoverSvg = document.getElementById('popover-svg-container');
+  const popoverMetric = document.getElementById('popover-metric');
+  const popoverBadgeIcon = document.getElementById('popover-badge-icon');
+
+  if (popover) {
+    document.addEventListener('mouseover', (e) => {
+      const target = (e.target as HTMLElement)?.closest('.solution-popover-trigger') as HTMLElement;
+      if (!target) return;
+
+      const rawSolution = target.getAttribute('data-solution');
+      if (!rawSolution) return;
+
+      try {
+        const solution = JSON.parse(rawSolution);
+        const family = target.getAttribute('data-family') || '';
+        const n = target.getAttribute('data-n') || '';
+        const status = target.getAttribute('data-status') || '';
+        const comp = target.getAttribute('data-comparison') || '';
+        const metric = target.getAttribute('data-metric') || '';
+
+        const rendered = renderSolutionSvgHtml(solution);
+        if (!rendered) return;
+
+        if (popoverTitle) popoverTitle.textContent = `${family} (N=${n})`;
+        if (popoverDim) popoverDim.innerHTML = `${rendered.spanX.toFixed(2)} &times; ${rendered.spanY.toFixed(2)}`;
+        if (popoverSvg) popoverSvg.innerHTML = rendered.svgHtml;
+        if (popoverMetric) popoverMetric.textContent = metric ? `s = ${parseFloat(metric).toFixed(5)}` : 'N/A';
+
+        if (popoverBadgeIcon) {
+          const tokens = parseFamilySlug(family);
+          popoverBadgeIcon.innerHTML = generateShapeBadgeSvg(tokens.inner, tokens.container, comp === 'NEW_BEST');
+        }
+
+        if (popoverStatus) {
+          if (comp === 'NEW_BEST') {
+            popoverStatus.textContent = 'NEW BEST';
+            popoverStatus.className = 'font-mono text-[10px] px-2 py-0.5 rounded-md font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/40';
+          } else if (status === 'proved_optimal') {
+            popoverStatus.textContent = 'Proved Optimal';
+            popoverStatus.className = 'font-mono text-[10px] px-2 py-0.5 rounded-md font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/40';
+          } else if (comp === 'matches_best_known') {
+            popoverStatus.textContent = 'Matches Record';
+            popoverStatus.className = 'font-mono text-[10px] px-2 py-0.5 rounded-md font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30';
+          } else {
+            popoverStatus.textContent = 'Solved';
+            popoverStatus.className = 'font-mono text-[10px] px-2 py-0.5 rounded-md font-semibold bg-sky-500/10 text-sky-300 border border-sky-500/30';
+          }
+        }
+
+        const rect = target.getBoundingClientRect();
+        const popoverWidth = 288;
+        const popoverHeight = 330;
+        let left = rect.left - popoverWidth - 12;
+        if (left < 16) {
+          left = rect.right + 12;
+        }
+        let top = rect.top + (rect.height / 2) - (popoverHeight / 2);
+        if (top < 16) top = 16;
+        if (top + popoverHeight > window.innerHeight - 16) {
+          top = window.innerHeight - popoverHeight - 16;
+        }
+
+        popover.style.left = `${left}px`;
+        popover.style.top = `${top}px`;
+        popover.classList.remove('opacity-0', 'invisible');
+        popover.classList.add('opacity-100', 'visible');
+      } catch (err) {
+        // Ignore parse error
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      const target = (e.target as HTMLElement)?.closest('.solution-popover-trigger');
+      if (target) {
+        popover.classList.add('opacity-0', 'invisible');
+        popover.classList.remove('opacity-100', 'visible');
+      }
+    });
+  }
+</script>
