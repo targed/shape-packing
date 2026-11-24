@@ -3,37 +3,99 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<BaseLayout title="About | Shape Packing Dashboard">
-  <div class="max-w-3xl mx-auto space-y-8">
-    <div class="border-b border-slate-800 pb-6">
-      <h1 class="text-3xl font-extrabold text-white tracking-tight">About Shape Packing Auto-Researcher</h1>
-      <p class="text-sm text-slate-400 mt-2">
-        Background, purpose, internal use guidelines, and citation information.
+<BaseLayout title="About | Shape Packing Geometric Benchmark">
+  <div class="max-w-4xl mx-auto space-y-8">
+    <!-- Header Section -->
+    <div class="space-y-3 border-b border-hairline pb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface-elevated text-blueprint-light border border-hairline text-xs font-mono">
+        <span class="w-2 h-2 rounded-md bg-blueprint-light"></span>
+        System Overview &amp; Research Architecture
+      </div>
+      <h1 class="text-3xl font-bold font-display text-slate-100 tracking-tight">About Shape Packing Auto-Researcher</h1>
+      <p class="text-sm text-slate-400 max-w-2xl leading-relaxed">
+        Background, scientific objectives, internal use guidelines, and computational architecture.
       </p>
     </div>
 
-    <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
-      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-3">
-        <h2 class="text-lg font-bold text-white">Project Purpose</h2>
-        <p>
+    <!-- Architectural Plates -->
+    <div class="space-y-6">
+      <!-- Project Purpose -->
+      <div class="bg-surface border border-hairline rounded-lg p-6 space-y-4">
+        <h2 class="text-xl font-bold font-display text-slate-100 tracking-tight">Project Purpose</h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
           The Shape Packing Auto-Researcher project automates the exploration, verification, and benchmark tracking of 2D polygon packing problems. It is designed to act as an internal workbench for algorithmic development, log analysis, and continuous performance evaluation against Erich Friedman's historical packing benchmarks.
         </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="bg-surface-elevated border border-hairline rounded-md p-4 space-y-1.5">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-blueprint-light">Optimization Engine</span>
+            <h3 class="text-sm font-bold font-display text-slate-100">Rust &amp; Rayon Numerical Solver</h3>
+            <p class="text-xs text-slate-400">High-throughput multi-start gradient descent, continuous collision penalty minimization, and boundary contraction.</p>
+          </div>
+          <div class="bg-surface-elevated border border-hairline rounded-md p-4 space-y-1.5">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-verify-light">Distributed Grid</span>
+            <h3 class="text-sm font-bold font-display text-slate-100">Volunteer Compute Coordination</h3>
+            <p class="text-xs text-slate-400">Stateless lease queue protocol connecting standalone native daemons and WebAssembly in-browser workers.</p>
+          </div>
+          <div class="bg-surface-elevated border border-hairline rounded-md p-4 space-y-1.5">
+            <span class="text-[10px] font-mono uppercase tracking-wider text-cadmium-light">Scientific Verification</span>
+            <h3 class="text-sm font-bold font-display text-slate-100">Exact Geometric Validation</h3>
+            <p class="text-xs text-slate-400">Automated double-precision polygon containment and non-overlap auditing before record ingestion.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-6 space-y-3">
-        <h2 class="text-lg font-bold text-amber-300">Internal Use & Citation Notice</h2>
-        <p class="text-amber-200/90 text-xs leading-relaxed">
-          This GitHub Pages site serves as an operational dashboard for ongoing algorithm experiments and research tasks. Results displayed on this dashboard reflect automated solver runs and references. They are intended for internal system debugging, performance tuning, and geometric visualization, and should not be cited as definitive mathematical proofs without explicit secondary verification.
+      <!-- Scientific Reference & Use Notice -->
+      <div class="bg-surface border border-blueprint/30 rounded-lg p-6 space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-md bg-blueprint-light"></span>
+          <h2 class="text-xl font-bold font-display text-blueprint-light tracking-tight">Scientific Reference &amp; Use Notice</h2>
+        </div>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          This platform serves as an operational dashboard for ongoing algorithm experiments and research tasks. Results displayed on this dashboard reflect automated solver runs and historical reference figures. They are intended for internal system debugging, performance tuning, and geometric visualization, and should not be cited as definitive mathematical proofs without explicit secondary verification.
         </p>
+        <div class="bg-surface-elevated border border-hairline rounded-md p-4 font-mono text-xs text-slate-300 space-y-2">
+          <div class="text-slate-400 uppercase tracking-wider text-[10px]">Reference Citation:</div>
+          <div>Erich Friedman, "Packing Center", Math Magic, Stetson University.</div>
+          <div class="text-slate-400 text-[11px]">Historical record comparisons reflect published Friedman benchmark bounds as catalogued in the benchmark dataset.</div>
+        </div>
       </div>
 
-      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-4">
-        <h2 class="text-lg font-bold text-white">How to Use This Site</h2>
-        <ul class="list-disc list-inside space-y-2 text-xs text-slate-400">
-          <li><strong>Results Dashboard:</strong> Use search and family dropdown filters to locate specific configuration bounds (<code class="text-indigo-300">N</code>, shape tokens).</li>
-          <li><strong>Per-Family Pages:</strong> Access detailed requirement specifications and family-level packing metrics via <code class="text-indigo-300">/family/&lt;slug&gt;</code>.</li>
-          <li><strong>Visualizations:</strong> Check solutions with vector SVG drawings rendered directly from position coordinate matrices.</li>
-        </ul>
+      <!-- How to Use This Platform -->
+      <div class="bg-surface border border-hairline rounded-lg p-6 space-y-4">
+        <h2 class="text-xl font-bold font-display text-slate-100 tracking-tight">How to Use This Platform</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="bg-surface-elevated border border-hairline rounded-md p-4 space-y-2">
+            <div class="font-bold font-display text-slate-100 text-sm">Results Explorer</div>
+            <p class="text-slate-300 leading-relaxed">
+              Use search and family dropdown filters to locate specific configuration bounds (<code class="font-mono text-blueprint-light bg-surface px-1 py-0.5 rounded-sm">N</code>, shape tokens) and inspect candidate geometries.
+            </p>
+            <a href={`${base}/results`} class="text-blueprint-light hover:underline font-mono inline-block pt-1">Explore Results Matrix &rarr;</a>
+          </div>
+
+          <div class="bg-surface-elevated border border-hairline rounded-md p-4 space-y-2">
+            <div class="font-bold font-display text-slate-100 text-sm">Shape Family Portfolios</div>
+            <p class="text-slate-300 leading-relaxed">
+              Access detailed requirement specifications and family-level packing metrics via <code class="font-mono text-blueprint-light bg-surface px-1 py-0.5 rounded-sm">/family/&lt;slug&gt;</code> with interactive vector benchmark curves.
+            </p>
+            <a href={`${base}/family`} class="text-blueprint-light hover:underline font-mono inline-block pt-1">Browse 80 Families &rarr;</a>
+          </div>
+
+          <div class="bg-surface-elevated border border-hairline rounded-md p-4 space-y-2">
+            <div class="font-bold font-display text-slate-100 text-sm">Volunteer Contributor Grid</div>
+            <p class="text-slate-300 leading-relaxed">
+              Donate spare CPU cycles to lease open problems from the central coordinator. Run the native Rust worker or compute directly in your browser.
+            </p>
+            <a href={`${base}/contribute`} class="text-verify-light hover:underline font-mono inline-block pt-1">Open Contributor Cockpit &rarr;</a>
+          </div>
+
+          <div class="bg-surface-elevated border border-hairline rounded-md p-4 space-y-2">
+            <div class="font-bold font-display text-slate-100 text-sm">Diataxis Documentation</div>
+            <p class="text-slate-300 leading-relaxed">
+              Read technical architectural overviews, step-by-step reproduction instructions, and mathematical definitions in the structured documentation hub.
+            </p>
+            <a href={`${base}/docs`} class="text-blueprint-light hover:underline font-mono inline-block pt-1">View Documentation Hub &rarr;</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
