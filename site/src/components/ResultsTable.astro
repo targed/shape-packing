@@ -39,7 +39,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <div class="w-full space-y-4">
-  <div class="overflow-x-auto rounded-lg border border-hairline bg-surface/80 shadow-xl backdrop-blur-sm">
+  <div class="overflow-x-auto rounded-lg border border-hairline bg-surface/80">
     <table class="w-full text-left text-sm text-slate-300">
       <thead class="bg-canvas/90 text-xs uppercase text-slate-400 border-b border-hairline tracking-wider">
         <tr>
@@ -180,7 +180,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                   {p.solution && (
                     <button
                       type="button"
-                      class="solution-popover-trigger inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-mono font-medium text-blueprint bg-blueprint/10 border border-blueprint/30 hover:bg-blueprint/20 hover:border-blueprint/50 transition-colors cursor-pointer"
+                      class="solution-popover-trigger inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-mono font-medium text-blueprint-light bg-blueprint/10 border border-blueprint/30 hover:bg-blueprint/20 hover:border-blueprint/50 transition-colors cursor-pointer [&>*]:pointer-events-none"
                       data-family={p.problem_family}
                       data-n={p.N}
                       data-status={p.status}
@@ -230,7 +230,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 <div
   id="solution-hover-popover"
   role="tooltip"
-  class="solution-popover fixed z-50 pointer-events-none opacity-0 invisible transition-opacity duration-150 w-72 bg-surface/95 border border-hairline rounded-lg shadow-2xl p-3.5 space-y-2.5 backdrop-blur-md text-left"
+  class="solution-popover fixed z-50 pointer-events-none opacity-0 invisible transition-opacity duration-150 w-72 bg-surface/95 border border-hairline rounded-lg p-3.5 space-y-2.5 backdrop-blur-md text-left"
 >
   <div class="flex items-center justify-between border-b border-hairline pb-2">
     <div class="flex items-center gap-1.5 min-w-0">
@@ -339,8 +339,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     });
 
     document.addEventListener('mouseout', (e) => {
-      const target = (e.target as HTMLElement)?.closest('.solution-popover-trigger');
-      if (target) {
+      const target = (e.target as HTMLElement)?.closest('.solution-popover-trigger') as HTMLElement;
+      if (target && (!e.relatedTarget || !target.contains(e.relatedTarget as Node))) {
         popover.classList.add('opacity-0', 'invisible');
         popover.classList.remove('opacity-100', 'visible');
       }
