@@ -1,5 +1,4 @@
 ---
-// site/src/components/LiveClusterStats.astro
 interface Props {
   familiesCount?: number;
   problemsCount?: number;
@@ -17,70 +16,70 @@ const {
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<div id="live-cluster-container" class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 backdrop-blur-sm space-y-4 shadow-xl">
-  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
-    <div class="flex items-center gap-2.5">
-      <span id="cluster-indicator" class="w-2.5 h-2.5 rounded-full bg-slate-600"></span>
-      <span id="cluster-status-text" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+<div id="live-cluster-container" class="rounded-lg border border-hairline bg-surface p-5 space-y-4">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-hairline pb-3">
+    <div class="flex items-center gap-2.5 font-mono text-xs">
+      <span id="cluster-indicator" class="w-2 h-2 rounded-full bg-slate-500"></span>
+      <span id="cluster-status-text" class="font-semibold text-slate-300 uppercase tracking-wider">
         Coordinator: Checking...
       </span>
-      <span id="cluster-last-updated" class="text-[11px] text-slate-500 font-mono ml-2">Connecting</span>
+      <span id="cluster-last-updated" class="text-slate-500 ml-2">Connecting</span>
     </div>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 text-xs">
       <button
         id="btn-refresh-stats"
-        class="text-xs px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium transition-colors cursor-pointer border border-slate-700"
-        title="Refresh live cluster numbers"
+        class="px-2.5 py-1 rounded-md bg-surface-elevated hover:bg-surface-hover text-slate-300 font-medium transition-colors cursor-pointer border border-hairline font-mono"
+        title="Refresh live cluster metrics"
       >
         Refresh
       </button>
-      <a href={`${base}/leaderboard`} class="text-xs font-semibold text-indigo-400 hover:text-indigo-300">
+      <a href={`${base}/leaderboard`} class="font-medium text-blueprint-light hover:underline font-mono">
         Leaderboard &rarr;
       </a>
-      <a href={`${base}/contribute`} class="text-xs font-semibold text-emerald-400 hover:text-emerald-300">
+      <a href={`${base}/contribute`} class="font-semibold text-verify-light hover:underline font-mono">
         Join Grid &rarr;
       </a>
     </div>
   </div>
 
-  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
     <!-- Problem Families -->
-    <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col">
-      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Problem Families</span>
-      <span class="text-2xl font-extrabold text-white mt-1 font-mono">{familiesCount}</span>
-      <span class="text-[10px] text-slate-500 mt-1">Normalized x_in_y Catalog</span>
+    <div class="bg-surface-elevated border border-hairline rounded-md p-3.5 flex flex-col">
+      <span class="text-[10px] uppercase tracking-wider font-mono text-slate-400">Problem Families</span>
+      <span class="text-2xl font-bold text-white mt-1 font-mono">{familiesCount}</span>
+      <span class="text-[10px] text-slate-400 mt-1">Catalogued Sets</span>
     </div>
 
-    <!-- Benchmark Catalog -->
-    <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col">
-      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Benchmark Records</span>
-      <span class="text-2xl font-extrabold text-indigo-400 mt-1 font-mono">{problemsCount.toLocaleString()}</span>
-      <span class="text-[10px] text-slate-500 mt-1">Erich Friedman Entries</span>
+    <!-- Benchmark Records -->
+    <div class="bg-surface-elevated border border-hairline rounded-md p-3.5 flex flex-col">
+      <span class="text-[10px] uppercase tracking-wider font-mono text-slate-400">Benchmark Records</span>
+      <span class="text-2xl font-bold text-blueprint-light mt-1 font-mono">{problemsCount.toLocaleString()}</span>
+      <span class="text-[10px] text-slate-400 mt-1">Friedman Bound Entries</span>
     </div>
 
     <!-- Records Broken -->
-    <div class="bg-slate-950/70 border border-amber-500/30 rounded-xl p-4 bg-amber-500/5 flex flex-col">
-      <span class="text-[11px] uppercase tracking-wider font-bold text-amber-400">Records Broken</span>
-      <span id="stat-records-broken" class="text-2xl font-extrabold text-amber-300 mt-1 font-mono">
+    <div class="bg-surface-elevated border border-cadmium/40 rounded-md p-3.5 flex flex-col">
+      <span class="text-[10px] uppercase tracking-wider font-mono font-bold text-cadmium-light">Records Broken</span>
+      <span id="stat-records-broken" class="text-2xl font-bold text-cadmium mt-1 font-mono">
         {initialRecords}
       </span>
-      <span class="text-[10px] text-amber-400/80 mt-1">Better than Friedman bound</span>
+      <span class="text-[10px] text-cadmium-light/80 mt-1">Tighter than reference</span>
     </div>
 
     <!-- Compute Attempts -->
-    <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col">
-      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Compute Attempts</span>
-      <span id="stat-total-attempts" class="text-2xl font-extrabold text-slate-200 mt-1 font-mono">
+    <div class="bg-surface-elevated border border-hairline rounded-md p-3.5 flex flex-col">
+      <span class="text-[10px] uppercase tracking-wider font-mono text-slate-400">Compute Attempts</span>
+      <span id="stat-total-attempts" class="text-2xl font-bold text-slate-200 mt-1 font-mono">
         {initialAttempts.toLocaleString()}
       </span>
-      <span class="text-[10px] text-slate-500 mt-1">Multi-start iterations</span>
+      <span class="text-[10px] text-slate-400 mt-1">Multi-start iterations</span>
     </div>
 
     <!-- Active Workers -->
-    <div class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 flex flex-col col-span-2 sm:col-span-1">
-      <span class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Active Workers</span>
-      <span id="stat-active-workers" class="text-2xl font-extrabold text-sky-400 mt-1 font-mono">0</span>
-      <span class="text-[10px] text-slate-500 mt-1">Reporting heartbeat</span>
+    <div class="bg-surface-elevated border border-hairline rounded-md p-3.5 flex flex-col col-span-2 sm:col-span-1">
+      <span class="text-[10px] uppercase tracking-wider font-mono text-slate-400">Active Workers</span>
+      <span id="stat-active-workers" class="text-2xl font-bold text-verify-light mt-1 font-mono">0</span>
+      <span class="text-[10px] text-slate-400 mt-1">Reporting heartbeat</span>
     </div>
   </div>
 </div>
@@ -100,49 +99,53 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   let consecutiveErrors = 0;
 
   async function updateStats() {
-    const res = await fetchClusterStats();
-    const now = new Date().toLocaleTimeString();
-
-    if (res.ok && res.data) {
-      consecutiveErrors = 0;
-      if (indicator) {
-        indicator.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+    try {
+      const res = await fetchClusterStats();
+      if (res.ok && res.data) {
+        consecutiveErrors = 0;
+        if (indicator) {
+          indicator.className = 'w-2 h-2 rounded-full bg-verify';
+        }
+        if (statusText) {
+          statusText.textContent = `COORDINATOR: ONLINE (${res.data.active_workers} ACTIVE)`;
+          statusText.className = 'font-semibold text-verify-light uppercase tracking-wider';
+        }
+        if (lastUpdated) {
+          lastUpdated.textContent = `Updated ${new Date().toLocaleTimeString()}`;
+        }
+        if (activeWorkers) activeWorkers.textContent = String(res.data.active_workers);
+        if (totalAttempts) totalAttempts.textContent = res.data.total_attempts.toLocaleString();
+        if (recordsBroken) recordsBroken.textContent = String(res.data.records_broken);
+      } else {
+        handleOffline();
       }
-      if (statusText) {
-        statusText.textContent = `Coordinator: Online (${res.data.active_workers} active)`;
-        statusText.className = 'text-xs font-semibold text-emerald-400 uppercase tracking-wider';
-      }
-      if (activeWorkers) activeWorkers.textContent = res.data.active_workers.toLocaleString();
-      if (totalAttempts) totalAttempts.textContent = res.data.total_attempts.toLocaleString();
-      if (recordsBroken) recordsBroken.textContent = res.data.records_broken.toLocaleString();
-      if (lastUpdated) lastUpdated.textContent = `Updated ${now}`;
-    } else {
-      consecutiveErrors += 1;
-      if (indicator) {
-        indicator.className = 'w-2.5 h-2.5 rounded-full bg-amber-500';
-      }
-      if (statusText) {
-        statusText.textContent = 'Coordinator: Offline (Snapshot Mode)';
-        statusText.className = 'text-xs font-semibold text-amber-400 uppercase tracking-wider';
-      }
-      if (lastUpdated) lastUpdated.textContent = `Check failed ${now}`;
+    } catch {
+      handleOffline();
     }
-
-    scheduleNextPoll();
   }
 
-  function scheduleNextPoll() {
-    if (pollTimer) clearTimeout(pollTimer);
-    const delay = consecutiveErrors > 3 ? 30000 : 10000;
-    pollTimer = window.setTimeout(updateStats, delay);
+  function handleOffline() {
+    consecutiveErrors++;
+    if (indicator) {
+      indicator.className = 'w-2 h-2 rounded-full bg-slate-500';
+    }
+    if (statusText) {
+      statusText.textContent = 'COORDINATOR: OFFLINE (STATIC DATA)';
+      statusText.className = 'font-semibold text-slate-400 uppercase tracking-wider';
+    }
+    if (lastUpdated) {
+      lastUpdated.textContent = `Checked ${new Date().toLocaleTimeString()}`;
+    }
   }
 
   if (refreshBtn) {
-    refreshBtn.addEventListener('click', () => {
-      if (statusText) statusText.textContent = 'Refreshing...';
-      updateStats();
-    });
+    refreshBtn.addEventListener('click', updateStats);
   }
 
   updateStats();
+  pollTimer = window.setInterval(updateStats, 10000);
+
+  window.addEventListener('beforeunload', () => {
+    if (pollTimer !== null) clearInterval(pollTimer);
+  });
 </script>

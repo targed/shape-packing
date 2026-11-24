@@ -4,7 +4,11 @@ interface Props {
   description?: string;
 }
 
-const { title = "Shape Packing Auto-Researcher", description = "Internal dashboard and documentation hub for shape packing algorithms, benchmark metrics, and geometric visualizations." } = Astro.props;
+const {
+  title = "Shape Packing Geometric Benchmark & Solver",
+  description = "Scientific benchmark and volunteer distributed computing grid for 2D geometric packing optimization against Erich Friedman reference records."
+} = Astro.props;
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
@@ -13,70 +17,74 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} | Shape Packing Dashboard</title>
+    <title>{title} | Shape Packing</title>
     <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style is:global>
       body {
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       }
-      code, pre {
-        font-family: 'JetBrains Mono', monospace;
+      h1, h2, h3, h4, .font-display {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+      }
+      code, pre, .font-mono {
+        font-family: 'IBM Plex Mono', monospace;
+        font-feature-settings: "tnum" on, "lnum" on;
       }
     </style>
   </head>
-  <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+  <body class="bg-canvas text-slate-100 min-h-screen flex flex-col antialiased selection:bg-blueprint selection:text-white">
     <!-- Header -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80">
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-canvas/90 border-b border-hairline">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <a href={`${base}/`} class="flex items-center gap-3 group">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+          <div class="w-8 h-8 rounded-md bg-surface-elevated border border-hairline flex items-center justify-center text-blueprint-light group-hover:border-blueprint/50 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+              <line x1="12" y1="22" x2="12" y2="15.5" />
+              <polyline points="22 8.5 12 15.5 2 8.5" />
             </svg>
           </div>
           <div class="flex flex-col">
-            <span class="font-bold text-slate-100 tracking-tight text-lg group-hover:text-indigo-400 transition-colors">Shape Packing</span>
-            <span class="text-[10px] uppercase tracking-widest font-semibold text-slate-400">Auto-Researcher</span>
+            <div class="flex items-center gap-2">
+              <span class="font-display font-bold text-slate-100 tracking-tight text-base group-hover:text-blueprint-light transition-colors">SHAPE PACKING</span>
+              <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-surface border border-hairline text-slate-400">v2.4</span>
+            </div>
+            <span class="text-[10px] uppercase tracking-wider font-mono text-slate-400">Geometric Benchmark</span>
           </div>
         </a>
 
         <nav class="flex items-center gap-1 sm:gap-2">
-          <a href={`${base}/`} class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">Home</a>
-          <a href={`${base}/results`} class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">Results</a>
-          <a href={`${base}/leaderboard`} class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">Leaderboard</a>
-          <a href={`${base}/contribute`} class="px-3 py-2 rounded-md text-sm font-medium text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition-colors flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Contribute
+          <a href={`${base}/`} class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-elevated transition-colors">Home</a>
+          <a href={`${base}/results`} class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-elevated transition-colors">Results</a>
+          <a href={`${base}/leaderboard`} class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-elevated transition-colors">Leaderboard</a>
+          <a href={`${base}/contribute`} class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-semibold text-verify-light bg-verify/10 hover:bg-verify/20 border border-verify/30 transition-colors">
+            Volunteer Grid
           </a>
-          <a href={`${base}/docs`} class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">Docs</a>
-          <a href={`${base}/about`} class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">About</a>
+          <a href={`${base}/docs`} class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-elevated transition-colors">Docs</a>
+          <a href={`${base}/about`} class="px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-elevated transition-colors">About</a>
         </nav>
       </div>
     </header>
-
-    <!-- Notice Banner -->
-    <div class="bg-amber-500/10 border-b border-amber-500/20 text-amber-300 text-xs py-2 px-4 text-center">
-      <span class="font-semibold uppercase tracking-wider bg-amber-500/20 text-amber-200 px-2 py-0.5 rounded text-[10px] mr-2">Internal Working Site</span>
-      For research, debugging, and benchmark visualization. Not intended for external citation without verification.
-    </div>
 
     <!-- Main Content -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500">
+    <!-- Technical Drafting Footer -->
+    <footer class="border-t border-hairline bg-surface/50 py-8 text-xs text-slate-400 font-mono">
       <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div>
-          <span>Shape Packing Benchmark Dashboard &bull; Generated via Astro & GitHub Actions</span>
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-verify"></span>
+          <span>Shape Packing Research Platform &bull; Static Astro Build</span>
         </div>
-        <div class="flex items-center gap-4">
-          <a href="https://github.com/erich-friedman/packing" target="_blank" rel="noopener noreferrer" class="hover:text-slate-300 transition-colors">Erich Friedman Reference</a>
-          <a href={`${base}/docs`} class="hover:text-slate-300 transition-colors">System Architecture</a>
+        <div class="flex items-center gap-6 text-slate-400">
+          <a href="https://github.com/erich-friedman/packing" target="_blank" rel="noopener noreferrer" class="hover:text-blueprint-light transition-colors">Erich Friedman Benchmark</a>
+          <a href={`${base}/docs`} class="hover:text-blueprint-light transition-colors">Technical Architecture</a>
+          <a href={`${base}/contribute`} class="hover:text-blueprint-light transition-colors">Contribute Compute</a>
         </div>
       </div>
     </footer>
