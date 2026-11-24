@@ -25,6 +25,35 @@ export interface TransformedShape {
   color: string;
 }
 
+export interface PackingSvgData {
+  viewBox: string;
+  isContainerCircle: boolean;
+  containerVertices: PolygonPoint[] | null;
+  containerSides: string | number;
+  containerOffsetAngle: number;
+  innerSides: string | number;
+  shapes: TransformedShape[];
+  S: number;
+  finalMetric: number;
+  minX: number;
+  maxX: number;
+  minY: number;
+  maxY: number;
+  spanX: number;
+  spanY: number;
+  padding: number;
+}
+
+export const BLUEPRINT_PALETTE: string[] = [
+  '#38bdf8', // cyan
+  '#0284c7', // sky
+  '#2563eb', // cobalt
+  '#818cf8', // slate blue
+  '#f59e0b', // cadmium
+  '#14b8a6', // teal
+  '#10b981', // emerald
+];
+
 export const NAMED_SHAPE_SIDES: Record<string, number> = {
   TRIANGLE: 3,
   SQUARE: 4,
@@ -163,7 +192,7 @@ export function transformPoint(pt: PolygonPoint, cx: number, cy: number, angle: 
   };
 }
 
-export function generatePackingSvgElements(solution: SolutionData, width: number = 400, height: number = 400) {
+export function generatePackingSvgElements(solution: SolutionData, width: number = 400, height: number = 400): PackingSvgData | null {
   if (!solution || !solution.values || !solution.N) {
     return null;
   }
@@ -178,10 +207,7 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
   const S = solution.S || 1.0;
   const finalMetric = solution.final_metric || S;
 
-  const colors = [
-    '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#10b981',
-    '#06b6d4', '#3b82f6', '#f59e0b', '#84cc16', '#a855f7'
-  ];
+  const colors = BLUEPRINT_PALETTE;
 
   const rot = getContainerRotationOffset(containerToken);
   const cos = Math.cos(rot);
@@ -265,6 +291,15 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
     }
   });
 
+  if (!isFinite(minX) || !isFinite(maxX)) {
+    minX = -S;
+    maxX = S;
+  }
+  if (!isFinite(minY) || !isFinite(maxY)) {
+    minY = -S;
+    maxY = S;
+  }
+
   const spanX = maxX - minX;
   const spanY = maxY - minY;
   const padding = Math.max(spanX, spanY) * 0.06 || 0.5;
@@ -280,6 +315,13 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
     innerSides: innerToken,
     shapes,
     S,
-    finalMetric
+    finalMetric,
+    minX,
+    maxX,
+    minY,
+    maxY,
+    spanX,
+    spanY,
+    padding,
   };
 }
