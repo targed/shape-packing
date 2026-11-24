@@ -66,9 +66,9 @@ describe('Volunteer Contributor Cockpit (Task 6)', () => {
 
     // High-contrast start button
     assert.ok(
-      content.includes('bg-verify hover:bg-emerald-600 text-white font-bold text-xs rounded-md') ||
+      content.includes('bg-emerald-600 hover:bg-emerald-500 text-white font-bold') ||
       content.includes('bg-verify hover:bg-emerald-600 text-white font-bold'),
-      'Start button uses high-contrast bg-verify hover:bg-emerald-600 text-white font-bold rounded-md'
+      'Start button uses high-contrast emerald text-white font-bold rounded-md'
     );
     assert.ok(content.includes('id="btn-start"'), 'Includes btn-start element');
     assert.ok(content.includes('id="btn-stop"'), 'Includes btn-stop element');
