@@ -17,10 +17,24 @@ import json
 import math
 import os
 import re
+import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR / "src") not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR / "src"))
+
+from shape_packing.catalog import (
+    get_pair_tier,
+    list_frontier_families,
+    load_catalog,
+    normalize_token,
+)
+from shape_packing.solution_tools import (
+    compute_friedman_metric,
+    inverse_friedman_metric,
+)
 PACKING_VERIFICATION_DIR = (
     ROOT_DIR / "data" / "packingVerification"
     if (ROOT_DIR / "data" / "packingVerification").exists()
@@ -99,8 +113,13 @@ LEGACY_MAP = {
     "cirinl": "circle_in_L", "circle_in_L": "circle_in_L",
     "cirindom": "circle_in_domino", "circle_in_domino": "circle_in_domino",
     "cirintan": "circle_in_tan", "circle_in_tan": "circle_in_tan",
+    "cirin7": "circle_in_7", "circle_in_7": "circle_in_7",
+    "cirin9": "circle_in_9", "circle_in_9": "circle_in_9",
+    "cirin10": "circle_in_10", "circle_in_10": "circle_in_10",
+    "cirinsemi": "circle_in_semicircle", "circle_in_semicircle": "circle_in_semicircle",
+    "cirinquad": "circle_in_quadrant", "circle_in_quadrant": "circle_in_quadrant",
     "cirinel": "circle_in_ellipse", "circle_in_ellipse": "circle_in_ellipse",
-    "cirinttt": "circle_in_3",
+    "cirinttt": "circle_in_arbitrary_triangle", "circle_in_arbitrary_triangle": "circle_in_arbitrary_triangle",
     # Dominoes
     "domincir": "domino_in_circle", "domino_in_circle": "domino_in_circle",
     "dominsqu": "domino_in_4", "domino_in_4": "domino_in_4",
@@ -111,7 +130,7 @@ LEGACY_MAP = {
     "dominL": "domino_in_L", "domino_in_L": "domino_in_L",
     "domindom": "domino_in_domino", "domino_in_domino": "domino_in_domino",
     "domintan": "domino_in_tan", "domino_in_tan": "domino_in_tan",
-    # L-trominoes
+    # L-trominoes (including Friedman lincir / linsqu which pack L-trominoes)
     "LinL": "L_in_L", "L_in_L": "L_in_L",
     "Lindom": "L_in_domino", "L_in_domino": "L_in_domino",
     "Linhex": "L_in_6", "L_in_6": "L_in_6",
@@ -119,9 +138,8 @@ LEGACY_MAP = {
     "Linpen": "L_in_5", "L_in_5": "L_in_5",
     "Lintan": "L_in_tan", "L_in_tan": "L_in_tan",
     "Lintri": "L_in_3", "L_in_3": "L_in_3",
-    # Lines
-    "lincir": "line_in_circle", "line_in_circle": "line_in_circle",
-    "linsqu": "line_in_4", "line_in_4": "line_in_4",
+    "lincir": "L_in_circle", "L_in_circle": "L_in_circle",
+    "linsqu": "L_in_4", "L_in_4": "L_in_4",
     # Tans
     "tanincir": "tan_in_circle", "tan_in_circle": "tan_in_circle", "tan_in_cir": "tan_in_circle",
     "taninsqu": "tan_in_4", "tan_in_4": "tan_in_4",
@@ -157,153 +175,37 @@ def normalize_status(raw: Any) -> str:
     return "unknown"
 
 
-FAMILY_DISPLAY_NAMES = {
-    "3_in_3": "Triangles in Triangle",
-    "3_in_4": "Triangles in Square",
-    "3_in_5": "Triangles in Pentagon",
-    "3_in_6": "Triangles in Hexagon",
-    "3_in_8": "Triangles in Octagon",
-    "3_in_circle": "Triangles in Circle",
-    "3_in_domino": "Triangles in Domino",
-    "3_in_L": "Triangles in L-tromino",
-    "3_in_tan": "Triangles in Tan",
-    "4_in_3": "Squares in Triangle",
-    "4_in_4": "Squares in Square",
-    "4_in_5": "Squares in Pentagon",
-    "4_in_6": "Squares in Hexagon",
-    "4_in_8": "Squares in Octagon",
-    "4_in_circle": "Squares in Circle",
-    "4_in_domino": "Squares in Domino",
-    "4_in_L": "Squares in L-tromino",
-    "4_in_tan": "Squares in Tan",
-    "5_in_3": "Pentagons in Triangle",
-    "5_in_4": "Pentagons in Square",
-    "5_in_5": "Pentagons in Pentagon",
-    "5_in_6": "Pentagons in Hexagon",
-    "5_in_8": "Pentagons in Octagon",
-    "5_in_circle": "Pentagons in Circle",
-    "5_in_domino": "Pentagons in Domino",
-    "5_in_L": "Pentagons in L-tromino",
-    "5_in_tan": "Pentagons in Tan",
-    "6_in_3": "Hexagons in Triangle",
-    "6_in_4": "Hexagons in Square",
-    "6_in_5": "Hexagons in Pentagon",
-    "6_in_6": "Hexagons in Hexagon",
-    "6_in_8": "Hexagons in Octagon",
-    "6_in_circle": "Hexagons in Circle",
-    "6_in_domino": "Hexagons in Domino",
-    "6_in_L": "Hexagons in L-tromino",
-    "6_in_tan": "Hexagons in Tan",
-    "8_in_3": "Octagons in Triangle",
-    "8_in_4": "Octagons in Square",
-    "8_in_5": "Octagons in Pentagon",
-    "8_in_6": "Octagons in Hexagon",
-    "8_in_8": "Octagons in Octagon",
-    "8_in_circle": "Octagons in Circle",
-    "8_in_domino": "Octagons in Domino",
-    "8_in_L": "Octagons in L-tromino",
-    "8_in_tan": "Octagons in Tan",
-    "circle_in_3": "Circles in Triangle",
-    "circle_in_4": "Circles in Square",
-    "circle_in_5": "Circles in Pentagon",
-    "circle_in_6": "Circles in Hexagon",
-    "circle_in_8": "Circles in Octagon",
-    "circle_in_circle": "Circles in Circle",
-    "circle_in_domino": "Circles in Domino",
-    "circle_in_ellipse": "Circles in Ellipse",
-    "circle_in_L": "Circles in L-tromino",
-    "circle_in_tan": "Circles in Tan",
-    "domino_in_3": "Dominoes in Triangle",
-    "domino_in_4": "Dominoes in Square",
-    "domino_in_5": "Dominoes in Pentagon",
-    "domino_in_6": "Dominoes in Hexagon",
-    "domino_in_8": "Dominoes in Octagon",
-    "domino_in_circle": "Dominoes in Circle",
-    "domino_in_domino": "Dominoes in Domino",
-    "domino_in_L": "Dominoes in L-tromino",
-    "domino_in_tan": "Dominoes in Tan",
-    "L_in_3": "L-trominoes in Triangle",
-    "L_in_5": "L-trominoes in Pentagon",
-    "L_in_6": "L-trominoes in Hexagon",
-    "L_in_8": "L-trominoes in Octagon",
-    "L_in_circle": "L-trominoes in Circle",
-    "L_in_domino": "L-trominoes in Domino",
-    "L_in_L": "L-trominoes in L-tromino",
-    "L_in_tan": "L-trominoes in Tan",
-    "line_in_4": "Lines in Square",
-    "line_in_circle": "Lines in Circle",
-    "tan_in_3": "Tans in Triangle",
-    "tan_in_4": "Tans in Square",
-    "tan_in_5": "Tans in Pentagon",
-    "tan_in_6": "Tans in Hexagon",
-    "tan_in_8": "Tans in Octagon",
-    "tan_in_circle": "Tans in Circle",
-    "tan_in_domino": "Tans in Domino",
-    "tan_in_L": "Tans in L-tromino",
-    "tan_in_tan": "Tans in Tan",
-}
+def _build_family_display_names() -> Dict[str, str]:
+    catalog = load_catalog()
+    shapes = catalog["shapes"]
+    names: Dict[str, str] = {
+        "circle_in_ellipse": "Circles in Arbitrary Ellipse",
+        "circle_in_arbitrary_triangle": "Circles in Arbitrary Triangle",
+    }
+    for i_spec in shapes.values():
+        for c_spec in shapes.values():
+            slug = f"{i_spec['slug']}_in_{c_spec['slug']}"
+            names[slug] = f"{i_spec['display_plural']} in {c_spec['display_singular']}"
+    return names
 
 
-def compute_friedman_metric(S: float, inner_token: str, container_token: str) -> float:
-    container_upper = str(container_token).strip().upper()
-    inner_upper = str(inner_token).strip().upper()
-
-    if container_upper in ("CIRCLE", "CIR", "0"):
-        c_metric = S
-    elif container_upper in ("TAN", "DOMINO", "L"):
-        c_metric = S
-    else:
-        try:
-            nsc = int(container_upper)
-            c_metric = 2 * S * math.sin(math.pi / nsc)
-        except ValueError:
-            c_metric = 2 * S * math.sin(math.pi / 3)
-
-    if inner_upper in ("CIRCLE", "CIR", "0"):
-        i_scale = 1.0
-    elif inner_upper in ("TAN", "DOMINO", "L"):
-        i_scale = 1.0
-    else:
-        try:
-            nsi = int(inner_upper)
-            i_scale = 2 * math.sin(math.pi / nsi)
-        except ValueError:
-            i_scale = 2 * math.sin(math.pi / 3)
-
-    return c_metric / i_scale
+FAMILY_DISPLAY_NAMES = _build_family_display_names()
 
 
-def inverse_friedman_metric(f_metric: float, inner_token: str, container_token: str) -> float:
-    """Given a target Friedman metric s, compute the corresponding container circumradius / scale S."""
-    if f_metric is None or f_metric <= 0:
-        return 1.0
-    container_upper = str(container_token).strip().upper()
-    inner_upper = str(inner_token).strip().upper()
-
-    if container_upper == "L" and inner_upper == "L":
-        return f_metric
-
-    if inner_upper in ("CIRCLE", "CIR", "0", "TAN", "DOMINO", "L"):
-        i_scale = 1.0
-    else:
-        try:
-            nsi = int(inner_upper)
-            i_scale = 2 * math.sin(math.pi / nsi)
-        except ValueError:
-            i_scale = 2 * math.sin(math.pi / 3)
-
-    c_metric = f_metric * i_scale
-
-    if container_upper in ("CIRCLE", "CIR", "0", "TAN", "DOMINO"):
-        return c_metric
-    elif container_upper == "L":
-        return c_metric / 2.0
-    else:
-        try:
-            nsc = int(container_upper)
-            return c_metric / (2 * math.sin(math.pi / nsc))
-        except ValueError:
-            return c_metric / (2 * math.sin(math.pi / 3))
+def _load_catalog_shape_variants() -> Dict[str, List[str]]:
+    catalog = load_catalog()
+    variants: Dict[str, List[str]] = {}
+    for canonical, spec in catalog["shapes"].items():
+        vals = [canonical, spec["slug"], spec["short_code"]] + list(spec.get("aliases", []))
+        dedup: List[str] = []
+        for v in vals:
+            for form in (v, v.lower(), v.upper()):
+                if form and form not in dedup:
+                    dedup.append(form)
+        variants[canonical] = dedup
+        for alias in spec.get("aliases", []):
+            variants[alias.upper()] = dedup
+    return variants
 
 
 def load_reference_entries() -> List[Dict[str, Any]]:
@@ -519,23 +421,7 @@ def load_priority_queue() -> Dict[str, Dict[str, Any]]:
     return pq_dict
 
 
-SHAPE_VARIANTS = {
-    "3": ["3", "TRIANGLE", "triangle", "tri"],
-    "TRIANGLE": ["3", "TRIANGLE", "triangle", "tri"],
-    "4": ["4", "SQUARE", "square", "squ"],
-    "SQUARE": ["4", "SQUARE", "square", "squ"],
-    "5": ["5", "PENTAGON", "pentagon", "pen"],
-    "PENTAGON": ["5", "PENTAGON", "pentagon", "pen"],
-    "6": ["6", "HEXAGON", "hexagon", "hex"],
-    "HEXAGON": ["6", "HEXAGON", "hexagon", "hex"],
-    "8": ["8", "OCTAGON", "octagon", "oct"],
-    "OCTAGON": ["8", "OCTAGON", "octagon", "oct"],
-    "CIRCLE": ["CIRCLE", "circle", "CIR", "cir"],
-    "CIR": ["CIRCLE", "circle", "CIR", "cir"],
-    "DOMINO": ["DOMINO", "domino", "dom"],
-    "L": ["L", "l"],
-    "TAN": ["TAN", "tan"],
-}
+SHAPE_VARIANTS = _load_catalog_shape_variants()
 
 
 def generate_key_variants(entry: Dict[str, Any]) -> List[str]:
@@ -614,13 +500,27 @@ def main():
             continue
         seen_ids.add(entry_id)
 
+        # Fix legacy cirinttt -> arbitrary triangle & lincir/linsqu -> L-tromino metadata
+        if raw_family.lower() == "cirinttt":
+            inner_shape = "circle"
+            container_shape = "arbitrary_triangle"
+        elif raw_family.lower() in ("lincir", "linsqu"):
+            inner_shape = "L"
+            container_shape = entry.get("container_shape")
+        else:
+            inner_shape = entry.get("inner_shape")
+            container_shape = entry.get("container_shape")
+
+        prob_tier = entry.get("tier") or get_pair_tier(inner_shape, container_shape) or "benchmark"
+
         if family_slug not in family_stats:
             family_name = FAMILY_DISPLAY_NAMES.get(family_slug, family_slug)
             family_stats[family_slug] = {
                 "slug": family_slug,
                 "name": family_name,
-                "inner_shape": entry.get("inner_shape"),
-                "container_shape": entry.get("container_shape"),
+                "inner_shape": inner_shape,
+                "container_shape": container_shape,
+                "tier": prob_tier,
                 "total_problems": 0,
                 "proved_optimal_count": 0,
                 "best_known_count": 0,
@@ -704,8 +604,9 @@ def main():
             "id": entry_id,
             "problem_family": family_slug,
             "N": prob_n,
-            "inner_shape": inner_token,
-            "container_shape": container_token,
+            "inner_shape": inner_shape,
+            "container_shape": container_shape,
+            "tier": prob_tier,
             "known_value": known_value,
             "best_value": known_value,
             "ref_status": ref_status,
@@ -736,6 +637,78 @@ def main():
         if attempted:
             attempted_list.append(item)
 
+    # Append curated Frontier quad families (N=1..20) cleanly after benchmark entries
+    for f_slug, f_inner, f_container in list_frontier_families():
+        if f_slug not in family_stats:
+            family_stats[f_slug] = {
+                "slug": f_slug,
+                "name": FAMILY_DISPLAY_NAMES.get(f_slug, f_slug),
+                "inner_shape": f_inner.lower() if f_inner != "L" else "L",
+                "container_shape": f_container.lower() if f_container != "L" else "L",
+                "tier": "frontier",
+                "total_problems": 0,
+                "proved_optimal_count": 0,
+                "best_known_count": 0,
+                "trivial_count": 0,
+                "attempted_count": 0,
+                "new_best_count": 0,
+            }
+        fam = family_stats[f_slug]
+        for prob_n in range(1, 21):
+            entry_id = f"{f_slug}_{prob_n}"
+            if entry_id in seen_ids:
+                continue
+            seen_ids.add(entry_id)
+            fam["total_problems"] += 1
+
+            stub_entry = {
+                "N": prob_n,
+                "problem_family": f_slug,
+                "inner_shape": f_inner,
+                "container_shape": f_container,
+                "our_problem": f"{prob_n}_{f_inner}_in_{f_container}",
+            }
+            sol_data = None
+            for pk in generate_key_variants(stub_entry):
+                if pk and pk in solutions:
+                    sol_data = solutions[pk]
+                    break
+            our_best_metric = sol_data.get("computed_metric") if sol_data else None
+            attempted = sol_data is not None
+            if attempted:
+                fam["attempted_count"] += 1
+
+            f_item = {
+                "id": entry_id,
+                "problem_family": f_slug,
+                "N": prob_n,
+                "inner_shape": fam["inner_shape"],
+                "container_shape": fam["container_shape"],
+                "tier": "frontier",
+                "known_value": None,
+                "best_value": None,
+                "ref_status": "frontier",
+                "status": "frontier",
+                "attempted": attempted,
+                "our_best_metric": round(our_best_metric, 6) if our_best_metric is not None else None,
+                "our_best_s": round(sol_data.get("S"), 6) if sol_data and sol_data.get("S") else None,
+                "comparison_status": "frontier_best" if our_best_metric is not None else "unattempted",
+                "diff": None,
+                "closeness_pct": None,
+                "starts": 0,
+                "attempts": 0,
+                "successes": 0,
+                "fails": 0,
+                "priority_rank": None,
+                "density": None,
+                "source_url": None,
+                "source_note": "Original Frontier family (canonical quadrilateral prototype).",
+                "solution": sol_data,
+            }
+            problems_list.append(f_item)
+            if attempted:
+                attempted_list.append(f_item)
+
     problems_list.sort(key=lambda p: (p["problem_family"], p["N"]))
     families_list = list(family_stats.values())
     families_list.sort(key=lambda x: x["slug"])
@@ -757,7 +730,10 @@ def main():
     site_data = sanitize_floats({
         "summary": {
             "total_families": len(families_list),
+            "benchmark_families": sum(1 for f in families_list if f.get("tier", "benchmark") == "benchmark"),
+            "frontier_families": sum(1 for f in families_list if f.get("tier") == "frontier"),
             "total_problems": len(problems_list),
+            "frontier_problems": sum(1 for p in problems_list if p.get("tier") == "frontier"),
             "proved_optimal": sum(f["proved_optimal_count"] for f in families_list),
             "best_known": sum(f["best_known_count"] for f in families_list),
             "trivial": sum(f["trivial_count"] for f in families_list),

@@ -52,4 +52,22 @@ describe('Shape Badge Generator (Task 4)', () => {
     assert.ok(!content.includes('—'), 'shape_badge.ts must not contain em dashes');
     assert.ok(!content.includes('&mdash;'), 'shape_badge.ts must not contain &mdash;');
   });
+
+  it('generates dedicated vector badges for 7/9/10, semicircle, quadrant, rhombus, parallelogram, trapezoid', async () => {
+    const { generateShapeBadgeSvg, parseFamilySlug } = await import('../src/lib/visualization/shape_badge.ts');
+    assert.deepEqual(parseFamilySlug('circle_in_semicircle'), { inner: 'circle', container: 'semicircle' });
+    assert.deepEqual(parseFamilySlug('rhombus_in_trapezoid'), { inner: 'rhombus', container: 'trapezoid' });
+
+    const semi = generateShapeBadgeSvg('circle', 'semicircle');
+    assert.ok(semi.includes('<path') && semi.includes('A '), 'Semicircle badge renders arc path');
+
+    const quad = generateShapeBadgeSvg('circle', 'quadrant');
+    assert.ok(quad.includes('<path') && quad.includes('A '), 'Quadrant badge renders arc path');
+
+    const rhom = generateShapeBadgeSvg('rhombus', 'parallelogram');
+    assert.ok(rhom.includes('<polygon'), 'Rhombus/parallelogram badge renders polygon elements');
+
+    const trap = generateShapeBadgeSvg('3', 'trapezoid');
+    assert.ok(trap.includes('<polygon'), 'Trapezoid container badge renders polygon, not square rect');
+  });
 });

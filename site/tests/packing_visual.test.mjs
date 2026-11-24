@@ -87,4 +87,39 @@ describe('Architectural Visualization Plate (Task 2)', () => {
     const emojiRegex = /[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
     assert.ok(!emojiRegex.test(content), 'PackingVisual.astro should contain no emojis');
   });
+
+  it('supports curved SVG arc paths (SEMICIRCLE, QUADRANT) and canonical quad polygons centered cleanly', () => {
+    const semiRes = generatePackingSvgElements({
+      N: 1,
+      S: 2.0,
+      final_metric: 2.0,
+      values: [0, 1.0, 0],
+      container_token: 'SEMICIRCLE',
+      inner_token: 'CIRCLE',
+    });
+    assert.ok(semiRes, 'Semicircle SVG data generated');
+    assert.ok(semiRes.containerArcPath && semiRes.containerArcPath.includes('A '), 'Semicircle produces SVG arc path');
+    // Upper half-disk y in [0, S] -> SVG y in [-S, 0]; viewBox should frame [-2, 0] symmetrically without wasting half canvas
+    assert.ok(semiRes.minY >= -2.1 && semiRes.maxY <= 0.1, `Expected semicircle bounds in upper half SVG, got [${semiRes.minY}, ${semiRes.maxY}]`);
+
+    const quadRes = generatePackingSvgElements({
+      N: 1,
+      S: 1 + Math.SQRT2,
+      final_metric: 1 + Math.SQRT2,
+      values: [1.0, 1.0, 0],
+      container_token: 'QUADRANT',
+      inner_token: 'CIRCLE',
+    });
+    assert.ok(quadRes && quadRes.containerArcPath && quadRes.containerArcPath.includes('L '), 'Quadrant produces SVG arc+corner path');
+
+    const rhomRes = generatePackingSvgElements({
+      N: 1,
+      S: 4 / Math.sqrt(3),
+      final_metric: 4 / Math.sqrt(3),
+      values: [0, 0, 0],
+      container_token: 'RHOMBUS',
+      inner_token: 'CIRCLE',
+    });
+    assert.ok(rhomRes && rhomRes.containerVertices && rhomRes.containerVertices.length === 4, 'Rhombus has 4 vertices');
+  });
 });

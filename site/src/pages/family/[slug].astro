@@ -66,6 +66,11 @@ const badgeSvg = getShapeBadgeSvg(innerToken, containerToken, hasRecords);
 
         <!-- Technical Badges -->
         <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs">
+          {family.tier === 'frontier' && (
+            <span class="px-3 py-1.5 rounded-md bg-violet-500/10 text-violet-300 border border-violet-500/30 font-semibold">
+              Frontier Family
+            </span>
+          )}
           <span class="px-3 py-1.5 rounded-md bg-surface border border-hairline text-slate-300">
             <strong class="text-slate-100 font-semibold">{familyProblems.length}</strong> Problems
           </span>

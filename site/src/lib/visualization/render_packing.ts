@@ -28,6 +28,8 @@ export interface TransformedShape {
 export interface PackingSvgData {
   viewBox: string;
   isContainerCircle: boolean;
+  isCurvedContainer?: boolean;
+  containerArcPath?: string | null;
   containerVertices: PolygonPoint[] | null;
   containerSides: string | number;
   containerOffsetAngle: number;
@@ -56,22 +58,36 @@ export const BLUEPRINT_PALETTE: string[] = [
 
 export const NAMED_SHAPE_SIDES: Record<string, number> = {
   TRIANGLE: 3,
+  TRI: 3,
   SQUARE: 4,
+  SQU: 4,
   PENTAGON: 5,
+  PEN: 5,
   HEXAGON: 6,
+  HEX: 6,
   HEPTAGON: 7,
+  HEP: 7,
   OCTAGON: 8,
+  OCT: 8,
   NONAGON: 9,
+  NON: 9,
+  ENNEAGON: 9,
   DECAGON: 10,
+  DEC: 10,
 };
 
 export function parseShapeToken(val: any): string | number {
   if (val === undefined || val === null) return 3;
   const s = String(val).trim().toUpperCase();
-  if (s === 'CIRCLE' || s === 'CIR' || s === '0') return 'CIRCLE';
+  if (s === 'CIRCLE' || s === 'CIR' || s === 'CIRC' || s === '0') return 'CIRCLE';
   if (s === 'DOMINO' || s === 'DOM') return 'DOMINO';
-  if (s === 'TAN') return 'TAN';
-  if (s === 'L' || s === 'L-TROMINO' || s === 'EL') return 'L';
+  if (s === 'TAN' || s === 'TANGRAM') return 'TAN';
+  if (s === 'L' || s === 'L-TROMINO' || s === 'LTROMINO' || s === 'L_TROMINO' || s === 'EL') return 'L';
+  if (s === 'SEMICIRCLE' || s === 'SEMI' || s === 'SEMIDISK') return 'SEMICIRCLE';
+  if (s === 'QUADRANT' || s === 'QUAD' || s === 'QUARTERCIRCLE' || s === 'CIRCULAR_QUADRANT') return 'QUADRANT';
+  if (s === 'RHOMBUS' || s === 'RHOM' || s === 'DIAMOND') return 'RHOMBUS';
+  if (s === 'PARALLELOGRAM' || s === 'PARA' || s === 'PARALLELOGRAM_TAN') return 'PARALLELOGRAM';
+  if (s === 'TRAPEZOID' || s === 'TRAP' || s === 'TRAPEZIUM') return 'TRAPEZOID';
   if (s in NAMED_SHAPE_SIDES) return NAMED_SHAPE_SIDES[s];
   const num = parseInt(s, 10);
   return isNaN(num) ? s : num;
@@ -124,6 +140,33 @@ export function getUnitShapeVertices(token: string | number): PolygonPoint[] | n
       { x: -5.0 / 6.0, y: 7.0 / 6.0 },
     ];
   }
+  if (parsed === 'RHOMBUS') {
+    const s3_2 = Math.sqrt(3.0) / 2.0;
+    return [
+      { x: s3_2, y: 0.0 },
+      { x: 0.0, y: 0.5 },
+      { x: -s3_2, y: 0.0 },
+      { x: 0.0, y: -0.5 },
+    ];
+  }
+  if (parsed === 'PARALLELOGRAM') {
+    const s2_4 = Math.SQRT2 / 4.0;
+    return [
+      { x: -3.0 * s2_4, y: -s2_4 },
+      { x: s2_4, y: -s2_4 },
+      { x: 3.0 * s2_4, y: s2_4 },
+      { x: -s2_4, y: s2_4 },
+    ];
+  }
+  if (parsed === 'TRAPEZOID') {
+    const s3_4 = Math.sqrt(3.0) / 4.0;
+    return [
+      { x: -1.0, y: -s3_4 },
+      { x: 1.0, y: -s3_4 },
+      { x: 0.5, y: s3_4 },
+      { x: -0.5, y: s3_4 },
+    ];
+  }
   const sides = typeof parsed === 'number' && parsed >= 3 ? parsed : 3;
   return getRegularPolygonVertices(sides, 1.0, 0);
 }
@@ -158,7 +201,11 @@ export function inverseFriedmanMetric(fMetric: number, innerToken: any, containe
   let iScale = 1.0;
   if (typeof iToken === 'number') {
     iScale = 2.0 * Math.sin(Math.PI / iToken);
-  } else if (iToken === 'CIRCLE' || iToken === 'DOMINO' || iToken === 'TAN' || iToken === 'L') {
+  } else if (
+    iToken === 'CIRCLE' || iToken === 'DOMINO' || iToken === 'TAN' || iToken === 'L' ||
+    iToken === 'SEMICIRCLE' || iToken === 'QUADRANT' || iToken === 'RHOMBUS' ||
+    iToken === 'PARALLELOGRAM' || iToken === 'TRAPEZOID'
+  ) {
     iScale = 1.0;
   } else {
     const num = parseInt(String(iToken), 10);
@@ -167,7 +214,11 @@ export function inverseFriedmanMetric(fMetric: number, innerToken: any, containe
 
   const cMetric = fMetric * iScale;
 
-  if (cToken === 'CIRCLE' || cToken === 'TAN' || cToken === 'DOMINO') {
+  if (
+    cToken === 'CIRCLE' || cToken === 'TAN' || cToken === 'DOMINO' ||
+    cToken === 'SEMICIRCLE' || cToken === 'QUADRANT' || cToken === 'RHOMBUS' ||
+    cToken === 'PARALLELOGRAM' || cToken === 'TRAPEZOID'
+  ) {
     return cMetric;
   } else if (cToken === 'L') {
     return cMetric / 2.0;
@@ -224,8 +275,18 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
 
   // 1. Build Container Vertices / Bounds
   const isContainerCircle = containerToken === 'CIRCLE';
+  const isContainerSemicircle = containerToken === 'SEMICIRCLE';
+  const isContainerQuadrant = containerToken === 'QUADRANT';
+  const isCurvedContainer = isContainerCircle || isContainerSemicircle || isContainerQuadrant;
+
   let containerVertices: PolygonPoint[] | null = null;
-  if (!isContainerCircle) {
+  let containerArcPath: string | null = null;
+
+  if (isContainerSemicircle) {
+    containerArcPath = `M ${(-S).toFixed(4)},0 A ${S.toFixed(4)},${S.toFixed(4)} 0 0,1 ${S.toFixed(4)},0 Z`;
+  } else if (isContainerQuadrant) {
+    containerArcPath = `M 0,0 L ${S.toFixed(4)},0 A ${S.toFixed(4)},${S.toFixed(4)} 0 0,0 0,${(-S).toFixed(4)} Z`;
+  } else if (!isContainerCircle) {
     const unitContainer = getUnitShapeVertices(containerToken) || getRegularPolygonVertices(3, 1.0, 0);
     containerVertices = unitContainer.map(pt => {
       const rx = pt.x * cos - pt.y * sin;
@@ -275,42 +336,57 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
     });
   }
 
-  // 3. Compute ViewBox (centered at origin (0, 0) for perfect symmetry and crosshair alignment)
-  let maxExtent = isContainerCircle ? S : 0;
+  // 3. Compute exact bounding box and center square viewBox on midpoint for balanced framing
+  let minX = isContainerCircle ? -S : isContainerSemicircle ? -S : isContainerQuadrant ? 0 : Infinity;
+  let maxX = isContainerCircle ? S : isContainerSemicircle ? S : isContainerQuadrant ? S : -Infinity;
+  let minY = isCurvedContainer ? -S : Infinity;
+  let maxY = isContainerCircle ? S : (isContainerSemicircle || isContainerQuadrant) ? 0 : -Infinity;
 
   if (containerVertices) {
     containerVertices.forEach(pt => {
-      maxExtent = Math.max(maxExtent, Math.abs(pt.x), Math.abs(pt.y));
+      minX = Math.min(minX, pt.x);
+      maxX = Math.max(maxX, pt.x);
+      minY = Math.min(minY, pt.y);
+      maxY = Math.max(maxY, pt.y);
     });
   }
 
   shapes.forEach(s => {
     if (s.isCircle) {
-      maxExtent = Math.max(maxExtent, Math.abs(s.cx) + 1.0, Math.abs(s.cy) + 1.0);
+      minX = Math.min(minX, s.cx - 1.0);
+      maxX = Math.max(maxX, s.cx + 1.0);
+      minY = Math.min(minY, s.cy - 1.0);
+      maxY = Math.max(maxY, s.cy + 1.0);
     } else if (s.vertices) {
       s.vertices.forEach(pt => {
-        maxExtent = Math.max(maxExtent, Math.abs(pt.x), Math.abs(pt.y));
+        minX = Math.min(minX, pt.x);
+        maxX = Math.max(maxX, pt.x);
+        minY = Math.min(minY, pt.y);
+        maxY = Math.max(maxY, pt.y);
       });
     }
   });
 
-  if (maxExtent <= 0) {
-    maxExtent = S > 0 ? S : 2.0;
+  if (!isFinite(minX) || !isFinite(maxX) || !isFinite(minY) || !isFinite(maxY)) {
+    const ext = S > 0 ? S : 2.0;
+    minX = -ext; maxX = ext; minY = -ext; maxY = ext;
   }
 
-  const minX = -maxExtent;
-  const maxX = maxExtent;
-  const minY = -maxExtent;
-  const maxY = maxExtent;
-  const spanX = maxX - minX;
-  const spanY = maxY - minY;
-  const padding = maxExtent * 0.08 || 0.2;
+  const spanX = maxX - minX || 1.0;
+  const spanY = maxY - minY || 1.0;
+  const maxSpan = Math.max(spanX, spanY);
+  const padding = maxSpan * 0.06 || 0.2;
+  const vbCx = (minX + maxX) / 2.0;
+  const vbCy = (minY + maxY) / 2.0;
+  const halfSpan = maxSpan / 2.0 + padding;
 
-  const viewBox = `${(minX - padding).toFixed(4)} ${(minY - padding).toFixed(4)} ${(spanX + 2 * padding).toFixed(4)} ${(spanY + 2 * padding).toFixed(4)}`;
+  const viewBox = `${(vbCx - halfSpan).toFixed(4)} ${(vbCy - halfSpan).toFixed(4)} ${(2 * halfSpan).toFixed(4)} ${(2 * halfSpan).toFixed(4)}`;
 
   return {
     viewBox,
     isContainerCircle,
+    isCurvedContainer,
+    containerArcPath,
     containerVertices,
     containerSides: containerToken,
     containerOffsetAngle: rot,
@@ -335,11 +411,13 @@ export function renderSolutionSvgHtml(solution: SolutionData): { svgHtml: string
   const data = generatePackingSvgElements(solution);
   if (!data) return null;
 
-  const containerElem = data.isContainerCircle
-    ? `<circle cx="0" cy="0" r="${data.S.toFixed(4)}" fill="none" stroke="#64748b" stroke-width="0.04" stroke-dasharray="0.1,0.1" />`
-    : data.containerVertices
-      ? `<polygon points="${data.containerVertices.map(p => `${p.x.toFixed(4)},${p.y.toFixed(4)}`).join(' ')}" fill="none" stroke="#64748b" stroke-width="0.04" stroke-dasharray="0.1,0.1" />`
-      : '';
+  const containerElem = data.containerArcPath
+    ? `<path d="${data.containerArcPath}" fill="none" stroke="#64748b" stroke-width="0.04" stroke-dasharray="0.1,0.1" />`
+    : data.isContainerCircle
+      ? `<circle cx="0" cy="0" r="${data.S.toFixed(4)}" fill="none" stroke="#64748b" stroke-width="0.04" stroke-dasharray="0.1,0.1" />`
+      : data.containerVertices
+        ? `<polygon points="${data.containerVertices.map(p => `${p.x.toFixed(4)},${p.y.toFixed(4)}`).join(' ')}" fill="none" stroke="#64748b" stroke-width="0.04" stroke-dasharray="0.1,0.1" />`
+        : '';
 
   const shapesElems = data.shapes.map(s => {
     if (s.isCircle) {

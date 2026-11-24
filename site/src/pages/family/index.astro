@@ -49,7 +49,7 @@ const totalNewBestCount = families.reduce((acc: number, f: any) => acc + (f.new_
         <input
           type="text"
           id="family-search"
-          placeholder="Filter 80 families by name, code, or shape (e.g., 3_in_4, hex, triangle, circle)..."
+          placeholder={`Filter ${families.length} families by name, code, or shape (e.g., 3_in_4, rhombus, semicircle, heptagon)...`}
           class="w-full bg-surface-elevated border border-hairline rounded-md px-4 py-2.5 text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:border-blueprint"
           aria-label="Filter families"
         />
@@ -82,6 +82,11 @@ const totalNewBestCount = families.reduce((acc: number, f: any) => acc + (f.new_
                   <span class="text-[10px] font-bold uppercase tracking-wider text-blueprint font-mono bg-blueprint/10 px-2 py-0.5 rounded-md border border-blueprint/20">
                     {fam.slug}
                   </span>
+                  {fam.tier === 'frontier' && (
+                    <span class="text-[10px] font-mono font-semibold text-violet-300 bg-violet-500/10 px-1.5 py-0.5 rounded-md border border-violet-500/30">
+                      Frontier
+                    </span>
+                  )}
                 </div>
                 <span class="text-[11px] text-slate-400 font-mono font-medium">{fam.total_problems} problems</span>
               </div>

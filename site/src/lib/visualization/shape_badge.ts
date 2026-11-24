@@ -73,6 +73,33 @@ function renderContainerElement(token: string): string {
   if (t === 'l' || t === 'l-tromino') {
     return `<polygon points="-7.0,-7.0 -1.5,-7.0 -1.5,1.5 7.0,1.5 7.0,7.0 -7.0,7.0" fill="none" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round" />`;
   }
+  if (t === 'semicircle' || t === 'semi') {
+    return `<path d="M -8.0,4.0 A 8.0,8.0 0 0,1 8.0,4.0 Z" fill="none" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round" />`;
+  }
+  if (t === 'quadrant' || t === 'quad') {
+    return `<path d="M -6.5,6.5 L 6.5,6.5 A 13.0,13.0 0 0,0 -6.5,-6.5 Z" fill="none" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round" />`;
+  }
+  if (t === 'rhombus' || t === 'rhom' || t === 'diamond') {
+    return `<polygon points="8.6,0.0 0.0,5.2 -8.6,0.0 0.0,-5.2" fill="none" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round" />`;
+  }
+  if (t === 'parallelogram' || t === 'para') {
+    return `<polygon points="-8.5,4.2 3.5,4.2 8.5,-4.2 -3.5,-4.2" fill="none" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round" />`;
+  }
+  if (t === 'trapezoid' || t === 'trap') {
+    return `<polygon points="-8.5,5.0 8.5,5.0 4.2,-5.0 -4.2,-5.0" fill="none" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round" />`;
+  }
+  if (t === '7' || t === 'heptagon') {
+    const pts = getPolygonPoints(7, 8.0, -Math.PI / 2);
+    return `<polygon points="${pts}" fill="none" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round" />`;
+  }
+  if (t === '9' || t === 'nonagon' || t === 'enneagon') {
+    const pts = getPolygonPoints(9, 8.0, -Math.PI / 2);
+    return `<polygon points="${pts}" fill="none" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round" />`;
+  }
+  if (t === '10' || t === 'decagon') {
+    const pts = getPolygonPoints(10, 8.0, -Math.PI / 10);
+    return `<polygon points="${pts}" fill="none" stroke="${stroke}" stroke-width="${strokeWidth}" stroke-linejoin="round" />`;
+  }
 
   // Fallback regular polygon if numeric
   const sides = parseInt(t, 10);
@@ -119,6 +146,33 @@ function renderInnerElement(token: string, fill: string): string {
   }
   if (t === 'l' || t === 'l-tromino') {
     return `<polygon points="-3.2,-3.2 -0.8,-3.2 -0.8,0.8 3.2,0.8 3.2,3.2 -3.2,3.2" fill="${fill}" />`;
+  }
+  if (t === 'semicircle' || t === 'semi') {
+    return `<path d="M -3.5,1.8 A 3.5,3.5 0 0,1 3.5,1.8 Z" fill="${fill}" />`;
+  }
+  if (t === 'quadrant' || t === 'quad') {
+    return `<path d="M -2.5,2.5 L 3.0,2.5 A 5.5,5.5 0 0,0 -2.5,-3.0 Z" fill="${fill}" />`;
+  }
+  if (t === 'rhombus' || t === 'rhom' || t === 'diamond') {
+    return `<polygon points="4.0,0.0 0.0,2.4 -4.0,0.0 0.0,-2.4" fill="${fill}" />`;
+  }
+  if (t === 'parallelogram' || t === 'para') {
+    return `<polygon points="-4.0,2.0 1.6,2.0 4.0,-2.0 -1.6,-2.0" fill="${fill}" />`;
+  }
+  if (t === 'trapezoid' || t === 'trap') {
+    return `<polygon points="-4.0,2.4 4.0,2.4 2.0,-2.4 -2.0,-2.4" fill="${fill}" />`;
+  }
+  if (t === '7' || t === 'heptagon') {
+    const pts = getPolygonPoints(7, 3.8, -Math.PI / 2);
+    return `<polygon points="${pts}" fill="${fill}" />`;
+  }
+  if (t === '9' || t === 'nonagon' || t === 'enneagon') {
+    const pts = getPolygonPoints(9, 3.8, -Math.PI / 2);
+    return `<polygon points="${pts}" fill="${fill}" />`;
+  }
+  if (t === '10' || t === 'decagon') {
+    const pts = getPolygonPoints(10, 3.8, -Math.PI / 10);
+    return `<polygon points="${pts}" fill="${fill}" />`;
   }
 
   // Fallback regular polygon if numeric

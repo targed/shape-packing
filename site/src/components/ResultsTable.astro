@@ -23,6 +23,7 @@ interface Problem {
   fails: number;
   priority_rank: number | null;
   density: number | null;
+  tier?: string;
   source_url?: string;
   source_note?: string;
   solution?: any;
@@ -64,10 +65,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               class={`hover:bg-surface-hover/50 transition-colors group ${isCadmium ? 'bg-amber-500/5' : ''}`}
               data-family={p.problem_family}
               data-status={p.status}
+              data-tier={p.tier || 'benchmark'}
               data-attempted={p.attempted ? 'yes' : 'no'}
               data-comparison={p.comparison_status}
               data-priority={p.priority_rank && p.priority_rank <= 25 ? 'yes' : 'no'}
-              data-search={`${p.problem_family} N=${p.N} ${p.status} ${p.comparison_status} ${p.known_value ?? ''} ${p.our_best_metric ?? ''}`.toLowerCase()}
+              data-search={`${p.problem_family} N=${p.N} ${p.status} ${p.tier || 'benchmark'} ${p.comparison_status} ${p.known_value ?? ''} ${p.our_best_metric ?? ''}`.toLowerCase()}
             >
               <!-- Family with Mini SVG Shape Badge -->
               <td class="px-4 py-3 font-sans font-medium text-slate-200">
@@ -102,7 +104,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                     Trivial
                   </span>
                 )}
-                {p.status !== 'proved_optimal' && p.status !== 'best_known' && p.status !== 'trivial' && (
+                {p.status === 'frontier' && (
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold bg-violet-500/10 text-violet-300 border border-violet-500/30">
+                    Frontier
+                  </span>
+                )}
+                {p.status !== 'proved_optimal' && p.status !== 'best_known' && p.status !== 'trivial' && p.status !== 'frontier' && (
                   <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">
                     {p.status}
                   </span>

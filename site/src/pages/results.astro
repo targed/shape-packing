@@ -192,6 +192,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             {priority_targets.length}
           </span>
         </button>
+
+        <button
+          type="button"
+          role="tab"
+          data-tab="frontier"
+          aria-selected="false"
+          class="quick-filter-tab px-3.5 py-2 rounded-lg text-xs font-semibold border transition-colors flex items-center gap-2 cursor-pointer bg-surface/50 border-slate-800 text-slate-400 hover:text-violet-300 hover:border-violet-500/40 font-sans"
+        >
+          <span class="w-1.5 h-1.5 rounded-md bg-violet-400 shrink-0"></span>
+          <span>Frontier</span>
+          <span class="font-mono text-[11px] px-1.5 py-0.5 rounded-md bg-violet-500/10 text-violet-300 border border-violet-500/30 tabular-nums">
+            {summary.frontier_problems ?? 0}
+          </span>
+        </button>
       </div>
 
       <!-- Secondary Controls & Search -->
@@ -275,6 +289,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             tab.classList.add('bg-emerald-500/10', 'border-emerald-500', 'text-emerald-300');
           } else if (tabKey === 'priority') {
             tab.classList.add('bg-sky-500/10', 'border-sky-500', 'text-sky-300');
+          } else if (tabKey === 'frontier') {
+            tab.classList.add('bg-violet-500/10', 'border-violet-500', 'text-violet-300');
           } else {
             tab.classList.add('bg-surface', 'border-slate-600', 'text-white');
           }
@@ -307,6 +323,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         const rowAtt = tr.getAttribute('data-attempted') || 'no';
         const rowComp = tr.getAttribute('data-comparison') || '';
         const rowStat = (tr.getAttribute('data-status') || '').toLowerCase();
+        const rowTier = (tr.getAttribute('data-tier') || 'benchmark').toLowerCase();
         const rowPriority = tr.getAttribute('data-priority') || 'no';
         const rowSearch = (tr.getAttribute('data-search') || tr.innerText || '').toLowerCase();
 
@@ -315,6 +332,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         if (activeTab === 'NEW_BEST') matchesTab = (rowComp === 'NEW_BEST');
         else if (activeTab === 'proved_optimal') matchesTab = (rowStat === 'proved_optimal');
         else if (activeTab === 'priority') matchesTab = (rowPriority === 'yes');
+        else if (activeTab === 'frontier') matchesTab = (rowTier === 'frontier');
 
         const matchesFam = !fam || rowFam === fam;
 
@@ -356,7 +374,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     // Check URL parameters for tab initial state (e.g. ?tab=NEW_BEST)
     const urlParams = new URLSearchParams(window.location.search);
     const initialTab = urlParams.get('tab');
-    if (initialTab && ['all', 'NEW_BEST', 'proved_optimal', 'priority'].includes(initialTab)) {
+    if (initialTab && ['all', 'NEW_BEST', 'proved_optimal', 'priority', 'frontier'].includes(initialTab)) {
       setActiveTab(initialTab);
     }
   </script>

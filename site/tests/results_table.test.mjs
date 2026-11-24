@@ -19,6 +19,7 @@ describe('Results Explorer & Geometric Badges Table (Task 4)', () => {
     assert.ok(content.includes('data-tab="NEW_BEST"'), 'Includes Records Broken tab');
     assert.ok(content.includes('data-tab="proved_optimal"'), 'Includes Proved Optimal tab');
     assert.ok(content.includes('data-tab="priority"'), 'Includes Priority Targets tab');
+    assert.ok(content.includes('data-tab="frontier"'), 'Includes Frontier Tier tab');
     assert.ok(content.includes('quick-filter-tab'), 'Includes quick-filter-tab class');
     assert.ok(content.includes('setActiveTab'), 'Includes tab switcher logic in script');
   });
