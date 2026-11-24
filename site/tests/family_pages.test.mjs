@@ -112,7 +112,7 @@ describe('Shape Family Detail & Benchmark Curve Gallery (Task 5)', () => {
 
     for (const f of files) {
       const content = fs.readFileSync(f, 'utf-8');
-      assert.ok(!content.includes('—'), `${path.basename(f)} must not contain em dash (—)`);
+      assert.ok(!content.includes('\u2014'), `${path.basename(f)} must not contain em dash (\\u2014)`);
       assert.ok(!content.includes('&mdash;'), `${path.basename(f)} must not contain &mdash;`);
     }
   });
