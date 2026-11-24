@@ -5,40 +5,124 @@ import LiveClusterStats from '../components/LiveClusterStats.astro';
 import RecentlyUpdated from '../components/RecentlyUpdated.astro';
 import fs from 'node:fs';
 import path from 'node:path';
+
 const siteData = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/data/site_data.json'), 'utf-8'));
 
 const { summary, new_bests, priority_targets, problems, recent_solutions = [] } = siteData;
-const solvedProblems = problems.filter(p => p.solution).slice(0, 4);
+const solvedProblems = problems.filter((p: any) => p.solution).slice(0, 4);
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// Curate 4 distinct showcase packings with geometries for the hero plate
+const showcaseList = [
+  problems.find((p: any) => p.id === '3_in_3_6' && p.solution),
+  problems.find((p: any) => p.id === '4_in_6_9' && p.solution),
+  problems.find((p: any) => p.id === '5_in_5_7' && p.solution),
+  problems.find((p: any) => p.id === '3_in_circle_3' && p.solution),
+].filter(Boolean);
+
+const showcaseItems = showcaseList.length > 0 ? showcaseList : solvedProblems;
 ---
 
-<BaseLayout title="Home | Shape Packing Dashboard">
-  <div class="space-y-12">
-    <!-- Hero Section -->
-    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-b from-slate-900 via-slate-900/90 to-slate-950 p-8 sm:p-12 border border-slate-800 shadow-2xl">
-      <div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="relative z-10 max-w-3xl space-y-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium">
-          <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
-          Auto-Researcher Pipeline & Dashboard
+<BaseLayout title="Home | Shape Packing Geometric Benchmark">
+  <div class="space-y-10 sm:space-y-12">
+    <!-- Hero Section: Precision Drafting Split Layout -->
+    <div class="bg-surface border border-hairline rounded-xl p-6 sm:p-8 lg:p-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <!-- Left Column: Technical Brief & Solid CTAs -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="font-mono text-xs text-blueprint-light bg-surface-elevated border border-hairline px-3 py-1 rounded-md inline-flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blueprint-light"></span>
+            <span>BENCHMARK SPECIFICATION // DISTRIBUTED SOLVER</span>
+          </div>
+
+          <h1 class="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+            Shape Packing Benchmark &amp; Distributed Solver
+          </h1>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Open-source benchmark and volunteer distributed computing grid tracking optimal 2D geometric packing bounds, record-beating solutions, optimization gaps, and priority queue targets across 80 shape families against Erich Friedman reference records.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a
+              href={`${base}/results`}
+              class="px-5 py-2.5 rounded-md bg-blueprint hover:bg-blueprint-dark text-white font-semibold text-sm transition-colors flex items-center gap-2"
+            >
+              <span>Explore Benchmark Results</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+
+            <a
+              href={`${base}/contribute`}
+              class="px-5 py-2.5 rounded-md bg-surface-elevated hover:bg-surface-hover text-slate-200 font-semibold text-sm border border-hairline transition-colors flex items-center gap-2"
+            >
+              <svg class="w-4 h-4 text-verify-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+              </svg>
+              <span>Volunteer Grid</span>
+            </a>
+
+            <a
+              href={`${base}/docs`}
+              class="px-4 py-2 rounded-md text-slate-300 hover:text-white text-sm font-medium transition-colors flex items-center gap-1.5"
+            >
+              <span>System Documentation</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
         </div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-          Shape Packing <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-purple-300 to-indigo-300">Benchmark & Analytics Hub</span>
-        </h1>
-        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
-          Internal auto-researcher workbench tracking solver runs, record-beating bounds (<code class="text-amber-300">NEW_BEST</code>), optimization gaps, and priority queue targets across 80 shape families.
-        </p>
-        <div class="flex flex-wrap gap-4 pt-2">
-          <a href={`${base}/results`} class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-lg shadow-amber-400/20 transition-all flex items-center gap-2 border border-amber-300/40">
-            Explore Results & New Best Records &rarr;
-          </a>
-          <a href={`${base}/contribute`} class="px-6 py-3 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 font-semibold text-sm border border-emerald-500/30 transition-all flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Contribute Compute &rarr;
-          </a>
-          <a href={`${base}/docs`} class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 transition-all">
-            System Documentation
-          </a>
+
+        <!-- Right Column: Interactive Geometry Showcase Plate -->
+        <div class="lg:col-span-5">
+          <div class="bg-canvas border border-hairline rounded-lg p-4 space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-hairline pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-sm bg-blueprint"></span>
+                <span class="font-mono text-xs font-semibold text-slate-200 uppercase tracking-wider">Geometry Plate</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-1 font-mono text-xs" id="hero-showcase-tabs" role="tablist">
+                {showcaseItems.map((prob: any, idx: number) => {
+                  const isRec = new_bests && new_bests.some((nb: any) => nb.problem_family === prob.problem_family && nb.N === prob.N);
+                  return (
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={idx === 0 ? "true" : "false"}
+                      class={`px-2 py-1 rounded-md text-[11px] font-mono transition-colors border cursor-pointer ${
+                        idx === 0
+                          ? 'bg-blueprint text-white border-blueprint font-semibold'
+                          : 'bg-surface-elevated text-slate-400 hover:text-slate-200 border-hairline'
+                      } hero-showcase-tab-btn`}
+                      data-target-idx={idx}
+                    >
+                      {prob.problem_family} (N={prob.N}){isRec ? ' *' : ''}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div id="hero-showcase-panels" class="relative">
+              {showcaseItems.map((prob: any, idx: number) => (
+                <div
+                  id={`hero-showcase-panel-${idx}`}
+                  class={`hero-showcase-panel ${idx === 0 ? 'block' : 'hidden'}`}
+                  role="tabpanel"
+                >
+                  <PackingVisual
+                    solution={prob.solution}
+                    title={`${prob.problem_family} (N=${prob.N})${prob.solution?.final_metric ? ` - s=${prob.solution.final_metric.toFixed(4)}` : ''}`}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -54,41 +138,46 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <!-- Live Stream: Recently Updated Problems & Verified Records -->
     <RecentlyUpdated initialRecent={recent_solutions} />
 
-    <!-- New Best Records Banner -->
+    <!-- Record-Beating Results -->
     {new_bests.length > 0 && (
-      <div class="bg-gradient-to-r from-amber-500/15 via-purple-500/10 to-slate-900 border border-amber-500/30 rounded-2xl p-6 space-y-4">
-        <div class="flex items-center justify-between">
+      <div class="bg-surface border border-cadmium/40 rounded-lg p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-hairline pb-4">
           <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 text-xs font-bold uppercase tracking-wider">
+            <div class="w-8 h-8 rounded-md bg-surface-elevated border border-cadmium/40 flex items-center justify-center text-cadmium font-mono text-xs font-bold">
               REC
             </div>
             <div>
-              <h2 class="text-lg font-bold text-white tracking-tight">Record-Beating Results ({summary.total_new_bests} Problems)</h2>
-              <p class="text-xs text-amber-200/80">Configurations where your solver achieved tighter scale metrics than Erich Friedman's reference</p>
+              <h2 class="font-display text-lg font-bold text-white tracking-tight">Record-Beating Results ({summary.total_new_bests} Problems)</h2>
+              <p class="text-xs text-slate-400">Configurations where the solver achieved tighter scale metrics than Erich Friedman reference records</p>
             </div>
           </div>
-          <a href={`${base}/results`} class="text-xs font-bold text-amber-400 hover:text-amber-300">View All in Dashboard &rarr;</a>
+          <a href={`${base}/results`} class="text-xs font-mono font-medium text-cadmium hover:text-cadmium-light flex items-center gap-1 transition-colors">
+            <span>View All in Dashboard</span>
+            <span>&rarr;</span>
+          </a>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {new_bests.slice(0, 4).map((nb) => (
-            <div class="bg-slate-950 border border-amber-500/30 rounded-xl p-4 space-y-2">
+          {new_bests.slice(0, 4).map((nb: any) => (
+            <div class="bg-canvas border border-cadmium/30 rounded-md p-4 space-y-2.5">
               <div class="flex items-center justify-between">
-                <span class="font-bold text-sm text-slate-200">{nb.problem_family}</span>
-                <span class="text-xs font-mono font-bold text-amber-400">N={nb.N}</span>
+                <span class="font-mono font-semibold text-sm text-slate-200">{nb.problem_family}</span>
+                <span class="text-xs font-mono font-bold text-cadmium bg-cadmium/10 border border-cadmium/20 px-2 py-0.5 rounded-sm">
+                  N={nb.N}
+                </span>
               </div>
-              <div class="text-xs space-y-1 text-slate-400 font-mono">
+              <div class="text-xs space-y-1.5 text-slate-400 font-mono">
                 <div class="flex justify-between">
                   <span>Known Ref:</span>
-                  <span>{nb.known_value ? nb.known_value.toFixed(5) : '—'}</span>
+                  <span class="text-slate-300">{nb.known_value ? nb.known_value.toFixed(5) : '-'}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-amber-300 font-semibold">Our Solver:</span>
-                  <span class="text-amber-300 font-bold">{nb.our_best_metric ? nb.our_best_metric.toFixed(5) : '—'}</span>
+                  <span class="text-slate-400">Our Solver:</span>
+                  <span class="text-cadmium font-bold">{nb.our_best_metric ? nb.our_best_metric.toFixed(5) : '-'}</span>
                 </div>
-                <div class="flex justify-between text-emerald-400 font-semibold border-t border-slate-800/80 pt-1">
+                <div class="flex justify-between text-verify-light font-semibold border-t border-hairline pt-1.5">
                   <span>Improvement:</span>
-                  <span>{nb.diff ? nb.diff.toFixed(5) : '—'}</span>
+                  <span>{nb.diff ? (nb.diff < 0 ? nb.diff.toFixed(5) : '-' + nb.diff.toFixed(5)) : '-'}</span>
                 </div>
               </div>
             </div>
@@ -102,24 +191,27 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-xl font-bold text-white tracking-tight">Most Promising Target Shapes</h2>
-            <p class="text-xs text-slate-400">Priority queue problems with lowest density / highest potential for new best bounds</p>
+            <h2 class="font-display text-xl font-bold text-white tracking-tight">Most Promising Target Shapes</h2>
+            <p class="text-xs text-slate-400">Priority queue problems with lowest density and highest potential for new best bounds</p>
           </div>
-          <a href={`${base}/results`} class="text-xs font-semibold text-indigo-400 hover:text-indigo-300">Explore Queue &rarr;</a>
+          <a href={`${base}/results`} class="text-xs font-mono text-blueprint-light hover:text-white transition-colors flex items-center gap-1">
+            <span>Explore Queue</span>
+            <span>&rarr;</span>
+          </a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {priority_targets.slice(0, 4).map((pt) => (
-            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-2">
+          {priority_targets.slice(0, 4).map((pt: any) => (
+            <div class="bg-surface border border-hairline rounded-lg p-4 space-y-2.5">
               <div class="flex items-center justify-between">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">
+                <span class="text-[10px] font-mono font-semibold uppercase tracking-wider text-blueprint-light bg-blueprint/10 border border-blueprint/20 px-2 py-0.5 rounded-sm">
                   Rank #{pt.priority_rank}
                 </span>
-                <span class="text-xs font-mono font-bold text-emerald-400">N={pt.N}</span>
+                <span class="text-xs font-mono font-bold text-slate-300">N={pt.N}</span>
               </div>
-              <h3 class="text-sm font-bold text-slate-100">{pt.problem_family}</h3>
-              <div class="text-xs text-slate-400 flex justify-between font-mono pt-1">
+              <h3 class="font-mono text-sm font-semibold text-slate-100">{pt.problem_family}</h3>
+              <div class="text-xs text-slate-400 flex justify-between font-mono border-t border-hairline pt-2">
                 <span>Density:</span>
-                <span class="text-indigo-300 font-semibold">{pt.density ? pt.density.toFixed(4) : 'N/A'}</span>
+                <span class="text-blueprint-light font-semibold">{pt.density ? pt.density.toFixed(4) : 'N/A'}</span>
               </div>
             </div>
           ))}
@@ -127,18 +219,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       </div>
     )}
 
-    <!-- Visualizations Showcase -->
+    <!-- Featured Vector Packing Visualizations -->
     {solvedProblems.length > 0 && (
       <div class="space-y-4">
         <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-xl font-bold text-white tracking-tight">Featured Vector Packing Visualizations</h2>
+            <h2 class="font-display text-xl font-bold text-white tracking-tight">Featured Vector Packing Visualizations</h2>
             <p class="text-xs text-slate-400">Sample best-packing geometry rendered at build time</p>
           </div>
-          <a href={`${base}/results`} class="text-xs font-semibold text-indigo-400 hover:text-indigo-300">View All &rarr;</a>
+          <a href={`${base}/results`} class="text-xs font-mono text-blueprint-light hover:text-white transition-colors flex items-center gap-1">
+            <span>View All</span>
+            <span>&rarr;</span>
+          </a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {solvedProblems.map((prob) => (
+          {solvedProblems.map((prob: any) => (
             <PackingVisual solution={prob.solution} title={`${prob.problem_family} (N=${prob.N})`} />
           ))}
         </div>
@@ -147,44 +242,79 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
     <!-- Navigation Hub Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <a href={`${base}/results`} class="group p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-900/80 transition-all flex flex-col justify-between space-y-4">
-        <div class="space-y-2">
-          <div class="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">
+      <a href={`${base}/results`} class="group p-6 rounded-lg bg-surface border border-hairline hover:border-blueprint/50 transition-all flex flex-col justify-between space-y-4">
+        <div class="space-y-2.5">
+          <div class="w-10 h-10 rounded-md bg-surface-elevated border border-hairline text-blueprint-light flex items-center justify-center font-mono font-bold text-sm">
             01
           </div>
-          <h3 class="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">Results & Analytics Dashboard</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Filter attempted runs, explore 33 NEW_BEST record-beating metrics, and compare solver performance.
+          <h3 class="font-display text-lg font-bold text-white group-hover:text-blueprint-light transition-colors">Results &amp; Analytics Dashboard</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Filter attempted runs, explore {summary.total_new_bests || 33} record-beating metrics, and compare solver performance against literature references.
           </p>
         </div>
-        <span class="text-xs font-semibold text-indigo-400 flex items-center gap-1">Browse Results &rarr;</span>
+        <span class="text-xs font-mono font-semibold text-blueprint-light flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">Browse Results &rarr;</span>
       </a>
 
-      <a href={`${base}/docs`} class="group p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-purple-500/50 hover:bg-slate-900/80 transition-all flex flex-col justify-between space-y-4">
-        <div class="space-y-2">
-          <div class="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center font-bold">
+      <a href={`${base}/docs`} class="group p-6 rounded-lg bg-surface border border-hairline hover:border-blueprint/50 transition-all flex flex-col justify-between space-y-4">
+        <div class="space-y-2.5">
+          <div class="w-10 h-10 rounded-md bg-surface-elevated border border-hairline text-blueprint-light flex items-center justify-center font-mono font-bold text-sm">
             02
           </div>
-          <h3 class="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">System Architecture</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Deep dive into the Python auto-researcher orchestrator loop, Rust solver integration, and verification tools.
+          <h3 class="font-display text-lg font-bold text-white group-hover:text-blueprint-light transition-colors">System Architecture</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Deep dive into the Python auto-researcher orchestrator loop, Rust solver integration, and SAT polygon verification algorithms.
           </p>
         </div>
-        <span class="text-xs font-semibold text-purple-400 flex items-center gap-1">Read Documentation &rarr;</span>
+        <span class="text-xs font-mono font-semibold text-blueprint-light flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">Read Documentation &rarr;</span>
       </a>
 
-      <a href={`${base}/family/`} class="group p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-pink-500/50 hover:bg-slate-900/80 transition-all flex flex-col justify-between space-y-4">
-        <div class="space-y-2">
-          <div class="w-10 h-10 rounded-lg bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center font-bold">
+      <a href={`${base}/family`} class="group p-6 rounded-lg bg-surface border border-hairline hover:border-blueprint/50 transition-all flex flex-col justify-between space-y-4">
+        <div class="space-y-2.5">
+          <div class="w-10 h-10 rounded-md bg-surface-elevated border border-hairline text-blueprint-light flex items-center justify-center font-mono font-bold text-sm">
             03
           </div>
-          <h3 class="text-lg font-bold text-white group-hover:text-pink-400 transition-colors">Problem Family Catalog</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            Dedicated requirement specifications and target bounds for individual polygon families (Triangles, Squares, Tans, Pentagons).
+          <h3 class="font-display text-lg font-bold text-white group-hover:text-blueprint-light transition-colors">Problem Family Catalog</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Dedicated requirement specifications and target bounds for 80 distinct polygon families including Triangles, Squares, Tans, and Pentagons.
           </p>
         </div>
-        <span class="text-xs font-semibold text-pink-400 flex items-center gap-1">View Family Catalog &rarr;</span>
+        <span class="text-xs font-mono font-semibold text-blueprint-light flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">View Family Catalog &rarr;</span>
       </a>
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  function initHeroShowcaseTabs() {
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.hero-showcase-tab-btn');
+    const panels = document.querySelectorAll<HTMLElement>('.hero-showcase-panel');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetIdx = tab.getAttribute('data-target-idx');
+        if (targetIdx === null) return;
+
+        tabs.forEach((t) => {
+          t.setAttribute('aria-selected', 'false');
+          t.className = 'px-2 py-1 rounded-md text-[11px] font-mono transition-colors border cursor-pointer bg-surface-elevated text-slate-400 hover:text-slate-200 border-hairline hero-showcase-tab-btn';
+        });
+
+        tab.setAttribute('aria-selected', 'true');
+        tab.className = 'px-2 py-1 rounded-md text-[11px] font-mono transition-colors border cursor-pointer bg-blueprint text-white border-blueprint font-semibold hero-showcase-tab-btn';
+
+        panels.forEach((p, idx) => {
+          if (String(idx) === targetIdx) {
+            p.classList.remove('hidden');
+            p.classList.add('block');
+          } else {
+            p.classList.add('hidden');
+            p.classList.remove('block');
+          }
+        });
+      });
+    });
+  }
+
+  initHeroShowcaseTabs();
+  document.addEventListener('astro:page-load', initHeroShowcaseTabs);
+</script>
