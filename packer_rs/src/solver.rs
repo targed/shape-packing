@@ -91,17 +91,46 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
         let _ = (limit, flag);
     }
 
-    let (nsi, unit_polygon_vertices, unit_polygon_vectors, _) = get_shape_geometry(&config.inner_shape);
-    let (nsc, _, unit_container_vectors, unit_container_apothem) = get_shape_geometry(&config.container_shape);
+    let inner_norm = normalize_shape_token(&config.inner_shape);
+    let container_norm = normalize_shape_token(&config.container_shape);
+    if !is_supported_pair(&inner_norm, &container_norm) {
+        return SolveResult {
+            success: false,
+            best_s: f64::INFINITY,
+            final_metric: f64::INFINITY,
+            values: Vec::new(),
+            inner_token: config.inner_shape.clone(),
+            container_token: config.container_shape.clone(),
+        };
+    }
+
+    let is_inner_circle = inner_norm == "CIRCLE";
+    let is_container_circle = container_norm == "CIRCLE";
+    let is_inner_l = inner_norm == "L";
+    let is_container_l = container_norm == "L";
+    let container_mode: u8 = if is_container_circle {
+        1
+    } else if is_container_l {
+        2
+    } else if container_norm == "SEMICIRCLE" {
+        3
+    } else if container_norm == "QUADRANT" {
+        4
+    } else {
+        0
+    };
+
+    let (nsi, unit_polygon_vertices, unit_polygon_vectors, _) = get_shape_geometry(&inner_norm);
+    let (nsc, _, unit_container_vectors, unit_container_apothem) = if container_mode == 3 || container_mode == 4 {
+        (0, Vec::new(), Vec::new(), Vec::new())
+    } else {
+        get_shape_geometry(&container_norm)
+    };
 
     let best_s = Arc::new(Mutex::new(f64::INFINITY));
     let best_x = Arc::new(Mutex::new(None::<Vec<f64>>));
 
     let N_f64 = config.inner_polygons as f64;
-    let is_inner_circle = config.inner_shape.to_uppercase() == "CIRCLE" || config.inner_shape.to_uppercase() == "CIR";
-    let is_container_circle = config.container_shape.to_uppercase() == "CIRCLE" || config.container_shape.to_uppercase() == "CIR";
-    let is_inner_l = config.inner_shape.to_uppercase() == "L";
-    let is_container_l = config.container_shape.to_uppercase() == "L";
 
     (0..config.attempts)
         .into_par_iter()
@@ -122,10 +151,11 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
                 is_container_circle,
                 is_inner_l,
                 is_container_l,
+                container_mode,
             ),
-            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions, target_s, is_inner_circle, is_container_circle, is_inner_l, is_container_l), seed| {
+            |(stop, start, upv, upvectors, ucv, uap, best_s, best_x, N_f64, initial_positions, target_s, is_inner_circle, is_container_circle, is_inner_l, is_container_l, container_mode), seed| {
                 let mut rng = ChaCha8Rng::seed_from_u64(seed as u64);
-                let (s, x) = run_attempt(
+                let (s, x) = run_attempt_with_mode(
                     &mut rng,
                     *N_f64,
                     nsi,
@@ -145,6 +175,7 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
                     *is_container_circle,
                     *is_inner_l,
                     *is_container_l,
+                    *container_mode,
                 );
                 if s.is_finite() && x.is_some() {
                     loop {
@@ -197,25 +228,77 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
     }
 }
 
-/// Parses a polygon token (e.g., "TRIANGLE", "3", "HEXAGON", "6") into its side count.
-pub fn parse_polygon_sides(token: &str) -> usize {
+/// Normalize any shape alias to its canonical uppercase token.
+pub fn normalize_shape_token(token: &str) -> String {
     match token.trim().to_uppercase().as_str() {
-        "TRIANGLE" => 3,
-        "SQUARE" => 4,
-        "PENTAGON" => 5,
-        "HEXAGON" => 6,
-        "HEPTAGON" => 7,
-        "OCTAGON" => 8,
-        "NONAGON" => 9,
-        "DECAGON" => 10,
+        "3" | "TRIANGLE" | "TRI" => "3".to_string(),
+        "4" | "SQUARE" | "SQU" => "4".to_string(),
+        "5" | "PENTAGON" | "PEN" => "5".to_string(),
+        "6" | "HEXAGON" | "HEX" => "6".to_string(),
+        "7" | "HEPTAGON" | "HEP" => "7".to_string(),
+        "8" | "OCTAGON" | "OCT" => "8".to_string(),
+        "9" | "NONAGON" | "NON" | "ENNEAGON" => "9".to_string(),
+        "10" | "DECAGON" | "DEC" => "10".to_string(),
+        "CIRCLE" | "CIR" | "CIRC" | "0" => "CIRCLE".to_string(),
+        "DOMINO" | "DOM" => "DOMINO".to_string(),
+        "TAN" | "TANGRAM" => "TAN".to_string(),
+        "L" | "LTROMINO" | "L-TROMINO" | "L_TROMINO" => "L".to_string(),
+        "SEMICIRCLE" | "SEMI" | "SEMIDISK" => "SEMICIRCLE".to_string(),
+        "QUADRANT" | "QUAD" | "QUARTERCIRCLE" | "CIRCULAR_QUADRANT" => "QUADRANT".to_string(),
+        "RHOMBUS" | "RHOM" | "DIAMOND" => "RHOMBUS".to_string(),
+        "PARALLELOGRAM" | "PARA" | "PARALLELOGRAM_TAN" => "PARALLELOGRAM".to_string(),
+        "TRAPEZOID" | "TRAP" | "TRAPEZIUM" => "TRAPEZOID".to_string(),
+        other => other.to_string(),
+    }
+}
+
+fn is_valid_single_shape(norm: &str) -> bool {
+    matches!(
+        norm,
+        "CIRCLE"
+            | "DOMINO"
+            | "TAN"
+            | "L"
+            | "SEMICIRCLE"
+            | "QUADRANT"
+            | "RHOMBUS"
+            | "PARALLELOGRAM"
+            | "TRAPEZOID"
+    ) || norm.parse::<usize>().map_or(false, |n| n >= 3)
+}
+
+pub fn is_supported_pair(inner_norm: &str, container_norm: &str) -> bool {
+    if !is_valid_single_shape(inner_norm) || !is_valid_single_shape(container_norm) {
+        return false;
+    }
+    if inner_norm == "SEMICIRCLE" || inner_norm == "QUADRANT" {
+        return false;
+    }
+    if container_norm == "SEMICIRCLE" || container_norm == "QUADRANT" {
+        return inner_norm == "CIRCLE";
+    }
+    true
+}
+
+/// Parses a polygon token (e.g., "TRIANGLE", "3", "HEPTAGON", "ENNEAGON") into its side count.
+pub fn parse_polygon_sides(token: &str) -> usize {
+    match normalize_shape_token(token).as_str() {
+        "3" => 3,
+        "4" => 4,
+        "5" => 5,
+        "6" => 6,
+        "7" => 7,
+        "8" => 8,
+        "9" => 9,
+        "10" => 10,
         other => other.parse().unwrap_or(3),
     }
 }
 
 /// Computes the published Erich Friedman metric s given the solver container circumradius S.
 pub fn compute_friedman_metric(circumradius_s: f64, inner_shape: &str, container_shape: &str) -> f64 {
-    let container_upper = container_shape.trim().to_uppercase();
-    let inner_upper = inner_shape.trim().to_uppercase();
+    let container_upper = normalize_shape_token(container_shape);
+    let inner_upper = normalize_shape_token(inner_shape);
 
     // LinL special case: container L and inner L
     if container_upper == "L" && inner_upper == "L" {
@@ -223,13 +306,13 @@ pub fn compute_friedman_metric(circumradius_s: f64, inner_shape: &str, container
     }
 
     let c_metric = match container_upper.as_str() {
-        "CIRCLE" | "CIR" | "TAN" | "DOMINO" => circumradius_s,
+        "CIRCLE" | "TAN" | "DOMINO" | "SEMICIRCLE" | "QUADRANT" | "RHOMBUS" | "PARALLELOGRAM" | "TRAPEZOID" => circumradius_s,
         "L" => 2.0 * circumradius_s,
         _ => 2.0 * circumradius_s * (PI / parse_polygon_sides(&container_upper) as f64).sin(),
     };
 
     let i_scale = match inner_upper.as_str() {
-        "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => 1.0,
+        "CIRCLE" | "TAN" | "DOMINO" | "L" | "SEMICIRCLE" | "QUADRANT" | "RHOMBUS" | "PARALLELOGRAM" | "TRAPEZOID" => 1.0,
         _ => 2.0 * (PI / parse_polygon_sides(&inner_upper) as f64).sin(),
     };
 
@@ -238,8 +321,8 @@ pub fn compute_friedman_metric(circumradius_s: f64, inner_shape: &str, container
 
 /// Converts a published Erich Friedman metric s into the solver container circumradius S.
 pub fn inverse_friedman_metric(friedman_s: f64, inner_shape: &str, container_shape: &str) -> f64 {
-    let container_upper = container_shape.trim().to_uppercase();
-    let inner_upper = inner_shape.trim().to_uppercase();
+    let container_upper = normalize_shape_token(container_shape);
+    let inner_upper = normalize_shape_token(inner_shape);
 
     // LinL special case: container L and inner L
     if container_upper == "L" && inner_upper == "L" {
@@ -247,14 +330,14 @@ pub fn inverse_friedman_metric(friedman_s: f64, inner_shape: &str, container_sha
     }
 
     let i_scale = match inner_upper.as_str() {
-        "CIRCLE" | "CIR" | "TAN" | "DOMINO" | "L" => 1.0,
+        "CIRCLE" | "TAN" | "DOMINO" | "L" | "SEMICIRCLE" | "QUADRANT" | "RHOMBUS" | "PARALLELOGRAM" | "TRAPEZOID" => 1.0,
         _ => 2.0 * (PI / parse_polygon_sides(&inner_upper) as f64).sin(),
     };
 
     let c_metric = friedman_s * i_scale;
 
     match container_upper.as_str() {
-        "CIRCLE" | "CIR" | "TAN" | "DOMINO" => c_metric,
+        "CIRCLE" | "TAN" | "DOMINO" | "SEMICIRCLE" | "QUADRANT" | "RHOMBUS" | "PARALLELOGRAM" | "TRAPEZOID" => c_metric,
         "L" => c_metric / 2.0,
         _ => c_metric / (2.0 * (PI / parse_polygon_sides(&container_upper) as f64).sin()),
     }
@@ -279,15 +362,16 @@ fn regular_polygon_vectors(radius: f64, sides: usize) -> Vec<(f64, f64)> {
 }
 
 pub fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64)>, Vec<f64>) {
-    if token.to_uppercase() == "DOMINO" {
+    let norm = normalize_shape_token(token);
+    if norm == "DOMINO" {
         let n = 4;
         let vertices = vec![(-1.0, -0.5), (1.0, -0.5), (1.0, 0.5), (-1.0, 0.5)];
         let vectors = vec![(0.0, -1.0), (1.0, 0.0), (0.0, 1.0), (-1.0, 0.0)];
         let apothem = vec![0.5, 1.0, 0.5, 1.0];
         return (n, vertices, vectors, apothem);
     }
-    
-    if token.to_uppercase() == "TAN" {
+
+    if norm == "TAN" {
         let n = 3;
         let r = 1.0 - (2.0f64).sqrt() / 2.0;
         let vertices = vec![(-r, -r), (1.0 - r, -r), (-r, 1.0 - r)];
@@ -295,8 +379,8 @@ pub fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64
         let apothem = vec![r, r, r];
         return (n, vertices, vectors, apothem);
     }
-    
-    if token.to_uppercase() == "L" {
+
+    if norm == "L" {
         let n = 6;
         let vertices = vec![
             (-5.0/6.0, -5.0/6.0),
@@ -317,8 +401,36 @@ pub fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64
         let apothem = vec![5.0/6.0, 7.0/6.0, 1.0/6.0, 1.0/6.0, 7.0/6.0, 5.0/6.0];
         return (n, vertices, vectors, apothem);
     }
-    
-    if token.to_uppercase() == "CIRCLE" || token.to_uppercase() == "CIR" {
+
+    if norm == "RHOMBUS" {
+        let s3_2 = 3.0f64.sqrt() / 2.0;
+        let s3_4 = 3.0f64.sqrt() / 4.0;
+        let vertices = vec![(s3_2, 0.0), (0.0, 0.5), (-s3_2, 0.0), (0.0, -0.5)];
+        let vectors = vec![(0.5, s3_2), (-0.5, s3_2), (-0.5, -s3_2), (0.5, -s3_2)];
+        let apothem = vec![s3_4, s3_4, s3_4, s3_4];
+        return (4, vertices, vectors, apothem);
+    }
+
+    if norm == "PARALLELOGRAM" {
+        let s2_2 = 2.0f64.sqrt() / 2.0;
+        let s2_4 = 2.0f64.sqrt() / 4.0;
+        let vertices = vec![(-3.0 * s2_4, -s2_4), (s2_4, -s2_4), (3.0 * s2_4, s2_4), (-s2_4, s2_4)];
+        let vectors = vec![(0.0, -1.0), (s2_2, -s2_2), (0.0, 1.0), (-s2_2, s2_2)];
+        let apothem = vec![s2_4, 0.5, s2_4, 0.5];
+        return (4, vertices, vectors, apothem);
+    }
+
+    if norm == "TRAPEZOID" {
+        let s3_2 = 3.0f64.sqrt() / 2.0;
+        let s3_4 = 3.0f64.sqrt() / 4.0;
+        let leg_ap = 3.0 * 3.0f64.sqrt() / 8.0;
+        let vertices = vec![(-1.0, -s3_4), (1.0, -s3_4), (0.5, s3_4), (-0.5, s3_4)];
+        let vectors = vec![(0.0, -1.0), (s3_2, 0.5), (0.0, 1.0), (-s3_2, 0.5)];
+        let apothem = vec![s3_4, leg_ap, s3_4, leg_ap];
+        return (4, vertices, vectors, apothem);
+    }
+
+    if norm == "CIRCLE" {
         let sides = 32;
         let radius = 1.0;
         let vertices = regular_polygon(radius, sides);
@@ -326,27 +438,69 @@ pub fn get_shape_geometry(token: &str) -> (usize, Vec<(f64, f64)>, Vec<(f64, f64
         let apothem = vec![(PI / sides as f64).cos(); sides];
         return (sides, vertices, vectors, apothem);
     }
-    
-    let sides: usize = match token.to_uppercase().as_str() {
-        "TRIANGLE" => 3,
-        "SQUARE" => 4,
-        "PENTAGON" => 5,
-        "HEXAGON" => 6,
-        "HEPTAGON" => 7,
-        "OCTAGON" => 8,
-        "NONAGON" => 9,
-        "DECAGON" => 10,
-        other => other.parse().unwrap_or(3),
-    };
+
+    let sides: usize = norm.parse().unwrap_or(3).max(3);
     let radius = 1.0;
     let vertices = regular_polygon(radius, sides);
     let vectors = regular_polygon_vectors(radius, sides);
     let apothem = vec![(PI / sides as f64).cos(); sides];
-    
+
     (sides, vertices, vectors, apothem)
 }
 
 pub fn run_attempt<R: Rng>(
+    rng: &mut R,
+    N_f64: f64,
+    nsi: usize,
+    nsc: usize,
+    unit_polygon_vertices: &[(f64, f64)],
+    unit_polygon_vectors: &[(f64, f64)],
+    unit_container_vectors: &[(f64, f64)],
+    unit_container_apothem: &[f64],
+    penalty_tolerance: f64,
+    final_step_size: f64,
+    start: &Instant,
+    stop_flag: &AtomicBool,
+    time_limit: Option<f64>,
+    initial_positions: Option<&Vec<f64>>,
+    target_s: Option<f64>,
+    is_inner_circle: bool,
+    is_container_circle: bool,
+    is_inner_l: bool,
+    is_container_l: bool,
+) -> (f64, Option<Vec<f64>>) {
+    let container_mode: u8 = if is_container_circle {
+        1
+    } else if is_container_l {
+        2
+    } else {
+        0
+    };
+    run_attempt_with_mode(
+        rng,
+        N_f64,
+        nsi,
+        nsc,
+        unit_polygon_vertices,
+        unit_polygon_vectors,
+        unit_container_vectors,
+        unit_container_apothem,
+        penalty_tolerance,
+        final_step_size,
+        start,
+        stop_flag,
+        time_limit,
+        initial_positions,
+        target_s,
+        is_inner_circle,
+        is_container_circle,
+        is_inner_l,
+        is_container_l,
+        container_mode,
+    )
+}
+
+pub fn run_attempt_with_mode<R: Rng>(
     rng: &mut R,
     N_f64: f64,
     nsi: usize,
@@ -366,18 +520,22 @@ pub fn run_attempt<R: Rng>(
     is_container_circle: bool,
     is_inner_l: bool,
     is_container_l: bool,
+    container_mode: u8,
 ) -> (f64, Option<Vec<f64>>) {
     if stop_flag.load(Ordering::Relaxed) {
         return (f64::INFINITY, None);
     }
 
     let mut dynamic_s = N_f64.sqrt() * (2.0 + rng.gen::<f64>() * 2.0);
+    if container_mode == 3 || container_mode == 4 {
+        dynamic_s = N_f64.sqrt() * (2.5 + rng.gen::<f64>() * 2.5);
+    }
     if initial_positions.is_some() {
         if let Some(ts) = target_s {
             dynamic_s = ts * 1.05;
         }
     }
-    
+
     let lowest_s = (dynamic_s * 0.2).min(N_f64.sqrt().max(0.1));
     let range_val = (dynamic_s - lowest_s).max(0.01);
 
@@ -393,10 +551,6 @@ pub fn run_attempt<R: Rng>(
         init_pos.iter().map(|&v| v + (rng.gen::<f64>() - 0.5) * 1e-5).collect()
     } else if is_container_l {
         // L-container spans [-5/6 S, 7/6 S] x [-5/6 S, 7/6 S] with cutout at [1/6 S, 7/6 S]^2.
-        // It consists of three S x S squares:
-        // Square 0 (bottom-left): [-5/6 S, 1/6 S] x [-5/6 S, 1/6 S]
-        // Square 1 (top arm):     [-5/6 S, 1/6 S] x [1/6 S, 7/6 S]
-        // Square 2 (right arm):   [1/6 S, 7/6 S] x [-5/6 S, 1/6 S]
         let mut out = vec![0.0f64; N * 3];
         let pad = (1.0f64).min(dynamic_s * 0.1);
         for i in 0..N {
@@ -413,12 +567,36 @@ pub fn run_attempt<R: Rng>(
             out[i * 3 + 2] = 2.0 * PI * rng.gen::<f64>();
         }
         out
+    } else if container_mode == 3 {
+        // Semicircle: sample in upper half [-S/2, S/2] x [1.0, S*0.8]
+        let mut out = vec![0.0f64; N * 3];
+        let y_hi = (dynamic_s * 0.8).max(1.0);
+        for i in 0..N {
+            out[i * 3] = -dynamic_s * 0.5 + dynamic_s * rng.gen::<f64>();
+            out[i * 3 + 1] = 1.0 + (y_hi - 1.0) * rng.gen::<f64>();
+            out[i * 3 + 2] = 0.0;
+        }
+        out
+    } else if container_mode == 4 {
+        // Quadrant: sample in first quadrant [1.0, S*0.8] x [1.0, S*0.8]
+        let mut out = vec![0.0f64; N * 3];
+        let hi = (dynamic_s * 0.8).max(1.0);
+        for i in 0..N {
+            out[i * 3] = 1.0 + (hi - 1.0) * rng.gen::<f64>();
+            out[i * 3 + 1] = 1.0 + (hi - 1.0) * rng.gen::<f64>();
+            out[i * 3 + 2] = 0.0;
+        }
+        out
     } else if rng.gen_bool(0.5) {
         (0..(N * 3))
-            .map(|_| {
-                let lo = -dynamic_s / 2.0;
-                let hi = dynamic_s / 2.0;
-                lo + (hi - lo) * rng.gen::<f64>()
+            .map(|idx| {
+                if idx % 3 == 2 {
+                    2.0 * PI * rng.gen::<f64>()
+                } else {
+                    let lo = -dynamic_s / 2.0;
+                    let hi = dynamic_s / 2.0;
+                    lo + (hi - lo) * rng.gen::<f64>()
+                }
             })
             .collect()
     } else {
@@ -471,6 +649,7 @@ pub fn run_attempt<R: Rng>(
             is_container_circle,
             is_inner_l,
             is_container_l,
+            container_mode,
             &mut polygon_array,
             &mut vector_array,
             &mut grad_buffer,
@@ -489,7 +668,8 @@ pub fn run_attempt<R: Rng>(
             last_valid_s = current_s;
             x0 = new_x
                 .iter()
-                .map(|&v| v * multiplier)
+                .enumerate()
+                .map(|(idx, &v)| if idx % 3 != 2 { v * multiplier } else { v })
                 .collect::<Vec<_>>();
             current_s *= multiplier;
         } else {
@@ -513,6 +693,7 @@ pub fn run_attempt<R: Rng>(
                     is_container_circle,
                     is_inner_l,
                     is_container_l,
+                    container_mode,
                     &mut polygon_array,
                     &mut vector_array,
                     &mut grad_buffer,
@@ -525,7 +706,8 @@ pub fn run_attempt<R: Rng>(
                     last_valid_s = current_s;
                     x0 = new_x
                         .iter()
-                        .map(|&v| v * multiplier)
+                        .enumerate()
+                        .map(|(idx, &v)| if idx % 3 != 2 { v * multiplier } else { v })
                         .collect::<Vec<_>>();
                     current_s *= multiplier;
                     resolved = true;
@@ -651,6 +833,7 @@ struct Evaluator<'a> {
     is_container_circle: bool,
     is_inner_l: bool,
     is_container_l: bool,
+    container_mode: u8,
     polygon_array: &'a mut [(f64, f64)],
     vector_array: &'a mut [(f64, f64)],
     grad_buffer: &'a mut [f64],
@@ -661,7 +844,7 @@ struct Evaluator<'a> {
 impl<'a> Evaluator<'a> {
     #[inline(always)]
     fn eval(&mut self, x: &[f64], compute_grad: bool) -> (f64, f64) {
-        penalty_and_gradient(
+        penalty_and_gradient_with_mode(
             x,
             self.S,
             self.N,
@@ -675,6 +858,7 @@ impl<'a> Evaluator<'a> {
             self.is_container_circle,
             self.is_inner_l,
             self.is_container_l,
+            self.container_mode,
             compute_grad,
             self.polygon_array,
             self.vector_array,
@@ -862,6 +1046,7 @@ fn minimize_gradient(
     is_container_circle: bool,
     is_inner_l: bool,
     is_container_l: bool,
+    container_mode: u8,
     polygon_array: &mut [(f64, f64)],
     vector_array: &mut [(f64, f64)],
     grad_buffer: &mut [f64],
@@ -881,6 +1066,7 @@ fn minimize_gradient(
         is_container_circle,
         is_inner_l,
         is_container_l,
+        container_mode,
         polygon_array,
         vector_array,
         grad_buffer,
@@ -933,6 +1119,59 @@ pub fn penalty_and_gradient(
     bbox_array: &mut [(f64, f64, f64, f64)],
     sort_indices: &mut [usize],
 ) -> (f64, f64) {
+    let container_mode: u8 = if is_container_circle {
+        1
+    } else if is_container_l {
+        2
+    } else {
+        0
+    };
+    penalty_and_gradient_with_mode(
+        values,
+        S,
+        N,
+        nsi,
+        nsc,
+        unit_polygon_vertices,
+        unit_polygon_vectors,
+        unit_container_vectors,
+        unit_container_apothem,
+        is_inner_circle,
+        is_container_circle,
+        is_inner_l,
+        is_container_l,
+        container_mode,
+        compute_grad,
+        polygon_array,
+        vector_array,
+        grad,
+        bbox_array,
+        sort_indices,
+    )
+}
+
+pub fn penalty_and_gradient_with_mode(
+    values: &[f64],
+    S: f64,
+    N: usize,
+    nsi: usize,
+    nsc: usize,
+    unit_polygon_vertices: &[(f64, f64)],
+    unit_polygon_vectors: &[(f64, f64)],
+    unit_container_vectors: &[(f64, f64)],
+    unit_container_apothem: &[f64],
+    is_inner_circle: bool,
+    is_container_circle: bool,
+    is_inner_l: bool,
+    is_container_l: bool,
+    container_mode: u8,
+    compute_grad: bool,
+    polygon_array: &mut [(f64, f64)],
+    vector_array: &mut [(f64, f64)],
+    grad: &mut [f64],
+    bbox_array: &mut [(f64, f64, f64, f64)],
+    sort_indices: &mut [usize],
+) -> (f64, f64) {
     let mut penalty = 0.0f64;
     if compute_grad {
         grad.fill(0.0);
@@ -960,7 +1199,63 @@ pub fn penalty_and_gradient(
             vector_array[i * nsi + v] = (rx, ry);
         }
 
-        if is_container_circle {
+        if container_mode == 3 {
+            // Closed-form Semicircle bounds for unit circle: y >= 1.0, ||c|| <= S - 1.0
+            if posy < 1.0 {
+                let diff = 1.0 - posy;
+                penalty += diff * diff;
+                if diff > max_violation { max_violation = diff; }
+                if compute_grad {
+                    grad[i * 3 + 1] -= 2.0 * diff;
+                }
+            }
+            let dist = (posx * posx + posy * posy).sqrt();
+            let limit = S - 1.0;
+            if dist > limit {
+                let diff = dist - limit;
+                penalty += diff * diff;
+                if diff > max_violation { max_violation = diff; }
+                if compute_grad {
+                    let term = 2.0 * diff;
+                    let nx = if dist > 1e-12 { posx / dist } else { 1.0 };
+                    let ny = if dist > 1e-12 { posy / dist } else { 0.0 };
+                    grad[i * 3] += term * nx;
+                    grad[i * 3 + 1] += term * ny;
+                }
+            }
+        } else if container_mode == 4 {
+            // Closed-form Circular Quadrant bounds for unit circle: x >= 1.0, y >= 1.0, ||c|| <= S - 1.0
+            if posx < 1.0 {
+                let diff = 1.0 - posx;
+                penalty += diff * diff;
+                if diff > max_violation { max_violation = diff; }
+                if compute_grad {
+                    grad[i * 3] -= 2.0 * diff;
+                }
+            }
+            if posy < 1.0 {
+                let diff = 1.0 - posy;
+                penalty += diff * diff;
+                if diff > max_violation { max_violation = diff; }
+                if compute_grad {
+                    grad[i * 3 + 1] -= 2.0 * diff;
+                }
+            }
+            let dist = (posx * posx + posy * posy).sqrt();
+            let limit = S - 1.0;
+            if dist > limit {
+                let diff = dist - limit;
+                penalty += diff * diff;
+                if diff > max_violation { max_violation = diff; }
+                if compute_grad {
+                    let term = 2.0 * diff;
+                    let nx = if dist > 1e-12 { posx / dist } else { 1.0 };
+                    let ny = if dist > 1e-12 { posy / dist } else { 0.0 };
+                    grad[i * 3] += term * nx;
+                    grad[i * 3 + 1] += term * ny;
+                }
+            }
+        } else if is_container_circle {
             if is_inner_circle {
                 let dist_sq = posx * posx + posy * posy;
                 let dist = dist_sq.sqrt();
@@ -1159,16 +1454,17 @@ pub fn penalty_and_gradient(
 
                     let mut obstacle_collision = true;
                     let mut min_overlap = 1e30f64;
-                    let mut best_axis = (0.0, 0.0);
-                    let mut best_v_min = 0;
-                    let mut best_v_max = 0;
-                    let mut best_is_max = true;
+                    let mut best_axis_idx = 0usize;
+                    let mut best_v1_min = 0usize;
+                    let mut best_v1_max = 0usize;
+                    let mut best_v2_min = 0usize;
+                    let mut best_v2_max = 0usize;
 
-                    for &(ax, ay) in axes.iter() {
+                    for (ax_idx, &(ax, ay)) in axes.iter().enumerate() {
                         let mut min_1 = 1e30f64;
                         let mut max_1 = -1e30f64;
-                        let mut v1_min = 0;
-                        let mut v1_max = 0;
+                        let mut v1_min = 0usize;
+                        let mut v1_max = 0usize;
                         for (v_idx, &(px, py)) in sub_pts.iter().enumerate() {
                             let dot = px * ax + py * ay;
                             if dot < min_1 { min_1 = dot; v1_min = v_idx; }
@@ -1177,10 +1473,12 @@ pub fn penalty_and_gradient(
 
                         let mut min_2 = 1e30f64;
                         let mut max_2 = -1e30f64;
-                        for &(px, py) in r_cutout_pts.iter() {
+                        let mut v2_min = 0usize;
+                        let mut v2_max = 0usize;
+                        for (v_idx, &(px, py)) in r_cutout_pts.iter().enumerate() {
                             let dot = px * ax + py * ay;
-                            if dot < min_2 { min_2 = dot; }
-                            if dot > max_2 { max_2 = dot; }
+                            if dot < min_2 { min_2 = dot; v2_min = v_idx; }
+                            if dot > max_2 { max_2 = dot; v2_max = v_idx; }
                         }
 
                         let overlap = max_1.min(max_2) - min_1.max(min_2);
@@ -1190,10 +1488,11 @@ pub fn penalty_and_gradient(
                         }
                         if overlap < min_overlap {
                             min_overlap = overlap;
-                            best_axis = (ax, ay);
-                            best_v_min = v1_min;
-                            best_v_max = v1_max;
-                            best_is_max = max_1 < max_2;
+                            best_axis_idx = ax_idx;
+                            best_v1_min = v1_min;
+                            best_v1_max = v1_max;
+                            best_v2_min = v2_min;
+                            best_v2_max = v2_max;
                         }
                     }
 
@@ -1204,19 +1503,36 @@ pub fn penalty_and_gradient(
                         }
                         if compute_grad {
                             let term = 2.0 * min_overlap;
-                            let (ax, ay) = best_axis;
-                            if best_is_max {
-                                let p = sub_pts[best_v_max];
-                                let drot = -(p.1 - posy) * ax + (p.0 - posx) * ay;
+                            let (ax, ay) = axes[best_axis_idx];
+                            let p1_max = sub_pts[best_v1_max];
+                            let p2_max = r_cutout_pts[best_v2_max];
+                            let max_1 = p1_max.0 * ax + p1_max.1 * ay;
+                            let max_2 = p2_max.0 * ax + p2_max.1 * ay;
+
+                            let p1_min = sub_pts[best_v1_min];
+                            let p2_min = r_cutout_pts[best_v2_min];
+                            let min_1 = p1_min.0 * ax + p1_min.1 * ay;
+                            let min_2 = p2_min.0 * ax + p2_min.1 * ay;
+
+                            let (p_upper, upper_is_sub) = if max_1 < max_2 { (p1_max, true) } else { (p2_max, false) };
+                            let (p_lower, lower_is_sub) = if min_1 > min_2 { (p1_min, true) } else { (p2_min, false) };
+
+                            if upper_is_sub {
+                                let drot = -(p_upper.1 - posy) * ax + (p_upper.0 - posx) * ay;
                                 grad[i * 3] += term * ax;
                                 grad[i * 3 + 1] += term * ay;
                                 grad[i * 3 + 2] += term * drot;
-                            } else {
-                                let p = sub_pts[best_v_min];
-                                let drot = -(p.1 - posy) * ax + (p.0 - posx) * ay;
+                            }
+                            if lower_is_sub {
+                                let drot = -(p_lower.1 - posy) * ax + (p_lower.0 - posx) * ay;
                                 grad[i * 3] -= term * ax;
                                 grad[i * 3 + 1] -= term * ay;
                                 grad[i * 3 + 2] -= term * drot;
+                            }
+                            // Derivative wrt rotating axis when axis comes from sub_normals (idx < n_sub_axes)
+                            if best_axis_idx < axes.len() - 2 {
+                                let d_overlap_drot_axis = (p_upper.0 - p_lower.0) * (-ay) + (p_upper.1 - p_lower.1) * ax;
+                                grad[i * 3 + 2] += term * d_overlap_drot_axis;
                             }
                         }
                     }
@@ -1454,6 +1770,14 @@ pub fn penalty_and_gradient(
 
                                 add_grad(upper_poly_idx, 1.0, p_upper);
                                 add_grad(lower_poly_idx, -1.0, p_lower);
+
+                                let axis_poly_idx = if sub_best_axis_idx < 2 { i } else { j };
+                                let delta_x = p_upper.0 - p_lower.0;
+                                let delta_y = p_upper.1 - p_lower.1;
+                                let d_axis_drot_x = -ay;
+                                let d_axis_drot_y = ax;
+                                let d_overlap_drot_axis = delta_x * d_axis_drot_x + delta_y * d_axis_drot_y;
+                                grad[axis_poly_idx * 3 + 2] += term * d_overlap_drot_axis;
                             }
                         }
                     }
@@ -1680,6 +2004,132 @@ mod tests {
             compute_friedman_metric(2.0f64.sqrt(), "square", "L"),
             compute_friedman_metric(2.0f64.sqrt(), "4", "L")
         );
+    }
+
+    #[test]
+    fn test_expanded_shapes_metrics_and_quad_geometry() {
+        // Heptagon, Nonagon (including Enneagon alias), Decagon
+        assert_eq!(parse_polygon_sides("heptagon"), 7);
+        assert_eq!(parse_polygon_sides("enneagon"), 9);
+        assert_eq!(parse_polygon_sides("nonagon"), 9);
+        assert_eq!(parse_polygon_sides("decagon"), 10);
+
+        for tok in ["7", "9", "10", "RHOMBUS", "PARALLELOGRAM", "TRAPEZOID", "SEMICIRCLE", "QUADRANT"] {
+            let f = compute_friedman_metric(2.5, "CIRCLE", tok);
+            let s_back = inverse_friedman_metric(f, "CIRCLE", tok);
+            assert!((s_back - 2.5).abs() < 1e-9, "Roundtrip failed for {}", tok);
+        }
+
+        // Canonical quad vertices and positive interior apothems
+        for tok in ["RHOMBUS", "PARALLELOGRAM", "TRAPEZOID"] {
+            let (sides, verts, vecs, apothems) = get_shape_geometry(tok);
+            assert_eq!(sides, 4);
+            assert_eq!(verts.len(), 4);
+            assert_eq!(vecs.len(), 4);
+            for k in 0..4 {
+                assert!(apothems[k] > 0.0);
+                let dot_a = verts[k].0 * vecs[k].0 + verts[k].1 * vecs[k].1;
+                let dot_b = verts[(k + 1) % 4].0 * vecs[k].0 + verts[(k + 1) % 4].1 * vecs[k].1;
+                assert!((dot_a - apothems[k]).abs() < 1e-12);
+                assert!((dot_b - apothems[k]).abs() < 1e-12);
+            }
+        }
+    }
+
+    #[test]
+    fn test_curved_containers_solve_and_validation() {
+        // Strict capability guard: non-CIRCLE inside SEMICIRCLE must return success=false
+        let invalid_cfg = SolveConfig {
+            inner_polygons: 1,
+            inner_shape: "4".to_string(),
+            container_shape: "SEMICIRCLE".to_string(),
+            attempts: 4,
+            tolerance: 1e-15,
+            finalstep: 0.001,
+            time_limit: Some(2.0),
+            initial_positions: None,
+            target_s: None,
+        };
+        assert!(!solve(&invalid_cfg).success);
+
+        // N=1 CIRCLE in SEMICIRCLE => optimal s = 2.0
+        let semi_cfg = SolveConfig {
+            inner_polygons: 1,
+            inner_shape: "CIRCLE".to_string(),
+            container_shape: "SEMICIRCLE".to_string(),
+            attempts: 16,
+            tolerance: 1e-15,
+            finalstep: 0.0005,
+            time_limit: Some(5.0),
+            initial_positions: None,
+            target_s: None,
+        };
+        let res_semi = solve(&semi_cfg);
+        assert!(res_semi.success);
+        assert!((res_semi.final_metric - 2.0).abs() < 0.02, "Got semi s={}", res_semi.final_metric);
+
+        // N=1 CIRCLE in QUADRANT => optimal s = 1 + sqrt(2) ~= 2.4142
+        let quad_cfg = SolveConfig {
+            inner_polygons: 1,
+            inner_shape: "CIRCLE".to_string(),
+            container_shape: "QUADRANT".to_string(),
+            attempts: 16,
+            tolerance: 1e-15,
+            finalstep: 0.0005,
+            time_limit: Some(5.0),
+            initial_positions: None,
+            target_s: None,
+        };
+        let res_quad = solve(&quad_cfg);
+        assert!(res_quad.success);
+        assert!((res_quad.final_metric - (1.0 + 2.0f64.sqrt())).abs() < 0.02, "Got quad s={}", res_quad.final_metric);
+    }
+
+    #[test]
+    fn test_l_shape_analytic_gradient_matches_finite_difference() {
+        let (nsi, upv, upvectors, _) = get_shape_geometry("L");
+        let ucv = vec![(1.0, 0.0)];
+        let uap = vec![1.0];
+        let mut poly_arr = vec![(0.0, 0.0); 2 * nsi];
+        let mut vec_arr = vec![(0.0, 0.0); 2 * nsi];
+        let mut grad = vec![0.0; 6];
+        let mut bbox = vec![(0.0, 0.0, 0.0, 0.0); 2];
+        let mut sort_idx = vec![0usize; 2];
+
+        // Two overlapping/tilted L shapes inside L container touching cutout corner
+        let vals = vec![0.15, 0.25, 0.42, 0.55, -0.10, 1.15];
+        let (_, _) = penalty_and_gradient(
+            &vals, 1.5, 2, nsi, 1, &upv, &upvectors, &ucv, &uap,
+            false, false, true, true, true,
+            &mut poly_arr, &mut vec_arr, &mut grad, &mut bbox, &mut sort_idx,
+        );
+
+        let eps = 1e-6;
+        for k in 0..6 {
+            let mut v_plus = vals.clone();
+            v_plus[k] += eps;
+            let mut g_dummy = vec![0.0; 6];
+            let (f_plus, _) = penalty_and_gradient(
+                &v_plus, 1.5, 2, nsi, 1, &upv, &upvectors, &ucv, &uap,
+                false, false, true, true, false,
+                &mut poly_arr, &mut vec_arr, &mut g_dummy, &mut bbox, &mut sort_idx,
+            );
+
+            let mut v_minus = vals.clone();
+            v_minus[k] -= eps;
+            let (f_minus, _) = penalty_and_gradient(
+                &v_minus, 1.5, 2, nsi, 1, &upv, &upvectors, &ucv, &uap,
+                false, false, true, true, false,
+                &mut poly_arr, &mut vec_arr, &mut g_dummy, &mut bbox, &mut sort_idx,
+            );
+
+            let fd = (f_plus - f_minus) / (2.0 * eps);
+            assert!(
+                (grad[k] - fd).abs() < 1e-4,
+                "Gradient mismatch at idx {}: analytic={}, fd={}",
+                k, grad[k], fd
+            );
+        }
     }
 }
 
