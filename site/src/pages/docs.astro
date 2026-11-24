@@ -6,13 +6,13 @@ const docs = await getCollection('docs');
 docs.sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-const diataxisCategories: Record<string, string> = {
-  'overview': 'Diataxis: Explanation',
-  'architecture': 'Diataxis: Architecture',
-  'how-to-run': 'Diataxis: How-To Guide',
-  'problem-families': 'Diataxis: Reference',
-  'methodology': 'Diataxis: Reference',
-  'verification-and-metrics': 'Diataxis: Reference',
+const docCategories: Record<string, string> = {
+  'overview': 'Explanation',
+  'architecture': 'Architecture',
+  'how-to-run': 'How-To Guide',
+  'problem-families': 'Catalog Reference',
+  'methodology': 'Mathematical Reference',
+  'verification-and-metrics': 'Verification Reference',
 };
 ---
 
@@ -21,11 +21,11 @@ const diataxisCategories: Record<string, string> = {
     <div class="space-y-3 border-b border-hairline pb-6">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface-elevated text-blueprint-light border border-hairline text-xs font-mono">
         <span class="w-2 h-2 rounded-md bg-blueprint-light"></span>
-        Diataxis Documentation Framework
+        Technical & System Reference
       </div>
       <h1 class="text-3xl font-bold font-display text-slate-100 tracking-tight">System Documentation</h1>
       <p class="text-sm text-slate-400 max-w-2xl leading-relaxed">
-        Guides, system architecture details, running instructions, and mathematical verification specs organized by the Diataxis technical documentation structure.
+        Guides, system architecture details, running instructions, and mathematical verification specifications for the shape packing auto-researcher engine.
       </p>
     </div>
 
@@ -38,7 +38,7 @@ const diataxisCategories: Record<string, string> = {
           <div class="space-y-2">
             <div>
               <span class="font-mono text-[10px] uppercase tracking-wider text-blueprint-light bg-surface-elevated border border-hairline px-2 py-0.5 rounded-md inline-block">
-                {diataxisCategories[doc.slug] || `Guide 0${doc.data.order || 1}`}
+                {docCategories[doc.slug] || `Guide 0${doc.data.order || 1}`}
               </span>
             </div>
             <h2 class="text-xl font-bold font-display text-slate-100 group-hover:text-blueprint-light transition-colors">

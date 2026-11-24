@@ -10,33 +10,18 @@ The shape packing engine utilizes a decoupled, high-throughput architecture spli
 
 ## System Architecture Diagram
 
-```
-+-------------------------------------------------------------+
-|                  Python Agent Orchestrator                  |
-|                   (src/shape_packing/)                      |
-+------------------------------+------------------------------+
-                               |
-            +------------------+------------------+
-            |                                     |
-            v                                     v
-+-----------------------+             +-----------------------+
-|  Rust Solver Backend  |             |  Python Optimization  |
-|     (packer_rs)       |             |   (scipy basinhopping)|
-+-----------+-----------+             +-----------+-----------+
-            |                                     |
-            +------------------+------------------+
-                               |
-                               v
-+-------------------------------------------------------------+
-|                Rigorous Verification Engine                 |
-|             (SAT Overlap & Boundary Checks)                 |
-+------------------------------+------------------------------+
-                               |
-                               v
-+-------------------------------------------------------------+
-|                  PACKING_REFERENCE & Site                   |
-|                   (Astro Dashboard Data)                    |
-+-------------------------------------------------------------+
+```mermaid
+graph TD
+    A["Python Agent Orchestrator<br/>(src/shape_packing/)"] --> B["Rust Solver Backend<br/>(packer_rs)"]
+    A --> C["Python Optimization<br/>(scipy basinhopping)"]
+    B --> D["Rigorous Verification Engine<br/>(SAT Overlap & Boundary Checks)"]
+    C --> D
+    D --> E["Site Data & Dashboard<br/>(Astro Dashboard Data)"]
+    style A fill:#111827,stroke:#0284c7,stroke-width:1.5px,color:#f8fafc
+    style B fill:#111827,stroke:#38bdf8,stroke-width:1.5px,color:#f8fafc
+    style C fill:#111827,stroke:#818cf8,stroke-width:1.5px,color:#f8fafc
+    style D fill:#111827,stroke:#10b981,stroke-width:1.5px,color:#f8fafc
+    style E fill:#111827,stroke:#f59e0b,stroke-width:1.5px,color:#f8fafc
 ```
 
 ## Key Components

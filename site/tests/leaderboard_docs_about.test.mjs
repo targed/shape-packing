@@ -64,10 +64,10 @@ describe('Leaderboard, Docs Hub & About Pages (Task 7)', () => {
     assert.ok(!content.includes('(Gold)') && !content.includes('(Silver)') && !content.includes('(Bronze)'), 'No medal text');
   });
 
-  it('docs.astro and docs/[...slug].astro implement Diataxis framework cards and high-contrast prose', () => {
+  it('docs.astro and docs/[...slug].astro implement technical documentation cards and high-contrast prose', () => {
     const docsContent = fs.readFileSync(docsPagePath, 'utf-8');
 
-    // Diataxis card styling
+    // Technical docs card styling
     assert.ok(
       docsContent.includes('bg-surface border border-hairline hover:border-blueprint/50'),
       'Docs cards use bg-surface border border-hairline hover:border-blueprint/50'
@@ -76,7 +76,7 @@ describe('Leaderboard, Docs Hub & About Pages (Task 7)', () => {
       docsContent.includes('font-mono text-[10px] uppercase tracking-wider text-blueprint-light bg-surface-elevated border border-hairline px-2 py-0.5 rounded-md'),
       'Category badges use architectural pill with blueprint-light on surface-elevated'
     );
-    assert.ok(docsContent.includes('Diataxis'), 'Mentions Diataxis documentation structure');
+    assert.ok(!docsContent.toLowerCase().includes('diataxis'), 'Zero mentions of Diataxis in docsContent');
 
     const slugContent = fs.readFileSync(docSlugPagePath, 'utf-8');
 
@@ -86,8 +86,8 @@ describe('Leaderboard, Docs Hub & About Pages (Task 7)', () => {
     // High-contrast prose typography
     assert.ok(slugContent.includes('prose-headings:font-display'), 'Prose headings use font-display');
     assert.ok(slugContent.includes('prose-code:font-mono'), 'Prose code uses font-mono');
-    assert.ok(slugContent.includes('prose-pre:bg-surface-elevated'), 'Prose pre uses bg-surface-elevated');
     assert.ok(slugContent.includes('Back to Docs Hub'), 'Includes Back to Docs Hub link');
+    assert.ok(!slugContent.toLowerCase().includes('diataxis'), 'Zero mentions of Diataxis in slugContent');
   });
 
   it('about.astro contains structured architectural plates for Purpose, Notice, and Platform Guide', () => {

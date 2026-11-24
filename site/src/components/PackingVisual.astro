@@ -45,14 +45,13 @@ const displayTitle = title || (solution as any).problem_id || (solution.N !== un
       <svg
         viewBox={svgData.viewBox}
         class="packing-svg w-full h-full overflow-visible"
-        style="transform: scaleY(-1); transform-origin: center;"
       >
         <!-- Origin crosshairs: 2 dashed hairline lines across the origin (0, 0) -->
         <g class="crosshairs" opacity="0.4">
           <line
-            x1={svgData.minX - svgData.padding}
+            x1={svgData.minX}
             y1="0"
-            x2={svgData.maxX + svgData.padding}
+            x2={svgData.maxX}
             y2="0"
             stroke="#64748b"
             stroke-width="0.02"
@@ -60,9 +59,9 @@ const displayTitle = title || (solution as any).problem_id || (solution.N !== un
           />
           <line
             x1="0"
-            y1={svgData.minY - svgData.padding}
+            y1={svgData.minY}
             x2="0"
-            y2={svgData.maxY + svgData.padding}
+            y2={svgData.maxY}
             stroke="#64748b"
             stroke-width="0.02"
             stroke-dasharray="0.1,0.1"
@@ -178,16 +177,11 @@ const displayTitle = title || (solution as any).problem_id || (solution.N !== un
         bgRect.setAttribute('height', String(vh));
         bgRect.setAttribute('fill', '#0b0f17');
 
-        // Wrap existing child elements in a transformation group for robust vector editor rendering
-        const contentGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        contentGroup.setAttribute('transform', `translate(0, ${2 * vy + vh}) scale(1, -1)`);
-
-        while (clone.firstChild) {
-          contentGroup.appendChild(clone.firstChild);
-        }
-
+        // Append solid background plate behind native SVG elements
+        const children = Array.from(clone.childNodes);
+        clone.innerHTML = '';
         clone.appendChild(bgRect);
-        clone.appendChild(contentGroup);
+        children.forEach(c => clone.appendChild(c));
         clone.removeAttribute('style');
 
         const svgSerializer = new XMLSerializer();

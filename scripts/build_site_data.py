@@ -273,6 +273,39 @@ def compute_friedman_metric(S: float, inner_token: str, container_token: str) ->
     return c_metric / i_scale
 
 
+def inverse_friedman_metric(f_metric: float, inner_token: str, container_token: str) -> float:
+    """Given a target Friedman metric s, compute the corresponding container circumradius / scale S."""
+    if f_metric is None or f_metric <= 0:
+        return 1.0
+    container_upper = str(container_token).strip().upper()
+    inner_upper = str(inner_token).strip().upper()
+
+    if container_upper == "L" and inner_upper == "L":
+        return f_metric
+
+    if inner_upper in ("CIRCLE", "CIR", "0", "TAN", "DOMINO", "L"):
+        i_scale = 1.0
+    else:
+        try:
+            nsi = int(inner_upper)
+            i_scale = 2 * math.sin(math.pi / nsi)
+        except ValueError:
+            i_scale = 2 * math.sin(math.pi / 3)
+
+    c_metric = f_metric * i_scale
+
+    if container_upper in ("CIRCLE", "CIR", "0", "TAN", "DOMINO"):
+        return c_metric
+    elif container_upper == "L":
+        return c_metric / 2.0
+    else:
+        try:
+            nsc = int(container_upper)
+            return c_metric / (2 * math.sin(math.pi / nsc))
+        except ValueError:
+            return c_metric / (2 * math.sin(math.pi / 3))
+
+
 def load_reference_entries() -> List[Dict[str, Any]]:
     entries = []
     if PACKING_VERIFICATION_DIR.exists():
@@ -367,7 +400,7 @@ def load_db_solutions() -> Dict[str, Dict[str, Any]]:
                 "inner_token": inner_token,
                 "container_token": container_token,
                 "computed_metric": metric_s,
-                "S": metric_s,
+                "S": inverse_friedman_metric(metric_s, inner_token, container_token),
                 "values": coords,
                 "worker_username": worker_username,
                 "verified_at": str(verified_at),

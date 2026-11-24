@@ -21,3 +21,20 @@ The scale factor `S` represents the smallest container of unit dimensions that e
 ## Separating Axis Theorem (SAT)
 
 For convex polygon shapes, non-overlap is verified by projecting vertices onto candidate normal vectors of all edges. If there exists at least one axis where projections are disjoint, the shapes do not overlap.
+
+```mermaid
+graph LR
+    P["Candidate Polygon Positions"] --> SAT["Separating Axis Theorem"]
+    SAT -->|Disjoint Projections Found| NV["Non-Overlap Confirmed"]
+    SAT -->|No Separating Axis| OV["Overlap Detected (Penalty)"]
+    P --> CC["Containment Check"]
+    CC -->|All Vertices Inside Limit| CV["Containment Verified"]
+    CC -->|Poking Out| BV["Boundary Violation Margin"]
+    style P fill:#111827,stroke:#0284c7,stroke-width:1.5px,color:#f8fafc
+    style SAT fill:#111827,stroke:#38bdf8,stroke-width:1.5px,color:#f8fafc
+    style CC fill:#111827,stroke:#818cf8,stroke-width:1.5px,color:#f8fafc
+    style NV fill:#111827,stroke:#10b981,stroke-width:1.5px,color:#f8fafc
+    style CV fill:#111827,stroke:#10b981,stroke-width:1.5px,color:#f8fafc
+    style OV fill:#111827,stroke:#f59e0b,stroke-width:1.5px,color:#f8fafc
+    style BV fill:#111827,stroke:#f59e0b,stroke-width:1.5px,color:#f8fafc
+```

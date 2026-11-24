@@ -204,8 +204,17 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
 
   const containerToken = parseShapeToken(rawContainer);
   const innerToken = parseShapeToken(rawInner);
-  const S = solution.S || 1.0;
-  const finalMetric = solution.final_metric || S;
+  const finalMetric = solution.final_metric || (solution as any).computed_metric || solution.S || 1.0;
+
+  // Mathematically verified container scale factor S:
+  const expectedS = inverseFriedmanMetric(finalMetric, innerToken, containerToken);
+  let S = solution.S;
+  if (!S || S <= 0 || (expectedS > 0 && Math.abs(S - expectedS) > 0.05 * expectedS)) {
+    S = expectedS;
+  }
+  if (!S || S <= 0) {
+    S = 1.0;
+  }
 
   const colors = BLUEPRINT_PALETTE;
 
@@ -223,7 +232,7 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
       const ry = pt.x * sin + pt.y * cos;
       return {
         x: rx * S,
-        y: ry * S,
+        y: -ry * S,
       };
     });
   }
@@ -247,12 +256,18 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
 
     let shapeVertices: PolygonPoint[] | null = null;
     if (!isInnerCircle && unitInnerVertices) {
-      shapeVertices = unitInnerVertices.map(v => transformPoint(v, cx, cy, angle));
+      shapeVertices = unitInnerVertices.map(v => {
+        const pt = transformPoint(v, cx, cy, angle);
+        return {
+          x: pt.x,
+          y: -pt.y,
+        };
+      });
     }
 
     shapes.push({
       cx,
-      cy,
+      cy: -cy,
       angle,
       isCircle: isInnerCircle,
       vertices: shapeVertices,
@@ -260,49 +275,36 @@ export function generatePackingSvgElements(solution: SolutionData, width: number
     });
   }
 
-  // 3. Compute ViewBox
-  let minX = isContainerCircle ? -S : Infinity;
-  let maxX = isContainerCircle ? S : -Infinity;
-  let minY = isContainerCircle ? -S : Infinity;
-  let maxY = isContainerCircle ? S : -Infinity;
+  // 3. Compute ViewBox (centered at origin (0, 0) for perfect symmetry and crosshair alignment)
+  let maxExtent = isContainerCircle ? S : 0;
 
   if (containerVertices) {
     containerVertices.forEach(pt => {
-      minX = Math.min(minX, pt.x);
-      maxX = Math.max(maxX, pt.x);
-      minY = Math.min(minY, pt.y);
-      maxY = Math.max(maxY, pt.y);
+      maxExtent = Math.max(maxExtent, Math.abs(pt.x), Math.abs(pt.y));
     });
   }
 
   shapes.forEach(s => {
     if (s.isCircle) {
-      minX = Math.min(minX, s.cx - 1.0);
-      maxX = Math.max(maxX, s.cx + 1.0);
-      minY = Math.min(minY, s.cy - 1.0);
-      maxY = Math.max(maxY, s.cy + 1.0);
+      maxExtent = Math.max(maxExtent, Math.abs(s.cx) + 1.0, Math.abs(s.cy) + 1.0);
     } else if (s.vertices) {
       s.vertices.forEach(pt => {
-        minX = Math.min(minX, pt.x);
-        maxX = Math.max(maxX, pt.x);
-        minY = Math.min(minY, pt.y);
-        maxY = Math.max(maxY, pt.y);
+        maxExtent = Math.max(maxExtent, Math.abs(pt.x), Math.abs(pt.y));
       });
     }
   });
 
-  if (!isFinite(minX) || !isFinite(maxX)) {
-    minX = -S;
-    maxX = S;
-  }
-  if (!isFinite(minY) || !isFinite(maxY)) {
-    minY = -S;
-    maxY = S;
+  if (maxExtent <= 0) {
+    maxExtent = S > 0 ? S : 2.0;
   }
 
+  const minX = -maxExtent;
+  const maxX = maxExtent;
+  const minY = -maxExtent;
+  const maxY = maxExtent;
   const spanX = maxX - minX;
   const spanY = maxY - minY;
-  const padding = Math.max(spanX, spanY) * 0.06 || 0.5;
+  const padding = maxExtent * 0.08 || 0.2;
 
   const viewBox = `${(minX - padding).toFixed(4)} ${(minY - padding).toFixed(4)} ${(spanX + 2 * padding).toFixed(4)} ${(spanY + 2 * padding).toFixed(4)}`;
 
@@ -350,7 +352,7 @@ export function renderSolutionSvgHtml(solution: SolutionData): { svgHtml: string
     return '';
   }).join('');
 
-  const svgHtml = `<svg viewBox="${data.viewBox}" class="w-full h-full overflow-visible" style="transform: scaleY(-1); transform-origin: center;">${containerElem}${shapesElems}</svg>`;
+  const svgHtml = `<svg viewBox="${data.viewBox}" class="w-full h-full overflow-visible">${containerElem}${shapesElems}</svg>`;
 
   return {
     svgHtml,
