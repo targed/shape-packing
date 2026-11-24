@@ -45,6 +45,7 @@ def assign_work(
     worker_id: str,
     cores: int = 1,
     lease_seconds: int = 300,
+    tier_filter: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
     """
     Lease a problem to a worker using a multi-armed bandit allocation policy.
@@ -105,12 +106,19 @@ def assign_work(
             (clean_worker_id, clean_worker_id),
         )
 
+        tier_clause = ""
+        tier_params: tuple = ()
+        if isinstance(tier_filter, str) and tier_filter.strip().lower() in ("benchmark", "frontier"):
+            tier_clause = " AND COALESCE(LOWER(p.tier), 'benchmark') = ?"
+            tier_params = (tier_filter.strip().lower(),)
+
         prob = None
         # 10% Probability exploration stage over unattempted shape configurations
         if random.random() < 0.10:
-            # First attempt unleased unattempted candidates
+            # Explore unattempted benchmark problems unless caller explicitly requested frontier tier
+            explore_tier_clause = tier_clause if tier_clause else " AND COALESCE(LOWER(p.tier), 'benchmark') = 'benchmark'"
             cursor.execute(
-                """
+                f"""
                 SELECT p.*
                 FROM problems p
                 LEFT JOIN active_leases l ON p.id = l.problem_id
@@ -118,9 +126,11 @@ def assign_work(
                   AND COALESCE(LOWER(p.status), '') != 'unsupported'
                   AND (p.status = 'unattempted' OR p.total_attempts = 0)
                   AND l.work_id IS NULL
+                  {explore_tier_clause}
                 ORDER BY RANDOM()
                 LIMIT 1
-                """
+                """,
+                tier_params,
             )
             prob = cursor.fetchone()
 
@@ -128,14 +138,17 @@ def assign_work(
         if prob is None:
             # Primary: unleased non-proved_optimal candidates
             cursor.execute(
-                """
+                f"""
                 SELECT p.*
                 FROM problems p
                 LEFT JOIN active_leases l ON p.id = l.problem_id
                 WHERE COALESCE(LOWER(p.status), '') != 'proved_optimal'
                   AND COALESCE(LOWER(p.status), '') != 'unsupported'
                   AND l.work_id IS NULL
+                  {tier_clause}
                 ORDER BY
+                    -- Tier 0: Benchmark targets before Frontier exploration targets
+                    CASE WHEN COALESCE(LOWER(p.tier), 'benchmark') = 'benchmark' THEN 0 ELSE 1 END ASC,
                     -- Tier 1: Stuck backoff (>50k attempts without improvement decays priority)
                     CASE
                         WHEN p.total_attempts > 50000
@@ -155,19 +168,22 @@ def assign_work(
                     -- Tier 5: Random tie-breaker
                     RANDOM()
                 LIMIT 1
-                """
+                """,
+                tier_params,
             )
             prob = cursor.fetchone()
 
             # Fallback: if all eligible candidates are currently leased, fall back to shared leasing
             if prob is None:
                 cursor.execute(
-                    """
+                    f"""
                     SELECT p.*
                     FROM problems p
                     WHERE COALESCE(LOWER(p.status), '') != 'proved_optimal'
                       AND COALESCE(LOWER(p.status), '') != 'unsupported'
+                      {tier_clause}
                     ORDER BY
+                        CASE WHEN COALESCE(LOWER(p.tier), 'benchmark') = 'benchmark' THEN 0 ELSE 1 END ASC,
                         CASE
                             WHEN p.total_attempts > 50000
                                  AND (p.updated_at IS NULL OR p.updated_at < datetime('now', '-1 day'))
@@ -182,7 +198,8 @@ def assign_work(
                         p.density_rank DESC,
                         RANDOM()
                     LIMIT 1
-                    """
+                    """,
+                    tier_params,
                 )
                 prob = cursor.fetchone()
 

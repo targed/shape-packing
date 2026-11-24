@@ -14,6 +14,14 @@ import sqlite3
 import uuid
 from typing import Any, Dict, List, Optional, Set, Tuple
 
+from shape_packing.catalog import (
+    get_canonical_tokens,
+    get_pair_tier,
+    is_pair_supported,
+    list_frontier_families,
+    normalize_token,
+)
+
 logger = logging.getLogger(__name__)
 
 # Minimum improvement delta required to break an existing solution record.
@@ -21,12 +29,7 @@ logger = logging.getLogger(__name__)
 RECORD_MIN_IMPROVEMENT: float = 1e-5
 
 # Set of shape tokens supported by geometry kernels and solver engines.
-# Unsupported containers (such as non-equilateral arbitrary triangles or ellipses)
-# must not be seeded or scheduled until explicit solvers are built.
-SUPPORTED_SHAPES: Set[str] = {
-    "3", "4", "5", "6", "7", "8", "9", "10",
-    "CIRCLE", "DOMINO", "TAN", "L"
-}
+SUPPORTED_SHAPES: Set[str] = get_canonical_tokens()
 
 # Map shape tokens and aliases to canonical tokens recognized by geometry.py,
 # solution_tools.py, and packer_rs.
@@ -83,6 +86,7 @@ CREATE TABLE IF NOT EXISTS problems (
     total_attempts INTEGER DEFAULT 0,
     density_rank REAL DEFAULT 0.0,
     source_attribution TEXT,
+    tier TEXT NOT NULL DEFAULT 'benchmark',
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -119,6 +123,7 @@ CREATE INDEX IF NOT EXISTS idx_active_leases_problem ON active_leases(problem_id
 CREATE INDEX IF NOT EXISTS idx_active_leases_expires ON active_leases(expires_at);
 CREATE INDEX IF NOT EXISTS idx_solutions_problem_record ON solutions(problem_id, is_current_record);
 CREATE INDEX IF NOT EXISTS idx_problems_status_attempts ON problems(status, total_attempts, density_rank);
+CREATE INDEX IF NOT EXISTS idx_problems_tier_status ON problems(tier, status, total_attempts);
 CREATE INDEX IF NOT EXISTS idx_workers_records_broken ON workers(records_broken DESC, total_attempts DESC);
 """
 
@@ -128,7 +133,9 @@ def normalize_shape_token(token: Any) -> str:
     if token is None:
         return ""
     s = str(token).strip().upper()
-    return CANONICAL_SHAPE_TOKENS.get(s, s)
+    if s in CANONICAL_SHAPE_TOKENS:
+        return CANONICAL_SHAPE_TOKENS[s]
+    return normalize_token(s)
 
 
 def init_db(db_path: str = "data/distributed.db") -> sqlite3.Connection:
@@ -147,6 +154,17 @@ def init_db(db_path: str = "data/distributed.db") -> sqlite3.Connection:
     conn.execute("PRAGMA journal_mode = WAL;")
     conn.execute("PRAGMA synchronous = NORMAL;")
     conn.execute("PRAGMA foreign_keys = ON;")
+
+    # Idempotent migration for pre-existing databases lacking the `tier` column
+    existing_table = conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='problems'"
+    ).fetchone()
+    if existing_table:
+        cols = {row[1] for row in conn.execute("PRAGMA table_info(problems)").fetchall()}
+        if "tier" not in cols:
+            conn.execute("ALTER TABLE problems ADD COLUMN tier TEXT NOT NULL DEFAULT 'benchmark'")
+            conn.commit()
+
     conn.executescript(SCHEMA)
     conn.commit()
     return conn
@@ -366,7 +384,7 @@ def seed_problems_from_verification(
 
                 if clean_status == "proved_optimal":
                     status = "proved_optimal"
-                elif inner not in SUPPORTED_SHAPES or container not in SUPPORTED_SHAPES:
+                elif not is_pair_supported(inner, container):
                     status = "unsupported"
                 elif raw_status:
                     status = str(raw_status)
@@ -375,9 +393,10 @@ def seed_problems_from_verification(
                 else:
                     status = "unattempted"
 
+                tier = str(item.get("tier") or get_pair_tier(inner, container) or "benchmark")
                 note = str(item.get("source_note") or "")
 
-                rows.append((our_problem, inner, container, n, best_val, best_val, status, note))
+                rows.append((our_problem, inner, container, n, best_val, best_val, status, note, tier))
         except (json.JSONDecodeError, OSError) as exc:
             logger.warning("Failed to parse verification file %s: %s", file_path, exc)
             continue
@@ -394,11 +413,12 @@ def seed_problems_from_verification(
         cursor.executemany(
             """
             INSERT INTO problems (
-                id, inner_token, container_token, n, best_s, reference_s, status, source_attribution
+                id, inner_token, container_token, n, best_s, reference_s, status, source_attribution, tier
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(id) DO UPDATE SET
                 reference_s = excluded.reference_s,
+                tier = excluded.tier,
                 source_attribution = COALESCE(excluded.source_attribution, problems.source_attribution),
                 status = CASE
                     WHEN problems.status = 'proved_optimal' THEN problems.status
@@ -410,6 +430,48 @@ def seed_problems_from_verification(
                     WHEN excluded.best_s IS NOT NULL AND excluded.best_s < problems.best_s THEN excluded.best_s
                     ELSE problems.best_s
                 END
+            """,
+            rows,
+        )
+        conn.commit()
+        return len(rows)
+    except Exception:
+        conn.rollback()
+        raise
+
+
+def seed_frontier_problems(conn: sqlite3.Connection, max_n: int = 20) -> int:
+    """
+    Seed curated canonical quadrilateral Frontier families (tier='frontier', reference_s=NULL)
+    for N=1..max_n across RHOMBUS, PARALLELOGRAM, and TRAPEZOID pairings.
+    """
+    if max_n <= 0:
+        return 0
+
+    rows: List[Tuple[str, str, str, int, str, str, str]] = []
+    for _, inner, container in list_frontier_families():
+        for n in range(1, max_n + 1):
+            prob_id = f"{n}_{inner}_in_{container}"
+            rows.append((prob_id, inner, container, n, "unattempted", "Frontier Canonical Baseline", "frontier"))
+
+    if not rows:
+        return 0
+
+    if conn.in_transaction:
+        conn.commit()
+
+    cursor = conn.cursor()
+    cursor.execute("BEGIN IMMEDIATE")
+    try:
+        cursor.executemany(
+            """
+            INSERT INTO problems (
+                id, inner_token, container_token, n, status, source_attribution, tier
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(id) DO UPDATE SET
+                tier = excluded.tier,
+                source_attribution = COALESCE(problems.source_attribution, excluded.source_attribution)
             """,
             rows,
         )

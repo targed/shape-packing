@@ -527,12 +527,12 @@ def test_seed_problems_from_real_verification_catalog(mem_db: sqlite3.Connection
         pytest.skip(f"Benchmark catalog {catalog_path} not found.")
 
     count = seed_problems_from_verification(mem_db, catalog_path)
-    assert count == 2269
+    assert count == 2543
 
     cursor = mem_db.cursor()
     cursor.execute("SELECT COUNT(*) FROM problems")
     unique_count = cursor.fetchone()[0]
-    assert unique_count == 2249
+    assert unique_count == 2543
 
     # Verify status distribution
     cursor.execute("SELECT COUNT(*) FROM problems WHERE status = 'proved_optimal'")
@@ -761,4 +761,85 @@ def test_schema_check_constraints_enforced(mem_db: sqlite3.Connection):
             "INSERT INTO solutions (problem_id, metric_s, worker_username, worker_id, coordinates_json) "
             "VALUES ('p_schema_test', 1e999, 'u', 'w', '[0.0]')"
         )
+
+
+def test_init_db_migrates_missing_tier_column(tmp_path):
+    """Verify init_db safely adds tier column to legacy databases missing it."""
+    legacy_db = str(tmp_path / "legacy.db")
+    conn = sqlite3.connect(legacy_db)
+    conn.execute(
+        """
+        CREATE TABLE problems (
+            id TEXT PRIMARY KEY,
+            inner_token TEXT NOT NULL,
+            container_token TEXT NOT NULL,
+            n INTEGER NOT NULL,
+            best_s REAL,
+            reference_s REAL,
+            status TEXT NOT NULL DEFAULT 'unattempted',
+            total_attempts INTEGER DEFAULT 0,
+            density_rank REAL DEFAULT 0.0,
+            source_attribution TEXT,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+    conn.execute("INSERT INTO problems (id, inner_token, container_token, n) VALUES ('1_3_in_4', '3', '4', 1)")
+    conn.commit()
+    conn.close()
+
+    migrated = init_db(legacy_db)
+    row = get_problem(migrated, "1_3_in_4")
+    assert row is not None
+    assert row["tier"] == "benchmark"
+    migrated.close()
+
+
+def test_seed_problems_asymmetric_capabilities_and_frontier(mem_db: sqlite3.Connection, tmp_path):
+    """Verify supported curved circle pairs are benchmark-seeded, invalid pairs are unsupported, and Frontier quads seed cleanly."""
+    from shape_packing.server.database import seed_frontier_problems
+
+    pv_dir = tmp_path / "pv"
+    pv_dir.mkdir()
+    (pv_dir / "mixed.json").write_text(
+        json.dumps([
+            {
+                "our_problem": "1_cirinsemi",
+                "N": 1,
+                "inner_shape": "circle",
+                "container_shape": "semicircle",
+                "best_value": 2.0,
+                "status": "trivial",
+            },
+            {
+                "our_problem": "1_4_in_SEMICIRCLE",
+                "N": 1,
+                "inner_shape": "4",
+                "container_shape": "semicircle",
+                "best_value": 3.0,
+                "status": "best_known",
+            },
+        ])
+    )
+
+    seed_problems_from_verification(mem_db, str(pv_dir))
+    semi_ok = get_problem(mem_db, "1_cirinsemi")
+    semi_bad = get_problem(mem_db, "1_4_in_SEMICIRCLE")
+    assert semi_ok is not None and semi_ok["status"] != "unsupported" and semi_ok["tier"] == "benchmark"
+    assert semi_bad is not None and semi_bad["status"] == "unsupported"
+
+    inserted = seed_frontier_problems(mem_db, max_n=5)
+    # 45 canonical Frontier families * 5 = 225
+    assert inserted == 225
+    p_front = get_problem(mem_db, "3_RHOMBUS_in_4")
+    assert p_front is not None
+    assert p_front["tier"] == "frontier"
+    assert p_front["reference_s"] is None
+    assert p_front["status"] == "unattempted"
+
+    # Idempotent re-seed keeps count unchanged
+    assert seed_frontier_problems(mem_db, max_n=5) == 225
+    cur = mem_db.cursor()
+    cur.execute("SELECT COUNT(*) FROM problems WHERE tier = 'frontier'")
+    assert cur.fetchone()[0] == 225
 

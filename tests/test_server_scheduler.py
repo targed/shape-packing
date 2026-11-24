@@ -948,3 +948,43 @@ def test_concurrent_expire_and_assign(db_path: Path):
         t.join(timeout=5.0)
 
     assert len(errors) == 0, f"Encountered concurrency errors: {errors}"
+
+
+def test_assign_work_prioritizes_benchmark_over_frontier(conn: sqlite3.Connection):
+    """Benchmark tier must always be leased ahead of frontier tier in both exploration and exploitation."""
+    conn.execute(
+        "INSERT INTO problems (id, inner_token, container_token, n, reference_s, status, total_attempts, density_rank, tier) "
+        "VALUES ('1_RHOMBUS_in_4', 'RHOMBUS', '4', 1, NULL, 'unattempted', 0, 0.0, 'frontier')"
+    )
+    conn.execute(
+        "INSERT INTO problems (id, inner_token, container_token, n, reference_s, status, total_attempts, density_rank, tier) "
+        "VALUES ('5_CIRCLE_in_SEMICIRCLE', 'CIRCLE', 'SEMICIRCLE', 5, 3.8284, 'best_known', 100, 0.75, 'benchmark')"
+    )
+    conn.commit()
+
+    # Even during 10% exploration (random=0.01) or 90% exploitation (random=0.5), benchmark wins first
+    with patch("random.random", return_value=0.01):
+        w1 = assign_work(conn, worker_id="w_bench_first")
+        assert w1 is not None and w1["problem"] == "5_CIRCLE_in_SEMICIRCLE"
+
+    # Once benchmark is leased, next worker falls through cleanly to frontier
+    with patch("random.random", return_value=0.5):
+        w2 = assign_work(conn, worker_id="w_frontier_fallback")
+        assert w2 is not None and w2["problem"] == "1_RHOMBUS_in_4"
+        assert w2["target_s"] == pytest.approx(10.0)
+
+
+def test_assign_work_tier_filter_opt_in(conn: sqlite3.Connection):
+    """Workers explicitly requesting tier_filter='frontier' receive frontier problems immediately."""
+    conn.execute(
+        "INSERT INTO problems (id, inner_token, container_token, n, reference_s, status, total_attempts, tier) "
+        "VALUES ('1_TRAPEZOID_in_6', 'TRAPEZOID', '6', 1, NULL, 'unattempted', 0, 'frontier')"
+    )
+    conn.execute(
+        "INSERT INTO problems (id, inner_token, container_token, n, reference_s, status, total_attempts, tier) "
+        "VALUES ('5_3_in_4', '3', '4', 5, 2.5, 'best_known', 0, 'benchmark')"
+    )
+    conn.commit()
+
+    w = assign_work(conn, worker_id="w_frontier_only", tier_filter="frontier")
+    assert w is not None and w["problem"] == "1_TRAPEZOID_in_6"

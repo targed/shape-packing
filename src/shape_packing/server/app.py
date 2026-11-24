@@ -38,6 +38,7 @@ from ..solution_tools import (
     inverse_friedman_metric,
     verify_solution,
 )
+from ..catalog import is_pair_supported
 
 
 class WorkerRegisterRequest(BaseModel):
@@ -161,6 +162,7 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
         worker_id: str = Query(...),
         cores: int = Query(1),
         lease_seconds: int = Query(300),
+        tier: Optional[str] = Query(None),
         conn: sqlite3.Connection = Depends(get_db),
     ) -> Any:
         """
@@ -184,6 +186,7 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
             worker_id=clean_worker_id,
             cores=cores,
             lease_seconds=lease_seconds,
+            tier_filter=tier,
         )
         if assignment is None:
             return Response(status_code=status.HTTP_204_NO_CONTENT)
@@ -257,13 +260,13 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
         inner_token = prob["inner_token"]
         container_token = prob["container_token"]
 
-        if inner_token not in SUPPORTED_SHAPES or container_token not in SUPPORTED_SHAPES:
+        if not is_pair_supported(inner_token, container_token):
             return JSONResponse(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 content={
                     "status": "rejected",
                     "verified": False,
-                    "message": f"Shape family with inner '{inner_token}' or container '{container_token}' is not supported.",
+                    "message": f"Shape family with inner '{inner_token}' and container '{container_token}' is not supported.",
                 },
             )
 
