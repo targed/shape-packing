@@ -61,9 +61,7 @@ function formatDelta(diff: number | null | undefined): string {
             </td>
           </tr>
         ) : (
-          initialRecent.slice(0, 10).map((r) => {
-            const isRecord = r.is_current_record || (r.diff !== null && r.diff < -1e-6);
-            return (
+          initialRecent.slice(0, 10).map((r) => (
               <tr class="hover:bg-surface-elevated/50 transition-colors">
                 <td class="px-4 py-2.5 font-semibold text-slate-200">
                   <a href={`${base}/results?q=${r.problem_id}`} class="hover:text-blueprint-light transition-colors underline underline-offset-2">
@@ -95,8 +93,7 @@ function formatDelta(diff: number | null | undefined): string {
                   {r.verified_at ? r.verified_at.split(" ")[1] || r.verified_at : "recent"}
                 </td>
               </tr>
-            );
-          })
+          ))
         )}
       </tbody>
     </table>
@@ -106,9 +103,19 @@ function formatDelta(diff: number | null | undefined): string {
 <script>
   import { fetchRecentSolutions } from '../lib/api';
 
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   const tbody = document.getElementById('recent-solutions-tbody');
   const statusIndicator = document.getElementById('recent-status-indicator');
   const refreshBtn = document.getElementById('btn-refresh-recent');
+
+  function escapeHtml(str: string): string {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
 
   let pollTimer: number | null = null;
 
@@ -140,12 +147,16 @@ function formatDelta(diff: number | null | undefined): string {
           const deltaText = formatDeltaJs(r.diff);
           const username = r.worker_username || 'volunteer';
 
+          const safeProblemId = escapeHtml(r.problem_id || '');
+          const safeUsername = escapeHtml(r.worker_username || 'volunteer');
+          const safeTime = escapeHtml(verifiedTime);
+
           const tr = document.createElement('tr');
           tr.className = 'hover:bg-surface-elevated/50 transition-colors';
           tr.innerHTML =
             '<td class="px-4 py-2.5 font-semibold text-slate-200">' +
-              '<a href="/results?q=' + encodeURIComponent(r.problem_id) + '" class="hover:text-blueprint-light transition-colors underline underline-offset-2">' +
-                r.problem_id +
+              '<a href="' + base + '/results?q=' + encodeURIComponent(r.problem_id) + '" class="hover:text-blueprint-light transition-colors underline underline-offset-2">' +
+                safeProblemId +
               '</a>' +
             '</td>' +
             '<td class="px-3 py-2.5 text-center font-bold text-blueprint-light">' + r.n + '</td>' +
@@ -154,10 +165,10 @@ function formatDelta(diff: number | null | undefined): string {
             '<td class="px-4 py-2.5 text-right font-semibold ' + deltaClass + '">' + deltaText + '</td>' +
             '<td class="px-4 py-2.5 text-center font-mono">' +
               '<span class="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-medium bg-surface-elevated text-slate-300 border border-hairline">' +
-                username +
+                safeUsername +
               '</span>' +
             '</td>' +
-            '<td class="px-4 py-2.5 text-center text-slate-400 font-mono text-[10px]">' + verifiedTime + '</td>';
+            '<td class="px-4 py-2.5 text-center text-slate-400 font-mono text-[10px]">' + safeTime + '</td>';
           tbody.appendChild(tr);
         }
       }
