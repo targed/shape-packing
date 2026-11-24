@@ -131,6 +131,8 @@ def shape_area(token: Any, size: float) -> Optional[float]:
         kind = spec["kind"]
         if kind == "regular_polygon":
             n = int(spec["sides"])
+            if n == 4:
+                return float(size * size)
             return 0.25 * n * (size ** 2) / math.tan(math.pi / n)
         if canon == "CIRCLE":
             return math.pi * (size ** 2)
@@ -153,6 +155,8 @@ def shape_area(token: Any, size: float) -> Optional[float]:
 
     try:
         sides = int(canon)
+        if sides == 4:
+            return float(size * size)
         if sides >= 3:
             return 0.25 * sides * (size ** 2) / math.tan(math.pi / sides)
     except ValueError:

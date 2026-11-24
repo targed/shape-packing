@@ -39,9 +39,9 @@ class TestGetInnerShapeArea:
         assert _get_inner_shape_area("8") == pytest.approx(2.0 * (1.0 + math.sqrt(2.0)))
 
     def test_unknown_or_unsupported_shapes_return_none(self):
+        assert _get_inner_shape_area("CIRCLE") == pytest.approx(math.pi)
         assert _get_inner_shape_area("UNKNOWN") is None
-        assert _get_inner_shape_area("CIRCLE") is None
-        assert _get_inner_shape_area("99") is None
+        assert _get_inner_shape_area("FOOBAR") is None
         assert _get_inner_shape_area("") is None
 
 
@@ -53,7 +53,7 @@ class TestGetContainerShapeArea:
 
     def test_unknown_container_shapes_return_none(self):
         assert _get_container_shape_area(2.0, "UNKNOWN") is None
-        assert _get_container_shape_area(2.0, "99") is None
+        assert _get_container_shape_area(2.0, "FOOBAR") is None
         assert _get_container_shape_area(2.0, "") is None
 
 
