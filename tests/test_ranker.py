@@ -88,6 +88,13 @@ class TestGetShapeArea:
         a = get_shape_area("12", 1.0)
         assert a is not None and a > 0
 
+    def test_new_curved_and_quad_areas(self):
+        assert abs(get_shape_area("semicircle", 2.0) - 2.0 * math.pi) < 1e-9
+        assert abs(get_shape_area("quadrant", 2.0) - math.pi) < 1e-9
+        assert abs(get_shape_area("rhombus", 1.0) - math.sqrt(3.0) / 2.0) < 1e-9
+        assert abs(get_shape_area("parallelogram", 1.0) - 1.0) < 1e-9
+        assert abs(get_shape_area("trapezoid", 1.0) - (3.0 * math.sqrt(3.0) / 4.0)) < 1e-9
+
 
 class TestGenerateQueue:
     def test_generate_from_real_verification(self, project_root, tmp_path):
@@ -111,9 +118,12 @@ class TestGenerateQueue:
             assert "density" in item
             assert "best_value" in item
 
-        # Sorted by density ascending
-        densities = [x["density"] for x in queue]
-        assert densities == sorted(densities)
+        # Sorted by density ascending within benchmark tier (and frontier items at tail if enabled)
+        bench_densities = [x["density"] for x in queue if x.get("tier", "benchmark") == "benchmark"]
+        assert bench_densities == sorted(bench_densities)
+        cirinoct_items = [x for x in queue if "cirinoct" in x["problem"]]
+        for item in cirinoct_items:
+            assert 0.0 < item["density"] <= 1.0, f"Corrupt cirinoct density: {item}"
 
     def test_generate_queue_no_dir(self, tmp_path, capsys):
         out_path = tmp_path / "q.json"

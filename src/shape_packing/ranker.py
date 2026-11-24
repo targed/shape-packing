@@ -6,61 +6,18 @@ import os
 import glob
 from typing import Any, Dict, List, Optional, Tuple, Set, Union
 from .packing_config import PACKING_VERIFICATION_DIR, PRIORITY_QUEUE_PATH
+from .catalog import shape_area, list_frontier_families
 
 def polygon_area(sides: int, side_length: float) -> float:
     # Area = (1/4) * n * s^2 * cot(pi/n)
     return 0.25 * sides * (side_length ** 2) / math.tan(math.pi / sides)
 
-def get_shape_area(shape_token: str, size: float) -> float:
+def get_shape_area(shape_token: str, size: float) -> Optional[float]:
     """
     Calculate the area of a shape given its token and a size parameter.
-    For inner shapes (which are 'unit' shapes), size is typically 1.0.
-    For container shapes, size is the 'best_value' (which might be side length s, or radius r).
+    Delegates to shared shape catalog for consistent coverage across all shapes.
     """
-    t = shape_token.strip().lower()
-    
-    # Check for polygons first (e.g. "3", "4", "5", "square", "hexagon")
-    if t in ("3", "triangle"):
-        return polygon_area(3, size)
-    elif t in ("4", "square"):
-        return polygon_area(4, size)
-    elif t in ("5", "pentagon"):
-        return polygon_area(5, size)
-    elif t in ("6", "hexagon"):
-        return polygon_area(6, size)
-    elif t in ("7", "heptagon"):
-        return polygon_area(7, size)
-    elif t in ("8", "octagon"):
-        return polygon_area(8, size)
-    elif t in ("9", "nonagon"):
-        return polygon_area(9, size)
-    elif t in ("10", "decagon"):
-        return polygon_area(10, size)
-    elif t in ("circle", "cir"):
-        # area of circle = pi * r^2
-        # Erich Friedman sets often report 's' (side) or 'r' (radius). We assume 'best_value' is radius for circles.
-        return math.pi * (size ** 2)
-    elif t in ("tan",):
-        # A unit tan is a right isosceles triangle with legs 1, 1, hypotenuse sqrt(2).
-        # Area = 0.5 * leg * leg
-        return 0.5 * (size ** 2)
-    elif t in ("dom", "domino"):
-        # A unit domino is composed of two unit squares. Side 'size' usually refers to the shorter edge.
-        # Area = 2 * (size^2)
-        return 2.0 * (size ** 2)
-    elif t in ("l", "l-tromino", "l_tromino"):
-        # An L-tromino is composed of three unit squares.
-        # Area = 3 * (size^2)
-        return 3.0 * (size ** 2)
-    
-    try:
-        sides = int(t)
-        if sides >= 3:
-            return polygon_area(sides, size)
-    except ValueError:
-        pass
-        
-    return None
+    return shape_area(shape_token, size)
 
 def generate_queue(verif_dir=None, out_path=None):
     queue = []
@@ -145,6 +102,7 @@ def generate_queue(verif_dir=None, out_path=None):
                         "density": density,
                         "N": N,
                         "status": status,
+                        "tier": item.get("tier", "benchmark"),
                         "inner_shape": inner_shape,
                         "container_shape": container_shape,
                         "best_value": best_value
