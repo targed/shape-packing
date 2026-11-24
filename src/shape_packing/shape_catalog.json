@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "shapes": {
+    "3": {
+      "canonical": "3",
+      "kind": "regular_polygon",
+      "sides": 3,
+      "aliases": ["3", "TRIANGLE", "TRI"],
+      "slug": "3",
+      "short_code": "tri",
+      "display_singular": "Triangle",
+      "display_plural": "Triangles"
+    },
+    "4": {
+      "canonical": "4",
+      "kind": "regular_polygon",
+      "sides": 4,
+      "aliases": ["4", "SQUARE", "SQU"],
+      "slug": "4",
+      "short_code": "squ",
+      "display_singular": "Square",
+      "display_plural": "Squares"
+    },
+    "5": {
+      "canonical": "5",
+      "kind": "regular_polygon",
+      "sides": 5,
+      "aliases": ["5", "PENTAGON", "PEN"],
+      "slug": "5",
+      "short_code": "pen",
+      "display_singular": "Pentagon",
+      "display_plural": "Pentagons"
+    },
+    "6": {
+      "canonical": "6",
+      "kind": "regular_polygon",
+      "sides": 6,
+      "aliases": ["6", "HEXAGON", "HEX"],
+      "slug": "6",
+      "short_code": "hex",
+      "display_singular": "Hexagon",
+      "display_plural": "Hexagons"
+    },
+    "7": {
+      "canonical": "7",
+      "kind": "regular_polygon",
+      "sides": 7,
+      "aliases": ["7", "HEPTAGON", "HEP"],
+      "slug": "7",
+      "short_code": "hep",
+      "display_singular": "Heptagon",
+      "display_plural": "Heptagons"
+    },
+    "8": {
+      "canonical": "8",
+      "kind": "regular_polygon",
+      "sides": 8,
+      "aliases": ["8", "OCTAGON", "OCT"],
+      "slug": "8",
+      "short_code": "oct",
+      "display_singular": "Octagon",
+      "display_plural": "Octagons"
+    },
+    "9": {
+      "canonical": "9",
+      "kind": "regular_polygon",
+      "sides": 9,
+      "aliases": ["9", "NONAGON", "NON", "ENNEAGON"],
+      "slug": "9",
+      "short_code": "non",
+      "display_singular": "Nonagon",
+      "display_plural": "Nonagons"
+    },
+    "10": {
+      "canonical": "10",
+      "kind": "regular_polygon",
+      "sides": 10,
+      "aliases": ["10", "DECAGON", "DEC"],
+      "slug": "10",
+      "short_code": "dec",
+      "display_singular": "Decagon",
+      "display_plural": "Decagons"
+    },
+    "CIRCLE": {
+      "canonical": "CIRCLE",
+      "kind": "circle",
+      "sides": 32,
+      "aliases": ["CIRCLE", "CIR", "CIRC", "0"],
+      "slug": "circle",
+      "short_code": "cir",
+      "display_singular": "Circle",
+      "display_plural": "Circles"
+    },
+    "TAN": {
+      "canonical": "TAN",
+      "kind": "fixed_convex",
+      "sides": 3,
+      "aliases": ["TAN", "TANGRAM"],
+      "slug": "tan",
+      "short_code": "tan",
+      "display_singular": "Tan",
+      "display_plural": "Tans"
+    },
+    "DOMINO": {
+      "canonical": "DOMINO",
+      "kind": "fixed_convex",
+      "sides": 4,
+      "aliases": ["DOMINO", "DOM"],
+      "slug": "domino",
+      "short_code": "dom",
+      "display_singular": "Domino",
+      "display_plural": "Dominoes"
+    },
+    "L": {
+      "canonical": "L",
+      "kind": "non_convex",
+      "sides": 6,
+      "aliases": ["L", "LTROMINO", "L-TROMINO", "L_TROMINO"],
+      "slug": "L",
+      "short_code": "l",
+      "display_singular": "L",
+      "display_plural": "L's"
+    },
+    "SEMICIRCLE": {
+      "canonical": "SEMICIRCLE",
+      "kind": "curved_circle_container",
+      "sides": null,
+      "aliases": ["SEMICIRCLE", "SEMI", "SEMIDISK"],
+      "slug": "semicircle",
+      "short_code": "semi",
+      "display_singular": "Semicircle",
+      "display_plural": "Semicircles"
+    },
+    "QUADRANT": {
+      "canonical": "QUADRANT",
+      "kind": "curved_circle_container",
+      "sides": null,
+      "aliases": ["QUADRANT", "QUAD", "QUARTERCIRCLE", "CIRCULAR_QUADRANT"],
+      "slug": "quadrant",
+      "short_code": "quad",
+      "display_singular": "Circular Quadrant",
+      "display_plural": "Circular Quadrants"
+    },
+    "RHOMBUS": {
+      "canonical": "RHOMBUS",
+      "kind": "fixed_convex",
+      "sides": 4,
+      "aliases": ["RHOMBUS", "RHOM", "DIAMOND"],
+      "slug": "rhombus",
+      "short_code": "rhom",
+      "display_singular": "Rhombus",
+      "display_plural": "Rhombuses"
+    },
+    "PARALLELOGRAM": {
+      "canonical": "PARALLELOGRAM",
+      "kind": "fixed_convex",
+      "sides": 4,
+      "aliases": ["PARALLELOGRAM", "PARA", "PARALLELOGRAM_TAN"],
+      "slug": "parallelogram",
+      "short_code": "para",
+      "display_singular": "Parallelogram",
+      "display_plural": "Parallelograms"
+    },
+    "TRAPEZOID": {
+      "canonical": "TRAPEZOID",
+      "kind": "fixed_convex",
+      "sides": 4,
+      "aliases": ["TRAPEZOID", "TRAP", "TRAPEZIUM"],
+      "slug": "trapezoid",
+      "short_code": "trap",
+      "display_singular": "Trapezoid",
+      "display_plural": "Trapezoids"
+    }
+  },
+  "pair_rules": {
+    "benchmark_base": ["3", "4", "5", "6", "8", "CIRCLE", "TAN", "DOMINO", "L"],
+    "benchmark_extra_pairs": [
+      ["CIRCLE", "7"],
+      ["CIRCLE", "9"],
+      ["CIRCLE", "10"],
+      ["CIRCLE", "SEMICIRCLE"],
+      ["CIRCLE", "QUADRANT"]
+    ],
+    "frontier_quads": ["RHOMBUS", "PARALLELOGRAM", "TRAPEZOID"],
+    "frontier_partners": ["3", "4", "5", "6", "8", "CIRCLE"]
+  }
+}

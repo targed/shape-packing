@@ -21,7 +21,13 @@ import re
 from dataclasses import dataclass
 from typing import Optional
 
-from .packing_config import SHAPE_TO_SIDES, SPECIAL_SHAPES, ALL_FAMILIES
+from .packing_config import (
+    SHAPE_TO_SIDES,
+    SPECIAL_SHAPES,
+    CURVED_CIRCLE_CONTAINERS,
+    ALL_FAMILIES,
+)
+from .catalog import normalize_token, is_curved_circle_container
 
 
 # ---------------------------------------------------------------------------
@@ -87,7 +93,7 @@ def shape_token_to_sides(token: str) -> Optional[int]:
     - For numeric tokens >= 3: treat as that many sides.
     - Otherwise: raise ValueError.
     """
-    t = token.strip().upper()
+    t = normalize_token(token)
 
     if is_special_shape(t):
         return None
@@ -138,21 +144,34 @@ def validate_problem(p: Problem) -> None:
     # Validate container token
     _validate_token(p.container_token, "container", p.name)
 
+    norm_inner = normalize_token(p.inner_token)
+    norm_container = normalize_token(p.container_token)
+
+    if is_curved_circle_container(norm_inner):
+        raise ValueError(
+            f"Problem {p.name!r}: curved container shape {p.inner_token!r} cannot be an inner packed piece"
+        )
+    if norm_container in CURVED_CIRCLE_CONTAINERS and norm_inner != "CIRCLE":
+        raise ValueError(
+            f"Problem {p.name!r}: curved container {p.container_token!r} only accepts CIRCLE inner pieces, got {p.inner_token!r}"
+        )
+
 
 def _validate_token(token: str, role: str, problem_name: str) -> None:
     """
     Helper for validate_problem to check a single token.
     role is 'inner' or 'container' for clearer errors.
     """
-    if is_special_shape(token):
+    norm = normalize_token(token)
+    if is_special_shape(norm):
         return
 
-    if token in SHAPE_TO_SIDES:
+    if norm in SHAPE_TO_SIDES:
         return
 
     # numeric
     try:
-        s = int(token)
+        s = int(norm)
         if s >= 3:
             return
         raise ValueError(

@@ -136,6 +136,24 @@ class TestValidateProblem:
         with pytest.raises(ValueError, match="unknown inner token"):
             validate_problem(p)
 
+    def test_lowercase_tokens_valid(self):
+        p = parse_problem("3_circle_in_square")
+        validate_problem(p)
+
+    def test_new_shapes_and_asymmetric_pairings(self):
+        validate_problem(parse_problem("10_CIRCLE_in_7"))
+        validate_problem(parse_problem("5_CIRCLE_in_SEMICIRCLE"))
+        validate_problem(parse_problem("4_CIRCLE_in_QUADRANT"))
+        validate_problem(parse_problem("4_RHOMBUS_in_4"))
+        validate_problem(parse_problem("4_PARALLELOGRAM_in_CIRCLE"))
+        validate_problem(parse_problem("4_TRAPEZOID_in_6"))
+
+    def test_non_circle_in_curved_container_rejected(self):
+        with pytest.raises(ValueError):
+            validate_problem(parse_problem("3_4_in_SEMICIRCLE"))
+        with pytest.raises(ValueError):
+            validate_problem(parse_problem("3_TAN_in_QUADRANT"))
+
 
 class TestProblemToPackerArgs:
     def test_regular_polygon(self):

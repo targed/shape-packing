@@ -114,6 +114,7 @@ _FAMILY_TOKEN_NAME_MAP = {
     "heptagon": "hep",
     "octagon": "oct",
     "nonagon": "non",
+    "enneagon": "non",
     "decagon": "dec",
     "circle": "cir",
     "cir": "cir",
@@ -124,6 +125,17 @@ _FAMILY_TOKEN_NAME_MAP = {
     "l-tromino": "l",
     "el": "el",
     "ttt": "ttt",
+    "semicircle": "semi",
+    "semi": "semi",
+    "quadrant": "quad",
+    "quad": "quad",
+    "rhombus": "rhom",
+    "rhom": "rhom",
+    "diamond": "rhom",
+    "parallelogram": "para",
+    "para": "para",
+    "trapezoid": "trap",
+    "trap": "trap",
 }
 
 
@@ -434,14 +446,24 @@ def _normalize_key(p_str: str) -> str:
     """Normalize problem token for robust key matching across case and shape synonyms."""
     s = str(p_str).strip().lower()
     replacements = {
-        "pentagon": "5",
-        "hexagon": "6",
         "triangle": "3",
         "square": "4",
+        "pentagon": "5",
+        "hexagon": "6",
+        "heptagon": "7",
         "octagon": "8",
+        "nonagon": "9",
+        "enneagon": "9",
+        "decagon": "10",
         "cir": "circle",
         "circ": "circle",
         "dom": "domino",
+        "semi": "semicircle",
+        "quad": "quadrant",
+        "rhom": "rhombus",
+        "diamond": "rhombus",
+        "para": "parallelogram",
+        "trap": "trapezoid",
     }
     # Split by delimiters while preserving tokens
     parts = re.split(r"(_|\s+)", s)
@@ -874,25 +896,49 @@ SHAPE_TO_SIDES = {
     "4": 4,
     "5": 5,
     "6": 6,
+    "7": 7,
     "8": 8,
+    "9": 9,
+    "10": 10,
     "CIRCLE": CIRCLE_SIDES,
+    "CIR": CIRCLE_SIDES,
     "SQUARE": 4,
     "TRIANGLE": 3,
     "PENTAGON": 5,
     "HEXAGON": 6,
     "HEPTAGON": 7,
     "OCTAGON": 8,
+    "NONAGON": 9,
     "ENNEAGON": 9,
     "DECAGON": 10,
     "DOMINO": 4,
     "TAN": 3,
     "L": 6,
+    "RHOMBUS": 4,
+    "PARALLELOGRAM": 4,
+    "TRAPEZOID": 4,
+}
+
+CURVED_CIRCLE_CONTAINERS = {
+    "SEMICIRCLE",
+    "QUADRANT",
+}
+
+QUAD_SHAPES = {
+    "RHOMBUS",
+    "PARALLELOGRAM",
+    "TRAPEZOID",
 }
 
 SPECIAL_SHAPES = {
     "TAN",
     "DOMINO",
     "L",
+    "SEMICIRCLE",
+    "QUADRANT",
+    "RHOMBUS",
+    "PARALLELOGRAM",
+    "TRAPEZOID",
 }
 
 CIRCLE_FAMILIES = [

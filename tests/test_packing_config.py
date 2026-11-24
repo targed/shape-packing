@@ -130,3 +130,36 @@ def test_tangram_triangle_vertices_canonical():
     dy2 = verts[2][1] - verts[0][1]
     assert abs(math.hypot(dx1, dy1) - 1.0) < 1e-6
     assert abs(math.hypot(dx2, dy2) - 1.0) < 1e-6
+
+
+def test_shape_catalog_normalization_and_pair_support():
+    from src.shape_packing.catalog import (
+        normalize_token,
+        is_pair_supported,
+        list_frontier_families,
+        get_pair_tier,
+    )
+
+    assert normalize_token("heptagon") == "7"
+    assert normalize_token("enneagon") == "9"
+    assert normalize_token("NONAGON") == "9"
+    assert normalize_token("dec") == "10"
+    assert normalize_token("semi") == "SEMICIRCLE"
+    assert normalize_token("quad") == "QUADRANT"
+    assert normalize_token("diamond") == "RHOMBUS"
+    assert normalize_token("para") == "PARALLELOGRAM"
+    assert normalize_token("trap") == "TRAPEZOID"
+
+    assert is_pair_supported("CIRCLE", "7") is True
+    assert is_pair_supported("CIRCLE", "SEMICIRCLE") is True
+    assert is_pair_supported("CIRCLE", "QUADRANT") is True
+    assert is_pair_supported("4", "SEMICIRCLE") is False
+    assert is_pair_supported("TAN", "QUADRANT") is False
+    assert is_pair_supported("RHOMBUS", "4") is True
+    assert is_pair_supported("7", "9") is False  # unbenchmarked 7x9 not enabled in Option B
+
+    frontier = list_frontier_families()
+    # 3 quads paired symmetrically with 6 base shapes (3*6*2=36) + 3x3 quad-in-quad (9) = 45
+    assert len(frontier) == 45
+    assert get_pair_tier("CIRCLE", "SEMICIRCLE") == "benchmark"
+    assert get_pair_tier("RHOMBUS", "4") == "frontier"
