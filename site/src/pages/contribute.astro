@@ -5,51 +5,60 @@ import LivePackingCanvas from '../components/LivePackingCanvas.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
-<BaseLayout title="Contribute Compute | Shape Packing Volunteer Grid">
+<BaseLayout title="Volunteer Compute Cockpit | Shape Packing Grid">
   <div class="space-y-8 max-w-5xl mx-auto">
     <!-- Header -->
-    <div class="border-b border-slate-800 pb-6 space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    <div class="border-b border-hairline pb-6 space-y-4">
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface-elevated text-verify-light border border-hairline text-xs font-mono font-medium">
+        <span class="w-1.5 h-1.5 rounded-sm bg-verify-light"></span>
         Distributed Volunteer Grid
       </div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Contribute Processing Power</h1>
-      <p class="text-sm sm:text-base text-slate-400 max-w-3xl leading-relaxed">
-        Help explore unknown mathematical packings and break Erich Friedman benchmark bounds. You can donate processing power right in your browser or run the high-performance standalone binary. Both options submit verified solutions to the same shared coordinator grid.
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
+        Volunteer Compute Cockpit
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+        Help explore unknown mathematical packings and break Erich Friedman benchmark bounds. Donate processing power directly in your browser or run the high-performance standalone binary. Both options submit verified solutions to the same shared coordinator grid.
       </p>
 
-      <!-- Worker Choice Cards: Web vs Standalone (Complementary, Not Mutually Exclusive) -->
+      <!-- Worker Choice Cards: Standalone vs In-Browser (Equal-Standing Architecture) -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-        <!-- Option 1: Standalone Native Executable -->
-        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-950/60 via-slate-900/80 to-slate-950 border border-indigo-500/30 p-5 space-y-3.5 shadow-xl">
-          <div class="flex items-center justify-between">
-            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider">
-              <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Option 1: Standalone Worker (Fastest)
+        <!-- Option 1: Standalone Worker (Fastest) -->
+        <div class="bg-surface border border-hairline rounded-lg p-5 space-y-3.5 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface-elevated text-blueprint-light border border-hairline text-xs font-mono font-bold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5 text-blueprint-light flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Option 1: Standalone Worker (Fastest)
+              </div>
+              <span class="text-[11px] font-mono font-semibold text-slate-300 bg-surface-elevated px-2 py-0.5 rounded-md border border-hairline">
+                Multi-Threaded
+              </span>
             </div>
-            <span class="text-[11px] font-semibold text-indigo-400 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-800/60">Recommended</span>
+
+            <div>
+              <h3 class="text-base font-bold text-white font-display">Pure Rust Standalone Binary</h3>
+              <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                Native multi-threaded Rayon engine (4+ CPU cores) with background daemon capability. Executes at peak hardware throughput with zero browser overhead.
+              </p>
+            </div>
+
+            <div class="bg-canvas rounded-md p-3 border border-hairline font-mono text-xs text-slate-300 space-y-1">
+              <div class="text-slate-500 text-[11px]"># CLI operations & daemon config:</div>
+              <div><span class="text-blueprint-light">./shape-packing-worker</span></div>
+              <div><span class="text-blueprint-light">./shape-packing-worker</span> edit <span class="text-slate-500"># open config in text editor</span></div>
+              <div><span class="text-blueprint-light">./shape-packing-worker</span> reconfigure <span class="text-slate-500"># reset config & rerun wizard</span></div>
+              <div><span class="text-blueprint-light">./shape-packing-worker</span> autostart enable</div>
+            </div>
           </div>
-          <div>
-            <h3 class="text-base font-bold text-white">Pure Rust Standalone Binary</h3>
-            <p class="text-xs text-slate-300 mt-1 leading-relaxed">
-              Native multi-core performance with zero setup. Download and run on Windows, Linux, or macOS. Runs in the background and supports autostart on boot.
-            </p>
-          </div>
-          <div class="bg-slate-950/90 rounded-xl p-3 border border-slate-800/80 font-mono text-xs text-slate-300 space-y-1">
-            <div class="text-slate-500 text-[11px]"># Quick CLI commands:</div>
-            <div><span class="text-indigo-400">./shape-packing-worker</span></div>
-            <div><span class="text-indigo-400">./shape-packing-worker</span> edit <span class="text-slate-500"># open config in text editor</span></div>
-            <div><span class="text-indigo-400">./shape-packing-worker</span> reconfigure <span class="text-slate-500"># reset config & rerun wizard</span></div>
-            <div><span class="text-indigo-400">./shape-packing-worker</span> autostart enable</div>
-          </div>
-          <div class="pt-1 flex flex-wrap items-center gap-3">
+
+          <div class="pt-2 flex flex-wrap items-center gap-3">
             <a
               href="https://github.com/targed/shape-packing/releases"
               target="_blank"
               rel="noopener noreferrer"
-              class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-all shadow-md shadow-indigo-600/30 flex items-center gap-1.5"
+              class="px-4 py-2 bg-blueprint hover:bg-blueprint-dark text-white rounded-md font-semibold text-xs transition-colors flex items-center gap-1.5 cursor-pointer font-mono"
             >
               <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -60,77 +69,92 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           </div>
         </div>
 
-        <!-- Option 2: In-Browser Web Cruncher -->
-        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950 border border-emerald-500/30 p-5 space-y-3.5 shadow-xl">
-          <div class="flex items-center justify-between">
-            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider">
-              <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              </svg>
-              Option 2: In-Browser Web Cruncher
+        <!-- Option 2: In-Browser Web Cruncher (Zero Install) -->
+        <div class="bg-surface border border-hairline rounded-lg p-5 space-y-3.5 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface-elevated text-verify-light border border-hairline text-xs font-mono font-bold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5 text-verify-light flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+                Option 2: In-Browser Web Cruncher (Zero Install)
+              </div>
+              <span class="text-[11px] font-mono font-semibold text-verify-light bg-surface-elevated px-2 py-0.5 rounded-md border border-hairline">
+                Zero Install
+              </span>
             </div>
-            <span class="text-[11px] font-semibold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/60">Zero Install</span>
-          </div>
-          <div>
-            <h3 class="text-base font-bold text-white">Browser WebAssembly Cruncher</h3>
-            <p class="text-xs text-slate-300 mt-1 leading-relaxed">
-              No downloads or installation required. Keep this tab open to solve packing problems in real-time with continuous visual canvas feedback.
-            </p>
-          </div>
-          <div class="p-3 rounded-xl bg-slate-950/90 border border-slate-800/80 text-xs text-slate-300 space-y-1">
-            <div class="text-amber-400 font-semibold text-[11px] flex items-center gap-1.5">
-              <span>✦</span> Complementary Options (Not Mutually Exclusive)
+
+            <div>
+              <h3 class="text-base font-bold text-white font-display">Browser WebAssembly Engine</h3>
+              <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                Zero install Wasm engine running in dedicated background web workers. Solve packing problems in real time with continuous visual oscilloscope feedback in this tab.
+              </p>
             </div>
-            <p class="text-[11px] text-slate-400 leading-normal">
-              You can run the standalone worker in the background while keeping the web visualizer open, or use the web cruncher on machines where you cannot download executables.
-            </p>
+
+            <div class="bg-canvas rounded-md p-3 border border-hairline font-mono text-xs text-slate-300 space-y-1">
+              <div class="text-slate-500 text-[11px]"># In-browser execution features:</div>
+              <div class="text-slate-300">Wasm SIMD-accelerated geometric shrinkage engine.</div>
+              <div class="text-slate-400 text-[11px]">Configurable Web Worker thread pools for parallel crunching.</div>
+              <div class="text-slate-400 text-[11px]">Real-time state streaming to architectural oscilloscope canvas.</div>
+            </div>
           </div>
-          <div class="pt-1">
+
+          <div class="pt-2">
             <a
               href="#web-cruncher"
-              class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold text-xs border border-emerald-500/30 transition-all inline-flex items-center gap-1.5"
+              class="px-4 py-2 bg-surface-elevated hover:bg-surface-hover text-verify-light border border-hairline rounded-md font-semibold text-xs transition-colors inline-flex items-center gap-1.5 cursor-pointer font-mono"
             >
-              Use In-Browser Cruncher Below &darr;
+              <span>Use In-Browser Cruncher Below</span>
+              <span>&darr;</span>
             </a>
           </div>
+        </div>
+      </div>
+
+      <!-- Unifying Architectural Banner -->
+      <div class="p-4 rounded-lg bg-surface border border-hairline text-xs text-slate-300 flex items-start gap-3">
+        <div class="w-2 h-2 rounded-sm bg-blueprint-light mt-1 flex-shrink-0"></div>
+        <div class="space-y-1">
+          <span class="font-bold text-slate-100 uppercase tracking-wider text-[11px] font-mono">Grid Architecture Note</span>
+          <p class="text-slate-300 leading-relaxed text-xs">
+            Both clients connect to the exact same coordinator grid, lease from the same problem queue, and contribute verified solutions to the public benchmark. They are complementary options.
+          </p>
         </div>
       </div>
     </div>
 
     <!-- Main Grid: Visualizer & Controls -->
-    <div id="web-cruncher" class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-      <!-- Live Canvas -->
-      <div class="space-y-4">
+    <div id="web-cruncher" class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      <!-- Live Canvas Stage -->
+      <div class="space-y-2.5">
         <LivePackingCanvas />
-        <div class="text-xs text-slate-500 text-center font-mono">
-          Canvas renders intermediate continuous shrinkage states from the Rust Wasm engine.
-        </div>
       </div>
 
       <!-- Controls & Status -->
-      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-6 backdrop-blur-sm">
-        <div class="space-y-4">
+      <div class="bg-surface border border-hairline rounded-lg p-5 space-y-5">
+        <!-- Form Inputs -->
+        <div class="space-y-3.5">
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+            <label for="worker-username" class="block text-xs font-mono font-semibold uppercase tracking-wider text-slate-300 mb-1">
               Volunteer Username
             </label>
             <input
               id="worker-username"
               type="text"
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+              class="w-full bg-surface-elevated border border-hairline rounded-md px-3 py-2 text-xs font-mono text-slate-100 focus:outline-none focus:border-blueprint"
               placeholder="e.g. web_volunteer"
               value="web_volunteer"
             />
           </div>
 
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+            <label for="worker-server-url" class="block text-xs font-mono font-semibold uppercase tracking-wider text-slate-300 mb-1">
               Coordinator URL
             </label>
             <input
               id="worker-server-url"
               type="text"
-              class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 font-mono"
+              class="w-full bg-surface-elevated border border-hairline rounded-md px-3 py-2 text-xs font-mono text-slate-100 focus:outline-none focus:border-blueprint"
               placeholder="http://localhost:8000"
               value="http://localhost:8000"
             />
@@ -138,12 +162,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-                Threads (Cores)
+              <label for="worker-cores" class="block text-xs font-mono font-semibold uppercase tracking-wider text-slate-300 mb-1">
+                Threads
               </label>
               <select
                 id="worker-cores"
-                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
+                class="w-full bg-surface-elevated border border-hairline rounded-md px-2.5 py-2 text-xs font-mono text-slate-100 focus:outline-none focus:border-blueprint cursor-pointer"
               >
                 <option value="1">1 Thread</option>
                 <option value="2">2 Threads</option>
@@ -155,12 +179,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             </div>
 
             <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-                Batch Size
+              <label for="worker-batch-size" class="block text-xs font-mono font-semibold uppercase tracking-wider text-slate-300 mb-1">
+                Max Attempts
               </label>
               <select
                 id="worker-batch-size"
-                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
+                class="w-full bg-surface-elevated border border-hairline rounded-md px-2.5 py-2 text-xs font-mono text-slate-100 focus:outline-none focus:border-blueprint cursor-pointer"
               >
                 <option value="100">100 att.</option>
                 <option value="250">250 att.</option>
@@ -171,12 +195,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             </div>
 
             <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+              <label for="worker-pacing" class="block text-xs font-mono font-semibold uppercase tracking-wider text-slate-300 mb-1">
                 Display Pacing
               </label>
               <select
                 id="worker-pacing"
-                class="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 font-mono"
+                class="w-full bg-surface-elevated border border-hairline rounded-md px-2.5 py-2 text-xs font-mono text-slate-100 focus:outline-none focus:border-blueprint cursor-pointer"
               >
                 <option value="150">Fast (150ms)</option>
                 <option value="800" selected>Balanced (0.8s)</option>
@@ -186,25 +210,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           </div>
 
           <!-- Browser Compatibility Notice -->
-          <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] text-slate-400 space-y-1">
-            <div class="flex items-center gap-1.5 font-semibold text-slate-300">
-              <svg class="w-3.5 h-3.5 text-indigo-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="p-3 rounded-md bg-surface-elevated border border-hairline text-[11px] text-slate-300 space-y-1">
+            <div class="flex items-center gap-1.5 font-semibold text-slate-200 font-mono">
+              <svg class="w-3.5 h-3.5 text-blueprint-light flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span>Browser Compatibility Note</span>
             </div>
-            <p>
-              In Brave or Chromium browsers, connecting to a local coordinator (<code class="text-indigo-300 font-mono">http://localhost:8000</code>) may be blocked by Brave Shields or Private Network Access rules. If requests fail, toggle Brave Shields to "Off" for this tab, or access the dashboard via <code class="text-indigo-300 font-mono">http://localhost:4321</code>.
+            <p class="leading-relaxed">
+              In Brave or Chromium browsers, connecting to a local coordinator (<code class="text-blueprint-light font-mono">http://localhost:8000</code>) may be restricted by Brave Shields or Private Network Access rules. If requests fail, toggle shields off for this tab or access the coordinator directly.
             </p>
           </div>
         </div>
 
+        <!-- Start / Stop Actions -->
         <div class="flex gap-3">
           <button
             id="btn-start"
-            class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            class="flex-1 py-2.5 px-4 bg-verify hover:bg-emerald-600 text-white font-bold text-xs rounded-md transition-colors flex items-center justify-center gap-2 cursor-pointer font-mono"
           >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -214,9 +239,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           <button
             id="btn-stop"
             disabled
-            class="flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-500 font-bold text-sm border border-slate-700/60 transition-all flex items-center justify-center gap-2 cursor-not-allowed"
+            class="flex-1 py-2.5 px-4 bg-surface-elevated text-slate-500 border border-hairline font-bold text-xs rounded-md transition-colors flex items-center justify-center gap-2 cursor-not-allowed font-mono"
           >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
             </svg>
@@ -227,38 +252,50 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         <!-- Telemetry Cards -->
         <div class="space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-xs uppercase font-semibold text-slate-400">Local Session Telemetry</span>
-            <a href={`${base}/leaderboard`} class="text-[11px] font-semibold text-indigo-400 hover:text-indigo-300">
-              View Cluster Leaderboard &rarr;
+            <span class="text-xs uppercase font-semibold font-mono text-slate-300">Session Telemetry</span>
+            <a href={`${base}/leaderboard`} class="text-[11px] font-mono font-semibold text-blueprint-light hover:underline">
+              Cluster Leaderboard &rarr;
             </a>
           </div>
-          <div class="grid grid-cols-2 gap-3 pt-1">
-            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 flex flex-col">
-              <span class="text-[10px] uppercase font-semibold text-slate-400">Attempts Completed</span>
-              <span id="metric-attempts" class="text-xl font-bold font-mono text-indigo-400 mt-1">0</span>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+            <div class="bg-canvas border border-hairline rounded-md p-3 flex flex-col">
+              <span class="text-[10px] uppercase font-semibold text-slate-400 font-mono">Attempts</span>
+              <span id="metric-attempts" class="text-base font-bold font-mono text-blueprint-light mt-1">0</span>
             </div>
 
-            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3.5 flex flex-col">
-              <span class="text-[10px] uppercase font-semibold text-slate-400">Records Broken</span>
-              <span id="metric-records" class="text-xl font-bold font-mono text-amber-300 mt-1">0</span>
+            <div class="bg-canvas border border-hairline rounded-md p-3 flex flex-col">
+              <span class="text-[10px] uppercase font-semibold text-slate-400 font-mono">Leases</span>
+              <span id="metric-leases" class="text-base font-bold font-mono text-verify-light mt-1">0</span>
+            </div>
+
+            <div class="bg-canvas border border-hairline rounded-md p-3 flex flex-col">
+              <span class="text-[10px] uppercase font-semibold text-slate-400 font-mono">Solutions</span>
+              <span id="metric-records" class="text-base font-bold font-mono text-cadmium-light mt-1">0</span>
+            </div>
+
+            <div class="bg-canvas border border-hairline rounded-md p-3 flex flex-col">
+              <span class="text-[10px] uppercase font-semibold text-slate-400 font-mono">Server Ping</span>
+              <span id="metric-ping" class="text-base font-bold font-mono text-slate-300 mt-1">--</span>
             </div>
           </div>
         </div>
 
         <!-- Activity Log -->
         <div class="space-y-2">
-          <div class="flex justify-between items-center">
+          <div class="flex justify-between items-center text-xs font-mono">
             <div class="flex items-center gap-2">
-              <span class="text-xs uppercase font-semibold text-slate-400">Worker Activity & Packing History</span>
-              <span class="text-[10px] text-slate-500 font-mono hidden sm:inline">(Click any item to inspect on canvas)</span>
+              <span class="text-xs uppercase font-semibold text-slate-300">Session Activity Log</span>
+              <span class="text-[10px] text-slate-400 hidden sm:inline">(Click entry to inspect state)</span>
             </div>
-            <button id="btn-clear-log" class="text-[11px] text-slate-500 hover:text-slate-400 font-mono cursor-pointer">Clear</button>
+            <button id="btn-clear-log" class="text-[11px] text-slate-400 hover:text-slate-200 font-mono px-2 py-0.5 rounded-md border border-hairline bg-surface-elevated cursor-pointer transition">
+              Clear
+            </button>
           </div>
           <div
             id="worker-log"
-            class="h-44 bg-slate-950 border border-slate-800 rounded-xl p-2.5 font-mono text-[11px] text-slate-400 overflow-y-auto space-y-1.5"
+            class="h-44 bg-canvas border border-hairline rounded-md p-2.5 font-mono text-[11px] text-slate-300 overflow-y-auto space-y-1"
           >
-            <div class="text-slate-500 italic p-1">[System] Ready to start. Calculations and live packing logs will appear here.</div>
+            <div class="text-slate-400 italic p-1">[System] Standby. Cruncher telemetry and intermediate packing states will stream here.</div>
           </div>
         </div>
       </div>
@@ -277,7 +314,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   const clearLogBtn = document.getElementById('btn-clear-log') as HTMLButtonElement;
   const logBox = document.getElementById('worker-log') as HTMLDivElement;
   const metricAttempts = document.getElementById('metric-attempts') as HTMLSpanElement;
+  const metricLeases = document.getElementById('metric-leases') as HTMLSpanElement;
   const metricRecords = document.getElementById('metric-records') as HTMLSpanElement;
+  const metricPing = document.getElementById('metric-ping') as HTMLSpanElement;
 
   // Restore saved settings from localStorage
   if (localStorage.getItem('shape_packing_username') && usernameInput) {
@@ -302,6 +341,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
   let workers: Worker[] = [];
   let totalAttempts = 0;
+  let totalLeases = 0;
   let totalRecordsBroken = 0;
   let activeWorkerIds: string[] = [];
   const targetMap: Record<string, number> = {};
@@ -311,9 +351,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     if (!logBox) return;
     const time = new Date().toLocaleTimeString();
     const line = document.createElement('div');
-    line.className = 'p-1 text-slate-400 font-mono text-[11px]';
+    line.className = 'p-1 text-slate-300 font-mono text-[11px]';
     if (isHighlight) {
-      line.className = 'p-1 text-amber-300 font-bold font-mono text-[11px]';
+      line.className = 'p-1 text-cadmium-light font-bold font-mono text-[11px]';
     }
     line.textContent = `[${time}] ${message}`;
     logBox.appendChild(line);
@@ -336,21 +376,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     const time = new Date().toLocaleTimeString();
     const row = document.createElement('div');
     row.className =
-      'flex items-center justify-between p-1.5 rounded-lg hover:bg-slate-800/80 cursor-pointer transition group border border-slate-800/60 hover:border-slate-700';
+      'flex items-center justify-between p-1.5 rounded-md hover:bg-surface-hover cursor-pointer transition group border border-hairline';
 
     const left = document.createElement('div');
     left.className = 'flex items-center gap-1.5 truncate text-[11px]';
 
-    const sStr = typeof data.s === 'number' && data.s > 0 ? data.s.toFixed(5) : '—';
-    const targetStr = typeof data.target_s === 'number' && data.target_s > 0 ? data.target_s.toFixed(5) : '—';
-    const recordTag = data.isRecord ? '<span class="text-amber-400 font-bold">[RECORD]</span> ' : '';
+    const sStr = typeof data.s === 'number' && data.s > 0 ? data.s.toFixed(5) : '--';
+    const targetStr = typeof data.target_s === 'number' && data.target_s > 0 ? data.target_s.toFixed(5) : '--';
+    const recordTag = data.isRecord ? '<span class="text-cadmium-light font-bold">[RECORD]</span> ' : '';
 
-    left.innerHTML = `<span class="text-slate-500">[${time}]</span> <span class="text-slate-400 font-semibold">[T${data.thread}]</span> <span>${recordTag}<strong class="text-indigo-300">${data.problem}</strong>: calc s=<strong class="${data.isRecord ? 'text-amber-400' : 'text-emerald-400'}">${sStr}</strong> <span class="text-slate-500">(target: ${targetStr})</span></span>`;
+    left.innerHTML = `<span class="text-slate-500">[${time}]</span> <span class="text-slate-400 font-semibold">[T${data.thread}]</span> <span>${recordTag}<strong class="text-blueprint-light">${data.problem}</strong>: s=<strong class="${data.isRecord ? 'text-cadmium-light' : 'text-verify-light'}">${sStr}</strong> <span class="text-slate-500">(target: ${targetStr})</span></span>`;
 
     const btn = document.createElement('button');
     btn.className =
-      'px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 group-hover:bg-indigo-600 text-slate-400 group-hover:text-white transition flex items-center gap-1 flex-shrink-0 cursor-pointer';
-    btn.innerHTML = 'Inspect';
+      'px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold bg-surface-elevated group-hover:bg-blueprint text-slate-300 group-hover:text-white transition flex items-center gap-1 flex-shrink-0 cursor-pointer border border-hairline';
+    btn.textContent = 'Inspect';
 
     row.appendChild(left);
     row.appendChild(btn);
@@ -407,6 +447,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       activeWorkerIds.push(threadId);
 
       // Register with coordinator
+      const pingStart = performance.now();
       fetch(`${serverUrl}/api/v1/workers/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -416,7 +457,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           cores: 1,
         }),
       })
-        .then((res) => res.json())
+        .then((res) => {
+          const pingElapsed = Math.round(performance.now() - pingStart);
+          if (metricPing) metricPing.textContent = `${pingElapsed} ms`;
+          return res.json();
+        })
         .then((reg) => {
           if (i === 0) {
             appendLog(`Registered with cluster (Assigned ID: ${reg.worker_id})`);
@@ -424,6 +469,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         })
         .catch((err) => {
           if (i === 0) {
+            if (metricPing) metricPing.textContent = 'Offline';
             appendLog(`Note: Register endpoint unavailable (${err.message}). Proceeding directly.`);
           }
         });
@@ -449,6 +495,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           if (data.type === 'ready') {
             if (i === 0) appendLog('Rust WebAssembly engine initialized successfully.');
           } else if (data.type === 'task_started') {
+            totalLeases += 1;
+            if (metricLeases) metricLeases.textContent = totalLeases.toLocaleString();
             targetMap[data.work.problem] = data.work.target_s;
             appendLog(`[T${i + 1}] Leased ${data.work.problem} (Target s: ${data.work.target_s.toFixed(5)})`);
             window.dispatchEvent(
@@ -501,7 +549,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           } else if (data.type === 'record_beaten') {
             totalRecordsBroken += 1;
             if (metricRecords) metricRecords.textContent = totalRecordsBroken.toLocaleString();
-            appendLog(`[RECORD] New record discovered for ${data.problem}: s = ${data.best_s.toFixed(5)}!`, true);
+            appendLog(`[RECORD] Verified solution for ${data.problem}: s = ${data.best_s.toFixed(5)}!`, true);
           } else if (data.type === 'idle') {
             appendLog(`[T${i + 1}] ${data.message}`);
           } else if (data.type === 'error') {
@@ -519,12 +567,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     if (startBtn) {
       startBtn.disabled = true;
       startBtn.className =
-        'flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-500 font-bold text-sm border border-slate-700/60 cursor-not-allowed';
+        'flex-1 py-2.5 px-4 bg-surface-elevated text-slate-500 border border-hairline font-bold text-xs rounded-md cursor-not-allowed font-mono';
     }
     if (stopBtn) {
       stopBtn.disabled = false;
       stopBtn.className =
-        'flex-1 py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-sm shadow-lg shadow-rose-600/20 transition-all cursor-pointer';
+        'flex-1 py-2.5 px-4 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-md transition-colors flex items-center justify-center gap-2 cursor-pointer font-mono';
     }
   }
 
@@ -547,16 +595,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     activeWorkerIds = [];
 
     appendLog('All worker threads stopped and deregistered from coordinator.');
+    if (metricPing) metricPing.textContent = '--';
 
     if (startBtn) {
       startBtn.disabled = false;
       startBtn.className =
-        'flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 transition-all cursor-pointer';
+        'flex-1 py-2.5 px-4 bg-verify hover:bg-emerald-600 text-white font-bold text-xs rounded-md transition-colors flex items-center justify-center gap-2 cursor-pointer font-mono';
     }
     if (stopBtn) {
       stopBtn.disabled = true;
       stopBtn.className =
-        'flex-1 py-3 px-4 rounded-xl bg-slate-800 text-slate-500 font-bold text-sm border border-slate-700/60 cursor-not-allowed';
+        'flex-1 py-2.5 px-4 bg-surface-elevated text-slate-500 border border-hairline font-bold text-xs rounded-md cursor-not-allowed font-mono';
     }
   }
 

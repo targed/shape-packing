@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "test": "node --test tests/api.test.js tests/design_system.test.mjs tests/packing_visual.test.mjs tests/shape_badge.test.mjs tests/results_table.test.mjs tests/family_pages.test.mjs",
+    "test": "node --test tests/api.test.js tests/design_system.test.mjs tests/packing_visual.test.mjs tests/shape_badge.test.mjs tests/results_table.test.mjs tests/family_pages.test.mjs tests/contribute_cockpit.test.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -2,31 +2,45 @@
 // site/src/components/LivePackingCanvas.astro
 ---
 
-<div class="relative w-full aspect-square max-w-md mx-auto bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col items-center justify-center p-2">
-  <canvas id="live-canvas" width="400" height="400" class="w-full h-full rounded-xl bg-slate-900/60"></canvas>
-  
-  <div class="absolute top-4 left-4 flex items-center gap-2 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-mono text-slate-300">
-    <span id="canvas-status-dot" class="w-2 h-2 rounded-full bg-slate-500"></span>
-    <span id="canvas-status-label">Worker Idle</span>
+<div class="bg-surface border border-hairline rounded-lg p-3 space-y-2.5">
+  <div class="bg-canvas border border-hairline rounded-md relative flex items-center justify-center overflow-hidden aspect-square w-full">
+    <canvas id="live-canvas" width="400" height="400" class="w-full h-full block"></canvas>
+    
+    <!-- Status pill -->
+    <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-surface-elevated/90 backdrop-blur-sm px-2.5 py-1 rounded-md border border-hairline text-xs font-mono text-slate-300">
+      <span id="canvas-status-dot" class="w-1.5 h-1.5 rounded-sm bg-slate-500"></span>
+      <span id="canvas-status-label">Worker Idle</span>
+    </div>
+
+    <!-- Inspect History Banner -->
+    <div id="canvas-inspect-banner" class="hidden absolute top-2.5 right-2.5 flex items-center gap-2 bg-surface-elevated/95 backdrop-blur-sm px-2.5 py-1 rounded-md border border-blueprint/40 text-xs font-mono text-blueprint-light z-10">
+      <span class="w-1.5 h-1.5 rounded-sm bg-blueprint-light"></span>
+      <span>Inspecting History</span>
+      <button id="btn-resume-live" class="ml-1 px-2 py-0.5 rounded-md bg-blueprint hover:bg-blueprint-dark text-white font-semibold text-[10px] cursor-pointer transition">
+        Resume Live
+      </button>
+    </div>
+
+    <!-- Active Problem and Scale Overlay -->
+    <div id="canvas-overlay" class="absolute bottom-2.5 left-2.5 right-2.5 flex justify-between items-center bg-surface-elevated/90 backdrop-blur-sm px-3 py-1.5 rounded-md border border-hairline text-xs font-mono">
+      <div class="flex flex-col">
+        <span class="text-[9px] uppercase tracking-wider text-slate-400 font-semibold">Active Problem</span>
+        <span id="canvas-problem-name" class="font-bold text-slate-200">None</span>
+      </div>
+      <div class="flex flex-col text-right">
+        <span class="text-[9px] uppercase tracking-wider text-slate-400 font-semibold">Current Scale (s)</span>
+        <span id="canvas-scale-value" class="font-bold text-cadmium-light">--</span>
+      </div>
+    </div>
   </div>
 
-  <div id="canvas-inspect-banner" class="hidden absolute top-4 right-4 flex items-center gap-2 bg-indigo-950/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-indigo-700/80 text-xs font-mono text-indigo-300 shadow-xl z-10">
-    <span class="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span>
-    <span>Inspecting History</span>
-    <button id="btn-resume-live" class="ml-1 px-2 py-0.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-[10px] cursor-pointer transition">
-      Resume Live
-    </button>
-  </div>
-
-  <div id="canvas-overlay" class="absolute bottom-4 left-4 right-4 flex justify-between items-center bg-slate-950/85 backdrop-blur-md px-3 py-2 rounded-xl border border-slate-800 text-xs font-mono">
-    <div class="flex flex-col">
-      <span class="text-[10px] uppercase text-slate-500 font-semibold">Current Problem</span>
-      <span id="canvas-problem-name" class="font-bold text-slate-200">None</span>
-    </div>
-    <div class="flex flex-col text-right">
-      <span class="text-[10px] uppercase text-slate-500 font-semibold">Scale (s)</span>
-      <span id="canvas-scale-value" class="font-bold text-amber-400">0.00000</span>
-    </div>
+  <!-- Oscilloscope Footer -->
+  <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 px-1">
+    <span class="flex items-center gap-1.5">
+      <span class="w-1.5 h-1.5 rounded-sm bg-blueprint-light"></span>
+      Continuous Wasm Oscilloscope
+    </span>
+    <span class="text-slate-500">Cartesian (x, y, &theta;)</span>
   </div>
 </div>
 
@@ -38,6 +52,7 @@
     getContainerRotationOffset,
     inverseFriedmanMetric,
     transformPoint,
+    BLUEPRINT_PALETTE,
     type PolygonPoint
   } from '../lib/visualization/render_packing';
 
@@ -50,13 +65,8 @@
   const resumeLiveBtn = document.getElementById('btn-resume-live');
   const ctx = canvas?.getContext('2d');
 
-  const palette = [
-    '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#10b981',
-    '#06b6d4', '#3b82f6', '#f59e0b', '#84cc16', '#a855f7'
-  ];
-
-  let currentInnerToken = '3';
-  let currentContainerToken = 'CIRCLE';
+  let currentInnerToken: string | number = '3';
+  let currentContainerToken: string | number = 'CIRCLE';
   let isInspecting = false;
   let lastLiveDetail: any = null;
 
@@ -68,33 +78,75 @@
     }
   });
 
+  function drawDraftingGrid(w: number, h: number) {
+    if (!ctx) return;
+    const step = 40;
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+    ctx.lineWidth = 1;
+
+    for (let x = 0; x <= w; x += step) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, h);
+      ctx.stroke();
+    }
+    for (let y = 0; y <= h; y += step) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+    }
+  }
+
   function drawEmptyCanvas() {
     if (!ctx || !canvas) return;
     const w = canvas.width;
     const h = canvas.height;
     ctx.clearRect(0, 0, w, h);
 
-    // Subtle grid lines
-    ctx.strokeStyle = '#1e293b';
-    ctx.lineWidth = 1;
-    for (let x = 0; x < w; x += 40) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, h);
-      ctx.stroke();
-    }
-    for (let y = 0; y < h; y += 40) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(w, y);
-      ctx.stroke();
-    }
+    // Drafting coordinate grid lines in rgba(255, 255, 255, 0.05)
+    drawDraftingGrid(w, h);
 
-    // Centered placeholder text
-    ctx.fillStyle = '#475569';
-    ctx.font = '13px JetBrains Mono, monospace';
+    // Origin crosshairs in rgba(255, 255, 255, 0.15)
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, h / 2);
+    ctx.lineTo(w, h / 2);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(w / 2, 0);
+    ctx.lineTo(w / 2, h);
+    ctx.stroke();
+
+    // Corner crosshairs / precision ticks
+    const tickLen = 8;
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+    ctx.lineWidth = 1;
+    // Top-left
+    ctx.beginPath();
+    ctx.moveTo(20, 20); ctx.lineTo(20 + tickLen, 20);
+    ctx.moveTo(20, 20); ctx.lineTo(20, 20 + tickLen);
+    // Top-right
+    ctx.moveTo(w - 20, 20); ctx.lineTo(w - 20 - tickLen, 20);
+    ctx.moveTo(w - 20, 20); ctx.lineTo(w - 20, 20 + tickLen);
+    // Bottom-left
+    ctx.moveTo(20, h - 20); ctx.lineTo(20 + tickLen, h - 20);
+    ctx.moveTo(20, h - 20); ctx.lineTo(20, h - 20 - tickLen);
+    // Bottom-right
+    ctx.moveTo(w - 20, h - 20); ctx.lineTo(w - 20 - tickLen, h - 20);
+    ctx.moveTo(w - 20, h - 20); ctx.lineTo(w - 20, h - 20 - tickLen);
+    ctx.stroke();
+
+    // Centered placeholder text in IBM Plex Mono font
+    ctx.fillStyle = '#64748b';
+    ctx.font = '12px "IBM Plex Mono", monospace';
     ctx.textAlign = 'center';
-    ctx.fillText('Press "Start Crunching" to begin', w / 2, h / 2);
+    ctx.fillText('STANDBY // OSCILLOSCOPE IDLE', w / 2, h / 2 - 10);
+    ctx.fillStyle = '#475569';
+    ctx.font = '11px "IBM Plex Mono", monospace';
+    ctx.fillText('Start cruncher to stream packing states', w / 2, h / 2 + 12);
   }
 
   drawEmptyCanvas();
@@ -106,15 +158,18 @@
     if (container_token) currentContainerToken = container_token;
 
     if (problemName) problemName.textContent = problem || 'Active';
-    if (scaleValue) scaleValue.textContent = typeof s === 'number' && !isNaN(s) ? s.toFixed(5) : '—';
+    if (scaleValue) scaleValue.textContent = typeof s === 'number' && !isNaN(s) ? s.toFixed(5) : '--';
 
     if (statusLabel && status) {
       statusLabel.textContent = status;
+    } else if (statusLabel) {
+      statusLabel.textContent = is_inspect ? 'Inspecting' : 'Crunching';
     }
+
     if (statusDot) {
       statusDot.className = is_inspect
-        ? 'w-2 h-2 rounded-full bg-indigo-400'
-        : 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+        ? 'w-1.5 h-1.5 rounded-sm bg-blueprint-light'
+        : 'w-1.5 h-1.5 rounded-sm bg-verify-light';
     }
 
     if (!ctx || !canvas) return;
@@ -124,21 +179,8 @@
 
     ctx.clearRect(0, 0, w, h);
 
-    // Grid background
-    ctx.strokeStyle = '#1e293b';
-    ctx.lineWidth = 1;
-    for (let x = 0; x < w; x += 40) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, h);
-      ctx.stroke();
-    }
-    for (let y = 0; y < h; y += 40) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(w, y);
-      ctx.stroke();
-    }
+    // Drafting coordinate grid lines in rgba(255, 255, 255, 0.05)
+    drawDraftingGrid(w, h);
 
     // Determine actual geometric container scale factor S
     let S = typeof container_s === 'number' && container_s > 0 ? container_s : null;
@@ -196,7 +238,7 @@
           cx,
           cy,
           vertices: shapeVertices,
-          color: palette[i % palette.length],
+          color: BLUEPRINT_PALETTE[i % BLUEPRINT_PALETTE.length],
         });
       }
     }
@@ -240,9 +282,24 @@
       return h / 2 - (y - midY) * viewScale; // Inverted Y-axis: Cartesian +Y maps UP
     }
 
+    // Origin crosshairs through origin (0, 0) in rgba(255, 255, 255, 0.15)
+    const originX = toCanvasX(0);
+    const originY = toCanvasY(0);
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, originY);
+    ctx.lineTo(w, originY);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(originX, 0);
+    ctx.lineTo(originX, h);
+    ctx.stroke();
+
     // Draw container boundary
     ctx.strokeStyle = '#38bdf8';
-    ctx.lineWidth = 2.5;
+    ctx.lineWidth = 2.0;
 
     if (isContainerCircle) {
       ctx.beginPath();
@@ -266,16 +323,16 @@
     // Draw inner shapes or placeholder HUD
     if (!coordinates || coordinates.length < 3 || shapes.length === 0) {
       ctx.fillStyle = '#64748b';
-      ctx.font = '12px JetBrains Mono, monospace';
+      ctx.font = '12px "IBM Plex Mono", monospace';
       ctx.textAlign = 'center';
       const shapeDesc = `${n || ''} ${currentInnerToken} in ${currentContainerToken}`;
-      ctx.fillText(`Optimizing ${shapeDesc}`, w / 2, h / 2 - 8);
+      ctx.fillText(`OPTIMIZING: ${shapeDesc}`, w / 2, h / 2 - 8);
       ctx.fillStyle = '#475569';
-      ctx.font = '10px JetBrains Mono, monospace';
+      ctx.font = '10px "IBM Plex Mono", monospace';
       ctx.fillText('Searching configuration space...', w / 2, h / 2 + 14);
     } else {
       for (const shape of shapes) {
-        ctx.fillStyle = `${shape.color}44`;
+        ctx.fillStyle = `${shape.color}40`;
         ctx.strokeStyle = shape.color;
         ctx.lineWidth = 1.5;
 
