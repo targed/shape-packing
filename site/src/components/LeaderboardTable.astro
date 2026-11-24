@@ -87,8 +87,8 @@
             <span class="w-2 h-2 rounded-md bg-verify shrink-0"></span>
             <span>${escapeHtml(row.username)}</span>
           </td>
-          <td class="px-5 py-3.5 text-right font-mono text-slate-200">${row.total_attempts.toLocaleString()}</td>
-          <td class="px-5 py-3.5 text-right font-mono font-bold text-cadmium-light">${row.records_broken.toLocaleString()}</td>
+          <td class="px-5 py-3.5 text-right font-mono text-slate-200">${(row.total_attempts ?? 0).toLocaleString()}</td>
+          <td class="px-5 py-3.5 text-right font-mono font-bold text-cadmium-light">${(row.records_broken ?? 0).toLocaleString()}</td>
         </tr>
       `;
     }).join('');
