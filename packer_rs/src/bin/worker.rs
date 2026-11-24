@@ -1,5 +1,5 @@
 use clap::{Parser, Subcommand};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 use std::time::{Duration, Instant};
@@ -48,6 +48,10 @@ pub enum Commands {
         #[command(subcommand)]
         action: AutostartAction,
     },
+    /// Open the worker configuration file in your default editor
+    Edit,
+    /// Reset configuration and re-run interactive setup wizard
+    Reconfigure,
 }
 
 #[derive(Subcommand, Debug, Clone, PartialEq, Eq)]
@@ -89,6 +93,152 @@ pub fn handle_autostart_action(action: &AutostartAction) -> Result<(), String> {
             Ok(())
         }
     }
+}
+
+/// Opens the worker configuration file in the user's text editor.
+pub fn handle_edit_command(custom_config_path: Option<&Path>) -> Result<(), String> {
+    let path = custom_config_path
+        .map(|p| p.to_path_buf())
+        .unwrap_or_else(config::default_config_path);
+
+    if !path.exists() {
+        let default_cfg = config::WorkerConfig::default();
+        config::save(Some(&path), &default_cfg)?;
+        println!(
+            "[CONFIG] No configuration found. Initialized default configuration at {}",
+            path.display()
+        );
+    }
+
+    println!("[CONFIG] Opening configuration file: {}", path.display());
+    open_in_editor(&path)
+}
+
+/// Cross-platform helper to launch text editor for a configuration file.
+pub fn open_in_editor(path: &Path) -> Result<(), String> {
+    if let Some(editor) = std::env::var_os("VISUAL").or_else(|| std::env::var_os("EDITOR")) {
+        let editor_str = editor.to_string_lossy().to_string();
+        let parts: Vec<&str> = editor_str.split_whitespace().collect();
+        if !parts.is_empty() {
+            let mut cmd = std::process::Command::new(parts[0]);
+            for arg in &parts[1..] {
+                cmd.arg(arg);
+            }
+            cmd.arg(path);
+            if let Ok(mut child) = cmd.spawn() {
+                let _ = child.wait();
+                return Ok(());
+            }
+        }
+    }
+
+    #[cfg(windows)]
+    {
+        if let Ok(mut child) = std::process::Command::new("notepad.exe").arg(path).spawn() {
+            let _ = child.wait();
+            return Ok(());
+        }
+        let _ = std::process::Command::new("cmd")
+            .args(["/c", "start", "", &path.to_string_lossy()])
+            .status();
+        Ok(())
+    }
+
+    #[cfg(target_os = "macos")]
+    {
+        if let Ok(mut child) = std::process::Command::new("open").arg(path).spawn() {
+            let _ = child.wait();
+            return Ok(());
+        }
+        Ok(())
+    }
+
+    #[cfg(not(any(windows, target_os = "macos")))]
+    {
+        for cmd in &["nano", "vi", "xdg-open"] {
+            if let Ok(mut child) = std::process::Command::new(cmd).arg(path).spawn() {
+                let _ = child.wait();
+                return Ok(());
+            }
+        }
+        println!("[CONFIG] Please edit the configuration file manually at: {}", path.display());
+        Ok(())
+    }
+}
+
+/// Internal helper for reconfigure command supporting mock reader and writer for testing.
+pub fn handle_reconfigure_internal<R: std::io::BufRead, W: std::io::Write>(
+    custom_config_path: Option<&Path>,
+    cli_server: Option<String>,
+    cli_username: Option<String>,
+    cli_cores: Option<usize>,
+    no_interactive: bool,
+    reader: &mut R,
+    writer: &mut W,
+) -> Result<config::WorkerConfig, String> {
+    let path = custom_config_path
+        .map(|p| p.to_path_buf())
+        .unwrap_or_else(config::default_config_path);
+
+    if path.exists() {
+        std::fs::remove_file(&path)
+            .map_err(|e| format!("Failed to delete existing config file {}: {}", path.display(), e))?;
+        writeln!(writer, "[CONFIG] Deleted existing configuration at {}", path.display())
+            .map_err(|e| e.to_string())?;
+    } else {
+        writeln!(writer, "[CONFIG] No existing configuration file found at {}", path.display())
+            .map_err(|e| e.to_string())?;
+    }
+
+    let new_cfg = config::resolve_interactive_internal(
+        cli_server,
+        cli_username,
+        cli_cores,
+        no_interactive,
+        Some(&path),
+        reader,
+        writer,
+    )?;
+
+    if !path.exists() {
+        config::save(Some(&path), &new_cfg)?;
+    }
+
+    writeln!(
+        writer,
+        "[CONFIG] Configuration successfully saved to {}:\n  Coordinator URL: {}\n  Username: {}\n  Cores: {}",
+        path.display(),
+        new_cfg.server_url,
+        new_cfg.username,
+        new_cfg.cores
+    )
+    .map_err(|e| e.to_string())?;
+
+    Ok(new_cfg)
+}
+
+/// Deletes existing configuration file and runs the interactive setup wizard.
+pub fn handle_reconfigure_command(
+    custom_config_path: Option<&Path>,
+    cli_server: Option<String>,
+    cli_username: Option<String>,
+    cli_cores: Option<usize>,
+    no_interactive: bool,
+) -> Result<(), String> {
+    let stdin = std::io::stdin();
+    let stdout = std::io::stdout();
+    let mut reader = stdin.lock();
+    let mut writer = stdout.lock();
+    handle_reconfigure_internal(
+        custom_config_path,
+        cli_server,
+        cli_username,
+        cli_cores,
+        no_interactive,
+        &mut reader,
+        &mut writer,
+    )?;
+    Ok(())
 }
 
 /// Computes the next exponential backoff interval, capped at 60 seconds.
@@ -308,13 +458,36 @@ pub fn run_worker_cycle(
 fn main() {
     let cli = Cli::parse();
 
-    // 1. Handle autostart subcommand if present
-    if let Some(Commands::Autostart { action }) = cli.command {
-        if let Err(e) = handle_autostart_action(&action) {
-            eprintln!("[AUTOSTART ERROR] {}", e);
-            std::process::exit(1);
+    // 1. Handle subcommands if present
+    match cli.command {
+        Some(Commands::Autostart { action }) => {
+            if let Err(e) = handle_autostart_action(&action) {
+                eprintln!("[AUTOSTART ERROR] {}", e);
+                std::process::exit(1);
+            }
+            return;
         }
-        return;
+        Some(Commands::Edit) => {
+            if let Err(e) = handle_edit_command(cli.config.as_deref()) {
+                eprintln!("[EDIT ERROR] {}", e);
+                std::process::exit(1);
+            }
+            return;
+        }
+        Some(Commands::Reconfigure) => {
+            if let Err(e) = handle_reconfigure_command(
+                cli.config.as_deref(),
+                cli.server,
+                cli.username,
+                cli.cores,
+                cli.no_interactive,
+            ) {
+                eprintln!("[RECONFIGURE ERROR] {}", e);
+                std::process::exit(1);
+            }
+            return;
+        }
+        None => {}
     }
 
     // 2. Register Ctrl-C signal handler
@@ -483,6 +656,67 @@ mod tests {
                 action: AutostartAction::Status
             })
         );
+    }
+
+    #[test]
+    fn test_cli_parse_subcommand_edit() {
+        let cli = Cli::parse_from(["shape-packing-worker", "edit"]);
+        assert_eq!(cli.command, Some(Commands::Edit));
+    }
+
+    #[test]
+    fn test_cli_parse_subcommand_reconfigure() {
+        let cli = Cli::parse_from(["shape-packing-worker", "reconfigure"]);
+        assert_eq!(cli.command, Some(Commands::Reconfigure));
+    }
+
+    #[test]
+    fn test_handle_reconfigure_internal_resets_and_creates_new() {
+        let temp_dir = std::env::temp_dir().join(format!("sp_reconfig_{}", std::process::id()));
+        let _ = std::fs::create_dir_all(&temp_dir);
+        let config_file = temp_dir.join("worker_reconfig.json");
+
+        // Write initial old config
+        let old_cfg = config::WorkerConfig {
+            server_url: "http://old-server:8000".to_string(),
+            username: "old_user".to_string(),
+            worker_id: None,
+            cores: 1,
+        };
+        config::save(Some(&config_file), &old_cfg).expect("Failed to write initial config");
+        assert!(config_file.exists());
+
+        // Provide mock inputs:
+        // Line 1: http://new-coordinator:9000
+        // Line 2: reconfigured_contributor
+        // Line 3: 4
+        let mock_input = b"http://new-coordinator:9000\nreconfigured_contributor\n4\n";
+        let mut reader = std::io::Cursor::new(mock_input);
+        let mut writer = Vec::new();
+
+        let result = handle_reconfigure_internal(
+            Some(&config_file),
+            None,
+            None,
+            None,
+            false,
+            &mut reader,
+            &mut writer,
+        );
+
+        assert!(result.is_ok(), "Reconfigure should succeed: {:?}", result.err());
+        let new_cfg = result.unwrap();
+        assert_eq!(new_cfg.server_url, "http://new-coordinator:9000");
+        assert_eq!(new_cfg.username, "reconfigured_contributor");
+        assert_eq!(new_cfg.cores, 4);
+
+        // Verify loaded from disk
+        let disk_cfg = config::load(Some(&config_file)).expect("Must load newly saved config");
+        assert_eq!(disk_cfg.server_url, "http://new-coordinator:9000");
+        assert_eq!(disk_cfg.username, "reconfigured_contributor");
+        assert_eq!(disk_cfg.cores, 4);
+
+        let _ = std::fs::remove_dir_all(&temp_dir);
     }
 
     #[test]

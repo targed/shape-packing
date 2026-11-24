@@ -8,19 +8,97 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 <BaseLayout title="Contribute Compute | Shape Packing Volunteer Grid">
   <div class="space-y-8 max-w-5xl mx-auto">
     <!-- Header -->
-    <div class="border-b border-slate-800 pb-6 space-y-2">
+    <div class="border-b border-slate-800 pb-6 space-y-4">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        WebAssembly Volunteer Node
+        Distributed Volunteer Grid
       </div>
-      <h1 class="text-3xl font-extrabold text-white tracking-tight">Donate Compute in Your Browser</h1>
-      <p class="text-sm text-slate-400 max-w-2xl">
-        Run mathematical shape packing optimization directly inside this browser tab. Solutions are verified locally in Rust WebAssembly and submitted to the central coordinator.
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Contribute Processing Power</h1>
+      <p class="text-sm sm:text-base text-slate-400 max-w-3xl leading-relaxed">
+        Help explore unknown mathematical packings and break Erich Friedman benchmark bounds. You can donate processing power right in your browser or run the high-performance standalone binary. Both options submit verified solutions to the same shared coordinator grid.
       </p>
+
+      <!-- Worker Choice Cards: Web vs Standalone (Complementary, Not Mutually Exclusive) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+        <!-- Option 1: Standalone Native Executable -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-950/60 via-slate-900/80 to-slate-950 border border-indigo-500/30 p-5 space-y-3.5 shadow-xl">
+          <div class="flex items-center justify-between">
+            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider">
+              <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Option 1: Standalone Worker (Fastest)
+            </div>
+            <span class="text-[11px] font-semibold text-indigo-400 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-800/60">Recommended</span>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">Pure Rust Standalone Binary</h3>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+              Native multi-core performance with zero setup. Download and run on Windows, Linux, or macOS. Runs in the background and supports autostart on boot.
+            </p>
+          </div>
+          <div class="bg-slate-950/90 rounded-xl p-3 border border-slate-800/80 font-mono text-xs text-slate-300 space-y-1">
+            <div class="text-slate-500 text-[11px]"># Quick CLI commands:</div>
+            <div><span class="text-indigo-400">./shape-packing-worker</span></div>
+            <div><span class="text-indigo-400">./shape-packing-worker</span> edit <span class="text-slate-500"># open config in text editor</span></div>
+            <div><span class="text-indigo-400">./shape-packing-worker</span> reconfigure <span class="text-slate-500"># reset config & rerun wizard</span></div>
+            <div><span class="text-indigo-400">./shape-packing-worker</span> autostart enable</div>
+          </div>
+          <div class="pt-1 flex flex-wrap items-center gap-3">
+            <a
+              href="https://github.com/targed/shape-packing/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-all shadow-md shadow-indigo-600/30 flex items-center gap-1.5"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download Releases &rarr;
+            </a>
+            <span class="text-[11px] text-slate-400 font-mono">Windows (.exe), Linux, macOS</span>
+          </div>
+        </div>
+
+        <!-- Option 2: In-Browser Web Cruncher -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-950 border border-emerald-500/30 p-5 space-y-3.5 shadow-xl">
+          <div class="flex items-center justify-between">
+            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+              <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
+              Option 2: In-Browser Web Cruncher
+            </div>
+            <span class="text-[11px] font-semibold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/60">Zero Install</span>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">Browser WebAssembly Cruncher</h3>
+            <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+              No downloads or installation required. Keep this tab open to solve packing problems in real-time with continuous visual canvas feedback.
+            </p>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-950/90 border border-slate-800/80 text-xs text-slate-300 space-y-1">
+            <div class="text-amber-400 font-semibold text-[11px] flex items-center gap-1.5">
+              <span>✦</span> Complementary Options (Not Mutually Exclusive)
+            </div>
+            <p class="text-[11px] text-slate-400 leading-normal">
+              You can run the standalone worker in the background while keeping the web visualizer open, or use the web cruncher on machines where you cannot download executables.
+            </p>
+          </div>
+          <div class="pt-1">
+            <a
+              href="#web-cruncher"
+              class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-300 font-semibold text-xs border border-emerald-500/30 transition-all inline-flex items-center gap-1.5"
+            >
+              Use In-Browser Cruncher Below &darr;
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Main Grid: Visualizer & Controls -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    <div id="web-cruncher" class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
       <!-- Live Canvas -->
       <div class="space-y-4">
         <LivePackingCanvas />

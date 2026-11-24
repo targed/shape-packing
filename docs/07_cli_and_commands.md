@@ -479,6 +479,18 @@ Platform startup mechanisms:
 - Linux: Desktop entry `~/.config/autostart/shape-packing-worker.desktop`.
 - macOS: LaunchAgent plist `~/Library/LaunchAgents/com.shapepacking.worker.plist`.
 
+### Managing Configuration (`edit` & `reconfigure`)
+
+Quickly view, modify, or reset worker settings:
+
+```bash
+# Open configuration in your system's default text editor (e.g. Notepad, nano, or $EDITOR)
+shape-packing-worker edit
+
+# Reset configuration, delete existing config, and re-run the interactive setup wizard
+shape-packing-worker reconfigure
+```
+
 ### Compiling from Source
 
 ```bash
