@@ -122,7 +122,7 @@ const displayTitle = title || (solution as any).problem_id || (solution.N !== un
     <!-- Footer -->
     <div class="flex items-center justify-between pt-1 border-t border-hairline font-mono text-xs text-slate-400">
       <div class="flex items-center gap-2">
-        <span>N = <strong class="text-blueprint-light font-semibold">{solution.N}</strong></span>
+        <span>N = <strong class="text-blueprint-light font-semibold">{solution.N ?? svgData.shapes.length}</strong></span>
         <span class="text-slate-600">&bull;</span>
         <span>s = <strong class="text-verify-light font-semibold">{svgData.finalMetric.toFixed(4)}</strong></span>
       </div>
@@ -169,7 +169,7 @@ const displayTitle = title || (solution as any).problem_id || (solution.N !== un
 
         // Extract viewBox dimensions to add solid architectural background
         const viewBoxAttr = clone.getAttribute('viewBox') || '0 0 100 100';
-        const [vx, vy, vw, vh] = viewBoxAttr.split(' ').map(Number);
+        const [vx, vy, vw, vh] = viewBoxAttr.trim().split(/[\s,]+/).map(Number);
 
         const bgRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
         bgRect.setAttribute('x', String(vx));
@@ -177,10 +177,18 @@ const displayTitle = title || (solution as any).problem_id || (solution.N !== un
         bgRect.setAttribute('width', String(vw));
         bgRect.setAttribute('height', String(vh));
         bgRect.setAttribute('fill', '#0b0f17');
-        clone.insertBefore(bgRect, clone.firstChild);
 
-        // Add inline style for Cartesian vertical flip in standalone viewers
-        clone.setAttribute('style', 'transform: scaleY(-1); transform-origin: center; background-color: #0b0f17;');
+        // Wrap existing child elements in a transformation group for robust vector editor rendering
+        const contentGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        contentGroup.setAttribute('transform', `translate(0, ${2 * vy + vh}) scale(1, -1)`);
+
+        while (clone.firstChild) {
+          contentGroup.appendChild(clone.firstChild);
+        }
+
+        clone.appendChild(bgRect);
+        clone.appendChild(contentGroup);
+        clone.removeAttribute('style');
 
         const svgSerializer = new XMLSerializer();
         const svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgSerializer.serializeToString(clone);
