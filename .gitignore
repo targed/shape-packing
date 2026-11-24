@@ -33,3 +33,4 @@ build-2-closeout.md
 *.db-shm
 *.db-wal
 .superpowers/
+.agents/
