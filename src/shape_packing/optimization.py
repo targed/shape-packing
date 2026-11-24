@@ -36,6 +36,7 @@ from .geometry import (
     bh_objective,
     get_shape_geometry,
 )
+from .catalog import normalize_token
 
 
 @dataclass
@@ -73,11 +74,31 @@ def build_objective(problem: PackingProblem):
         geom: tuple with geometry constants
     """
     N = problem.N
-    nsi, unit_polygon_vertices, unit_polygon_vectors, _ = get_shape_geometry(problem.inner_token)
-    nsc, _, unit_container_vectors, unit_container_apothem = get_shape_geometry(problem.container_token)
+    inner_norm = normalize_token(problem.inner_token)
+    container_norm = normalize_token(problem.container_token)
 
-    is_inner_circle = problem.inner_token.upper() in ("CIRCLE", "CIR")
-    is_container_circle = problem.container_token.upper() in ("CIRCLE", "CIR")
+    is_inner_circle = inner_norm == "CIRCLE"
+    is_container_circle = container_norm == "CIRCLE"
+
+    if container_norm == "SEMICIRCLE":
+        if not is_inner_circle:
+            raise ValueError(f"SEMICIRCLE container only supports CIRCLE inner shapes, got {problem.inner_token!r}")
+        container_mode = 2
+    elif container_norm == "QUADRANT":
+        if not is_inner_circle:
+            raise ValueError(f"QUADRANT container only supports CIRCLE inner shapes, got {problem.inner_token!r}")
+        container_mode = 3
+    elif is_container_circle:
+        container_mode = 1
+    else:
+        container_mode = 0
+
+    nsi, unit_polygon_vertices, unit_polygon_vectors, _ = get_shape_geometry(inner_norm)
+    if container_mode in (2, 3):
+        unit_container_vectors = np.zeros((1, 2), dtype=float)
+        unit_container_apothem = np.zeros(1, dtype=float)
+    else:
+        _, _, unit_container_vectors, unit_container_apothem = get_shape_geometry(container_norm)
 
     def objective(values: np.ndarray, S: float) -> float:
         return bh_objective(
@@ -91,6 +112,7 @@ def build_objective(problem: PackingProblem):
             unit_container_apothem,
             is_inner_circle,
             is_container_circle,
+            container_mode,
         )
 
     # Return objective + geometry constants for use inside attempts.
@@ -101,6 +123,14 @@ def build_objective(problem: PackingProblem):
         unit_container_apothem,
     )
     return objective, geom
+
+
+def scale_positions_only(values: np.ndarray, multiplier: float) -> np.ndarray:
+    """Scale only planar translations (x_i, y_i), preserving orientation angles theta_i."""
+    scaled = np.array(values, dtype=float, copy=True)
+    scaled[0::3] *= multiplier
+    scaled[1::3] *= multiplier
+    return scaled
 
 
 # ------------ single attempt helpers ------------
@@ -229,7 +259,7 @@ def run_single_attempt(
         )
         last_valid_x = best_x
         last_valid_S = dynamic_S
-        x0 = best_x * multiplier
+        x0 = scale_positions_only(best_x, multiplier)
         dynamic_S *= multiplier
 
     return last_valid_S, last_valid_x

@@ -33,6 +33,7 @@ from .packing_config import (
     VERIFY_SAT_TOLERANCE,
     VERIFY_METRIC_TOLERANCE,
     RECORD_MIN_IMPROVEMENT,
+    CURVED_CIRCLE_CONTAINERS,
     RENDER_DPI,
     RENDER_FIGURE_SIZE,
     RENDER_CROP_MODE,
@@ -47,6 +48,7 @@ from .packing_config import (
     RENDER_ALIGN_CONTAINER,
     get_family_colors,
 )
+from .catalog import normalize_token
 
 TOLERANCE: float = VERIFY_SAT_TOLERANCE  # Re-exported for backward compatibility
 
@@ -89,18 +91,40 @@ NAMED_POLYGONS = {
 }
 
 
+_UNIT_SCALE_TOKENS = {
+    "CIRCLE",
+    "TAN",
+    "DOMINO",
+    "L",
+    "SEMICIRCLE",
+    "QUADRANT",
+    "RHOMBUS",
+    "PARALLELOGRAM",
+    "TRAPEZOID",
+}
+
+
 def compute_friedman_metric(S: float, inner_token: str, container_token: str) -> float:
     """
     Computes the correct Friedman metric corresponding to the container and inner shapes.
     """
-    container_upper = container_token.strip().upper()
-    inner_upper = inner_token.strip().upper()
+    container_upper = normalize_token(container_token)
+    inner_upper = normalize_token(inner_token)
 
     # LinL special case: container L and inner L (dilation factor S)
     if container_upper == "L" and inner_upper == "L":
         return S
 
-    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO"):
+    if container_upper in (
+        "CIRCLE",
+        "TAN",
+        "DOMINO",
+        "SEMICIRCLE",
+        "QUADRANT",
+        "RHOMBUS",
+        "PARALLELOGRAM",
+        "TRAPEZOID",
+    ):
         c_metric = S
     elif container_upper == "L":
         c_metric = 2.0 * S
@@ -109,50 +133,66 @@ def compute_friedman_metric(S: float, inner_token: str, container_token: str) ->
         if nsc is None:
             try:
                 nsc = int(container_upper)
-            except ValueError:
-                nsc = 3
+            except ValueError as exc:
+                raise ValueError(f"Unknown container shape token for metric: {container_token!r}") from exc
+        if nsc < 3:
+            raise ValueError(f"Container polygon sides must be >= 3, got {nsc}")
         c_metric = 2 * S * math.sin(math.pi / nsc)
 
-    if inner_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+    if inner_upper in _UNIT_SCALE_TOKENS:
         i_scale = 1.0
     else:
         nsi = NAMED_POLYGONS.get(inner_upper)
         if nsi is None:
             try:
                 nsi = int(inner_upper)
-            except ValueError:
-                nsi = 3
+            except ValueError as exc:
+                raise ValueError(f"Unknown inner shape token for metric: {inner_token!r}") from exc
+        if nsi < 3:
+            raise ValueError(f"Inner polygon sides must be >= 3, got {nsi}")
         i_scale = 2 * math.sin(math.pi / nsi)
 
     return c_metric / i_scale
+
 
 def inverse_friedman_metric(f_metric: float, inner_token: str, container_token: str) -> float:
     """
     Given a target Friedman metric, compute the corresponding solver S (circumradius).
     """
-    container_upper = container_token.strip().upper()
-    inner_upper = inner_token.strip().upper()
+    container_upper = normalize_token(container_token)
+    inner_upper = normalize_token(inner_token)
 
     # LinL special case: container L and inner L
     if container_upper == "L" and inner_upper == "L":
         return f_metric
 
     # Get inner scale
-    if inner_upper in ("CIRCLE", "CIR", "TAN", "DOMINO", "L"):
+    if inner_upper in _UNIT_SCALE_TOKENS:
         i_scale = 1.0
     else:
         nsi = NAMED_POLYGONS.get(inner_upper)
         if nsi is None:
             try:
                 nsi = int(inner_upper)
-            except ValueError:
-                nsi = 3
+            except ValueError as exc:
+                raise ValueError(f"Unknown inner shape token for inverse metric: {inner_token!r}") from exc
+        if nsi < 3:
+            raise ValueError(f"Inner polygon sides must be >= 3, got {nsi}")
         i_scale = 2 * math.sin(math.pi / nsi)
 
     c_metric = f_metric * i_scale
 
     # Reverse container metric
-    if container_upper in ("CIRCLE", "CIR", "TAN", "DOMINO"):
+    if container_upper in (
+        "CIRCLE",
+        "TAN",
+        "DOMINO",
+        "SEMICIRCLE",
+        "QUADRANT",
+        "RHOMBUS",
+        "PARALLELOGRAM",
+        "TRAPEZOID",
+    ):
         return c_metric
     elif container_upper == "L":
         return c_metric / 2.0
@@ -161,8 +201,10 @@ def inverse_friedman_metric(f_metric: float, inner_token: str, container_token: 
         if nsc is None:
             try:
                 nsc = int(container_upper)
-            except ValueError:
-                nsc = 3
+            except ValueError as exc:
+                raise ValueError(f"Unknown container shape token for inverse metric: {container_token!r}") from exc
+        if nsc < 3:
+            raise ValueError(f"Container polygon sides must be >= 3, got {nsc}")
         return c_metric / (2 * math.sin(math.pi / nsc))
 
 def load_solution(path: str) -> "Solution":
@@ -459,6 +501,54 @@ def _verify_polygon_container_bounds(
     return errors
 
 
+def _verify_semicircle_container_bounds(
+    sol: Solution,
+    tolerance: float,
+) -> List[str]:
+    """Verify exact closed-form bounds for unit circles inside upper semicircle (y >= 0, r <= S)."""
+    if normalize_token(sol.inner_token) != "CIRCLE":
+        raise ValueError(
+            f"SEMICIRCLE container only supports CIRCLE inner shapes, got {sol.inner_token!r}"
+        )
+    errors: List[str] = []
+    S = sol.S
+    limit = S - 1.0
+    for i in range(sol.N):
+        posx = sol.values[i * 3]
+        posy = sol.values[i * 3 + 1]
+        if posy < 1.0 - tolerance:
+            errors.append(f"Shape {i} (circle) out of semicircle chord bound! Margin: {1.0 - posy}")
+        dist = math.hypot(posx, posy)
+        if dist > limit + tolerance:
+            errors.append(f"Shape {i} (circle) out of semicircle arc bound! Margin: {dist - limit}")
+    return errors
+
+
+def _verify_quadrant_container_bounds(
+    sol: Solution,
+    tolerance: float,
+) -> List[str]:
+    """Verify exact closed-form bounds for unit circles inside first-quadrant disk (x >= 0, y >= 0, r <= S)."""
+    if normalize_token(sol.inner_token) != "CIRCLE":
+        raise ValueError(
+            f"QUADRANT container only supports CIRCLE inner shapes, got {sol.inner_token!r}"
+        )
+    errors: List[str] = []
+    S = sol.S
+    limit = S - 1.0
+    for i in range(sol.N):
+        posx = sol.values[i * 3]
+        posy = sol.values[i * 3 + 1]
+        if posx < 1.0 - tolerance:
+            errors.append(f"Shape {i} (circle) out of quadrant X bound! Margin: {1.0 - posx}")
+        if posy < 1.0 - tolerance:
+            errors.append(f"Shape {i} (circle) out of quadrant Y bound! Margin: {1.0 - posy}")
+        dist = math.hypot(posx, posy)
+        if dist > limit + tolerance:
+            errors.append(f"Shape {i} (circle) out of quadrant arc bound! Margin: {dist - limit}")
+    return errors
+
+
 def _verify_container_bounds(
     sol: Solution,
     polygons: List[Any],
@@ -467,10 +557,15 @@ def _verify_container_bounds(
     tolerance: float,
 ) -> List[str]:
     """Verify that all shapes lie within the container boundaries."""
-    if sol.container_token.upper() == "L":
+    c_norm = normalize_token(sol.container_token)
+    if c_norm == "L":
         return _verify_l_container_bounds(sol, polygons, tolerance)
-    if sol.container_token.upper() in ("CIRCLE", "CIR"):
+    if c_norm == "CIRCLE":
         return _verify_circle_container_bounds(sol, polygons, tolerance)
+    if c_norm == "SEMICIRCLE":
+        return _verify_semicircle_container_bounds(sol, tolerance)
+    if c_norm == "QUADRANT":
+        return _verify_quadrant_container_bounds(sol, tolerance)
     return _verify_polygon_container_bounds(
         sol, polygons, unit_container_vectors, unit_container_radii, tolerance
     )
@@ -583,7 +678,17 @@ def verify_solution(
     Returns a VerifyResult.
     """
     sol = load_solution(sol_path)
-    _, _, unit_container_vectors, unit_container_radii = get_shape_geometry(sol.container_token)
+    i_norm = normalize_token(sol.inner_token)
+    c_norm = normalize_token(sol.container_token)
+    if c_norm in CURVED_CIRCLE_CONTAINERS and i_norm != "CIRCLE":
+        raise ValueError(
+            f"Curved container {sol.container_token!r} only accepts CIRCLE inner shapes, got {sol.inner_token!r}"
+        )
+
+    if c_norm in CURVED_CIRCLE_CONTAINERS or c_norm == "CIRCLE":
+        unit_container_vectors, unit_container_radii = None, None
+    else:
+        _, _, unit_container_vectors, unit_container_radii = get_shape_geometry(c_norm)
     polygons = build_polygons(sol)
 
     calc_metric = compute_friedman_metric(sol.S, sol.inner_token, sol.container_token)
@@ -632,8 +737,8 @@ def get_container_rotation_offset(token: str) -> float:
     so that the container has a horizontal flat edge at the bottom, matching
     Erich Friedman's standard visual orientation.
     """
-    t = str(token).strip().upper()
-    if t in ("CIRCLE", "CIR", "DOMINO", "TAN", "L"):
+    t = normalize_token(token)
+    if t in _UNIT_SCALE_TOKENS:
         return 0.0
     try:
         sides = int(t)
@@ -658,16 +763,24 @@ def to_plot_data(sol: "Solution", align_container: bool = RENDER_ALIGN_CONTAINER
       - polygons: list of list of (x, y)
       - centers: list of (cx, cy)
     """
+    c_norm = normalize_token(sol.container_token)
     rot = get_container_rotation_offset(sol.container_token) if align_container else 0.0
     cosa = math.cos(rot)
     sina = math.sin(rot)
 
-    _, unit_container, _, _ = get_shape_geometry(sol.container_token)
-    if rot != 0.0:
-        unit_container = np.array([
-            [vx * cosa - vy * sina, vx * sina + vy * cosa]
-            for vx, vy in unit_container
-        ])
+    if c_norm == "SEMICIRCLE":
+        thetas = np.linspace(0.0, math.pi, 65)
+        unit_container = np.column_stack((np.cos(thetas), np.sin(thetas)))
+    elif c_norm == "QUADRANT":
+        thetas = np.linspace(0.0, 0.5 * math.pi, 33)
+        unit_container = np.vstack(([[0.0, 0.0]], np.column_stack((np.cos(thetas), np.sin(thetas)))))
+    else:
+        _, unit_container, _, _ = get_shape_geometry(c_norm)
+        if rot != 0.0:
+            unit_container = np.array([
+                [vx * cosa - vy * sina, vx * sina + vy * cosa]
+                for vx, vy in unit_container
+            ])
     container_vertices = unit_container * sol.S
 
     _, unit_inner, _, _ = get_shape_geometry(sol.inner_token)

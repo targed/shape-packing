@@ -22,6 +22,7 @@ import math
 from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 import numpy as np
 from .packing_config import CIRCLE_SIDES, GEOMETRY_SAT_TOLERANCE
+from .catalog import normalize_token
 
 try:
     from numba import njit
@@ -65,15 +66,19 @@ def regular_polygon_outward_normals(sides: int):
 
 
 def get_shape_geometry(token: str):
-    token = str(token).upper()
-    if token == "DOMINO":
+    norm = normalize_token(token)
+    if norm in ("SEMICIRCLE", "QUADRANT"):
+        raise ValueError(
+            f"Curved container {norm!r} uses exact closed-form bounds and has no polygon vertex representation."
+        )
+    if norm == "DOMINO":
         vertices = np.array([[-1.0, -0.5], [1.0, -0.5], [1.0, 0.5], [-1.0, 0.5]])
         vectors = np.array([[0.0, -1.0], [1.0, 0.0], [0.0, 1.0], [-1.0, 0.0]])
         edge_radii = np.array([0.5, 1.0, 0.5, 1.0])
         sides = 4
         return sides, vertices, vectors, edge_radii
         
-    if token == "TAN":
+    if norm == "TAN":
         r = 1.0 - np.sqrt(2.0) / 2.0
         vertices = np.array([[-r, -r], [1.0 - r, -r], [-r, 1.0 - r]])
         vectors = np.array([[0.0, -1.0], [np.sqrt(2.0) / 2.0, np.sqrt(2.0) / 2.0], [-1.0, 0.0]])
@@ -81,7 +86,7 @@ def get_shape_geometry(token: str):
         sides = 3
         return sides, vertices, vectors, edge_radii
         
-    if token == "L":
+    if norm == "L":
         vertices = np.array([
             [-5.0/6.0, -5.0/6.0],
             [7.0/6.0, -5.0/6.0],
@@ -102,7 +107,62 @@ def get_shape_geometry(token: str):
         sides = 6
         return sides, vertices, vectors, edge_radii
 
-    if token in ("CIRCLE", "CIR"):
+    if norm == "RHOMBUS":
+        s3_2 = math.sqrt(3.0) / 2.0
+        s3_4 = math.sqrt(3.0) / 4.0
+        vertices = np.array([
+            [s3_2, 0.0],
+            [0.0, 0.5],
+            [-s3_2, 0.0],
+            [0.0, -0.5],
+        ])
+        vectors = np.array([
+            [0.5, s3_2],
+            [-0.5, s3_2],
+            [-0.5, -s3_2],
+            [0.5, -s3_2],
+        ])
+        edge_radii = np.array([s3_4, s3_4, s3_4, s3_4])
+        return 4, vertices, vectors, edge_radii
+
+    if norm == "PARALLELOGRAM":
+        s2_2 = math.sqrt(2.0) / 2.0
+        s2_4 = math.sqrt(2.0) / 4.0
+        vertices = np.array([
+            [-3.0 * s2_4, -s2_4],
+            [s2_4, -s2_4],
+            [3.0 * s2_4, s2_4],
+            [-s2_4, s2_4],
+        ])
+        vectors = np.array([
+            [0.0, -1.0],
+            [s2_2, -s2_2],
+            [0.0, 1.0],
+            [-s2_2, s2_2],
+        ])
+        edge_radii = np.array([s2_4, 0.5, s2_4, 0.5])
+        return 4, vertices, vectors, edge_radii
+
+    if norm == "TRAPEZOID":
+        s3_2 = math.sqrt(3.0) / 2.0
+        s3_4 = math.sqrt(3.0) / 4.0
+        leg_ap = 3.0 * math.sqrt(3.0) / 8.0
+        vertices = np.array([
+            [-1.0, -s3_4],
+            [1.0, -s3_4],
+            [0.5, s3_4],
+            [-0.5, s3_4],
+        ])
+        vectors = np.array([
+            [0.0, -1.0],
+            [s3_2, 0.5],
+            [0.0, 1.0],
+            [-s3_2, 0.5],
+        ])
+        edge_radii = np.array([s3_4, leg_ap, s3_4, leg_ap])
+        return 4, vertices, vectors, edge_radii
+
+    if norm == "CIRCLE":
         sides = CIRCLE_SIDES
         vertices = regular_polygon_vertices(sides, 1.0)
         vectors = regular_polygon_outward_normals(sides)
@@ -110,24 +170,12 @@ def get_shape_geometry(token: str):
         edge_radii = np.full(sides, apothem)
         return sides, vertices, vectors, edge_radii
 
-    # Named regular polygons or numeric tokens
-    NAMED_POLYGONS = {
-        "TRIANGLE": 3,
-        "SQUARE": 4,
-        "PENTAGON": 5,
-        "HEXAGON": 6,
-        "HEPTAGON": 7,
-        "OCTAGON": 8,
-        "NONAGON": 9,
-        "DECAGON": 10,
-    }
-    if token in NAMED_POLYGONS:
-        sides = NAMED_POLYGONS[token]
-    else:
-        try:
-            sides = int(token)
-        except ValueError:
-            sides = 3 # default fallback
+    try:
+        sides = int(norm)
+    except ValueError as exc:
+        raise ValueError(f"Unknown or unsupported shape token: {token!r}") from exc
+    if sides < 3:
+        raise ValueError(f"Polygon sides must be >= 3, got {sides} from {token!r}")
         
     vertices = regular_polygon_vertices(sides, 1.0)
     vectors = regular_polygon_outward_normals(sides)
@@ -264,9 +312,10 @@ def _rotate_vectors_nb(a, vectors):
 
 
 @njit(cache=True)
-def _poking_penalty_nb(vertices, S, container_vectors, edge_radii, is_inner_circle, is_container_circle, posx, posy):
+def _poking_penalty_nb(vertices, S, container_vectors, edge_radii, is_inner_circle, is_container_circle, posx, posy, container_mode=0):
     penalty = 0.0
-    if is_container_circle:
+    effective_mode = 1 if (is_container_circle and container_mode == 0) else container_mode
+    if effective_mode == 1:
         if is_inner_circle:
             limit = S - 1.0
             if limit > 0.0:
@@ -296,6 +345,29 @@ def _poking_penalty_nb(vertices, S, container_vectors, edge_radii, is_inner_circ
                     if dist > limit:
                         diff = dist - limit
                         penalty += diff * diff
+    elif effective_mode == 2:
+        # Exact semicircle bounds for unit circle: y >= 1.0 and ||c|| <= S - 1.0
+        if posy < 1.0:
+            diff = 1.0 - posy
+            penalty += diff * diff
+        dist = math.hypot(posx, posy)
+        limit = S - 1.0
+        if dist > limit:
+            diff = dist - limit
+            penalty += diff * diff
+    elif effective_mode == 3:
+        # Exact circular quadrant bounds for unit circle: x >= 1.0, y >= 1.0, and ||c|| <= S - 1.0
+        if posx < 1.0:
+            diff = 1.0 - posx
+            penalty += diff * diff
+        if posy < 1.0:
+            diff = 1.0 - posy
+            penalty += diff * diff
+        dist = math.hypot(posx, posy)
+        limit = S - 1.0
+        if dist > limit:
+            diff = dist - limit
+            penalty += diff * diff
     else:
         if is_inner_circle:
             for i in range(container_vectors.shape[0]):
@@ -329,6 +401,7 @@ def bh_objective(
     unit_container_radii,
     is_inner_circle=False,
     is_container_circle=False,
+    container_mode=0,
 ) -> float:
     """
     Core objective: penalty for container overflow + overlaps (SAT-style).
@@ -345,7 +418,7 @@ def bh_objective(
         polys[i] = _transform_polygon_nb(unit_polygon_vertices, x, y, a)
         vecs[i] = _rotate_vectors_nb(a, unit_polygon_vectors)
         penalty += _poking_penalty_nb(
-            polys[i], S, unit_container_vectors, unit_container_radii, is_inner_circle, is_container_circle, x, y
+            polys[i], S, unit_container_vectors, unit_container_radii, is_inner_circle, is_container_circle, x, y, container_mode
         )
 
     for i in range(N):

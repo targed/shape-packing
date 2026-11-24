@@ -230,45 +230,13 @@ def is_preferred_reference(
 import math
 
 def _get_inner_shape_area(inner_token: str) -> Optional[float]:
-    t = str(inner_token).upper()
-    if t in ("3", "TRIANGLE", "TRI"):
-        return math.sqrt(3) / 4.0
-    if t in ("4", "SQUARE", "SQU"):
-        return 1.0
-    if t in ("5", "PENTAGON", "PEN"):
-        return 0.25 * math.sqrt(5.0 * (5.0 + 2.0 * math.sqrt(5.0)))
-    if t in ("6", "HEXAGON", "HEX"):
-        return 1.5 * math.sqrt(3)
-    if t in ("8", "OCTAGON", "OCT"):
-        return 2.0 * (1.0 + math.sqrt(2.0))
-    if t in ("TAN", "TANGRAM"):
-        return 0.5
-    if t in ("L", "LTROMINO", "L-TROMINO"):
-        return 3.0
-    return None
+    from .catalog import shape_area
+    return shape_area(inner_token, 1.0)
 
 
 def _get_container_shape_area(s: float, container_token: str) -> Optional[float]:
-    t = str(container_token).upper()
-    if t in ("CIRCLE", "CIR", "0"):
-        return math.pi * (s ** 2)
-    if t in ("3", "TRIANGLE", "TRI"):
-        return (math.sqrt(3) / 4.0) * (s ** 2)
-    if t in ("4", "SQUARE", "SQU"):
-        return s ** 2
-    if t in ("5", "PENTAGON", "PEN"):
-        return (5.0 / 4.0) * (s ** 2) / math.tan(math.pi / 5.0)
-    if t in ("6", "HEXAGON", "HEX"):
-        return 1.5 * math.sqrt(3) * (s ** 2)
-    if t in ("8", "OCTAGON", "OCT"):
-        return 2.0 * (1.0 + math.sqrt(2.0)) * (s ** 2)
-    if t in ("TAN", "TANGRAM"):
-        return 0.5 * (s ** 2)
-    if t in ("DOMINO", "DOM"):
-        return 2.0 * (s ** 2)
-    if t in ("L", "LTROMINO", "L-TROMINO"):
-        return 3.0 * (s ** 2)
-    return None
+    from .catalog import shape_area
+    return shape_area(container_token, s)
 
 
 def is_physically_valid_score(problem: str, score: float) -> bool:
@@ -361,12 +329,16 @@ def normalize_problem_name(p_str: str) -> str:
         N = m.group(1)
         inner = m.group(2).lower()
         container = m.group(3).lower()
+        from .catalog import normalize_token
         token_map = {
             "squ": "4", "cir": "CIRCLE", "tri": "3", "pen": "5",
-            "hex": "6", "oct": "8", "l": "L", "tan": "TAN", "dom": "DOMINO"
+            "hex": "6", "hep": "7", "oct": "8", "non": "9", "dec": "10",
+            "l": "L", "tan": "TAN", "dom": "DOMINO",
+            "semi": "SEMICIRCLE", "quad": "QUADRANT",
+            "rhom": "RHOMBUS", "para": "PARALLELOGRAM", "trap": "TRAPEZOID",
         }
-        c_inner = token_map.get(inner, inner.upper())
-        c_container = token_map.get(container, container.upper())
+        c_inner = token_map.get(inner, normalize_token(inner))
+        c_container = token_map.get(container, normalize_token(container))
         return f"{N}_{c_inner}_in_{c_container}"
     return p_str
 
@@ -401,28 +373,14 @@ def load_priority_queue(path: Optional[str] = None) -> List[Dict[str, float]]:
 
 
 def _is_shape_unsupported(token: str, filters: dict) -> bool:
-    from .problems import is_special_shape
-    t = str(token).upper().replace(" (COVERING)", "")
-    if t == "CIR":
-        t = "CIRCLE"
-    if t == "DOM":
-        t = "DOMINO"
-    if t in ("TAN", "TANGRAM"):
-        t = "TAN"
-    if t in ("L", "LTROMINO", "L-TROMINO"):
-        t = "L"
-
-    if is_special_shape(t):
-        if t in ("DOMINO", "TAN", "L"):
-            return False
-        if (filters or {}).get("include_inner") or (filters or {}).get("include_container"):
-            return False
-        return True
-    allowed = {
-        "3", "4", "5", "6", "7", "8", "9", "10",
-        "CIRCLE", "SQUARE", "DOMINO", "TAN", "L", "TRIANGLE", "PENTAGON", "HEXAGON", "OCTAGON",
-    }
-    return t not in allowed
+    from .catalog import normalize_token, get_canonical_tokens
+    raw = str(token).upper().replace(" (COVERING)", "")
+    t = normalize_token(raw)
+    if t in get_canonical_tokens():
+        return False
+    if (filters or {}).get("include_inner") or (filters or {}).get("include_container"):
+        return False
+    return True
 
 
 def _parse_filter_sets(filters: Optional[dict]) -> Tuple[Set[str], Set[str], Set[str], Set[str]]:

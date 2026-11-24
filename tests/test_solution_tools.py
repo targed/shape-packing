@@ -519,18 +519,20 @@ class TestToPlotData:
 
 
 class TestRenderSolution:
-    def test_render_basic(self, sample_solution_values):
+    def test_render_basic(self, sample_solution_values, tmp_path, monkeypatch):
         pytest.importorskip("matplotlib")
         from shape_packing.solution_tools import render_solution
         import os
+        monkeypatch.chdir(tmp_path)
         render_solution(sample_solution_values)
         assert os.path.exists("solution.png")
         os.remove("solution.png")
 
-    def test_render_with_flags(self, sample_solution_values):
+    def test_render_with_flags(self, sample_solution_values, tmp_path, monkeypatch):
         pytest.importorskip("matplotlib")
         from shape_packing.solution_tools import render_solution
         import os
+        monkeypatch.chdir(tmp_path)
         render_solution(sample_solution_values, show_axes=True, show_grid=True)
         assert os.path.exists("solution.png")
         os.remove("solution.png")
@@ -710,6 +712,89 @@ class TestLTrominoVerification:
         )
         assert res.valid is False
         assert any("reflex cut-out" in e for e in res.errors)
+
+
+class TestExpandedShapeVerification:
+    def test_verify_circle_in_semicircle_exact(self, tmp_path):
+        # N=1 circle in semicircle: center (0, 1.0) touches chord y=0 and arc at S=2.0
+        p = tmp_path / "circle_in_semi.json"
+        p.write_text(json.dumps({
+            "N": 1, "inner_token": "CIRCLE", "container_token": "SEMICIRCLE",
+            "S": 2.0, "final_metric": 2.0, "values": [0.0, 1.0, 0.0],
+        }))
+        res = verify_solution(str(p), problem_str="1_CIRCLE_in_SEMICIRCLE", check_record=False)
+        assert res.valid is True
+
+        # Violates flat chord bound (y < 1.0)
+        p_bad = tmp_path / "circle_in_semi_bad.json"
+        p_bad.write_text(json.dumps({
+            "N": 1, "inner_token": "CIRCLE", "container_token": "SEMICIRCLE",
+            "S": 2.0, "final_metric": 2.0, "values": [0.0, 0.99, 0.0],
+        }))
+        res_bad = verify_solution(str(p_bad), problem_str="1_CIRCLE_in_SEMICIRCLE", check_record=False)
+        assert res_bad.valid is False
+
+    def test_verify_circle_in_quadrant_exact(self, tmp_path):
+        import math
+        s_exact = 1.0 + math.sqrt(2.0)
+        p = tmp_path / "circle_in_quad.json"
+        p.write_text(json.dumps({
+            "N": 1, "inner_token": "CIRCLE", "container_token": "QUADRANT",
+            "S": s_exact, "final_metric": s_exact, "values": [1.0, 1.0, 0.0],
+        }))
+        res = verify_solution(str(p), problem_str="1_CIRCLE_in_QUADRANT", check_record=False)
+        assert res.valid is True
+
+        # Violates x < 1.0 wall
+        p_bad = tmp_path / "circle_in_quad_bad.json"
+        p_bad.write_text(json.dumps({
+            "N": 1, "inner_token": "CIRCLE", "container_token": "QUADRANT",
+            "S": s_exact, "final_metric": s_exact, "values": [0.99, 1.0, 0.0],
+        }))
+        res_bad = verify_solution(str(p_bad), problem_str="1_CIRCLE_in_QUADRANT", check_record=False)
+        assert res_bad.valid is False
+
+    def test_verify_circle_in_canonical_quads_exact(self, tmp_path):
+        import math
+        cases = [
+            ("RHOMBUS", 4.0 / math.sqrt(3.0)),
+            ("PARALLELOGRAM", 2.0 * math.sqrt(2.0)),
+            ("TRAPEZOID", 4.0 / math.sqrt(3.0)),
+        ]
+        for container, s_val in cases:
+            p = tmp_path / f"circle_in_{container.lower()}.json"
+            p.write_text(json.dumps({
+                "N": 1, "inner_token": "CIRCLE", "container_token": container,
+                "S": s_val, "final_metric": s_val, "values": [0.0, 0.0, 0.0],
+            }))
+            res = verify_solution(str(p), problem_str=f"1_CIRCLE_in_{container}", check_record=False)
+            assert res.valid is True, f"Failed valid check for {container}: {res.errors}"
+
+            # Shrink by 1% -> invalid
+            p_bad = tmp_path / f"circle_in_{container.lower()}_bad.json"
+            p_bad.write_text(json.dumps({
+                "N": 1, "inner_token": "CIRCLE", "container_token": container,
+                "S": s_val * 0.99, "final_metric": s_val * 0.99, "values": [0.0, 0.0, 0.0],
+            }))
+            res_bad = verify_solution(str(p_bad), problem_str=f"1_CIRCLE_in_{container}", check_record=False)
+            assert res_bad.valid is False, f"Failed rejection check for {container}"
+
+    def test_reject_non_circle_in_semicircle_and_unknown_token(self, tmp_path):
+        p_non_cir = tmp_path / "sq_in_semi.json"
+        p_non_cir.write_text(json.dumps({
+            "N": 1, "inner_token": "4", "container_token": "SEMICIRCLE",
+            "S": 3.0, "final_metric": 3.0, "values": [0.0, 1.0, 0.0],
+        }))
+        with pytest.raises(ValueError):
+            verify_solution(str(p_non_cir), check_record=False)
+
+        p_unk = tmp_path / "unk.json"
+        p_unk.write_text(json.dumps({
+            "N": 1, "inner_token": "CIRCLE", "container_token": "ELLIPSE",
+            "S": 2.0, "final_metric": 2.0, "values": [0.0, 0.0, 0.0],
+        }))
+        with pytest.raises(ValueError):
+            verify_solution(str(p_unk), check_record=False)
 
 
 
