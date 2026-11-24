@@ -14,7 +14,7 @@ import sqlite3
 import uuid
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-from shape_packing.catalog import (
+from ..catalog import (
     get_canonical_tokens,
     get_pair_tier,
     is_pair_supported,
