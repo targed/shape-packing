@@ -438,7 +438,7 @@ A standalone binary that executes the native packing solver, coordinates over HT
 shape-packing-worker
 
 # Run with explicit coordinator server, username, and allocated cores
-shape-packing-worker --server http://localhost:8000 --username alice --cores 8
+shape-packing-worker --server https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net --username alice --cores 8
 
 # Non-interactive mode (uses config file, environment variables, or defaults)
 shape-packing-worker --no-interactive
@@ -451,7 +451,7 @@ shape-packing-worker --config /path/to/custom_worker_config.json
 
 | Flag | Short | Default | Description |
 |---|---|---|---|
-| `--server` | `-s` | `http://localhost:8000` | Coordinator server base URL |
+| `--server` | `-s` | `https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net` | Coordinator server base URL |
 | `--username` | `-u` | System username | Volunteer handle for leaderboards |
 | `--cores` | `-c` | System CPU count | CPU threads allocated to Rayon |
 | `--config` | | `~/.shape_packing_worker.json` | Path to persistent configuration file |

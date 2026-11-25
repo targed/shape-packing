@@ -102,7 +102,7 @@ Running the executable without prior configuration launches an interactive conso
 =============================================
     Distributed Shape Packing Worker Setup
 =============================================
-[?] Coordinator Server URL [http://localhost:8000]:
+[?] Coordinator Server URL [https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net]:
 [?] Volunteer Username [username]:
 [?] Allocated CPU Cores (1-24) [24]:
 ```
@@ -121,7 +121,7 @@ shape-packing-worker --no-interactive
 
 | Flag | Default | Description |
 |---|---|---|
-| `-s, --server <URL>` | `http://localhost:8000` | Coordinator base URL |
+| `-s, --server <URL>` | `https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net` | Coordinator base URL |
 | `-u, --username <NAME>` | System username | Volunteer handle for rankings |
 | `-c, --cores <N>` | System CPU count | CPU threads allocated to Rayon |
 | `--config <PATH>` | `~/.shape_packing_worker.json` | Path to JSON config file |
@@ -164,14 +164,14 @@ The resulting executable is located at `packer_rs/target/release/shape-packing-w
 Volunteers working within an existing Python development environment can run the Python worker script:
 
 ```bash
-python -m src.shape_packing.client.native_worker --server http://localhost:8000 --username your_name
+python -m src.shape_packing.client.native_worker --server https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net --username your_name
 ```
 
 #### Command-Line Options
 
 | Option | Default | Description |
 |---|---|---|
-| `--server` | `http://localhost:8000` | URL of the central coordinator service |
+| `--server` | `https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net` | URL of the central coordinator service |
 | `--username` | `anonymous` | Volunteer handle for the community leaderboard |
 | `--cores` | System CPU count | Number of CPU cores allocated for optimization |
 | `--worker-id` | Auto-generated UUID | Optional persistent worker identifier |

@@ -44,7 +44,7 @@ _IN_FLIGHT_STATE: Dict[str, Any] = {
 class WorkerConfig:
     """Configuration parameters for distributed native worker daemon."""
 
-    server_url: str = "http://localhost:8000"
+    server_url: str = "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net"
     username: str = "anonymous"
     client_type: str = "native"
     worker_id: Optional[str] = None
@@ -75,7 +75,7 @@ class WorkerConfig:
     @classmethod
     def from_env(cls, **overrides: Any) -> WorkerConfig:
         """Construct WorkerConfig by ingesting environment variables with optional overrides."""
-        server_url = os.environ.get("SHAPE_PACKING_SERVER_URL", "http://localhost:8000")
+        server_url = os.environ.get("SHAPE_PACKING_SERVER_URL", "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net")
         username = os.environ.get("SHAPE_PACKING_USERNAME", "anonymous")
         worker_id = os.environ.get("SHAPE_PACKING_WORKER_ID", None)
         cores_env = os.environ.get("SHAPE_PACKING_CORES", None)
@@ -696,7 +696,7 @@ def main(argv: Optional[List[str]] = None) -> None:
         description="Distributed Shape Packing Native Worker Daemon"
     )
     parser.add_argument(
-        "--server", default="http://localhost:8000", help="Coordinator URL"
+        "--server", default="https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net", help="Coordinator URL"
     )
     parser.add_argument(
         "--username", default="anonymous", help="Volunteer handle username"

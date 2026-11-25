@@ -17,7 +17,7 @@ static RUNNING: AtomicBool = AtomicBool::new(true);
     long_about = "A standalone, high-performance volunteer crunch node that leases packing problems from the central coordinator, searches for tighter packings, and submits verified solutions."
 )]
 pub struct Cli {
-    /// Coordinator server URL (e.g. http://localhost:8000)
+    /// Coordinator server URL (e.g. https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net or http://localhost:8000)
     #[arg(short = 's', long = "server")]
     pub server: Option<String>,
 

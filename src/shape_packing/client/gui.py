@@ -26,7 +26,7 @@ CONFIG_PATH = os.path.expanduser("~/.shape_packing_worker.json")
 
 @dataclass
 class DesktopConfig:
-    server_url: str = "http://localhost:8000"
+    server_url: str = "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net"
     username: str = "volunteer"
     worker_id: Optional[str] = None
     cores: int = 4
@@ -276,7 +276,7 @@ class WorkerApp:
 
     def _persist_settings(self) -> None:
         self.desktop_cfg.server_url = (
-            self.server_entry.get().strip() or "http://localhost:8000"
+            self.server_entry.get().strip() or "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net"
         )
         self.desktop_cfg.username = self.user_entry.get().strip() or "volunteer"
         self.desktop_cfg.cores = int(self.cores_var.get())
@@ -288,7 +288,7 @@ class WorkerApp:
 
     def _start_crunching(self) -> None:
         username = self.user_entry.get().strip() or "volunteer"
-        server = self.server_entry.get().strip() or "http://localhost:8000"
+        server = self.server_entry.get().strip() or "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net"
         self.toggle_btn.configure(text="Connecting...", state=tk.DISABLED)
         self.status_label.configure(text="CONNECTING")
         self.status_canvas.itemconfig(self.status_dot, fill="#3b82f6")

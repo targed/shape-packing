@@ -3,7 +3,7 @@ use std::io::{BufRead, Write};
 use std::path::{Path, PathBuf};
 
 fn default_server_url() -> String {
-    "http://localhost:8000".to_string()
+    "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net".to_string()
 }
 
 fn default_username() -> String {
@@ -440,7 +440,7 @@ mod tests {
     fn test_save_preserves_desktop_gui_fields() {
         let path = temp_test_path("gui_fields");
         let initial_json = r#"{
-  "server_url": "http://localhost:8000",
+  "server_url": "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net",
   "username": "desktop_user",
   "cores": 2,
   "autostart": true,
@@ -566,7 +566,7 @@ mod tests {
         )
         .unwrap();
 
-        assert_eq!(resolved.server_url, "http://localhost:8000");
+        assert_eq!(resolved.server_url, "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net");
         assert_eq!(resolved.username, default_system_username());
         assert_eq!(resolved.cores, detected_cores());
         assert_eq!(resolved.worker_id, None);

@@ -68,8 +68,8 @@ def reset_global_worker_state():
 def test_config_defaults():
     """Test WorkerConfig default parameter values."""
     config = WorkerConfig()
-    assert config.server_url == "http://localhost:8000"
-    assert config.coordinator_url == "http://localhost:8000"
+    assert config.server_url == "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net"
+    assert config.coordinator_url == "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net"
     assert config.username == "anonymous"
     assert config.worker_id is None
     assert config.cores == 1
