@@ -7,7 +7,7 @@
     "best_value": 2.4142,
     "status": "trivial",
     "source_note": "s = 1 + \u221a2 = 2.41421+ Trivial.",
-    "our_problem": "1_octindom",
+    "our_problem": "1_8_in_DOMINO",
     "id": "octindom_1",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2.4142,
     "status": "trivial",
     "source_note": "s = 1 + \u221a2 = 2.41421+ Trivial.",
-    "our_problem": "2_octindom",
+    "our_problem": "2_8_in_DOMINO",
     "id": "octindom_2",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 3.5137,
     "status": "best_known",
     "source_note": "s = 3.51366+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "3_octindom",
+    "our_problem": "3_8_in_DOMINO",
     "id": "octindom_3",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 3.9799,
     "status": "best_known",
     "source_note": "s = 2 + 7\u221a2/5 = 3.97989+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "4_octindom",
+    "our_problem": "4_8_in_DOMINO",
     "id": "octindom_4",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 4.288,
     "status": "best_known",
     "source_note": "s = 13/6 + 3/\u221a2 = 4.28798+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_octindom",
+    "our_problem": "5_8_in_DOMINO",
     "id": "octindom_5",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 4.508,
     "status": "best_known",
     "source_note": "s = (16 + 11\u221a2)/7 = 4.50804+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_octindom",
+    "our_problem": "6_8_in_DOMINO",
     "id": "octindom_6",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 4.8284,
     "status": "trivial",
     "source_note": "s = 2 + 2\u221a2 = 4.82842+ Trivial.",
-    "our_problem": "7_octindom",
+    "our_problem": "7_8_in_DOMINO",
     "id": "octindom_7",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 4.8284,
     "status": "trivial",
     "source_note": "s = 2 + 2\u221a2 = 4.82842+ Trivial.",
-    "our_problem": "8_octindom",
+    "our_problem": "8_8_in_DOMINO",
     "id": "octindom_8",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 5.4951,
     "status": "best_known",
     "source_note": "s = 8/3 + 2\u221a2 = 5.49509+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "9_octindom",
+    "our_problem": "9_8_in_DOMINO",
     "id": "octindom_9",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 5.8284,
     "status": "best_known",
     "source_note": "s = 3 + 2\u221a2 = 5.82842+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "10_octindom",
+    "our_problem": "10_8_in_DOMINO",
     "id": "octindom_10",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 6.0284,
     "status": "best_known",
     "source_note": "s = 16/5 + 2\u221a2 = 6.02842+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_octindom",
+    "our_problem": "11_8_in_DOMINO",
     "id": "octindom_11",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 6.3113,
     "status": "best_known",
     "source_note": "s = 6.31126+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "12_octindom",
+    "our_problem": "12_8_in_DOMINO",
     "id": "octindom_12",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 6.5113,
     "status": "best_known",
     "source_note": "s = 6.51128+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "13_octindom",
+    "our_problem": "13_8_in_DOMINO",
     "id": "octindom_13",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 6.5641,
     "status": "best_known",
     "source_note": "s = (21 + 13\u221a2)/6 = 6.56412+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "14_octindom",
+    "our_problem": "14_8_in_DOMINO",
     "id": "octindom_14",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 6.7702,
     "status": "best_known",
     "source_note": "s = (47 + 29\u221a2)/13 =  6.77016+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "15_octindom",
+    "our_problem": "15_8_in_DOMINO",
     "id": "octindom_15",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 7.1046,
     "status": "best_known",
     "source_note": "s = 7.10456+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "16_octindom",
+    "our_problem": "16_8_in_DOMINO",
     "id": "octindom_16",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 7.2426,
     "status": "trivial",
     "source_note": "s = 3 + 3\u221a2 = 7.24263+ Trivial.",
-    "our_problem": "17_octindom",
+    "our_problem": "17_8_in_DOMINO",
     "id": "octindom_17",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 7.2426,
     "status": "trivial",
     "source_note": "s = 3 + 3\u221a2 = 7.24263+ Trivial.",
-    "our_problem": "18_octindom",
+    "our_problem": "18_8_in_DOMINO",
     "id": "octindom_18",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 7.7712,
     "status": "best_known",
     "source_note": "s = 7.77123+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "19_octindom",
+    "our_problem": "19_8_in_DOMINO",
     "id": "octindom_19",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 8.0395,
     "status": "best_known",
     "source_note": "s = 8.03947+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "20_octindom",
+    "our_problem": "20_8_in_DOMINO",
     "id": "octindom_20",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 8.2184,
     "status": "best_known",
     "source_note": "s = 8.21837+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "21_octindom",
+    "our_problem": "21_8_in_DOMINO",
     "id": "octindom_21",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 8.34,
     "status": "best_known",
     "source_note": "s = 8.34004+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "22_octindom",
+    "our_problem": "22_8_in_DOMINO",
     "id": "octindom_22",
     "source_url": "https://erich-friedman.github.io/packing/octindom/index.html"
   }

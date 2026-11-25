@@ -7,7 +7,7 @@
     "best_value": 1.5783,
     "status": "trivial",
     "source_note": "s = 1.57830+ Trivial.",
-    "our_problem": "1_hexinL",
+    "our_problem": "1_6_in_L",
     "id": "hexinL_1",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.73205,
     "status": "trivial",
     "source_note": "s = \u221a3 = 1.73205+ Trivial.",
-    "our_problem": "2_hexinL",
+    "our_problem": "2_6_in_L",
     "id": "hexinL_2",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.88648,
     "status": "best_known",
     "source_note": "s = 1.88648+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "3_hexinL",
+    "our_problem": "3_6_in_L",
     "id": "hexinL_3",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.41072,
     "status": "best_known",
     "source_note": "s = 2.41072+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "4_hexinL",
+    "our_problem": "4_6_in_L",
     "id": "hexinL_4",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.59807,
     "status": "best_known",
     "source_note": "s = 2.59807+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "5_hexinL",
+    "our_problem": "5_6_in_L",
     "id": "hexinL_5",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.90072,
     "status": "best_known",
     "source_note": "s = 2.90072+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "6_hexinL",
+    "our_problem": "6_6_in_L",
     "id": "hexinL_6",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.08493,
     "status": "best_known",
     "source_note": "s = 3.08493+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "7_hexinL",
+    "our_problem": "7_6_in_L",
     "id": "hexinL_7",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 3.26559,
     "status": "best_known",
     "source_note": "s = 3.26559+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "8_hexinL",
+    "our_problem": "8_6_in_L",
     "id": "hexinL_8",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 3.39536,
     "status": "best_known",
     "source_note": "s = 3.39536+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "9_hexinL",
+    "our_problem": "9_6_in_L",
     "id": "hexinL_9",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.4641,
     "status": "trivial",
     "source_note": "s = 2\u221a3 = 3.46410+ Trivial",
-    "our_problem": "10_hexinL",
+    "our_problem": "10_6_in_L",
     "id": "hexinL_10",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.48851,
     "status": "best_known",
     "source_note": "s = 3.48851+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "11_hexinL",
+    "our_problem": "11_6_in_L",
     "id": "hexinL_11",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.68106,
     "status": "best_known",
     "source_note": "s = 3.68106+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "12_hexinL",
+    "our_problem": "12_6_in_L",
     "id": "hexinL_12",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 3.94486,
     "status": "best_known",
     "source_note": "s = 3.94486+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "13_hexinL",
+    "our_problem": "13_6_in_L",
     "id": "hexinL_13",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 4.09579,
     "status": "best_known",
     "source_note": "s = 4.09579+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "14_hexinL",
+    "our_problem": "14_6_in_L",
     "id": "hexinL_14",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 4.2134,
     "status": "best_known",
     "source_note": "s = 4.2134+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "15_hexinL",
+    "our_problem": "15_6_in_L",
     "id": "hexinL_15",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.27526,
     "status": "best_known",
     "source_note": "s = 4.27526+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "16_hexinL",
+    "our_problem": "16_6_in_L",
     "id": "hexinL_16",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.51508,
     "status": "best_known",
     "source_note": "s = 4.51508+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "17_hexinL",
+    "our_problem": "17_6_in_L",
     "id": "hexinL_17",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 4.59397,
     "status": "best_known",
     "source_note": "s = 4.59397+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "18_hexinL",
+    "our_problem": "18_6_in_L",
     "id": "hexinL_18",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.70835,
     "status": "best_known",
     "source_note": "s = 4.70835+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "19_hexinL",
+    "our_problem": "19_6_in_L",
     "id": "hexinL_19",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 4.7548,
     "status": "best_known",
     "source_note": "s = 4.75480+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "20_hexinL",
+    "our_problem": "20_6_in_L",
     "id": "hexinL_20",
     "source_url": "https://erich-friedman.github.io/packing/hexinL/index.html"
   }

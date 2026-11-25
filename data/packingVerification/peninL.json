@@ -7,7 +7,7 @@
     "best_value": 1.2317,
     "status": "trivial",
     "source_note": "s = 1.23172+ Trivial.",
-    "our_problem": "1_peninL",
+    "our_problem": "1_5_in_L",
     "id": "peninL_1",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.5388,
     "status": "trivial",
     "source_note": "s = \u221a(5+2\u221a5)/2 = 1.53884+ Trivial.",
-    "our_problem": "2_peninL",
+    "our_problem": "2_5_in_L",
     "id": "peninL_2",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.5542,
     "status": "best_known",
     "source_note": "s = 1.55425+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "3_peninL",
+    "our_problem": "3_5_in_L",
     "id": "peninL_3",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.9692,
     "status": "best_known",
     "source_note": "s = 1.96918+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "4_peninL",
+    "our_problem": "4_5_in_L",
     "id": "peninL_4",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.1243,
     "status": "best_known",
     "source_note": "s = 2.12433+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "5_peninL",
+    "our_problem": "5_5_in_L",
     "id": "peninL_5",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.3051,
     "status": "best_known",
     "source_note": "s = 2.30512+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "6_peninL",
+    "our_problem": "6_5_in_L",
     "id": "peninL_6",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 2.4173,
     "status": "best_known",
     "source_note": "s = 2.41732+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "7_peninL",
+    "our_problem": "7_5_in_L",
     "id": "peninL_7",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 2.5416,
     "status": "best_known",
     "source_note": "s = 2.54164+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "8_peninL",
+    "our_problem": "8_5_in_L",
     "id": "peninL_8",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 2.6786,
     "status": "best_known",
     "source_note": "s = 2.67860+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "9_peninL",
+    "our_problem": "9_5_in_L",
     "id": "peninL_9",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 2.8024,
     "status": "trivial",
     "source_note": "s = 2.80245+ Trivial",
-    "our_problem": "10_peninL",
+    "our_problem": "10_5_in_L",
     "id": "peninL_10",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 2.9466,
     "status": "best_known",
     "source_note": "s = 2.94662+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "11_peninL",
+    "our_problem": "11_5_in_L",
     "id": "peninL_11",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.0746,
     "status": "best_known",
     "source_note": "s = 3.07460+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "12_peninL",
+    "our_problem": "12_5_in_L",
     "id": "peninL_12",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 3.2238,
     "status": "best_known",
     "source_note": "s = 3.22376+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "13_peninL",
+    "our_problem": "13_5_in_L",
     "id": "peninL_13",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 3.3501,
     "status": "best_known",
     "source_note": "s = 3.35014+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "14_peninL",
+    "our_problem": "14_5_in_L",
     "id": "peninL_14",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 3.4668,
     "status": "best_known",
     "source_note": "s = 3.46684+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "15_peninL",
+    "our_problem": "15_5_in_L",
     "id": "peninL_15",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 3.5568,
     "status": "best_known",
     "source_note": "s = 3.55676+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "16_peninL",
+    "our_problem": "16_5_in_L",
     "id": "peninL_16",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 3.6166,
     "status": "best_known",
     "source_note": "s = 3.61657+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "17_peninL",
+    "our_problem": "17_5_in_L",
     "id": "peninL_17",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 3.7368,
     "status": "best_known",
     "source_note": "s = 3.73676+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "18_peninL",
+    "our_problem": "18_5_in_L",
     "id": "peninL_18",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 3.8111,
     "status": "best_known",
     "source_note": "s = 3.81113+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "19_peninL",
+    "our_problem": "19_5_in_L",
     "id": "peninL_19",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 3.869,
     "status": "best_known",
     "source_note": "s = 3.86901+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "20_peninL",
+    "our_problem": "20_5_in_L",
     "id": "peninL_20",
     "source_url": "https://erich-friedman.github.io/packing/peninL/index.html"
   }

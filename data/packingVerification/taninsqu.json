@@ -7,7 +7,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "s = 1 Trivial.",
-    "our_problem": "1_taninsqu",
+    "our_problem": "1_TAN_in_4",
     "id": "taninsqu_1",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "s = 1 Trivial.",
-    "our_problem": "2_taninsqu",
+    "our_problem": "2_TAN_in_4",
     "id": "taninsqu_2",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -30,8 +30,8 @@
     "container_shape": "square",
     "best_value": 1.414214,
     "status": "trivial",
-    "source_note": "s = √2 = 1.414+ Trivial.",
-    "our_problem": "3_taninsqu",
+    "source_note": "s = \u221a2 = 1.414+ Trivial.",
+    "our_problem": "3_TAN_in_4",
     "id": "taninsqu_3",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -42,8 +42,8 @@
     "container_shape": "square",
     "best_value": 1.414214,
     "status": "trivial",
-    "source_note": "s = √2 = 1.414+ Trivial.",
-    "our_problem": "4_taninsqu",
+    "source_note": "s = \u221a2 = 1.414+ Trivial.",
+    "our_problem": "4_TAN_in_4",
     "id": "taninsqu_4",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.788,
     "status": "best_known",
     "source_note": "s = 1.788+ Found by Maurizio Morandi in August 2007.",
-    "our_problem": "5_taninsqu",
+    "our_problem": "5_TAN_in_4",
     "id": "taninsqu_5",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.937,
     "status": "best_known",
     "source_note": "s = 1.937+ Found by Maurizio Morandi in February 2008.",
-    "our_problem": "6_taninsqu",
+    "our_problem": "6_TAN_in_4",
     "id": "taninsqu_6",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 1.999,
     "status": "best_known",
     "source_note": "s = 1.999+ Found by Maurizio Morandi in August 2007.",
-    "our_problem": "7_taninsqu",
+    "our_problem": "7_TAN_in_4",
     "id": "taninsqu_7",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "8_taninsqu",
+    "our_problem": "8_TAN_in_4",
     "id": "taninsqu_8",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -102,8 +102,8 @@
     "container_shape": "square",
     "best_value": 2.207107,
     "status": "best_known",
-    "source_note": "s = 3/2 + 1/√2 = 2.207+ Found by Erich Friedman in March 2005.",
-    "our_problem": "9_taninsqu",
+    "source_note": "s = 3/2 + 1/\u221a2 = 2.207+ Found by Erich Friedman in March 2005.",
+    "our_problem": "9_TAN_in_4",
     "id": "taninsqu_9",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 2.393,
     "status": "best_known",
     "source_note": "s = 2.393+ Found by Maurizio Morandi in January 2008.",
-    "our_problem": "10_taninsqu",
+    "our_problem": "10_TAN_in_4",
     "id": "taninsqu_10",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -126,8 +126,8 @@
     "container_shape": "square",
     "best_value": 2.414214,
     "status": "best_known",
-    "source_note": "s = 1 + √2 = 2.414+ Found by Maurizio Morandi in August 2007.",
-    "our_problem": "11_taninsqu",
+    "source_note": "s = 1 + \u221a2 = 2.414+ Found by Maurizio Morandi in August 2007.",
+    "our_problem": "11_TAN_in_4",
     "id": "taninsqu_11",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 2.61115,
     "status": "best_known",
     "source_note": "s = 2.61115+ Found by Haowei Lin in July 2026.",
-    "our_problem": "12_taninsqu",
+    "our_problem": "12_TAN_in_4",
     "id": "taninsqu_12",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 2.688,
     "status": "best_known",
     "source_note": "s = 2.688+ Found by Maurizio Morandi in March 2008.",
-    "our_problem": "13_taninsqu",
+    "our_problem": "13_TAN_in_4",
     "id": "taninsqu_13",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 2.76345,
     "status": "best_known",
     "source_note": "s = 2.76345+ Found by Haowei Lin in July 2026.",
-    "our_problem": "14_taninsqu",
+    "our_problem": "14_TAN_in_4",
     "id": "taninsqu_14",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 2.82735,
     "status": "best_known",
     "source_note": "s = 2.82735+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "15_taninsqu",
+    "our_problem": "15_TAN_in_4",
     "id": "taninsqu_15",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -186,8 +186,8 @@
     "container_shape": "square",
     "best_value": 2.828427,
     "status": "trivial",
-    "source_note": "s = 2√2 = 2.828+ Trivial.",
-    "our_problem": "16_taninsqu",
+    "source_note": "s = 2\u221a2 = 2.828+ Trivial.",
+    "our_problem": "16_TAN_in_4",
     "id": "taninsqu_16",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 2.97,
     "status": "best_known",
     "source_note": "s = 2.970+ Found by David W. Cantrell in August 2007.",
-    "our_problem": "17_taninsqu",
+    "our_problem": "17_TAN_in_4",
     "id": "taninsqu_17",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "18_taninsqu",
+    "our_problem": "18_TAN_in_4",
     "id": "taninsqu_18",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 3.201,
     "status": "best_known",
     "source_note": "s = 3.201+ Found by Maurizio Morandi in February 2008.",
-    "our_problem": "19_taninsqu",
+    "our_problem": "19_TAN_in_4",
     "id": "taninsqu_19",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 3.26857,
     "status": "best_known",
     "source_note": "s = 3.26857+ Found by Aapo Lippoen in July 2026.",
-    "our_problem": "20_taninsqu",
+    "our_problem": "20_TAN_in_4",
     "id": "taninsqu_20",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 3.34,
     "status": "best_known",
     "source_note": "s = 3.340+ Found by Maurizio Morandi in March 2008.",
-    "our_problem": "21_taninsqu",
+    "our_problem": "21_TAN_in_4",
     "id": "taninsqu_21",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 3.392,
     "status": "best_known",
     "source_note": "s = 3.392+ Found by Maurizio Morandi in December 2007.",
-    "our_problem": "22_taninsqu",
+    "our_problem": "22_TAN_in_4",
     "id": "taninsqu_22",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 3.464,
     "status": "best_known",
     "source_note": "s = 3.464+ Found by Maurizio Morandi in December 2007.",
-    "our_problem": "23_taninsqu",
+    "our_problem": "23_TAN_in_4",
     "id": "taninsqu_23",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 3.517,
     "status": "best_known",
     "source_note": "s = 3.517+ Found by David W. Cantrell in August 2007.",
-    "our_problem": "24_taninsqu",
+    "our_problem": "24_TAN_in_4",
     "id": "taninsqu_24",
     "source_url": "https://erich-friedman.github.io/packing/taninsqu/index.html"
   }

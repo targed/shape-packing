@@ -6,8 +6,8 @@
     "container_shape": "pentagon",
     "best_value": 1.453,
     "status": "trivial",
-    "source_note": "s = 2tan(36°) s = 1.453+ Trivial.",
-    "our_problem": "1_cirinpen",
+    "source_note": "s = 2tan(36\u00b0) s = 1.453+ Trivial.",
+    "our_problem": "1_CIRCLE_in_5",
     "id": "cirinpen_1",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -18,8 +18,8 @@
     "container_shape": "pentagon",
     "best_value": 2.689,
     "status": "trivial",
-    "source_note": "s = 2tan(36°) + √5 - 1 s = 2.689+ Trivial.",
-    "our_problem": "2_cirinpen",
+    "source_note": "s = 2tan(36\u00b0) + \u221a5 - 1 s = 2.689+ Trivial.",
+    "our_problem": "2_CIRCLE_in_5",
     "id": "cirinpen_2",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 3.015,
     "status": "best_known",
     "source_note": "s = 3.015+ Found by George Sicherman in July 2012.",
-    "our_problem": "3_cirinpen",
+    "our_problem": "3_CIRCLE_in_5",
     "id": "cirinpen_3",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 3.314,
     "status": "best_known",
     "source_note": "s = 3.314+ Found by George Sicherman in July 2012.",
-    "our_problem": "4_cirinpen",
+    "our_problem": "4_CIRCLE_in_5",
     "id": "cirinpen_4",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -54,8 +54,8 @@
     "container_shape": "pentagon",
     "best_value": 3.453,
     "status": "trivial",
-    "source_note": "s = 2tan(36°) + 2 s = 3.453+ Trivial.",
-    "our_problem": "5_cirinpen",
+    "source_note": "s = 2tan(36\u00b0) + 2 s = 3.453+ Trivial.",
+    "our_problem": "5_CIRCLE_in_5",
     "id": "cirinpen_5",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -66,8 +66,8 @@
     "container_shape": "pentagon",
     "best_value": 3.804,
     "status": "trivial",
-    "source_note": "s = 2tan(36°) + 4sin(36°) s = 3.804+ Trivial.",
-    "our_problem": "6_cirinpen",
+    "source_note": "s = 2tan(36\u00b0) + 4sin(36\u00b0) s = 3.804+ Trivial.",
+    "our_problem": "6_CIRCLE_in_5",
     "id": "cirinpen_6",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 4.236,
     "status": "best_known",
     "source_note": "s = 4.236+ Found by George Sicherman in July 2012.",
-    "our_problem": "7_cirinpen",
+    "our_problem": "7_CIRCLE_in_5",
     "id": "cirinpen_7",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 4.564,
     "status": "best_known",
     "source_note": "s = 4.564+ Found by George Sicherman in July 2012.",
-    "our_problem": "8_cirinpen",
+    "our_problem": "8_CIRCLE_in_5",
     "id": "cirinpen_8",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 4.825,
     "status": "best_known",
     "source_note": "s = 4.825+ Found by George Sicherman in July 2012.",
-    "our_problem": "9_cirinpen",
+    "our_problem": "9_CIRCLE_in_5",
     "id": "cirinpen_9",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 5.095,
     "status": "best_known",
     "source_note": "s = 5.095+ Found by George Sicherman in July 2012.",
-    "our_problem": "10_cirinpen",
+    "our_problem": "10_CIRCLE_in_5",
     "id": "cirinpen_10",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 5.24,
     "status": "best_known",
     "source_note": "s = 5.240+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "11_cirinpen",
+    "our_problem": "11_CIRCLE_in_5",
     "id": "cirinpen_11",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 5.407,
     "status": "best_known",
     "source_note": "s = 5.407+ Found by George Sicherman in July 2012.",
-    "our_problem": "12_cirinpen",
+    "our_problem": "12_CIRCLE_in_5",
     "id": "cirinpen_12",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 5.651,
     "status": "best_known",
     "source_note": "s = 5.651+ Found by George Sicherman in July 2012.",
-    "our_problem": "13_cirinpen",
+    "our_problem": "13_CIRCLE_in_5",
     "id": "cirinpen_13",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 5.808,
     "status": "best_known",
     "source_note": "s = 5.808+ Found by George Sicherman in July 2012.",
-    "our_problem": "14_cirinpen",
+    "our_problem": "14_CIRCLE_in_5",
     "id": "cirinpen_14",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 5.945,
     "status": "best_known",
     "source_note": "s = 5.945+ Found by George Sicherman in July 2012.",
-    "our_problem": "15_cirinpen",
+    "our_problem": "15_CIRCLE_in_5",
     "id": "cirinpen_15",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 6.129,
     "status": "best_known",
     "source_note": "s = 6.129+ Found by George Sicherman in July 2012.",
-    "our_problem": "16_cirinpen",
+    "our_problem": "16_CIRCLE_in_5",
     "id": "cirinpen_16",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 6.419,
     "status": "best_known",
     "source_note": "s = 6.419+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "17_cirinpen",
+    "our_problem": "17_CIRCLE_in_5",
     "id": "cirinpen_17",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 6.586,
     "status": "best_known",
     "source_note": "s = 6.586+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "18_cirinpen",
+    "our_problem": "18_CIRCLE_in_5",
     "id": "cirinpen_18",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 6.777,
     "status": "best_known",
     "source_note": "s = 6.777+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "19_cirinpen",
+    "our_problem": "19_CIRCLE_in_5",
     "id": "cirinpen_19",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 6.944,
     "status": "best_known",
     "source_note": "s = 6.944+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "20_cirinpen",
+    "our_problem": "20_CIRCLE_in_5",
     "id": "cirinpen_20",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 7.107,
     "status": "best_known",
     "source_note": "s = 7.107+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "21_cirinpen",
+    "our_problem": "21_CIRCLE_in_5",
     "id": "cirinpen_21",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 7.271,
     "status": "best_known",
     "source_note": "s = 7.271+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "22_cirinpen",
+    "our_problem": "22_CIRCLE_in_5",
     "id": "cirinpen_22",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 7.397,
     "status": "best_known",
     "source_note": "s = 7.397+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "23_cirinpen",
+    "our_problem": "23_CIRCLE_in_5",
     "id": "cirinpen_23",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 7.534,
     "status": "best_known",
     "source_note": "s = 7.534+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "24_cirinpen",
+    "our_problem": "24_CIRCLE_in_5",
     "id": "cirinpen_24",
     "source_url": "https://erich-friedman.github.io/packing/cirinpen/index.html"
   }

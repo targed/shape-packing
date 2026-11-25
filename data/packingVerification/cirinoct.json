@@ -8,7 +8,7 @@
     "status": "trivial",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "1_cirinoct",
+    "our_problem": "1_CIRCLE_in_8",
     "id": "cirinoct_1",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -21,7 +21,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "2_cirinoct",
+    "our_problem": "2_CIRCLE_in_8",
     "id": "cirinoct_2",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -34,7 +34,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "3_cirinoct",
+    "our_problem": "3_CIRCLE_in_8",
     "id": "cirinoct_3",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -47,7 +47,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "4_cirinoct",
+    "our_problem": "4_CIRCLE_in_8",
     "id": "cirinoct_4",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -60,7 +60,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "5_cirinoct",
+    "our_problem": "5_CIRCLE_in_8",
     "id": "cirinoct_5",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -73,7 +73,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "6_cirinoct",
+    "our_problem": "6_CIRCLE_in_8",
     "id": "cirinoct_6",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -86,7 +86,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "7_cirinoct",
+    "our_problem": "7_CIRCLE_in_8",
     "id": "cirinoct_7",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -99,7 +99,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "8_cirinoct",
+    "our_problem": "8_CIRCLE_in_8",
     "id": "cirinoct_8",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -112,7 +112,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "9_cirinoct",
+    "our_problem": "9_CIRCLE_in_8",
     "id": "cirinoct_9",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -125,7 +125,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "10_cirinoct",
+    "our_problem": "10_CIRCLE_in_8",
     "id": "cirinoct_10",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -138,7 +138,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "11_cirinoct",
+    "our_problem": "11_CIRCLE_in_8",
     "id": "cirinoct_11",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -151,7 +151,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "12_cirinoct",
+    "our_problem": "12_CIRCLE_in_8",
     "id": "cirinoct_12",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -164,7 +164,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "13_cirinoct",
+    "our_problem": "13_CIRCLE_in_8",
     "id": "cirinoct_13",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -177,7 +177,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "14_cirinoct",
+    "our_problem": "14_CIRCLE_in_8",
     "id": "cirinoct_14",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -190,7 +190,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "15_cirinoct",
+    "our_problem": "15_CIRCLE_in_8",
     "id": "cirinoct_15",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -203,7 +203,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "16_cirinoct",
+    "our_problem": "16_CIRCLE_in_8",
     "id": "cirinoct_16",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -216,7 +216,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "17_cirinoct",
+    "our_problem": "17_CIRCLE_in_8",
     "id": "cirinoct_17",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -229,7 +229,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "18_cirinoct",
+    "our_problem": "18_CIRCLE_in_8",
     "id": "cirinoct_18",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -242,7 +242,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "19_cirinoct",
+    "our_problem": "19_CIRCLE_in_8",
     "id": "cirinoct_19",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -255,7 +255,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "20_cirinoct",
+    "our_problem": "20_CIRCLE_in_8",
     "id": "cirinoct_20",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -268,7 +268,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "21_cirinoct",
+    "our_problem": "21_CIRCLE_in_8",
     "id": "cirinoct_21",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -281,7 +281,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "22_cirinoct",
+    "our_problem": "22_CIRCLE_in_8",
     "id": "cirinoct_22",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -294,7 +294,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "23_cirinoct",
+    "our_problem": "23_CIRCLE_in_8",
     "id": "cirinoct_23",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -307,7 +307,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "24_cirinoct",
+    "our_problem": "24_CIRCLE_in_8",
     "id": "cirinoct_24",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -320,7 +320,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "25_cirinoct",
+    "our_problem": "25_CIRCLE_in_8",
     "id": "cirinoct_25",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -333,7 +333,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "26_cirinoct",
+    "our_problem": "26_CIRCLE_in_8",
     "id": "cirinoct_26",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -346,7 +346,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "27_cirinoct",
+    "our_problem": "27_CIRCLE_in_8",
     "id": "cirinoct_27",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -359,7 +359,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "28_cirinoct",
+    "our_problem": "28_CIRCLE_in_8",
     "id": "cirinoct_28",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -372,7 +372,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "29_cirinoct",
+    "our_problem": "29_CIRCLE_in_8",
     "id": "cirinoct_29",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -385,7 +385,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "30_cirinoct",
+    "our_problem": "30_CIRCLE_in_8",
     "id": "cirinoct_30",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -398,7 +398,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "31_cirinoct",
+    "our_problem": "31_CIRCLE_in_8",
     "id": "cirinoct_31",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -411,7 +411,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "32_cirinoct",
+    "our_problem": "32_CIRCLE_in_8",
     "id": "cirinoct_32",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -424,7 +424,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "33_cirinoct",
+    "our_problem": "33_CIRCLE_in_8",
     "id": "cirinoct_33",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -437,7 +437,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "34_cirinoct",
+    "our_problem": "34_CIRCLE_in_8",
     "id": "cirinoct_34",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -450,7 +450,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "35_cirinoct",
+    "our_problem": "35_CIRCLE_in_8",
     "id": "cirinoct_35",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -463,7 +463,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "36_cirinoct",
+    "our_problem": "36_CIRCLE_in_8",
     "id": "cirinoct_36",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -476,7 +476,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "37_cirinoct",
+    "our_problem": "37_CIRCLE_in_8",
     "id": "cirinoct_37",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -489,7 +489,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "38_cirinoct",
+    "our_problem": "38_CIRCLE_in_8",
     "id": "cirinoct_38",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -502,7 +502,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "39_cirinoct",
+    "our_problem": "39_CIRCLE_in_8",
     "id": "cirinoct_39",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -515,7 +515,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "40_cirinoct",
+    "our_problem": "40_CIRCLE_in_8",
     "id": "cirinoct_40",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -528,7 +528,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "41_cirinoct",
+    "our_problem": "41_CIRCLE_in_8",
     "id": "cirinoct_41",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -541,7 +541,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "42_cirinoct",
+    "our_problem": "42_CIRCLE_in_8",
     "id": "cirinoct_42",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -554,7 +554,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "43_cirinoct",
+    "our_problem": "43_CIRCLE_in_8",
     "id": "cirinoct_43",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -567,7 +567,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "44_cirinoct",
+    "our_problem": "44_CIRCLE_in_8",
     "id": "cirinoct_44",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -580,7 +580,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "45_cirinoct",
+    "our_problem": "45_CIRCLE_in_8",
     "id": "cirinoct_45",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -593,7 +593,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "46_cirinoct",
+    "our_problem": "46_CIRCLE_in_8",
     "id": "cirinoct_46",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -606,7 +606,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "47_cirinoct",
+    "our_problem": "47_CIRCLE_in_8",
     "id": "cirinoct_47",
     "source_url": "https://www.packomania.com/coc/coc.html"
   },
@@ -619,7 +619,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "48_cirinoct",
+    "our_problem": "48_CIRCLE_in_8",
     "id": "cirinoct_48",
     "source_url": "https://www.packomania.com/coc/coc.html"
   }

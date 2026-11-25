@@ -6,8 +6,8 @@
     "container_shape": "pentagon",
     "best_value": 0.936,
     "status": "trivial",
-    "source_note": "s = cos(27°) / cos(18°) s = .936+ Trivial.",
-    "our_problem": "1_squinpen",
+    "source_note": "s = cos(27\u00b0) / cos(18\u00b0) s = .936+ Trivial.",
+    "our_problem": "1_4_in_5",
     "id": "squinpen_1",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -18,8 +18,8 @@
     "container_shape": "pentagon",
     "best_value": 1.535,
     "status": "best_known",
-    "source_note": "s = 4√(1–2/√5)+√5–2 s = 1.535+ Found by Erich Friedman in March 2012.",
-    "our_problem": "2_squinpen",
+    "source_note": "s = 4\u221a(1\u20132/\u221a5)+\u221a5\u20132 s = 1.535+ Found by Erich Friedman in March 2012.",
+    "our_problem": "2_4_in_5",
     "id": "squinpen_2",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.695,
     "status": "best_known",
     "source_note": "s = 1.695+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "3_squinpen",
+    "our_problem": "3_4_in_5",
     "id": "squinpen_3",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.861,
     "status": "best_known",
     "source_note": "s = 1.861+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "4_squinpen",
+    "our_problem": "4_4_in_5",
     "id": "squinpen_4",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -54,8 +54,8 @@
     "container_shape": "pentagon",
     "best_value": 1.951,
     "status": "best_known",
-    "source_note": "s = 1 + cos(18°) s = 1.951+ Found by Erich Friedman in March 2012.",
-    "our_problem": "5_squinpen",
+    "source_note": "s = 1 + cos(18\u00b0) s = 1.951+ Found by Erich Friedman in March 2012.",
+    "our_problem": "5_4_in_5",
     "id": "squinpen_5",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -66,8 +66,8 @@
     "container_shape": "pentagon",
     "best_value": 2.185,
     "status": "best_known",
-    "source_note": "s = 6√(1–2/√5)+√5–2 s = 2.185+ Found by Erich Friedman in March 2012.",
-    "our_problem": "6_squinpen",
+    "source_note": "s = 6\u221a(1\u20132/\u221a5)+\u221a5\u20132 s = 2.185+ Found by Erich Friedman in March 2012.",
+    "our_problem": "6_4_in_5",
     "id": "squinpen_6",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -78,8 +78,8 @@
     "container_shape": "pentagon",
     "best_value": 2.421,
     "status": "best_known",
-    "source_note": "s = 6√(1–2/√5)+2√5–4 s = 2.421+ Found by Erich Friedman in July 2012.",
-    "our_problem": "7_squinpen",
+    "source_note": "s = 6\u221a(1\u20132/\u221a5)+2\u221a5\u20134 s = 2.421+ Found by Erich Friedman in July 2012.",
+    "our_problem": "7_4_in_5",
     "id": "squinpen_7",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 2.565,
     "status": "best_known",
     "source_note": "s = 2.565+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "8_squinpen",
+    "our_problem": "8_4_in_5",
     "id": "squinpen_8",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 2.693,
     "status": "best_known",
     "source_note": "s = 2.693+ Found by Timo Berthold et al in January 2026.",
-    "our_problem": "9_squinpen",
+    "our_problem": "9_4_in_5",
     "id": "squinpen_9",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 2.793,
     "status": "best_known",
     "source_note": "s = 2.793+ Found by Timo Berthold et al in January 2026.",
-    "our_problem": "10_squinpen",
+    "our_problem": "10_4_in_5",
     "id": "squinpen_10",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 2.89,
     "status": "best_known",
     "source_note": "s = 2.890+ Found by Timo Berthold et al in January 2026.",
-    "our_problem": "11_squinpen",
+    "our_problem": "11_4_in_5",
     "id": "squinpen_11",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 2.969,
     "status": "best_known",
     "source_note": "s = 2.969+ Found by Timo Berthold et al in January 2026.",
-    "our_problem": "12_squinpen",
+    "our_problem": "12_4_in_5",
     "id": "squinpen_12",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 3.12074,
     "status": "best_known",
     "source_note": "s = 3.12074+ Found by Jake Loyd in June 2026.",
-    "our_problem": "13_squinpen",
+    "our_problem": "13_4_in_5",
     "id": "squinpen_13",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 3.187,
     "status": "best_known",
     "source_note": "s = 3.187+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "14_squinpen",
+    "our_problem": "14_4_in_5",
     "id": "squinpen_14",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -174,8 +174,8 @@
     "container_shape": "pentagon",
     "best_value": 3.284,
     "status": "best_known",
-    "source_note": "s = (√(125–38√5)+8–2√5)/3 s = 3.284+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "15_squinpen",
+    "source_note": "s = (\u221a(125\u201338\u221a5)+8\u20132\u221a5)/3 s = 3.284+ Found by David W. Cantrell in July 2012.",
+    "our_problem": "15_4_in_5",
     "id": "squinpen_15",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 3.47851,
     "status": "best_known",
     "source_note": "s = 3.47851+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "16_squinpen",
+    "our_problem": "16_4_in_5",
     "id": "squinpen_16",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 3.541,
     "status": "best_known",
     "source_note": "s = 3.541+ Found by Ignacio Vallejo in March 2026.",
-    "our_problem": "17_squinpen",
+    "our_problem": "17_4_in_5",
     "id": "squinpen_17",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 3.62598,
     "status": "best_known",
     "source_note": "s = 3.62598+ Found by Haowei Lin in July 2026.",
-    "our_problem": "18_squinpen",
+    "our_problem": "18_4_in_5",
     "id": "squinpen_18",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 3.70918,
     "status": "best_known",
     "source_note": "s = 3.70918+ Found by Jake Loyd in June 2026.",
-    "our_problem": "19_squinpen",
+    "our_problem": "19_4_in_5",
     "id": "squinpen_19",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 3.79775,
     "status": "best_known",
     "source_note": "s = 3.79775+ Found by Jake Loyd in June 2026.",
-    "our_problem": "20_squinpen",
+    "our_problem": "20_4_in_5",
     "id": "squinpen_20",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 3.86365,
     "status": "best_known",
     "source_note": "s = 3.86365+ Found by Jake Loyd in June 2026.",
-    "our_problem": "21_squinpen",
+    "our_problem": "21_4_in_5",
     "id": "squinpen_21",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 3.93347,
     "status": "best_known",
     "source_note": "s = 3.93347+ Found by Jake Loyd in June 2026.",
-    "our_problem": "22_squinpen",
+    "our_problem": "22_4_in_5",
     "id": "squinpen_22",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 4.00109,
     "status": "best_known",
     "source_note": "s = 4.00109+ Found by Jake Loyd in June 2026.",
-    "our_problem": "23_squinpen",
+    "our_problem": "23_4_in_5",
     "id": "squinpen_23",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 4.10103,
     "status": "best_known",
     "source_note": "s = 4.10103+ Found by Jake Loyd in June 2026.",
-    "our_problem": "24_squinpen",
+    "our_problem": "24_4_in_5",
     "id": "squinpen_24",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 4.16727,
     "status": "best_known",
     "source_note": "s = 4.16727+ Found by Jake Loyd in June 2026.",
-    "our_problem": "25_squinpen",
+    "our_problem": "25_4_in_5",
     "id": "squinpen_25",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 4.2215,
     "status": "best_known",
     "source_note": "s = 4.22150+ Found by Jake Loyd in June 2026.",
-    "our_problem": "26_squinpen",
+    "our_problem": "26_4_in_5",
     "id": "squinpen_26",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 4.34851,
     "status": "best_known",
     "source_note": "s = 4.34851+ Found by Jake Loyd in June 2026.",
-    "our_problem": "27_squinpen",
+    "our_problem": "27_4_in_5",
     "id": "squinpen_27",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 4.41576,
     "status": "best_known",
     "source_note": "s = 4.41576+ Found by Jake Loyd in June 2026.",
-    "our_problem": "28_squinpen",
+    "our_problem": "28_4_in_5",
     "id": "squinpen_28",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 4.49879,
     "status": "best_known",
     "source_note": "s = 4.49879+ Found by Jake Loyd in June 2026.",
-    "our_problem": "29_squinpen",
+    "our_problem": "29_4_in_5",
     "id": "squinpen_29",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 4.54753,
     "status": "best_known",
     "source_note": "s = 4.54753+ Found by Jake Loyd in June 2026.",
-    "our_problem": "30_squinpen",
+    "our_problem": "30_4_in_5",
     "id": "squinpen_30",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 4.62404,
     "status": "best_known",
     "source_note": "s = 4.62404+ Found by Jake Loyd in June 2026.",
-    "our_problem": "31_squinpen",
+    "our_problem": "31_4_in_5",
     "id": "squinpen_31",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -379,7 +379,7 @@
     "best_value": 4.7,
     "status": "best_known",
     "source_note": "s = 4.70000+ Found by Jake Loyd in June 2026.",
-    "our_problem": "32_squinpen",
+    "our_problem": "32_4_in_5",
     "id": "squinpen_32",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -391,7 +391,7 @@
     "best_value": 4.75331,
     "status": "best_known",
     "source_note": "s = 4.75331+ Found by Jake Loyd in June 2026.",
-    "our_problem": "33_squinpen",
+    "our_problem": "33_4_in_5",
     "id": "squinpen_33",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -403,7 +403,7 @@
     "best_value": 4.81345,
     "status": "best_known",
     "source_note": "s = 4.81345+ Found by Jake Loyd in June 2026.",
-    "our_problem": "34_squinpen",
+    "our_problem": "34_4_in_5",
     "id": "squinpen_34",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -415,7 +415,7 @@
     "best_value": 4.86283,
     "status": "best_known",
     "source_note": "s = 4.86283+ Found by Jake Loyd in June 2026.",
-    "our_problem": "35_squinpen",
+    "our_problem": "35_4_in_5",
     "id": "squinpen_35",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -427,7 +427,7 @@
     "best_value": 4.93131,
     "status": "best_known",
     "source_note": "s = 4.93131+ Found by Jake Loyd in June 2026.",
-    "our_problem": "36_squinpen",
+    "our_problem": "36_4_in_5",
     "id": "squinpen_36",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -439,7 +439,7 @@
     "best_value": 4.97801,
     "status": "best_known",
     "source_note": "s = 4.97801+ Found by Jake Loyd in June 2026.",
-    "our_problem": "37_squinpen",
+    "our_problem": "37_4_in_5",
     "id": "squinpen_37",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -451,7 +451,7 @@
     "best_value": 5.04838,
     "status": "best_known",
     "source_note": "s = 5.04838+ Found by Jake Loyd in June 2026.",
-    "our_problem": "38_squinpen",
+    "our_problem": "38_4_in_5",
     "id": "squinpen_38",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -463,7 +463,7 @@
     "best_value": 5.13653,
     "status": "best_known",
     "source_note": "s = 5.13653+ Found by Jake Loyd in June 2026.",
-    "our_problem": "39_squinpen",
+    "our_problem": "39_4_in_5",
     "id": "squinpen_39",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   },
@@ -475,7 +475,7 @@
     "best_value": 5.16849,
     "status": "best_known",
     "source_note": "s = 5.16849+ Found by Jake Loyd in June 2026.",
-    "our_problem": "40_squinpen",
+    "our_problem": "40_4_in_5",
     "id": "squinpen_40",
     "source_url": "https://erich-friedman.github.io/packing/squinpen/index.html"
   }

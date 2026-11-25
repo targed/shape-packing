@@ -8,7 +8,7 @@
     "status": "trivial",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "1_cirin10",
+    "our_problem": "1_CIRCLE_in_10",
     "id": "cirin10_1",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -21,7 +21,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "2_cirin10",
+    "our_problem": "2_CIRCLE_in_10",
     "id": "cirin10_2",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -34,7 +34,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "3_cirin10",
+    "our_problem": "3_CIRCLE_in_10",
     "id": "cirin10_3",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -47,7 +47,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "4_cirin10",
+    "our_problem": "4_CIRCLE_in_10",
     "id": "cirin10_4",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -60,7 +60,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "5_cirin10",
+    "our_problem": "5_CIRCLE_in_10",
     "id": "cirin10_5",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -73,7 +73,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "6_cirin10",
+    "our_problem": "6_CIRCLE_in_10",
     "id": "cirin10_6",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -86,7 +86,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "7_cirin10",
+    "our_problem": "7_CIRCLE_in_10",
     "id": "cirin10_7",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -99,7 +99,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "8_cirin10",
+    "our_problem": "8_CIRCLE_in_10",
     "id": "cirin10_8",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -112,7 +112,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "9_cirin10",
+    "our_problem": "9_CIRCLE_in_10",
     "id": "cirin10_9",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -125,7 +125,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "10_cirin10",
+    "our_problem": "10_CIRCLE_in_10",
     "id": "cirin10_10",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -138,7 +138,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "11_cirin10",
+    "our_problem": "11_CIRCLE_in_10",
     "id": "cirin10_11",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -151,7 +151,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "12_cirin10",
+    "our_problem": "12_CIRCLE_in_10",
     "id": "cirin10_12",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -164,7 +164,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "13_cirin10",
+    "our_problem": "13_CIRCLE_in_10",
     "id": "cirin10_13",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -177,7 +177,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "14_cirin10",
+    "our_problem": "14_CIRCLE_in_10",
     "id": "cirin10_14",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -190,7 +190,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "15_cirin10",
+    "our_problem": "15_CIRCLE_in_10",
     "id": "cirin10_15",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -203,7 +203,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "16_cirin10",
+    "our_problem": "16_CIRCLE_in_10",
     "id": "cirin10_16",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -216,7 +216,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "17_cirin10",
+    "our_problem": "17_CIRCLE_in_10",
     "id": "cirin10_17",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -229,7 +229,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "18_cirin10",
+    "our_problem": "18_CIRCLE_in_10",
     "id": "cirin10_18",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -242,7 +242,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "19_cirin10",
+    "our_problem": "19_CIRCLE_in_10",
     "id": "cirin10_19",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -255,7 +255,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "20_cirin10",
+    "our_problem": "20_CIRCLE_in_10",
     "id": "cirin10_20",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -268,7 +268,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "21_cirin10",
+    "our_problem": "21_CIRCLE_in_10",
     "id": "cirin10_21",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -281,7 +281,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "22_cirin10",
+    "our_problem": "22_CIRCLE_in_10",
     "id": "cirin10_22",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -294,7 +294,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "23_cirin10",
+    "our_problem": "23_CIRCLE_in_10",
     "id": "cirin10_23",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -307,7 +307,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "24_cirin10",
+    "our_problem": "24_CIRCLE_in_10",
     "id": "cirin10_24",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -320,7 +320,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "25_cirin10",
+    "our_problem": "25_CIRCLE_in_10",
     "id": "cirin10_25",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -333,7 +333,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "26_cirin10",
+    "our_problem": "26_CIRCLE_in_10",
     "id": "cirin10_26",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -346,7 +346,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "27_cirin10",
+    "our_problem": "27_CIRCLE_in_10",
     "id": "cirin10_27",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -359,7 +359,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "28_cirin10",
+    "our_problem": "28_CIRCLE_in_10",
     "id": "cirin10_28",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -372,7 +372,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "29_cirin10",
+    "our_problem": "29_CIRCLE_in_10",
     "id": "cirin10_29",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -385,7 +385,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "30_cirin10",
+    "our_problem": "30_CIRCLE_in_10",
     "id": "cirin10_30",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -398,7 +398,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "31_cirin10",
+    "our_problem": "31_CIRCLE_in_10",
     "id": "cirin10_31",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -411,7 +411,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "32_cirin10",
+    "our_problem": "32_CIRCLE_in_10",
     "id": "cirin10_32",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -424,7 +424,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "33_cirin10",
+    "our_problem": "33_CIRCLE_in_10",
     "id": "cirin10_33",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -437,7 +437,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "34_cirin10",
+    "our_problem": "34_CIRCLE_in_10",
     "id": "cirin10_34",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -450,7 +450,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "35_cirin10",
+    "our_problem": "35_CIRCLE_in_10",
     "id": "cirin10_35",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -463,7 +463,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "36_cirin10",
+    "our_problem": "36_CIRCLE_in_10",
     "id": "cirin10_36",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -476,7 +476,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "37_cirin10",
+    "our_problem": "37_CIRCLE_in_10",
     "id": "cirin10_37",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -489,7 +489,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "38_cirin10",
+    "our_problem": "38_CIRCLE_in_10",
     "id": "cirin10_38",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -502,7 +502,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "39_cirin10",
+    "our_problem": "39_CIRCLE_in_10",
     "id": "cirin10_39",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -515,7 +515,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "40_cirin10",
+    "our_problem": "40_CIRCLE_in_10",
     "id": "cirin10_40",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -528,7 +528,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "41_cirin10",
+    "our_problem": "41_CIRCLE_in_10",
     "id": "cirin10_41",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -541,7 +541,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "42_cirin10",
+    "our_problem": "42_CIRCLE_in_10",
     "id": "cirin10_42",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -554,7 +554,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "43_cirin10",
+    "our_problem": "43_CIRCLE_in_10",
     "id": "cirin10_43",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -567,7 +567,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "44_cirin10",
+    "our_problem": "44_CIRCLE_in_10",
     "id": "cirin10_44",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -580,7 +580,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "45_cirin10",
+    "our_problem": "45_CIRCLE_in_10",
     "id": "cirin10_45",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -593,7 +593,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "46_cirin10",
+    "our_problem": "46_CIRCLE_in_10",
     "id": "cirin10_46",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -606,7 +606,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "47_cirin10",
+    "our_problem": "47_CIRCLE_in_10",
     "id": "cirin10_47",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   },
@@ -619,7 +619,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "48_cirin10",
+    "our_problem": "48_CIRCLE_in_10",
     "id": "cirin10_48",
     "source_url": "https://www.packomania.com/cdc/cdc.html"
   }

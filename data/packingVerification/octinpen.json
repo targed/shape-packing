@@ -7,7 +7,7 @@
     "best_value": 1.87981,
     "status": "trivial",
     "source_note": "s = 1.87981+ Trivial.",
-    "our_problem": "1_octinpen",
+    "our_problem": "1_8_in_5",
     "id": "octinpen_1",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 3.35605,
     "status": "best_known",
     "source_note": "s = 3.35605+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "2_octinpen",
+    "our_problem": "2_8_in_5",
     "id": "octinpen_2",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 3.74411,
     "status": "best_known",
     "source_note": "s = 3.74411+ Found by Bhavithran Ananthan in May 2026.",
-    "our_problem": "3_octinpen",
+    "our_problem": "3_8_in_5",
     "id": "octinpen_3",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 4.10125,
     "status": "best_known",
     "source_note": "s = 4.10125+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "4_octinpen",
+    "our_problem": "4_8_in_5",
     "id": "octinpen_4",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 4.333,
     "status": "best_known",
     "source_note": "s = 4.33300+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_octinpen",
+    "our_problem": "5_8_in_5",
     "id": "octinpen_5",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 4.77007,
     "status": "best_known",
     "source_note": "s = 4.77007+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_octinpen",
+    "our_problem": "6_8_in_5",
     "id": "octinpen_6",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 5.25544,
     "status": "best_known",
     "source_note": "s = 5.25544+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_octinpen",
+    "our_problem": "7_8_in_5",
     "id": "octinpen_7",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 5.61662,
     "status": "best_known",
     "source_note": "s = 5.61662+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_octinpen",
+    "our_problem": "8_8_in_5",
     "id": "octinpen_8",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 5.9658,
     "status": "best_known",
     "source_note": "s = 5.96580+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "9_octinpen",
+    "our_problem": "9_8_in_5",
     "id": "octinpen_9",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 6.28146,
     "status": "best_known",
     "source_note": "s = 6.28146+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "10_octinpen",
+    "our_problem": "10_8_in_5",
     "id": "octinpen_10",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 6.46576,
     "status": "best_known",
     "source_note": "s = 6.46576+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_octinpen",
+    "our_problem": "11_8_in_5",
     "id": "octinpen_11",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 6.71763,
     "status": "best_known",
     "source_note": "s = 6.71763+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "12_octinpen",
+    "our_problem": "12_8_in_5",
     "id": "octinpen_12",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 6.97061,
     "status": "best_known",
     "source_note": "s = 6.97061+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "13_octinpen",
+    "our_problem": "13_8_in_5",
     "id": "octinpen_13",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 7.16083,
     "status": "best_known",
     "source_note": "s = 7.16083+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "14_octinpen",
+    "our_problem": "14_8_in_5",
     "id": "octinpen_14",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 7.36431,
     "status": "best_known",
     "source_note": "s = 7.36431.+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "15_octinpen",
+    "our_problem": "15_8_in_5",
     "id": "octinpen_15",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 7.61505,
     "status": "best_known",
     "source_note": "s = 7.61505+ Found by Bhavithran Ananthan in June 2026.",
-    "our_problem": "16_octinpen",
+    "our_problem": "16_8_in_5",
     "id": "octinpen_16",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 7.91419,
     "status": "best_known",
     "source_note": "s = 7.91419+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "17_octinpen",
+    "our_problem": "17_8_in_5",
     "id": "octinpen_17",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 8.12567,
     "status": "best_known",
     "source_note": "s = 8.12567+ Found by Bhavithran Ananthan in June 2026.",
-    "our_problem": "18_octinpen",
+    "our_problem": "18_8_in_5",
     "id": "octinpen_18",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 8.34354,
     "status": "best_known",
     "source_note": "s = 8.34354+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "19_octinpen",
+    "our_problem": "19_8_in_5",
     "id": "octinpen_19",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 8.54202,
     "status": "best_known",
     "source_note": "s = 8.54202+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "20_octinpen",
+    "our_problem": "20_8_in_5",
     "id": "octinpen_20",
     "source_url": "https://erich-friedman.github.io/packing/octinpen/index.html"
   }

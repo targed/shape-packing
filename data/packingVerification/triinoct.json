@@ -7,7 +7,7 @@
     "best_value": 0.4647,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_triinoct",
+    "our_problem": "1_3_in_8",
     "id": "triinoct_1",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 0.66282,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "2_triinoct",
+    "our_problem": "2_3_in_8",
     "id": "triinoct_2",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 0.73651,
     "status": "best_known",
     "source_note": "Found by Ignacio Vallejo",
-    "our_problem": "3_triinoct",
+    "our_problem": "3_3_in_8",
     "id": "triinoct_3",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 0.77731,
     "status": "best_known",
     "source_note": "Found by Timo Berthold et al",
-    "our_problem": "4_triinoct",
+    "our_problem": "4_3_in_8",
     "id": "triinoct_4",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 0.80366,
     "status": "best_known",
     "source_note": "Found by Nicolas Campailla",
-    "our_problem": "5_triinoct",
+    "our_problem": "5_3_in_8",
     "id": "triinoct_5",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 0.81574,
     "status": "best_known",
     "source_note": "Found by Ignacio Vallejo",
-    "our_problem": "6_triinoct",
+    "our_problem": "6_3_in_8",
     "id": "triinoct_6",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 0.92453,
     "status": "best_known",
     "source_note": "Found by Ignacio Vallejo",
-    "our_problem": "7_triinoct",
+    "our_problem": "7_3_in_8",
     "id": "triinoct_7",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 0.98777,
     "status": "best_known",
     "source_note": "Found by Timo Berthold et al",
-    "our_problem": "8_triinoct",
+    "our_problem": "8_3_in_8",
     "id": "triinoct_8",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 1.00871,
     "status": "best_known",
     "source_note": "Found by Grant Mowry",
-    "our_problem": "9_triinoct",
+    "our_problem": "9_3_in_8",
     "id": "triinoct_9",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 1.07515,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "10_triinoct",
+    "our_problem": "10_3_in_8",
     "id": "triinoct_10",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 1.14562,
     "status": "best_known",
     "source_note": "Found by Grant Mowry",
-    "our_problem": "11_triinoct",
+    "our_problem": "11_3_in_8",
     "id": "triinoct_11",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 1.19914,
     "status": "best_known",
     "source_note": "Found by Timo Berthold et al",
-    "our_problem": "12_triinoct",
+    "our_problem": "12_3_in_8",
     "id": "triinoct_12",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 1.23726,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "13_triinoct",
+    "our_problem": "13_3_in_8",
     "id": "triinoct_13",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 1.27629,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "14_triinoct",
+    "our_problem": "14_3_in_8",
     "id": "triinoct_14",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 1.3024,
     "status": "best_known",
     "source_note": "Found by Timo Berthold et al",
-    "our_problem": "15_triinoct",
+    "our_problem": "15_3_in_8",
     "id": "triinoct_15",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 1.34566,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "16_triinoct",
+    "our_problem": "16_3_in_8",
     "id": "triinoct_16",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 1.38854,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "17_triinoct",
+    "our_problem": "17_3_in_8",
     "id": "triinoct_17",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 1.41763,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "18_triinoct",
+    "our_problem": "18_3_in_8",
     "id": "triinoct_18",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 1.46678,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "19_triinoct",
+    "our_problem": "19_3_in_8",
     "id": "triinoct_19",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 1.49689,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "20_triinoct",
+    "our_problem": "20_3_in_8",
     "id": "triinoct_20",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 1.52519,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "21_triinoct",
+    "our_problem": "21_3_in_8",
     "id": "triinoct_21",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 1.55435,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "22_triinoct",
+    "our_problem": "22_3_in_8",
     "id": "triinoct_22",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 1.58348,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "23_triinoct",
+    "our_problem": "23_3_in_8",
     "id": "triinoct_23",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 1.6018,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "24_triinoct",
+    "our_problem": "24_3_in_8",
     "id": "triinoct_24",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 1.63703,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "25_triinoct",
+    "our_problem": "25_3_in_8",
     "id": "triinoct_25",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 1.67455,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "26_triinoct",
+    "our_problem": "26_3_in_8",
     "id": "triinoct_26",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 1.70616,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "27_triinoct",
+    "our_problem": "27_3_in_8",
     "id": "triinoct_27",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 1.73796,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "28_triinoct",
+    "our_problem": "28_3_in_8",
     "id": "triinoct_28",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 1.75285,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "29_triinoct",
+    "our_problem": "29_3_in_8",
     "id": "triinoct_29",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 1.77911,
     "status": "best_known",
     "source_note": "Found by Jake Loyd",
-    "our_problem": "30_triinoct",
+    "our_problem": "30_3_in_8",
     "id": "triinoct_30",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 1.80338,
     "status": "best_known",
     "source_note": "Found by Aristotle Papowitz",
-    "our_problem": "31_triinoct",
+    "our_problem": "31_3_in_8",
     "id": "triinoct_31",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -379,7 +379,7 @@
     "best_value": 1.82994,
     "status": "best_known",
     "source_note": "Found by Aristotle Papowitz",
-    "our_problem": "32_triinoct",
+    "our_problem": "32_3_in_8",
     "id": "triinoct_32",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -391,7 +391,7 @@
     "best_value": 1.84789,
     "status": "best_known",
     "source_note": "Found by Aristotle Papowitz",
-    "our_problem": "33_triinoct",
+    "our_problem": "33_3_in_8",
     "id": "triinoct_33",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -403,7 +403,7 @@
     "best_value": 1.86454,
     "status": "best_known",
     "source_note": "Found by Aristotle Papowitz",
-    "our_problem": "34_triinoct",
+    "our_problem": "34_3_in_8",
     "id": "triinoct_34",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -415,7 +415,7 @@
     "best_value": 1.89051,
     "status": "best_known",
     "source_note": "Found by Aristotle Papowitz",
-    "our_problem": "35_triinoct",
+    "our_problem": "35_3_in_8",
     "id": "triinoct_35",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -427,7 +427,7 @@
     "best_value": 1.92667,
     "status": "best_known",
     "source_note": "Found by Aristotle Papowitz",
-    "our_problem": "36_triinoct",
+    "our_problem": "36_3_in_8",
     "id": "triinoct_36",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   },
@@ -439,7 +439,7 @@
     "best_value": 1.95615,
     "status": "best_known",
     "source_note": "Found by Aristotle Papowitz",
-    "our_problem": "37_triinoct",
+    "our_problem": "37_3_in_8",
     "id": "triinoct_37",
     "source_url": "https://erich-friedman.github.io/packing/triinoct/index.html"
   }

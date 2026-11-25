@@ -137,6 +137,14 @@ def test_create_app_serves_real_asgi_requests(tmp_path, monkeypatch):
     status_stats, stats_body = asyncio.run(_asgi_request(app, "GET", "/api/v1/stats"))
     assert status_stats == 200
     assert stats_body["total_problems"] == seeded
+    assert stats_body["tier_counts"]["frontier"] == seeded
+
+    status_probs, probs_body = asyncio.run(
+        _asgi_request(app, "GET", "/api/v1/problems?tier=frontier&inner=RHOMBUS&limit=10")
+    )
+    assert status_probs == 200
+    assert probs_body["total"] > 0
+    assert all(item["inner_token"] == "RHOMBUS" for item in probs_body["items"])
 
     status_reg, reg_body = asyncio.run(
         _asgi_request(app, "POST", "/api/v1/workers/register", {"username": "tester", "cores": 2})

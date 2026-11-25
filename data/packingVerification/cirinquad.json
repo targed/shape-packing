@@ -8,7 +8,7 @@
     "status": "trivial",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "1_cirinquad",
+    "our_problem": "1_CIRCLE_in_QUADRANT",
     "id": "cirinquad_1",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -21,7 +21,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "2_cirinquad",
+    "our_problem": "2_CIRCLE_in_QUADRANT",
     "id": "cirinquad_2",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -34,7 +34,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "3_cirinquad",
+    "our_problem": "3_CIRCLE_in_QUADRANT",
     "id": "cirinquad_3",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -47,7 +47,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "4_cirinquad",
+    "our_problem": "4_CIRCLE_in_QUADRANT",
     "id": "cirinquad_4",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -60,7 +60,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "5_cirinquad",
+    "our_problem": "5_CIRCLE_in_QUADRANT",
     "id": "cirinquad_5",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -73,7 +73,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "6_cirinquad",
+    "our_problem": "6_CIRCLE_in_QUADRANT",
     "id": "cirinquad_6",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -86,7 +86,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "7_cirinquad",
+    "our_problem": "7_CIRCLE_in_QUADRANT",
     "id": "cirinquad_7",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -99,7 +99,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "8_cirinquad",
+    "our_problem": "8_CIRCLE_in_QUADRANT",
     "id": "cirinquad_8",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -112,7 +112,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "9_cirinquad",
+    "our_problem": "9_CIRCLE_in_QUADRANT",
     "id": "cirinquad_9",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -125,7 +125,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "10_cirinquad",
+    "our_problem": "10_CIRCLE_in_QUADRANT",
     "id": "cirinquad_10",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -138,7 +138,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "11_cirinquad",
+    "our_problem": "11_CIRCLE_in_QUADRANT",
     "id": "cirinquad_11",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -151,7 +151,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "12_cirinquad",
+    "our_problem": "12_CIRCLE_in_QUADRANT",
     "id": "cirinquad_12",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -164,7 +164,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "13_cirinquad",
+    "our_problem": "13_CIRCLE_in_QUADRANT",
     "id": "cirinquad_13",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -177,7 +177,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "14_cirinquad",
+    "our_problem": "14_CIRCLE_in_QUADRANT",
     "id": "cirinquad_14",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -190,7 +190,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "15_cirinquad",
+    "our_problem": "15_CIRCLE_in_QUADRANT",
     "id": "cirinquad_15",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -203,7 +203,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "16_cirinquad",
+    "our_problem": "16_CIRCLE_in_QUADRANT",
     "id": "cirinquad_16",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -216,7 +216,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "17_cirinquad",
+    "our_problem": "17_CIRCLE_in_QUADRANT",
     "id": "cirinquad_17",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -229,7 +229,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "18_cirinquad",
+    "our_problem": "18_CIRCLE_in_QUADRANT",
     "id": "cirinquad_18",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -242,7 +242,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "19_cirinquad",
+    "our_problem": "19_CIRCLE_in_QUADRANT",
     "id": "cirinquad_19",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -255,7 +255,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "20_cirinquad",
+    "our_problem": "20_CIRCLE_in_QUADRANT",
     "id": "cirinquad_20",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -268,7 +268,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "21_cirinquad",
+    "our_problem": "21_CIRCLE_in_QUADRANT",
     "id": "cirinquad_21",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -281,7 +281,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "22_cirinquad",
+    "our_problem": "22_CIRCLE_in_QUADRANT",
     "id": "cirinquad_22",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -294,7 +294,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "23_cirinquad",
+    "our_problem": "23_CIRCLE_in_QUADRANT",
     "id": "cirinquad_23",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -307,7 +307,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "24_cirinquad",
+    "our_problem": "24_CIRCLE_in_QUADRANT",
     "id": "cirinquad_24",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -320,7 +320,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "25_cirinquad",
+    "our_problem": "25_CIRCLE_in_QUADRANT",
     "id": "cirinquad_25",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -333,7 +333,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "26_cirinquad",
+    "our_problem": "26_CIRCLE_in_QUADRANT",
     "id": "cirinquad_26",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -346,7 +346,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "27_cirinquad",
+    "our_problem": "27_CIRCLE_in_QUADRANT",
     "id": "cirinquad_27",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -359,7 +359,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "28_cirinquad",
+    "our_problem": "28_CIRCLE_in_QUADRANT",
     "id": "cirinquad_28",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -372,7 +372,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "29_cirinquad",
+    "our_problem": "29_CIRCLE_in_QUADRANT",
     "id": "cirinquad_29",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -385,7 +385,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "30_cirinquad",
+    "our_problem": "30_CIRCLE_in_QUADRANT",
     "id": "cirinquad_30",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -398,7 +398,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "31_cirinquad",
+    "our_problem": "31_CIRCLE_in_QUADRANT",
     "id": "cirinquad_31",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -411,7 +411,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "32_cirinquad",
+    "our_problem": "32_CIRCLE_in_QUADRANT",
     "id": "cirinquad_32",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -424,7 +424,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "33_cirinquad",
+    "our_problem": "33_CIRCLE_in_QUADRANT",
     "id": "cirinquad_33",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -437,7 +437,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "34_cirinquad",
+    "our_problem": "34_CIRCLE_in_QUADRANT",
     "id": "cirinquad_34",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -450,7 +450,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "35_cirinquad",
+    "our_problem": "35_CIRCLE_in_QUADRANT",
     "id": "cirinquad_35",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -463,7 +463,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "36_cirinquad",
+    "our_problem": "36_CIRCLE_in_QUADRANT",
     "id": "cirinquad_36",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -476,7 +476,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "37_cirinquad",
+    "our_problem": "37_CIRCLE_in_QUADRANT",
     "id": "cirinquad_37",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -489,7 +489,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "38_cirinquad",
+    "our_problem": "38_CIRCLE_in_QUADRANT",
     "id": "cirinquad_38",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -502,7 +502,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "39_cirinquad",
+    "our_problem": "39_CIRCLE_in_QUADRANT",
     "id": "cirinquad_39",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -515,7 +515,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "40_cirinquad",
+    "our_problem": "40_CIRCLE_in_QUADRANT",
     "id": "cirinquad_40",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -528,7 +528,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "41_cirinquad",
+    "our_problem": "41_CIRCLE_in_QUADRANT",
     "id": "cirinquad_41",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -541,7 +541,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "42_cirinquad",
+    "our_problem": "42_CIRCLE_in_QUADRANT",
     "id": "cirinquad_42",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -554,7 +554,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "43_cirinquad",
+    "our_problem": "43_CIRCLE_in_QUADRANT",
     "id": "cirinquad_43",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -567,7 +567,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "44_cirinquad",
+    "our_problem": "44_CIRCLE_in_QUADRANT",
     "id": "cirinquad_44",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -580,7 +580,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "45_cirinquad",
+    "our_problem": "45_CIRCLE_in_QUADRANT",
     "id": "cirinquad_45",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -593,7 +593,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "46_cirinquad",
+    "our_problem": "46_CIRCLE_in_QUADRANT",
     "id": "cirinquad_46",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -606,7 +606,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "47_cirinquad",
+    "our_problem": "47_CIRCLE_in_QUADRANT",
     "id": "cirinquad_47",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -619,7 +619,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "48_cirinquad",
+    "our_problem": "48_CIRCLE_in_QUADRANT",
     "id": "cirinquad_48",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -632,7 +632,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "49_cirinquad",
+    "our_problem": "49_CIRCLE_in_QUADRANT",
     "id": "cirinquad_49",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   },
@@ -645,7 +645,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "50_cirinquad",
+    "our_problem": "50_CIRCLE_in_QUADRANT",
     "id": "cirinquad_50",
     "source_url": "https://www.packomania.com/ccq/ccq.html"
   }

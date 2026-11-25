@@ -6,8 +6,8 @@
     "container_shape": "triangle",
     "best_value": 2.7162,
     "status": "trivial",
-    "source_note": "s = (1+√5)/2 + √((5+√5)/6) = 2.71621+ Trivial.",
-    "our_problem": "1_penintri",
+    "source_note": "s = (1+\u221a5)/2 + \u221a((5+\u221a5)/6) = 2.71621+ Trivial.",
+    "our_problem": "1_5_in_3",
     "id": "penintri_1",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -18,8 +18,8 @@
     "container_shape": "triangle",
     "best_value": 4.0108,
     "status": "proved_optimal",
-    "source_note": "√((40+8√5)/3) - (3-√5)/2 = 4.01077+ Found by Ethan Riddle and Proved by Nicolas Campailla in May 2026.",
-    "our_problem": "2_penintri",
+    "source_note": "\u221a((40+8\u221a5)/3) - (3-\u221a5)/2 = 4.01077+ Found by Ethan Riddle and Proved by Nicolas Campailla in May 2026.",
+    "our_problem": "2_5_in_3",
     "id": "penintri_2",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -30,8 +30,8 @@
     "container_shape": "triangle",
     "best_value": 4.1216,
     "status": "best_known",
-    "source_note": "s = √((75+33√5)/8) - (3-√5)/4 = 4.12164+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "3_penintri",
+    "source_note": "s = \u221a((75+33\u221a5)/8) - (3-\u221a5)/4 = 4.12164+ Found by Jonathan Viquerat in May 2026.",
+    "our_problem": "3_5_in_3",
     "id": "penintri_3",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 5.2198,
     "status": "best_known",
     "source_note": "s = 5.21983+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_penintri",
+    "our_problem": "4_5_in_3",
     "id": "penintri_4",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 5.5581,
     "status": "best_known",
     "source_note": "s = 5.55809+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_penintri",
+    "our_problem": "5_5_in_3",
     "id": "penintri_5",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 5.6354,
     "status": "best_known",
     "source_note": "s = 5.63540+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_penintri",
+    "our_problem": "6_5_in_3",
     "id": "penintri_6",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 6.5003,
     "status": "best_known",
     "source_note": "s = 6.50034+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_penintri",
+    "our_problem": "7_5_in_3",
     "id": "penintri_7",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 6.8113,
     "status": "best_known",
     "source_note": "s = 6.81133+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "8_penintri",
+    "our_problem": "8_5_in_3",
     "id": "penintri_8",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 7.0897,
     "status": "best_known",
     "source_note": "s = 7.08969+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "9_penintri",
+    "our_problem": "9_5_in_3",
     "id": "penintri_9",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 7.1723,
     "status": "best_known",
     "source_note": "s = 7.17235+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "10_penintri",
+    "our_problem": "10_5_in_3",
     "id": "penintri_10",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 7.9375,
     "status": "best_known",
     "source_note": "s = 7.93748+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_penintri",
+    "our_problem": "11_5_in_3",
     "id": "penintri_11",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 8.1912,
     "status": "best_known",
     "source_note": "s = 8.19117+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "12_penintri",
+    "our_problem": "12_5_in_3",
     "id": "penintri_12",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 8.3781,
     "status": "best_known",
     "source_note": "s = 8.37807+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "13_penintri",
+    "our_problem": "13_5_in_3",
     "id": "penintri_13",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 8.5892,
     "status": "best_known",
     "source_note": "s = 8.58917+ Found by Haowei Lin in July 2026.",
-    "our_problem": "14_penintri",
+    "our_problem": "14_5_in_3",
     "id": "penintri_14",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 8.6916,
     "status": "best_known",
     "source_note": "s = 8.69161+ Found by Jake Loyd in June 2026.",
-    "our_problem": "15_penintri",
+    "our_problem": "15_5_in_3",
     "id": "penintri_15",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 9.297,
     "status": "best_known",
     "source_note": "s = 9.29700+ Found by Haowei Lin in July 2026.",
-    "our_problem": "16_penintri",
+    "our_problem": "16_5_in_3",
     "id": "penintri_16",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 9.578,
     "status": "best_known",
     "source_note": "s = 9.57797+ Found by Jake Loyd in June 2026.",
-    "our_problem": "17_penintri",
+    "our_problem": "17_5_in_3",
     "id": "penintri_17",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 9.7808,
     "status": "best_known",
     "source_note": "s = 9.78077+ Found by Jake Loyd in June 2026.",
-    "our_problem": "18_penintri",
+    "our_problem": "18_5_in_3",
     "id": "penintri_18",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 9.9257,
     "status": "best_known",
     "source_note": "s = 9.92567+ Found by Haowei Lin in July 2026.",
-    "our_problem": "19_penintri",
+    "our_problem": "19_5_in_3",
     "id": "penintri_19",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 10.0988,
     "status": "best_known",
     "source_note": "s = 10.09879+ Found by Jake Loyd in June 2026.",
-    "our_problem": "20_penintri",
+    "our_problem": "20_5_in_3",
     "id": "penintri_20",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 10.1715,
     "status": "best_known",
     "source_note": "s = 10.17148+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "21_penintri",
+    "our_problem": "21_5_in_3",
     "id": "penintri_21",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 10.7582,
     "status": "best_known",
     "source_note": "s = 10.75818+ Found by Jake Loyd in June 2026.",
-    "our_problem": "22_penintri",
+    "our_problem": "22_5_in_3",
     "id": "penintri_22",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 10.991,
     "status": "best_known",
     "source_note": "s = 10.99100+ Found by Jake Loyd in June 2026.",
-    "our_problem": "23_penintri",
+    "our_problem": "23_5_in_3",
     "id": "penintri_23",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 11.1751,
     "status": "best_known",
     "source_note": "s = 11.17511+ Found by Jake Loyd in June 2026.",
-    "our_problem": "24_penintri",
+    "our_problem": "24_5_in_3",
     "id": "penintri_24",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 11.3239,
     "status": "best_known",
     "source_note": "s = 11.32392+ Found by Jake Loyd in June 2026.",
-    "our_problem": "25_penintri",
+    "our_problem": "25_5_in_3",
     "id": "penintri_25",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 11.4555,
     "status": "best_known",
     "source_note": "s = 11.45549+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "26_penintri",
+    "our_problem": "26_5_in_3",
     "id": "penintri_26",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 11.5995,
     "status": "best_known",
     "source_note": "s = 11.59953+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "27_penintri",
+    "our_problem": "27_5_in_3",
     "id": "penintri_27",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 11.6942,
     "status": "best_known",
     "source_note": "s = 11.69416+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "28_penintri",
+    "our_problem": "28_5_in_3",
     "id": "penintri_28",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 12.182,
     "status": "best_known",
     "source_note": "s = 12.18197+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "29_penintri",
+    "our_problem": "29_5_in_3",
     "id": "penintri_29",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 12.3889,
     "status": "best_known",
     "source_note": "s = 12.38893+ Found by Haowei Lin in July 2026.",
-    "our_problem": "30_penintri",
+    "our_problem": "30_5_in_3",
     "id": "penintri_30",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 12.585,
     "status": "best_known",
     "source_note": "s = 12.58498+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "31_penintri",
+    "our_problem": "31_5_in_3",
     "id": "penintri_31",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -379,7 +379,7 @@
     "best_value": 12.7112,
     "status": "best_known",
     "source_note": "s = 12.71117+ Found by Haowei Lin in July 2026.",
-    "our_problem": "32_penintri",
+    "our_problem": "32_5_in_3",
     "id": "penintri_32",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -391,7 +391,7 @@
     "best_value": 12.8639,
     "status": "best_known",
     "source_note": "s = 12.86391+ Found by Haowei Lin in July 2026.",
-    "our_problem": "33_penintri",
+    "our_problem": "33_5_in_3",
     "id": "penintri_33",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -403,7 +403,7 @@
     "best_value": 12.9814,
     "status": "best_known",
     "source_note": "s = 12.98141+ Found by Haowei Lin in July 2026.",
-    "our_problem": "34_penintri",
+    "our_problem": "34_5_in_3",
     "id": "penintri_34",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -415,7 +415,7 @@
     "best_value": 13.1094,
     "status": "best_known",
     "source_note": "s = 13.10941+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "35_penintri",
+    "our_problem": "35_5_in_3",
     "id": "penintri_35",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -427,7 +427,7 @@
     "best_value": 13.1835,
     "status": "best_known",
     "source_note": "s = 13.18354+ Found by Haowei Lin in July 2026.",
-    "our_problem": "36_penintri",
+    "our_problem": "36_5_in_3",
     "id": "penintri_36",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -439,7 +439,7 @@
     "best_value": 13.6436,
     "status": "best_known",
     "source_note": "s = 13.64359+ Found by Haowei Lin in July 2026.",
-    "our_problem": "37_penintri",
+    "our_problem": "37_5_in_3",
     "id": "penintri_37",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -451,7 +451,7 @@
     "best_value": 13.8397,
     "status": "best_known",
     "source_note": "s = 13.83966+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "38_penintri",
+    "our_problem": "38_5_in_3",
     "id": "penintri_38",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -463,7 +463,7 @@
     "best_value": 13.9843,
     "status": "best_known",
     "source_note": "s = 13.98431+ Found by Haowei Lin in July 2026.",
-    "our_problem": "39_penintri",
+    "our_problem": "39_5_in_3",
     "id": "penintri_39",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   },
@@ -475,7 +475,7 @@
     "best_value": 14.1395,
     "status": "best_known",
     "source_note": "s = 14.13953+ Found by Haowei Lin in July 2026.",
-    "our_problem": "40_penintri",
+    "our_problem": "40_5_in_3",
     "id": "penintri_40",
     "source_url": "https://erich-friedman.github.io/packing/penintri/index.html"
   }

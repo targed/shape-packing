@@ -459,7 +459,7 @@ def test_concurrent_seeding_and_live_updates(stress_db_path: Path, tmp_path: Pat
         w_conn = init_db(db_path)
         try:
             for step in range(20):
-                p_id = f"p_seed_{step % 10}"
+                p_id = f"{(step % 10) + 1}_CIRCLE_in_6"
                 # Submit an aggressive improvement (e.g. metric = 5.0)
                 update_solution_record(
                     w_conn,
@@ -494,7 +494,7 @@ def test_concurrent_seeding_and_live_updates(stress_db_path: Path, tmp_path: Pat
     assert cur.fetchone()[0] == "ok"
 
     for i in range(10):
-        p_id = f"p_seed_{i}"
+        p_id = f"{i + 1}_CIRCLE_in_6"
         prob = get_problem(v_conn, p_id)
         assert prob is not None
         # If it was updated, best_s must be 5.0, reference_s must be 50.0 + i

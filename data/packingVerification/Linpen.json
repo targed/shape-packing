@@ -7,7 +7,7 @@
     "best_value": 1.81089,
     "status": "trivial",
     "source_note": "s = 1.81089+ Trivial.",
-    "our_problem": "1_Linpen",
+    "our_problem": "1_L_in_5",
     "id": "Linpen_1",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2.33322,
     "status": "trivial",
     "source_note": "s = 2.33322+ Trivial.",
-    "our_problem": "2_Linpen",
+    "our_problem": "2_L_in_5",
     "id": "Linpen_2",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2.79081,
     "status": "best_known",
     "source_note": "s = 2.79081+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "3_Linpen",
+    "our_problem": "3_L_in_5",
     "id": "Linpen_3",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 3.07149,
     "status": "best_known",
     "source_note": "s = 3.07149+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_Linpen",
+    "our_problem": "4_L_in_5",
     "id": "Linpen_4",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 3.41569,
     "status": "best_known",
     "source_note": "s = 3.41569+ Found by Jake Loyd in June 2026.",
-    "our_problem": "5_Linpen",
+    "our_problem": "5_L_in_5",
     "id": "Linpen_5",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 3.74743,
     "status": "best_known",
     "source_note": "s = 3.74743+ Found by Jake Loyd in June 2026.",
-    "our_problem": "6_Linpen",
+    "our_problem": "6_L_in_5",
     "id": "Linpen_6",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.96756,
     "status": "best_known",
     "source_note": "s = 3.96756+ Found by Jake Loyd in June 2026.",
-    "our_problem": "7_Linpen",
+    "our_problem": "7_L_in_5",
     "id": "Linpen_7",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 4.25642,
     "status": "best_known",
     "source_note": "s = 4.25642+ Found by Jake Loyd in June 2026.",
-    "our_problem": "8_Linpen",
+    "our_problem": "8_L_in_5",
     "id": "Linpen_8",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 4.50713,
     "status": "best_known",
     "source_note": "s = 4.50713+ Found by Jake Loyd in June 2026.",
-    "our_problem": "9_Linpen",
+    "our_problem": "9_L_in_5",
     "id": "Linpen_9",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 4.65767,
     "status": "best_known",
     "source_note": "s = 3\u221a5-3+3\u221a(1-2/\u221a5) = 4.65767+ Found by Jake Loyd in June 2026.",
-    "our_problem": "10_Linpen",
+    "our_problem": "10_L_in_5",
     "id": "Linpen_10",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 4.86103,
     "status": "best_known",
     "source_note": "s = 4.86103+ Found by Jake Loyd in June 2026.",
-    "our_problem": "11_Linpen",
+    "our_problem": "11_L_in_5",
     "id": "Linpen_11",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 5.07519,
     "status": "best_known",
     "source_note": "s = 5.07519+ Found by Jake Loyd in June 2026.",
-    "our_problem": "12_Linpen",
+    "our_problem": "12_L_in_5",
     "id": "Linpen_12",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 5.29475,
     "status": "best_known",
     "source_note": "s = 5.29475+ Found by Jake Loyd in June 2026.",
-    "our_problem": "13_Linpen",
+    "our_problem": "13_L_in_5",
     "id": "Linpen_13",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 5.49989,
     "status": "best_known",
     "source_note": "s = 5.49989+ Found by Jake Loyd in June 2026.",
-    "our_problem": "14_Linpen",
+    "our_problem": "14_L_in_5",
     "id": "Linpen_14",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 5.63035,
     "status": "best_known",
     "source_note": "s = 5.63035+ Found by Jake Loyd in June 2026.",
-    "our_problem": "15_Linpen",
+    "our_problem": "15_L_in_5",
     "id": "Linpen_15",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 5.77738,
     "status": "best_known",
     "source_note": "s = 5.77738+ Found by Jake Loyd in June 2026.",
-    "our_problem": "16_Linpen",
+    "our_problem": "16_L_in_5",
     "id": "Linpen_16",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 5.92697,
     "status": "best_known",
     "source_note": "s = 5.92697+ Found by Jake Loyd in June 2026.",
-    "our_problem": "17_Linpen",
+    "our_problem": "17_L_in_5",
     "id": "Linpen_17",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 6.16318,
     "status": "best_known",
     "source_note": "s = 6.16318+ Found by Jake Loyd in June 2026.",
-    "our_problem": "18_Linpen",
+    "our_problem": "18_L_in_5",
     "id": "Linpen_18",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 6.33939,
     "status": "best_known",
     "source_note": "s = 6.33939+ Found by Jake Loyd in June 2026.",
-    "our_problem": "19_Linpen",
+    "our_problem": "19_L_in_5",
     "id": "Linpen_19",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 6.45886,
     "status": "best_known",
     "source_note": "s = 6.45886+ Found by Jake Loyd in June 2026.",
-    "our_problem": "20_Linpen",
+    "our_problem": "20_L_in_5",
     "id": "Linpen_20",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 7.18193,
     "status": "best_known",
     "source_note": "s = 7.18193+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "21_Linpen",
+    "our_problem": "21_L_in_5",
     "id": "Linpen_21",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 7.16104,
     "status": "best_known",
     "source_note": "s = 7.16104+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "22_Linpen",
+    "our_problem": "22_L_in_5",
     "id": "Linpen_22",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 7.30507,
     "status": "best_known",
     "source_note": "s = 7.30507+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "23_Linpen",
+    "our_problem": "23_L_in_5",
     "id": "Linpen_23",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 7.33685,
     "status": "best_known",
     "source_note": "s = 7.33685+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "24_Linpen",
+    "our_problem": "24_L_in_5",
     "id": "Linpen_24",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 7.56043,
     "status": "best_known",
     "source_note": "s = 7.56043+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "25_Linpen",
+    "our_problem": "25_L_in_5",
     "id": "Linpen_25",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 7.76538,
     "status": "best_known",
     "source_note": "s = 7.76538+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "26_Linpen",
+    "our_problem": "26_L_in_5",
     "id": "Linpen_26",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 7.84756,
     "status": "best_known",
     "source_note": "s = 7.84756+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "27_Linpen",
+    "our_problem": "27_L_in_5",
     "id": "Linpen_27",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 8.00543,
     "status": "best_known",
     "source_note": "s = 8.00543+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "28_Linpen",
+    "our_problem": "28_L_in_5",
     "id": "Linpen_28",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 8.20516,
     "status": "best_known",
     "source_note": "s = 8.20516+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "29_Linpen",
+    "our_problem": "29_L_in_5",
     "id": "Linpen_29",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 8.36962,
     "status": "best_known",
     "source_note": "s = 8.36962+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "30_Linpen",
+    "our_problem": "30_L_in_5",
     "id": "Linpen_30",
     "source_url": "https://erich-friedman.github.io/packing/Linpen/index.html"
   }

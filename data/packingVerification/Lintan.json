@@ -7,7 +7,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "1_Lintan",
+    "our_problem": "1_L_in_TAN",
     "id": "Lintan_1",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -18,8 +18,8 @@
     "container_shape": "tan",
     "best_value": 4.242,
     "status": "trivial",
-    "source_note": "s = 3√2 = 4.242+ Trivial.",
-    "our_problem": "2_Lintan",
+    "source_note": "s = 3\u221a2 = 4.242+ Trivial.",
+    "our_problem": "2_L_in_TAN",
     "id": "Lintan_2",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "3_Lintan",
+    "our_problem": "3_L_in_TAN",
     "id": "Lintan_3",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -42,8 +42,8 @@
     "container_shape": "tan",
     "best_value": 5.656,
     "status": "best_known",
-    "source_note": "s = 4√2 = 5.656+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "4_Lintan",
+    "source_note": "s = 4\u221a2 = 5.656+ Found by Maurizio Morandi in July 2012.",
+    "our_problem": "4_L_in_TAN",
     "id": "Lintan_4",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -54,8 +54,8 @@
     "container_shape": "tan",
     "best_value": 6.242,
     "status": "best_known",
-    "source_note": "s = 2 + 3√2 = 6.242+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "5_Lintan",
+    "source_note": "s = 2 + 3\u221a2 = 6.242+ Found by Maurizio Morandi in July 2012.",
+    "our_problem": "5_L_in_TAN",
     "id": "Lintan_5",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 7.0,
     "status": "trivial",
     "source_note": "s = 7 Trivial.",
-    "our_problem": "6_Lintan",
+    "our_problem": "6_L_in_TAN",
     "id": "Lintan_6",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 7.0,
     "status": "trivial",
     "source_note": "s = 7 Trivial.",
-    "our_problem": "7_Lintan",
+    "our_problem": "7_L_in_TAN",
     "id": "Lintan_7",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -90,8 +90,8 @@
     "container_shape": "tan",
     "best_value": 7.778,
     "status": "trivial",
-    "source_note": "s = 11/√2 = 7.778+ Trivial.",
-    "our_problem": "8_Lintan",
+    "source_note": "s = 11/\u221a2 = 7.778+ Trivial.",
+    "our_problem": "8_L_in_TAN",
     "id": "Lintan_8",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 8.0,
     "status": "trivial",
     "source_note": "s = 8 Trivial.",
-    "our_problem": "9_Lintan",
+    "our_problem": "9_L_in_TAN",
     "id": "Lintan_9",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -114,8 +114,8 @@
     "container_shape": "tan",
     "best_value": 8.485,
     "status": "trivial",
-    "source_note": "s = 6√2 = 8.485+ Trivial.",
-    "our_problem": "10_Lintan",
+    "source_note": "s = 6\u221a2 = 8.485+ Trivial.",
+    "our_problem": "10_L_in_TAN",
     "id": "Lintan_10",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 9.0,
     "status": "trivial",
     "source_note": "s = 9 Trivial.",
-    "our_problem": "11_Lintan",
+    "our_problem": "11_L_in_TAN",
     "id": "Lintan_11",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 9.0,
     "status": "trivial",
     "source_note": "s = 9 Trivial.",
-    "our_problem": "12_Lintan",
+    "our_problem": "12_L_in_TAN",
     "id": "Lintan_12",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -150,8 +150,8 @@
     "container_shape": "tan",
     "best_value": 9.778,
     "status": "best_known",
-    "source_note": "s = 2 + 11/√2 = 9.778+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "13_Lintan",
+    "source_note": "s = 2 + 11/\u221a2 = 9.778+ Found by Maurizio Morandi in July 2012.",
+    "our_problem": "13_L_in_TAN",
     "id": "Lintan_13",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -162,8 +162,8 @@
     "container_shape": "tan",
     "best_value": 9.899,
     "status": "trivial",
-    "source_note": "s = 7√2 = 9.899+ Trivial.",
-    "our_problem": "14_Lintan",
+    "source_note": "s = 7\u221a2 = 9.899+ Trivial.",
+    "our_problem": "14_L_in_TAN",
     "id": "Lintan_14",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 10.0,
     "status": "trivial",
     "source_note": "s = 10 Trivial.",
-    "our_problem": "15_Lintan",
+    "our_problem": "15_L_in_TAN",
     "id": "Lintan_15",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -186,8 +186,8 @@
     "container_shape": "tan",
     "best_value": 10.606,
     "status": "trivial",
-    "source_note": "s = 15/√2 = 10.606+ Trivial.",
-    "our_problem": "16_Lintan",
+    "source_note": "s = 15/\u221a2 = 10.606+ Trivial.",
+    "our_problem": "16_L_in_TAN",
     "id": "Lintan_16",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -198,8 +198,8 @@
     "container_shape": "tan",
     "best_value": 10.828,
     "status": "best_known",
-    "source_note": "s = 8 + 2√2 = 10.828+ Found by Maurizio Morandi in January 2025.",
-    "our_problem": "17_Lintan",
+    "source_note": "s = 8 + 2\u221a2 = 10.828+ Found by Maurizio Morandi in January 2025.",
+    "our_problem": "17_L_in_TAN",
     "id": "Lintan_17",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 11.0,
     "status": "trivial",
     "source_note": "s = 11 Trivial.",
-    "our_problem": "18_Lintan",
+    "our_problem": "18_L_in_TAN",
     "id": "Lintan_18",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -222,8 +222,8 @@
     "container_shape": "tan",
     "best_value": 11.313,
     "status": "best_known",
-    "source_note": "s = 8√2 = 11.313+ Found by Maurizio Morandi in January 2025.",
-    "our_problem": "19_Lintan",
+    "source_note": "s = 8\u221a2 = 11.313+ Found by Maurizio Morandi in January 2025.",
+    "our_problem": "19_L_in_TAN",
     "id": "Lintan_19",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -234,8 +234,8 @@
     "container_shape": "tan",
     "best_value": 11.778,
     "status": "best_known",
-    "source_note": "s = 4 + 11/√2 = 11.778+ Found by Maurizio Morandi in January 2025.",
-    "our_problem": "20_Lintan",
+    "source_note": "s = 4 + 11/\u221a2 = 11.778+ Found by Maurizio Morandi in January 2025.",
+    "our_problem": "20_L_in_TAN",
     "id": "Lintan_20",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 12.0,
     "status": "trivial",
     "source_note": "s = 12 Trivial.",
-    "our_problem": "21_Lintan",
+    "our_problem": "21_L_in_TAN",
     "id": "Lintan_21",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 12.0,
     "status": "trivial",
     "source_note": "s = 12 Trivial.",
-    "our_problem": "22_Lintan",
+    "our_problem": "22_L_in_TAN",
     "id": "Lintan_22",
     "source_url": "https://erich-friedman.github.io/packing/Lintan/index.html"
   }

@@ -7,7 +7,7 @@
     "best_value": 1,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_hexinhex",
+    "our_problem": "1_6_in_6",
     "id": "hexinhex_1",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "2_hexinhex",
+    "our_problem": "2_6_in_6",
     "id": "hexinhex_2",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "3_hexinhex",
+    "our_problem": "3_6_in_6",
     "id": "hexinhex_3",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.333,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "4_hexinhex",
+    "our_problem": "4_6_in_6",
     "id": "hexinhex_4",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.667,
     "status": "best_known",
     "source_note": "Found by Erich Friedman in March 2015.",
-    "our_problem": "5_hexinhex",
+    "our_problem": "5_6_in_6",
     "id": "hexinhex_5",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.886,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2015.",
-    "our_problem": "6_hexinhex",
+    "our_problem": "6_6_in_6",
     "id": "hexinhex_6",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 2.886,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2015.",
-    "our_problem": "7_hexinhex",
+    "our_problem": "7_6_in_6",
     "id": "hexinhex_7",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 3.314,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2015.",
-    "our_problem": "8_hexinhex",
+    "our_problem": "8_6_in_6",
     "id": "hexinhex_8",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 3.628,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2015.",
-    "our_problem": "9_hexinhex",
+    "our_problem": "9_6_in_6",
     "id": "hexinhex_9",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.732,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2015.",
-    "our_problem": "10_hexinhex",
+    "our_problem": "10_6_in_6",
     "id": "hexinhex_10",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.925,
     "status": "best_known",
     "source_note": "Found by Johann Schellhorn in July 2025.",
-    "our_problem": "11_hexinhex",
+    "our_problem": "11_6_in_6",
     "id": "hexinhex_11",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.942,
     "status": "best_known",
     "source_note": "Found by Alpha Evolve in May 2025.",
-    "our_problem": "12_hexinhex",
+    "our_problem": "12_6_in_6",
     "id": "hexinhex_12",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 4,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "13_hexinhex",
+    "our_problem": "13_6_in_6",
     "id": "hexinhex_13",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 4.269,
     "status": "best_known",
     "source_note": "Found by Dominik Kamp in April 2026.",
-    "our_problem": "14_hexinhex",
+    "our_problem": "14_6_in_6",
     "id": "hexinhex_14",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 4.447,
     "status": "best_known",
     "source_note": "Found by Alex Kravatsky et al in February 2026.",
-    "our_problem": "15_hexinhex",
+    "our_problem": "15_6_in_6",
     "id": "hexinhex_15",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.527,
     "status": "best_known",
     "source_note": "Found by Alex Kravatsky et al in February 2026.",
-    "our_problem": "16_hexinhex",
+    "our_problem": "16_6_in_6",
     "id": "hexinhex_16",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.614,
     "status": "best_known",
     "source_note": "Found by Alex Kravatsky et al in February 2026.",
-    "our_problem": "17_hexinhex",
+    "our_problem": "17_6_in_6",
     "id": "hexinhex_17",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 4.619,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2015.",
-    "our_problem": "18_hexinhex",
+    "our_problem": "18_6_in_6",
     "id": "hexinhex_18",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.619,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2015.",
-    "our_problem": "19_hexinhex",
+    "our_problem": "19_6_in_6",
     "id": "hexinhex_19",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 5,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "20_hexinhex",
+    "our_problem": "20_6_in_6",
     "id": "hexinhex_20",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 5,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "21_hexinhex",
+    "our_problem": "21_6_in_6",
     "id": "hexinhex_21",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 5.285,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2015.",
-    "our_problem": "22_hexinhex",
+    "our_problem": "22_6_in_6",
     "id": "hexinhex_22",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -268,10 +268,10 @@
     "N": 23,
     "inner_shape": "hexagon",
     "container_shape": "hexagon",
-    "best_value": 5.400,
+    "best_value": 5.4,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "23_hexinhex",
+    "our_problem": "23_6_in_6",
     "id": "hexinhex_23",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 5.484,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2015.",
-    "our_problem": "24_hexinhex",
+    "our_problem": "24_6_in_6",
     "id": "hexinhex_24",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 5.624,
     "status": "best_known",
     "source_note": "Found by Alex Kravatsky et al in February 2026.",
-    "our_problem": "25_hexinhex",
+    "our_problem": "25_6_in_6",
     "id": "hexinhex_25",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -304,10 +304,10 @@
     "N": 26,
     "inner_shape": "hexagon",
     "container_shape": "hexagon",
-    "best_value": 5.710,
+    "best_value": 5.71,
     "status": "best_known",
     "source_note": "Found by Alex Kravatsky et al in February 2026.",
-    "our_problem": "26_hexinhex",
+    "our_problem": "26_6_in_6",
     "id": "hexinhex_26",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 5.714,
     "status": "best_known",
     "source_note": "Found by Alex Kravatsky et al in February 2026.",
-    "our_problem": "27_hexinhex",
+    "our_problem": "27_6_in_6",
     "id": "hexinhex_27",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 5.909,
     "status": "best_known",
     "source_note": "Found by Alex Kravatsky et al in February 2026.",
-    "our_problem": "28_hexinhex",
+    "our_problem": "28_6_in_6",
     "id": "hexinhex_28",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "29_hexinhex",
+    "our_problem": "29_6_in_6",
     "id": "hexinhex_29",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "30_hexinhex",
+    "our_problem": "30_6_in_6",
     "id": "hexinhex_30",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "31_hexinhex",
+    "our_problem": "31_6_in_6",
     "id": "hexinhex_31",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -379,7 +379,7 @@
     "best_value": 6.263,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "32_hexinhex",
+    "our_problem": "32_6_in_6",
     "id": "hexinhex_32",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   },
@@ -391,7 +391,7 @@
     "best_value": 6.266,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "33_hexinhex",
+    "our_problem": "33_6_in_6",
     "id": "hexinhex_33",
     "source_url": "https://erich-friedman.github.io/packing/hexinhex/index.html"
   }

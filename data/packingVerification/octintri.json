@@ -7,7 +7,7 @@
     "best_value": 4.3854,
     "status": "best_known",
     "source_note": "s = 4.38541+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "1_octintri",
+    "our_problem": "1_8_in_3",
     "id": "octintri_1",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 6.7996,
     "status": "best_known",
     "source_note": "s = 6.79962+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "2_octintri",
+    "our_problem": "2_8_in_3",
     "id": "octintri_2",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 6.8369,
     "status": "best_known",
     "source_note": "s = (6+5\u221a2+4\u221a3+3\u221a6)/4 = 6.83693+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "3_octintri",
+    "our_problem": "3_8_in_3",
     "id": "octintri_3",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 8.6521,
     "status": "best_known",
     "source_note": "s = 8.65211+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_octintri",
+    "our_problem": "4_8_in_3",
     "id": "octintri_4",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 9.285,
     "status": "best_known",
     "source_note": "s = 9.28498+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_octintri",
+    "our_problem": "5_8_in_3",
     "id": "octintri_5",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 9.3158,
     "status": "best_known",
     "source_note": "s = 9.31576+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_octintri",
+    "our_problem": "6_8_in_3",
     "id": "octintri_6",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 11.0663,
     "status": "best_known",
     "source_note": "s = 11.06632+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_octintri",
+    "our_problem": "7_8_in_3",
     "id": "octintri_7",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 11.5102,
     "status": "best_known",
     "source_note": "s = 11.51025+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_octintri",
+    "our_problem": "8_8_in_3",
     "id": "octintri_8",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 11.73,
     "status": "trivial",
     "source_note": "s = 11.72998+ Trivial.",
-    "our_problem": "9_octintri",
+    "our_problem": "9_8_in_3",
     "id": "octintri_9",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 11.8064,
     "status": "best_known",
     "source_note": "s = 11.80642+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "10_octintri",
+    "our_problem": "10_8_in_3",
     "id": "octintri_10",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 13.2469,
     "status": "best_known",
     "source_note": "s = 13.24689+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_octintri",
+    "our_problem": "11_8_in_3",
     "id": "octintri_11",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 13.6203,
     "status": "best_known",
     "source_note": "s = 13.62032+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "12_octintri",
+    "our_problem": "12_8_in_3",
     "id": "octintri_12",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 14.0422,
     "status": "best_known",
     "source_note": "s = 14.04225+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "13_octintri",
+    "our_problem": "13_8_in_3",
     "id": "octintri_13",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 14.2392,
     "status": "best_known",
     "source_note": "s = 14.23921+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "14_octintri",
+    "our_problem": "14_8_in_3",
     "id": "octintri_14",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 14.2817,
     "status": "best_known",
     "source_note": "s = 14.28169+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "15_octintri",
+    "our_problem": "15_8_in_3",
     "id": "octintri_15",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 15.6614,
     "status": "best_known",
     "source_note": "s = 15.66136+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "16_octintri",
+    "our_problem": "16_8_in_3",
     "id": "octintri_16",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 16.0619,
     "status": "best_known",
     "source_note": "s = 16.06191+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "17_octintri",
+    "our_problem": "17_8_in_3",
     "id": "octintri_17",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 16.4098,
     "status": "best_known",
     "source_note": "s = 16.40979+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "18_octintri",
+    "our_problem": "18_8_in_3",
     "id": "octintri_18",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 16.5445,
     "status": "best_known",
     "source_note": "s = 16.54447+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "19_octintri",
+    "our_problem": "19_8_in_3",
     "id": "octintri_19",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 16.742,
     "status": "best_known",
     "source_note": "s = 16.74197+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "20_octintri",
+    "our_problem": "20_8_in_3",
     "id": "octintri_20",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 16.7858,
     "status": "best_known",
     "source_note": "s = 16.78582+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "21_octintri",
+    "our_problem": "21_8_in_3",
     "id": "octintri_21",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 17.9624,
     "status": "best_known",
     "source_note": "s = 17.96238+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "22_octintri",
+    "our_problem": "22_8_in_3",
     "id": "octintri_22",
     "source_url": "https://erich-friedman.github.io/packing/octintri/index.html"
   }

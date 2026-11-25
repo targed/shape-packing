@@ -7,7 +7,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "1_Lindom",
+    "our_problem": "1_L_in_DOMINO",
     "id": "Lindom_1",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "2_Lindom",
+    "our_problem": "2_L_in_DOMINO",
     "id": "Lindom_2",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2.5,
     "status": "trivial",
     "source_note": "s = 5/2 = 2.5 Trivial.",
-    "our_problem": "3_Lindom",
+    "our_problem": "3_L_in_DOMINO",
     "id": "Lindom_3",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.8970563,
     "status": "best_known",
     "source_note": "s = 6(1+\u221a2)/5 = 2.897+ Found by Erich Friedman in April 2026.",
-    "our_problem": "4_Lindom",
+    "our_problem": "4_L_in_DOMINO",
     "id": "Lindom_4",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "5_Lindom",
+    "our_problem": "5_L_in_DOMINO",
     "id": "Lindom_5",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "6_Lindom",
+    "our_problem": "6_L_in_DOMINO",
     "id": "Lindom_6",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.7475469,
     "status": "best_known",
     "source_note": "s = 7/3+\u221a2 = 3.747+ Found by Erich Friedman in April 2026.",
-    "our_problem": "7_Lindom",
+    "our_problem": "7_L_in_DOMINO",
     "id": "Lindom_7",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "8_Lindom",
+    "our_problem": "8_L_in_DOMINO",
     "id": "Lindom_8",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "9_Lindom",
+    "our_problem": "9_L_in_DOMINO",
     "id": "Lindom_9",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "10_Lindom",
+    "our_problem": "10_L_in_DOMINO",
     "id": "Lindom_10",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 4.4485281,
     "status": "best_known",
     "source_note": "s = 3(6+\u221a2)/5 = 4.448+ Found by Maurizio Morandi in April 2026.",
-    "our_problem": "11_Lindom",
+    "our_problem": "11_L_in_DOMINO",
     "id": "Lindom_11",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 4.5,
     "status": "trivial",
     "source_note": "s = 9/2 = 4.5 Trivial.",
-    "our_problem": "12_Lindom",
+    "our_problem": "12_L_in_DOMINO",
     "id": "Lindom_12",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 4.9260582,
     "status": "best_known",
     "source_note": "s = (14+11\u221a2)/6 = 4.926+ Found by Maurizio Morandi in April 2026.",
-    "our_problem": "13_Lindom",
+    "our_problem": "13_L_in_DOMINO",
     "id": "Lindom_13",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "14_Lindom",
+    "our_problem": "14_L_in_DOMINO",
     "id": "Lindom_14",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "15_Lindom",
+    "our_problem": "15_L_in_DOMINO",
     "id": "Lindom_15",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "16_Lindom",
+    "our_problem": "16_L_in_DOMINO",
     "id": "Lindom_16",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 5.4748737,
     "status": "best_known",
     "source_note": "s = 3+7\u221a2/4 = 5.474+ Found by Maurizio Morandi in April 2026.",
-    "our_problem": "17_Lindom",
+    "our_problem": "17_L_in_DOMINO",
     "id": "Lindom_17",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 5.5,
     "status": "trivial",
     "source_note": "s = 11/2 = 5.5 Trivial.",
-    "our_problem": "18_Lindom",
+    "our_problem": "18_L_in_DOMINO",
     "id": "Lindom_18",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 5.8284271,
     "status": "best_known",
     "source_note": "s = 3+2\u221a2 = 5.828+ Found by Maurizio Morandi in April 2026.",
-    "our_problem": "19_Lindom",
+    "our_problem": "19_L_in_DOMINO",
     "id": "Lindom_19",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 6.0,
     "status": "trivial",
     "source_note": "s = 6 Trivial.",
-    "our_problem": "20_Lindom",
+    "our_problem": "20_L_in_DOMINO",
     "id": "Lindom_20",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 6.0,
     "status": "trivial",
     "source_note": "s = 6 Trivial.",
-    "our_problem": "21_Lindom",
+    "our_problem": "21_L_in_DOMINO",
     "id": "Lindom_21",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 6.0,
     "status": "trivial",
     "source_note": "s = 6 Trivial.",
-    "our_problem": "22_Lindom",
+    "our_problem": "22_L_in_DOMINO",
     "id": "Lindom_22",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 6.0,
     "status": "trivial",
     "source_note": "s = 6 Trivial.",
-    "our_problem": "23_Lindom",
+    "our_problem": "23_L_in_DOMINO",
     "id": "Lindom_23",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 6.0,
     "status": "trivial",
     "source_note": "s = 6 Trivial.",
-    "our_problem": "24_Lindom",
+    "our_problem": "24_L_in_DOMINO",
     "id": "Lindom_24",
     "source_url": "https://erich-friedman.github.io/packing/Lindom/index.html"
   }

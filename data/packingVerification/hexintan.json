@@ -7,7 +7,7 @@
     "best_value": 3.1566,
     "status": "trivial",
     "source_note": "s = 3.15659+ Trivial.",
-    "our_problem": "1_hexintan",
+    "our_problem": "1_6_in_TAN",
     "id": "hexintan_1",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 4.4641,
     "status": "trivial",
     "source_note": "s = 4.46410+ Trivial.",
-    "our_problem": "2_hexintan",
+    "our_problem": "2_6_in_TAN",
     "id": "hexintan_2",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 4.9497,
     "status": "trivial",
     "source_note": "s = 4.94974+ Trivial.",
-    "our_problem": "3_hexintan",
+    "our_problem": "3_6_in_TAN",
     "id": "hexintan_3",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 5.751,
     "status": "best_known",
     "source_note": "s = 5.75097+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_hexintan",
+    "our_problem": "4_6_in_TAN",
     "id": "hexintan_4",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 6.5027,
     "status": "best_known",
     "source_note": "s = 6.50265+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_hexintan",
+    "our_problem": "5_6_in_TAN",
     "id": "hexintan_5",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 6.7429,
     "status": "best_known",
     "source_note": "s = 6.74289+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_hexintan",
+    "our_problem": "6_6_in_TAN",
     "id": "hexintan_6",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 7.3992,
     "status": "best_known",
     "source_note": "s = 7.39923+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_hexintan",
+    "our_problem": "7_6_in_TAN",
     "id": "hexintan_7",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 7.8334,
     "status": "best_known",
     "source_note": "s = 7.83340+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_hexintan",
+    "our_problem": "8_6_in_TAN",
     "id": "hexintan_8",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 8.2827,
     "status": "best_known",
     "source_note": "s = 8.28267+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "9_hexintan",
+    "our_problem": "9_6_in_TAN",
     "id": "hexintan_9",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 8.536,
     "status": "best_known",
     "source_note": "s = 8.53604+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "10_hexintan",
+    "our_problem": "10_6_in_TAN",
     "id": "hexintan_10",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 9.0609,
     "status": "best_known",
     "source_note": "s = 9.06093+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_hexintan",
+    "our_problem": "11_6_in_TAN",
     "id": "hexintan_11",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 9.4132,
     "status": "best_known",
     "source_note": "s = 9.41319+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "12_hexintan",
+    "our_problem": "12_6_in_TAN",
     "id": "hexintan_12",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 9.7009,
     "status": "best_known",
     "source_note": "s = 9.70087+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "13_hexintan",
+    "our_problem": "13_6_in_TAN",
     "id": "hexintan_13",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 10.0384,
     "status": "best_known",
     "source_note": "s = 10.03836+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "14_hexintan",
+    "our_problem": "14_6_in_TAN",
     "id": "hexintan_14",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 10.3292,
     "status": "best_known",
     "source_note": "s = 10.32919+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "15_hexintan",
+    "our_problem": "15_6_in_TAN",
     "id": "hexintan_15",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 10.7131,
     "status": "best_known",
     "source_note": "s = 10.71312+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "16_hexintan",
+    "our_problem": "16_6_in_TAN",
     "id": "hexintan_16",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 10.9788,
     "status": "best_known",
     "source_note": "s = 10.97884+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "17_hexintan",
+    "our_problem": "17_6_in_TAN",
     "id": "hexintan_17",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 11.273,
     "status": "best_known",
     "source_note": "s = 11.27299+ Found by Jonathan Viqueratl in May 2026.",
-    "our_problem": "18_hexintan",
+    "our_problem": "18_6_in_TAN",
     "id": "hexintan_18",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 11.4901,
     "status": "best_known",
     "source_note": "s = 11.49013+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "19_hexintan",
+    "our_problem": "19_6_in_TAN",
     "id": "hexintan_19",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 11.7704,
     "status": "best_known",
     "source_note": "s = 11.77041+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "20_hexintan",
+    "our_problem": "20_6_in_TAN",
     "id": "hexintan_20",
     "source_url": "https://erich-friedman.github.io/packing/hexintan/index.html"
   }

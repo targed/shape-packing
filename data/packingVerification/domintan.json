@@ -7,7 +7,7 @@
     "best_value": 2.8284,
     "status": "trivial",
     "source_note": "s = 2\u221a2 = 2.82842+ Trivial.",
-    "our_problem": "1_domintan",
+    "our_problem": "1_DOMINO_in_TAN",
     "id": "domintan_1",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 3.8284,
     "status": "trivial",
     "source_note": "s = 1+2\u221a2 = 3.82842+ Trivial.",
-    "our_problem": "2_domintan",
+    "our_problem": "2_DOMINO_in_TAN",
     "id": "domintan_2",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 4.2426,
     "status": "trivial",
     "source_note": "s = 3\u221a2 = 4.24264+ Trivial.",
-    "our_problem": "3_domintan",
+    "our_problem": "3_DOMINO_in_TAN",
     "id": "domintan_3",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 4.8284,
     "status": "best_known",
     "source_note": "s = 2+2\u221a2 = 4.82842+ Found by Erich Friedman in May 2026",
-    "our_problem": "4_domintan",
+    "our_problem": "4_DOMINO_in_TAN",
     "id": "domintan_4",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 5.2426,
     "status": "best_known",
     "source_note": "s = 1+3\u221a2 = 5.24264+ Found by Erich Friedman in May 2026.",
-    "our_problem": "5_domintan",
+    "our_problem": "5_DOMINO_in_TAN",
     "id": "domintan_5",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 5.6569,
     "status": "trivial",
     "source_note": "s = 4\u221a2 = 5.65685+ Trivial &nbsp;",
-    "our_problem": "6_domintan",
+    "our_problem": "6_DOMINO_in_TAN",
     "id": "domintan_6",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 6.2426,
     "status": "best_known",
     "source_note": "s = 2+3\u221a2 = 6.24264+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_domintan",
+    "our_problem": "7_DOMINO_in_TAN",
     "id": "domintan_7",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 6.4142,
     "status": "best_known",
     "source_note": "s = 5+\u221a2 = 6.41421+ Found by Erich Friedman in May 2026.",
-    "our_problem": "8_domintan",
+    "our_problem": "8_DOMINO_in_TAN",
     "id": "domintan_8",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 6.8284,
     "status": "best_known",
     "source_note": "s = 4+2\u221a2 = 6.82842+ Found by Erich Friedman in May 2026.",
-    "our_problem": "9_domintan",
+    "our_problem": "9_DOMINO_in_TAN",
     "id": "domintan_9",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 7.0711,
     "status": "trivial",
     "source_note": "s = 5\u221a2 = 7.07106+ Trivial. &nbsp;",
-    "our_problem": "10_domintan",
+    "our_problem": "10_DOMINO_in_TAN",
     "id": "domintan_10",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 7.4142,
     "status": "best_known",
     "source_note": "s = 6+\u221a2 = 7.41421+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_domintan",
+    "our_problem": "11_DOMINO_in_TAN",
     "id": "domintan_11",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 7.8284,
     "status": "best_known",
     "source_note": "s = 5+2\u221a2 = 7.82842+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "12_domintan",
+    "our_problem": "12_DOMINO_in_TAN",
     "id": "domintan_12",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 8.0,
     "status": "best_known",
     "source_note": "s = 8 Found by Erich Friedman in May 2026.",
-    "our_problem": "13_domintan",
+    "our_problem": "13_DOMINO_in_TAN",
     "id": "domintan_13",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 8.2426,
     "status": "best_known",
     "source_note": "s = 4+3\u221a2 = 8.24264+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "14_domintan",
+    "our_problem": "14_DOMINO_in_TAN",
     "id": "domintan_14",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 8.4853,
     "status": "trivial",
     "source_note": "s = 6\u221a2 = 8.48528+ Trivial. &nbsp;",
-    "our_problem": "15_domintan",
+    "our_problem": "15_DOMINO_in_TAN",
     "id": "domintan_15",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 8.8284,
     "status": "best_known",
     "source_note": "s = 6+2\u221a2 = 8.82842+ Found by Erich Friedman in May 2026.",
-    "our_problem": "16_domintan",
+    "our_problem": "16_DOMINO_in_TAN",
     "id": "domintan_16",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 9.0,
     "status": "best_known",
     "source_note": "s = 9 Found by Maurizio Morandi in May 2026.",
-    "our_problem": "17_domintan",
+    "our_problem": "17_DOMINO_in_TAN",
     "id": "domintan_17",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 9.2426,
     "status": "best_known",
     "source_note": "s = 5+3\u221a2 = 9.24264+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "18_domintan",
+    "our_problem": "18_DOMINO_in_TAN",
     "id": "domintan_18",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 9.4853,
     "status": "best_known",
     "source_note": "s = 1+6\u221a2 = 9.48528+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "19_domintan",
+    "our_problem": "19_DOMINO_in_TAN",
     "id": "domintan_19",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 9.8284,
     "status": "best_known",
     "source_note": "s = 7+2\u221a2 = 9.82842+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "20_domintan",
+    "our_problem": "20_DOMINO_in_TAN",
     "id": "domintan_20",
     "source_url": "https://erich-friedman.github.io/packing/domintan/index.html"
   }

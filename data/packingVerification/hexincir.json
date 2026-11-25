@@ -7,7 +7,7 @@
     "best_value": 1,
     "status": "trivial",
     "source_note": "r = 1 Trivial.",
-    "our_problem": "1_hexincir",
+    "our_problem": "1_6_in_CIRCLE",
     "id": "hexincir_1",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.802,
     "status": "trivial",
     "source_note": "r = \u221a13/2 = 1.802+ Trivial.",
-    "our_problem": "2_hexincir",
+    "our_problem": "2_6_in_CIRCLE",
     "id": "hexincir_2",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2,
     "status": "trivial",
     "source_note": "r = 2 Trivial.",
-    "our_problem": "3_hexincir",
+    "our_problem": "3_6_in_CIRCLE",
     "id": "hexincir_3",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.239,
     "status": "best_known",
     "source_note": "r = (21\u2013\u221a145)/4 = 2.239+ Found by Maurizio Morandi in March 2026.",
-    "our_problem": "4_hexincir",
+    "our_problem": "4_6_in_CIRCLE",
     "id": "hexincir_4",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.471,
     "status": "best_known",
     "source_note": "r = 2.471+ Found by Maurizio Morandi in March 2026.",
-    "our_problem": "5_hexincir",
+    "our_problem": "5_6_in_CIRCLE",
     "id": "hexincir_5",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.645,
     "status": "trivial",
     "source_note": "r = \u221a7 = 2.645+ Trivial.",
-    "our_problem": "6_hexincir",
+    "our_problem": "6_6_in_CIRCLE",
     "id": "hexincir_6",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 2.645,
     "status": "trivial",
     "source_note": "r = \u221a7 = 2.645+ Trivial.",
-    "our_problem": "7_hexincir",
+    "our_problem": "7_6_in_CIRCLE",
     "id": "hexincir_7",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 2.984,
     "status": "best_known",
     "source_note": "r = 2.984+ Found by Maurizio Morandi in March 2026.",
-    "our_problem": "8_hexincir",
+    "our_problem": "8_6_in_CIRCLE",
     "id": "hexincir_8",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 3.301,
     "status": "best_known",
     "source_note": "r = 3.301+ Found by Maurizio Morandi in March 2026.",
-    "our_problem": "9_hexincir",
+    "our_problem": "9_6_in_CIRCLE",
     "id": "hexincir_9",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.48172,
     "status": "best_known",
     "source_note": "r = 3.48172+ Found by Jake Loyd in June 2026.",
-    "our_problem": "10_hexincir",
+    "our_problem": "10_6_in_CIRCLE",
     "id": "hexincir_10",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.59003,
     "status": "best_known",
     "source_note": "r = 3.59003+ Found by Jake Loyd in June 2026.",
-    "our_problem": "11_hexincir",
+    "our_problem": "11_6_in_CIRCLE",
     "id": "hexincir_11",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.605,
     "status": "best_known",
     "source_note": "r = \u221a13 = 3.605+ Found by Maurizio Morandi in March 2026.",
-    "our_problem": "12_hexincir",
+    "our_problem": "12_6_in_CIRCLE",
     "id": "hexincir_12",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 3.82289,
     "status": "best_known",
     "source_note": "r = 3.82289+ Found by Jake Loyd in June 2026.",
-    "our_problem": "13_hexincir",
+    "our_problem": "13_6_in_CIRCLE",
     "id": "hexincir_13",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 3.87755,
     "status": "best_known",
     "source_note": "r = 3.87755+ Found by Jake Loyd in June 2026.",
-    "our_problem": "14_hexincir",
+    "our_problem": "14_6_in_CIRCLE",
     "id": "hexincir_14",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 4.08154,
     "status": "best_known",
     "source_note": "r = 4.08154+ Found by Jake Loyd in June 2026.",
-    "our_problem": "15_hexincir",
+    "our_problem": "15_6_in_CIRCLE",
     "id": "hexincir_15",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.1396,
     "status": "best_known",
     "source_note": "r = 4.13960+ Found by Jake Loyd in June 2026.",
-    "our_problem": "16_hexincir",
+    "our_problem": "16_6_in_CIRCLE",
     "id": "hexincir_16",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.30158,
     "status": "best_known",
     "source_note": "r = 4.30158+ Found by Jake Loyd in June 2026.",
-    "our_problem": "17_hexincir",
+    "our_problem": "17_6_in_CIRCLE",
     "id": "hexincir_17",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 4.35889,
     "status": "trivial",
     "source_note": "r = \u221a19 = 4.35889+ Trivial.",
-    "our_problem": "18_hexincir",
+    "our_problem": "18_6_in_CIRCLE",
     "id": "hexincir_18",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.35889,
     "status": "trivial",
     "source_note": "r = \u221a19 = 4.35889+ Trivial.",
-    "our_problem": "19_hexincir",
+    "our_problem": "19_6_in_CIRCLE",
     "id": "hexincir_19",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 4.62527,
     "status": "best_known",
     "source_note": "r = 4.62527+ Found by Jake Loyd in June 2026.",
-    "our_problem": "20_hexincir",
+    "our_problem": "20_6_in_CIRCLE",
     "id": "hexincir_20",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 4.68305,
     "status": "best_known",
     "source_note": "r = 4.68305+ Found by Jake Loyd in June 2026.",
-    "our_problem": "21_hexincir",
+    "our_problem": "21_6_in_CIRCLE",
     "id": "hexincir_21",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 4.89204,
     "status": "best_known",
     "source_note": "r = 4.89204+ Found by Jake Loyd in June 2026.",
-    "our_problem": "22_hexincir",
+    "our_problem": "22_6_in_CIRCLE",
     "id": "hexincir_22",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 4.98608,
     "status": "best_known",
     "source_note": "r = 4.98608+ Found by Jake Loyd in June 2026.",
-    "our_problem": "23_hexincir",
+    "our_problem": "23_6_in_CIRCLE",
     "id": "hexincir_23",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 5.08387,
     "status": "best_known",
     "source_note": "r = 5.08387+ Found by Jake Loyd in June 2026.",
-    "our_problem": "24_hexincir",
+    "our_problem": "24_6_in_CIRCLE",
     "id": "hexincir_24",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 5.18804,
     "status": "best_known",
     "source_note": "r = 5.18804+ Found by Haowei Lin in June 2026.",
-    "our_problem": "25_hexincir",
+    "our_problem": "25_6_in_CIRCLE",
     "id": "hexincir_25",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 5.25746,
     "status": "best_known",
     "source_note": "r = 5.25746+ Found by Haowei Lin in June 2026.",
-    "our_problem": "26_hexincir",
+    "our_problem": "26_6_in_CIRCLE",
     "id": "hexincir_26",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 5.28167,
     "status": "best_known",
     "source_note": "r = 5.28167+ Found by Haowei Lin in June 2026.",
-    "our_problem": "27_hexincir",
+    "our_problem": "27_6_in_CIRCLE",
     "id": "hexincir_27",
     "source_url": "https://erich-friedman.github.io/packing/hexincir/index.html"
   }

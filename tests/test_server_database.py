@@ -507,13 +507,13 @@ def test_seed_problems_tolerates_corrupt_and_non_list_files(mem_db: sqlite3.Conn
     count = seed_problems_from_verification(mem_db, str(seed_dir))
     assert count == 2
 
-    p1 = get_problem(mem_db, "1_cirincir")
+    p1 = get_problem(mem_db, "1_CIRCLE_in_CIRCLE")
     assert p1 is not None
     assert p1["inner_token"] == "CIRCLE"
     assert p1["container_token"] == "CIRCLE"
     assert p1["best_s"] == 1.0
 
-    p2 = get_problem(mem_db, "2_squintan")
+    p2 = get_problem(mem_db, "2_4_in_TAN")
     assert p2 is not None
     assert p2["inner_token"] == "4"
     assert p2["container_token"] == "TAN"
@@ -539,8 +539,8 @@ def test_seed_problems_from_real_verification_catalog(mem_db: sqlite3.Connection
     optimal_count = cursor.fetchone()[0]
     assert optimal_count == 49
 
-    # Verify token normalization on real problem: 1_cirinhex has hexagon container -> normalized to '6'
-    p = get_problem(mem_db, "1_cirinhex")
+    # Verify token normalization on real problem: 1_CIRCLE_in_6 has hexagon container -> normalized to '6'
+    p = get_problem(mem_db, "1_CIRCLE_in_6")
     assert p is not None
     assert p["inner_token"] == "CIRCLE"
     assert p["container_token"] == "6"
@@ -683,16 +683,16 @@ def test_seed_problems_rejects_whitespace_ids_and_sanitizes_metrics(mem_db: sqli
         # Valid ID with zero metric (best_val normalized to None)
         {"our_problem": "p_zero_s", "N": 2, "inner_shape": "4", "container_shape": "4", "best_value": 0.0},
         # Valid ID with negative metric (best_val normalized to None)
-        {"our_problem": "p_neg_s", "N": 2, "inner_shape": "4", "container_shape": "4", "best_value": -1.5},
+        {"our_problem": "p_neg_s", "N": 3, "inner_shape": "4", "container_shape": "4", "best_value": -1.5},
         # Valid ID with infinite metric (best_val normalized to None)
-        {"our_problem": "p_inf_s", "N": 2, "inner_shape": "4", "container_shape": "4", "best_value": "Infinity"},
+        {"our_problem": "p_inf_s", "N": 4, "inner_shape": "4", "container_shape": "4", "best_value": "Infinity"},
         # Valid ID with boolean metric (best_val normalized to None)
-        {"our_problem": "p_bool_s", "N": 2, "inner_shape": "4", "container_shape": "4", "best_value": True},
+        {"our_problem": "p_bool_s", "N": 5, "inner_shape": "4", "container_shape": "4", "best_value": True},
     ]
     (seed_dir / "catalog.json").write_text(json.dumps(seed_data), encoding="utf-8")
 
     count = seed_problems_from_verification(mem_db, str(seed_dir))
-    # 5 valid problems ingested: p_stripped, p_zero_s, p_neg_s, p_inf_s, p_bool_s
+    # 5 valid problems ingested as canonical IDs: 1_3_in_3, 2_4_in_4..5_4_in_4
     assert count == 5
 
     # Whitespace IDs not present
@@ -700,13 +700,13 @@ def test_seed_problems_rejects_whitespace_ids_and_sanitizes_metrics(mem_db: sqli
     assert get_problem(mem_db, "") is None
     assert get_problem(mem_db, "p_bool_n") is None
 
-    # Stripped ID exists
-    p_stripped = get_problem(mem_db, "p_stripped")
+    # Canonical ID exists
+    p_stripped = get_problem(mem_db, "1_3_in_3")
     assert p_stripped is not None
     assert p_stripped["best_s"] == pytest.approx(2.5)
 
     # Normalized metrics are None
-    for pid in ["p_zero_s", "p_neg_s", "p_inf_s", "p_bool_s"]:
+    for pid in ["2_4_in_4", "3_4_in_4", "4_4_in_4", "5_4_in_4"]:
         p = get_problem(mem_db, pid)
         assert p is not None
         assert p["best_s"] is None
@@ -823,7 +823,7 @@ def test_seed_problems_asymmetric_capabilities_and_frontier(mem_db: sqlite3.Conn
     )
 
     seed_problems_from_verification(mem_db, str(pv_dir))
-    semi_ok = get_problem(mem_db, "1_cirinsemi")
+    semi_ok = get_problem(mem_db, "1_CIRCLE_in_SEMICIRCLE")
     semi_bad = get_problem(mem_db, "1_4_in_SEMICIRCLE")
     assert semi_ok is not None and semi_ok["status"] != "unsupported" and semi_ok["tier"] == "benchmark"
     assert semi_bad is not None and semi_bad["status"] == "unsupported"
@@ -842,4 +842,36 @@ def test_seed_problems_asymmetric_capabilities_and_frontier(mem_db: sqlite3.Conn
     cur = mem_db.cursor()
     cur.execute("SELECT COUNT(*) FROM problems WHERE tier = 'frontier'")
     assert cur.fetchone()[0] == 225
+
+
+def test_migrate_legacy_problem_ids_preserves_solutions_and_leases(mem_db: sqlite3.Connection):
+    """Legacy IDs like 2_dominhex migrate to 2_DOMINO_in_6 without losing solutions or active leases."""
+    from shape_packing.server.database import migrate_legacy_problem_ids
+
+    mem_db.execute(
+        "INSERT INTO workers (id, username, client_type) VALUES ('w1', 'alice', 'native')"
+    )
+    mem_db.execute(
+        "INSERT INTO problems (id, inner_token, container_token, n, best_s, reference_s, status, tier) "
+        "VALUES ('2_dominhex', 'DOMINO', '6', 2, 1.85, 1.90, 'best_known', 'benchmark')"
+    )
+    mem_db.execute(
+        "INSERT INTO solutions (problem_id, metric_s, worker_username, worker_id, coordinates_json, is_current_record) "
+        "VALUES ('2_dominhex', 1.85, 'alice', 'w1', '[0,0,0,1,0,0]', 1)"
+    )
+    mem_db.execute(
+        "INSERT INTO active_leases (work_id, problem_id, worker_id, expires_at) "
+        "VALUES ('wu_1', '2_dominhex', 'w1', datetime('now', '+5 minutes'))"
+    )
+    mem_db.commit()
+
+    migrated = migrate_legacy_problem_ids(mem_db)
+    assert migrated == 1
+    assert get_problem(mem_db, "2_dominhex") is None
+    canon = get_problem(mem_db, "2_DOMINO_in_6")
+    assert canon is not None and canon["best_s"] == pytest.approx(1.85)
+    sol_pid = mem_db.execute("SELECT problem_id FROM solutions WHERE worker_id = 'w1'").fetchone()[0]
+    lease_pid = mem_db.execute("SELECT problem_id FROM active_leases WHERE work_id = 'wu_1'").fetchone()[0]
+    assert sol_pid == "2_DOMINO_in_6"
+    assert lease_pid == "2_DOMINO_in_6"
 

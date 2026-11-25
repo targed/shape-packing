@@ -7,7 +7,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "1_cirinsqu",
+    "our_problem": "1_CIRCLE_in_4",
     "id": "cirinsqu_1",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -18,8 +18,8 @@
     "container_shape": "square",
     "best_value": 3.414,
     "status": "trivial",
-    "source_note": "s = 2 + √2 = 3.414+ Trivial.",
-    "our_problem": "2_cirinsqu",
+    "source_note": "s = 2 + \u221a2 = 3.414+ Trivial.",
+    "our_problem": "2_CIRCLE_in_4",
     "id": "cirinsqu_2",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -30,8 +30,8 @@
     "container_shape": "square",
     "best_value": 3.931,
     "status": "trivial",
-    "source_note": "s = 2 + 1/√2 + √6/2 = 3.931+ Trivial.",
-    "our_problem": "3_cirinsqu",
+    "source_note": "s = 2 + 1/\u221a2 + \u221a6/2 = 3.931+ Trivial.",
+    "our_problem": "3_CIRCLE_in_4",
     "id": "cirinsqu_3",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "4_cirinsqu",
+    "our_problem": "4_CIRCLE_in_4",
     "id": "cirinsqu_4",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -54,8 +54,8 @@
     "container_shape": "square",
     "best_value": 4.828,
     "status": "trivial",
-    "source_note": "s = 2 + 2√2 = 4.828+ Trivial.",
-    "our_problem": "5_cirinsqu",
+    "source_note": "s = 2 + 2\u221a2 = 4.828+ Trivial.",
+    "our_problem": "5_CIRCLE_in_4",
     "id": "cirinsqu_5",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -66,8 +66,8 @@
     "container_shape": "square",
     "best_value": 5.328,
     "status": "proved_optimal",
-    "source_note": "s = 2 + 12/√13 = 5.328+ Proved by Graham in 1963.",
-    "our_problem": "6_cirinsqu",
+    "source_note": "s = 2 + 12/\u221a13 = 5.328+ Proved by Graham in 1963.",
+    "our_problem": "6_CIRCLE_in_4",
     "id": "cirinsqu_6",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -78,8 +78,8 @@
     "container_shape": "square",
     "best_value": 5.732,
     "status": "proved_optimal",
-    "source_note": "s = 4 + √3 = 5.732+ Proved by Schaer in 1964.",
-    "our_problem": "7_cirinsqu",
+    "source_note": "s = 4 + \u221a3 = 5.732+ Proved by Schaer in 1964.",
+    "our_problem": "7_CIRCLE_in_4",
     "id": "cirinsqu_7",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -90,8 +90,8 @@
     "container_shape": "square",
     "best_value": 5.863,
     "status": "proved_optimal",
-    "source_note": "s = 2 + √2 + √6 = 5.863+ Proved by Schaer/Meir in 1964.",
-    "our_problem": "8_cirinsqu",
+    "source_note": "s = 2 + \u221a2 + \u221a6 = 5.863+ Proved by Schaer/Meir in 1964.",
+    "our_problem": "8_CIRCLE_in_4",
     "id": "cirinsqu_8",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 6.0,
     "status": "proved_optimal",
     "source_note": "s = 6 Proved by Schaer in 1964.",
-    "our_problem": "9_cirinsqu",
+    "our_problem": "9_CIRCLE_in_4",
     "id": "cirinsqu_9",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 6.747,
     "status": "proved_optimal",
     "source_note": "s = 6.747+ Proved by De Groot in 1990.",
-    "our_problem": "10_cirinsqu",
+    "our_problem": "10_CIRCLE_in_4",
     "id": "cirinsqu_10",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 7.022,
     "status": "proved_optimal",
     "source_note": "s = 7.022+ Proved by Peikert in 1991.",
-    "our_problem": "11_cirinsqu",
+    "our_problem": "11_CIRCLE_in_4",
     "id": "cirinsqu_11",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -138,8 +138,8 @@
     "container_shape": "square",
     "best_value": 7.144,
     "status": "proved_optimal",
-    "source_note": "s = 2 + 15√(2/17) = 7.144+ Proved by Peikert in 1991.",
-    "our_problem": "12_cirinsqu",
+    "source_note": "s = 2 + 15\u221a(2/17) = 7.144+ Proved by Peikert in 1991.",
+    "our_problem": "12_CIRCLE_in_4",
     "id": "cirinsqu_12",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 7.463,
     "status": "proved_optimal",
     "source_note": "s = 7.463+ Proved by Peikert in 1991.",
-    "our_problem": "13_cirinsqu",
+    "our_problem": "13_CIRCLE_in_4",
     "id": "cirinsqu_13",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -162,8 +162,8 @@
     "container_shape": "square",
     "best_value": 7.732,
     "status": "proved_optimal",
-    "source_note": "s = 6 + √3 = 7.732+ Proved by Wengerodt in 1987.",
-    "our_problem": "14_cirinsqu",
+    "source_note": "s = 6 + \u221a3 = 7.732+ Proved by Wengerodt in 1987.",
+    "our_problem": "14_CIRCLE_in_4",
     "id": "cirinsqu_14",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -174,8 +174,8 @@
     "container_shape": "square",
     "best_value": 7.863,
     "status": "proved_optimal",
-    "source_note": "s = 4 + √2 + √6 = 7.863+ Proved by Peikert in 1991.",
-    "our_problem": "15_cirinsqu",
+    "source_note": "s = 4 + \u221a2 + \u221a6 = 7.863+ Proved by Peikert in 1991.",
+    "our_problem": "15_CIRCLE_in_4",
     "id": "cirinsqu_15",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 8.0,
     "status": "proved_optimal",
     "source_note": "s = 8 Proved by Wengerodt in 1983.",
-    "our_problem": "16_cirinsqu",
+    "our_problem": "16_CIRCLE_in_4",
     "id": "cirinsqu_16",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 8.532,
     "status": "proved_optimal",
     "source_note": "s = 8.532+ Proved by Peikert in 1991.",
-    "our_problem": "17_cirinsqu",
+    "our_problem": "17_CIRCLE_in_4",
     "id": "cirinsqu_17",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -210,8 +210,8 @@
     "container_shape": "square",
     "best_value": 8.656,
     "status": "proved_optimal",
-    "source_note": "s = 2 + 24/√13 = 8.656+ Proved by Peikert in 1991.",
-    "our_problem": "18_cirinsqu",
+    "source_note": "s = 2 + 24/\u221a13 = 8.656+ Proved by Peikert in 1991.",
+    "our_problem": "18_CIRCLE_in_4",
     "id": "cirinsqu_18",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 8.907,
     "status": "proved_optimal",
     "source_note": "s = 8.907+ Proved by Peikert in 1991.",
-    "our_problem": "19_cirinsqu",
+    "our_problem": "19_CIRCLE_in_4",
     "id": "cirinsqu_19",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -234,8 +234,8 @@
     "container_shape": "square",
     "best_value": 8.978,
     "status": "proved_optimal",
-    "source_note": "s = 130/17 + 16/17√2 = 8.978+ Proved by Peikert in 1991.",
-    "our_problem": "20_cirinsqu",
+    "source_note": "s = 130/17 + 16/17\u221a2 = 8.978+ Proved by Peikert in 1991.",
+    "our_problem": "20_CIRCLE_in_4",
     "id": "cirinsqu_20",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -246,8 +246,8 @@
     "container_shape": "square",
     "best_value": 9.358,
     "status": "proved_optimal",
-    "source_note": "s = 9.358+ Proved by Nurmela and Östergård in 1999.",
-    "our_problem": "21_cirinsqu",
+    "source_note": "s = 9.358+ Proved by Nurmela and \u00d6sterg\u00e5rd in 1999.",
+    "our_problem": "21_CIRCLE_in_4",
     "id": "cirinsqu_21",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -258,8 +258,8 @@
     "container_shape": "square",
     "best_value": 9.463,
     "status": "proved_optimal",
-    "source_note": "s = 9.463+ Proved by Nurmela and Östergård in 1999.",
-    "our_problem": "22_cirinsqu",
+    "source_note": "s = 9.463+ Proved by Nurmela and \u00d6sterg\u00e5rd in 1999.",
+    "our_problem": "22_CIRCLE_in_4",
     "id": "cirinsqu_22",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -270,8 +270,8 @@
     "container_shape": "square",
     "best_value": 9.727,
     "status": "proved_optimal",
-    "source_note": "s = 2 + 2√2 + 2√6 = 9.727+ Proved by Nurmela and Östergård in 1999.",
-    "our_problem": "23_cirinsqu",
+    "source_note": "s = 2 + 2\u221a2 + 2\u221a6 = 9.727+ Proved by Nurmela and \u00d6sterg\u00e5rd in 1999.",
+    "our_problem": "23_CIRCLE_in_4",
     "id": "cirinsqu_23",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   },
@@ -282,8 +282,8 @@
     "container_shape": "square",
     "best_value": 9.863,
     "status": "proved_optimal",
-    "source_note": "s = 6 + √2 + √6 = 9.863+ Proved by Nurmela and Östergård in 1999.",
-    "our_problem": "24_cirinsqu",
+    "source_note": "s = 6 + \u221a2 + \u221a6 = 9.863+ Proved by Nurmela and \u00d6sterg\u00e5rd in 1999.",
+    "our_problem": "24_CIRCLE_in_4",
     "id": "cirinsqu_24",
     "source_url": "https://erich-friedman.github.io/packing/cirinsqu/index.html"
   }

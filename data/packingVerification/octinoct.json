@@ -7,7 +7,7 @@
     "best_value": 1,
     "status": "best_known",
     "source_note": "s = 1 Trivial.",
-    "our_problem": "1_octinoct",
+    "our_problem": "1_8_in_8",
     "id": "octinoct_1",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2,
     "status": "best_known",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "2_octinoct",
+    "our_problem": "2_8_in_8",
     "id": "octinoct_2",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -30,8 +30,8 @@
     "container_shape": "octagon",
     "best_value": 2.1716,
     "status": "best_known",
-    "source_note": "s = 5-2√2 = 2.17157+ Found by Ignacio Vallejo in March 2026.",
-    "our_problem": "3_octinoct",
+    "source_note": "s = 5-2\u221a2 = 2.17157+ Found by Ignacio Vallejo in March 2026.",
+    "our_problem": "3_8_in_8",
     "id": "octinoct_3",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -42,8 +42,8 @@
     "container_shape": "octagon",
     "best_value": 2.389,
     "status": "best_known",
-    "source_note": "s = √(5+1/√2) = 2.38895+ Found by Ignacio Vallejo in March 2026.",
-    "our_problem": "4_octinoct",
+    "source_note": "s = \u221a(5+1/\u221a2) = 2.38895+ Found by Ignacio Vallejo in March 2026.",
+    "our_problem": "4_8_in_8",
     "id": "octinoct_4",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -54,8 +54,8 @@
     "container_shape": "octagon",
     "best_value": 2.7071,
     "status": "best_known",
-    "source_note": "s = 2+1/√2 = 2.70710+ Found by Ignacio Vallejo in March 2026.",
-    "our_problem": "5_octinoct",
+    "source_note": "s = 2+1/\u221a2 = 2.70710+ Found by Ignacio Vallejo in March 2026.",
+    "our_problem": "5_8_in_8",
     "id": "octinoct_5",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.9889,
     "status": "best_known",
     "source_note": "s = 2.98894+ Found by Nicolas Campailla in May 2026.",
-    "our_problem": "6_octinoct",
+    "our_problem": "6_8_in_8",
     "id": "octinoct_6",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3,
     "status": "best_known",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "7_octinoct",
+    "our_problem": "7_8_in_8",
     "id": "octinoct_7",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 3.2752,
     "status": "best_known",
     "source_note": "s = 3.27524+ Found by Grant Mowry in May 2026.",
-    "our_problem": "8_octinoct",
+    "our_problem": "8_8_in_8",
     "id": "octinoct_8",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -102,8 +102,8 @@
     "container_shape": "octagon",
     "best_value": 3.4142,
     "status": "best_known",
-    "source_note": "s = 2+√2 = 3.41421+ Found by Ignacio Vallejo in March 2026.",
-    "our_problem": "9_octinoct",
+    "source_note": "s = 2+\u221a2 = 3.41421+ Found by Ignacio Vallejo in March 2026.",
+    "our_problem": "9_8_in_8",
     "id": "octinoct_9",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -114,8 +114,8 @@
     "container_shape": "octagon",
     "best_value": 3.7071,
     "status": "best_known",
-    "source_note": "s = 3+1/√2 = 3.70710+ Found by Ignacio Vallejo in March 2026.",
-    "our_problem": "10_octinoct",
+    "source_note": "s = 3+1/\u221a2 = 3.70710+ Found by Ignacio Vallejo in March 2026.",
+    "our_problem": "10_8_in_8",
     "id": "octinoct_10",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.9326,
     "status": "best_known",
     "source_note": "s = 3.93256+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "11_octinoct",
+    "our_problem": "11_8_in_8",
     "id": "octinoct_11",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 4,
     "status": "best_known",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "12_octinoct",
+    "our_problem": "12_8_in_8",
     "id": "octinoct_12",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -150,8 +150,8 @@
     "container_shape": "octagon",
     "best_value": 4.1716,
     "status": "best_known",
-    "source_note": "s = 7-2√2 = 4.17157+ Found by Ignacio Vallejo in March 2026.",
-    "our_problem": "13_octinoct",
+    "source_note": "s = 7-2\u221a2 = 4.17157+ Found by Ignacio Vallejo in March 2026.",
+    "our_problem": "13_8_in_8",
     "id": "octinoct_13",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 4.2813,
     "status": "best_known",
     "source_note": "s = 4.28135+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "14_octinoct",
+    "our_problem": "14_8_in_8",
     "id": "octinoct_14",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 4.4558,
     "status": "best_known",
     "source_note": "s = 4.45584+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "15_octinoct",
+    "our_problem": "15_8_in_8",
     "id": "octinoct_15",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.598,
     "status": "best_known",
     "source_note": "s = 4.59803+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "16_octinoct",
+    "our_problem": "16_8_in_8",
     "id": "octinoct_16",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.7569,
     "status": "best_known",
     "source_note": "s = 4.75690+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "17_octinoct",
+    "our_problem": "17_8_in_8",
     "id": "octinoct_17",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 4.8568,
     "status": "best_known",
     "source_note": "s = 4.85681+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "18_octinoct",
+    "our_problem": "18_8_in_8",
     "id": "octinoct_18",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.9355,
     "status": "best_known",
     "source_note": "s = 4.93550+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "19_octinoct",
+    "our_problem": "19_8_in_8",
     "id": "octinoct_19",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 5.0673,
     "status": "best_known",
     "source_note": "s = 5.06727+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "20_octinoct",
+    "our_problem": "20_8_in_8",
     "id": "octinoct_20",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 5.197,
     "status": "best_known",
     "source_note": "s = 5.19695+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "21_octinoct",
+    "our_problem": "21_8_in_8",
     "id": "octinoct_21",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 5.3569,
     "status": "best_known",
     "source_note": "s = 5.35686+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "22_octinoct",
+    "our_problem": "22_8_in_8",
     "id": "octinoct_22",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -270,8 +270,8 @@
     "container_shape": "octagon",
     "best_value": 5.4142,
     "status": "best_known",
-    "source_note": "s = 4+√2 = 5.41421+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "23_octinoct",
+    "source_note": "s = 4+\u221a2 = 5.41421+ Found by Bhavithran Ananthan in July 2026.",
+    "our_problem": "23_8_in_8",
     "id": "octinoct_23",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 5.5541,
     "status": "best_known",
     "source_note": "s = 5.55414+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "24_octinoct",
+    "our_problem": "24_8_in_8",
     "id": "octinoct_24",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 5.6541,
     "status": "best_known",
     "source_note": "s = 5.65411+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "25_octinoct",
+    "our_problem": "25_8_in_8",
     "id": "octinoct_25",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 5.7383,
     "status": "best_known",
     "source_note": "s = 5.73828+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "26_octinoct",
+    "our_problem": "26_8_in_8",
     "id": "octinoct_26",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 5.8117,
     "status": "best_known",
     "source_note": "s = 5.81167+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "27_octinoct",
+    "our_problem": "27_8_in_8",
     "id": "octinoct_27",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -330,8 +330,8 @@
     "container_shape": "octagon",
     "best_value": 5.8284,
     "status": "best_known",
-    "source_note": "s = 3+2√2 = 5.82842+ Found by Ignacio Vallejo in March 2026.",
-    "our_problem": "28_octinoct",
+    "source_note": "s = 3+2\u221a2 = 5.82842+ Found by Ignacio Vallejo in March 2026.",
+    "our_problem": "28_8_in_8",
     "id": "octinoct_28",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 6.0565,
     "status": "best_known",
     "source_note": "s = 6.05649+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "29_octinoct",
+    "our_problem": "29_8_in_8",
     "id": "octinoct_29",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 6.1531,
     "status": "best_known",
     "source_note": "s = 6.15306+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "30_octinoct",
+    "our_problem": "30_8_in_8",
     "id": "octinoct_30",
     "source_url": "https://erich-friedman.github.io/packing/octinoct/index.html"
   }

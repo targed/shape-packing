@@ -6,8 +6,8 @@
     "container_shape": "hexagon",
     "best_value": 1.1547,
     "status": "trivial",
-    "source_note": "s = 2/√3 = 1.15470+ Trivial.",
-    "our_problem": "1_dominhex",
+    "source_note": "s = 2/\u221a3 = 1.15470+ Trivial.",
+    "our_problem": "1_DOMINO_in_6",
     "id": "dominhex_1",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.5197,
     "status": "best_known",
     "source_note": "s = 2/3 1/4 = 1.51967+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "2_dominhex",
+    "our_problem": "2_DOMINO_in_6",
     "id": "dominhex_2",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -30,8 +30,8 @@
     "container_shape": "hexagon",
     "best_value": 1.8612,
     "status": "best_known",
-    "source_note": "s = √2(3) 1/4 = 1.86120+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "3_dominhex",
+    "source_note": "s = \u221a2(3) 1/4 = 1.86120+ Found by Jonathan Viquerat in May 2026.",
+    "our_problem": "3_DOMINO_in_6",
     "id": "dominhex_3",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -42,8 +42,8 @@
     "container_shape": "hexagon",
     "best_value": 2.1547,
     "status": "best_known",
-    "source_note": "s = 1+2/√3 = 2.15470+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_dominhex",
+    "source_note": "s = 1+2/\u221a3 = 2.15470+ Found by Jonathan Viquerat in May 2026.",
+    "our_problem": "4_DOMINO_in_6",
     "id": "dominhex_4",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -54,8 +54,8 @@
     "container_shape": "hexagon",
     "best_value": 2.3094,
     "status": "trivial",
-    "source_note": "s = 4/√3 = 2.30940+ Trivial.  ",
-    "our_problem": "5_dominhex",
+    "source_note": "s = 4/\u221a3 = 2.30940+ Trivial.  ",
+    "our_problem": "5_DOMINO_in_6",
     "id": "dominhex_5",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -66,8 +66,8 @@
     "container_shape": "hexagon",
     "best_value": 2.4434,
     "status": "best_known",
-    "source_note": "s = 1+5√3/6 = 2.44337+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_dominhex",
+    "source_note": "s = 1+5\u221a3/6 = 2.44337+ Found by Jonathan Viquerat in May 2026.",
+    "our_problem": "6_DOMINO_in_6",
     "id": "dominhex_6",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 2.6313,
     "status": "best_known",
     "source_note": "s = 2.63126+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "7_dominhex",
+    "our_problem": "7_DOMINO_in_6",
     "id": "dominhex_7",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 2.8522,
     "status": "best_known",
     "source_note": "s = 2.85220+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_dominhex",
+    "our_problem": "8_DOMINO_in_6",
     "id": "dominhex_8",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 2.9363,
     "status": "best_known",
     "source_note": "s = 2.93631+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "9_dominhex",
+    "our_problem": "9_DOMINO_in_6",
     "id": "dominhex_9",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.2059,
     "status": "best_known",
     "source_note": "s = 3.20593+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "10_dominhex",
+    "our_problem": "10_DOMINO_in_6",
     "id": "dominhex_10",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.3479,
     "status": "best_known",
     "source_note": "s = 3.34790+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_dominhex",
+    "our_problem": "11_DOMINO_in_6",
     "id": "dominhex_11",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.4608,
     "status": "best_known",
     "source_note": "s = 3.46078+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "12_dominhex",
+    "our_problem": "12_DOMINO_in_6",
     "id": "dominhex_12",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 3.527,
     "status": "best_known",
     "source_note": "s = 3.52702+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "13_dominhex",
+    "our_problem": "13_DOMINO_in_6",
     "id": "dominhex_13",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 3.6723,
     "status": "best_known",
     "source_note": "s = 3.67229+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "14_dominhex",
+    "our_problem": "14_DOMINO_in_6",
     "id": "dominhex_14",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 3.7224,
     "status": "best_known",
     "source_note": "s = 2(12) 1/4 = 3.72241+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "15_dominhex",
+    "our_problem": "15_DOMINO_in_6",
     "id": "dominhex_15",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 3.9029,
     "status": "best_known",
     "source_note": "s = 3.90286+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "16_dominhex",
+    "our_problem": "16_DOMINO_in_6",
     "id": "dominhex_16",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.0116,
     "status": "best_known",
     "source_note": "s = 4.01162+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "17_dominhex",
+    "our_problem": "17_DOMINO_in_6",
     "id": "dominhex_17",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -210,8 +210,8 @@
     "container_shape": "hexagon",
     "best_value": 4.0207,
     "status": "best_known",
-    "source_note": "s = 2+7√3/6 = 4.02072+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "18_dominhex",
+    "source_note": "s = 2+7\u221a3/6 = 4.02072+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "18_DOMINO_in_6",
     "id": "dominhex_18",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.1968,
     "status": "best_known",
     "source_note": "s = 4.19677+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "19_dominhex",
+    "our_problem": "19_DOMINO_in_6",
     "id": "dominhex_19",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 4.3672,
     "status": "best_known",
     "source_note": "s = 4.36716+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "20_dominhex",
+    "our_problem": "20_DOMINO_in_6",
     "id": "dominhex_20",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -246,8 +246,8 @@
     "container_shape": "hexagon",
     "best_value": 4.5981,
     "status": "best_known",
-    "source_note": "s = 2+3√3/2 = 4.59807+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "21_dominhex",
+    "source_note": "s = 2+3\u221a3/2 = 4.59807+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "21_DOMINO_in_6",
     "id": "dominhex_21",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -258,8 +258,8 @@
     "container_shape": "hexagon",
     "best_value": 4.5981,
     "status": "best_known",
-    "source_note": "s = 2+3√3/2 = 4.59807+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "22_dominhex",
+    "source_note": "s = 2+3\u221a3/2 = 4.59807+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "22_DOMINO_in_6",
     "id": "dominhex_22",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -270,8 +270,8 @@
     "container_shape": "hexagon",
     "best_value": 4.5981,
     "status": "best_known",
-    "source_note": "s = 2+3√3/2 = 4.59807+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "23_dominhex",
+    "source_note": "s = 2+3\u221a3/2 = 4.59807+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "23_DOMINO_in_6",
     "id": "dominhex_23",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -282,8 +282,8 @@
     "container_shape": "hexagon",
     "best_value": 4.5981,
     "status": "best_known",
-    "source_note": "s = 2+3√3/2 = 4.59807+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "24_dominhex",
+    "source_note": "s = 2+3\u221a3/2 = 4.59807+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "24_DOMINO_in_6",
     "id": "dominhex_24",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -294,8 +294,8 @@
     "container_shape": "hexagon",
     "best_value": 4.7321,
     "status": "best_known",
-    "source_note": "s = 3+√3 = 4.73205+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "25_dominhex",
+    "source_note": "s = 3+\u221a3 = 4.73205+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "25_DOMINO_in_6",
     "id": "dominhex_25",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -306,8 +306,8 @@
     "container_shape": "hexagon",
     "best_value": 4.866,
     "status": "best_known",
-    "source_note": "s = 4+√3/2 = 4.86602+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "26_dominhex",
+    "source_note": "s = 4+\u221a3/2 = 4.86602+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "26_DOMINO_in_6",
     "id": "dominhex_26",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 4.9903,
     "status": "best_known",
     "source_note": "s = 4.99031+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "27_dominhex",
+    "our_problem": "27_DOMINO_in_6",
     "id": "dominhex_27",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 5.14,
     "status": "best_known",
     "source_note": "s = 5.13998+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "28_dominhex",
+    "our_problem": "28_DOMINO_in_6",
     "id": "dominhex_28",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -342,8 +342,8 @@
     "container_shape": "hexagon",
     "best_value": 5.1754,
     "status": "best_known",
-    "source_note": "s = 2+11√3/6 = 5.17542+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "29_dominhex",
+    "source_note": "s = 2+11\u221a3/6 = 5.17542+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "29_DOMINO_in_6",
     "id": "dominhex_29",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   },
@@ -354,8 +354,8 @@
     "container_shape": "hexagon",
     "best_value": 5.1754,
     "status": "best_known",
-    "source_note": "s = 2+11√3/6 = 5.17542+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "30_dominhex",
+    "source_note": "s = 2+11\u221a3/6 = 5.17542+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "30_DOMINO_in_6",
     "id": "dominhex_30",
     "source_url": "https://erich-friedman.github.io/packing/dominhex/index.html"
   }

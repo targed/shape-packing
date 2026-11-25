@@ -7,7 +7,7 @@
     "best_value": 1.22474,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_3_in_tan",
+    "our_problem": "1_3_in_TAN",
     "id": "3_in_tan_1",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.73205,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "2_3_in_tan",
+    "our_problem": "2_3_in_TAN",
     "id": "3_in_tan_2",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.93185,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "3_3_in_tan",
+    "our_problem": "3_3_in_TAN",
     "id": "3_in_tan_3",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.36602,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_3_in_tan",
+    "our_problem": "4_3_in_TAN",
     "id": "3_in_tan_4",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.53905,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_3_in_tan",
+    "our_problem": "5_3_in_TAN",
     "id": "3_in_tan_5",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.63895,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_3_in_tan",
+    "our_problem": "6_3_in_TAN",
     "id": "3_in_tan_6",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 2.78972,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_3_in_tan",
+    "our_problem": "7_3_in_TAN",
     "id": "3_in_tan_7",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 3.07313,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_3_in_tan",
+    "our_problem": "8_3_in_TAN",
     "id": "3_in_tan_8",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 3.18252,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "9_3_in_tan",
+    "our_problem": "9_3_in_TAN",
     "id": "3_in_tan_9",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.34084,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "10_3_in_tan",
+    "our_problem": "10_3_in_TAN",
     "id": "3_in_tan_10",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.46951,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_3_in_tan",
+    "our_problem": "11_3_in_TAN",
     "id": "3_in_tan_11",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.62487,
     "status": "best_known",
     "source_note": "Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "12_3_in_tan",
+    "our_problem": "12_3_in_TAN",
     "id": "3_in_tan_12",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 3.71163,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "13_3_in_tan",
+    "our_problem": "13_3_in_TAN",
     "id": "3_in_tan_13",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 3.88268,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "14_3_in_tan",
+    "our_problem": "14_3_in_TAN",
     "id": "3_in_tan_14",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 3.98382,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "15_3_in_tan",
+    "our_problem": "15_3_in_TAN",
     "id": "3_in_tan_15",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.03901,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "16_3_in_tan",
+    "our_problem": "16_3_in_TAN",
     "id": "3_in_tan_16",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.20127,
     "status": "best_known",
     "source_note": "Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "17_3_in_tan",
+    "our_problem": "17_3_in_TAN",
     "id": "3_in_tan_17",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 4.2712,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "18_3_in_tan",
+    "our_problem": "18_3_in_TAN",
     "id": "3_in_tan_18",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.45701,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "19_3_in_tan",
+    "our_problem": "19_3_in_TAN",
     "id": "3_in_tan_19",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 4.56124,
     "status": "best_known",
     "source_note": "Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "20_3_in_tan",
+    "our_problem": "20_3_in_TAN",
     "id": "3_in_tan_20",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 4.64141,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "21_3_in_tan",
+    "our_problem": "21_3_in_TAN",
     "id": "3_in_tan_21",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 4.73276,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "22_3_in_tan",
+    "our_problem": "22_3_in_TAN",
     "id": "3_in_tan_22",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 4.82974,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "23_3_in_tan",
+    "our_problem": "23_3_in_TAN",
     "id": "3_in_tan_23",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 4.91168,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "24_3_in_tan",
+    "our_problem": "24_3_in_TAN",
     "id": "3_in_tan_24",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 5.05586,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "25_3_in_tan",
+    "our_problem": "25_3_in_TAN",
     "id": "3_in_tan_25",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 5.1096,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "26_3_in_tan",
+    "our_problem": "26_3_in_TAN",
     "id": "3_in_tan_26",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 5.19773,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "27_3_in_tan",
+    "our_problem": "27_3_in_TAN",
     "id": "3_in_tan_27",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 5.32367,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "28_3_in_tan",
+    "our_problem": "28_3_in_TAN",
     "id": "3_in_tan_28",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 5.40552,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "29_3_in_tan",
+    "our_problem": "29_3_in_TAN",
     "id": "3_in_tan_29",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 5.46262,
     "status": "best_known",
     "source_note": "Found by Akshaj Shandilya in July 2026.",
-    "our_problem": "30_3_in_tan",
+    "our_problem": "30_3_in_TAN",
     "id": "3_in_tan_30",
     "source_url": "https://erich-friedman.github.io/packing/triintan/index.html"
   }

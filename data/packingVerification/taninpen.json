@@ -7,7 +7,7 @@
     "best_value": 0.874,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_taninpen",
+    "our_problem": "1_TAN_in_5",
     "id": "taninpen_1",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 0.9369,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "2_taninpen",
+    "our_problem": "2_TAN_in_5",
     "id": "taninpen_2",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.1058,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "3_taninpen",
+    "our_problem": "3_TAN_in_5",
     "id": "taninpen_3",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.2806,
     "status": "best_known",
     "source_note": "Found by Aapo Lippoen in July 2026.",
-    "our_problem": "4_taninpen",
+    "our_problem": "4_TAN_in_5",
     "id": "taninpen_4",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.3861,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_taninpen",
+    "our_problem": "5_TAN_in_5",
     "id": "taninpen_5",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.5066,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_taninpen",
+    "our_problem": "6_TAN_in_5",
     "id": "taninpen_6",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 1.6269,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_taninpen",
+    "our_problem": "7_TAN_in_5",
     "id": "taninpen_7",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 1.7196,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_taninpen",
+    "our_problem": "8_TAN_in_5",
     "id": "taninpen_8",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 1.7991,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "9_taninpen",
+    "our_problem": "9_TAN_in_5",
     "id": "taninpen_9",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 1.8739,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "10_taninpen",
+    "our_problem": "10_TAN_in_5",
     "id": "taninpen_10",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 1.9564,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "11_taninpen",
+    "our_problem": "11_TAN_in_5",
     "id": "taninpen_11",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 2.0275,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "12_taninpen",
+    "our_problem": "12_TAN_in_5",
     "id": "taninpen_12",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 2.1094,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "13_taninpen",
+    "our_problem": "13_TAN_in_5",
     "id": "taninpen_13",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 2.1664,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "14_taninpen",
+    "our_problem": "14_TAN_in_5",
     "id": "taninpen_14",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 2.2571,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "15_taninpen",
+    "our_problem": "15_TAN_in_5",
     "id": "taninpen_15",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 2.327,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "16_taninpen",
+    "our_problem": "16_TAN_in_5",
     "id": "taninpen_16",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 2.3861,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "17_taninpen",
+    "our_problem": "17_TAN_in_5",
     "id": "taninpen_17",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 2.4458,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "18_taninpen",
+    "our_problem": "18_TAN_in_5",
     "id": "taninpen_18",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 2.5358,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "19_taninpen",
+    "our_problem": "19_TAN_in_5",
     "id": "taninpen_19",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 2.5917,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "20_taninpen",
+    "our_problem": "20_TAN_in_5",
     "id": "taninpen_20",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 2.655,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "21_taninpen",
+    "our_problem": "21_TAN_in_5",
     "id": "taninpen_21",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 2.7112,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "22_taninpen",
+    "our_problem": "22_TAN_in_5",
     "id": "taninpen_22",
     "source_url": "https://erich-friedman.github.io/packing/taninpen/index.html"
   }

@@ -7,7 +7,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "s = 1 Trivial.",
-    "our_problem": "1_squindom",
+    "our_problem": "1_4_in_DOMINO",
     "id": "squindom_1",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "s = 1 Trivial.",
-    "our_problem": "2_squindom",
+    "our_problem": "2_4_in_DOMINO",
     "id": "squindom_2",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.5,
     "status": "trivial",
     "source_note": "s = 3/2 = 1.5 Trivial.",
-    "our_problem": "3_squindom",
+    "our_problem": "3_4_in_DOMINO",
     "id": "squindom_3",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.0,
     "status": "best_known",
     "source_note": "s = 1.930+ Found by Evert Stenlund in June 2010.",
-    "our_problem": "4_squindom",
+    "our_problem": "4_4_in_DOMINO",
     "id": "squindom_4",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "5_squindom",
+    "our_problem": "5_4_in_DOMINO",
     "id": "squindom_5",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "6_squindom",
+    "our_problem": "6_4_in_DOMINO",
     "id": "squindom_6",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "7_squindom",
+    "our_problem": "7_4_in_DOMINO",
     "id": "squindom_7",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "8_squindom",
+    "our_problem": "8_4_in_DOMINO",
     "id": "squindom_8",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -102,8 +102,8 @@
     "container_shape": "domino",
     "best_value": 2.4714,
     "status": "best_known",
-    "source_note": "s = 2 + √2/3 = 2.471+ Found by Evert Stenlund in June 2010.",
-    "our_problem": "9_squindom",
+    "source_note": "s = 2 + \u221a2/3 = 2.471+ Found by Evert Stenlund in June 2010.",
+    "our_problem": "9_4_in_DOMINO",
     "id": "squindom_9",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 2.5,
     "status": "trivial",
     "source_note": "s = 5/2 = 2.5 Trivial.",
-    "our_problem": "10_squindom",
+    "our_problem": "10_4_in_DOMINO",
     "id": "squindom_10",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 2.779,
     "status": "best_known",
     "source_note": "s = 2.779+ Found by Evert Stenlund in June 2010.",
-    "our_problem": "11_squindom",
+    "our_problem": "11_4_in_DOMINO",
     "id": "squindom_11",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -138,8 +138,8 @@
     "container_shape": "domino",
     "best_value": 2.8971,
     "status": "best_known",
-    "source_note": "s = 6 (1 + √2) / 5 = 2.897+ Found by Maurizio Morandi in June 2010.",
-    "our_problem": "12_squindom",
+    "source_note": "s = 6 (1 + \u221a2) / 5 = 2.897+ Found by Maurizio Morandi in June 2010.",
+    "our_problem": "12_4_in_DOMINO",
     "id": "squindom_12",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 2.976,
     "status": "best_known",
     "source_note": "s = 2.976+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "13_squindom",
+    "our_problem": "13_4_in_DOMINO",
     "id": "squindom_13",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "14_squindom",
+    "our_problem": "14_4_in_DOMINO",
     "id": "squindom_14",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "15_squindom",
+    "our_problem": "15_4_in_DOMINO",
     "id": "squindom_15",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "16_squindom",
+    "our_problem": "16_4_in_DOMINO",
     "id": "squindom_16",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "17_squindom",
+    "our_problem": "17_4_in_DOMINO",
     "id": "squindom_17",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "18_squindom",
+    "our_problem": "18_4_in_DOMINO",
     "id": "squindom_18",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -222,8 +222,8 @@
     "container_shape": "domino",
     "best_value": 3.4472,
     "status": "best_known",
-    "source_note": "s = 3 + 1/√5 = 3.447+ Found by Maurizio Morandi in June 2010.",
-    "our_problem": "19_squindom",
+    "source_note": "s = 3 + 1/\u221a5 = 3.447+ Found by Maurizio Morandi in June 2010.",
+    "our_problem": "19_4_in_DOMINO",
     "id": "squindom_19",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 3.5,
     "status": "trivial",
     "source_note": "s = 7/2 = 3.5 Trivial.",
-    "our_problem": "20_squindom",
+    "our_problem": "20_4_in_DOMINO",
     "id": "squindom_20",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 3.5,
     "status": "trivial",
     "source_note": "s = 7/2 = 3.5 Trivial.",
-    "our_problem": "21_squindom",
+    "our_problem": "21_4_in_DOMINO",
     "id": "squindom_21",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 3.745,
     "status": "best_known",
     "source_note": "s = 3.745+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "22_squindom",
+    "our_problem": "22_4_in_DOMINO",
     "id": "squindom_22",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 3.8352,
     "status": "best_known",
     "source_note": "s = 3.83525+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "23_squindom",
+    "our_problem": "23_4_in_DOMINO",
     "id": "squindom_23",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 3.8818,
     "status": "best_known",
     "source_note": "s = 3.88184+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "24_squindom",
+    "our_problem": "24_4_in_DOMINO",
     "id": "squindom_24",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 3.939,
     "status": "best_known",
     "source_note": "s = 3.939+ Found by David W. Cantrell in August 2012.",
-    "our_problem": "25_squindom",
+    "our_problem": "25_4_in_DOMINO",
     "id": "squindom_25",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 3.981,
     "status": "best_known",
     "source_note": "s = 3.981+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "26_squindom",
+    "our_problem": "26_4_in_DOMINO",
     "id": "squindom_26",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "27_squindom",
+    "our_problem": "27_4_in_DOMINO",
     "id": "squindom_27",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "28_squindom",
+    "our_problem": "28_4_in_DOMINO",
     "id": "squindom_28",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "29_squindom",
+    "our_problem": "29_4_in_DOMINO",
     "id": "squindom_29",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "30_squindom",
+    "our_problem": "30_4_in_DOMINO",
     "id": "squindom_30",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "31_squindom",
+    "our_problem": "31_4_in_DOMINO",
     "id": "squindom_31",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -379,7 +379,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "32_squindom",
+    "our_problem": "32_4_in_DOMINO",
     "id": "squindom_32",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -390,8 +390,8 @@
     "container_shape": "domino",
     "best_value": 4.4142,
     "status": "best_known",
-    "source_note": "s = 3 + √2 = 4.414+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "33_squindom",
+    "source_note": "s = 3 + \u221a2 = 4.414+ Found by Maurizio Morandi in July 2012.",
+    "our_problem": "33_4_in_DOMINO",
     "id": "squindom_33",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -402,8 +402,8 @@
     "container_shape": "domino",
     "best_value": 4.4714,
     "status": "best_known",
-    "source_note": "s = 4 + √2/3 = 4.471+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "34_squindom",
+    "source_note": "s = 4 + \u221a2/3 = 4.471+ Found by David W. Cantrell in July 2012.",
+    "our_problem": "34_4_in_DOMINO",
     "id": "squindom_34",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -415,7 +415,7 @@
     "best_value": 4.5,
     "status": "trivial",
     "source_note": "s = 9/2 = 4.5 Trivial.",
-    "our_problem": "35_squindom",
+    "our_problem": "35_4_in_DOMINO",
     "id": "squindom_35",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -427,7 +427,7 @@
     "best_value": 4.5,
     "status": "trivial",
     "source_note": "s = 9/2 = 4.5 Trivial.",
-    "our_problem": "36_squindom",
+    "our_problem": "36_4_in_DOMINO",
     "id": "squindom_36",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -439,7 +439,7 @@
     "best_value": 4.7176,
     "status": "best_known",
     "source_note": "s = 4.71758+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "37_squindom",
+    "our_problem": "37_4_in_DOMINO",
     "id": "squindom_37",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -451,7 +451,7 @@
     "best_value": 4.7982,
     "status": "best_known",
     "source_note": "s = 4.79816+ Valerio Guccione in July 2026.",
-    "our_problem": "38_squindom",
+    "our_problem": "38_4_in_DOMINO",
     "id": "squindom_38",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -463,7 +463,7 @@
     "best_value": 4.8369,
     "status": "best_known",
     "source_note": "s = 4.83693+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "39_squindom",
+    "our_problem": "39_4_in_DOMINO",
     "id": "squindom_39",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -475,7 +475,7 @@
     "best_value": 4.895,
     "status": "best_known",
     "source_note": "s = 4.895+ Found by Sigvart Brendberg in June 2023.",
-    "our_problem": "40_squindom",
+    "our_problem": "40_4_in_DOMINO",
     "id": "squindom_40",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -487,7 +487,7 @@
     "best_value": 4.927,
     "status": "best_known",
     "source_note": "s = 4.927+ Found by Sigvart Brendberg in June 2023.",
-    "our_problem": "41_squindom",
+    "our_problem": "41_4_in_DOMINO",
     "id": "squindom_41",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -499,7 +499,7 @@
     "best_value": 4.9686,
     "status": "best_known",
     "source_note": "s = 4.96862+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "42_squindom",
+    "our_problem": "42_4_in_DOMINO",
     "id": "squindom_42",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -511,7 +511,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "43_squindom",
+    "our_problem": "43_4_in_DOMINO",
     "id": "squindom_43",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -523,7 +523,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "44_squindom",
+    "our_problem": "44_4_in_DOMINO",
     "id": "squindom_44",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -535,7 +535,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "45_squindom",
+    "our_problem": "45_4_in_DOMINO",
     "id": "squindom_45",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -547,7 +547,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "46_squindom",
+    "our_problem": "46_4_in_DOMINO",
     "id": "squindom_46",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -559,7 +559,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "47_squindom",
+    "our_problem": "47_4_in_DOMINO",
     "id": "squindom_47",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -571,7 +571,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "48_squindom",
+    "our_problem": "48_4_in_DOMINO",
     "id": "squindom_48",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -583,7 +583,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "49_squindom",
+    "our_problem": "49_4_in_DOMINO",
     "id": "squindom_49",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   },
@@ -595,7 +595,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "50_squindom",
+    "our_problem": "50_4_in_DOMINO",
     "id": "squindom_50",
     "source_url": "https://erich-friedman.github.io/packing/squindom/index.html"
   }

@@ -7,7 +7,7 @@
     "best_value": 0.8787,
     "status": "trivial",
     "source_note": "s = 3-3/\u221a2 = 0.87867+ Trivial.",
-    "our_problem": "1_dominoct",
+    "our_problem": "1_DOMINO_in_8",
     "id": "dominoct_1",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.0824,
     "status": "trivial",
     "source_note": "s = \u221a(4-2\u221a2) = 1.08239+ Trivial.",
-    "our_problem": "2_dominoct",
+    "our_problem": "2_DOMINO_in_8",
     "id": "dominoct_2",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.4369,
     "status": "best_known",
     "source_note": "s = \u221a(5-\u221a2-\u221a(8\u221a2-9)) = 1.43690+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "3_dominoct",
+    "our_problem": "3_DOMINO_in_8",
     "id": "dominoct_3",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.5734,
     "status": "best_known",
     "source_note": "s = 1.57337+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "4_dominoct",
+    "our_problem": "4_DOMINO_in_8",
     "id": "dominoct_4",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.7164,
     "status": "best_known",
     "source_note": "s = 1.71644+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "5_dominoct",
+    "our_problem": "5_DOMINO_in_8",
     "id": "dominoct_5",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.7534,
     "status": "best_known",
     "source_note": "s = \u221a(6-\u221a2-\u221a(20\u221a2-26)) = 1.75339+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "6_dominoct",
+    "our_problem": "6_DOMINO_in_8",
     "id": "dominoct_6",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 2.0052,
     "status": "best_known",
     "source_note": "s = 2.00516+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "7_dominoct",
+    "our_problem": "7_DOMINO_in_8",
     "id": "dominoct_7",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 2.0711,
     "status": "trivial",
     "source_note": "s = 5(\u221a2-1) = 2.07106+ Trivial.",
-    "our_problem": "8_dominoct",
+    "our_problem": "8_DOMINO_in_8",
     "id": "dominoct_8",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 2.198,
     "status": "best_known",
     "source_note": "s = 2.19803+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "9_dominoct",
+    "our_problem": "9_DOMINO_in_8",
     "id": "dominoct_9",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 2.3239,
     "status": "best_known",
     "source_note": "s = 2.32394+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "10_dominoct",
+    "our_problem": "10_DOMINO_in_8",
     "id": "dominoct_10",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 2.4491,
     "status": "best_known",
     "source_note": "s = 2.44911+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "11_dominoct",
+    "our_problem": "11_DOMINO_in_8",
     "id": "dominoct_11",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 2.4853,
     "status": "trivial",
     "source_note": "s = 6(\u221a2-1) = 2.48528+ Trivial.",
-    "our_problem": "12_dominoct",
+    "our_problem": "12_DOMINO_in_8",
     "id": "dominoct_12",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 2.5656,
     "status": "best_known",
     "source_note": "s = 2.56556+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "13_dominoct",
+    "our_problem": "13_DOMINO_in_8",
     "id": "dominoct_13",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 2.6774,
     "status": "best_known",
     "source_note": "s = 2.67740+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "14_dominoct",
+    "our_problem": "14_DOMINO_in_8",
     "id": "dominoct_14",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 2.8045,
     "status": "best_known",
     "source_note": "s = 2.80446+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "15_dominoct",
+    "our_problem": "15_DOMINO_in_8",
     "id": "dominoct_15",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 2.8738,
     "status": "best_known",
     "source_note": "s = 2\u221a(5-\u221a2-\u221a(8\u221a2-9)) = 2.87381+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "16_dominoct",
+    "our_problem": "16_DOMINO_in_8",
     "id": "dominoct_16",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 2.9222,
     "status": "best_known",
     "source_note": "s = 2.92223+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "17_dominoct",
+    "our_problem": "17_DOMINO_in_8",
     "id": "dominoct_17",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 3.0156,
     "status": "best_known",
     "source_note": "s = 3.01565+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "18_dominoct",
+    "our_problem": "18_DOMINO_in_8",
     "id": "dominoct_18",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 3.0879,
     "status": "best_known",
     "source_note": "s = 3.08791+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "19_dominoct",
+    "our_problem": "19_DOMINO_in_8",
     "id": "dominoct_19",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 3.1688,
     "status": "best_known",
     "source_note": "s = 3.16881+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "20_dominoct",
+    "our_problem": "20_DOMINO_in_8",
     "id": "dominoct_20",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 3.3137,
     "status": "best_known",
     "source_note": "s = 8(\u221a2-1) = 3.31370+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "21_dominoct",
+    "our_problem": "21_DOMINO_in_8",
     "id": "dominoct_21",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 3.3137,
     "status": "best_known",
     "source_note": "s = 8(\u221a2-1) = 3.31370+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "22_dominoct",
+    "our_problem": "22_DOMINO_in_8",
     "id": "dominoct_22",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 3.318,
     "status": "best_known",
     "source_note": "s = (26-9\u221a2)/4 = 3.31801+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "23_dominoct",
+    "our_problem": "23_DOMINO_in_8",
     "id": "dominoct_23",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 3.388,
     "status": "best_known",
     "source_note": "s = 4(13-5\u221a2)/7 = 3.38796+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "24_dominoct",
+    "our_problem": "24_DOMINO_in_8",
     "id": "dominoct_24",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 3.5068,
     "status": "best_known",
     "source_note": "s = 2\u221a(6-\u221a2-\u221a(20\u221a2-26)) = 3.50679+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "25_dominoct",
+    "our_problem": "25_DOMINO_in_8",
     "id": "dominoct_25",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 3.5068,
     "status": "best_known",
     "source_note": "s = 2\u221a(6-\u221a2-\u221a(20\u221a2-26)) = 3.50679+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "26_dominoct",
+    "our_problem": "26_DOMINO_in_8",
     "id": "dominoct_26",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 3.7279,
     "status": "best_known",
     "source_note": "s = 9(\u221a2-1) = 3.72792+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "27_dominoct",
+    "our_problem": "27_DOMINO_in_8",
     "id": "dominoct_27",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 3.7279,
     "status": "best_known",
     "source_note": "s = 9(\u221a2-1) = 3.72792+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "28_dominoct",
+    "our_problem": "28_DOMINO_in_8",
     "id": "dominoct_28",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 3.7825,
     "status": "best_known",
     "source_note": "s = (42-19\u221a2)/4 = 3.78248+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "29_dominoct",
+    "our_problem": "29_DOMINO_in_8",
     "id": "dominoct_29",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 3.7825,
     "status": "best_known",
     "source_note": "s = (42-19\u221a2)/4 = 3.78248+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "30_dominoct",
+    "our_problem": "30_DOMINO_in_8",
     "id": "dominoct_30",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 3.8076,
     "status": "best_known",
     "source_note": "s = 3.80758+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "31_dominoct",
+    "our_problem": "31_DOMINO_in_8",
     "id": "dominoct_31",
     "source_url": "https://erich-friedman.github.io/packing/dominoct/index.html"
   }

@@ -7,7 +7,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "s = 1 Trivial.",
-    "our_problem": "1_domindom",
+    "our_problem": "1_DOMINO_in_DOMINO",
     "id": "domindom_1",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.971197,
     "status": "best_known",
     "source_note": "s = (2+\u221a2)/\u221a3 = 1.971+ Found by Erich Friedman in April 2026.",
-    "our_problem": "2_domindom",
+    "our_problem": "2_DOMINO_in_DOMINO",
     "id": "domindom_2",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "3_domindom",
+    "our_problem": "3_DOMINO_in_DOMINO",
     "id": "domindom_3",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "4_domindom",
+    "our_problem": "4_DOMINO_in_DOMINO",
     "id": "domindom_4",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.5,
     "status": "trivial",
     "source_note": "s = 5/2 = 2.5 Trivial.",
-    "our_problem": "5_domindom",
+    "our_problem": "5_DOMINO_in_DOMINO",
     "id": "domindom_5",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.916,
     "status": "best_known",
     "source_note": "s = 2.916+ Found by Erich Friedman in April 2026.",
-    "our_problem": "6_domindom",
+    "our_problem": "6_DOMINO_in_DOMINO",
     "id": "domindom_6",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "7_domindom",
+    "our_problem": "7_DOMINO_in_DOMINO",
     "id": "domindom_7",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "8_domindom",
+    "our_problem": "8_DOMINO_in_DOMINO",
     "id": "domindom_8",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 3.0,
     "status": "trivial",
     "source_note": "s = 3 Trivial.",
-    "our_problem": "9_domindom",
+    "our_problem": "9_DOMINO_in_DOMINO",
     "id": "domindom_9",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.5,
     "status": "trivial",
     "source_note": "s = 7/2 = 3.5 Trivial.",
-    "our_problem": "10_domindom",
+    "our_problem": "10_DOMINO_in_DOMINO",
     "id": "domindom_10",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.801041,
     "status": "best_known",
     "source_note": "s = (5+\u221a41)/3 = 3.801+ Found by Maurizio Morandi in April 2026.",
-    "our_problem": "11_domindom",
+    "our_problem": "11_DOMINO_in_DOMINO",
     "id": "domindom_11",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.914214,
     "status": "best_known",
     "source_note": "s = 5/2+\u221a2 = 3.914+ Found by Maurizio Morandi in April 2026.",
-    "our_problem": "12_domindom",
+    "our_problem": "12_DOMINO_in_DOMINO",
     "id": "domindom_12",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "13_domindom",
+    "our_problem": "13_DOMINO_in_DOMINO",
     "id": "domindom_13",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "14_domindom",
+    "our_problem": "14_DOMINO_in_DOMINO",
     "id": "domindom_14",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "15_domindom",
+    "our_problem": "15_DOMINO_in_DOMINO",
     "id": "domindom_15",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "16_domindom",
+    "our_problem": "16_DOMINO_in_DOMINO",
     "id": "domindom_16",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.5,
     "status": "trivial",
     "source_note": "s = 9/2 = 4.5 Trivial.",
-    "our_problem": "17_domindom",
+    "our_problem": "17_DOMINO_in_DOMINO",
     "id": "domindom_17",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 4.5,
     "status": "trivial",
     "source_note": "s = 9/2 = 4.5 Trivial.",
-    "our_problem": "18_domindom",
+    "our_problem": "18_DOMINO_in_DOMINO",
     "id": "domindom_18",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.81066,
     "status": "best_known",
     "source_note": "s = 3(5+\u221a2)/4 = 4.81066+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "19_domindom",
+    "our_problem": "19_DOMINO_in_DOMINO",
     "id": "domindom_19",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 4.95714,
     "status": "best_known",
     "source_note": "s = 4.95714+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "20_domindom",
+    "our_problem": "20_DOMINO_in_DOMINO",
     "id": "domindom_20",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "21_domindom",
+    "our_problem": "21_DOMINO_in_DOMINO",
     "id": "domindom_21",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "22_domindom",
+    "our_problem": "22_DOMINO_in_DOMINO",
     "id": "domindom_22",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "23_domindom",
+    "our_problem": "23_DOMINO_in_DOMINO",
     "id": "domindom_23",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "24_domindom",
+    "our_problem": "24_DOMINO_in_DOMINO",
     "id": "domindom_24",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 5.0,
     "status": "trivial",
     "source_note": "s = 5 Trivial.",
-    "our_problem": "25_domindom",
+    "our_problem": "25_DOMINO_in_DOMINO",
     "id": "domindom_25",
     "source_url": "https://erich-friedman.github.io/packing/domindom/index.html"
   }

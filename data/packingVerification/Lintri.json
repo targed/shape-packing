@@ -7,7 +7,7 @@
     "best_value": 3.64492,
     "status": "trivial",
     "source_note": "s = 2\u221a2 + \u221a6/3 = 3.64492+ Trivial.",
-    "our_problem": "1_Lintri",
+    "our_problem": "1_L_in_3",
     "id": "Lintri_1",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 5.1547,
     "status": "trivial",
     "source_note": "s = 4 + 2/\u221a3 = 5.15470+ Trivial.",
-    "our_problem": "2_Lintri",
+    "our_problem": "2_L_in_3",
     "id": "Lintri_2",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 5.59807,
     "status": "best_known",
     "source_note": "s = 3 + 3\u221a3/2 = 5.59807+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "3_Lintri",
+    "our_problem": "3_L_in_3",
     "id": "Lintri_3",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 6.58646,
     "status": "best_known",
     "source_note": "s = 6.58646+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_Lintri",
+    "our_problem": "4_L_in_3",
     "id": "Lintri_4",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 7.1547,
     "status": "best_known",
     "source_note": "s = 6 + 2/\u221a3 = 7.15470+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_Lintri",
+    "our_problem": "5_L_in_3",
     "id": "Lintri_5",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 7.4641,
     "status": "best_known",
     "source_note": "s = 4 + 2\u221a3 = 7.46410+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "6_Lintri",
+    "our_problem": "6_L_in_3",
     "id": "Lintri_6",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 8.15469,
     "status": "best_known",
     "source_note": "s = 7 + 2/\u221a3 = 8.15469+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_Lintri",
+    "our_problem": "7_L_in_3",
     "id": "Lintri_7",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 8.73205,
     "status": "best_known",
     "source_note": "s = 7 + \u221a3 = 8.73205+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_Lintri",
+    "our_problem": "8_L_in_3",
     "id": "Lintri_8",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 9.04145,
     "status": "best_known",
     "source_note": "s = 5 + 7/\u221a3 = 9.04145+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "9_Lintri",
+    "our_problem": "9_L_in_3",
     "id": "Lintri_9",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 9.4641,
     "status": "best_known",
     "source_note": "s = 6 + 2\u221a3 = 9.46410+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "10_Lintri",
+    "our_problem": "10_L_in_3",
     "id": "Lintri_10",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 9.7735,
     "status": "best_known",
     "source_note": "s = 4 + 10/\u221a3 = 9.77350+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "11_Lintri",
+    "our_problem": "11_L_in_3",
     "id": "Lintri_11",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 10.30194,
     "status": "best_known",
     "source_note": "s = 10.30194+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "12_Lintri",
+    "our_problem": "12_L_in_3",
     "id": "Lintri_12",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 10.73205,
     "status": "best_known",
     "source_note": "s = 9 + \u221a3 = 10.73205+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "13_Lintri",
+    "our_problem": "13_L_in_3",
     "id": "Lintri_13",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 11.04145,
     "status": "best_known",
     "source_note": "s = 7 + 7/\u221a3 = 11.04145+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "14_Lintri",
+    "our_problem": "14_L_in_3",
     "id": "Lintri_14",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 11.35085,
     "status": "best_known",
     "source_note": "s = 5 + 11/\u221a3 = 11.35085+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "15_Lintri",
+    "our_problem": "15_L_in_3",
     "id": "Lintri_15",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 11.73205,
     "status": "best_known",
     "source_note": "s = 10 + \u221a3 = 11.73205+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "16_Lintri",
+    "our_problem": "16_L_in_3",
     "id": "Lintri_16",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 12.0829,
     "status": "best_known",
     "source_note": "s = 4 + 14/\u221a3 = 12.08290+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "17_Lintri",
+    "our_problem": "17_L_in_3",
     "id": "Lintri_17",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 12.4641,
     "status": "best_known",
     "source_note": "s = 9 + 2\u221a3 = 12.46410+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "18_Lintri",
+    "our_problem": "18_L_in_3",
     "id": "Lintri_18",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 12.73205,
     "status": "best_known",
     "source_note": "s = 11 + \u221a3 = 12.73205+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "19_Lintri",
+    "our_problem": "19_L_in_3",
     "id": "Lintri_19",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 13.00966,
     "status": "best_known",
     "source_note": "s = 13.00966+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "20_Lintri",
+    "our_problem": "20_L_in_3",
     "id": "Lintri_20",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 13.30935,
     "status": "best_known",
     "source_note": "s = 13.30935+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "21_Lintri",
+    "our_problem": "21_L_in_3",
     "id": "Lintri_21",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 13.547,
     "status": "best_known",
     "source_note": "s = 2 + 20/\u221a3 = 13.54700+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "22_Lintri",
+    "our_problem": "22_L_in_3",
     "id": "Lintri_22",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 14.19776,
     "status": "best_known",
     "source_note": "s = 14.19776+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "23_Lintri",
+    "our_problem": "23_L_in_3",
     "id": "Lintri_23",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 15.01713,
     "status": "best_known",
     "source_note": "s = 15.01713+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "24_Lintri",
+    "our_problem": "24_L_in_3",
     "id": "Lintri_24",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 15.20151,
     "status": "best_known",
     "source_note": "s = 15.20151+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "25_Lintri",
+    "our_problem": "25_L_in_3",
     "id": "Lintri_25",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 15.22482,
     "status": "best_known",
     "source_note": "s = 15.22482+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "26_Lintri",
+    "our_problem": "26_L_in_3",
     "id": "Lintri_26",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 15.65894,
     "status": "best_known",
     "source_note": "s = 15.65894+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "27_Lintri",
+    "our_problem": "27_L_in_3",
     "id": "Lintri_27",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 16.19521,
     "status": "best_known",
     "source_note": "s = 16.19521+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "28_Lintri",
+    "our_problem": "28_L_in_3",
     "id": "Lintri_28",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 16.42202,
     "status": "best_known",
     "source_note": "s = 16.42202+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "29_Lintri",
+    "our_problem": "29_L_in_3",
     "id": "Lintri_29",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 16.46648,
     "status": "best_known",
     "source_note": "s = 16.46648+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "30_Lintri",
+    "our_problem": "30_L_in_3",
     "id": "Lintri_30",
     "source_url": "https://erich-friedman.github.io/packing/Lintri/index.html"
   }

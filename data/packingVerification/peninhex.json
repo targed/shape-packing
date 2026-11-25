@@ -7,7 +7,7 @@
     "best_value": 0.929,
     "status": "trivial",
     "source_note": "s = 0.92900+ Trivial.",
-    "our_problem": "1_peninhex",
+    "our_problem": "1_5_in_6",
     "id": "peninhex_1",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.5388,
     "status": "trivial",
     "source_note": "s = 1.53879+ Trivial.",
-    "our_problem": "2_peninhex",
+    "our_problem": "2_5_in_6",
     "id": "peninhex_2",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.7324,
     "status": "trivial",
     "source_note": "s = 1.73240+ Trivial.",
-    "our_problem": "3_peninhex",
+    "our_problem": "3_5_in_6",
     "id": "peninhex_3",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.9767,
     "status": "best_known",
     "source_note": "s = 1.97666+ Found by Ethan Riddle in May 2026.",
-    "our_problem": "4_peninhex",
+    "our_problem": "4_5_in_6",
     "id": "peninhex_4",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.2182,
     "status": "best_known",
     "source_note": "s = 2.21822+ Found by Nicolas Campailla in May 2026.",
-    "our_problem": "5_peninhex",
+    "our_problem": "5_5_in_6",
     "id": "peninhex_5",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.3229,
     "status": "best_known",
     "source_note": "s = 2.32293+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "6_peninhex",
+    "our_problem": "6_5_in_6",
     "id": "peninhex_6",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 2.3653,
     "status": "best_known",
     "source_note": "s = 2.36527+ Found by Nicolas Campailla in May 2026.",
-    "our_problem": "7_peninhex",
+    "our_problem": "7_5_in_6",
     "id": "peninhex_7",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 2.7192,
     "status": "best_known",
     "source_note": "s = 2.71922+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "8_peninhex",
+    "our_problem": "8_5_in_6",
     "id": "peninhex_8",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 2.8697,
     "status": "best_known",
     "source_note": "s = 2.86967+ Found by Nicolas Campailla in May 2026.",
-    "our_problem": "9_peninhex",
+    "our_problem": "9_5_in_6",
     "id": "peninhex_9",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 2.9366,
     "status": "best_known",
     "source_note": "s = 2.93664+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "10_peninhex",
+    "our_problem": "10_5_in_6",
     "id": "peninhex_10",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.1612,
     "status": "best_known",
     "source_note": "s = 3.16125+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_peninhex",
+    "our_problem": "11_5_in_6",
     "id": "peninhex_11",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.2146,
     "status": "best_known",
     "source_note": "s = 3.21458+ Found by Jake Loyd in June 2026.",
-    "our_problem": "12_peninhex",
+    "our_problem": "12_5_in_6",
     "id": "peninhex_12",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 3.4091,
     "status": "best_known",
     "source_note": "s = 3.40910+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "13_peninhex",
+    "our_problem": "13_5_in_6",
     "id": "peninhex_13",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 3.4664,
     "status": "best_known",
     "source_note": "s = 3.46643+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "14_peninhex",
+    "our_problem": "14_5_in_6",
     "id": "peninhex_14",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 3.635,
     "status": "best_known",
     "source_note": "s = 3.63499+ Found by Jake Loyd in June 2026.",
-    "our_problem": "15_peninhex",
+    "our_problem": "15_5_in_6",
     "id": "peninhex_15",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 3.699,
     "status": "best_known",
     "source_note": "s = 3.69896+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "16_peninhex",
+    "our_problem": "16_5_in_6",
     "id": "peninhex_16",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 3.7577,
     "status": "best_known",
     "source_note": "s = 3.75774+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "17_peninhex",
+    "our_problem": "17_5_in_6",
     "id": "peninhex_17",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 3.8448,
     "status": "best_known",
     "source_note": "s = 3.84479+ Found by Jake Loyd in June 2026.",
-    "our_problem": "18_peninhex",
+    "our_problem": "18_5_in_6",
     "id": "peninhex_18",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 3.8827,
     "status": "best_known",
     "source_note": "s = 3.88272+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "19_peninhex",
+    "our_problem": "19_5_in_6",
     "id": "peninhex_19",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 4.1405,
     "status": "best_known",
     "source_note": "s = 4.14048+ Found by Jake Loyd in June 2026.",
-    "our_problem": "20_peninhex",
+    "our_problem": "20_5_in_6",
     "id": "peninhex_20",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 4.24,
     "status": "best_known",
     "source_note": "s = 4.24003+ Found by Jake Loyd in June 2026.",
-    "our_problem": "21_peninhex",
+    "our_problem": "21_5_in_6",
     "id": "peninhex_21",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 4.3244,
     "status": "best_known",
     "source_note": "s = 4.32443+ Found by Jake Loyd in June 2026.",
-    "our_problem": "22_peninhex",
+    "our_problem": "22_5_in_6",
     "id": "peninhex_22",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 4.397,
     "status": "best_known",
     "source_note": "s = 4.39703+ Found by Jake Loyd in June 2026.",
-    "our_problem": "23_peninhex",
+    "our_problem": "23_5_in_6",
     "id": "peninhex_23",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 4.4636,
     "status": "best_known",
     "source_note": "s = 4.46360+ Found by Jake Loyd in June 2026.",
-    "our_problem": "24_peninhex",
+    "our_problem": "24_5_in_6",
     "id": "peninhex_24",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 4.5786,
     "status": "best_known",
     "source_note": "s = 4.57861+ Found by Jake Loyd in June 2026.",
-    "our_problem": "25_peninhex",
+    "our_problem": "25_5_in_6",
     "id": "peninhex_25",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 4.6603,
     "status": "best_known",
     "source_note": "s = 4.66031+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "26_peninhex",
+    "our_problem": "26_5_in_6",
     "id": "peninhex_26",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 4.7176,
     "status": "best_known",
     "source_note": "s = 4.71756+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "27_peninhex",
+    "our_problem": "27_5_in_6",
     "id": "peninhex_27",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 4.844,
     "status": "best_known",
     "source_note": "s = 4.84395+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "28_peninhex",
+    "our_problem": "28_5_in_6",
     "id": "peninhex_28",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 4.91,
     "status": "best_known",
     "source_note": "s = 4.91003+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "29_peninhex",
+    "our_problem": "29_5_in_6",
     "id": "peninhex_29",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 4.9641,
     "status": "best_known",
     "source_note": "s = 4.96406+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "30_peninhex",
+    "our_problem": "30_5_in_6",
     "id": "peninhex_30",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 5.0924,
     "status": "best_known",
     "source_note": "s = 5.09241+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "31_peninhex",
+    "our_problem": "31_5_in_6",
     "id": "peninhex_31",
     "source_url": "https://erich-friedman.github.io/packing/peninhex/index.html"
   }

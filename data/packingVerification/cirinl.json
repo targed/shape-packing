@@ -6,8 +6,8 @@
     "container_shape": "L",
     "best_value": 3.414214,
     "status": "trivial",
-    "source_note": "s = 2 + √2 = 3.414+ Trivial.",
-    "our_problem": "1_cirinl",
+    "source_note": "s = 2 + \u221a2 = 3.414+ Trivial.",
+    "our_problem": "1_CIRCLE_in_L",
     "id": "cirinl_1",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "2_cirinl",
+    "our_problem": "2_CIRCLE_in_L",
     "id": "cirinl_2",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 4.0,
     "status": "trivial",
     "source_note": "s = 4 Trivial.",
-    "our_problem": "3_cirinl",
+    "our_problem": "3_CIRCLE_in_L",
     "id": "cirinl_3",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 5.304,
     "status": "best_known",
     "source_note": "s = 5.304+ Found by Erich Friedman in June 2005.",
-    "our_problem": "4_cirinl",
+    "our_problem": "4_CIRCLE_in_L",
     "id": "cirinl_4",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 5.78,
     "status": "best_known",
     "source_note": "s = 5.780+ Found by David W. Cantrell in June 2005.",
-    "our_problem": "5_cirinl",
+    "our_problem": "5_CIRCLE_in_L",
     "id": "cirinl_5",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 6.416,
     "status": "best_known",
     "source_note": "s = 6.416+ Found by David W. Cantrell in June 2005.",
-    "our_problem": "6_cirinl",
+    "our_problem": "6_CIRCLE_in_L",
     "id": "cirinl_6",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 6.787,
     "status": "best_known",
     "source_note": "s = 6.787+ Found by David W. Cantrell in June 2005.",
-    "our_problem": "7_cirinl",
+    "our_problem": "7_CIRCLE_in_L",
     "id": "cirinl_7",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 7.116,
     "status": "best_known",
     "source_note": "s = 7.116+ Found by Erich Friedman in June 2005.",
-    "our_problem": "8_cirinl",
+    "our_problem": "8_CIRCLE_in_L",
     "id": "cirinl_8",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -102,8 +102,8 @@
     "container_shape": "L",
     "best_value": 7.328201,
     "status": "best_known",
-    "source_note": "s = 4 + 12/√13 = 7.328+ Found by Erich Friedman in June 2005.",
-    "our_problem": "9_cirinl",
+    "source_note": "s = 4 + 12/\u221a13 = 7.328+ Found by Erich Friedman in June 2005.",
+    "our_problem": "9_CIRCLE_in_L",
     "id": "cirinl_9",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 7.628,
     "status": "best_known",
     "source_note": "s = 7.628+ Found by Erich Friedman in June 2005.",
-    "our_problem": "10_cirinl",
+    "our_problem": "10_CIRCLE_in_L",
     "id": "cirinl_10",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -126,8 +126,8 @@
     "container_shape": "L",
     "best_value": 7.863703,
     "status": "best_known",
-    "source_note": "s = 4 + √2 + √6 = 7.863+ Found by David W. Cantrell in January 2006.",
-    "our_problem": "11_cirinl",
+    "source_note": "s = 4 + \u221a2 + \u221a6 = 7.863+ Found by David W. Cantrell in January 2006.",
+    "our_problem": "11_CIRCLE_in_L",
     "id": "cirinl_11",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 8.0,
     "status": "trivial",
     "source_note": "s = 8 Trivial.",
-    "our_problem": "12_cirinl",
+    "our_problem": "12_CIRCLE_in_L",
     "id": "cirinl_12",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 8.812,
     "status": "best_known",
     "source_note": "s = 8.812+ Found by David W. Cantrell in January 2006.",
-    "our_problem": "13_cirinl",
+    "our_problem": "13_CIRCLE_in_L",
     "id": "cirinl_13",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 9.085,
     "status": "best_known",
     "source_note": "s = 9.085+ Found by David W. Cantrell in January 2006.",
-    "our_problem": "14_cirinl",
+    "our_problem": "14_CIRCLE_in_L",
     "id": "cirinl_14",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 9.412,
     "status": "best_known",
     "source_note": "s = 9.412+ Found by David W. Cantrell in January 2006.",
-    "our_problem": "15_cirinl",
+    "our_problem": "15_CIRCLE_in_L",
     "id": "cirinl_15",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 9.635,
     "status": "best_known",
     "source_note": "s = 9.635+ Found by David W. Cantrell in January 2006.",
-    "our_problem": "16_cirinl",
+    "our_problem": "16_CIRCLE_in_L",
     "id": "cirinl_16",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 10.00425,
     "status": "best_known",
     "source_note": "s = 10.00425+ Found by Tej Stead in June 2026.",
-    "our_problem": "17_cirinl",
+    "our_problem": "17_CIRCLE_in_L",
     "id": "cirinl_17",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 10.27388,
     "status": "best_known",
     "source_note": "s = 10.27388+ Found by Tej Stead in June 2026.",
-    "our_problem": "18_cirinl",
+    "our_problem": "18_CIRCLE_in_L",
     "id": "cirinl_18",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 10.46489,
     "status": "best_known",
     "source_note": "s = 10.46489+ Found by Tej Stead in June 2026.",
-    "our_problem": "19_cirinl",
+    "our_problem": "19_CIRCLE_in_L",
     "id": "cirinl_19",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 10.61664,
     "status": "best_known",
     "source_note": "s = 10.61664+ Found by Tej Stead in June 2026.",
-    "our_problem": "20_cirinl",
+    "our_problem": "20_CIRCLE_in_L",
     "id": "cirinl_20",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 10.82564,
     "status": "best_known",
     "source_note": "s = 10.82564+ Found by Tej Stead in June 2026.",
-    "our_problem": "21_cirinl",
+    "our_problem": "21_CIRCLE_in_L",
     "id": "cirinl_21",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 10.89927,
     "status": "best_known",
     "source_note": "s = 10.89927+ Found by Tej Stead in June 2026.",
-    "our_problem": "22_cirinl",
+    "our_problem": "22_CIRCLE_in_L",
     "id": "cirinl_22",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 11.21781,
     "status": "best_known",
     "source_note": "s = 11.21781+ Found by Tej Stead in June 2026.",
-    "our_problem": "23_cirinl",
+    "our_problem": "23_CIRCLE_in_L",
     "id": "cirinl_23",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 11.41224,
     "status": "best_known",
     "source_note": "s = 11.41224+ Found by Tej Stead in June 2026.",
-    "our_problem": "24_cirinl",
+    "our_problem": "24_CIRCLE_in_L",
     "id": "cirinl_24",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 11.7127,
     "status": "best_known",
     "source_note": "s = 11.71270+ Found by Tej Stead in June 2026.",
-    "our_problem": "25_cirinl",
+    "our_problem": "25_CIRCLE_in_L",
     "id": "cirinl_25",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 11.86038,
     "status": "best_known",
     "source_note": "s = 11.86038+ Found by Tej Stead in June 2026.",
-    "our_problem": "26_cirinl",
+    "our_problem": "26_CIRCLE_in_L",
     "id": "cirinl_26",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -318,8 +318,8 @@
     "container_shape": "L",
     "best_value": 12.0,
     "status": "trivial",
-    "source_note": "s = 12 Trivial  ",
-    "our_problem": "27_cirinl",
+    "source_note": "s = 12 Trivial \u00a0",
+    "our_problem": "27_CIRCLE_in_L",
     "id": "cirinl_27",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 12.4968,
     "status": "best_known",
     "source_note": "s = 12.49680+ Found by Tej Stead in June 2026.",
-    "our_problem": "28_cirinl",
+    "our_problem": "28_CIRCLE_in_L",
     "id": "cirinl_28",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 12.67553,
     "status": "best_known",
     "source_note": "s = 12.67553+ Found by Tej Stead in June 2026.",
-    "our_problem": "29_cirinl",
+    "our_problem": "29_CIRCLE_in_L",
     "id": "cirinl_29",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 12.94284,
     "status": "best_known",
     "source_note": "s = 12.94284+ Found by Tej Stead in June 2026.",
-    "our_problem": "30_cirinl",
+    "our_problem": "30_CIRCLE_in_L",
     "id": "cirinl_30",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 13.12408,
     "status": "best_known",
     "source_note": "s = 13.12408+ Found by Tej Stead in June 2026.",
-    "our_problem": "31_cirinl",
+    "our_problem": "31_CIRCLE_in_L",
     "id": "cirinl_31",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -379,7 +379,7 @@
     "best_value": 13.30282,
     "status": "best_known",
     "source_note": "s = 13.30282+ Found by Tej Stead in June 2026.",
-    "our_problem": "32_cirinl",
+    "our_problem": "32_CIRCLE_in_L",
     "id": "cirinl_32",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -391,7 +391,7 @@
     "best_value": 13.53047,
     "status": "best_known",
     "source_note": "s = 13.53047+ Found by Tej Stead in June 2026.",
-    "our_problem": "33_cirinl",
+    "our_problem": "33_CIRCLE_in_L",
     "id": "cirinl_33",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -403,7 +403,7 @@
     "best_value": 13.72415,
     "status": "best_known",
     "source_note": "s = 13.72415+ Found by Tej Stead in June 2026.",
-    "our_problem": "34_cirinl",
+    "our_problem": "34_CIRCLE_in_L",
     "id": "cirinl_34",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -415,7 +415,7 @@
     "best_value": 13.87599,
     "status": "best_known",
     "source_note": "s = 13.87599+ Found by Tej Stead in June 2026.",
-    "our_problem": "35_cirinl",
+    "our_problem": "35_CIRCLE_in_L",
     "id": "cirinl_35",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -427,7 +427,7 @@
     "best_value": 14.01152,
     "status": "best_known",
     "source_note": "s = 14.01152+ Found by Tej Stead in June 2026.",
-    "our_problem": "36_cirinl",
+    "our_problem": "36_CIRCLE_in_L",
     "id": "cirinl_36",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -439,7 +439,7 @@
     "best_value": 14.10954,
     "status": "best_known",
     "source_note": "s = 14.10954+ Found by Tej Stead in June 2026.",
-    "our_problem": "37_cirinl",
+    "our_problem": "37_CIRCLE_in_L",
     "id": "cirinl_37",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -451,7 +451,7 @@
     "best_value": 14.23736,
     "status": "best_known",
     "source_note": "s = 14.23736+ Found by Tej Stead in June 2026.",
-    "our_problem": "38_cirinl",
+    "our_problem": "38_CIRCLE_in_L",
     "id": "cirinl_38",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -463,7 +463,7 @@
     "best_value": 14.30561,
     "status": "best_known",
     "source_note": "s = 14.30561+ Found by Tej Stead in June 2026.",
-    "our_problem": "39_cirinl",
+    "our_problem": "39_CIRCLE_in_L",
     "id": "cirinl_39",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -475,7 +475,7 @@
     "best_value": 14.54974,
     "status": "best_known",
     "source_note": "s = 14.54974+ Found by Tej Stead in June 2026.",
-    "our_problem": "40_cirinl",
+    "our_problem": "40_CIRCLE_in_L",
     "id": "cirinl_40",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -487,7 +487,7 @@
     "best_value": 14.69163,
     "status": "best_known",
     "source_note": "s = 14.69163+ Found by Tej Stead in June 2026.",
-    "our_problem": "41_cirinl",
+    "our_problem": "41_CIRCLE_in_L",
     "id": "cirinl_41",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -499,7 +499,7 @@
     "best_value": 14.90788,
     "status": "best_known",
     "source_note": "s = 14.90788+ Found by Tej Stead in June 2026.",
-    "our_problem": "42_cirinl",
+    "our_problem": "42_CIRCLE_in_L",
     "id": "cirinl_42",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -511,7 +511,7 @@
     "best_value": 15.06571,
     "status": "best_known",
     "source_note": "s = 15.06571+ Found by Tej Stead in June 2026.",
-    "our_problem": "43_cirinl",
+    "our_problem": "43_CIRCLE_in_L",
     "id": "cirinl_43",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -523,7 +523,7 @@
     "best_value": 15.27022,
     "status": "best_known",
     "source_note": "s = 15.27022+ Found by Tej Stead in June 2026.",
-    "our_problem": "44_cirinl",
+    "our_problem": "44_CIRCLE_in_L",
     "id": "cirinl_44",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -535,7 +535,7 @@
     "best_value": 15.43636,
     "status": "best_known",
     "source_note": "s = 15.43636+ Found by Tej Stead in June 2026.",
-    "our_problem": "45_cirinl",
+    "our_problem": "45_CIRCLE_in_L",
     "id": "cirinl_45",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -547,7 +547,7 @@
     "best_value": 15.71359,
     "status": "best_known",
     "source_note": "s = 15.71359+ Found by Tej Stead in June 2026.",
-    "our_problem": "46_cirinl",
+    "our_problem": "46_CIRCLE_in_L",
     "id": "cirinl_46",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -559,7 +559,7 @@
     "best_value": 15.86302,
     "status": "best_known",
     "source_note": "s = 15.86302+ Found by Tej Stead in June 2026.",
-    "our_problem": "47_cirinl",
+    "our_problem": "47_CIRCLE_in_L",
     "id": "cirinl_47",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -571,7 +571,7 @@
     "best_value": 15.98311,
     "status": "best_known",
     "source_note": "s = 15.98311+ Found by Tej Stead in June 2026.",
-    "our_problem": "48_cirinl",
+    "our_problem": "48_CIRCLE_in_L",
     "id": "cirinl_48",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -583,7 +583,7 @@
     "best_value": 16.21857,
     "status": "best_known",
     "source_note": "s = 16.21857+ Found by Tej Stead in June 2026.",
-    "our_problem": "49_cirinl",
+    "our_problem": "49_CIRCLE_in_L",
     "id": "cirinl_49",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   },
@@ -595,7 +595,7 @@
     "best_value": 16.43969,
     "status": "best_known",
     "source_note": "s = 16.43969+ Found by Tej Stead in June 2026.",
-    "our_problem": "50_cirinl",
+    "our_problem": "50_CIRCLE_in_L",
     "id": "cirinl_50",
     "source_url": "https://erich-friedman.github.io/packing/cirinl/index.html"
   }

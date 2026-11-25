@@ -7,7 +7,7 @@
     "best_value": 0.61237,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_triinL",
+    "our_problem": "1_3_in_L",
     "id": "triinL_1",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 0.86602,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "2_triinL",
+    "our_problem": "2_3_in_L",
     "id": "triinL_2",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 0.86602,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "3_triinL",
+    "our_problem": "3_3_in_L",
     "id": "triinL_3",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 0.92423,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "4_triinL",
+    "our_problem": "4_3_in_L",
     "id": "triinL_4",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.0,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "5_triinL",
+    "our_problem": "5_3_in_L",
     "id": "triinL_5",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.12037,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "6_triinL",
+    "our_problem": "6_3_in_L",
     "id": "triinL_6",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 1.17127,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "7_triinL",
+    "our_problem": "7_3_in_L",
     "id": "triinL_7",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 1.27527,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "8_triinL",
+    "our_problem": "8_3_in_L",
     "id": "triinL_8",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 1.32893,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "9_triinL",
+    "our_problem": "9_3_in_L",
     "id": "triinL_9",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 1.3937,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "10_triinL",
+    "our_problem": "10_3_in_L",
     "id": "triinL_10",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 1.46116,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "11_triinL",
+    "our_problem": "11_3_in_L",
     "id": "triinL_11",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 1.5,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "12_triinL",
+    "our_problem": "12_3_in_L",
     "id": "triinL_12",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 1.56571,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "13_triinL",
+    "our_problem": "13_3_in_L",
     "id": "triinL_13",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 1.62225,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "14_triinL",
+    "our_problem": "14_3_in_L",
     "id": "triinL_14",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 1.68012,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "15_triinL",
+    "our_problem": "15_3_in_L",
     "id": "triinL_15",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 1.72307,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "16_triinL",
+    "our_problem": "16_3_in_L",
     "id": "triinL_16",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 1.73204,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "17_triinL",
+    "our_problem": "17_3_in_L",
     "id": "triinL_17",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 1.75029,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "18_triinL",
+    "our_problem": "18_3_in_L",
     "id": "triinL_18",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 1.82181,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "19_triinL",
+    "our_problem": "19_3_in_L",
     "id": "triinL_19",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 1.86706,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "20_triinL",
+    "our_problem": "20_3_in_L",
     "id": "triinL_20",
     "source_url": "https://erich-friedman.github.io/packing/triinL/index.html"
   }

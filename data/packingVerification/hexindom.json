@@ -6,8 +6,8 @@
     "container_shape": "domino",
     "best_value": 1.7321,
     "status": "trivial",
-    "source_note": "s = √3 = 1.73205+ Trivial.",
-    "our_problem": "1_hexindom",
+    "source_note": "s = \u221a3 = 1.73205+ Trivial.",
+    "our_problem": "1_6_in_DOMINO",
     "id": "hexindom_1",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.8946,
     "status": "best_known",
     "source_note": "s = 1.8946+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "2_hexindom",
+    "our_problem": "2_6_in_DOMINO",
     "id": "hexindom_2",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -30,8 +30,8 @@
     "container_shape": "domino",
     "best_value": 2.5359,
     "status": "best_known",
-    "source_note": "s = 6-2√3 = 2.53589+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "3_hexindom",
+    "source_note": "s = 6-2\u221a3 = 2.53589+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "3_6_in_DOMINO",
     "id": "hexindom_3",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -42,8 +42,8 @@
     "container_shape": "domino",
     "best_value": 2.9474,
     "status": "best_known",
-    "source_note": "s = 22-11√3 = 2.94744+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "4_hexindom",
+    "source_note": "s = 22-11\u221a3 = 2.94744+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "4_6_in_DOMINO",
     "id": "hexindom_4",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -54,8 +54,8 @@
     "container_shape": "domino",
     "best_value": 3.2487,
     "status": "best_known",
-    "source_note": "s = 7(2√3-3) = 3.24871+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "5_hexindom",
+    "source_note": "s = 7(2\u221a3-3) = 3.24871+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "5_6_in_DOMINO",
     "id": "hexindom_5",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -66,8 +66,8 @@
     "container_shape": "domino",
     "best_value": 3.412,
     "status": "best_known",
-    "source_note": "s = 21(15-2√3)/71 = 3.41202+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "6_hexindom",
+    "source_note": "s = 21(15-2\u221a3)/71 = 3.41202+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "6_6_in_DOMINO",
     "id": "hexindom_6",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.4872,
     "status": "best_known",
     "source_note": "s = 3.48722+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "7_hexindom",
+    "our_problem": "7_6_in_DOMINO",
     "id": "hexindom_7",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 3.6906,
     "status": "best_known",
     "source_note": "s = 3.6906+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "8_hexindom",
+    "our_problem": "8_6_in_DOMINO",
     "id": "hexindom_8",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -102,8 +102,8 @@
     "container_shape": "domino",
     "best_value": 4.06,
     "status": "best_known",
-    "source_note": "s = (36+5√3)/11 = 4.06002+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "9_hexindom",
+    "source_note": "s = (36+5\u221a3)/11 = 4.06002+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "9_6_in_DOMINO",
     "id": "hexindom_9",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -114,8 +114,8 @@
     "container_shape": "domino",
     "best_value": 4.1769,
     "status": "best_known",
-    "source_note": "s = 9(2√3-3) = 4.17691+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "10_hexindom",
+    "source_note": "s = 9(2\u221a3-3) = 4.17691+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "10_6_in_DOMINO",
     "id": "hexindom_10",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 4.5036,
     "status": "best_known",
     "source_note": "s = 4.5036+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "11_hexindom",
+    "our_problem": "11_6_in_DOMINO",
     "id": "hexindom_11",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -138,8 +138,8 @@
     "container_shape": "domino",
     "best_value": 4.6136,
     "status": "best_known",
-    "source_note": "s = 41(18-5√3)/83 = 4.6136+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "12_hexindom",
+    "source_note": "s = 41(18-5\u221a3)/83 = 4.6136+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "12_6_in_DOMINO",
     "id": "hexindom_12",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 4.8137,
     "status": "best_known",
     "source_note": "s = 4.8137+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "13_hexindom",
+    "our_problem": "13_6_in_DOMINO",
     "id": "hexindom_13",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -162,8 +162,8 @@
     "container_shape": "domino",
     "best_value": 4.8499,
     "status": "best_known",
-    "source_note": "s = 25(6-√3)/22 = 4.84994+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "14_hexindom",
+    "source_note": "s = 25(6-\u221a3)/22 = 4.84994+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "14_6_in_DOMINO",
     "id": "hexindom_14",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -174,8 +174,8 @@
     "container_shape": "domino",
     "best_value": 4.9516,
     "status": "best_known",
-    "source_note": "s = 56(27-4√3)/227 = 4.95163+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "15_hexindom",
+    "source_note": "s = 56(27-4\u221a3)/227 = 4.95163+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "15_6_in_DOMINO",
     "id": "hexindom_15",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -186,8 +186,8 @@
     "container_shape": "domino",
     "best_value": 5.1962,
     "status": "trivial",
-    "source_note": "s = 3√3 = 5.19615+ Trivial.",
-    "our_problem": "16_hexindom",
+    "source_note": "s = 3\u221a3 = 5.19615+ Trivial.",
+    "our_problem": "16_6_in_DOMINO",
     "id": "hexindom_16",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -198,8 +198,8 @@
     "container_shape": "domino",
     "best_value": 5.1962,
     "status": "trivial",
-    "source_note": "s = 3√3 = 5.19615+ Trivial.",
-    "our_problem": "17_hexindom",
+    "source_note": "s = 3\u221a3 = 5.19615+ Trivial.",
+    "our_problem": "17_6_in_DOMINO",
     "id": "hexindom_17",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -210,8 +210,8 @@
     "container_shape": "domino",
     "best_value": 5.4082,
     "status": "best_known",
-    "source_note": "s = 31(4-√3)/13 = 5.40818+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "18_hexindom",
+    "source_note": "s = 31(4-\u221a3)/13 = 5.40818+ Found by Jonathan Viquerat in April 2026.",
+    "our_problem": "18_6_in_DOMINO",
     "id": "hexindom_18",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 5.6523,
     "status": "best_known",
     "source_note": "s = 5.65232+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "19_hexindom",
+    "our_problem": "19_6_in_DOMINO",
     "id": "hexindom_19",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 5.8012,
     "status": "best_known",
     "source_note": "s = 5.8012+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "20_hexindom",
+    "our_problem": "20_6_in_DOMINO",
     "id": "hexindom_20",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 5.8564,
     "status": "best_known",
     "source_note": "s = 5.85640+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "21_hexindom",
+    "our_problem": "21_6_in_DOMINO",
     "id": "hexindom_21",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 6.0694,
     "status": "best_known",
     "source_note": "s = 6.06945+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "22_hexindom",
+    "our_problem": "22_6_in_DOMINO",
     "id": "hexindom_22",
     "source_url": "https://erich-friedman.github.io/packing/hexindom/index.html"
   }

@@ -4,11 +4,17 @@ from __future__ import annotations
 
 import json
 import math
+import sys
 import urllib.request
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT / "src") not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT / "src"))
+
+from shape_packing.catalog import canonical_problem_id
+
 PV_DIR = PROJECT_ROOT / "data" / "packingVerification"
 
 PACKOMANIA_SOURCES: List[Dict[str, Any]] = [
@@ -172,7 +178,7 @@ def fetch_and_import_all(pv_dir: Path = PV_DIR) -> Dict[str, int]:
                     "status": status,
                     "tier": "benchmark",
                     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-                    "our_problem": f"{n}_{spec['our_suffix']}",
+                    "our_problem": canonical_problem_id(n, "circle", spec["container_shape"]),
                     "id": f"{fam}_{n}",
                     "source_url": spec["page_url"],
                 }

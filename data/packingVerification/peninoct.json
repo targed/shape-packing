@@ -7,7 +7,7 @@
     "best_value": 0.6974,
     "status": "trivial",
     "source_note": "s = 0.69741+ Trivial.",
-    "our_problem": "1_peninoct",
+    "our_problem": "1_5_in_8",
     "id": "peninoct_1",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.1777,
     "status": "trivial",
     "source_note": "s = 1.17774+ Trivial.",
-    "our_problem": "2_peninoct",
+    "our_problem": "2_5_in_8",
     "id": "peninoct_2",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.2895,
     "status": "best_known",
     "source_note": "s = 1.28954+ Found by Nicolas Campailla in May 2026.",
-    "our_problem": "3_peninoct",
+    "our_problem": "3_5_in_8",
     "id": "peninoct_3",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.4299,
     "status": "trivial",
     "source_note": "s = 1.42986+ Trivial.",
-    "our_problem": "4_peninoct",
+    "our_problem": "4_5_in_8",
     "id": "peninoct_4",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.6176,
     "status": "best_known",
     "source_note": "s = 1.61756+ Found by Nicolas Campailla in May 2026.",
-    "our_problem": "5_peninoct",
+    "our_problem": "5_5_in_8",
     "id": "peninoct_5",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.78,
     "status": "best_known",
     "source_note": "s = 1.78003+ Found by Nicolas Campailla in May 2026.",
-    "our_problem": "6_peninoct",
+    "our_problem": "6_5_in_8",
     "id": "peninoct_6",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 1.8234,
     "status": "best_known",
     "source_note": "s = 1.82343+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "7_peninoct",
+    "our_problem": "7_5_in_8",
     "id": "peninoct_7",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 1.9599,
     "status": "best_known",
     "source_note": "s = 1.95989+ Found by Nicolas Campailla in May 2026.",
-    "our_problem": "8_peninoct",
+    "our_problem": "8_5_in_8",
     "id": "peninoct_8",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 2.0952,
     "status": "best_known",
     "source_note": "s = 2.09517+ Found by Nicolas Campailla in May 2026.",
-    "our_problem": "9_peninoct",
+    "our_problem": "9_5_in_8",
     "id": "peninoct_9",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 2.2113,
     "status": "best_known",
     "source_note": "s = 2.21135+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "10_peninoct",
+    "our_problem": "10_5_in_8",
     "id": "peninoct_10",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 2.3311,
     "status": "best_known",
     "source_note": "s = 2.33111+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "11_peninoct",
+    "our_problem": "11_5_in_8",
     "id": "peninoct_11",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 2.3933,
     "status": "best_known",
     "source_note": "s = 2.39327+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "12_peninoct",
+    "our_problem": "12_5_in_8",
     "id": "peninoct_12",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 2.4978,
     "status": "best_known",
     "source_note": "s = 2.49776+ Found by Jake Loyd in June 2026.",
-    "our_problem": "13_peninoct",
+    "our_problem": "13_5_in_8",
     "id": "peninoct_13",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 2.5656,
     "status": "best_known",
     "source_note": "s = 2.56564+ Found by Jake Loyd in June 2026.",
-    "our_problem": "14_peninoct",
+    "our_problem": "14_5_in_8",
     "id": "peninoct_14",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 2.6812,
     "status": "best_known",
     "source_note": "s = 2.68123+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "15_peninoct",
+    "our_problem": "15_5_in_8",
     "id": "peninoct_15",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 2.7525,
     "status": "best_known",
     "source_note": "s = 2.75249+ Found by Jake Loyd in June 2026.",
-    "our_problem": "16_peninoct",
+    "our_problem": "16_5_in_8",
     "id": "peninoct_16",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 2.8104,
     "status": "best_known",
     "source_note": "s = 2.81043+ Found by Jake Loyd in June 2026.",
-    "our_problem": "17_peninoct",
+    "our_problem": "17_5_in_8",
     "id": "peninoct_17",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 2.8932,
     "status": "best_known",
     "source_note": "s = 2.89321+ Found by Jake Loyd in June 2026.",
-    "our_problem": "18_peninoct",
+    "our_problem": "18_5_in_8",
     "id": "peninoct_18",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 2.9553,
     "status": "best_known",
     "source_note": "s = 2.95527+ Found by Jake Loyd in June 2026.",
-    "our_problem": "19_peninoct",
+    "our_problem": "19_5_in_8",
     "id": "peninoct_19",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 3.0468,
     "status": "best_known",
     "source_note": "s = 3.04679+ Found by Jake Loyd in June 2026.",
-    "our_problem": "20_peninoct",
+    "our_problem": "20_5_in_8",
     "id": "peninoct_20",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 3.1187,
     "status": "best_known",
     "source_note": "s = 3.11874+ Found by Jake Loyd in June 2026.",
-    "our_problem": "21_peninoct",
+    "our_problem": "21_5_in_8",
     "id": "peninoct_21",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 3.1914,
     "status": "best_known",
     "source_note": "s = 3.19144+ Found by Jake Loyd in June 2026.",
-    "our_problem": "22_peninoct",
+    "our_problem": "22_5_in_8",
     "id": "peninoct_22",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 3.2513,
     "status": "best_known",
     "source_note": "s = 3.25129+ Found by Jake Loyd in June 2026.",
-    "our_problem": "23_peninoct",
+    "our_problem": "23_5_in_8",
     "id": "peninoct_23",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 3.2872,
     "status": "best_known",
     "source_note": "s = 3.28718+ Found by Jake Loyd in June 2026.",
-    "our_problem": "24_peninoct",
+    "our_problem": "24_5_in_8",
     "id": "peninoct_24",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 3.3662,
     "status": "best_known",
     "source_note": "s = 3.36617+ Found by Jake Loyd in June 2026.",
-    "our_problem": "25_peninoct",
+    "our_problem": "25_5_in_8",
     "id": "peninoct_25",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 3.4278,
     "status": "best_known",
     "source_note": "s = 3.42775+ Found by Jake Loyd in June 2026.",
-    "our_problem": "26_peninoct",
+    "our_problem": "26_5_in_8",
     "id": "peninoct_26",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 3.4994,
     "status": "best_known",
     "source_note": "s = 3.49942+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "27_peninoct",
+    "our_problem": "27_5_in_8",
     "id": "peninoct_27",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 3.564,
     "status": "best_known",
     "source_note": "s = 3.56402+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "28_peninoct",
+    "our_problem": "28_5_in_8",
     "id": "peninoct_28",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 3.6185,
     "status": "best_known",
     "source_note": "s = 3.61848+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "29_peninoct",
+    "our_problem": "29_5_in_8",
     "id": "peninoct_29",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 3.6668,
     "status": "best_known",
     "source_note": "s = 3.66678+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "30_peninoct",
+    "our_problem": "30_5_in_8",
     "id": "peninoct_30",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 3.7438,
     "status": "best_known",
     "source_note": "s = 3.74379+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "31_peninoct",
+    "our_problem": "31_5_in_8",
     "id": "peninoct_31",
     "source_url": "https://erich-friedman.github.io/packing/peninoct/index.html"
   }

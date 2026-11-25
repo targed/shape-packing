@@ -7,7 +7,7 @@
     "best_value": 0.5412,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_taninoct",
+    "our_problem": "1_TAN_in_8",
     "id": "taninoct_1",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 0.5412,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "2_taninoct",
+    "our_problem": "2_TAN_in_8",
     "id": "taninoct_2",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 0.72389,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "3_taninoct",
+    "our_problem": "3_TAN_in_8",
     "id": "taninoct_3",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 0.76537,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "4_taninoct",
+    "our_problem": "4_TAN_in_8",
     "id": "taninoct_4",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 0.88072,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "5_taninoct",
+    "our_problem": "5_TAN_in_8",
     "id": "taninoct_5",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 0.92388,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "6_taninoct",
+    "our_problem": "6_TAN_in_8",
     "id": "taninoct_6",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 0.98623,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "7_taninoct",
+    "our_problem": "7_TAN_in_8",
     "id": "taninoct_7",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 1,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "8_taninoct",
+    "our_problem": "8_TAN_in_8",
     "id": "taninoct_8",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 1.08295,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "9_taninoct",
+    "our_problem": "9_TAN_in_8",
     "id": "taninoct_9",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 1.09348,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "10_taninoct",
+    "our_problem": "10_TAN_in_8",
     "id": "taninoct_10",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 1.15384,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "11_taninoct",
+    "our_problem": "11_TAN_in_8",
     "id": "taninoct_11",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 1.17157,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "12_taninoct",
+    "our_problem": "12_TAN_in_8",
     "id": "taninoct_12",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 1.21868,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "13_taninoct",
+    "our_problem": "13_TAN_in_8",
     "id": "taninoct_13",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 1.24264,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in June 2026.",
-    "our_problem": "14_taninoct",
+    "our_problem": "14_TAN_in_8",
     "id": "taninoct_14",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 1.31145,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "15_taninoct",
+    "our_problem": "15_TAN_in_8",
     "id": "taninoct_15",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 1.36396,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "16_taninoct",
+    "our_problem": "16_TAN_in_8",
     "id": "taninoct_16",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 1.39954,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "17_taninoct",
+    "our_problem": "17_TAN_in_8",
     "id": "taninoct_17",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 1.41421,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "18_taninoct",
+    "our_problem": "18_TAN_in_8",
     "id": "taninoct_18",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 1.48829,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "19_taninoct",
+    "our_problem": "19_TAN_in_8",
     "id": "taninoct_19",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 1.53147,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "20_taninoct",
+    "our_problem": "20_TAN_in_8",
     "id": "taninoct_20",
     "source_url": "https://erich-friedman.github.io/packing/taninoct/index.html"
   }

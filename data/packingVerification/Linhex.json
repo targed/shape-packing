@@ -6,8 +6,8 @@
     "container_shape": "hexagon",
     "best_value": 1.481244,
     "status": "trivial",
-    "source_note": "s = 2√((11 + 6√3)/39) = 1.481+ Trivial.",
-    "our_problem": "1_Linhex",
+    "source_note": "s = 2\u221a((11 + 6\u221a3)/39) = 1.481+ Trivial.",
+    "our_problem": "1_L_in_6",
     "id": "Linhex_1",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.86121,
     "status": "best_known",
     "source_note": "s = 121/4 = 1.861+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "2_Linhex",
+    "our_problem": "2_L_in_6",
     "id": "Linhex_2",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -30,8 +30,8 @@
     "container_shape": "hexagon",
     "best_value": 2.232051,
     "status": "best_known",
-    "source_note": "s = 1/2 + √3 = 2.232+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "3_Linhex",
+    "source_note": "s = 1/2 + \u221a3 = 2.232+ Found by Maurizio Morandi in May 2026.",
+    "our_problem": "3_L_in_6",
     "id": "Linhex_3",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.50337,
     "status": "best_known",
     "source_note": "s = 2.50337+ Found by Jake Loyd in June 2026.",
-    "our_problem": "4_Linhex",
+    "our_problem": "4_L_in_6",
     "id": "Linhex_4",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.85988,
     "status": "best_known",
     "source_note": "s = 2.85988+ Found by Jake Loyd in May 2026",
-    "our_problem": "5_Linhex",
+    "our_problem": "5_L_in_6",
     "id": "Linhex_5",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 3.04254,
     "status": "best_known",
     "source_note": "s = 3.04254+ Found by Jake Loyd in June 2026.",
-    "our_problem": "6_Linhex",
+    "our_problem": "6_L_in_6",
     "id": "Linhex_6",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.25359,
     "status": "best_known",
     "source_note": "s = 3.25359+ Found by Jake Loyd in June 2026.",
-    "our_problem": "7_Linhex",
+    "our_problem": "7_L_in_6",
     "id": "Linhex_7",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -90,8 +90,8 @@
     "container_shape": "hexagon",
     "best_value": 3.464102,
     "status": "trivial",
-    "source_note": "s = 2√3 = 3.464+ Trivial.",
-    "our_problem": "8_Linhex",
+    "source_note": "s = 2\u221a3 = 3.464+ Trivial.",
+    "our_problem": "8_L_in_6",
     "id": "Linhex_8",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 3.65374,
     "status": "best_known",
     "source_note": "s = 3.65374+ Found by Jake Loyd in June 2026.",
-    "our_problem": "9_Linhex",
+    "our_problem": "9_L_in_6",
     "id": "Linhex_9",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.80531,
     "status": "best_known",
     "source_note": "s = 3.80531+ Found by Jake Loyd in June 2026.",
-    "our_problem": "10_Linhex",
+    "our_problem": "10_L_in_6",
     "id": "Linhex_10",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -126,8 +126,8 @@
     "container_shape": "hexagon",
     "best_value": 4.041452,
     "status": "trivial",
-    "source_note": "s = 7/√3 = 4.041+ Trivial.",
-    "our_problem": "11_Linhex",
+    "source_note": "s = 7/\u221a3 = 4.041+ Trivial.",
+    "our_problem": "11_L_in_6",
     "id": "Linhex_11",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 4.15868,
     "status": "best_known",
     "source_note": "s = 4.15868+ Found by Jake Loyd in June 2026.",
-    "our_problem": "12_Linhex",
+    "our_problem": "12_L_in_6",
     "id": "Linhex_12",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 4.33273,
     "status": "best_known",
     "source_note": "s = 4.33273+ Found by Jake Loyd in June 2026.",
-    "our_problem": "13_Linhex",
+    "our_problem": "13_L_in_6",
     "id": "Linhex_13",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 4.46716,
     "status": "best_known",
     "source_note": "s = 4.46716+ Found by Jake Loyd in June 2026.",
-    "our_problem": "14_Linhex",
+    "our_problem": "14_L_in_6",
     "id": "Linhex_14",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -174,8 +174,8 @@
     "container_shape": "hexagon",
     "best_value": 4.618802,
     "status": "trivial",
-    "source_note": "s = 8/√3 = 4.61880+ Trivial.",
-    "our_problem": "15_Linhex",
+    "source_note": "s = 8/\u221a3 = 4.61880+ Trivial.",
+    "our_problem": "15_L_in_6",
     "id": "Linhex_15",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.72806,
     "status": "best_known",
     "source_note": "s = 4.72806+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "16_Linhex",
+    "our_problem": "16_L_in_6",
     "id": "Linhex_16",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.93064,
     "status": "best_known",
     "source_note": "s = 4.93064+ Found by Aaden Abraham in July 2026.",
-    "our_problem": "17_Linhex",
+    "our_problem": "17_L_in_6",
     "id": "Linhex_17",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -210,8 +210,8 @@
     "container_shape": "hexagon",
     "best_value": 5.126388,
     "status": "best_known",
-    "source_note": "s = 13(3+√3)/12 = 5.12638+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "18_Linhex",
+    "source_note": "s = 13(3+\u221a3)/12 = 5.12638+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "18_L_in_6",
     "id": "Linhex_18",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -222,8 +222,8 @@
     "container_shape": "hexagon",
     "best_value": 5.196152,
     "status": "best_known",
-    "source_note": "s = 3√3 = 5.19615+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "19_Linhex",
+    "source_note": "s = 3\u221a3 = 5.19615+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "19_L_in_6",
     "id": "Linhex_19",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -234,8 +234,8 @@
     "container_shape": "hexagon",
     "best_value": 5.309401,
     "status": "best_known",
-    "source_note": "s = 3+4/√3 = 5.30940+ Found by Aaden Abraham in July 2026.",
-    "our_problem": "20_Linhex",
+    "source_note": "s = 3+4/\u221a3 = 5.30940+ Found by Aaden Abraham in July 2026.",
+    "our_problem": "20_L_in_6",
     "id": "Linhex_20",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -246,8 +246,8 @@
     "container_shape": "hexagon",
     "best_value": 5.415064,
     "status": "best_known",
-    "source_note": "s = (13+5√3)/4 = 5.41506+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "21_Linhex",
+    "source_note": "s = (13+5\u221a3)/4 = 5.41506+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "21_L_in_6",
     "id": "Linhex_21",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -258,8 +258,8 @@
     "container_shape": "hexagon",
     "best_value": 5.598076,
     "status": "best_known",
-    "source_note": "s = 3+3√3/2 = 5.59807+ Found by Aaden Abraham in July 2026.",
-    "our_problem": "22_Linhex",
+    "source_note": "s = 3+3\u221a3/2 = 5.59807+ Found by Aaden Abraham in July 2026.",
+    "our_problem": "22_L_in_6",
     "id": "Linhex_22",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -270,8 +270,8 @@
     "container_shape": "hexagon",
     "best_value": 5.715476,
     "status": "best_known",
-    "source_note": "s = 7√6/3 = 5.71547+ Found by Aaden Abraham in July 2026.",
-    "our_problem": "23_Linhex",
+    "source_note": "s = 7\u221a6/3 = 5.71547+ Found by Aaden Abraham in July 2026.",
+    "our_problem": "23_L_in_6",
     "id": "Linhex_23",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -282,8 +282,8 @@
     "container_shape": "hexagon",
     "best_value": 5.773503,
     "status": "best_known",
-    "source_note": "s = 10/√3 = 5.77350+ Found by Aaden Abraham in July 2026.",
-    "our_problem": "24_Linhex",
+    "source_note": "s = 10/\u221a3 = 5.77350+ Found by Aaden Abraham in July 2026.",
+    "our_problem": "24_L_in_6",
     "id": "Linhex_24",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -294,8 +294,8 @@
     "container_shape": "hexagon",
     "best_value": 5.886751,
     "status": "best_known",
-    "source_note": "s = 3+5/√3 = 5.88675+ Found by Aaden Abraham in July 2026.",
-    "our_problem": "25_Linhex",
+    "source_note": "s = 3+5/\u221a3 = 5.88675+ Found by Aaden Abraham in July 2026.",
+    "our_problem": "25_L_in_6",
     "id": "Linhex_25",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -306,8 +306,8 @@
     "container_shape": "hexagon",
     "best_value": 6.027635,
     "status": "best_known",
-    "source_note": "s = 2(5+7/√3)/3 = 6.02763+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "26_Linhex",
+    "source_note": "s = 2(5+7/\u221a3)/3 = 6.02763+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "26_L_in_6",
     "id": "Linhex_26",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -318,8 +318,8 @@
     "container_shape": "hexagon",
     "best_value": 6.087713,
     "status": "best_known",
-    "source_note": "s = 9/2+11√3/12 = 6.08771+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "27_Linhex",
+    "source_note": "s = 9/2+11\u221a3/12 = 6.08771+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "27_L_in_6",
     "id": "Linhex_27",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -330,8 +330,8 @@
     "container_shape": "hexagon",
     "best_value": 6.242414,
     "status": "best_known",
-    "source_note": "s = 7/2+19√/12 = 6.24241+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "28_Linhex",
+    "source_note": "s = 7/2+19\u221a/12 = 6.24241+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "28_L_in_6",
     "id": "Linhex_28",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -342,8 +342,8 @@
     "container_shape": "hexagon",
     "best_value": 6.350853,
     "status": "best_known",
-    "source_note": "s = 11/√3 = 6.35085+ Found by Aaden Abraham in July 2026.",
-    "our_problem": "29_Linhex",
+    "source_note": "s = 11/\u221a3 = 6.35085+ Found by Aaden Abraham in July 2026.",
+    "our_problem": "29_L_in_6",
     "id": "Linhex_29",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   },
@@ -354,8 +354,8 @@
     "container_shape": "hexagon",
     "best_value": 6.366025,
     "status": "best_known",
-    "source_note": "s = (11+√3)/2 = 6.36602+ Found by Maurizio Morandi in July 2026.",
-    "our_problem": "30_Linhex",
+    "source_note": "s = (11+\u221a3)/2 = 6.36602+ Found by Maurizio Morandi in July 2026.",
+    "our_problem": "30_L_in_6",
     "id": "Linhex_30",
     "source_url": "https://erich-friedman.github.io/packing/Linhex/index.html"
   }

@@ -6,8 +6,8 @@
     "container_shape": "tan",
     "best_value": 4.1213,
     "status": "trivial",
-    "source_note": "s = 2+3/√2 = 4.12132+ Trivial.",
-    "our_problem": "1_octintan",
+    "source_note": "s = 2+3/\u221a2 = 4.12132+ Trivial.",
+    "our_problem": "1_8_in_TAN",
     "id": "octintan_1",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -18,8 +18,8 @@
     "container_shape": "tan",
     "best_value": 5.8284,
     "status": "trivial",
-    "source_note": "s = 3+2√2 = 5.82842+ Trivial.",
-    "our_problem": "2_octintan",
+    "source_note": "s = 3+2\u221a2 = 5.82842+ Trivial.",
+    "our_problem": "2_8_in_TAN",
     "id": "octintan_2",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -30,8 +30,8 @@
     "container_shape": "tan",
     "best_value": 6.5355,
     "status": "trivial",
-    "source_note": "s = 3+5/√2 = 6.53553+ Trivial.",
-    "our_problem": "3_octintan",
+    "source_note": "s = 3+5/\u221a2 = 6.53553+ Trivial.",
+    "our_problem": "3_8_in_TAN",
     "id": "octintan_3",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -42,8 +42,8 @@
     "container_shape": "tan",
     "best_value": 7.5355,
     "status": "trivial",
-    "source_note": "s = 4+5/√2 = 7.53553+ Trivial.",
-    "our_problem": "4_octintan",
+    "source_note": "s = 4+5/\u221a2 = 7.53553+ Trivial.",
+    "our_problem": "4_8_in_TAN",
     "id": "octintan_4",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -54,8 +54,8 @@
     "container_shape": "tan",
     "best_value": 8.7426,
     "status": "best_known",
-    "source_note": "s = 9/2+3√2 = 8.74263+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_octintan",
+    "source_note": "s = 9/2+3\u221a2 = 8.74263+ Found by Jonathan Viquerat in May 2026.",
+    "our_problem": "5_8_in_TAN",
     "id": "octintan_5",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -66,8 +66,8 @@
     "container_shape": "tan",
     "best_value": 8.9497,
     "status": "trivial",
-    "source_note": "s = 4+7/√2 = 8.94974+ Trivial.",
-    "our_problem": "6_octintan",
+    "source_note": "s = 4+7/\u221a2 = 8.94974+ Trivial.",
+    "our_problem": "6_8_in_TAN",
     "id": "octintan_6",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -78,8 +78,8 @@
     "container_shape": "tan",
     "best_value": 9.9497,
     "status": "best_known",
-    "source_note": "s = 5+7/√2 = 9.94974+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_octintan",
+    "source_note": "s = 5+7/\u221a2 = 9.94974+ Found by Jonathan Viquerat in May 2026.",
+    "our_problem": "7_8_in_TAN",
     "id": "octintan_7",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 10.6568,
     "status": "best_known",
     "source_note": "s = 10.65684+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_octintan",
+    "our_problem": "8_8_in_TAN",
     "id": "octintan_8",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -102,8 +102,8 @@
     "container_shape": "tan",
     "best_value": 10.9497,
     "status": "trivial",
-    "source_note": "s = 6+7/√2 = 10.94974+ Trivial.",
-    "our_problem": "9_octintan",
+    "source_note": "s = 6+7/\u221a2 = 10.94974+ Trivial.",
+    "our_problem": "9_8_in_TAN",
     "id": "octintan_9",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -114,8 +114,8 @@
     "container_shape": "tan",
     "best_value": 11.364,
     "status": "trivial",
-    "source_note": "s = 5+9/√2 = 11.36395+ Trivial.",
-    "our_problem": "10_octintan",
+    "source_note": "s = 5+9/\u221a2 = 11.36395+ Trivial.",
+    "our_problem": "10_8_in_TAN",
     "id": "octintan_10",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 12.3333,
     "status": "best_known",
     "source_note": "s = 12.33328+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_octintan",
+    "our_problem": "11_8_in_TAN",
     "id": "octintan_11",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 12.6568,
     "status": "best_known",
     "source_note": "s = 12.65684+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "12_octintan",
+    "our_problem": "12_8_in_TAN",
     "id": "octintan_12",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 13.2175,
     "status": "best_known",
     "source_note": "s = 13.21750+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "13_octintan",
+    "our_problem": "13_8_in_TAN",
     "id": "octintan_13",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -162,8 +162,8 @@
     "container_shape": "tan",
     "best_value": 13.5711,
     "status": "best_known",
-    "source_note": "s = 13/2+5√2 = 13.57106+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "14_octintan",
+    "source_note": "s = 13/2+5\u221a2 = 13.57106+ Found by Jonathan Viquerat in May 2026.",
+    "our_problem": "14_8_in_TAN",
     "id": "octintan_14",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -174,8 +174,8 @@
     "container_shape": "tan",
     "best_value": 13.7782,
     "status": "trivial",
-    "source_note": "s = 6+11/√2 = 13.77816+ Trivial.",
-    "our_problem": "15_octintan",
+    "source_note": "s = 6+11/\u221a2 = 13.77816+ Trivial.",
+    "our_problem": "15_8_in_TAN",
     "id": "octintan_15",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -186,8 +186,8 @@
     "container_shape": "tan",
     "best_value": 14.364,
     "status": "trivial",
-    "source_note": "s = 8+9/√2 = 14.36395+ Trivial.",
-    "our_problem": "16_octintan",
+    "source_note": "s = 8+9/\u221a2 = 14.36395+ Trivial.",
+    "our_problem": "16_8_in_TAN",
     "id": "octintan_16",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 14.7782,
     "status": "best_known",
     "source_note": "s = 14.77816+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "17_octintan",
+    "our_problem": "17_8_in_TAN",
     "id": "octintan_17",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 15.3472,
     "status": "best_known",
     "source_note": "s = 15.34720+ Found by Jonathan Viqueratl in May 2026.",
-    "our_problem": "18_octintan",
+    "our_problem": "18_8_in_TAN",
     "id": "octintan_18",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 15.6805,
     "status": "best_known",
     "source_note": "s = 15.68053+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "19_octintan",
+    "our_problem": "19_8_in_TAN",
     "id": "octintan_19",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -234,8 +234,8 @@
     "container_shape": "tan",
     "best_value": 15.9853,
     "status": "best_known",
-    "source_note": "s = 15/2+6√2 = 15.98527+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "20_octintan",
+    "source_note": "s = 15/2+6\u221a2 = 15.98527+ Found by Jonathan Viquerat in May 2026.",
+    "our_problem": "20_8_in_TAN",
     "id": "octintan_20",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -246,8 +246,8 @@
     "container_shape": "tan",
     "best_value": 15.9853,
     "status": "trivial",
-    "source_note": "s = 7+13/√2 = 15.98527+ Trivial.",
-    "our_problem": "21_octintan",
+    "source_note": "s = 7+13/\u221a2 = 15.98527+ Trivial.",
+    "our_problem": "21_8_in_TAN",
     "id": "octintan_21",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 16.7782,
     "status": "best_known",
     "source_note": "s = 16.77817+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "22_octintan",
+    "our_problem": "22_8_in_TAN",
     "id": "octintan_22",
     "source_url": "https://erich-friedman.github.io/packing/octintan/index.html"
   }

@@ -7,7 +7,7 @@
     "best_value": 0.54119,
     "status": "trivial",
     "source_note": "s = 1/\u221a(2+\u221a2) = .54119+ Trivial.",
-    "our_problem": "1_squinoct",
+    "our_problem": "1_4_in_8",
     "id": "squinoct_1",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 0.87669,
     "status": "best_known",
     "source_note": "s = \u221a(6\u2013\u221a2\u2013\u221a(20\u221a2\u201326))/2 = 0.87669+ Found by Maurizio Morandi in December 2013.",
-    "our_problem": "2_squinoct",
+    "our_problem": "2_4_in_8",
     "id": "squinoct_2",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.0294,
     "status": "best_known",
     "source_note": "s = 18 \u2013 12\u221a2 = 1.02940+ Found by Erich Friedman in December 2013.",
-    "our_problem": "3_squinoct",
+    "our_problem": "3_4_in_8",
     "id": "squinoct_3",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.08239,
     "status": "trivial",
     "source_note": "s = \u221a(4\u20132\u221a2) = 1.08239+ Trivial.",
-    "our_problem": "4_squinoct",
+    "our_problem": "4_4_in_8",
     "id": "squinoct_4",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.24261,
     "status": "trivial",
     "source_note": "s = 3\u221a2 \u2013 3 = 1.24261+ Trivial.",
-    "our_problem": "5_squinoct",
+    "our_problem": "5_4_in_8",
     "id": "squinoct_5",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.34314,
     "status": "best_known",
     "source_note": "s = 7 \u2013 4\u221a2 = 1.34314+ Found by Maurizio Morandi in December 2013.",
-    "our_problem": "6_squinoct",
+    "our_problem": "6_4_in_8",
     "id": "squinoct_6",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 1.4369,
     "status": "best_known",
     "source_note": "s = \u221a(5\u2013\u221a2\u2013\u221a(8\u221a2\u20139)) = 1.43690+ Found by Maurizio Morandi in December 2013.",
-    "our_problem": "7_squinoct",
+    "our_problem": "7_4_in_8",
     "id": "squinoct_7",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 1.56962,
     "status": "best_known",
     "source_note": "s = 1.56962+ Found by Grant Mowry in May 2026.",
-    "our_problem": "8_squinoct",
+    "our_problem": "8_4_in_8",
     "id": "squinoct_8",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 1.62358,
     "status": "trivial",
     "source_note": "s = 3/\u221a(2+\u221a2) = 1.62358+ Trivial.",
-    "our_problem": "9_squinoct",
+    "our_problem": "9_4_in_8",
     "id": "squinoct_9",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 1.68171,
     "status": "best_known",
     "source_note": "s = 1.68171+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "10_squinoct",
+    "our_problem": "10_4_in_8",
     "id": "squinoct_10",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 1.73152,
     "status": "best_known",
     "source_note": "s = 1.73152+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_squinoct",
+    "our_problem": "11_4_in_8",
     "id": "squinoct_11",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 1.75339,
     "status": "best_known",
     "source_note": "s = \u221a(6\u2013\u221a2\u2013\u221a(20\u221a2\u201326)) = 1.75339+ Found by Maurizio Morandi in December 2013.",
-    "our_problem": "12_squinoct",
+    "our_problem": "12_4_in_8",
     "id": "squinoct_12",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 1.89674,
     "status": "best_known",
     "source_note": "s = 1.89674+ Found by Grant Mowry in May 2026.",
-    "our_problem": "13_squinoct",
+    "our_problem": "13_4_in_8",
     "id": "squinoct_13",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 1.98302,
     "status": "best_known",
     "source_note": "s = 1.98302+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "14_squinoct",
+    "our_problem": "14_4_in_8",
     "id": "squinoct_14",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 2.03168,
     "status": "best_known",
     "source_note": "s = 2.03168+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "15_squinoct",
+    "our_problem": "15_4_in_8",
     "id": "squinoct_15",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 2.07106,
     "status": "trivial",
     "source_note": "s = 5\u221a2 \u2013 5 = 2.07106+ Trivial.",
-    "our_problem": "16_squinoct",
+    "our_problem": "16_4_in_8",
     "id": "squinoct_16",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 2.07106,
     "status": "trivial",
     "source_note": "s = 5\u221a2 \u2013 5 = 2.07106+ Trivial.",
-    "our_problem": "17_squinoct",
+    "our_problem": "17_4_in_8",
     "id": "squinoct_17",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 2.16732,
     "status": "best_known",
     "source_note": "s = 2.16732+ Found by Timo Berthold et al in May 2026.",
-    "our_problem": "18_squinoct",
+    "our_problem": "18_4_in_8",
     "id": "squinoct_18",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 2.22435,
     "status": "best_known",
     "source_note": "s = 2.22435+ Found by Jake Loyd in May 2026.",
-    "our_problem": "19_squinoct",
+    "our_problem": "19_4_in_8",
     "id": "squinoct_19",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 2.28598,
     "status": "best_known",
     "source_note": "s = 2.28598+ Found by Jake Loyd in May 2026.",
-    "our_problem": "20_squinoct",
+    "our_problem": "20_4_in_8",
     "id": "squinoct_20",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 2.31833,
     "status": "best_known",
     "source_note": "s = \u221a(48\u20139\u221a2\u20133\u221a(104\u221a2\u2013126))/2 = 2.31833+ Found by Jake Loyd in May 2026.",
-    "our_problem": "21_squinoct",
+    "our_problem": "21_4_in_8",
     "id": "squinoct_21",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 2.41575,
     "status": "best_known",
     "source_note": "s = 2.41575+ Found by Jake Loyd in May 2026.",
-    "our_problem": "22_squinoct",
+    "our_problem": "22_4_in_8",
     "id": "squinoct_22",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 2.46879,
     "status": "best_known",
     "source_note": "s = 2.46879+ Found by Jake Loyd in May 2026.",
-    "our_problem": "23_squinoct",
+    "our_problem": "23_4_in_8",
     "id": "squinoct_23",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 2.48528,
     "status": "trivial",
     "source_note": "s = 6\u221a2\u20136 = 2.48528+ Trivial.",
-    "our_problem": "24_squinoct",
+    "our_problem": "24_4_in_8",
     "id": "squinoct_24",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 2.48959,
     "status": "best_known",
     "source_note": "s = 17(2\u2013\u221a2)/4 = 2.48959+ Found by Jake Loyd in May 2026.",
-    "our_problem": "25_squinoct",
+    "our_problem": "25_4_in_8",
     "id": "squinoct_25",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 2.52709,
     "status": "best_known",
     "source_note": "s = 2.52709+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "26_squinoct",
+    "our_problem": "26_4_in_8",
     "id": "squinoct_26",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 2.58584,
     "status": "best_known",
     "source_note": "s = 2.58584+ Found by Jake Loyd in May 2026.",
-    "our_problem": "27_squinoct",
+    "our_problem": "27_4_in_8",
     "id": "squinoct_27",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 2.62788,
     "status": "best_known",
     "source_note": "s = 2.62788+ Found by Jake Loyd in May 2026.",
-    "our_problem": "28_squinoct",
+    "our_problem": "28_4_in_8",
     "id": "squinoct_28",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 2.70553,
     "status": "best_known",
     "source_note": "s = 2.70553+ Found by Jake Loyd in May 2026.",
-    "our_problem": "29_squinoct",
+    "our_problem": "29_4_in_8",
     "id": "squinoct_29",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 2.73879,
     "status": "best_known",
     "source_note": "s = 2(11\u2013\u221a2)/7 = 2.73879+ Found by Maurizio Morandi in May 2026.",
-    "our_problem": "30_squinoct",
+    "our_problem": "30_4_in_8",
     "id": "squinoct_30",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 2.78401,
     "status": "best_known",
     "source_note": "s = 2.78401+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "31_squinoct",
+    "our_problem": "31_4_in_8",
     "id": "squinoct_31",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -379,7 +379,7 @@
     "best_value": 2.8398,
     "status": "best_known",
     "source_note": "s = 2.83980+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "32_squinoct",
+    "our_problem": "32_4_in_8",
     "id": "squinoct_32",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -391,7 +391,7 @@
     "best_value": 2.85903,
     "status": "best_known",
     "source_note": "s = 2.85903+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "33_squinoct",
+    "our_problem": "33_4_in_8",
     "id": "squinoct_33",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -403,7 +403,7 @@
     "best_value": 2.89949,
     "status": "best_known",
     "source_note": "s = 7\u221a2\u20137 = 2.89949+ Found by Mohamed Metwalli in June 2026.",
-    "our_problem": "34_squinoct",
+    "our_problem": "34_4_in_8",
     "id": "squinoct_34",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -415,7 +415,7 @@
     "best_value": 2.90678,
     "status": "best_known",
     "source_note": "s = 2.90678+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "35_squinoct",
+    "our_problem": "35_4_in_8",
     "id": "squinoct_35",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -427,7 +427,7 @@
     "best_value": 2.9287,
     "status": "best_known",
     "source_note": "s = 2.92870+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "36_squinoct",
+    "our_problem": "36_4_in_8",
     "id": "squinoct_36",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -439,7 +439,7 @@
     "best_value": 2.92893,
     "status": "trivial",
     "source_note": "s = 10\u20135\u221a2 = 2.92893+ Trivial.",
-    "our_problem": "37_squinoct",
+    "our_problem": "37_4_in_8",
     "id": "squinoct_37",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -451,7 +451,7 @@
     "best_value": 3.02113,
     "status": "best_known",
     "source_note": "s = 3.02113+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "38_squinoct",
+    "our_problem": "38_4_in_8",
     "id": "squinoct_38",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -463,7 +463,7 @@
     "best_value": 3.08444,
     "status": "best_known",
     "source_note": "s = 3.08444+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "39_squinoct",
+    "our_problem": "39_4_in_8",
     "id": "squinoct_39",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   },
@@ -475,7 +475,7 @@
     "best_value": 3.1412,
     "status": "best_known",
     "source_note": "s = 3.14120+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "40_squinoct",
+    "our_problem": "40_4_in_8",
     "id": "squinoct_40",
     "source_url": "https://erich-friedman.github.io/packing/squinoct/index.html"
   }

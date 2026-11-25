@@ -7,7 +7,7 @@
     "best_value": 1,
     "status": "trivial",
     "source_note": "r = 1 Trivial.",
-    "our_problem": "1_cirincir",
+    "our_problem": "1_CIRCLE_in_CIRCLE",
     "id": "cirincir_1",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2,
     "status": "trivial",
     "source_note": "r = 2 Trivial.",
-    "our_problem": "2_cirincir",
+    "our_problem": "2_CIRCLE_in_CIRCLE",
     "id": "cirincir_2",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2.154701,
     "status": "trivial",
     "source_note": "r = 1 + 2 / \u221a3 = 2.154+ Trivial.",
-    "our_problem": "3_cirincir",
+    "our_problem": "3_CIRCLE_in_CIRCLE",
     "id": "cirincir_3",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.414214,
     "status": "trivial",
     "source_note": "r = 1 + \u221a2 = 2.414+ Trivial.",
-    "our_problem": "4_cirincir",
+    "our_problem": "4_CIRCLE_in_CIRCLE",
     "id": "cirincir_4",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.701,
     "status": "proved_optimal",
     "source_note": "r = 2.701+ Proved by Graham in 1968.",
-    "our_problem": "5_cirincir",
+    "our_problem": "5_CIRCLE_in_CIRCLE",
     "id": "cirincir_5",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 3,
     "status": "proved_optimal",
     "source_note": "r = 3 Proved by Graham in 1968.",
-    "our_problem": "6_cirincir",
+    "our_problem": "6_CIRCLE_in_CIRCLE",
     "id": "cirincir_6",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3,
     "status": "proved_optimal",
     "source_note": "r = 3 Proved by Graham in 1968.",
-    "our_problem": "7_cirincir",
+    "our_problem": "7_CIRCLE_in_CIRCLE",
     "id": "cirincir_7",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 3.304,
     "status": "proved_optimal",
     "source_note": "r = 3.304+ Proved by Braaksma in 1963.",
-    "our_problem": "8_cirincir",
+    "our_problem": "8_CIRCLE_in_CIRCLE",
     "id": "cirincir_8",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 3.613,
     "status": "proved_optimal",
     "source_note": "r = 3.613+ Proved by Pirl in 1969.",
-    "our_problem": "9_cirincir",
+    "our_problem": "9_CIRCLE_in_CIRCLE",
     "id": "cirincir_9",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.813,
     "status": "proved_optimal",
     "source_note": "r = 3.813+ Proved by Pirl in 1969.",
-    "our_problem": "10_cirincir",
+    "our_problem": "10_CIRCLE_in_CIRCLE",
     "id": "cirincir_10",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.923,
     "status": "proved_optimal",
     "source_note": "r = 3.923+ Proved by Melissen in 1994.",
-    "our_problem": "11_cirincir",
+    "our_problem": "11_CIRCLE_in_CIRCLE",
     "id": "cirincir_11",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 4.029,
     "status": "best_known",
     "source_note": "r = 4.029+ Found by Kravitz in 1967.",
-    "our_problem": "12_cirincir",
+    "our_problem": "12_CIRCLE_in_CIRCLE",
     "id": "cirincir_12",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 4.236068,
     "status": "proved_optimal",
     "source_note": "r = 2 + \u221a5 = 4.236+ Proved by F. Fodor in 2003.",
-    "our_problem": "13_cirincir",
+    "our_problem": "13_CIRCLE_in_CIRCLE",
     "id": "cirincir_13",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 4.328,
     "status": "best_known",
     "source_note": "r = 4.328+ Found by Goldberg in 1971.",
-    "our_problem": "14_cirincir",
+    "our_problem": "14_CIRCLE_in_CIRCLE",
     "id": "cirincir_14",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 4.521,
     "status": "best_known",
     "source_note": "r = 4.521+ Found by Kravitz in 1967.",
-    "our_problem": "15_cirincir",
+    "our_problem": "15_CIRCLE_in_CIRCLE",
     "id": "cirincir_15",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.615,
     "status": "best_known",
     "source_note": "r = 4.615+ Found by Goldberg in 1971.",
-    "our_problem": "16_cirincir",
+    "our_problem": "16_CIRCLE_in_CIRCLE",
     "id": "cirincir_16",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.792,
     "status": "best_known",
     "source_note": "r = 4.792+ Found by Reis in 1975.",
-    "our_problem": "17_cirincir",
+    "our_problem": "17_CIRCLE_in_CIRCLE",
     "id": "cirincir_17",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 4.863703,
     "status": "best_known",
     "source_note": "r = 1 + \u221a2 + \u221a6 = 4.863+ Found by Kravitz in 1967.",
-    "our_problem": "18_cirincir",
+    "our_problem": "18_CIRCLE_in_CIRCLE",
     "id": "cirincir_18",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.863703,
     "status": "proved_optimal",
     "source_note": "r = 1 + \u221a2 + \u221a6 = 4.863+ Proved by F. Fodor in 1999.",
-    "our_problem": "19_cirincir",
+    "our_problem": "19_CIRCLE_in_CIRCLE",
     "id": "cirincir_19",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 5.122,
     "status": "best_known",
     "source_note": "r = 5.122+ Found by Goldberg in 1971.",
-    "our_problem": "20_cirincir",
+    "our_problem": "20_CIRCLE_in_CIRCLE",
     "id": "cirincir_20",
     "source_url": "https://erich-friedman.github.io/packing/cirincir/index.html"
   }

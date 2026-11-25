@@ -8,7 +8,7 @@
     "status": "trivial",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "1_cirinsemi",
+    "our_problem": "1_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_1",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -21,7 +21,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "2_cirinsemi",
+    "our_problem": "2_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_2",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -34,7 +34,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "3_cirinsemi",
+    "our_problem": "3_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_3",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -47,7 +47,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "4_cirinsemi",
+    "our_problem": "4_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_4",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -60,7 +60,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "5_cirinsemi",
+    "our_problem": "5_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_5",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -73,7 +73,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "6_cirinsemi",
+    "our_problem": "6_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_6",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -86,7 +86,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "7_cirinsemi",
+    "our_problem": "7_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_7",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -99,7 +99,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "8_cirinsemi",
+    "our_problem": "8_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_8",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -112,7 +112,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "9_cirinsemi",
+    "our_problem": "9_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_9",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -125,7 +125,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "10_cirinsemi",
+    "our_problem": "10_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_10",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -138,7 +138,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "11_cirinsemi",
+    "our_problem": "11_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_11",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -151,7 +151,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "12_cirinsemi",
+    "our_problem": "12_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_12",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -164,7 +164,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "13_cirinsemi",
+    "our_problem": "13_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_13",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -177,7 +177,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "14_cirinsemi",
+    "our_problem": "14_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_14",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -190,7 +190,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "15_cirinsemi",
+    "our_problem": "15_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_15",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -203,7 +203,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "16_cirinsemi",
+    "our_problem": "16_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_16",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -216,7 +216,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "17_cirinsemi",
+    "our_problem": "17_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_17",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -229,7 +229,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "18_cirinsemi",
+    "our_problem": "18_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_18",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -242,7 +242,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "19_cirinsemi",
+    "our_problem": "19_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_19",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -255,7 +255,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "20_cirinsemi",
+    "our_problem": "20_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_20",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -268,7 +268,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "21_cirinsemi",
+    "our_problem": "21_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_21",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -281,7 +281,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "22_cirinsemi",
+    "our_problem": "22_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_22",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -294,7 +294,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "23_cirinsemi",
+    "our_problem": "23_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_23",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -307,7 +307,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "24_cirinsemi",
+    "our_problem": "24_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_24",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -320,7 +320,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "25_cirinsemi",
+    "our_problem": "25_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_25",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -333,7 +333,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "26_cirinsemi",
+    "our_problem": "26_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_26",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -346,7 +346,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "27_cirinsemi",
+    "our_problem": "27_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_27",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -359,7 +359,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "28_cirinsemi",
+    "our_problem": "28_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_28",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -372,7 +372,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "29_cirinsemi",
+    "our_problem": "29_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_29",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -385,7 +385,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "30_cirinsemi",
+    "our_problem": "30_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_30",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -398,7 +398,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "31_cirinsemi",
+    "our_problem": "31_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_31",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -411,7 +411,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "32_cirinsemi",
+    "our_problem": "32_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_32",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -424,7 +424,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "33_cirinsemi",
+    "our_problem": "33_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_33",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -437,7 +437,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "34_cirinsemi",
+    "our_problem": "34_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_34",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -450,7 +450,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "35_cirinsemi",
+    "our_problem": "35_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_35",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -463,7 +463,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "36_cirinsemi",
+    "our_problem": "36_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_36",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -476,7 +476,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "37_cirinsemi",
+    "our_problem": "37_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_37",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -489,7 +489,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "38_cirinsemi",
+    "our_problem": "38_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_38",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -502,7 +502,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "39_cirinsemi",
+    "our_problem": "39_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_39",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -515,7 +515,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "40_cirinsemi",
+    "our_problem": "40_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_40",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -528,7 +528,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "41_cirinsemi",
+    "our_problem": "41_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_41",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -541,7 +541,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "42_cirinsemi",
+    "our_problem": "42_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_42",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -554,7 +554,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "43_cirinsemi",
+    "our_problem": "43_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_43",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -567,7 +567,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "44_cirinsemi",
+    "our_problem": "44_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_44",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -580,7 +580,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "45_cirinsemi",
+    "our_problem": "45_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_45",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -593,7 +593,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "46_cirinsemi",
+    "our_problem": "46_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_46",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -606,7 +606,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "47_cirinsemi",
+    "our_problem": "47_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_47",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -619,7 +619,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "48_cirinsemi",
+    "our_problem": "48_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_48",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -632,7 +632,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "49_cirinsemi",
+    "our_problem": "49_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_49",
     "source_url": "https://www.packomania.com/csc/csc.html"
   },
@@ -645,7 +645,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "50_cirinsemi",
+    "our_problem": "50_CIRCLE_in_SEMICIRCLE",
     "id": "cirinsemi_50",
     "source_url": "https://www.packomania.com/csc/csc.html"
   }

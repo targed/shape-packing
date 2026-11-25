@@ -7,7 +7,7 @@
     "best_value": 0.577,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_3_in_circle",
+    "our_problem": "1_3_in_CIRCLE",
     "id": "3_in_circle_1",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 0.866,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "2_3_in_circle",
+    "our_problem": "2_3_in_CIRCLE",
     "id": "3_in_circle_2",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 0.953,
     "status": "best_known",
     "source_note": "Found by Erich Friedman in 1997.",
-    "our_problem": "3_3_in_circle",
+    "our_problem": "3_3_in_CIRCLE",
     "id": "3_in_circle_3",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 0.98,
     "status": "best_known",
     "source_note": "Found by Erich Friedman in 1997.",
-    "our_problem": "4_3_in_circle",
+    "our_problem": "4_3_in_CIRCLE",
     "id": "3_in_circle_4",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "5_3_in_circle",
+    "our_problem": "5_3_in_CIRCLE",
     "id": "3_in_circle_5",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "6_3_in_circle",
+    "our_problem": "6_3_in_CIRCLE",
     "id": "3_in_circle_6",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 1.152,
     "status": "best_known",
     "source_note": "Found by Erich Friedman in 1997.",
-    "our_problem": "7_3_in_circle",
+    "our_problem": "7_3_in_CIRCLE",
     "id": "3_in_circle_7",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 1.263,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2008.",
-    "our_problem": "8_3_in_circle",
+    "our_problem": "8_3_in_CIRCLE",
     "id": "3_in_circle_8",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 1.314,
     "status": "best_known",
     "source_note": "Found by David W. Cantrell in July 2002.",
-    "our_problem": "9_3_in_circle",
+    "our_problem": "9_3_in_CIRCLE",
     "id": "3_in_circle_9",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 1.38468,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "10_3_in_circle",
+    "our_problem": "10_3_in_CIRCLE",
     "id": "3_in_circle_10",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 1.466,
     "status": "best_known",
     "source_note": "Found by DC after MM in August 2012.",
-    "our_problem": "11_3_in_circle",
+    "our_problem": "11_3_in_CIRCLE",
     "id": "3_in_circle_11",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 1.507,
     "status": "best_known",
     "source_note": "Found by David W. Cantrell in October 2005.",
-    "our_problem": "12_3_in_circle",
+    "our_problem": "12_3_in_CIRCLE",
     "id": "3_in_circle_12",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 1.527,
     "status": "best_known",
     "source_note": "Found by Erich Friedman in 1997.",
-    "our_problem": "13_3_in_circle",
+    "our_problem": "13_3_in_CIRCLE",
     "id": "3_in_circle_13",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 1.60448,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "14_3_in_circle",
+    "our_problem": "14_3_in_CIRCLE",
     "id": "3_in_circle_14",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 1.636,
     "status": "best_known",
     "source_note": "Found by David W. Cantrell in July 2002.",
-    "our_problem": "15_3_in_circle",
+    "our_problem": "15_3_in_CIRCLE",
     "id": "3_in_circle_15",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 1.687,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in April 2008.",
-    "our_problem": "16_3_in_circle",
+    "our_problem": "16_3_in_CIRCLE",
     "id": "3_in_circle_16",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 1.73,
     "status": "best_known",
     "source_note": "Found by David W. Cantrell in July 2005.",
-    "our_problem": "17_3_in_circle",
+    "our_problem": "17_3_in_CIRCLE",
     "id": "3_in_circle_17",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 1.80176,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "18_3_in_circle",
+    "our_problem": "18_3_in_CIRCLE",
     "id": "3_in_circle_18",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 1.825,
     "status": "best_known",
     "source_note": "Found by Haym Hirsh in August 2019.",
-    "our_problem": "19_3_in_circle",
+    "our_problem": "19_3_in_CIRCLE",
     "id": "3_in_circle_19",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 1.874,
     "status": "best_known",
     "source_note": "Found by Erich Friedman in 1997.",
-    "our_problem": "20_3_in_circle",
+    "our_problem": "20_3_in_CIRCLE",
     "id": "3_in_circle_20",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 1.91,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in May 2008.",
-    "our_problem": "21_3_in_circle",
+    "our_problem": "21_3_in_CIRCLE",
     "id": "3_in_circle_21",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 1.943,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in June 2008.",
-    "our_problem": "22_3_in_circle",
+    "our_problem": "22_3_in_CIRCLE",
     "id": "3_in_circle_22",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 1.98467,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "23_3_in_circle",
+    "our_problem": "23_3_in_CIRCLE",
     "id": "3_in_circle_23",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "24_3_in_circle",
+    "our_problem": "24_3_in_CIRCLE",
     "id": "3_in_circle_24",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 2.055,
     "status": "best_known",
     "source_note": "Found by David W. Cantrell in July 2005.",
-    "our_problem": "25_3_in_circle",
+    "our_problem": "25_3_in_CIRCLE",
     "id": "3_in_circle_25",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 2.10665,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "26_3_in_circle",
+    "our_problem": "26_3_in_CIRCLE",
     "id": "3_in_circle_26",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 2.138,
     "status": "best_known",
     "source_note": "Found by David W. Cantrell in July 2005.",
-    "our_problem": "27_3_in_circle",
+    "our_problem": "27_3_in_CIRCLE",
     "id": "3_in_circle_27",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 2.18806,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "28_3_in_circle",
+    "our_problem": "28_3_in_CIRCLE",
     "id": "3_in_circle_28",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 2.20935,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "29_3_in_circle",
+    "our_problem": "29_3_in_CIRCLE",
     "id": "3_in_circle_29",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 2.25127,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "30_3_in_circle",
+    "our_problem": "30_3_in_CIRCLE",
     "id": "3_in_circle_30",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 2.272,
     "status": "best_known",
     "source_note": "Found by Maurizio Morandi in July 2008.",
-    "our_problem": "31_3_in_circle",
+    "our_problem": "31_3_in_CIRCLE",
     "id": "3_in_circle_31",
     "source_url": "https://erich-friedman.github.io/packing/triincir/index.html"
   }

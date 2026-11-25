@@ -6,7 +6,7 @@ import os
 import glob
 from typing import Any, Dict, List, Optional, Tuple, Set, Union
 from .packing_config import PACKING_VERIFICATION_DIR, PRIORITY_QUEUE_PATH
-from .catalog import shape_area, list_frontier_families
+from .catalog import canonical_problem_id, shape_area, list_frontier_families
 
 def polygon_area(sides: int, side_length: float) -> float:
     # Area = (1/4) * n * s^2 * cot(pi/n)
@@ -68,6 +68,11 @@ def generate_queue(verif_dir=None, out_path=None):
                     
                     if not inner_shape or not container_shape or N is None:
                         continue
+                    if "cov" not in our_problem.lower():
+                        try:
+                            our_problem = canonical_problem_id(int(N), inner_shape, container_shape)
+                        except (ValueError, TypeError):
+                            pass
                         
                     inner_area_unit = get_shape_area(inner_shape, 1.0)
                     container_area_val = get_shape_area(container_shape, best_value)

@@ -7,7 +7,7 @@
     "best_value": 2.48912,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_penintan",
+    "our_problem": "1_5_in_TAN",
     "id": "penintan_1",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 3.52014,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "2_penintan",
+    "our_problem": "2_5_in_TAN",
     "id": "penintan_2",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 3.97792,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "3_penintan",
+    "our_problem": "3_5_in_TAN",
     "id": "penintan_3",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 4.63338,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_penintan",
+    "our_problem": "4_5_in_TAN",
     "id": "penintan_4",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 5.16518,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_penintan",
+    "our_problem": "5_5_in_TAN",
     "id": "penintan_5",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 5.48233,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_penintan",
+    "our_problem": "6_5_in_TAN",
     "id": "penintan_6",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 6.03679,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_penintan",
+    "our_problem": "7_5_in_TAN",
     "id": "penintan_7",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 6.30671,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_penintan",
+    "our_problem": "8_5_in_TAN",
     "id": "penintan_8",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 6.69536,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "9_penintan",
+    "our_problem": "9_5_in_TAN",
     "id": "penintan_9",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 6.98078,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "10_penintan",
+    "our_problem": "10_5_in_TAN",
     "id": "penintan_10",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 7.34729,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "11_penintan",
+    "our_problem": "11_5_in_TAN",
     "id": "penintan_11",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 7.54006,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "12_penintan",
+    "our_problem": "12_5_in_TAN",
     "id": "penintan_12",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 7.82906,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "13_penintan",
+    "our_problem": "13_5_in_TAN",
     "id": "penintan_13",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 8.16828,
     "status": "best_known",
     "source_note": "Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "14_penintan",
+    "our_problem": "14_5_in_TAN",
     "id": "penintan_14",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 8.45706,
     "status": "best_known",
     "source_note": "Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "15_penintan",
+    "our_problem": "15_5_in_TAN",
     "id": "penintan_15",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 8.66023,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "16_penintan",
+    "our_problem": "16_5_in_TAN",
     "id": "penintan_16",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 8.89755,
     "status": "best_known",
     "source_note": "Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "17_penintan",
+    "our_problem": "17_5_in_TAN",
     "id": "penintan_17",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 9.08713,
     "status": "best_known",
     "source_note": "Found by Jonathan Viqueratl in May 2026.",
-    "our_problem": "18_penintan",
+    "our_problem": "18_5_in_TAN",
     "id": "penintan_18",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 9.38489,
     "status": "best_known",
     "source_note": "Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "19_penintan",
+    "our_problem": "19_5_in_TAN",
     "id": "penintan_19",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 9.61296,
     "status": "best_known",
     "source_note": "Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "20_penintan",
+    "our_problem": "20_5_in_TAN",
     "id": "penintan_20",
     "source_url": "https://erich-friedman.github.io/packing/penintan/index.html"
   }

@@ -7,7 +7,7 @@
     "best_value": 1.4142,
     "status": "trivial",
     "source_note": "s = \u221a2 = 1.41420+ Trivial.",
-    "our_problem": "1_tanintri",
+    "our_problem": "1_TAN_in_3",
     "id": "tanintri_1",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.93185,
     "status": "trivial",
     "source_note": "s = (1+\u221a3)/\u221a2 = 1.93185+ Trivial.",
-    "our_problem": "2_tanintri",
+    "our_problem": "2_TAN_in_3",
     "id": "tanintri_2",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2.12132,
     "status": "trivial",
     "source_note": "s = 3/\u221a2 = 2.12132+ Trivial.",
-    "our_problem": "3_tanintri",
+    "our_problem": "3_TAN_in_3",
     "id": "tanintri_3",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.53732,
     "status": "best_known",
     "source_note": "s = 2.53732+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_tanintri",
+    "our_problem": "4_TAN_in_3",
     "id": "tanintri_4",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.74147,
     "status": "best_known",
     "source_note": "s = 2.74147+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_tanintri",
+    "our_problem": "5_TAN_in_3",
     "id": "tanintri_5",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.93781,
     "status": "best_known",
     "source_note": "s = 2.93781+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_tanintri",
+    "our_problem": "6_TAN_in_3",
     "id": "tanintri_6",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.17427,
     "status": "best_known",
     "source_note": "s = 3.17427+ Found by Jonathan Loyd in June 2026.",
-    "our_problem": "7_tanintri",
+    "our_problem": "7_TAN_in_3",
     "id": "tanintri_7",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 3.35224,
     "status": "best_known",
     "source_note": "s = 3.35224+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "8_tanintri",
+    "our_problem": "8_TAN_in_3",
     "id": "tanintri_8",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 3.51439,
     "status": "best_known",
     "source_note": "s = 3.51439+ Found by Jonathan Loyd in June 2026.",
-    "our_problem": "9_tanintri",
+    "our_problem": "9_TAN_in_3",
     "id": "tanintri_9",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.69367,
     "status": "best_known",
     "source_note": "s = 3.69367+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "10_tanintri",
+    "our_problem": "10_TAN_in_3",
     "id": "tanintri_10",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.82731,
     "status": "best_known",
     "source_note": "s = 3.82731+ Found by Jonathan Loyd in June 2026.",
-    "our_problem": "11_tanintri",
+    "our_problem": "11_TAN_in_3",
     "id": "tanintri_11",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 4.0,
     "status": "best_known",
     "source_note": "s = 4 Found by Jonathan Loyd in June 2026.",
-    "our_problem": "12_tanintri",
+    "our_problem": "12_TAN_in_3",
     "id": "tanintri_12",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 4.14927,
     "status": "best_known",
     "source_note": "s = 4.14927+ Found by Jonathan Loyd in June 2026.",
-    "our_problem": "13_tanintri",
+    "our_problem": "13_TAN_in_3",
     "id": "tanintri_13",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 4.29538,
     "status": "best_known",
     "source_note": "s = 4.29538+ Found by Jonathan Loyd in June 2026.",
-    "our_problem": "14_tanintri",
+    "our_problem": "14_TAN_in_3",
     "id": "tanintri_14",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 4.41143,
     "status": "best_known",
     "source_note": "s = 4.41143+ Found by Haowei Lin in July 2026.",
-    "our_problem": "15_tanintri",
+    "our_problem": "15_TAN_in_3",
     "id": "tanintri_15",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.6069,
     "status": "best_known",
     "source_note": "s = 4.60690+ Found by Haowei Lin in July 2026.",
-    "our_problem": "16_tanintri",
+    "our_problem": "16_TAN_in_3",
     "id": "tanintri_16",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.72627,
     "status": "best_known",
     "source_note": "s = 4.72627+ Found by Jonathan Loyd in June 2026.",
-    "our_problem": "17_tanintri",
+    "our_problem": "17_TAN_in_3",
     "id": "tanintri_17",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 4.84346,
     "status": "best_known",
     "source_note": "s = 4.84346+ Found by Jonathan Loyd in June 2026.",
-    "our_problem": "18_tanintri",
+    "our_problem": "18_TAN_in_3",
     "id": "tanintri_18",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.96765,
     "status": "best_known",
     "source_note": "s = 4.96765+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "19_tanintri",
+    "our_problem": "19_TAN_in_3",
     "id": "tanintri_19",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 5.06562,
     "status": "best_known",
     "source_note": "s = 5.06562+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "20_tanintri",
+    "our_problem": "20_TAN_in_3",
     "id": "tanintri_20",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 5.23033,
     "status": "best_known",
     "source_note": "s = 5.23033+ Found by Jonathan Loyd in June 2026.",
-    "our_problem": "21_tanintri",
+    "our_problem": "21_TAN_in_3",
     "id": "tanintri_21",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 5.3358,
     "status": "best_known",
     "source_note": "s = 5.33580+ Found by Jonathan Loyd in June 2026.",
-    "our_problem": "22_tanintri",
+    "our_problem": "22_TAN_in_3",
     "id": "tanintri_22",
     "source_url": "https://erich-friedman.github.io/packing/tanintri/index.html"
   }

@@ -30,6 +30,7 @@ from .database import (
     get_problem,
     init_db,
     register_worker,
+    sync_problem_catalog,
     sync_records_to_db,
     update_solution_record,
 )
@@ -79,14 +80,17 @@ def get_db(request: Request) -> Generator[sqlite3.Connection, None, None]:
         conn.close()
 
 
-def create_app(db_path: str = "shape_packing.db") -> FastAPI:
+def create_app(db_path: str = "shape_packing.db", auto_seed: bool = False) -> FastAPI:
     """
     Factory creating a FastAPI coordinator service instance.
 
     Initializes database tables and WAL configuration on startup.
+    When auto_seed=True, migrates legacy IDs and seeds Benchmark + Frontier problems.
     """
     init_conn = init_db(db_path)
     try:
+        if auto_seed:
+            sync_problem_catalog(init_conn)
         sync_records_to_db(init_conn)
     except Exception:
         pass
@@ -407,14 +411,62 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
         cursor.execute("SELECT COALESCE(SUM(records_broken), 0) FROM workers")
         records_broken = cursor.fetchone()[0]
 
+        cursor.execute("SELECT COALESCE(tier, 'benchmark'), COUNT(*) FROM problems GROUP BY COALESCE(tier, 'benchmark')")
+        tier_counts = {row[0]: row[1] for row in cursor.fetchall()}
+
         return {
             "total_problems": total_probs,
+            "tier_counts": tier_counts,
             "active_workers": active_workers,
             "total_workers": total_workers,
             "total_attempts": total_attempts,
             "records_broken": records_broken,
             "verified_solutions": total_solutions,
         }
+
+    @app.get("/api/v1/problems", status_code=status.HTTP_200_OK)
+    def list_problems(
+        tier: Optional[str] = Query(None),
+        problem_status: Optional[str] = Query(None, alias="status"),
+        inner: Optional[str] = Query(None),
+        container: Optional[str] = Query(None),
+        limit: int = Query(100, ge=1, le=1000),
+        offset: int = Query(0, ge=0),
+        conn: sqlite3.Connection = Depends(get_db),
+    ) -> Dict[str, Any]:
+        """List defined problems in the coordinator database with optional tier/shape filters."""
+        where_clauses = []
+        params: List[Any] = []
+        if tier:
+            where_clauses.append("LOWER(COALESCE(tier, 'benchmark')) = ?")
+            params.append(tier.strip().lower())
+        if problem_status:
+            where_clauses.append("LOWER(COALESCE(status, '')) = ?")
+            params.append(problem_status.strip().lower())
+        if inner:
+            where_clauses.append("UPPER(inner_token) = ?")
+            params.append(inner.strip().upper())
+        if container:
+            where_clauses.append("UPPER(container_token) = ?")
+            params.append(container.strip().upper())
+
+        where_sql = ("WHERE " + " AND ".join(where_clauses)) if where_clauses else ""
+        cursor = conn.cursor()
+        total = cursor.execute(f"SELECT COUNT(*) FROM problems {where_sql}", params).fetchone()[0]
+        rows = cursor.execute(
+            f"""
+            SELECT id, inner_token, container_token, n, best_s, reference_s, status, tier, total_attempts
+            FROM problems {where_sql}
+            ORDER BY tier ASC, inner_token ASC, container_token ASC, n ASC
+            LIMIT ? OFFSET ?
+            """,
+            params + [limit, offset],
+        ).fetchall()
+        items = [dict(r) if hasattr(r, "keys") else {
+            "id": r[0], "inner_token": r[1], "container_token": r[2], "n": r[3],
+            "best_s": r[4], "reference_s": r[5], "status": r[6], "tier": r[7], "total_attempts": r[8],
+        } for r in rows]
+        return {"total": total, "limit": limit, "offset": offset, "items": items}
 
     @app.get("/api/v1/leaderboard", status_code=status.HTTP_200_OK)
     def get_leaderboard(
@@ -537,4 +589,4 @@ def create_app(db_path: str = "shape_packing.db") -> FastAPI:
 
 
 # Default application instance for standard ASGI servers (e.g. uvicorn)
-app = create_app()
+app = create_app(auto_seed=os.environ.get("SHAPE_PACKING_AUTO_SEED", "1") == "1")

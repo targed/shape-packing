@@ -43,6 +43,11 @@ def normalize_token(token: Any) -> str:
     return _alias_index().get(raw, raw)
 
 
+def canonical_problem_id(n: int, inner_token: Any, container_token: Any) -> str:
+    """Return canonical problem ID in '{N}_{INNER}_in_{CONTAINER}' format."""
+    return f"{int(n)}_{normalize_token(inner_token)}_in_{normalize_token(container_token)}"
+
+
 def get_shape_spec(token: Any) -> Optional[Dict[str, Any]]:
     """Return catalog metadata dict for a canonical token or alias, else None."""
     canon = normalize_token(token)

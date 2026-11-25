@@ -8,7 +8,7 @@
     "status": "trivial",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "1_cirindom",
+    "our_problem": "1_CIRCLE_in_DOMINO",
     "id": "cirindom_1",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -21,7 +21,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "2_cirindom",
+    "our_problem": "2_CIRCLE_in_DOMINO",
     "id": "cirindom_2",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -34,7 +34,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "3_cirindom",
+    "our_problem": "3_CIRCLE_in_DOMINO",
     "id": "cirindom_3",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -47,7 +47,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "4_cirindom",
+    "our_problem": "4_CIRCLE_in_DOMINO",
     "id": "cirindom_4",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -60,7 +60,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "5_cirindom",
+    "our_problem": "5_CIRCLE_in_DOMINO",
     "id": "cirindom_5",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -73,7 +73,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "6_cirindom",
+    "our_problem": "6_CIRCLE_in_DOMINO",
     "id": "cirindom_6",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -86,7 +86,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "7_cirindom",
+    "our_problem": "7_CIRCLE_in_DOMINO",
     "id": "cirindom_7",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -99,7 +99,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "8_cirindom",
+    "our_problem": "8_CIRCLE_in_DOMINO",
     "id": "cirindom_8",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -112,7 +112,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "9_cirindom",
+    "our_problem": "9_CIRCLE_in_DOMINO",
     "id": "cirindom_9",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -125,7 +125,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "10_cirindom",
+    "our_problem": "10_CIRCLE_in_DOMINO",
     "id": "cirindom_10",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -138,7 +138,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "11_cirindom",
+    "our_problem": "11_CIRCLE_in_DOMINO",
     "id": "cirindom_11",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -151,7 +151,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "12_cirindom",
+    "our_problem": "12_CIRCLE_in_DOMINO",
     "id": "cirindom_12",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -164,7 +164,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "13_cirindom",
+    "our_problem": "13_CIRCLE_in_DOMINO",
     "id": "cirindom_13",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -177,7 +177,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "14_cirindom",
+    "our_problem": "14_CIRCLE_in_DOMINO",
     "id": "cirindom_14",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -190,7 +190,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "15_cirindom",
+    "our_problem": "15_CIRCLE_in_DOMINO",
     "id": "cirindom_15",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -203,7 +203,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "16_cirindom",
+    "our_problem": "16_CIRCLE_in_DOMINO",
     "id": "cirindom_16",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -216,7 +216,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "17_cirindom",
+    "our_problem": "17_CIRCLE_in_DOMINO",
     "id": "cirindom_17",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -229,7 +229,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "18_cirindom",
+    "our_problem": "18_CIRCLE_in_DOMINO",
     "id": "cirindom_18",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -242,7 +242,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "19_cirindom",
+    "our_problem": "19_CIRCLE_in_DOMINO",
     "id": "cirindom_19",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -255,7 +255,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "20_cirindom",
+    "our_problem": "20_CIRCLE_in_DOMINO",
     "id": "cirindom_20",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -268,7 +268,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "21_cirindom",
+    "our_problem": "21_CIRCLE_in_DOMINO",
     "id": "cirindom_21",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -281,7 +281,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "22_cirindom",
+    "our_problem": "22_CIRCLE_in_DOMINO",
     "id": "cirindom_22",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -294,7 +294,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "23_cirindom",
+    "our_problem": "23_CIRCLE_in_DOMINO",
     "id": "cirindom_23",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -307,7 +307,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "24_cirindom",
+    "our_problem": "24_CIRCLE_in_DOMINO",
     "id": "cirindom_24",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -320,7 +320,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "25_cirindom",
+    "our_problem": "25_CIRCLE_in_DOMINO",
     "id": "cirindom_25",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -333,7 +333,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "26_cirindom",
+    "our_problem": "26_CIRCLE_in_DOMINO",
     "id": "cirindom_26",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -346,7 +346,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "27_cirindom",
+    "our_problem": "27_CIRCLE_in_DOMINO",
     "id": "cirindom_27",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -359,7 +359,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "28_cirindom",
+    "our_problem": "28_CIRCLE_in_DOMINO",
     "id": "cirindom_28",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -372,7 +372,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "29_cirindom",
+    "our_problem": "29_CIRCLE_in_DOMINO",
     "id": "cirindom_29",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -385,7 +385,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "30_cirindom",
+    "our_problem": "30_CIRCLE_in_DOMINO",
     "id": "cirindom_30",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -398,7 +398,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "31_cirindom",
+    "our_problem": "31_CIRCLE_in_DOMINO",
     "id": "cirindom_31",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -411,7 +411,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "32_cirindom",
+    "our_problem": "32_CIRCLE_in_DOMINO",
     "id": "cirindom_32",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -424,7 +424,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "33_cirindom",
+    "our_problem": "33_CIRCLE_in_DOMINO",
     "id": "cirindom_33",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -437,7 +437,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "34_cirindom",
+    "our_problem": "34_CIRCLE_in_DOMINO",
     "id": "cirindom_34",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -450,7 +450,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "35_cirindom",
+    "our_problem": "35_CIRCLE_in_DOMINO",
     "id": "cirindom_35",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -463,7 +463,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "36_cirindom",
+    "our_problem": "36_CIRCLE_in_DOMINO",
     "id": "cirindom_36",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -476,7 +476,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "37_cirindom",
+    "our_problem": "37_CIRCLE_in_DOMINO",
     "id": "cirindom_37",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -489,7 +489,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "38_cirindom",
+    "our_problem": "38_CIRCLE_in_DOMINO",
     "id": "cirindom_38",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -502,7 +502,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "39_cirindom",
+    "our_problem": "39_CIRCLE_in_DOMINO",
     "id": "cirindom_39",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -515,7 +515,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "40_cirindom",
+    "our_problem": "40_CIRCLE_in_DOMINO",
     "id": "cirindom_40",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -528,7 +528,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "41_cirindom",
+    "our_problem": "41_CIRCLE_in_DOMINO",
     "id": "cirindom_41",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -541,7 +541,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "42_cirindom",
+    "our_problem": "42_CIRCLE_in_DOMINO",
     "id": "cirindom_42",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -554,7 +554,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "43_cirindom",
+    "our_problem": "43_CIRCLE_in_DOMINO",
     "id": "cirindom_43",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -567,7 +567,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "44_cirindom",
+    "our_problem": "44_CIRCLE_in_DOMINO",
     "id": "cirindom_44",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -580,7 +580,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "45_cirindom",
+    "our_problem": "45_CIRCLE_in_DOMINO",
     "id": "cirindom_45",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -593,7 +593,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "46_cirindom",
+    "our_problem": "46_CIRCLE_in_DOMINO",
     "id": "cirindom_46",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -606,7 +606,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "47_cirindom",
+    "our_problem": "47_CIRCLE_in_DOMINO",
     "id": "cirindom_47",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -619,7 +619,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "48_cirindom",
+    "our_problem": "48_CIRCLE_in_DOMINO",
     "id": "cirindom_48",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -632,7 +632,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "49_cirindom",
+    "our_problem": "49_CIRCLE_in_DOMINO",
     "id": "cirindom_49",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   },
@@ -645,7 +645,7 @@
     "status": "best_known",
     "tier": "benchmark",
     "source_note": "Packomania (Eckard Specht), normalized to unit inner circle.",
-    "our_problem": "50_cirindom",
+    "our_problem": "50_CIRCLE_in_DOMINO",
     "id": "cirindom_50",
     "source_url": "https://www.packomania.com/crc_500/crc.html"
   }

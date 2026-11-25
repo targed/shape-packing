@@ -7,7 +7,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_peninpen",
+    "our_problem": "1_5_in_5",
     "id": "peninpen_1",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "2_peninpen",
+    "our_problem": "2_5_in_5",
     "id": "peninpen_2",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2.2361,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "3_peninpen",
+    "our_problem": "3_5_in_5",
     "id": "peninpen_3",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 2.4472,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "4_peninpen",
+    "our_problem": "4_5_in_5",
     "id": "peninpen_4",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.618,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "5_peninpen",
+    "our_problem": "5_5_in_5",
     "id": "peninpen_5",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.618,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "6_peninpen",
+    "our_problem": "6_5_in_5",
     "id": "peninpen_6",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.0787,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "7_peninpen",
+    "our_problem": "7_5_in_5",
     "id": "peninpen_7",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 3.3351,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "8_peninpen",
+    "our_problem": "8_5_in_5",
     "id": "peninpen_8",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 3.4496,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "9_peninpen",
+    "our_problem": "9_5_in_5",
     "id": "peninpen_9",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 3.6832,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "10_peninpen",
+    "our_problem": "10_5_in_5",
     "id": "peninpen_10",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 3.797,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "11_peninpen",
+    "our_problem": "11_5_in_5",
     "id": "peninpen_11",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.9693,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "12_peninpen",
+    "our_problem": "12_5_in_5",
     "id": "peninpen_12",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 4.0652,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "13_peninpen",
+    "our_problem": "13_5_in_5",
     "id": "peninpen_13",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 4.2111,
     "status": "best_known",
     "source_note": "Found by Grant Mowry in May 2026.",
-    "our_problem": "14_peninpen",
+    "our_problem": "14_5_in_5",
     "id": "peninpen_14",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 4.2361,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "15_peninpen",
+    "our_problem": "15_5_in_5",
     "id": "peninpen_15",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 4.4164,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "16_peninpen",
+    "our_problem": "16_5_in_5",
     "id": "peninpen_16",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 4.6554,
     "status": "best_known",
     "source_note": "Found by Timo Berthold et al in May 2026.",
-    "our_problem": "17_peninpen",
+    "our_problem": "17_5_in_5",
     "id": "peninpen_17",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 4.7754,
     "status": "best_known",
     "source_note": "Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "18_peninpen",
+    "our_problem": "18_5_in_5",
     "id": "peninpen_18",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 4.9527,
     "status": "best_known",
     "source_note": "Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "19_peninpen",
+    "our_problem": "19_5_in_5",
     "id": "peninpen_19",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 5.034,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "20_peninpen",
+    "our_problem": "20_5_in_5",
     "id": "peninpen_20",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 5.1564,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "21_peninpen",
+    "our_problem": "21_5_in_5",
     "id": "peninpen_21",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 5.2664,
     "status": "best_known",
     "source_note": "Found by Grant Mowry in May 2026.",
-    "our_problem": "22_peninpen",
+    "our_problem": "22_5_in_5",
     "id": "peninpen_22",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 5.347,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "23_peninpen",
+    "our_problem": "23_5_in_5",
     "id": "peninpen_23",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 5.4911,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "24_peninpen",
+    "our_problem": "24_5_in_5",
     "id": "peninpen_24",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 5.581,
     "status": "best_known",
     "source_note": "Found by Jake Loyd in June 2026.",
-    "our_problem": "25_peninpen",
+    "our_problem": "25_5_in_5",
     "id": "peninpen_25",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 5.6723,
     "status": "best_known",
     "source_note": "Found by Bhavithran Ananthan in June 2026.",
-    "our_problem": "26_peninpen",
+    "our_problem": "26_5_in_5",
     "id": "peninpen_26",
     "source_url": "https://erich-friedman.github.io/packing/peninpen/index.html"
   }

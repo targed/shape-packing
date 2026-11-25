@@ -7,7 +7,7 @@
     "best_value": 1.496,
     "status": "trivial",
     "source_note": "s = 1.49571+ Trivial.",
-    "our_problem": "1_octinhex",
+    "our_problem": "1_8_in_6",
     "id": "octinhex_1",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2.703,
     "status": "trivial",
     "source_note": "s = 2.70289+ Trivial.",
-    "our_problem": "2_octinhex",
+    "our_problem": "2_8_in_6",
     "id": "octinhex_2",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2.89,
     "status": "best_known",
     "source_note": "s = 2.88958+ Found by Mohamed Metwalli in June 2026.",
-    "our_problem": "3_octinhex",
+    "our_problem": "3_8_in_6",
     "id": "octinhex_3",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 3.278,
     "status": "best_known",
     "source_note": "s = \u221a(9/2+3\u221a2) = 3.27809+ Found by Mohamed Metwalli in June 2026.",
-    "our_problem": "4_octinhex",
+    "our_problem": "4_8_in_6",
     "id": "octinhex_4",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 3.718,
     "status": "best_known",
     "source_note": "s = 3.71848+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "5_octinhex",
+    "our_problem": "5_8_in_6",
     "id": "octinhex_5",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 3.947,
     "status": "best_known",
     "source_note": "s = 3.94730+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "6_octinhex",
+    "our_problem": "6_8_in_6",
     "id": "octinhex_6",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.977,
     "status": "best_known",
     "source_note": "s = 3.97716+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "7_octinhex",
+    "our_problem": "7_8_in_6",
     "id": "octinhex_7",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 4.567,
     "status": "best_known",
     "source_note": "s = 4.56653+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "8_octinhex",
+    "our_problem": "8_8_in_6",
     "id": "octinhex_8",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 4.933,
     "status": "best_known",
     "source_note": "s = 4.93304+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "9_octinhex",
+    "our_problem": "9_8_in_6",
     "id": "octinhex_9",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 5.069,
     "status": "best_known",
     "source_note": "s = 5.06929+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "10_octinhex",
+    "our_problem": "10_8_in_6",
     "id": "octinhex_10",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 5.348,
     "status": "best_known",
     "source_note": "s = 5.34796+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "11_octinhex",
+    "our_problem": "11_8_in_6",
     "id": "octinhex_11",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 5.387,
     "status": "best_known",
     "source_note": "s = 5.38669+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "12_octinhex",
+    "our_problem": "12_8_in_6",
     "id": "octinhex_12",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 5.755,
     "status": "best_known",
     "source_note": "s = 5.75470+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "13_octinhex",
+    "our_problem": "13_8_in_6",
     "id": "octinhex_13",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 5.778,
     "status": "best_known",
     "source_note": "s = 5.77752+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "14_octinhex",
+    "our_problem": "14_8_in_6",
     "id": "octinhex_14",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 6.137,
     "status": "best_known",
     "source_note": "s = 6.13744+ Found by Bhavithran Ananthan in June 2026.",
-    "our_problem": "15_octinhex",
+    "our_problem": "15_8_in_6",
     "id": "octinhex_15",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 6.214,
     "status": "best_known",
     "source_note": "s = 6.21438+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "16_octinhex",
+    "our_problem": "16_8_in_6",
     "id": "octinhex_16",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 6.357,
     "status": "best_known",
     "source_note": "s = 6.35725+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "17_octinhex",
+    "our_problem": "17_8_in_6",
     "id": "octinhex_17",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 6.428,
     "status": "best_known",
     "source_note": "s = 6.42774+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "18_octinhex",
+    "our_problem": "18_8_in_6",
     "id": "octinhex_18",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 6.447,
     "status": "best_known",
     "source_note": "s = 6.44696+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "19_octinhex",
+    "our_problem": "19_8_in_6",
     "id": "octinhex_19",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 6.995,
     "status": "best_known",
     "source_note": "s = 6.99450+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "20_octinhex",
+    "our_problem": "20_8_in_6",
     "id": "octinhex_20",
     "source_url": "https://erich-friedman.github.io/packing/octinhex/index.html"
   }

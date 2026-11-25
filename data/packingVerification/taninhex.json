@@ -7,7 +7,7 @@
     "best_value": 0.74062,
     "status": "trivial",
     "source_note": "s = .74062+ Trivial.",
-    "our_problem": "1_taninhex",
+    "our_problem": "1_TAN_in_6",
     "id": "taninhex_1",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -18,8 +18,8 @@
     "container_shape": "hexagon",
     "best_value": 0.78867,
     "status": "best_known",
-    "source_note": "s = (3+√3)/6 = .78867+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "2_taninhex",
+    "source_note": "s = (3+\u221a3)/6 = .78867+ Found by Jonathan Viquerat in May 2026.",
+    "our_problem": "2_TAN_in_6",
     "id": "taninhex_2",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 0.98882,
     "status": "best_known",
     "source_note": "s = .98882+ Found by Aapo Lippoen in July 2026.",
-    "our_problem": "3_taninhex",
+    "our_problem": "3_TAN_in_6",
     "id": "taninhex_3",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.05845,
     "status": "best_known",
     "source_note": "s = 1.05845+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "4_taninhex",
+    "our_problem": "4_TAN_in_6",
     "id": "taninhex_4",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.13976,
     "status": "best_known",
     "source_note": "s = 1.13976+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "5_taninhex",
+    "our_problem": "5_TAN_in_6",
     "id": "taninhex_5",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.2061,
     "status": "best_known",
     "source_note": "s = 1.20610+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_taninhex",
+    "our_problem": "6_TAN_in_6",
     "id": "taninhex_6",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 1.30322,
     "status": "best_known",
     "source_note": "s = 1.30322+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "7_taninhex",
+    "our_problem": "7_TAN_in_6",
     "id": "taninhex_7",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 1.37728,
     "status": "best_known",
     "source_note": "s = 1.37728+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "8_taninhex",
+    "our_problem": "8_TAN_in_6",
     "id": "taninhex_8",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 1.44631,
     "status": "best_known",
     "source_note": "s = 1.44631+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "9_taninhex",
+    "our_problem": "9_TAN_in_6",
     "id": "taninhex_9",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 1.51366,
     "status": "best_known",
     "source_note": "s = 1.51366+ Found by Thomas Greenleaf in June 2026.",
-    "our_problem": "10_taninhex",
+    "our_problem": "10_TAN_in_6",
     "id": "taninhex_10",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 1.59198,
     "status": "best_known",
     "source_note": "s = 1.59198+ Found by Jake Loyd in June 2026.",
-    "our_problem": "11_taninhex",
+    "our_problem": "11_TAN_in_6",
     "id": "taninhex_11",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 1.65076,
     "status": "best_known",
     "source_note": "s = 1.65076+ Found by Jake Loyd in June 2026.",
-    "our_problem": "12_taninhex",
+    "our_problem": "12_TAN_in_6",
     "id": "taninhex_12",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 1.70429,
     "status": "best_known",
     "source_note": "s = 1.70429+ Found by Jake Loyd in June 2026.",
-    "our_problem": "13_taninhex",
+    "our_problem": "13_TAN_in_6",
     "id": "taninhex_13",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 1.7668,
     "status": "best_known",
     "source_note": "s = 1.76680+ Found by Jake Loyd in June 2026.",
-    "our_problem": "14_taninhex",
+    "our_problem": "14_TAN_in_6",
     "id": "taninhex_14",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 1.82658,
     "status": "best_known",
     "source_note": "s = 1.82658+ Found by Jake Loyd in June 2026.",
-    "our_problem": "15_taninhex",
+    "our_problem": "15_TAN_in_6",
     "id": "taninhex_15",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 1.88728,
     "status": "best_known",
     "source_note": "s = 1.88728+ Found by Jake Loyd in June 2026.",
-    "our_problem": "16_taninhex",
+    "our_problem": "16_TAN_in_6",
     "id": "taninhex_16",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 1.93877,
     "status": "best_known",
     "source_note": "s = 1.93877+ Found by Jake Loyd in June 2026.",
-    "our_problem": "17_taninhex",
+    "our_problem": "17_TAN_in_6",
     "id": "taninhex_17",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 1.99031,
     "status": "best_known",
     "source_note": "s = 1.99031+ Found by Jake Loyd in June 2026.",
-    "our_problem": "18_taninhex",
+    "our_problem": "18_TAN_in_6",
     "id": "taninhex_18",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 2.03182,
     "status": "best_known",
     "source_note": "s = 2.03182+ Found by Jake Loyd in June 2026.",
-    "our_problem": "19_taninhex",
+    "our_problem": "19_TAN_in_6",
     "id": "taninhex_19",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 2.1029,
     "status": "best_known",
     "source_note": "s = 2.1029+ Found by Jake Loyd in June 2026.",
-    "our_problem": "20_taninhex",
+    "our_problem": "20_TAN_in_6",
     "id": "taninhex_20",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 2.14048,
     "status": "best_known",
     "source_note": "s = 2.14048+ Found by Jake Loyd in June 2026.",
-    "our_problem": "21_taninhex",
+    "our_problem": "21_TAN_in_6",
     "id": "taninhex_21",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 2.19278,
     "status": "best_known",
     "source_note": "s = 2.19278+ Found by Jake Loyd in June 2026.",
-    "our_problem": "22_taninhex",
+    "our_problem": "22_TAN_in_6",
     "id": "taninhex_22",
     "source_url": "https://erich-friedman.github.io/packing/taninhex/index.html"
   }

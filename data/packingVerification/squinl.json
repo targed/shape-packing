@@ -7,7 +7,7 @@
     "best_value": 2,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "1_squinl",
+    "our_problem": "1_4_in_L",
     "id": "squinl_1",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "2_squinl",
+    "our_problem": "2_4_in_L",
     "id": "squinl_2",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "3_squinl",
+    "our_problem": "3_4_in_L",
     "id": "squinl_3",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 3,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "4_squinl",
+    "our_problem": "4_4_in_L",
     "id": "squinl_4",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 3,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "5_squinl",
+    "our_problem": "5_4_in_L",
     "id": "squinl_5",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -66,8 +66,8 @@
     "container_shape": "L",
     "best_value": 3.6904,
     "status": "best_known",
-    "source_note": "s = (5√2 + 4) / 3 = 3.690+ Found by David W. Cantrell in June 2005.",
-    "our_problem": "6_squinl",
+    "source_note": "s = (5\u221a2 + 4) / 3 = 3.690+ Found by David W. Cantrell in June 2005.",
+    "our_problem": "6_4_in_L",
     "id": "squinl_6",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -78,8 +78,8 @@
     "container_shape": "L",
     "best_value": 3.9142,
     "status": "best_known",
-    "source_note": "s = √2 + 5/2 = 3.914+ Found by Erich Friedman in June 2005.",
-    "our_problem": "7_squinl",
+    "source_note": "s = \u221a2 + 5/2 = 3.914+ Found by Erich Friedman in June 2005.",
+    "our_problem": "7_4_in_L",
     "id": "squinl_7",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 4,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "8_squinl",
+    "our_problem": "8_4_in_L",
     "id": "squinl_8",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 4,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "9_squinl",
+    "our_problem": "9_4_in_L",
     "id": "squinl_9",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 4,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "10_squinl",
+    "our_problem": "10_4_in_L",
     "id": "squinl_10",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 4,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "11_squinl",
+    "our_problem": "11_4_in_L",
     "id": "squinl_11",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 4,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "12_squinl",
+    "our_problem": "12_4_in_L",
     "id": "squinl_12",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -150,8 +150,8 @@
     "container_shape": "L",
     "best_value": 4.8284,
     "status": "best_known",
-    "source_note": "s = 2 + 2√2 = 4.828+ Found by Maurizio Morandi in October 2008.",
-    "our_problem": "13_squinl",
+    "source_note": "s = 2 + 2\u221a2 = 4.828+ Found by Maurizio Morandi in October 2008.",
+    "our_problem": "13_4_in_L",
     "id": "squinl_13",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 4.9867,
     "status": "best_known",
     "source_note": "s = 4.98674+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "14_squinl",
+    "our_problem": "14_4_in_L",
     "id": "squinl_14",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 5,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "15_squinl",
+    "our_problem": "15_4_in_L",
     "id": "squinl_15",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 5,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "16_squinl",
+    "our_problem": "16_4_in_L",
     "id": "squinl_16",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -198,8 +198,8 @@
     "container_shape": "L",
     "best_value": 5.576,
     "status": "best_known",
-    "source_note": "s = 4/3 + 3√2 = 5.575+ Found by Maurizio Morandi in October 2008.",
-    "our_problem": "17_squinl",
+    "source_note": "s = 4/3 + 3\u221a2 = 5.575+ Found by Maurizio Morandi in October 2008.",
+    "our_problem": "17_4_in_L",
     "id": "squinl_17",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -210,8 +210,8 @@
     "container_shape": "L",
     "best_value": 5.6095,
     "status": "best_known",
-    "source_note": "s = (2√2 + 14) / 3 = 5.609+ Found by Erich Friedman in June 2005.",
-    "our_problem": "18_squinl",
+    "source_note": "s = (2\u221a2 + 14) / 3 = 5.609+ Found by Erich Friedman in June 2005.",
+    "our_problem": "18_4_in_L",
     "id": "squinl_18",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 5.792,
     "status": "best_known",
     "source_note": "s = 5.792+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "19_squinl",
+    "our_problem": "19_4_in_L",
     "id": "squinl_19",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 5.937,
     "status": "best_known",
     "source_note": "s = 5.937+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "20_squinl",
+    "our_problem": "20_4_in_L",
     "id": "squinl_20",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "21_squinl",
+    "our_problem": "21_4_in_L",
     "id": "squinl_21",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "22_squinl",
+    "our_problem": "22_4_in_L",
     "id": "squinl_22",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "23_squinl",
+    "our_problem": "23_4_in_L",
     "id": "squinl_23",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "24_squinl",
+    "our_problem": "24_4_in_L",
     "id": "squinl_24",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "25_squinl",
+    "our_problem": "25_4_in_L",
     "id": "squinl_25",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "26_squinl",
+    "our_problem": "26_4_in_L",
     "id": "squinl_26",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 6,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "27_squinl",
+    "our_problem": "27_4_in_L",
     "id": "squinl_27",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -330,8 +330,8 @@
     "container_shape": "L",
     "best_value": 6.7071,
     "status": "best_known",
-    "source_note": "s = 6 + √2/2 = 6.707+ Found by Maurizio Morandi in September 2015.",
-    "our_problem": "28_squinl",
+    "source_note": "s = 6 + \u221a2/2 = 6.707+ Found by Maurizio Morandi in September 2015.",
+    "our_problem": "28_4_in_L",
     "id": "squinl_28",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 6.84,
     "status": "best_known",
     "source_note": "s = 6.840+ Found by Maurizio Morandi in September 2015.",
-    "our_problem": "29_squinl",
+    "our_problem": "29_4_in_L",
     "id": "squinl_29",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 7,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "30_squinl",
+    "our_problem": "30_4_in_L",
     "id": "squinl_30",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 7,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "31_squinl",
+    "our_problem": "31_4_in_L",
     "id": "squinl_31",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -379,7 +379,7 @@
     "best_value": 7,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "32_squinl",
+    "our_problem": "32_4_in_L",
     "id": "squinl_32",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -391,7 +391,7 @@
     "best_value": 7,
     "status": "trivial",
     "source_note": "Trivial.",
-    "our_problem": "33_squinl",
+    "our_problem": "33_4_in_L",
     "id": "squinl_33",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -403,7 +403,7 @@
     "best_value": 7.513,
     "status": "best_known",
     "source_note": "s = 7.513+ Found by Joe DeVincentis in September 2015.",
-    "our_problem": "34_squinl",
+    "our_problem": "34_4_in_L",
     "id": "squinl_34",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -415,7 +415,7 @@
     "best_value": 7.56,
     "status": "best_known",
     "source_note": "s = 7.560+ Found by Joe DeVincentis in September 2015.",
-    "our_problem": "35_squinl",
+    "our_problem": "35_4_in_L",
     "id": "squinl_35",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   },
@@ -427,7 +427,7 @@
     "best_value": 7.73,
     "status": "best_known",
     "source_note": "s = 7.730+ Found by Joe DeVincentis in September 2015.",
-    "our_problem": "36_squinl",
+    "our_problem": "36_4_in_L",
     "id": "squinl_36",
     "source_url": "https://erich-friedman.github.io/packing/squinl/index.html"
   }

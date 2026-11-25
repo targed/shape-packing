@@ -7,7 +7,7 @@
     "best_value": 0.5,
     "status": "trivial",
     "source_note": "s = 1/2 Trivial.",
-    "our_problem": "1_taninL",
+    "our_problem": "1_TAN_in_L",
     "id": "taninL_1",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -18,8 +18,8 @@
     "container_shape": "L",
     "best_value": 0.7071,
     "status": "trivial",
-    "source_note": "s = 1/√2 = .707+ Trivial.",
-    "our_problem": "2_taninL",
+    "source_note": "s = 1/\u221a2 = .707+ Trivial.",
+    "our_problem": "2_TAN_in_L",
     "id": "taninL_2",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -30,8 +30,8 @@
     "container_shape": "L",
     "best_value": 0.9114,
     "status": "best_known",
-    "source_note": "s = (1+√7) / 4 = .911+ Found by Erich Friedman in July 2011.",
-    "our_problem": "3_taninL",
+    "source_note": "s = (1+\u221a7) / 4 = .911+ Found by Erich Friedman in July 2011.",
+    "our_problem": "3_TAN_in_L",
     "id": "taninL_3",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -42,8 +42,8 @@
     "container_shape": "L",
     "best_value": 0.9659,
     "status": "best_known",
-    "source_note": "s = (√6 + √2) / 4 = .965+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "4_taninL",
+    "source_note": "s = (\u221a6 + \u221a2) / 4 = .965+ Found by Maurizio Morandi in July 2012.",
+    "our_problem": "4_TAN_in_L",
     "id": "taninL_4",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "s = 1 Trivial.",
-    "our_problem": "5_taninL",
+    "our_problem": "5_TAN_in_L",
     "id": "taninL_5",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "s = 1 Trivial.",
-    "our_problem": "6_taninL",
+    "our_problem": "6_TAN_in_L",
     "id": "taninL_6",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -78,8 +78,8 @@
     "container_shape": "L",
     "best_value": 1.1381,
     "status": "best_known",
-    "source_note": "s = (2 + √2) / 3 = 1.138+ Found by David W. Cantrell in July 2012.",
-    "our_problem": "7_taninL",
+    "source_note": "s = (2 + \u221a2) / 3 = 1.138+ Found by David W. Cantrell in July 2012.",
+    "our_problem": "7_TAN_in_L",
     "id": "taninL_7",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -90,8 +90,8 @@
     "container_shape": "L",
     "best_value": 1.2761,
     "status": "best_known",
-    "source_note": "s = (1 + 2√2) / 3 = 1.276+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "8_taninL",
+    "source_note": "s = (1 + 2\u221a2) / 3 = 1.276+ Found by Maurizio Morandi in July 2012.",
+    "our_problem": "8_TAN_in_L",
     "id": "taninL_8",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 1.3333,
     "status": "best_known",
     "source_note": "s = 4/3 = 1.333+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "9_taninL",
+    "our_problem": "9_TAN_in_L",
     "id": "taninL_9",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 1.4,
     "status": "best_known",
     "source_note": "s = 1.400+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "10_taninL",
+    "our_problem": "10_TAN_in_L",
     "id": "taninL_10",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -126,8 +126,8 @@
     "container_shape": "L",
     "best_value": 1.4142,
     "status": "trivial",
-    "source_note": "s = √2 = 1.414+ Trivial.",
-    "our_problem": "11_taninL",
+    "source_note": "s = \u221a2 = 1.414+ Trivial.",
+    "our_problem": "11_TAN_in_L",
     "id": "taninL_11",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -138,8 +138,8 @@
     "container_shape": "L",
     "best_value": 1.4142,
     "status": "trivial",
-    "source_note": "s = √2 = 1.414+ Trivial.",
-    "our_problem": "12_taninL",
+    "source_note": "s = \u221a2 = 1.414+ Trivial.",
+    "our_problem": "12_TAN_in_L",
     "id": "taninL_12",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 1.499,
     "status": "best_known",
     "source_note": "s = 1.499+ Found by Maurizio Morandi in July 2012.",
-    "our_problem": "13_taninL",
+    "our_problem": "13_TAN_in_L",
     "id": "taninL_13",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 1.607,
     "status": "best_known",
     "source_note": "s = 1.607+ Found by Maurizio Morandi in August 2012.",
-    "our_problem": "14_taninL",
+    "our_problem": "14_TAN_in_L",
     "id": "taninL_14",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 1.68,
     "status": "best_known",
     "source_note": "s = 1.680+ Found by Maurizio Morandi in August 2012.",
-    "our_problem": "15_taninL",
+    "our_problem": "15_TAN_in_L",
     "id": "taninL_15",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -186,8 +186,8 @@
     "container_shape": "L",
     "best_value": 1.7475,
     "status": "best_known",
-    "source_note": "s = 1/3 + √2 = 1.747+ Found by Maurizio Morandi in August 2012.",
-    "our_problem": "16_taninL",
+    "source_note": "s = 1/3 + \u221a2 = 1.747+ Found by Maurizio Morandi in August 2012.",
+    "our_problem": "16_TAN_in_L",
     "id": "taninL_16",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   },
@@ -198,8 +198,8 @@
     "container_shape": "L",
     "best_value": 1.8047,
     "status": "best_known",
-    "source_note": "s = (4 + √2) / 3 = 1.804+ Found by Maurizio Morandi in August 2012.",
-    "our_problem": "17_taninL",
+    "source_note": "s = (4 + \u221a2) / 3 = 1.804+ Found by Maurizio Morandi in August 2012.",
+    "our_problem": "17_TAN_in_L",
     "id": "taninL_17",
     "source_url": "https://erich-friedman.github.io/packing/taninL/index.html"
   }

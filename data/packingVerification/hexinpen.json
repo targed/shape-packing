@@ -7,7 +7,7 @@
     "best_value": 1.3954,
     "status": "trivial",
     "source_note": "s = 1.39538+ Trivial.",
-    "our_problem": "1_hexinpen",
+    "our_problem": "1_6_in_5",
     "id": "hexinpen_1",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 2.4659,
     "status": "best_known",
     "source_note": "s = 2.46585+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "2_hexinpen",
+    "our_problem": "2_6_in_5",
     "id": "hexinpen_2",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 2.7428,
     "status": "best_known",
     "source_note": "s = 2.74282+ Found by Ethan Riddle in May 2026.",
-    "our_problem": "3_hexinpen",
+    "our_problem": "3_6_in_5",
     "id": "hexinpen_3",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 3.0152,
     "status": "best_known",
     "source_note": "s = 3.01521+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "4_hexinpen",
+    "our_problem": "4_6_in_5",
     "id": "hexinpen_4",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 3.2197,
     "status": "best_known",
     "source_note": "s = 3.21972+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "5_hexinpen",
+    "our_problem": "5_6_in_5",
     "id": "hexinpen_5",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 3.5495,
     "status": "best_known",
     "source_note": "s = 3.54952+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "6_hexinpen",
+    "our_problem": "6_6_in_5",
     "id": "hexinpen_6",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 3.7975,
     "status": "best_known",
     "source_note": "s = 3.79749+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "7_hexinpen",
+    "our_problem": "7_6_in_5",
     "id": "hexinpen_7",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 4.1492,
     "status": "best_known",
     "source_note": "s = 4.14916+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "8_hexinpen",
+    "our_problem": "8_6_in_5",
     "id": "hexinpen_8",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 4.3431,
     "status": "best_known",
     "source_note": "s = 4.34314+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "9_hexinpen",
+    "our_problem": "9_6_in_5",
     "id": "hexinpen_9",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 4.5581,
     "status": "best_known",
     "source_note": "s = 4.55810+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "10_hexinpen",
+    "our_problem": "10_6_in_5",
     "id": "hexinpen_10",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 4.7196,
     "status": "best_known",
     "source_note": "s = 4.71959+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "11_hexinpen",
+    "our_problem": "11_6_in_5",
     "id": "hexinpen_11",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 4.9185,
     "status": "best_known",
     "source_note": "s = 4.91850+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "12_hexinpen",
+    "our_problem": "12_6_in_5",
     "id": "hexinpen_12",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 5.1011,
     "status": "best_known",
     "source_note": "s = 5.10107+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "13_hexinpen",
+    "our_problem": "13_6_in_5",
     "id": "hexinpen_13",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 5.292,
     "status": "best_known",
     "source_note": "s = 5.29198+ Found by Jake Loyd in June 2026.",
-    "our_problem": "14_hexinpen",
+    "our_problem": "14_6_in_5",
     "id": "hexinpen_14",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 5.4134,
     "status": "best_known",
     "source_note": "s = 5.41337+ Found by Jake Loyd in June 2026.",
-    "our_problem": "15_hexinpen",
+    "our_problem": "15_6_in_5",
     "id": "hexinpen_15",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 5.6141,
     "status": "best_known",
     "source_note": "s = 5.61409+ Found by Jake Loyd in June 2026.",
-    "our_problem": "16_hexinpen",
+    "our_problem": "16_6_in_5",
     "id": "hexinpen_16",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 5.821,
     "status": "best_known",
     "source_note": "s = 5.82103+ Found by Jake Loyd in June 2026.",
-    "our_problem": "17_hexinpen",
+    "our_problem": "17_6_in_5",
     "id": "hexinpen_17",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 5.9447,
     "status": "best_known",
     "source_note": "s = 5.94471+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "18_hexinpen",
+    "our_problem": "18_6_in_5",
     "id": "hexinpen_18",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 6.1098,
     "status": "best_known",
     "source_note": "s = 6.10977+ Found by Jonathan Viquerat in May 2026.",
-    "our_problem": "19_hexinpen",
+    "our_problem": "19_6_in_5",
     "id": "hexinpen_19",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 6.2467,
     "status": "best_known",
     "source_note": "s = 6.24667+ Found by Jake Loyd in June 2026.",
-    "our_problem": "20_hexinpen",
+    "our_problem": "20_6_in_5",
     "id": "hexinpen_20",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 6.3922,
     "status": "best_known",
     "source_note": "s = 6.39217+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "21_hexinpen",
+    "our_problem": "21_6_in_5",
     "id": "hexinpen_21",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 6.5347,
     "status": "best_known",
     "source_note": "s = 6.53472+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "22_hexinpen",
+    "our_problem": "22_6_in_5",
     "id": "hexinpen_22",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 6.6627,
     "status": "best_known",
     "source_note": "s = 6.66271+ Found by Jake Loyd in June 2026.",
-    "our_problem": "23_hexinpen",
+    "our_problem": "23_6_in_5",
     "id": "hexinpen_23",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 6.7747,
     "status": "best_known",
     "source_note": "s = 6.77466+ Found by Jake Loyd in June 2026.",
-    "our_problem": "24_hexinpen",
+    "our_problem": "24_6_in_5",
     "id": "hexinpen_24",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -295,7 +295,7 @@
     "best_value": 6.891,
     "status": "best_known",
     "source_note": "s = 6.89098+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "25_hexinpen",
+    "our_problem": "25_6_in_5",
     "id": "hexinpen_25",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -307,7 +307,7 @@
     "best_value": 7.0473,
     "status": "best_known",
     "source_note": "s = 7.04734+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "26_hexinpen",
+    "our_problem": "26_6_in_5",
     "id": "hexinpen_26",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -319,7 +319,7 @@
     "best_value": 7.1531,
     "status": "best_known",
     "source_note": "s = 7.15307+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "27_hexinpen",
+    "our_problem": "27_6_in_5",
     "id": "hexinpen_27",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -331,7 +331,7 @@
     "best_value": 7.2481,
     "status": "best_known",
     "source_note": "s = 7.24810+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "28_hexinpen",
+    "our_problem": "28_6_in_5",
     "id": "hexinpen_28",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -343,7 +343,7 @@
     "best_value": 7.3791,
     "status": "best_known",
     "source_note": "s = 7.37905+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "29_hexinpen",
+    "our_problem": "29_6_in_5",
     "id": "hexinpen_29",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -355,7 +355,7 @@
     "best_value": 7.4599,
     "status": "best_known",
     "source_note": "s = 7.45985+ Found by Aristotle Papowitz in July 2026.",
-    "our_problem": "30_hexinpen",
+    "our_problem": "30_6_in_5",
     "id": "hexinpen_30",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -367,7 +367,7 @@
     "best_value": 7.6326,
     "status": "best_known",
     "source_note": "s = 7.63264+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "31_hexinpen",
+    "our_problem": "31_6_in_5",
     "id": "hexinpen_31",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   },
@@ -379,7 +379,7 @@
     "best_value": 7.7662,
     "status": "best_known",
     "source_note": "s = 7.76619+ Found by Bhavithran Ananthan in July 2026.",
-    "our_problem": "32_hexinpen",
+    "our_problem": "32_6_in_5",
     "id": "hexinpen_32",
     "source_url": "https://erich-friedman.github.io/packing/hexinpen/index.html"
   }

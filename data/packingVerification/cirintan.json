@@ -7,7 +7,7 @@
     "best_value": 3.4142,
     "status": "trivial",
     "source_note": "s = 2 + \u221a2 = 3.414+ Trivial.",
-    "our_problem": "1_cirintan",
+    "our_problem": "1_CIRCLE_in_TAN",
     "id": "cirintan_1",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 4.8284,
     "status": "proved_optimal",
     "source_note": "s = 2 + 2\u221a2 = 4.828+ Proved by Yinfeng Xu in 1996.",
-    "our_problem": "2_cirintan",
+    "our_problem": "2_CIRCLE_in_TAN",
     "id": "cirintan_2",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 5.4142,
     "status": "proved_optimal",
     "source_note": "s = 4 + \u221a2 = 5.414+ Proved by Yinfeng Xu in 1996.",
-    "our_problem": "3_cirintan",
+    "our_problem": "3_CIRCLE_in_TAN",
     "id": "cirintan_3",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 6.2426,
     "status": "proved_optimal",
     "source_note": "s = 2 + 3\u221a2 = 6.242+ Proved by Yinfeng Xu in 1996.",
-    "our_problem": "4_cirintan",
+    "our_problem": "4_CIRCLE_in_TAN",
     "id": "cirintan_4",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 7.1463,
     "status": "proved_optimal",
     "source_note": "s = 4 + \u221a2 + \u221a3 = 7.146+ Proved by Hans Melissen in 1997.",
-    "our_problem": "5_cirintan",
+    "our_problem": "5_CIRCLE_in_TAN",
     "id": "cirintan_5",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 7.4142,
     "status": "proved_optimal",
     "source_note": "s = 6 + \u221a2 = 7.414+ Proved by Hans Melissen in 1997.",
-    "our_problem": "6_cirintan",
+    "our_problem": "6_CIRCLE_in_TAN",
     "id": "cirintan_6",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 8.181,
     "status": "proved_optimal",
     "source_note": "s = 8.181+ Proved by Yinfeng Xu in 1996.",
-    "our_problem": "7_cirintan",
+    "our_problem": "7_CIRCLE_in_TAN",
     "id": "cirintan_7",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 8.6921,
     "status": "best_known",
     "source_note": "s = 2 + 3\u221a2 + \u221a6 = 8.692+ Found by Hans Melissen in 1997.",
-    "our_problem": "8_cirintan",
+    "our_problem": "8_CIRCLE_in_TAN",
     "id": "cirintan_8",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 9.0711,
     "status": "trivial",
     "source_note": "s = 2 + 5\u221a2 = 9.071+ Trivial.",
-    "our_problem": "9_cirintan",
+    "our_problem": "9_CIRCLE_in_TAN",
     "id": "cirintan_9",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 9.4142,
     "status": "trivial",
     "source_note": "s = 8 + \u221a2 = 9.414+ Trivial.",
-    "our_problem": "10_cirintan",
+    "our_problem": "10_CIRCLE_in_TAN",
     "id": "cirintan_10",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 10.0591,
     "status": "best_known",
     "source_note": "s = 5 + \u221a(2/3) + 3\u221a2 = 10.059+ Found by David W. Cantrell in June 2005.",
-    "our_problem": "11_cirintan",
+    "our_problem": "11_CIRCLE_in_TAN",
     "id": "cirintan_11",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 10.422,
     "status": "best_known",
     "source_note": "s = 10.422+ Found by David W. Cantrell in June 2005.",
-    "our_problem": "12_cirintan",
+    "our_problem": "12_CIRCLE_in_TAN",
     "id": "cirintan_12",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 10.798,
     "status": "best_known",
     "source_note": "s = 10.798+ Found by Hans Melissen in 1997.",
-    "our_problem": "13_cirintan",
+    "our_problem": "13_CIRCLE_in_TAN",
     "id": "cirintan_13",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 11.1416,
     "status": "best_known",
     "source_note": "s = 2 + 3\u221a2 + 2\u221a6 = 11.141+ Found by Erich Friedman in April 2005.",
-    "our_problem": "14_cirintan",
+    "our_problem": "14_CIRCLE_in_TAN",
     "id": "cirintan_14",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 11.4142,
     "status": "trivial",
     "source_note": "s = 10 + \u221a2 = 11.414+ Trivial.",
-    "our_problem": "15_cirintan",
+    "our_problem": "15_CIRCLE_in_TAN",
     "id": "cirintan_15",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 11.892,
     "status": "best_known",
     "source_note": "s = 11.892+ Found by David W. Cantrell in January 2006.",
-    "our_problem": "16_cirintan",
+    "our_problem": "16_CIRCLE_in_TAN",
     "id": "cirintan_16",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 12.155,
     "status": "best_known",
     "source_note": "s = 12.155+ Found by David W. Cantrell in January 2006.",
-    "our_problem": "17_cirintan",
+    "our_problem": "17_CIRCLE_in_TAN",
     "id": "cirintan_17",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 12.542,
     "status": "best_known",
     "source_note": "s = 12.542+ Found by Eckard Specht in April 2009.",
-    "our_problem": "18_cirintan",
+    "our_problem": "18_CIRCLE_in_TAN",
     "id": "cirintan_18",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 12.798,
     "status": "best_known",
     "source_note": "s = 12.798+ Found by David W. Cantrell in January 2006.",
-    "our_problem": "19_cirintan",
+    "our_problem": "19_CIRCLE_in_TAN",
     "id": "cirintan_19",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 13.092,
     "status": "best_known",
     "source_note": "s = 13.092+ Found by Maurizio Morandi in December 2008.",
-    "our_problem": "20_cirintan",
+    "our_problem": "20_CIRCLE_in_TAN",
     "id": "cirintan_20",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 13.4142,
     "status": "trivial",
     "source_note": "s = 12 + \u221a2 = 13.414+ Trivial.",
-    "our_problem": "21_cirintan",
+    "our_problem": "21_CIRCLE_in_TAN",
     "id": "cirintan_21",
     "source_url": "https://erich-friedman.github.io/packing/cirintan/index.html"
   }

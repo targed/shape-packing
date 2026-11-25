@@ -6,8 +6,8 @@
     "container_shape": "domino",
     "best_value": 0.7071,
     "status": "trivial",
-    "source_note": "s = 1/√2 = .70710+ Trivial.",
-    "our_problem": "1_tanindom",
+    "source_note": "s = 1/\u221a2 = .70710+ Trivial.",
+    "our_problem": "1_TAN_in_DOMINO",
     "id": "tanindom_1",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -18,8 +18,8 @@
     "container_shape": "domino",
     "best_value": 0.9428,
     "status": "best_known",
-    "source_note": "s = 2√2/3 = .94280+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "2_tanindom",
+    "source_note": "s = 2\u221a2/3 = .94280+ Found by Maurizio Morandi in June 2026.",
+    "our_problem": "2_TAN_in_DOMINO",
     "id": "tanindom_2",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 0.999,
     "status": "best_known",
     "source_note": "s = .99900+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "3_tanindom",
+    "our_problem": "3_TAN_in_DOMINO",
     "id": "tanindom_3",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.0,
     "status": "trivial",
     "source_note": "s = 1 Trivial.",
-    "our_problem": "4_tanindom",
+    "our_problem": "4_TAN_in_DOMINO",
     "id": "tanindom_4",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 1.30157,
     "status": "best_known",
     "source_note": "s = 1.30157+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "5_tanindom",
+    "our_problem": "5_TAN_in_DOMINO",
     "id": "tanindom_5",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 1.33333,
     "status": "best_known",
     "source_note": "s = 4/3 = 1.33333+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "6_tanindom",
+    "our_problem": "6_TAN_in_DOMINO",
     "id": "tanindom_6",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -78,8 +78,8 @@
     "container_shape": "domino",
     "best_value": 1.41421,
     "status": "trivial",
-    "source_note": "s = √2 = 1.41421+ Trivial.",
-    "our_problem": "7_tanindom",
+    "source_note": "s = \u221a2 = 1.41421+ Trivial.",
+    "our_problem": "7_TAN_in_DOMINO",
     "id": "tanindom_7",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -90,8 +90,8 @@
     "container_shape": "domino",
     "best_value": 1.41421,
     "status": "trivial",
-    "source_note": "s = √2 = 1.41421+ Trivial.",
-    "our_problem": "8_tanindom",
+    "source_note": "s = \u221a2 = 1.41421+ Trivial.",
+    "our_problem": "8_TAN_in_DOMINO",
     "id": "tanindom_8",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 1.6071,
     "status": "best_known",
     "source_note": "s = 1.60710+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "9_tanindom",
+    "our_problem": "9_TAN_in_DOMINO",
     "id": "tanindom_9",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -114,8 +114,8 @@
     "container_shape": "domino",
     "best_value": 1.7071,
     "status": "best_known",
-    "source_note": "s = 1 + 1/√2 = 1.70710+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "10_tanindom",
+    "source_note": "s = 1 + 1/\u221a2 = 1.70710+ Found by Maurizio Morandi in June 2026.",
+    "our_problem": "10_TAN_in_DOMINO",
     "id": "tanindom_10",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 1.74954,
     "status": "best_known",
     "source_note": "s = 1.74954+ Found by Aapo Lipponen in July 2026.",
-    "our_problem": "11_tanindom",
+    "our_problem": "11_TAN_in_DOMINO",
     "id": "tanindom_11",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -138,8 +138,8 @@
     "container_shape": "domino",
     "best_value": 1.81066,
     "status": "best_known",
-    "source_note": "s = 3(1+√2)/4 = 1.81066+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "12_tanindom",
+    "source_note": "s = 3(1+\u221a2)/4 = 1.81066+ Found by Maurizio Morandi in June 2026.",
+    "our_problem": "12_TAN_in_DOMINO",
     "id": "tanindom_12",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -150,8 +150,8 @@
     "container_shape": "domino",
     "best_value": 1.91421,
     "status": "best_known",
-    "source_note": "s = 1/2+√2 = 1.91421+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "13_tanindom",
+    "source_note": "s = 1/2+\u221a2 = 1.91421+ Found by Maurizio Morandi in June 2026.",
+    "our_problem": "13_TAN_in_DOMINO",
     "id": "tanindom_13",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -162,8 +162,8 @@
     "container_shape": "domino",
     "best_value": 1.96568,
     "status": "best_known",
-    "source_note": "s = (7+2√2)/5 = 1.96568+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "14_tanindom",
+    "source_note": "s = (7+2\u221a2)/5 = 1.96568+ Found by Maurizio Morandi in June 2026.",
+    "our_problem": "14_TAN_in_DOMINO",
     "id": "tanindom_14",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "15_tanindom",
+    "our_problem": "15_TAN_in_DOMINO",
     "id": "tanindom_15",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 2.0,
     "status": "trivial",
     "source_note": "s = 2 Trivial.",
-    "our_problem": "16_tanindom",
+    "our_problem": "16_TAN_in_DOMINO",
     "id": "tanindom_16",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -198,8 +198,8 @@
     "container_shape": "domino",
     "best_value": 2.10947,
     "status": "best_known",
-    "source_note": "s = (7+4√2)/6 = 2.10947+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "17_tanindom",
+    "source_note": "s = (7+4\u221a2)/6 = 2.10947+ Found by Maurizio Morandi in June 2026.",
+    "our_problem": "17_TAN_in_DOMINO",
     "id": "tanindom_17",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 2.17527,
     "status": "best_known",
     "source_note": "s = 2.17527+ Found by Maurizio Morandi in June 2026.",
-    "our_problem": "18_tanindom",
+    "our_problem": "18_TAN_in_DOMINO",
     "id": "tanindom_18",
     "source_url": "https://erich-friedman.github.io/packing/tanindom/index.html"
   }

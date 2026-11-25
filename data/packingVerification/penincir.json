@@ -7,7 +7,7 @@
     "best_value": 0.8507,
     "status": "trivial",
     "source_note": "r = \u221a((5+\u221a5)/10) = .86065+ Trivial.",
-    "our_problem": "1_penincir",
+    "our_problem": "1_5_in_CIRCLE",
     "id": "penincir_1",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -19,7 +19,7 @@
     "best_value": 1.5388,
     "status": "trivial",
     "source_note": "r = \u221a(5+2\u221a5)/2 = 1.53884+ Trivial.",
-    "our_problem": "2_penincir",
+    "our_problem": "2_5_in_CIRCLE",
     "id": "penincir_2",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -31,7 +31,7 @@
     "best_value": 1.618,
     "status": "trivial",
     "source_note": "r = (1+\u221a5)/2 = 1.61803+ Trivial.",
-    "our_problem": "3_penincir",
+    "our_problem": "3_5_in_CIRCLE",
     "id": "penincir_3",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -43,7 +43,7 @@
     "best_value": 1.8297,
     "status": "best_known",
     "source_note": "r = 1.82971+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "4_penincir",
+    "our_problem": "4_5_in_CIRCLE",
     "id": "penincir_4",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -55,7 +55,7 @@
     "best_value": 2.0327,
     "status": "best_known",
     "source_note": "r = 2.03271+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "5_penincir",
+    "our_problem": "5_5_in_CIRCLE",
     "id": "penincir_5",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -67,7 +67,7 @@
     "best_value": 2.227,
     "status": "best_known",
     "source_note": "r = \u221a((25+11\u221a5)/10) = 2.22703+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "6_penincir",
+    "our_problem": "6_5_in_CIRCLE",
     "id": "penincir_6",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -79,7 +79,7 @@
     "best_value": 2.2947,
     "status": "best_known",
     "source_note": "r = 2.29470+ Found by Jake Loyd in June 2026.",
-    "our_problem": "7_penincir",
+    "our_problem": "7_5_in_CIRCLE",
     "id": "penincir_7",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -91,7 +91,7 @@
     "best_value": 2.4813,
     "status": "best_known",
     "source_note": "r = 2.48128+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "8_penincir",
+    "our_problem": "8_5_in_CIRCLE",
     "id": "penincir_8",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -103,7 +103,7 @@
     "best_value": 2.7017,
     "status": "best_known",
     "source_note": "r = 2.70169+ Found by Jake Loyd in June 2026.",
-    "our_problem": "9_penincir",
+    "our_problem": "9_5_in_CIRCLE",
     "id": "penincir_9",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -115,7 +115,7 @@
     "best_value": 2.7977,
     "status": "best_known",
     "source_note": "r = 2.79768+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "10_penincir",
+    "our_problem": "10_5_in_CIRCLE",
     "id": "penincir_10",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -127,7 +127,7 @@
     "best_value": 2.9017,
     "status": "best_known",
     "source_note": "r = 2.90171+ Found by Jake Loyd in June 2026.",
-    "our_problem": "11_penincir",
+    "our_problem": "11_5_in_CIRCLE",
     "id": "penincir_11",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -139,7 +139,7 @@
     "best_value": 3.0181,
     "status": "best_known",
     "source_note": "r = 3.01808+ Found by Jake Loyd in June 2026.",
-    "our_problem": "12_penincir",
+    "our_problem": "12_5_in_CIRCLE",
     "id": "penincir_12",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -151,7 +151,7 @@
     "best_value": 3.0777,
     "status": "best_known",
     "source_note": "r = 3.07768+ Found by Jake Loyd in June 2026.",
-    "our_problem": "13_penincir",
+    "our_problem": "13_5_in_CIRCLE",
     "id": "penincir_13",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -163,7 +163,7 @@
     "best_value": 3.2338,
     "status": "best_known",
     "source_note": "r = 3.23377+ Found by Jonathan Viquerat in June 2026.",
-    "our_problem": "14_penincir",
+    "our_problem": "14_5_in_CIRCLE",
     "id": "penincir_14",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -175,7 +175,7 @@
     "best_value": 3.3388,
     "status": "best_known",
     "source_note": "r = 3.33877+ Found by Jake Loyd in June 2026.",
-    "our_problem": "15_penincir",
+    "our_problem": "15_5_in_CIRCLE",
     "id": "penincir_15",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -187,7 +187,7 @@
     "best_value": 3.4366,
     "status": "best_known",
     "source_note": "r = 3.43657+ Found by Jonathan Viquerat in April 2026.",
-    "our_problem": "16_penincir",
+    "our_problem": "16_5_in_CIRCLE",
     "id": "penincir_16",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -199,7 +199,7 @@
     "best_value": 3.5089,
     "status": "best_known",
     "source_note": "r = 3.50888+ Found by Jake Loyd in June 2026.",
-    "our_problem": "17_penincir",
+    "our_problem": "17_5_in_CIRCLE",
     "id": "penincir_17",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -211,7 +211,7 @@
     "best_value": 3.6162,
     "status": "best_known",
     "source_note": "r = 3.61619+ Found by Jake Loyd in June 2026.",
-    "our_problem": "18_penincir",
+    "our_problem": "18_5_in_CIRCLE",
     "id": "penincir_18",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -223,7 +223,7 @@
     "best_value": 3.6719,
     "status": "best_known",
     "source_note": "r = 3.67189+ Found by Jake Loyd in June 2026.",
-    "our_problem": "19_penincir",
+    "our_problem": "19_5_in_CIRCLE",
     "id": "penincir_19",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -235,7 +235,7 @@
     "best_value": 3.8005,
     "status": "best_known",
     "source_note": "r = 3.80052+ Found by Jake Loyd in June 2026.",
-    "our_problem": "20_penincir",
+    "our_problem": "20_5_in_CIRCLE",
     "id": "penincir_20",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -247,7 +247,7 @@
     "best_value": 3.9069,
     "status": "best_known",
     "source_note": "r = 3.90693+ Found by Haowei Lin in July 2026.",
-    "our_problem": "21_penincir",
+    "our_problem": "21_5_in_CIRCLE",
     "id": "penincir_21",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -259,7 +259,7 @@
     "best_value": 3.9978,
     "status": "best_known",
     "source_note": "r = 3.99781+ Found by Haowei Lin in July 2026.",
-    "our_problem": "22_penincir",
+    "our_problem": "22_5_in_CIRCLE",
     "id": "penincir_22",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -271,7 +271,7 @@
     "best_value": 4.0719,
     "status": "best_known",
     "source_note": "r = 4.07193+ Found by Haowei Lin in July 2026.",
-    "our_problem": "23_penincir",
+    "our_problem": "23_5_in_CIRCLE",
     "id": "penincir_23",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   },
@@ -283,7 +283,7 @@
     "best_value": 4.124,
     "status": "best_known",
     "source_note": "r = 4.12402+ Found by Haowei Lin in July 2026.",
-    "our_problem": "24_penincir",
+    "our_problem": "24_5_in_CIRCLE",
     "id": "penincir_24",
     "source_url": "https://erich-friedman.github.io/packing/penincir/index.html"
   }

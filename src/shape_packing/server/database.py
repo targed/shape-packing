@@ -15,6 +15,7 @@ import uuid
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 from ..catalog import (
+    canonical_problem_id,
     get_canonical_tokens,
     get_pair_tier,
     is_pair_supported,
@@ -395,8 +396,9 @@ def seed_problems_from_verification(
 
                 tier = str(item.get("tier") or get_pair_tier(inner, container) or "benchmark")
                 note = str(item.get("source_note") or "")
+                canonical_id = canonical_problem_id(n, inner, container)
 
-                rows.append((our_problem, inner, container, n, best_val, best_val, status, note, tier))
+                rows.append((canonical_id, inner, container, n, best_val, best_val, status, note, tier))
         except (json.JSONDecodeError, OSError) as exc:
             logger.warning("Failed to parse verification file %s: %s", file_path, exc)
             continue
@@ -451,7 +453,7 @@ def seed_frontier_problems(conn: sqlite3.Connection, max_n: int = 20) -> int:
     rows: List[Tuple[str, str, str, int, str, str, str]] = []
     for _, inner, container in list_frontier_families():
         for n in range(1, max_n + 1):
-            prob_id = f"{n}_{inner}_in_{container}"
+            prob_id = canonical_problem_id(n, inner, container)
             rows.append((prob_id, inner, container, n, "unattempted", "Frontier Canonical Baseline", "frontier"))
 
     if not rows:
@@ -620,3 +622,134 @@ def sync_records_to_db(
     except Exception:
         conn.rollback()
         raise
+
+
+def migrate_legacy_problem_ids(conn: sqlite3.Connection) -> int:
+    """
+    Migrate any legacy problem IDs (e.g. '2_dominhex', '1_cirinsemi') in `problems`
+    to canonical '{N}_{INNER}_in_{CONTAINER}' IDs while preserving linked `solutions`
+    and `active_leases`. Idempotent.
+    """
+    rows = conn.execute(
+        """
+        SELECT id, inner_token, container_token, n, best_s, reference_s, status,
+               total_attempts, density_rank, source_attribution, tier, updated_at
+        FROM problems
+        """
+    ).fetchall()
+
+    migrations = []
+    for row in rows:
+        old_id = row["id"] if hasattr(row, "keys") else row[0]
+        inner_tok = normalize_shape_token(row["inner_token"] if hasattr(row, "keys") else row[1])
+        cont_tok = normalize_shape_token(row["container_token"] if hasattr(row, "keys") else row[2])
+        n_val = int(row["n"] if hasattr(row, "keys") else row[3])
+        if not inner_tok or not cont_tok or n_val <= 0:
+            continue
+        canon_id = canonical_problem_id(n_val, inner_tok, cont_tok)
+        if old_id != canon_id:
+            migrations.append((old_id, canon_id, inner_tok, cont_tok, row))
+
+    if not migrations:
+        return 0
+
+    if conn.in_transaction:
+        conn.commit()
+
+    cursor = conn.cursor()
+    cursor.execute("BEGIN IMMEDIATE")
+    migrated = 0
+    try:
+        for old_id, canon_id, inner_tok, cont_tok, row in migrations:
+            existing = cursor.execute(
+                "SELECT best_s, reference_s, status, total_attempts, density_rank, source_attribution, tier FROM problems WHERE id = ?",
+                (canon_id,),
+            ).fetchone()
+            old_best = row["best_s"] if hasattr(row, "keys") else row[4]
+            old_ref = row["reference_s"] if hasattr(row, "keys") else row[5]
+            old_status = row["status"] if hasattr(row, "keys") else row[6]
+            old_attempts = int((row["total_attempts"] if hasattr(row, "keys") else row[7]) or 0)
+            old_density = row["density_rank"] if hasattr(row, "keys") else row[8]
+            old_source = row["source_attribution"] if hasattr(row, "keys") else row[9]
+            old_tier = (row["tier"] if hasattr(row, "keys") else row[10]) or "benchmark"
+            old_updated = row["updated_at"] if hasattr(row, "keys") else row[11]
+            n_val = int(row["n"] if hasattr(row, "keys") else row[3])
+
+            if existing is None:
+                cursor.execute(
+                    """
+                    INSERT INTO problems (
+                        id, inner_token, container_token, n, best_s, reference_s, status,
+                        total_attempts, density_rank, source_attribution, tier, updated_at
+                    )
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        canon_id,
+                        inner_tok,
+                        cont_tok,
+                        n_val,
+                        old_best,
+                        old_ref,
+                        old_status,
+                        old_attempts,
+                        old_density,
+                        old_source,
+                        old_tier,
+                        old_updated,
+                    ),
+                )
+            else:
+                ex_best = existing["best_s"] if hasattr(existing, "keys") else existing[0]
+                ex_status = existing["status"] if hasattr(existing, "keys") else existing[2]
+                ex_attempts = int((existing["total_attempts"] if hasattr(existing, "keys") else existing[3]) or 0)
+                if ex_best is None:
+                    merged_best = old_best
+                elif old_best is not None and old_best < ex_best:
+                    merged_best = old_best
+                else:
+                    merged_best = ex_best
+                merged_status = "proved_optimal" if "proved_optimal" in (ex_status, old_status) else ex_status
+                cursor.execute(
+                    """
+                    UPDATE problems
+                    SET best_s = ?, status = ?, total_attempts = ?
+                    WHERE id = ?
+                    """,
+                    (merged_best, merged_status, ex_attempts + old_attempts, canon_id),
+                )
+
+            cursor.execute("UPDATE solutions SET problem_id = ? WHERE problem_id = ?", (canon_id, old_id))
+            cursor.execute("UPDATE active_leases SET problem_id = ? WHERE problem_id = ?", (canon_id, old_id))
+            cursor.execute("DELETE FROM problems WHERE id = ?", (old_id,))
+
+            # Ensure at most one current record remains per problem_id after merging
+            rec_rows = cursor.execute(
+                "SELECT id, metric_s FROM solutions WHERE problem_id = ? AND is_current_record = 1 ORDER BY metric_s ASC",
+                (canon_id,),
+            ).fetchall()
+            if len(rec_rows) > 1:
+                keep_id = rec_rows[0]["id"] if hasattr(rec_rows[0], "keys") else rec_rows[0][0]
+                cursor.execute(
+                    "UPDATE solutions SET is_current_record = 0 WHERE problem_id = ? AND id != ?",
+                    (canon_id, keep_id),
+                )
+            migrated += 1
+
+        conn.commit()
+        return migrated
+    except Exception:
+        conn.rollback()
+        raise
+
+
+def sync_problem_catalog(
+    conn: sqlite3.Connection,
+    verification_dir: str = "data/packingVerification",
+    frontier_max_n: int = 20,
+) -> Dict[str, int]:
+    """Migrate legacy IDs and idempotently seed all Benchmark and Frontier problems."""
+    migrated = migrate_legacy_problem_ids(conn)
+    benchmark = seed_problems_from_verification(conn, verification_dir=verification_dir)
+    frontier = seed_frontier_problems(conn, max_n=frontier_max_n)
+    return {"migrated": migrated, "benchmark": benchmark, "frontier": frontier}
