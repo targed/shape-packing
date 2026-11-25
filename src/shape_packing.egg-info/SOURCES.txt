@@ -3,6 +3,7 @@ README.md
 pyproject.toml
 src/shape_packing/__init__.py
 src/shape_packing/agent_loop.py
+src/shape_packing/catalog.py
 src/shape_packing/cli.py
 src/shape_packing/geometry.py
 src/shape_packing/optimization.py
@@ -10,6 +11,7 @@ src/shape_packing/packing_config.py
 src/shape_packing/problems.py
 src/shape_packing/ranker.py
 src/shape_packing/records_exporter.py
+src/shape_packing/shape_catalog.json
 src/shape_packing/solution_tools.py
 src/shape_packing/solver_interface.py
 src/shape_packing.egg-info/PKG-INFO
@@ -18,7 +20,11 @@ src/shape_packing.egg-info/dependency_links.txt
 src/shape_packing.egg-info/requires.txt
 src/shape_packing.egg-info/top_level.txt
 src/shape_packing/client/__init__.py
+src/shape_packing/client/autostart.py
+src/shape_packing/client/controller.py
+src/shape_packing/client/gui.py
 src/shape_packing/client/native_worker.py
+src/shape_packing/client/tray.py
 src/shape_packing/server/__init__.py
 src/shape_packing/server/app.py
 src/shape_packing/server/database.py
@@ -29,6 +35,10 @@ tests/test_attempt_scaling.py
 tests/test_build_site_data.py
 tests/test_cli_coverage.py
 tests/test_cli_integration.py
+tests/test_client_autostart.py
+tests/test_client_controller.py
+tests/test_client_gui.py
+tests/test_client_tray.py
 tests/test_compare_results.py
 tests/test_distributed_e2e.py
 tests/test_distributed_fleet_challenge.py
@@ -41,10 +51,12 @@ tests/test_native_worker_concurrency.py
 tests/test_native_worker_stress.py
 tests/test_optimization_coverage.py
 tests/test_packing_config.py
+tests/test_packomania_importer.py
 tests/test_performance_features.py
 tests/test_problems.py
 tests/test_ranker.py
 tests/test_records_exporter.py
+tests/test_rust_worker_e2e.py
 tests/test_server_api.py
 tests/test_server_api_adversarial.py
 tests/test_server_api_concurrency.py
@@ -54,6 +66,7 @@ tests/test_server_database_stress.py
 tests/test_server_scheduler.py
 tests/test_server_scheduler_concurrency.py
 tests/test_server_scheduler_stress.py
+tests/test_site_builder.py
 tests/test_smoke.py
 tests/test_solution_tools.py
 tests/test_solver_interface.py
