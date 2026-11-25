@@ -1,63 +1,124 @@
 ---
 title: How to Run
-description: Guide for running local auto-research loops, verification scripts, and cluster execution.
+description: Guide for running local solvers, building native and WASM binaries, operating the coordinator server, and building the dashboard site.
 order: 3
 ---
 
 # How to Run & Reproduce
 
-This guide explains how to run the auto-research loop, run verification checks, and build the dashboard site locally.
+This guide covers local setup, solver execution, native and WebAssembly builds, coordinator server operation, and dashboard generation.
 
-## Local Execution
+## 1. Environment Setup
 
-### 1. Environment Setup
-
-Ensure Python 3.10+ and Rust toolchain (`cargo`) are installed:
+Install Python 3.10+, Node.js 20+, and the Rust toolchain (`cargo` and `rustup`), then install the package in editable mode so `shape_packing` and `src.shape_packing` resolve to your working tree:
 
 ```bash
-# Create and activate virtual environment
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
-# Install dependencies
 pip install -r requirements.txt
+pip install -e . --no-deps
 ```
 
-### 2. Run Auto-Researcher Loop
+## 2. Rebuild Native & WebAssembly Solvers
 
-Launch the autonomous packing search loop:
+The Rust crate in `packer_rs/` produces three targets: the PyO3 Python extension, the standalone `shape-packing-worker` binary, and the browser WASM module used by `/contribute`. Whenever you edit `packer_rs/src/solver.rs`, rebuild the targets you use.
+
+### Browser WASM Solver (`wasm-pack`)
+
+Install the `wasm32` target and `wasm-pack` once:
+
+```bash
+rustup target add wasm32-unknown-unknown
+cargo install wasm-pack
+```
+
+Compile the WASM bundle into `site/public/wasm`:
+
+```bash
+wasm-pack build packer_rs --target web --out-dir ../site/public/wasm --no-default-features --features wasm
+```
+
+Passing `--no-default-features --features wasm` is required. The default feature enables `python` (`pyo3`), which does not target `wasm32`, while `packer_rs/Cargo.toml` restricts native-only crates (`clap`, `ureq`, `ctrlc`) to non-WASM targets.
+
+### Python Extension (`maturin`) & Standalone Worker
+
+```bash
+# Rebuild the in-process Python solver extension
+maturin develop --release --manifest-path packer_rs/Cargo.toml
+
+# Build the standalone Rust distributed worker binary
+cargo build --release --bin shape-packing-worker --no-default-features --manifest-path packer_rs/Cargo.toml
+```
+
+## 3. Run Local Search & Verification
+
+Run the Python auto-research loop or verify a single solution JSON against exact SAT and container bounds checks:
 
 ```bash
 python scripts/autoresearch/run_autoresearch_loop.py --max-seconds 300 --attempts 10000
-```
-
-### 3. Verify Solution & Compare Results
-
-Validate generated solution files against benchmark standards:
-
-```bash
 python scripts/verify_solution.py results/10_3_in_3/20260726_164732/solution.json
 python scripts/compare_results.py
 ```
 
-### 4. Build Astro Dashboard Locally
+Canonical problem IDs use the `{N}_{INNER}_in_{CONTAINER}` convention (for example `25_4_in_3`, `2_DOMINO_in_6`, `1_CIRCLE_in_SEMICIRCLE`, `1_RHOMBUS_in_4`).
 
-Generate site data and start local dev server:
+## 4. Run & Inspect the Coordinator Server
+
+Start the FastAPI coordinator:
 
 ```bash
-python scripts/build_site_data.py
+uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
+```
 
+On startup, `create_app` migrates any legacy IDs in `shape_packing.db` and runs `sync_problem_catalog()` to seed all `data/packingVerification/*.json` benchmarks and canonical quadrilateral Frontier problems (`tier='frontier'`). Set `SHAPE_PACKING_AUTO_SEED=0` if you want to skip startup seeding.
+
+Check enabled problems and active tiers through the HTTP API:
+
+```bash
+# Cluster totals and tier breakdown (benchmark vs frontier)
+curl http://localhost:8000/api/v1/stats
+
+# List Frontier problems or filter by shape
+curl "http://localhost:8000/api/v1/problems?tier=frontier&limit=50"
+curl "http://localhost:8000/api/v1/problems?inner=CIRCLE&container=SEMICIRCLE"
+
+# Request a Frontier work unit explicitly (default prefers unattempted benchmark items first)
+curl "http://localhost:8000/api/v1/work?worker_id=test_worker&tier=frontier"
+```
+
+## 5. Refresh Benchmarks, Queue & Astro Dashboard
+
+```bash
+# Optional: re-fetch Packomania circle benchmarks (7/9/10-gons, semicircle, quadrant, octagon)
+python scripts/import_packomania.py
+
+# Regenerate data/priority_queue.json from data/packingVerification/*.json
+python -m src.shape_packing.ranker
+
+# Rebuild site/src/data/site_data.json and family spec slugs
+python scripts/parse_erich_friedman.py
+python scripts/build_site_data.py
+python scripts/build_family_slugs.py
+
+# Run dev server or build static dist/
 cd site
 npm install
 npm run dev
+npm run build
 ```
 
-Open `http://localhost:4321` in your browser.
+Open `http://localhost:4321` during `npm run dev`.
 
-### 5. Run Coordinator FastAPI Server
-
-Run the coordinator backend server for distributed workers:
+## 6. Run Test Suites
 
 ```bash
-python -m uvicorn src.shape_packing.server.app:app --host 0.0.0.0 --port 8000
+# Rust solver and worker tests
+cargo test --manifest-path packer_rs/Cargo.toml
+
+# Site unit and quality audit tests
+npm test --prefix site
+
+# Python tests (geometry, catalog, ranker, DB, scheduler, import hygiene)
+python -m pytest tests/test_catalog.py tests/test_problems.py tests/test_geometry.py tests/test_solution_tools.py tests/test_ranker.py tests/test_package_imports.py tests/test_server_database.py tests/test_server_scheduler.py -p no:cacheprovider -q
 ```

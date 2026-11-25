@@ -1,4 +1,6 @@
 pub mod solver;
+
+#[cfg(not(target_arch = "wasm32"))]
 pub mod worker;
 
 #[cfg(feature = "wasm")]

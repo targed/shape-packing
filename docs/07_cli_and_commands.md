@@ -497,5 +497,47 @@ shape-packing-worker reconfigure
 cargo build --release --bin shape-packing-worker --no-default-features --manifest-path packer_rs/Cargo.toml
 ```
 
+---
+
+## 16. Browser WASM Build, Coordinator Seeding & Benchmark Pipelines
+
+### Rebuilding the Browser WASM Solver
+
+The `/contribute` page runs `site/public/wasm/packer_rs_bg.wasm` in a Web Worker. Whenever `packer_rs/src/solver.rs` or `packer_rs/src/wasm.rs` changes, rebuild the package with:
+
+```bash
+rustup target add wasm32-unknown-unknown
+cargo install wasm-pack
+wasm-pack build packer_rs --target web --out-dir ../site/public/wasm --no-default-features --features wasm
+```
+
+Use `--no-default-features --features wasm` so Cargo disables the default `python` (`pyo3`) feature. Native-only crates (`clap`, `ureq`, `ctrlc`) and `worker` are gated under `cfg(not(target_arch = "wasm32"))` in `packer_rs/Cargo.toml` and `packer_rs/src/lib.rs`.
+
+### Coordinator Database Sync & Problem Inspection
+
+`uvicorn src.shape_packing.server.app:app` calls `sync_problem_catalog()` automatically on startup (`SHAPE_PACKING_AUTO_SEED=1` by default), which migrates legacy problem IDs to `{N}_{INNER}_in_{CONTAINER}` while preserving existing solutions and upserts both `data/packingVerification/*.json` benchmarks and Frontier quad problems (`N=1..20`).
+
+```bash
+# View cluster totals and tier counts
+curl http://localhost:8000/api/v1/stats
+
+# Filter enabled problems by tier or shape
+curl "http://localhost:8000/api/v1/problems?tier=frontier&limit=50"
+curl "http://localhost:8000/api/v1/problems?inner=CIRCLE&container=7"
+```
+
+### Benchmark Ingestion & Priority Queue
+
+```bash
+# Re-import Packomania regular polygon (7/9/10/8) and curved (semicircle/quadrant/domino) benchmarks
+python scripts/import_packomania.py
+
+# Regenerate data/priority_queue.json
+python -m src.shape_packing.ranker
+
+# Rebuild site/src/data/site_data.json (requires no third-party Python packages)
+python scripts/build_site_data.py
+```
+
 
 
