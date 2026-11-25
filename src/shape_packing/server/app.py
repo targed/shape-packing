@@ -15,12 +15,13 @@ from __future__ import annotations
 import json
 import math
 import os
+import shutil
 import sqlite3
 import tempfile
 import uuid
 from typing import Any, Dict, Generator, List, Optional
 
-from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response, status
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
@@ -87,6 +88,18 @@ def create_app(db_path: str = "shape_packing.db", auto_seed: bool = False) -> Fa
     Initializes database tables and WAL configuration on startup.
     When auto_seed=True, migrates legacy IDs and seeds Benchmark + Frontier problems.
     """
+    if (
+        db_path != ":memory:"
+        and not db_path.startswith("file:")
+        and not os.path.exists(db_path)
+        and os.path.abspath(db_path) != os.path.abspath("shape_packing.db")
+        and os.path.exists("shape_packing.db")
+    ):
+        parent = os.path.dirname(os.path.abspath(db_path))
+        if parent:
+            os.makedirs(parent, exist_ok=True)
+        shutil.copy2("shape_packing.db", db_path)
+
     init_conn = init_db(db_path)
     try:
         if auto_seed:
@@ -585,8 +598,43 @@ def create_app(db_path: str = "shape_packing.db", auto_seed: bool = False) -> Fa
 
         return prob
 
+    @app.get("/api/v1/export/db", status_code=status.HTTP_200_OK)
+    def export_database_snapshot(
+        authorization: Optional[str] = Header(None),
+        conn: sqlite3.Connection = Depends(get_db),
+    ) -> Response:
+        """Create and stream an atomic online SQLite backup snapshot of the coordinator DB."""
+        expected_token = os.environ.get("SHAPE_PACKING_BACKUP_TOKEN", "").strip()
+        if expected_token:
+            supplied = (authorization or "").replace("Bearer ", "", 1).strip()
+            if supplied != expected_token:
+                raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid backup token")
+
+        fd, tmp_path = tempfile.mkstemp(prefix="shape_packing_backup_", suffix=".db")
+        os.close(fd)
+        try:
+            dest_conn = sqlite3.connect(tmp_path)
+            try:
+                conn.backup(dest_conn)
+            finally:
+                dest_conn.close()
+            with open(tmp_path, "rb") as f:
+                payload = f.read()
+        finally:
+            if os.path.exists(tmp_path):
+                os.unlink(tmp_path)
+
+        return Response(
+            content=payload,
+            media_type="application/x-sqlite3",
+            headers={"Content-Disposition": 'attachment; filename="shape_packing.db"'},
+        )
+
     return app
 
 
 # Default application instance for standard ASGI servers (e.g. uvicorn)
-app = create_app(auto_seed=os.environ.get("SHAPE_PACKING_AUTO_SEED", "1") == "1")
+app = create_app(
+    db_path=os.environ.get("SHAPE_PACKING_DB_PATH", "shape_packing.db"),
+    auto_seed=os.environ.get("SHAPE_PACKING_AUTO_SEED", "1") == "1",
+)

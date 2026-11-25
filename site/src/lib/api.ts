@@ -47,7 +47,7 @@ export function getDefaultCoordinatorUrl(): string {
       return stored.replace(/\/$/, '');
     }
   }
-  return 'http://localhost:8000';
+  return 'https://shape-packing.azurewebsites.net';
 }
 
 export async function fetchClusterStats(

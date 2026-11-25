@@ -155,8 +155,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
               id="worker-server-url"
               type="text"
               class="w-full bg-surface-elevated border border-hairline rounded-md px-3 py-2 text-xs font-mono text-slate-100 focus:outline-none focus:border-blueprint"
-              placeholder="http://localhost:8000"
-              value="http://localhost:8000"
+              placeholder="https://shape-packing.azurewebsites.net"
+              value="https://shape-packing.azurewebsites.net"
             />
           </div>
 
@@ -323,7 +323,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     usernameInput.value = localStorage.getItem('shape_packing_username') || 'web_volunteer';
   }
   if (localStorage.getItem('shape_packing_coordinator_url') && serverUrlInput) {
-    serverUrlInput.value = localStorage.getItem('shape_packing_coordinator_url') || 'http://localhost:8000';
+    serverUrlInput.value = localStorage.getItem('shape_packing_coordinator_url') || 'https://shape-packing.azurewebsites.net';
   }
   if (localStorage.getItem('shape_packing_cores') && coresSelect) {
     coresSelect.value = localStorage.getItem('shape_packing_cores') || '4';
@@ -425,7 +425,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
   function startCrunching() {
     const username = usernameInput?.value.trim() || 'web_volunteer';
-    const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'http://localhost:8000';
+    const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'https://shape-packing.azurewebsites.net';
     const cores = parseInt(coresSelect?.value || '4', 10);
     const batchSize = parseInt(batchSizeSelect?.value || '500', 10);
     const pacingDelay = parseInt(pacingSelect?.value || '800', 10);
@@ -577,7 +577,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   }
 
   function stopCrunching() {
-    const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'http://localhost:8000';
+    const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'https://shape-packing.azurewebsites.net';
 
     workers.forEach((w) => {
       w.postMessage({ command: 'stop' });

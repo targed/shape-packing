@@ -56,7 +56,10 @@ async def _asgi_request(app, method: str, path: str, body: dict | None = None):
             chunks.append(message.get("body", b""))
 
     await app(scope, receive, send)
-    raw = b"".join(chunks).decode("utf-8")
+    raw_bytes = b"".join(chunks)
+    if path.startswith("/api/v1/export/db"):
+        return status_code, raw_bytes
+    raw = raw_bytes.decode("utf-8")
     return status_code, json.loads(raw) if raw else None
 
 
@@ -160,3 +163,14 @@ def test_create_app_serves_real_asgi_requests(tmp_path, monkeypatch):
     assert work_body["work_id"]
     assert work_body["inner_token"]
     assert work_body["container_token"]
+
+    status_export, db_bytes = asyncio.run(_asgi_request(app, "GET", "/api/v1/export/db"))
+    assert status_export == 200
+    assert db_bytes.startswith(b"SQLite format 3\x00")
+    snap_path = tmp_path / "exported_snapshot.db"
+    snap_path.write_bytes(db_bytes)
+    import sqlite3
+    snap_conn = sqlite3.connect(str(snap_path))
+    assert snap_conn.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+    assert snap_conn.execute("SELECT COUNT(*) FROM problems").fetchone()[0] == seeded
+    snap_conn.close()
