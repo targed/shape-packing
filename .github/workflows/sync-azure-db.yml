@@ -2,7 +2,7 @@ name: Sync Azure Coordinator DB to Git
 
 on:
   schedule:
-    - cron: '0 6 * * *'
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -17,7 +17,7 @@ jobs:
 
       - name: Download Consistent SQLite Snapshot from Azure
         run: |
-          curl -fSL "https://shape-packing.azurewebsites.net/api/v1/export/db" -o shape_packing.db.tmp
+          curl -fSL "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net/api/v1/export/db" -o shape_packing.db.tmp
           python3 -c "import sqlite3; c = sqlite3.connect('shape_packing.db.tmp'); assert c.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'; print('Problems:', c.execute('SELECT COUNT(*) FROM problems').fetchone()[0], 'Solutions:', c.execute('SELECT COUNT(*) FROM solutions').fetchone()[0])"
           mv shape_packing.db.tmp shape_packing.db
 

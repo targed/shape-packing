@@ -47,7 +47,7 @@ export function getDefaultCoordinatorUrl(): string {
       return stored.replace(/\/$/, '');
     }
   }
-  return 'https://shape-packing.azurewebsites.net';
+  return 'https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net';
 }
 
 export async function fetchClusterStats(
