@@ -136,7 +136,9 @@ def test_shape_catalog_normalization_and_pair_support():
     from src.shape_packing.catalog import (
         normalize_token,
         is_pair_supported,
+        is_problem_enabled,
         list_frontier_families,
+        load_catalog,
         get_pair_tier,
     )
 
@@ -156,10 +158,15 @@ def test_shape_catalog_normalization_and_pair_support():
     assert is_pair_supported("4", "SEMICIRCLE") is False
     assert is_pair_supported("TAN", "QUADRANT") is False
     assert is_pair_supported("RHOMBUS", "4") is True
-    assert is_pair_supported("7", "9") is False  # unbenchmarked 7x9 not enabled in Option B
+    assert is_pair_supported("7", "9") is ("7" in load_catalog()["pair_rules"]["benchmark_base"] and "9" in load_catalog()["pair_rules"]["benchmark_base"])
 
+    rules = load_catalog()["pair_rules"]
+    expected_frontier = len(rules["frontier_quads"]) * len(rules["frontier_partners"]) * 2 + len(rules["frontier_quads"]) ** 2
     frontier = list_frontier_families()
-    # 3 quads paired symmetrically with 6 base shapes (3*6*2=36) + 3x3 quad-in-quad (9) = 45
-    assert len(frontier) == 45
+    assert len(frontier) == expected_frontier
     assert get_pair_tier("CIRCLE", "SEMICIRCLE") == "benchmark"
     assert get_pair_tier("RHOMBUS", "4") == "frontier"
+
+    from shape_packing.catalog import is_problem_enabled
+    assert is_problem_enabled("25_4_in_3", "4", "3") is True
+    assert is_problem_enabled("1_4_in_SEMICIRCLE", "4", "SEMICIRCLE") is False

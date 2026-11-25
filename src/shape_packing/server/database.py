@@ -19,6 +19,7 @@ from ..catalog import (
     get_canonical_tokens,
     get_pair_tier,
     is_pair_supported,
+    is_problem_enabled,
     list_frontier_families,
     normalize_token,
 )
@@ -382,10 +383,11 @@ def seed_problems_from_verification(
 
                 raw_status = item.get("status")
                 clean_status = str(raw_status).strip().lower() if raw_status else ""
+                canonical_id = canonical_problem_id(n, inner, container)
 
                 if clean_status == "proved_optimal":
                     status = "proved_optimal"
-                elif not is_pair_supported(inner, container):
+                elif not is_problem_enabled(canonical_id, inner, container):
                     status = "unsupported"
                 elif raw_status:
                     status = str(raw_status)
@@ -396,7 +398,6 @@ def seed_problems_from_verification(
 
                 tier = str(item.get("tier") or get_pair_tier(inner, container) or "benchmark")
                 note = str(item.get("source_note") or "")
-                canonical_id = canonical_problem_id(n, inner, container)
 
                 rows.append((canonical_id, inner, container, n, best_val, best_val, status, note, tier))
         except (json.JSONDecodeError, OSError) as exc:
@@ -454,7 +455,8 @@ def seed_frontier_problems(conn: sqlite3.Connection, max_n: int = 20) -> int:
     for _, inner, container in list_frontier_families():
         for n in range(1, max_n + 1):
             prob_id = canonical_problem_id(n, inner, container)
-            rows.append((prob_id, inner, container, n, "unattempted", "Frontier Canonical Baseline", "frontier"))
+            f_status = "unattempted" if is_problem_enabled(prob_id, inner, container) else "unsupported"
+            rows.append((prob_id, inner, container, n, f_status, "Frontier Canonical Baseline", "frontier"))
 
     if not rows:
         return 0

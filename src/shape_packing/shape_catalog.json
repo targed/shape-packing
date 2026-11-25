@@ -173,15 +173,14 @@
     }
   },
   "pair_rules": {
-    "benchmark_base": ["3", "4", "5", "6", "8", "CIRCLE", "TAN", "DOMINO", "L"],
+    "benchmark_base": ["3", "4", "5", "6", "7", "8", "9", "10", "CIRCLE", "TAN", "DOMINO", "L"],
     "benchmark_extra_pairs": [
-      ["CIRCLE", "7"],
-      ["CIRCLE", "9"],
-      ["CIRCLE", "10"],
       ["CIRCLE", "SEMICIRCLE"],
       ["CIRCLE", "QUADRANT"]
     ],
     "frontier_quads": ["RHOMBUS", "PARALLELOGRAM", "TRAPEZOID"],
-    "frontier_partners": ["3", "4", "5", "6", "8", "CIRCLE"]
+    "frontier_partners": ["3", "4", "5", "6", "7", "8", "CIRCLE"],
+    "disabled_pairs": [],
+    "disabled_problems": []
   }
 }

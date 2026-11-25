@@ -6,19 +6,22 @@
   <div class="bg-canvas border border-hairline rounded-md relative flex items-center justify-center overflow-hidden aspect-square w-full">
     <canvas id="live-canvas" width="400" height="400" class="w-full h-full block"></canvas>
     
-    <!-- Status pill -->
-    <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 bg-surface-elevated/90 backdrop-blur-sm px-2.5 py-1 rounded-md border border-hairline text-xs font-mono text-slate-300">
-      <span id="canvas-status-dot" class="w-1.5 h-1.5 rounded-sm bg-slate-500"></span>
-      <span id="canvas-status-label">Worker Idle</span>
-    </div>
+    <!-- Top HUD bar (non-overlapping flex layout) -->
+    <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-2 pointer-events-none z-10">
+      <!-- Status pill -->
+      <div class="flex items-center gap-1.5 bg-surface-elevated/90 backdrop-blur-sm px-2.5 py-1 rounded-md border border-hairline text-xs font-mono text-slate-300 truncate min-w-0">
+        <span id="canvas-status-dot" class="w-1.5 h-1.5 rounded-sm bg-slate-500 shrink-0"></span>
+        <span id="canvas-status-label" class="truncate">Worker Idle</span>
+      </div>
 
-    <!-- Inspect History Banner -->
-    <div id="canvas-inspect-banner" class="hidden absolute top-2.5 right-2.5 flex items-center gap-2 bg-surface-elevated/95 backdrop-blur-sm px-2.5 py-1 rounded-md border border-blueprint/40 text-xs font-mono text-blueprint-light z-10">
-      <span class="w-1.5 h-1.5 rounded-sm bg-blueprint-light"></span>
-      <span>Inspecting History</span>
-      <button id="btn-resume-live" class="ml-1 px-2 py-0.5 rounded-md bg-blueprint hover:bg-blueprint-dark text-white font-semibold text-[10px] cursor-pointer transition">
-        Resume Live
-      </button>
+      <!-- Inspect History Banner -->
+      <div id="canvas-inspect-banner" class="hidden shrink-0 pointer-events-auto flex items-center gap-2 bg-surface-elevated/95 backdrop-blur-sm px-2.5 py-1 rounded-md border border-blueprint/40 text-xs font-mono text-blueprint-light">
+        <span class="w-1.5 h-1.5 rounded-sm bg-blueprint-light"></span>
+        <span>Inspecting History</span>
+        <button id="btn-resume-live" class="ml-1 px-2 py-0.5 rounded-md bg-blueprint hover:bg-blueprint-dark text-white font-semibold text-[10px] cursor-pointer transition">
+          Resume Live
+        </button>
+      </div>
     </div>
 
     <!-- Active Problem and Scale Overlay -->
@@ -191,13 +194,16 @@
 
     const cToken = parseShapeToken(currentContainerToken || 'CIRCLE');
     const isContainerCircle = cToken === 'CIRCLE';
+    const isContainerSemicircle = cToken === 'SEMICIRCLE';
+    const isContainerQuadrant = cToken === 'QUADRANT';
+    const isContainerCurved = isContainerCircle || isContainerSemicircle || isContainerQuadrant;
     const rot = getContainerRotationOffset(cToken);
     const cosR = Math.cos(rot);
     const sinR = Math.sin(rot);
 
-    // Build container boundary vertices
+    // Build container boundary vertices (for polygonal containers only)
     let containerVertices: PolygonPoint[] | null = null;
-    if (!isContainerCircle) {
+    if (!isContainerCurved) {
       const unitContainer = getUnitShapeVertices(cToken) || getRegularPolygonVertices(4, 1.0, 0);
       containerVertices = unitContainer.map((pt) => ({
         x: (pt.x * cosR - pt.y * sinR) * S,
@@ -244,10 +250,10 @@
     }
 
     // Calculate bounding box derived from container boundary
-    let minX = isContainerCircle ? -S : Infinity;
-    let maxX = isContainerCircle ? S : -Infinity;
-    let minY = isContainerCircle ? -S : Infinity;
-    let maxY = isContainerCircle ? S : -Infinity;
+    let minX = isContainerCircle || isContainerSemicircle ? -S : isContainerQuadrant ? 0 : Infinity;
+    let maxX = isContainerCurved ? S : -Infinity;
+    let minY = isContainerCircle ? -S : isContainerSemicircle || isContainerQuadrant ? 0 : Infinity;
+    let maxY = isContainerCurved ? S : -Infinity;
 
     if (containerVertices) {
       for (const pt of containerVertices) {
@@ -307,6 +313,24 @@
       const cY = toCanvasY(0);
       const r = S * viewScale;
       ctx.arc(cX, cY, r, 0, Math.PI * 2);
+      ctx.stroke();
+    } else if (isContainerSemicircle) {
+      ctx.beginPath();
+      const cX = toCanvasX(0);
+      const cY = toCanvasY(0);
+      const r = S * viewScale;
+      // Upper semicircle (y >= 0 in Cartesian maps UP on canvas, so arc from PI to 0 anticlockwise=false? Wait: 0 is +X, -PI is -X via -Y (UP))
+      ctx.arc(cX, cY, r, 0, Math.PI, true);
+      ctx.closePath();
+      ctx.stroke();
+    } else if (isContainerQuadrant) {
+      ctx.beginPath();
+      const cX = toCanvasX(0);
+      const cY = toCanvasY(0);
+      const r = S * viewScale;
+      ctx.moveTo(cX, cY);
+      ctx.arc(cX, cY, r, 0, -Math.PI / 2, true);
+      ctx.closePath();
       ctx.stroke();
     } else if (containerVertices) {
       ctx.beginPath();

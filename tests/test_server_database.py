@@ -828,9 +828,11 @@ def test_seed_problems_asymmetric_capabilities_and_frontier(mem_db: sqlite3.Conn
     assert semi_ok is not None and semi_ok["status"] != "unsupported" and semi_ok["tier"] == "benchmark"
     assert semi_bad is not None and semi_bad["status"] == "unsupported"
 
+    from shape_packing.catalog import list_frontier_families
+
+    expected_frontier = len(list_frontier_families()) * 5
     inserted = seed_frontier_problems(mem_db, max_n=5)
-    # 45 canonical Frontier families * 5 = 225
-    assert inserted == 225
+    assert inserted == expected_frontier
     p_front = get_problem(mem_db, "3_RHOMBUS_in_4")
     assert p_front is not None
     assert p_front["tier"] == "frontier"
@@ -838,10 +840,10 @@ def test_seed_problems_asymmetric_capabilities_and_frontier(mem_db: sqlite3.Conn
     assert p_front["status"] == "unattempted"
 
     # Idempotent re-seed keeps count unchanged
-    assert seed_frontier_problems(mem_db, max_n=5) == 225
+    assert seed_frontier_problems(mem_db, max_n=5) == expected_frontier
     cur = mem_db.cursor()
     cur.execute("SELECT COUNT(*) FROM problems WHERE tier = 'frontier'")
-    assert cur.fetchone()[0] == 225
+    assert cur.fetchone()[0] == expected_frontier
 
 
 def test_migrate_legacy_problem_ids_preserves_solutions_and_leases(mem_db: sqlite3.Connection):

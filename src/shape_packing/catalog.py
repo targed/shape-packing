@@ -65,16 +65,16 @@ def _pair_tier_map() -> Dict[Tuple[str, str], str]:
     rules = load_catalog()["pair_rules"]
     pairs: Dict[Tuple[str, str], str] = {}
 
-    base = rules["benchmark_base"]
+    base = [normalize_token(t) for t in rules.get("benchmark_base", [])]
     for inner in base:
         for container in base:
             pairs[(inner, container)] = "benchmark"
 
-    for inner, container in rules["benchmark_extra_pairs"]:
-        pairs[(inner, container)] = "benchmark"
+    for inner, container in rules.get("benchmark_extra_pairs", []):
+        pairs[(normalize_token(inner), normalize_token(container))] = "benchmark"
 
-    quads = rules["frontier_quads"]
-    partners = rules["frontier_partners"]
+    quads = [normalize_token(t) for t in rules.get("frontier_quads", [])]
+    partners = [normalize_token(t) for t in rules.get("frontier_partners", [])]
     for q in quads:
         for p in partners:
             pairs[(q, p)] = "frontier"
@@ -82,7 +82,26 @@ def _pair_tier_map() -> Dict[Tuple[str, str], str]:
         for q2 in quads:
             pairs[(q, q2)] = "frontier"
 
+    for inner, container in rules.get("disabled_pairs", []):
+        pairs.pop((normalize_token(inner), normalize_token(container)), None)
+
     return pairs
+
+
+@lru_cache(maxsize=1)
+def _disabled_problem_ids() -> Set[str]:
+    raw_list = load_catalog().get("pair_rules", {}).get("disabled_problems", [])
+    return {str(pid).strip().upper() for pid in raw_list if str(pid).strip()}
+
+
+def is_problem_enabled(problem_id: str, inner_token: Any = None, container_token: Any = None) -> bool:
+    """Return True if a specific problem ID and its shape pair are enabled in shape_catalog.json."""
+    pid_upper = str(problem_id or "").strip().upper()
+    if pid_upper in _disabled_problem_ids():
+        return False
+    if inner_token is not None and container_token is not None:
+        return is_pair_supported(inner_token, container_token)
+    return True
 
 
 def is_pair_supported(inner_token: Any, container_token: Any) -> bool:
