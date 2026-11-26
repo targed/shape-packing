@@ -2,12 +2,25 @@
 import init, { solve_attempt_wasm } from '../../../public/wasm/packer_rs.js';
 
 let isRunning = false;
+let currentSecret = '';
+
+function fetchWithTimeout(url: string, initObj: RequestInit = {}, timeoutMs = 15000): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  return fetch(url, { ...initObj, signal: controller.signal }).finally(() => clearTimeout(timer));
+}
 
 self.onmessage = async (e: MessageEvent) => {
-  const { command, serverUrl, username, workerId, wasmUrl, batchSize, pacingDelay } = e.data;
+  const { command, serverUrl, username, workerId, workerSecret, wasmUrl, batchSize, pacingDelay } = e.data;
+
+  if (command === 'set_secret' && typeof workerSecret === 'string') {
+    currentSecret = workerSecret;
+    return;
+  }
 
   if (command === 'start') {
     isRunning = true;
+    currentSecret = typeof workerSecret === 'string' ? workerSecret : '';
     try {
       if (wasmUrl) {
         await init({ module_or_path: wasmUrl });
@@ -35,8 +48,16 @@ async function runLoop(
 ) {
   while (isRunning) {
     try {
+      const authHeaders: Record<string, string> = {};
+      if (currentSecret) {
+        authHeaders['Authorization'] = `Bearer ${currentSecret}`;
+      }
+
       // 1. Fetch work
-      const workRes = await fetch(`${serverUrl}/api/v1/work?worker_id=${encodeURIComponent(workerId)}&cores=1`);
+      const workRes = await fetchWithTimeout(
+        `${serverUrl}/api/v1/work?worker_id=${encodeURIComponent(workerId)}&cores=1`,
+        { headers: authHeaders }
+      );
       if (workRes.status === 204) {
         self.postMessage({ type: 'idle', message: 'No pending work from coordinator' });
         await new Promise((r) => setTimeout(r, 5000));
@@ -46,17 +67,30 @@ async function runLoop(
         throw new Error(`Coordinator returned ${workRes.status}`);
       }
       const work = await workRes.json();
+      if (
+        !work ||
+        typeof work.problem !== 'string' ||
+        !work.problem ||
+        !Number.isInteger(work.n) ||
+        work.n < 1 ||
+        work.n > 200
+      ) {
+        throw new Error('Invalid work assignment received from coordinator');
+      }
 
       self.postMessage({ type: 'task_started', work });
 
       // 2. Run solver in Wasm
-      const attemptsToRun = Math.max(50, Math.min(work.recommended_attempts || batchSize, batchSize));
+      const attemptsToRun = Math.max(50, Math.min(Number(work.recommended_attempts) || batchSize, batchSize, 100000));
+      const targetS = typeof work.target_s === 'number' && Number.isFinite(work.target_s) && work.target_s > 0
+        ? work.target_s
+        : null;
       const rawResult = solve_attempt_wasm(
-        work.inner_token,
-        work.container_token,
+        String(work.inner_token || '3'),
+        String(work.container_token || 'CIRCLE'),
         work.n,
         attemptsToRun,
-        work.target_s ?? null
+        targetS
       );
       const result = JSON.parse(rawResult);
       const metric_s = result.final_metric ?? result.best_s;
@@ -75,11 +109,12 @@ async function runLoop(
         success: result.success,
       });
 
-      // 3. Submit improvement if record beaten
-      if (result.success && typeof metric_s === 'number' && metric_s > 0 && metric_s < work.target_s) {
-        const solRes = await fetch(`${serverUrl}/api/v1/solutions`, {
+      // 3. Submit improvement if record beaten (or no prior record exists)
+      const improvesTarget = targetS === null || (typeof metric_s === 'number' && metric_s < targetS);
+      if (result.success && typeof metric_s === 'number' && Number.isFinite(metric_s) && metric_s > 0 && improvesTarget) {
+        const solRes = await fetchWithTimeout(`${serverUrl}/api/v1/solutions`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', ...authHeaders },
           body: JSON.stringify({
             work_id: work.work_id,
             worker_id: workerId,

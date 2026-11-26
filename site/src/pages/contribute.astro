@@ -290,6 +290,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 </BaseLayout>
 
 <script>
+  import { DEFAULT_COORDINATOR_URL, validateCoordinatorUrl } from '../lib/api';
+
   const usernameInput = document.getElementById('worker-username') as HTMLInputElement;
   const serverUrlInput = document.getElementById('worker-server-url') as HTMLInputElement;
   const coresSelect = document.getElementById('worker-cores') as HTMLSelectElement;
@@ -330,6 +332,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   let totalLeases = 0;
   let totalRecordsBroken = 0;
   let activeWorkerIds: string[] = [];
+  const workerSecrets: Record<string, string> = {};
   const targetMap: Record<string, number> = {};
   const baseWorkerId = `wasm-worker-${Math.random().toString(36).substring(2, 9)}`;
 
@@ -369,9 +372,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
     const sStr = typeof data.s === 'number' && data.s > 0 ? data.s.toFixed(5) : '--';
     const targetStr = typeof data.target_s === 'number' && data.target_s > 0 ? data.target_s.toFixed(5) : '--';
-    const recordTag = data.isRecord ? '<span class="text-cadmium-light font-bold">[RECORD]</span> ' : '';
 
-    left.innerHTML = `<span class="text-slate-500">[${time}]</span> <span class="text-slate-400 font-semibold">[T${data.thread}]</span> <span>${recordTag}<strong class="text-blueprint-light">${data.problem}</strong>: s=<strong class="${data.isRecord ? 'text-cadmium-light' : 'text-verify-light'}">${sStr}</strong> <span class="text-slate-500">(target: ${targetStr})</span></span>`;
+    const timeSpan = document.createElement('span');
+    timeSpan.className = 'text-slate-500';
+    timeSpan.textContent = `[${time}]`;
+
+    const threadSpan = document.createElement('span');
+    threadSpan.className = 'text-slate-400 font-semibold';
+    threadSpan.textContent = ` [T${data.thread}] `;
+
+    const detailSpan = document.createElement('span');
+    if (data.isRecord) {
+      const recSpan = document.createElement('span');
+      recSpan.className = 'text-cadmium-light font-bold';
+      recSpan.textContent = '[RECORD] ';
+      detailSpan.appendChild(recSpan);
+    }
+
+    const probStrong = document.createElement('strong');
+    probStrong.className = 'text-blueprint-light';
+    probStrong.textContent = String(data.problem || '');
+
+    const sStrong = document.createElement('strong');
+    sStrong.className = data.isRecord ? 'text-cadmium-light' : 'text-verify-light';
+    sStrong.textContent = sStr;
+
+    const targetSpan = document.createElement('span');
+    targetSpan.className = 'text-slate-500';
+    targetSpan.textContent = ` (target: ${targetStr})`;
+
+    detailSpan.append(probStrong, ': s=', sStrong, targetSpan);
+    left.append(timeSpan, threadSpan, detailSpan);
 
     const btn = document.createElement('button');
     btn.className =
@@ -409,9 +440,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     });
   }
 
-  function startCrunching() {
+  async function startCrunching() {
     const username = usernameInput?.value.trim() || 'web_volunteer';
-    const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net';
+    const rawServerUrl = serverUrlInput?.value.trim() || DEFAULT_COORDINATOR_URL;
+    const serverUrl = validateCoordinatorUrl(rawServerUrl, { allowCustomHttps: true });
+    if (!serverUrl) {
+      appendLog('Invalid coordinator URL: must use https:// or http://localhost / 127.0.0.1.');
+      return;
+    }
     const cores = parseInt(coresSelect?.value || '4', 10);
     const batchSize = parseInt(batchSizeSelect?.value || '500', 10);
     const pacingDelay = parseInt(pacingSelect?.value || '800', 10);
@@ -432,45 +468,54 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       const threadId = cores === 1 ? baseWorkerId : `${baseWorkerId}-t${i + 1}`;
       activeWorkerIds.push(threadId);
 
-      // Register with coordinator
-      const pingStart = performance.now();
-      fetch(`${serverUrl}/api/v1/workers/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          worker_id: threadId,
-          username: username,
-          cores: 1,
-        }),
-      })
-        .then((res) => {
-          const pingElapsed = Math.round(performance.now() - pingStart);
-          if (metricPing) metricPing.textContent = `${pingElapsed} ms`;
-          return res.json();
-        })
-        .then((reg) => {
-          if (i === 0) {
-            appendLog(`Registered with cluster (Assigned ID: ${reg.worker_id})`);
-          }
-        })
-        .catch((err) => {
-          if (i === 0) {
-            if (metricPing) metricPing.textContent = 'Offline';
-            appendLog(`Note: Register endpoint unavailable (${err.message}). Proceeding directly.`);
-          }
-        });
-
-      // Spawn Web Worker for each core
+      // Spawn Web Worker immediately and update with workerSecret once registered
+      let workerInstance: Worker | null = null;
       try {
         const w = new Worker(new URL('../lib/workers/wasm_packer_worker.ts', import.meta.url), {
           type: 'module',
         });
+        workerInstance = w;
+
+        // Register with coordinator before starting work loop so Bearer token is attached
+        const pingStart = performance.now();
+        let workerSecret: string | undefined;
+        try {
+          const regRes = await fetch(`${serverUrl}/api/v1/workers/register`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              worker_id: threadId,
+              username: username,
+              client_type: 'wasm',
+              cores: 1,
+            }),
+          });
+          const pingElapsed = Math.round(performance.now() - pingStart);
+          if (metricPing) metricPing.textContent = `${pingElapsed} ms`;
+          if (regRes.ok) {
+            const reg = await regRes.json();
+            if (typeof reg.worker_secret === 'string' && reg.worker_secret) {
+              workerSecret = reg.worker_secret;
+              workerSecrets[threadId] = reg.worker_secret;
+            }
+            if (i === 0) {
+              appendLog(`Registered with cluster (Assigned ID: ${reg.worker_id})`);
+            }
+          }
+        } catch (err: unknown) {
+          if (i === 0) {
+            if (metricPing) metricPing.textContent = 'Offline';
+            const errMsg = err instanceof Error ? err.message : String(err);
+            appendLog(`Note: Register endpoint unavailable (${errMsg}). Proceeding directly.`);
+          }
+        }
 
         w.postMessage({
           command: 'start',
           serverUrl,
           username,
           workerId: threadId,
+          workerSecret,
           wasmUrl: wasmPath,
           batchSize,
           pacingDelay,
@@ -483,8 +528,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           } else if (data.type === 'task_started') {
             totalLeases += 1;
             if (metricLeases) metricLeases.textContent = totalLeases.toLocaleString();
-            targetMap[data.work.problem] = data.work.target_s;
-            appendLog(`[T${i + 1}] Leased ${data.work.problem} (Target s: ${data.work.target_s.toFixed(5)})`);
+            const targetVal = typeof data.work.target_s === 'number' ? data.work.target_s : null;
+            if (targetVal !== null) {
+              targetMap[data.work.problem] = targetVal;
+            }
+            const targetDisplay = targetVal !== null ? targetVal.toFixed(5) : '--';
+            appendLog(`[T${i + 1}] Leased ${data.work.problem} (Target s: ${targetDisplay})`);
             window.dispatchEvent(
               new CustomEvent('update-live-packing', {
                 detail: {
@@ -563,7 +612,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   }
 
   function stopCrunching() {
-    const serverUrl = serverUrlInput?.value.trim().replace(/\/$/, '') || 'https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net';
+    const serverUrl =
+      validateCoordinatorUrl(serverUrlInput?.value, { allowCustomHttps: true }) ||
+      DEFAULT_COORDINATOR_URL;
 
     workers.forEach((w) => {
       w.postMessage({ command: 'stop' });
@@ -572,9 +623,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     workers = [];
 
     activeWorkerIds.forEach((id) => {
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (workerSecrets[id]) {
+        headers['Authorization'] = `Bearer ${workerSecrets[id]}`;
+        delete workerSecrets[id];
+      }
       fetch(`${serverUrl}/api/v1/workers/deregister`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({ worker_id: id }),
       }).catch(() => {});
     });

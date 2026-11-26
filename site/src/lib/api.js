@@ -1,16 +1,53 @@
 // site/src/lib/api.js
 // JavaScript companion for Node standard test runner and SSG
 
+export const DEFAULT_COORDINATOR_URL =
+  'https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net';
+
+export const OFFICIAL_COORDINATOR_ORIGINS = new Set([
+  DEFAULT_COORDINATOR_URL,
+  'http://localhost:8000',
+  'http://127.0.0.1:8000',
+]);
+
+export function validateCoordinatorUrl(raw, options = {}) {
+  if (!raw || typeof raw !== 'string') return null;
+  try {
+    const parsed = new URL(raw.trim());
+    if (parsed.username || parsed.password) return null;
+    const isLoopbackHttp =
+      parsed.protocol === 'http:' &&
+      (parsed.hostname === 'localhost' || parsed.hostname === '127.0.0.1');
+    if (options.allowCustomHttps) {
+      if (parsed.protocol === 'https:' || isLoopbackHttp) {
+        return parsed.origin;
+      }
+      return null;
+    }
+    if (OFFICIAL_COORDINATOR_ORIGINS.has(parsed.origin)) {
+      return parsed.origin;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 export function getDefaultCoordinatorUrl() {
   if (typeof window !== 'undefined') {
     const params = new URLSearchParams(window.location.search);
-    const queryOverride = params.get('coordinator');
+    const queryOverride = validateCoordinatorUrl(params.get('coordinator'), {
+      allowCustomHttps: false,
+    });
     if (queryOverride) {
-      return queryOverride.replace(/\/$/, '');
+      return queryOverride;
     }
-    const stored = window.localStorage.getItem('shape_packing_coordinator_url');
+    const stored = validateCoordinatorUrl(
+      window.localStorage.getItem('shape_packing_coordinator_url'),
+      { allowCustomHttps: true }
+    );
     if (stored) {
-      return stored.replace(/\/$/, '');
+      return stored;
     }
   }
   return 'http://localhost:8000';

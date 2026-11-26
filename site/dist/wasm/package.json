@@ -1,0 +1,15 @@
+{
+  "name": "packer_rs",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "packer_rs_bg.wasm",
+    "packer_rs.js",
+    "packer_rs.d.ts"
+  ],
+  "main": "packer_rs.js",
+  "types": "packer_rs.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

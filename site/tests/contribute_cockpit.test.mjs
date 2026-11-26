@@ -152,4 +152,17 @@ describe('Volunteer Contributor Cockpit (Task 6)', () => {
       assert.ok(!content.includes('rounded-2xl'), `${path.basename(f)} should not contain rounded-2xl`);
     }
   });
+
+  it('enforces DOM XSS safety, bearer auth propagation, and CSP headers', () => {
+    const contributeContent = fs.readFileSync(contributePagePath, 'utf-8');
+    const layoutContent = fs.readFileSync(path.join(siteDir, 'src', 'layouts', 'BaseLayout.astro'), 'utf-8');
+    const workerContent = fs.readFileSync(path.join(siteDir, 'src', 'lib', 'workers', 'wasm_packer_worker.ts'), 'utf-8');
+
+    assert.ok(!contributeContent.includes('left.innerHTML'), 'contribute.astro must not assign left.innerHTML');
+    assert.ok(contributeContent.includes('validateCoordinatorUrl'), 'contribute.astro validates coordinator URL');
+    assert.ok(contributeContent.includes("client_type: 'wasm'"), 'contribute.astro registers as wasm client');
+    assert.ok(workerContent.includes("authHeaders['Authorization']"), 'wasm worker attaches Bearer auth header');
+    assert.ok(layoutContent.includes('http-equiv="Content-Security-Policy"'), 'BaseLayout defines CSP meta tag');
+    assert.ok(layoutContent.includes('name="referrer"'), 'BaseLayout defines referrer policy meta tag');
+  });
 });

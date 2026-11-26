@@ -1,7 +1,12 @@
 // site/tests/api.test.js
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { fetchClusterStats, fetchLeaderboard, fetchRecentSolutions } from '../src/lib/api.js';
+import {
+  fetchClusterStats,
+  fetchLeaderboard,
+  fetchRecentSolutions,
+  validateCoordinatorUrl,
+} from '../src/lib/api.js';
 
 describe('Coordinator API Client', () => {
   it('parses cluster stats response correctly', async () => {
@@ -76,5 +81,18 @@ describe('Coordinator API Client', () => {
     assert.equal(result.data[0].metric_s, 4.517339);
     assert.equal(result.data[0].worker_username, 'web_volunteer');
     assert.equal(result.data[0].is_current_record, true);
+  });
+
+  it('allows only official coordinator origins for query overrides and rejects unsafe schemes', () => {
+    assert.equal(
+      validateCoordinatorUrl('https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net/'),
+      'https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net'
+    );
+    assert.equal(validateCoordinatorUrl('http://localhost:8000/api'), 'http://localhost:8000');
+    assert.equal(validateCoordinatorUrl('https://evil.example.com'), null);
+    assert.equal(validateCoordinatorUrl('javascript:alert(1)', { allowCustomHttps: true }), null);
+    assert.equal(validateCoordinatorUrl('http://evil.example.com', { allowCustomHttps: true }), null);
+    assert.equal(validateCoordinatorUrl('https://user:pass@custom.example.com', { allowCustomHttps: true }), null);
+    assert.equal(validateCoordinatorUrl('https://custom.example.com/path', { allowCustomHttps: true }), 'https://custom.example.com');
   });
 });

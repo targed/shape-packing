@@ -137,7 +137,7 @@ function formatDelta(diff: number | null | undefined): string {
       }
 
       if (tbody) {
-        tbody.innerHTML = '';
+        tbody.replaceChildren();
         for (const r of res.data) {
           const isBetter = r.diff !== null && r.diff !== undefined && r.diff < -1e-6;
           const deltaClass = isBetter ? 'text-verify-light' : 'text-slate-400';
@@ -145,30 +145,46 @@ function formatDelta(diff: number | null | undefined): string {
           const metricText = r.metric_s ? Number(r.metric_s).toFixed(6) : '-';
           const refText = r.reference_s ? Number(r.reference_s).toFixed(6) : '-';
           const deltaText = formatDeltaJs(r.diff);
-          const username = r.worker_username || 'volunteer';
-
-          const safeProblemId = escapeHtml(r.problem_id || '');
-          const safeUsername = escapeHtml(r.worker_username || 'volunteer');
-          const safeTime = escapeHtml(verifiedTime);
 
           const tr = document.createElement('tr');
           tr.className = 'hover:bg-surface-elevated/50 transition-colors';
-          tr.innerHTML =
-            '<td class="px-4 py-2.5 font-semibold text-slate-200">' +
-              '<a href="' + base + '/results?q=' + encodeURIComponent(r.problem_id) + '" class="hover:text-blueprint-light transition-colors underline underline-offset-2">' +
-                safeProblemId +
-              '</a>' +
-            '</td>' +
-            '<td class="px-3 py-2.5 text-center font-bold text-blueprint-light">' + r.n + '</td>' +
-            '<td class="px-4 py-2.5 text-right font-bold text-cadmium">' + metricText + '</td>' +
-            '<td class="px-4 py-2.5 text-right text-slate-400">' + refText + '</td>' +
-            '<td class="px-4 py-2.5 text-right font-semibold ' + deltaClass + '">' + deltaText + '</td>' +
-            '<td class="px-4 py-2.5 text-center font-mono">' +
-              '<span class="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-medium bg-surface-elevated text-slate-300 border border-hairline">' +
-                safeUsername +
-              '</span>' +
-            '</td>' +
-            '<td class="px-4 py-2.5 text-center text-slate-400 font-mono text-[10px]">' + safeTime + '</td>';
+
+          const probTd = document.createElement('td');
+          probTd.className = 'px-4 py-2.5 font-semibold text-slate-200';
+          const probLink = document.createElement('a');
+          probLink.href = base + '/results?q=' + encodeURIComponent(r.problem_id || '');
+          probLink.className = 'hover:text-blueprint-light transition-colors underline underline-offset-2';
+          probLink.textContent = String(r.problem_id || '');
+          probTd.appendChild(probLink);
+
+          const nTd = document.createElement('td');
+          nTd.className = 'px-3 py-2.5 text-center font-bold text-blueprint-light';
+          nTd.textContent = String(r.n ?? '');
+
+          const metricTd = document.createElement('td');
+          metricTd.className = 'px-4 py-2.5 text-right font-bold text-cadmium';
+          metricTd.textContent = metricText;
+
+          const refTd = document.createElement('td');
+          refTd.className = 'px-4 py-2.5 text-right text-slate-400';
+          refTd.textContent = refText;
+
+          const deltaTd = document.createElement('td');
+          deltaTd.className = 'px-4 py-2.5 text-right font-semibold ' + deltaClass;
+          deltaTd.textContent = deltaText;
+
+          const userTd = document.createElement('td');
+          userTd.className = 'px-4 py-2.5 text-center font-mono';
+          const userBadge = document.createElement('span');
+          userBadge.className = 'inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-medium bg-surface-elevated text-slate-300 border border-hairline';
+          userBadge.textContent = String(r.worker_username || 'volunteer');
+          userTd.appendChild(userBadge);
+
+          const timeTd = document.createElement('td');
+          timeTd.className = 'px-4 py-2.5 text-center text-slate-400 font-mono text-[10px]';
+          timeTd.textContent = String(verifiedTime);
+
+          tr.append(probTd, nTd, metricTd, refTd, deltaTd, userTd, timeTd);
           tbody.appendChild(tr);
         }
       }

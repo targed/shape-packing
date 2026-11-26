@@ -69,33 +69,47 @@
       countBadge.textContent = `${res.data.length} Volunteers`;
     }
 
-    tbody.innerHTML = res.data.map((row, index) => {
+    tbody.replaceChildren();
+    res.data.forEach((row, index) => {
       const rank = index + 1;
-      let rankBadge = `<span class="px-2 py-0.5 rounded-md text-xs font-mono text-slate-400">#${rank}</span>`;
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-surface-elevated/40 transition-colors border-b border-hairline last:border-b-0';
+
+      const rankTd = document.createElement('td');
+      rankTd.className = 'px-4 py-3.5 text-center';
+      const rankSpan = document.createElement('span');
       if (rank === 1) {
-        rankBadge = `<span class="px-2 py-0.5 rounded-md text-xs font-mono font-bold bg-cadmium/15 text-cadmium-light border border-cadmium/30">#1</span>`;
+        rankSpan.className = 'px-2 py-0.5 rounded-md text-xs font-mono font-bold bg-cadmium/15 text-cadmium-light border border-cadmium/30';
       } else if (rank === 2) {
-        rankBadge = `<span class="px-2 py-0.5 rounded-md text-xs font-mono font-bold bg-surface-elevated text-slate-200 border border-hairline">#2</span>`;
+        rankSpan.className = 'px-2 py-0.5 rounded-md text-xs font-mono font-bold bg-surface-elevated text-slate-200 border border-hairline';
       } else if (rank === 3) {
-        rankBadge = `<span class="px-2 py-0.5 rounded-md text-xs font-mono font-bold bg-surface-elevated text-slate-300 border border-hairline">#3</span>`;
+        rankSpan.className = 'px-2 py-0.5 rounded-md text-xs font-mono font-bold bg-surface-elevated text-slate-300 border border-hairline';
+      } else {
+        rankSpan.className = 'px-2 py-0.5 rounded-md text-xs font-mono text-slate-400';
       }
+      const rankLabels: Record<number, string> = { 1: '#1', 2: '#2', 3: '#3' };
+      rankSpan.textContent = rankLabels[rank] ?? `#${rank}`;
+      rankTd.appendChild(rankSpan);
 
-      return `
-        <tr class="hover:bg-surface-elevated/40 transition-colors border-b border-hairline last:border-b-0">
-          <td class="px-4 py-3.5 text-center">${rankBadge}</td>
-          <td class="px-5 py-3.5 font-mono font-semibold text-slate-100 flex items-center gap-2">
-            <span class="w-2 h-2 rounded-md bg-verify shrink-0"></span>
-            <span>${escapeHtml(row.username)}</span>
-          </td>
-          <td class="px-5 py-3.5 text-right font-mono text-slate-200">${(row.total_attempts ?? 0).toLocaleString()}</td>
-          <td class="px-5 py-3.5 text-right font-mono font-bold text-cadmium-light">${(row.records_broken ?? 0).toLocaleString()}</td>
-        </tr>
-      `;
-    }).join('');
-  }
+      const userTd = document.createElement('td');
+      userTd.className = 'px-5 py-3.5 font-mono font-semibold text-slate-100 flex items-center gap-2';
+      const dot = document.createElement('span');
+      dot.className = 'w-2 h-2 rounded-md bg-verify shrink-0';
+      const nameSpan = document.createElement('span');
+      nameSpan.textContent = String(row.username || 'anonymous');
+      userTd.append(dot, nameSpan);
 
-  function escapeHtml(text: string): string {
-    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      const attemptsTd = document.createElement('td');
+      attemptsTd.className = 'px-5 py-3.5 text-right font-mono text-slate-200';
+      attemptsTd.textContent = (row.total_attempts ?? 0).toLocaleString();
+
+      const recordsTd = document.createElement('td');
+      recordsTd.className = 'px-5 py-3.5 text-right font-mono font-bold text-cadmium-light';
+      recordsTd.textContent = (row.records_broken ?? 0).toLocaleString();
+
+      tr.append(rankTd, userTd, attemptsTd, recordsTd);
+      tbody.appendChild(tr);
+    });
   }
 
   if (refreshBtn) {

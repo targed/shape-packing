@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://erich-friedman.github.io',
+  site: 'https://targed.github.io',
   base: '/shape-packing',
   integrations: [mdx(), tailwind()]
 });
