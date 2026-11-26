@@ -34,3 +34,9 @@ build-2-closeout.md
 *.db-wal
 .superpowers/
 .agents/
+rustup-init.sh
+.coverage
+cov_annotate/
+src/graphify-out/
+src/shape_packing.egg-info/
+*.egg-info/

@@ -11,8 +11,7 @@ on:
         required: false
         default: ''
 
-permissions:
-  contents: write
+permissions: {}
 
 env:
   CARGO_TARGET_DIR: target
@@ -22,6 +21,8 @@ jobs:
   build-windows:
     name: Build Windows (x86_64)
     runs-on: windows-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -32,7 +33,7 @@ jobs:
           targets: x86_64-pc-windows-msvc
 
       - name: Build Windows binary
-        run: cargo build --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml
+        run: cargo build --locked --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml
 
       - name: Create Package Readme
         shell: pwsh
@@ -71,6 +72,8 @@ jobs:
   build-linux:
     name: Build Linux (x86_64)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -81,7 +84,7 @@ jobs:
           targets: x86_64-unknown-linux-gnu
 
       - name: Build Linux binary
-        run: cargo build --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml
+        run: cargo build --locked --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml
 
       - name: Strip Linux binary
         run: strip target/release/shape-packing-worker
@@ -121,6 +124,8 @@ jobs:
   build-macos:
     name: Build macOS (Universal)
     runs-on: macos-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -132,8 +137,8 @@ jobs:
 
       - name: Build macOS binaries (x86_64 & aarch64)
         run: |
-          cargo build --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml --target x86_64-apple-darwin
-          cargo build --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml --target aarch64-apple-darwin
+          cargo build --locked --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml --target x86_64-apple-darwin
+          cargo build --locked --bin shape-packing-worker --release --no-default-features --manifest-path packer_rs/Cargo.toml --target aarch64-apple-darwin
 
       - name: Create Universal Binary & Strip
         run: |
@@ -180,7 +185,18 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
+      attestations: write
     steps:
+      - name: Validate release tag
+        env:
+          TAG: ${{ inputs.tag_name || github.ref_name }}
+        run: |
+          if [ -z "$TAG" ] || [ "$TAG" = "main" ] || [[ ! "$TAG" =~ ^v[0-9] ]]; then
+            echo "Invalid or missing release tag: '$TAG'. Must match v<semver>." >&2
+            exit 1
+          fi
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
@@ -194,6 +210,14 @@ jobs:
                     shape-packing-worker-linux-x86_64.tar.gz \
                     shape-packing-worker-macos-universal.tar.gz > checksums.sha256
           cat checksums.sha256
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: |
+            release-assets/shape-packing-worker-windows-x86_64.zip
+            release-assets/shape-packing-worker-linux-x86_64.tar.gz
+            release-assets/shape-packing-worker-macos-universal.tar.gz
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
