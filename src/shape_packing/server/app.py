@@ -89,6 +89,7 @@ class HeartbeatRequest(BaseModel):
     work_id: str = Field(..., min_length=1, max_length=64)
     attempts_completed: int = Field(..., ge=0, le=50_000)
     best_local_s: Optional[float] = Field(default=None, gt=0.0, le=1e12)
+    completed: bool = False
 
 
 def _extract_bearer(authorization: Optional[str]) -> Optional[str]:
@@ -215,7 +216,7 @@ def create_app(db_path: str = "shape_packing.db", auto_seed: bool = False) -> Fa
 
     # Donor-friendly rate limiters & 10s read cache
     register_ip_limiter = TokenBucketRateLimiter(rate_per_sec=10.0 / 60.0, capacity=20.0)
-    work_worker_limiter = TokenBucketRateLimiter(rate_per_sec=20.0 / 60.0, capacity=6.0)
+    work_worker_limiter = TokenBucketRateLimiter(rate_per_sec=60.0 / 60.0, capacity=15.0)
     work_ip_limiter = TokenBucketRateLimiter(rate_per_sec=600.0 / 60.0, capacity=120.0)
     solution_worker_limiter = TokenBucketRateLimiter(rate_per_sec=10.0 / 60.0, capacity=5.0)
     solution_ip_limiter = TokenBucketRateLimiter(rate_per_sec=60.0 / 60.0, capacity=15.0)
@@ -461,6 +462,7 @@ def create_app(db_path: str = "shape_packing.db", auto_seed: bool = False) -> Fa
             attempts=req.attempts_completed,
             best_s=req.best_local_s,
             require_existing_lease=True,
+            completed=req.completed,
         )
 
         cursor = conn.cursor()

@@ -475,7 +475,7 @@ class HeartbeatReporter:
 
         set_in_flight_work(self.work_id, unrep, b_s)
 
-    def flush(self, force: bool = False) -> bool:
+    def flush(self, force: bool = False, completed: bool = False) -> bool:
         """Flush accumulated attempts to coordinator heartbeat endpoint."""
         with self._lock:
             attempts_to_send = self._unreported_attempts
@@ -488,12 +488,14 @@ class HeartbeatReporter:
             return True
 
         url = f"{self.server_url}/api/v1/heartbeat"
-        payload = {
+        payload: Dict[str, Any] = {
             "worker_id": self.worker_id,
             "work_id": self.work_id,
             "attempts_completed": attempts_to_send,
             "best_local_s": best_s_to_send,
         }
+        if completed:
+            payload["completed"] = True
         try:
             kwargs: Dict[str, Any] = {"method": "POST", "payload": payload}
             hdrs = _auth_headers(worker_id=self.worker_id, worker_secret=self.worker_secret)
@@ -515,7 +517,7 @@ class HeartbeatReporter:
         self._stop_event.set()
         if self._thread and self._thread.is_alive():
             self._thread.join(timeout=3.0)
-        self.flush(force=True)
+        self.flush(force=True, completed=True)
 
     def _run(self) -> None:
         while not self._stop_event.wait(timeout=self.interval_seconds):

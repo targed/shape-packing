@@ -139,5 +139,6 @@ describe('Architectural Visualization Plate (Task 2)', () => {
     assert.ok(content.includes('export-json-btn'), 'Has export-json-btn class');
     assert.ok(content.includes('Export JSON'), 'Button text Export JSON');
     assert.ok(content.includes('data-json='), 'Serializes JSON payload attribute');
+    assert.ok(content.includes("packing_export"), 'Imports external packing_export module for strict CSP');
   });
 });

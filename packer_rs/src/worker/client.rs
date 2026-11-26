@@ -118,6 +118,8 @@ struct HeartbeatRequest<'a> {
     attempts_completed: usize,
     #[serde(skip_serializing_if = "Option::is_none")]
     best_local_s: Option<f64>,
+    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    completed: bool,
 }
 
 #[derive(serde::Serialize)]
@@ -314,11 +316,34 @@ impl CoordinatorClient {
         attempts_completed: usize,
         best_local_s: Option<f64>,
     ) -> Result<(), String> {
+        self.send_heartbeat_with_status(worker_id, work_id, attempts_completed, best_local_s, false)
+    }
+
+    /// Send final completion heartbeat and immediately release the active lease on the coordinator.
+    pub fn send_completion_heartbeat(
+        &self,
+        worker_id: &str,
+        work_id: &str,
+        attempts_completed: usize,
+        best_local_s: Option<f64>,
+    ) -> Result<(), String> {
+        self.send_heartbeat_with_status(worker_id, work_id, attempts_completed, best_local_s, true)
+    }
+
+    fn send_heartbeat_with_status(
+        &self,
+        worker_id: &str,
+        work_id: &str,
+        attempts_completed: usize,
+        best_local_s: Option<f64>,
+        completed: bool,
+    ) -> Result<(), String> {
         let payload = HeartbeatRequest {
             worker_id,
             work_id,
             attempts_completed,
             best_local_s,
+            completed,
         };
 
         let url_primary = format!("{}/api/v1/work/heartbeat", self.server_url);

@@ -14,6 +14,7 @@ describe('Results Explorer & Geometric Badges Table (Task 4)', () => {
 
   it('results.astro contains instant quick-filter tabs for all, NEW_BEST, proved_optimal, and priority', () => {
     const content = fs.readFileSync(resultsPagePath, 'utf-8');
+    const filtersContent = fs.readFileSync(path.join(siteDir, 'src', 'lib', 'ui', 'results_filters.ts'), 'utf-8');
 
     assert.ok(content.includes('data-tab="all"'), 'Includes All tab');
     assert.ok(content.includes('data-tab="NEW_BEST"'), 'Includes Records Broken tab');
@@ -21,7 +22,7 @@ describe('Results Explorer & Geometric Badges Table (Task 4)', () => {
     assert.ok(content.includes('data-tab="priority"'), 'Includes Priority Targets tab');
     assert.ok(content.includes('data-tab="frontier"'), 'Includes Frontier Tier tab');
     assert.ok(content.includes('quick-filter-tab'), 'Includes quick-filter-tab class');
-    assert.ok(content.includes('setActiveTab'), 'Includes tab switcher logic in script');
+    assert.ok(content.includes('initResultsFilters') && filtersContent.includes('setActiveTab'), 'Includes tab switcher logic in external module');
   });
 
   it('ResultsTable.astro includes mini SVG geometric shape badges and imports shape_badge', () => {

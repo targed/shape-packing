@@ -340,13 +340,13 @@ pub fn run_worker_cycle_with_durations(
                 && result.final_metric.is_finite()
                 && result.best_s > 0.0;
 
-            // Send completion heartbeat so worker compute attempts are credited in coordinator database
+            // Send completion heartbeat so worker compute attempts are credited and lease is released immediately
             let best_s_opt = if has_valid_packing {
                 Some(result.final_metric)
             } else {
                 None
             };
-            if let Err(e) = client.send_heartbeat(
+            if let Err(e) = client.send_completion_heartbeat(
                 worker_id,
                 &assignment.work_id,
                 assignment.attempts,

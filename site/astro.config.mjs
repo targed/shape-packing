@@ -6,5 +6,10 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://targed.github.io',
   base: '/shape-packing',
-  integrations: [mdx(), tailwind()]
+  integrations: [mdx(), tailwind()],
+  vite: {
+    build: {
+      assetsInlineLimit: 0,
+    },
+  },
 });

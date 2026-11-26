@@ -146,6 +146,7 @@ async function runLoop(
           work_id: work.work_id,
           attempts_completed: attemptsToRun,
           best_local_s: typeof metric_s === 'number' && metric_s > 0 ? metric_s : null,
+          completed: true,
         }),
       });
       if (!hbRes.ok) {

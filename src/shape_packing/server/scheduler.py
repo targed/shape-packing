@@ -268,6 +268,7 @@ def record_heartbeat(
     attempts: int,
     best_s: Optional[float] = None,
     require_existing_lease: bool = False,
+    completed: bool = False,
 ) -> bool:
     """
     Record search progress and telemetry from an active work lease.
@@ -372,6 +373,11 @@ def record_heartbeat(
                 """,
                 (attempts, prob_id),
             )
+            if completed:
+                cursor.execute(
+                    "DELETE FROM active_leases WHERE work_id = ? AND worker_id = ?",
+                    (clean_work_id, clean_worker_id),
+                )
             conn.commit()
             return True
         else:

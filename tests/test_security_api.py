@@ -358,3 +358,41 @@ def test_native_worker_e2e_against_asgi(tmp_path, monkeypatch):
     assert lb[0]["username"] == "py_tester"
     assert lb[0]["records_broken"] == 1
     assert lb[0]["total_attempts"] == res["attempts_completed"] == 1000
+
+
+def test_fast_worker_releasing_completed_leases_and_hoarding_cap(tmp_path, monkeypatch):
+    """Completed leases release immediately so fast workers can run >4 cycles, while uncompleted hoarding caps at 4."""
+    app, _ = _setup_app(tmp_path, monkeypatch)
+
+    st, _, raw = asyncio.run(_asgi_call(app, "POST", "/api/v1/workers/register", {"username": "fast_worker", "client_type": "native"}))
+    assert st == 200
+    reg = json.loads(raw)
+    wid, auth = reg["worker_id"], {"Authorization": f"Bearer {reg['worker_secret']}"}
+
+    # 6 consecutive lease -> completion heartbeat cycles must all succeed (previously hit 4-lease cap on cycle 5)
+    for _ in range(6):
+        st_w, _, raw_w = asyncio.run(_asgi_call(app, "GET", f"/api/v1/work?worker_id={wid}", headers=auth))
+        assert st_w == 200
+        work = json.loads(raw_w)
+        st_hb, _, raw_hb = asyncio.run(
+            _asgi_call(
+                app,
+                "POST",
+                "/api/v1/heartbeat",
+                {"worker_id": wid, "work_id": work["work_id"], "attempts_completed": 500, "completed": True},
+                headers=auth,
+            )
+        )
+        assert st_hb == 200
+        assert json.loads(raw_hb)["status"] == "recorded"
+
+    # Hoarding 4 uncompleted leases still hits the 4-lease cap on the 5th request
+    st_r2, _, raw_r2 = asyncio.run(_asgi_call(app, "POST", "/api/v1/workers/register", {"username": "hoarder", "client_type": "native"}))
+    assert st_r2 == 200
+    reg2 = json.loads(raw_r2)
+    wid2, auth2 = reg2["worker_id"], {"Authorization": f"Bearer {reg2['worker_secret']}"}
+    for _ in range(4):
+        st_h, _, _ = asyncio.run(_asgi_call(app, "GET", f"/api/v1/work?worker_id={wid2}", headers=auth2))
+        assert st_h == 200
+    st_cap, _, _ = asyncio.run(_asgi_call(app, "GET", f"/api/v1/work?worker_id={wid2}", headers=auth2))
+    assert st_cap == 204
