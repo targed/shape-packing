@@ -16,6 +16,7 @@ from .controller import ScheduleConfig, TelemetrySnapshot, WorkerController, Wor
 from .native_worker import (
     WorkerConfig,
     load_cached_worker_id,
+    load_cached_worker_secret,
     register_with_server,
     save_cached_worker_id,
 )
@@ -295,15 +296,22 @@ class WorkerApp:
 
         def _bg_register() -> None:
             cached_id = load_cached_worker_id(username)
+            cached_secret = load_cached_worker_secret(username)
             try:
                 worker_id = register_with_server(
-                    server, username, worker_id=cached_id, timeout=5.0
+                    server,
+                    username,
+                    worker_id=cached_id,
+                    timeout=5.0,
+                    worker_secret=cached_secret,
                 )
                 save_cached_worker_id(username, worker_id)
+                resolved_secret = load_cached_worker_secret(username) or cached_secret
                 cfg = WorkerConfig(
                     server_url=server,
                     username=username,
                     worker_id=worker_id,
+                    worker_secret=resolved_secret,
                     cores=int(self.cores_var.get()),
                 )
                 self.root.after(0, lambda: self._on_register_success(cfg))

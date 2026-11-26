@@ -26,6 +26,9 @@ pub struct WorkerConfig {
     #[serde(default)]
     pub worker_id: Option<String>,
 
+    #[serde(default)]
+    pub worker_secret: Option<String>,
+
     #[serde(default = "default_cores")]
     pub cores: usize,
 }
@@ -36,6 +39,7 @@ impl Default for WorkerConfig {
             server_url: default_server_url(),
             username: default_username(),
             worker_id: None,
+            worker_secret: None,
             cores: default_cores(),
         }
     }
@@ -142,12 +146,23 @@ pub fn save(path: Option<&Path>, config: &WorkerConfig) -> Result<(), String> {
         } else if !map.contains_key("worker_id") {
             map.insert("worker_id".to_string(), serde_json::Value::Null);
         }
+        if let Some(ref secret) = config.worker_secret {
+            map.insert(
+                "worker_secret".to_string(),
+                serde_json::Value::String(secret.clone()),
+            );
+        }
     }
 
     let formatted = serde_json::to_string_pretty(&root_val)
         .map_err(|e| format!("Failed to serialize configuration: {}", e))?;
     std::fs::write(&p, formatted)
         .map_err(|e| format!("Failed to write configuration file {}: {}", p.display(), e))?;
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::PermissionsExt;
+        let _ = std::fs::set_permissions(&p, std::fs::Permissions::from_mode(0o600));
+    }
     Ok(())
 }
 
@@ -242,6 +257,7 @@ pub fn resolve_interactive_internal<R: BufRead, W: Write>(
             server_url,
             username,
             worker_id,
+            worker_secret: None,
             cores,
         };
         return Ok(config);
@@ -316,6 +332,7 @@ pub fn resolve_interactive_internal<R: BufRead, W: Write>(
         server_url,
         username,
         worker_id: None,
+        worker_secret: None,
         cores,
     };
 
@@ -385,6 +402,7 @@ mod tests {
             server_url: "http://example.com:8000".to_string(),
             username: "tester".to_string(),
             worker_id: Some("123e4567-e89b-12d3-a456-426614174000".to_string()),
+            worker_secret: None,
             cores: 4,
         };
         let serialized = serde_json::to_string(&config).unwrap();
@@ -424,6 +442,7 @@ mod tests {
             server_url: "http://coord.example.com:9000".to_string(),
             username: "charlie".to_string(),
             worker_id: Some("test-uuid-99".to_string()),
+            worker_secret: Some("secret-token-99".to_string()),
             cores: 8,
         };
 
@@ -486,6 +505,7 @@ mod tests {
             server_url: "http://existing:8000".to_string(),
             username: "existing_user".to_string(),
             worker_id: Some("id-123".to_string()),
+            worker_secret: None,
             cores: 2,
         };
         existing.save(Some(&path)).unwrap();

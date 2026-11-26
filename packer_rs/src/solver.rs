@@ -80,15 +80,35 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
     let start = Instant::now();
     let stop_flag = Arc::new(AtomicBool::new(false));
 
-    if let Some(limit) = config.time_limit {
+    let timer_state = Arc::new((std::sync::Mutex::new(false), std::sync::Condvar::new()));
+    let mut timer_handle: Option<std::thread::JoinHandle<()>> = None;
+
+    if let Some(limit) = config.time_limit.filter(|l| l.is_finite() && *l > 0.0) {
         let flag = Arc::clone(&stop_flag);
+        let t_state = Arc::clone(&timer_state);
         #[cfg(not(target_arch = "wasm32"))]
-        std::thread::spawn(move || {
-            std::thread::sleep(Duration::from_secs_f64(limit));
-            flag.store(true, Ordering::Relaxed);
-        });
+        {
+            timer_handle = Some(std::thread::spawn(move || {
+                let (lock, cvar) = &*t_state;
+                let mut finished = lock.lock().unwrap();
+                let deadline = std::time::Instant::now() + Duration::from_secs_f64(limit);
+                while !*finished {
+                    let now = std::time::Instant::now();
+                    if now >= deadline {
+                        flag.store(true, Ordering::Relaxed);
+                        break;
+                    }
+                    let (guard, wait_res) = cvar.wait_timeout(finished, deadline - now).unwrap();
+                    finished = guard;
+                    if wait_res.timed_out() && !*finished {
+                        flag.store(true, Ordering::Relaxed);
+                        break;
+                    }
+                }
+            }));
+        }
         #[cfg(target_arch = "wasm32")]
-        let _ = (limit, flag);
+        let _ = (limit, flag, t_state);
     }
 
     let inner_norm = normalize_shape_token(&config.inner_shape);
@@ -202,6 +222,16 @@ pub fn solve(config: &SolveConfig) -> SolveResult {
                 }
             },
         );
+
+    if let Some(handle) = timer_handle {
+        let (lock, cvar) = &*timer_state;
+        {
+            let mut finished = lock.lock().unwrap();
+            *finished = true;
+        }
+        cvar.notify_all();
+        let _ = handle.join();
+    }
 
     let bx = best_x.lock().unwrap();
     if let Some(ref bx) = *bx {

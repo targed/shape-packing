@@ -63,24 +63,19 @@ fn main() {
         println!("Final side length: {}", result.final_metric);
 
         if let Some(path) = &args.solution_file {
-            let mut buf = String::new();
-            buf.push_str("{\n");
-            buf.push_str(&format!("  \"S\": {},\n", result.best_s));
-            buf.push_str(&format!("  \"inner_token\": \"{}\",\n", result.inner_token));
-            buf.push_str(&format!("  \"container_token\": \"{}\",\n", result.container_token));
-            buf.push_str(&format!("  \"final_metric\": {},\n", result.final_metric));
-            buf.push_str(&format!("  \"N\": {},\n", result.values.len() / 3));
-            buf.push_str("  \"values\": [");
-            for (i, v) in result.values.iter().enumerate() {
-                buf.push_str(&format!("{}", v));
-                if i < result.values.len() - 1 {
-                    buf.push(',');
+            let payload = serde_json::json!({
+                "S": result.best_s,
+                "inner_token": result.inner_token,
+                "container_token": result.container_token,
+                "final_metric": result.final_metric,
+                "N": result.values.len() / 3,
+                "values": result.values,
+            });
+            if let Ok(formatted) = serde_json::to_string_pretty(&payload) {
+                if let Ok(mut f) = fs::File::create(path) {
+                    let _ = f.write_all(formatted.as_bytes());
+                    let _ = f.write_all(b"\n");
                 }
-            }
-            buf.push_str("]\n}\n");
-
-            if let Ok(mut f) = fs::File::create(path) {
-                let _ = f.write_all(buf.as_bytes());
             }
         }
     } else {

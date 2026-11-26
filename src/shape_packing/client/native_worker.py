@@ -40,6 +40,9 @@ _IN_FLIGHT_STATE: Dict[str, Any] = {
 }
 
 
+_WORKER_SECRETS: Dict[str, str] = {}
+
+
 @dataclass
 class WorkerConfig:
     """Configuration parameters for distributed native worker daemon."""
@@ -48,6 +51,7 @@ class WorkerConfig:
     username: str = "anonymous"
     client_type: str = "native"
     worker_id: Optional[str] = None
+    worker_secret: Optional[str] = None
     cores: int = 1
     poll_interval: float = 5.0
     heartbeat_interval: float = 30.0
@@ -60,6 +64,9 @@ class WorkerConfig:
             self.server_url = self.coordinator_url
         if not self.server_url:
             raise ValueError("server_url cannot be empty")
+        parsed_url = urllib.parse.urlparse(self.server_url)
+        if parsed_url.scheme.lower() not in ("http", "https") or not parsed_url.netloc:
+            raise ValueError(f"server_url must be a valid http(s) URL, got: {self.server_url!r}")
 
         # Strip trailing slashes to avoid double-slash route formatting
         self.server_url = self.server_url.rstrip("/")
@@ -139,6 +146,10 @@ def send_request(
     if headers:
         req_headers.update(headers)
 
+    parsed_url = urllib.parse.urlparse(url)
+    if parsed_url.scheme.lower() not in ("http", "https"):
+        raise ValueError(f"Unsupported URL scheme: {parsed_url.scheme!r}")
+
     req = urllib.request.Request(
         url,
         data=encoded_body,
@@ -162,7 +173,9 @@ def send_request(
             if status_code == 204:
                 return {}
 
-            raw_bytes = resp.read()
+            raw_bytes = resp.read(10_000_001)
+            if isinstance(raw_bytes, (bytes, bytearray)) and len(raw_bytes) > 10_000_000:
+                raise ValueError("Coordinator response exceeded 10 MB safety limit")
             if not raw_bytes:
                 return {}
 
@@ -177,7 +190,7 @@ def send_request(
 
     except urllib.error.HTTPError as exc:
         try:
-            err_bytes = exc.read()
+            err_bytes = exc.read(1_000_000)
             exc.fp = io.BytesIO(err_bytes)
             exc.read = exc.fp.read
             err_text = err_bytes.decode("utf-8", errors="replace")
@@ -195,11 +208,30 @@ def send_request(
         raise exc
 
 
+def _auth_headers(
+    config: Optional[WorkerConfig] = None,
+    worker_id: Optional[str] = None,
+    worker_secret: Optional[str] = None,
+) -> Optional[Dict[str, str]]:
+    """Build Authorization Bearer header dict when a worker_secret is available."""
+    secret = worker_secret
+    if not secret and config is not None:
+        secret = config.worker_secret
+        if not secret and config.worker_id:
+            secret = _WORKER_SECRETS.get(config.worker_id)
+    if not secret and worker_id:
+        secret = _WORKER_SECRETS.get(worker_id)
+    if secret:
+        return {"Authorization": f"Bearer {secret}"}
+    return None
+
+
 def register_with_server(
     server_url: str,
     username: str,
     worker_id: Optional[str] = None,
     timeout: float = 10.0,
+    worker_secret: Optional[str] = None,
 ) -> str:
     """Register worker node with coordinator and return the assigned worker_id."""
     url = f"{server_url.rstrip('/')}/api/v1/workers/register"
@@ -208,10 +240,17 @@ def register_with_server(
         "client_type": "native",
         "worker_id": worker_id,
     }
-    resp = send_request(url, method="POST", payload=payload, timeout=timeout)
+    secret = worker_secret or (_WORKER_SECRETS.get(worker_id) if worker_id else None)
+    kwargs: Dict[str, Any] = {"method": "POST", "payload": payload, "timeout": timeout}
+    if secret:
+        kwargs["headers"] = {"Authorization": f"Bearer {secret}"}
+    resp = send_request(url, **kwargs)
     data = resp[1] if isinstance(resp, tuple) and len(resp) >= 2 else resp
     if isinstance(data, dict) and "worker_id" in data:
-        return data["worker_id"]
+        assigned_id = data["worker_id"]
+        if isinstance(data.get("worker_secret"), str) and data["worker_secret"]:
+            _WORKER_SECRETS[assigned_id] = data["worker_secret"]
+        return assigned_id
     raise ValueError(f"Registration failed: invalid response {resp}")
 
 
@@ -232,8 +271,28 @@ def load_cached_worker_id(username: str, path: Optional[str] = None) -> Optional
     return None
 
 
-def save_cached_worker_id(username: str, worker_id: str, path: Optional[str] = None) -> None:
-    """Persist worker_id for a username to local configuration file."""
+def load_cached_worker_secret(username: str, path: Optional[str] = None) -> Optional[str]:
+    """Retrieve persisted worker_secret for a username from local configuration file."""
+    cache_path = path or CONFIG_CACHE_PATH
+    try:
+        if os.path.exists(cache_path):
+            with open(cache_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, dict) and data.get("username") == username:
+                    secret = data.get("worker_secret")
+                    return secret if isinstance(secret, str) and secret else None
+    except Exception:
+        pass
+    return None
+
+
+def save_cached_worker_id(
+    username: str,
+    worker_id: str,
+    path: Optional[str] = None,
+    worker_secret: Optional[str] = None,
+) -> None:
+    """Persist worker_id (and optional worker_secret) for a username to local configuration file."""
     cache_path = path or CONFIG_CACHE_PATH
     try:
         os.makedirs(os.path.dirname(os.path.abspath(cache_path)), exist_ok=True)
@@ -246,8 +305,13 @@ def save_cached_worker_id(username: str, worker_id: str, path: Optional[str] = N
                 data = {}
         data["username"] = username
         data["worker_id"] = worker_id
+        secret_to_save = worker_secret or _WORKER_SECRETS.get(worker_id)
+        if secret_to_save:
+            data["worker_secret"] = secret_to_save
         with open(cache_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2)
+        if os.name == "posix":
+            os.chmod(cache_path, 0o600)
     except Exception:
         pass
 
@@ -262,8 +326,16 @@ def deregister_with_server(
         return False
     req = request_fn or send_request
     url = f"{config.server_url.rstrip('/')}/api/v1/workers/deregister"
+    kwargs: Dict[str, Any] = {
+        "method": "POST",
+        "payload": {"worker_id": config.worker_id},
+        "timeout": timeout,
+    }
+    hdrs = _auth_headers(config=config)
+    if hdrs:
+        kwargs["headers"] = hdrs
     try:
-        req(url, method="POST", payload={"worker_id": config.worker_id}, timeout=timeout)
+        req(url, **kwargs)
         return True
     except Exception:
         return False
@@ -348,7 +420,11 @@ def flush_in_flight_heartbeat(
         "best_local_s": best_s,
     }
     try:
-        req(url, method="POST", payload=payload)
+        kwargs: Dict[str, Any] = {"method": "POST", "payload": payload}
+        hdrs = _auth_headers(config=config)
+        if hdrs:
+            kwargs["headers"] = hdrs
+        req(url, **kwargs)
         return True
     except Exception:
         return False
@@ -364,12 +440,14 @@ class HeartbeatReporter:
         work_id: str,
         interval_seconds: float = 30.0,
         request_fn: Optional[Callable] = None,
+        worker_secret: Optional[str] = None,
     ):
         self.server_url = server_url.rstrip("/")
         self.worker_id = worker_id
         self.work_id = work_id
         self.interval_seconds = interval_seconds
         self.request_fn = request_fn or send_request
+        self.worker_secret = worker_secret
 
         self._lock = threading.Lock()
         self._unreported_attempts = 0
@@ -417,7 +495,11 @@ class HeartbeatReporter:
             "best_local_s": best_s_to_send,
         }
         try:
-            self.request_fn(url, method="POST", payload=payload)
+            kwargs: Dict[str, Any] = {"method": "POST", "payload": payload}
+            hdrs = _auth_headers(worker_id=self.worker_id, worker_secret=self.worker_secret)
+            if hdrs:
+                kwargs["headers"] = hdrs
+            self.request_fn(url, **kwargs)
             return True
         except Exception:
             # Re-credit attempts if network call failed so they can be retried on next flush
@@ -531,12 +613,17 @@ def run_worker_cycle(
     ev = stop_event or _GLOBAL_STOP_EVENT
     req = request_fn or send_request
 
+    encoded_worker_id = urllib.parse.quote(str(config.worker_id or ""), safe="")
     work_url = (
         f"{config.server_url.rstrip('/')}/api/v1/work"
-        f"?worker_id={config.worker_id}&cores={config.cores}"
+        f"?worker_id={encoded_worker_id}&cores={config.cores}"
     )
 
-    resp = req(work_url, method="GET")
+    auth_hdrs = _auth_headers(config=config)
+    work_kwargs: Dict[str, Any] = {"method": "GET"}
+    if auth_hdrs:
+        work_kwargs["headers"] = auth_hdrs
+    resp = req(work_url, **work_kwargs)
     work = resp[1] if isinstance(resp, tuple) and len(resp) >= 2 else resp
 
     if not work or not isinstance(work, dict) or not work.get("work_id"):
@@ -545,10 +632,10 @@ def run_worker_cycle(
     work_id = work["work_id"]
     problem = work.get("problem", "")
     target_s = work.get("target_s")
-    attempts = int(work.get("recommended_attempts", 2000))
+    attempts = max(1, min(int(work.get("recommended_attempts", 2000)), 100_000))
     inner_token = str(work.get("inner_token", "3"))
     container_token = str(work.get("container_token", "CIRCLE"))
-    n = int(work.get("n", 3))
+    n = max(1, min(int(work.get("n", 3)), 200))
 
     reporter = HeartbeatReporter(
         server_url=config.server_url,
@@ -556,6 +643,7 @@ def run_worker_cycle(
         work_id=work_id,
         interval_seconds=getattr(config, "heartbeat_interval", 30.0),
         request_fn=req,
+        worker_secret=config.worker_secret,
     )
     reporter.start()
 
@@ -620,17 +708,19 @@ def run_worker_cycle(
             if target_s_float is None or metric_s_float < target_s_float:
                 found_improvement = True
                 sol_url = f"{config.server_url.rstrip('/')}/api/v1/solutions"
-                req(
-                    sol_url,
-                    method="POST",
-                    payload={
+                sol_kwargs: Dict[str, Any] = {
+                    "method": "POST",
+                    "payload": {
                         "work_id": work_id,
                         "worker_id": config.worker_id,
                         "problem": problem,
                         "s": metric_s_float,
                         "coordinates": [float(c) for c in coords],
                     },
-                )
+                }
+                if auth_hdrs:
+                    sol_kwargs["headers"] = auth_hdrs
+                req(sol_url, **sol_kwargs)
 
     finally:
         reporter.stop()
@@ -727,13 +817,18 @@ def main(argv: Optional[List[str]] = None) -> None:
     # Register signal handlers
     setup_signal_handlers()
 
-    # Register with coordinator (using persisted worker_id if available)
+    # Register with coordinator (using persisted worker_id & secret if available)
     target_worker_id = args.worker_id or load_cached_worker_id(args.username)
+    cached_secret = load_cached_worker_secret(args.username)
     try:
         worker_id = register_with_server(
-            args.server, args.username, worker_id=target_worker_id
+            args.server,
+            args.username,
+            worker_id=target_worker_id,
+            worker_secret=cached_secret,
         )
-        save_cached_worker_id(args.username, worker_id)
+        resolved_secret = _WORKER_SECRETS.get(worker_id) or cached_secret
+        save_cached_worker_id(args.username, worker_id, worker_secret=resolved_secret)
     except Exception as e:
         print(
             f"[Worker] Failed to register with coordinator at {args.server}: {e}",
@@ -745,6 +840,7 @@ def main(argv: Optional[List[str]] = None) -> None:
         server_url=args.server,
         username=args.username,
         worker_id=worker_id,
+        worker_secret=resolved_secret,
         cores=args.cores,
         poll_interval=args.poll_interval,
     )

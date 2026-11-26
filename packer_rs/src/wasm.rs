@@ -19,15 +19,19 @@ pub fn solve_attempt_wasm(
     attempts: usize,
     target_s: Option<f64>,
 ) -> String {
-    let target_circumradius = target_s.map(|ts| {
-        inverse_friedman_metric(ts, inner_shape, container_shape)
-    });
+    if n == 0 || n > 200 || attempts == 0 {
+        return r#"{"success":false,"best_s":0,"circumradius_s":0,"final_metric":0,"values":[]}"#.to_string();
+    }
+    let bounded_attempts = attempts.min(100_000);
+    let target_circumradius = target_s
+        .filter(|ts| ts.is_finite() && *ts > 0.0)
+        .map(|ts| inverse_friedman_metric(ts, inner_shape, container_shape));
 
     let config = SolveConfig {
         inner_polygons: n,
         inner_shape: inner_shape.to_string(),
         container_shape: container_shape.to_string(),
-        attempts,
+        attempts: bounded_attempts,
         tolerance: 1e-15,
         finalstep: 0.0001,
         time_limit: None,

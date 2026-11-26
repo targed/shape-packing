@@ -6,6 +6,7 @@ import os
 import platform
 import sys
 from typing import Any, Dict, Optional
+from xml.sax.saxutils import escape as xml_escape
 
 try:
     import winreg
@@ -27,7 +28,7 @@ def get_worker_command(minimized: bool = True) -> str:
             exe = pythonw_candidate
 
     min_flag = " --minimized" if minimized else ""
-    return f'"{exe}" -m src.shape_packing.client.gui{min_flag}'
+    return f'"{exe}" -m shape_packing.client.gui{min_flag}'
 
 
 class AutostartManager:
@@ -125,9 +126,9 @@ class AutostartManager:
     <string>{MACOS_PLIST_LABEL}</string>
     <key>ProgramArguments</key>
     <array>
-        <string>{sys.executable}</string>
+        <string>{xml_escape(sys.executable)}</string>
         <string>-m</string>
-        <string>src.shape_packing.client.gui</string>
+        <string>shape_packing.client.gui</string>
         <string>--minimized</string>
     </array>
     <key>RunAtLoad</key>

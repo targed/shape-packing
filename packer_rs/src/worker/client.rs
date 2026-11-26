@@ -107,6 +107,8 @@ struct RegisterRequest<'a> {
 #[derive(serde::Deserialize)]
 struct RegisterResponse {
     worker_id: String,
+    #[serde(default)]
+    worker_secret: Option<String>,
 }
 
 #[derive(serde::Serialize)]
@@ -154,6 +156,7 @@ fn url_encode(input: &str) -> String {
 pub struct CoordinatorClient {
     server_url: String,
     agent: ureq::Agent,
+    worker_secret: std::sync::Arc<std::sync::RwLock<Option<String>>>,
 }
 
 impl CoordinatorClient {
@@ -165,13 +168,42 @@ impl CoordinatorClient {
             .timeout_read(Duration::from_secs(15))
             .timeout_write(Duration::from_secs(10))
             .build();
-        Self { server_url, agent }
+        Self {
+            server_url,
+            agent,
+            worker_secret: std::sync::Arc::new(std::sync::RwLock::new(None)),
+        }
     }
 
     /// Create a client with a custom `ureq::Agent` (useful for testing or custom timeouts).
     pub fn with_agent(server_url: String, agent: ureq::Agent) -> Self {
         let server_url = server_url.trim_end_matches('/').to_string();
-        Self { server_url, agent }
+        Self {
+            server_url,
+            agent,
+            worker_secret: std::sync::Arc::new(std::sync::RwLock::new(None)),
+        }
+    }
+
+    /// Attach a pre-existing `worker_secret` for Bearer authentication.
+    pub fn with_worker_secret(self, secret: Option<String>) -> Self {
+        if let Ok(mut guard) = self.worker_secret.write() {
+            *guard = secret.filter(|s| !s.is_empty());
+        }
+        self
+    }
+
+    /// Return the currently stored `worker_secret`, if any.
+    pub fn worker_secret(&self) -> Option<String> {
+        self.worker_secret.read().ok().and_then(|g| g.clone())
+    }
+
+    fn apply_auth(&self, req: ureq::Request) -> ureq::Request {
+        if let Some(secret) = self.worker_secret() {
+            req.set("Authorization", &format!("Bearer {}", secret))
+        } else {
+            req
+        }
     }
 
     /// Base URL of the coordinator server without trailing slashes.
@@ -196,11 +228,16 @@ impl CoordinatorClient {
             cores,
         };
 
-        match self.agent.post(&url).send_json(&payload) {
+        match self.apply_auth(self.agent.post(&url)).send_json(&payload) {
             Ok(resp) => {
                 let parsed: RegisterResponse = resp
                     .into_json()
                     .map_err(|e| format!("Failed to parse register response JSON: {}", e))?;
+                if let Some(secret) = parsed.worker_secret.filter(|s| !s.is_empty()) {
+                    if let Ok(mut guard) = self.worker_secret.write() {
+                        *guard = Some(secret);
+                    }
+                }
                 Ok(parsed.worker_id)
             }
             Err(ureq::Error::Status(code, resp)) => {
@@ -234,7 +271,7 @@ impl CoordinatorClient {
             lease_seconds
         );
 
-        match self.agent.get(&url).call() {
+        match self.apply_auth(self.agent.get(&url)).call() {
             Ok(resp) => {
                 if resp.status() == 204 {
                     Ok(None)
@@ -285,13 +322,13 @@ impl CoordinatorClient {
         };
 
         let url_primary = format!("{}/api/v1/work/heartbeat", self.server_url);
-        let res = self.agent.post(&url_primary).send_json(&payload);
+        let res = self.apply_auth(self.agent.post(&url_primary)).send_json(&payload);
 
         match res {
             Ok(_) => Ok(()),
             Err(ureq::Error::Status(404, _)) => {
                 let url_fallback = format!("{}/api/v1/heartbeat", self.server_url);
-                match self.agent.post(&url_fallback).send_json(&payload) {
+                match self.apply_auth(self.agent.post(&url_fallback)).send_json(&payload) {
                     Ok(_) => Ok(()),
                     Err(ureq::Error::Status(code, resp)) => {
                         let body = resp.into_string().unwrap_or_default();
@@ -339,7 +376,7 @@ impl CoordinatorClient {
             coordinates,
         };
 
-        match self.agent.post(&url).send_json(&payload) {
+        match self.apply_auth(self.agent.post(&url)).send_json(&payload) {
             Ok(resp) => {
                 let sol_resp: SolutionResponse = resp
                     .into_json()
@@ -369,7 +406,7 @@ impl CoordinatorClient {
         let url = format!("{}/api/v1/workers/deregister", self.server_url);
         let payload = DeregisterRequest { worker_id };
 
-        match self.agent.post(&url).send_json(&payload) {
+        match self.apply_auth(self.agent.post(&url)).send_json(&payload) {
             Ok(_) => Ok(()),
             Err(ureq::Error::Status(code, resp)) => {
                 let body = resp.into_string().unwrap_or_default();

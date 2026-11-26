@@ -138,8 +138,9 @@ pub fn open_in_editor(path: &Path) -> Result<(), String> {
             let _ = child.wait();
             return Ok(());
         }
-        let _ = std::process::Command::new("cmd")
-            .args(["/c", "start", "", &path.to_string_lossy()])
+        let _ = std::process::Command::new("rundll32.exe")
+            .arg("url.dll,FileProtocolHandler")
+            .arg(path)
             .status();
         Ok(())
     }
@@ -248,14 +249,17 @@ pub fn next_backoff(current: Duration) -> Duration {
 
 /// Maps a coordinator `WorkAssignment` into a solver `SolveConfig`.
 pub fn assignment_to_solve_config(assignment: &WorkAssignment) -> SolveConfig {
-    let target_circumradius = assignment.target_s.map(|ts| {
-        solver::inverse_friedman_metric(ts, &assignment.shape, &assignment.container)
-    });
+    let bounded_n = assignment.n.clamp(1, 200);
+    let bounded_attempts = assignment.attempts.clamp(1, 100_000);
+    let target_circumradius = assignment
+        .target_s
+        .filter(|ts| ts.is_finite() && *ts > 0.0)
+        .map(|ts| solver::inverse_friedman_metric(ts, &assignment.shape, &assignment.container));
     SolveConfig {
-        inner_polygons: assignment.n,
+        inner_polygons: bounded_n,
         inner_shape: assignment.shape.clone(),
         container_shape: assignment.container.clone(),
-        attempts: assignment.attempts,
+        attempts: bounded_attempts,
         tolerance: 1e-30,
         finalstep: 0.0001,
         time_limit: Some(assignment.lease_seconds.saturating_sub(15).max(10) as f64),
@@ -521,7 +525,8 @@ fn main() {
     }
 
     // 5. Connect and register with coordinator
-    let client = CoordinatorClient::new(config.server_url.clone());
+    let client = CoordinatorClient::new(config.server_url.clone())
+        .with_worker_secret(config.worker_secret.clone());
     println!(
         "[STARTUP] Registering worker with coordinator at {} (username: {}, cores: {})...",
         config.server_url, config.username, config.cores
@@ -552,16 +557,22 @@ fn main() {
         }
     };
 
-    // Persist worker_id if changed or newly assigned
-    if config.worker_id.as_deref() != Some(&worker_id) {
+    // Persist worker_id and worker_secret if changed or newly assigned
+    let new_secret = client.worker_secret();
+    if config.worker_id.as_deref() != Some(&worker_id)
+        || (new_secret.is_some() && config.worker_secret != new_secret)
+    {
         config.worker_id = Some(worker_id.clone());
+        if new_secret.is_some() {
+            config.worker_secret = new_secret;
+        }
         if let Err(e) = config::save(cli.config.as_deref(), &config) {
             eprintln!(
-                "[CONFIG WARNING] Failed to persist assigned worker_id to config: {}",
+                "[CONFIG WARNING] Failed to persist worker credentials to config: {}",
                 e
             );
         } else {
-            println!("[CONFIG] Persisted worker_id to configuration file.");
+            println!("[CONFIG] Persisted worker credentials to configuration file.");
         }
     }
 
@@ -681,6 +692,7 @@ mod tests {
             server_url: "http://old-server:8000".to_string(),
             username: "old_user".to_string(),
             worker_id: None,
+            worker_secret: None,
             cores: 1,
         };
         config::save(Some(&config_file), &old_cfg).expect("Failed to write initial config");
