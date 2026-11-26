@@ -6,10 +6,13 @@ registered volunteer workers, and active work leases.
 from __future__ import annotations
 
 import glob
+import hashlib
+import hmac
 import json
 import logging
 import math
 import os
+import secrets
 import sqlite3
 import uuid
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -107,6 +110,7 @@ CREATE TABLE IF NOT EXISTS workers (
     id TEXT PRIMARY KEY,
     username TEXT NOT NULL,
     client_type TEXT NOT NULL DEFAULT 'native',
+    secret_hash TEXT,
     total_attempts INTEGER DEFAULT 0,
     records_broken INTEGER DEFAULT 0,
     last_seen_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -127,6 +131,7 @@ CREATE INDEX IF NOT EXISTS idx_solutions_problem_record ON solutions(problem_id,
 CREATE INDEX IF NOT EXISTS idx_problems_status_attempts ON problems(status, total_attempts, density_rank);
 CREATE INDEX IF NOT EXISTS idx_problems_tier_status ON problems(tier, status, total_attempts);
 CREATE INDEX IF NOT EXISTS idx_workers_records_broken ON workers(records_broken DESC, total_attempts DESC);
+CREATE INDEX IF NOT EXISTS idx_workers_username ON workers(username);
 """
 
 
@@ -157,7 +162,7 @@ def init_db(db_path: str = "data/distributed.db") -> sqlite3.Connection:
     conn.execute("PRAGMA synchronous = NORMAL;")
     conn.execute("PRAGMA foreign_keys = ON;")
 
-    # Idempotent migration for pre-existing databases lacking the `tier` column
+    # Idempotent migration for pre-existing databases lacking the `tier` or `secret_hash` columns
     existing_table = conn.execute(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='problems'"
     ).fetchone()
@@ -167,9 +172,39 @@ def init_db(db_path: str = "data/distributed.db") -> sqlite3.Connection:
             conn.execute("ALTER TABLE problems ADD COLUMN tier TEXT NOT NULL DEFAULT 'benchmark'")
             conn.commit()
 
+    existing_workers = conn.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='workers'"
+    ).fetchone()
+    if existing_workers:
+        wcols = {row[1] for row in conn.execute("PRAGMA table_info(workers)").fetchall()}
+        if "secret_hash" not in wcols:
+            conn.execute("ALTER TABLE workers ADD COLUMN secret_hash TEXT")
+            conn.commit()
+
     conn.executescript(SCHEMA)
     conn.commit()
     return conn
+
+
+def _hash_worker_secret(secret: str) -> str:
+    return hashlib.sha256(secret.encode("utf-8")).hexdigest()
+
+
+def verify_worker_secret(
+    conn: sqlite3.Connection,
+    worker_id: str,
+    presented_secret: Optional[str],
+) -> bool:
+    """Verify a bearer worker_secret against the stored SHA-256 secret_hash."""
+    if not worker_id or not presented_secret:
+        return False
+    row = conn.execute("SELECT secret_hash FROM workers WHERE id = ?", (worker_id.strip(),)).fetchone()
+    if row is None:
+        return False
+    stored_hash = row["secret_hash"] if hasattr(row, "keys") else row[0]
+    if not stored_hash:
+        return False
+    return hmac.compare_digest(str(stored_hash), _hash_worker_secret(presented_secret.strip()))
 
 
 def register_worker(
@@ -177,28 +212,61 @@ def register_worker(
     username: str,
     client_type: str = "native",
     worker_id: Optional[str] = None,
+    presented_secret: Optional[str] = None,
+    require_secret_on_existing: bool = False,
 ) -> Dict[str, Any]:
     """
-    Register or update a worker handle and return registration details.
+    Register or update a worker handle and return registration details + worker_secret.
 
-    Generates a UUID4 if worker_id is omitted or empty.
-    Updates last_seen_at, username, and client_type if worker_id already exists.
+    When require_secret_on_existing=True (HTTP API), existing worker_id rows without a matching
+    presented_secret are issued a fresh UUID4 worker_id so existing workers cannot be impersonated.
     """
     w_id = str(worker_id).strip() if worker_id and str(worker_id).strip() else str(uuid.uuid4())
     cursor = conn.cursor()
+
+    existing = cursor.execute("SELECT secret_hash FROM workers WHERE id = ?", (w_id,)).fetchone()
+    if existing is not None:
+        stored_hash = existing["secret_hash"] if hasattr(existing, "keys") else existing[0]
+        secret_matches = bool(
+            stored_hash and presented_secret and hmac.compare_digest(str(stored_hash), _hash_worker_secret(presented_secret.strip()))
+        )
+        if secret_matches or not require_secret_on_existing:
+            new_secret = presented_secret.strip() if secret_matches else secrets.token_urlsafe(32)
+            new_hash = stored_hash if secret_matches else _hash_worker_secret(new_secret)
+            cursor.execute(
+                """
+                UPDATE workers
+                SET last_seen_at = CURRENT_TIMESTAMP, username = ?, client_type = ?, secret_hash = COALESCE(secret_hash, ?)
+                WHERE id = ?
+                """,
+                (username, client_type, new_hash, w_id),
+            )
+            conn.commit()
+            return {
+                "worker_id": w_id,
+                "username": username,
+                "client_type": client_type,
+                "worker_secret": new_secret,
+            }
+        # Existing worker_id without matching secret: issue a new isolated worker_id
+        w_id = str(uuid.uuid4())
+
+    worker_secret = secrets.token_urlsafe(32)
+    secret_hash = _hash_worker_secret(worker_secret)
     cursor.execute(
         """
-        INSERT INTO workers (id, username, client_type, last_seen_at)
-        VALUES (?, ?, ?, CURRENT_TIMESTAMP)
-        ON CONFLICT(id) DO UPDATE SET
-            last_seen_at = CURRENT_TIMESTAMP,
-            username = excluded.username,
-            client_type = excluded.client_type
+        INSERT INTO workers (id, username, client_type, secret_hash, last_seen_at)
+        VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
         """,
-        (w_id, username, client_type),
+        (w_id, username, client_type, secret_hash),
     )
     conn.commit()
-    return {"worker_id": w_id, "username": username, "client_type": client_type}
+    return {
+        "worker_id": w_id,
+        "username": username,
+        "client_type": client_type,
+        "worker_secret": worker_secret,
+    }
 
 
 def get_problem(conn: sqlite3.Connection, problem_id: str) -> Optional[Dict[str, Any]]:

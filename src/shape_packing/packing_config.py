@@ -43,7 +43,7 @@ OPTIMIZER_N_JOBS: int = -1
 # =====================
 # Verification tolerances
 # =====================
-VERIFY_SAT_TOLERANCE: float = 1e-5
+VERIFY_SAT_TOLERANCE: float = 1e-7
 VERIFY_METRIC_TOLERANCE: float = 1e-6
 RECORD_MIN_IMPROVEMENT: float = 1e-5
 GEOMETRY_SAT_TOLERANCE: float = 1e-12

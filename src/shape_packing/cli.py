@@ -190,8 +190,14 @@ def handle_run(args, history_cache=None, direct_call=False):
             
     # Verify and render
     if os.path.exists(solution_file):
-        verify_solution(solution_file, p_clean)
-        
+        v_res = verify_solution(solution_file, p_clean)
+        if not v_res.valid:
+            err = f"Verification failed: {v_res.message}"
+            eprint(err)
+            if direct_call:
+                return {"success": False, "error": err, "returncode": 1}
+            sys.exit(1)
+
         if not getattr(args, "no_png", False):
             render_solution(solution_file, os.path.join(result_dir, "solution.png"))
             

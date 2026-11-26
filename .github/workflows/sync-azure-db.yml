@@ -2,7 +2,7 @@ name: Sync Azure Coordinator DB to Git
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: '0 6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -16,9 +16,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download Consistent SQLite Snapshot from Azure
+        env:
+          BACKUP_TOKEN: ${{ secrets.BACKUP_TOKEN }}
         run: |
-          curl -fSL "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net/api/v1/export/db" -o shape_packing.db.tmp
-          python3 -c "import sqlite3; c = sqlite3.connect('shape_packing.db.tmp'); assert c.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'; print('Problems:', c.execute('SELECT COUNT(*) FROM problems').fetchone()[0], 'Solutions:', c.execute('SELECT COUNT(*) FROM solutions').fetchone()[0])"
+          if [ -z "${BACKUP_TOKEN}" ]; then
+            echo "ERROR: BACKUP_TOKEN secret is not configured." >&2
+            exit 1
+          fi
+          curl -fS --max-time 60 --max-filesize 52428800 \
+            -H "Authorization: Bearer ${BACKUP_TOKEN}" \
+            "https://shape-packing-ggd4d5e8c2ctggam.eastus-01.azurewebsites.net/api/v1/export/db" \
+            -o shape_packing.db.tmp
+          python3 -c "import sqlite3; c = sqlite3.connect('shape_packing.db.tmp'); assert c.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'; tables = {r[0] for r in c.execute(\"SELECT name FROM sqlite_master WHERE type='table'\").fetchall()}; assert {'problems', 'solutions', 'workers'}.issubset(tables); p_cnt = c.execute('SELECT COUNT(*) FROM problems').fetchone()[0]; assert p_cnt >= 2000; print('Problems:', p_cnt, 'Solutions:', c.execute('SELECT COUNT(*) FROM solutions').fetchone()[0])"
           mv shape_packing.db.tmp shape_packing.db
 
       - name: Commit Updated DB Backup

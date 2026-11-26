@@ -66,7 +66,8 @@ def assign_work(
 
     clean_worker_id = worker_id.strip()
 
-    MAX_LEASE_SECONDS = 604800  # 7 days max lease duration
+    MAX_LEASE_SECONDS = 1800  # 30 minutes max lease duration
+    MAX_ACTIVE_LEASES_PER_WORKER = 4
 
     # Normalize cores and calculate recommended attempts: max(1000, min(cores * 1000, 20000))
     if isinstance(cores, bool) or not isinstance(cores, int):
@@ -105,6 +106,14 @@ def assign_work(
             """,
             (clean_worker_id, clean_worker_id),
         )
+
+        active_count_row = cursor.execute(
+            "SELECT COUNT(*) FROM active_leases WHERE worker_id = ? AND expires_at > CURRENT_TIMESTAMP",
+            (clean_worker_id,),
+        ).fetchone()
+        if active_count_row and active_count_row[0] >= MAX_ACTIVE_LEASES_PER_WORKER:
+            conn.rollback()
+            return None
 
         tier_clause = ""
         tier_params: tuple = ()
@@ -258,6 +267,7 @@ def record_heartbeat(
     worker_id: str,
     attempts: int,
     best_s: Optional[float] = None,
+    require_existing_lease: bool = False,
 ) -> bool:
     """
     Record search progress and telemetry from an active work lease.
@@ -280,12 +290,13 @@ def record_heartbeat(
     if not isinstance(worker_id, str) or not worker_id.strip():
         return False
 
-    # attempts must be integer >= 0, within signed 64-bit int bounds, and not boolean
+    MAX_HEARTBEAT_ATTEMPTS = 50_000
+    # attempts must be integer in [0, MAX_HEARTBEAT_ATTEMPTS], and not boolean
     if (
         isinstance(attempts, bool)
         or not isinstance(attempts, int)
         or attempts < 0
-        or attempts > 2**63 - 1
+        or attempts > MAX_HEARTBEAT_ATTEMPTS
     ):
         return False
 
@@ -319,6 +330,10 @@ def record_heartbeat(
             (clean_work_id, clean_worker_id),
         )
         lease_row = cursor.fetchone()
+
+        if require_existing_lease and lease_row is None:
+            conn.rollback()
+            return False
 
         # Update workers: total_attempts += attempts, last_seen_at = CURRENT_TIMESTAMP
         cursor.execute(

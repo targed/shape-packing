@@ -14,13 +14,16 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SRC_PKG = REPO_ROOT / "src" / "shape_packing"
 
 
-async def _asgi_request(app, method: str, path: str, body: dict | None = None):
+async def _asgi_request(app, method: str, path: str, body: dict | None = None, headers: dict | None = None):
     """Execute a real ASGI HTTP request against a FastAPI app without external HTTP clients."""
     payload = json.dumps(body).encode("utf-8") if body is not None else b""
-    headers = [(b"host", b"testserver")]
+    req_headers = [(b"host", b"testserver")]
     if body is not None:
-        headers.append((b"content-type", b"application/json"))
-        headers.append((b"content-length", str(len(payload)).encode("ascii")))
+        req_headers.append((b"content-type", b"application/json"))
+        req_headers.append((b"content-length", str(len(payload)).encode("ascii")))
+    if headers:
+        for k, v in headers.items():
+            req_headers.append((k.lower().encode("ascii"), v.encode("ascii")))
 
     pure_path, _, query = path.partition("?")
     scope = {
@@ -32,7 +35,7 @@ async def _asgi_request(app, method: str, path: str, body: dict | None = None):
         "path": pure_path,
         "raw_path": pure_path.encode("ascii"),
         "query_string": query.encode("ascii"),
-        "headers": headers,
+        "headers": req_headers,
         "client": ("127.0.0.1", 12345),
         "server": ("testserver", 8000),
     }
@@ -46,6 +49,7 @@ async def _asgi_request(app, method: str, path: str, body: dict | None = None):
         if not sent_body:
             sent_body = True
             return {"type": "http.request", "body": payload, "more_body": False}
+        await asyncio.sleep(0.05)
         return {"type": "http.disconnect"}
 
     async def send(message):
@@ -126,6 +130,7 @@ def test_uvicorn_import_from_string_both_targets(tmp_path):
 def test_create_app_serves_real_asgi_requests(tmp_path, monkeypatch):
     """Verify create_app initializes DB, registers workers, and serves /stats and /work over ASGI."""
     monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("SHAPE_PACKING_BACKUP_TOKEN", "test-export-token")
     from src.shape_packing.server.app import create_app
     from src.shape_packing.server.database import init_db, seed_frontier_problems
 
@@ -156,7 +161,12 @@ def test_create_app_serves_real_asgi_requests(tmp_path, monkeypatch):
     assert reg_body["worker_id"]
 
     status_work, work_body = asyncio.run(
-        _asgi_request(app, "GET", f"/api/v1/work?worker_id={reg_body['worker_id']}")
+        _asgi_request(
+            app,
+            "GET",
+            f"/api/v1/work?worker_id={reg_body['worker_id']}",
+            headers={"Authorization": f"Bearer {reg_body['worker_secret']}"},
+        )
     )
     assert status_work == 200
     assert work_body["problem"]
@@ -164,7 +174,14 @@ def test_create_app_serves_real_asgi_requests(tmp_path, monkeypatch):
     assert work_body["inner_token"]
     assert work_body["container_token"]
 
-    status_export, db_bytes = asyncio.run(_asgi_request(app, "GET", "/api/v1/export/db"))
+    status_export, db_bytes = asyncio.run(
+        _asgi_request(
+            app,
+            "GET",
+            "/api/v1/export/db",
+            headers={"Authorization": "Bearer test-export-token"},
+        )
+    )
     assert status_export == 200
     assert db_bytes.startswith(b"SQLite format 3\x00")
     snap_path = tmp_path / "exported_snapshot.db"

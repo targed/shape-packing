@@ -85,6 +85,20 @@ class VerifyResult:
 # --------------- Solution loading ---------------
 
 
+def _validate_solution_fields(sol: "Solution") -> None:
+    if isinstance(sol.N, bool) or not isinstance(sol.N, int) or sol.N <= 0:
+        raise ValueError(f"Solution N must be a positive integer, got {sol.N!r}")
+    if len(sol.values) != 3 * sol.N:
+        raise ValueError(f"Solution values length {len(sol.values)} does not match 3 * N ({3 * sol.N})")
+    if not (isinstance(sol.S, (int, float)) and math.isfinite(sol.S) and sol.S > 0.0):
+        raise ValueError(f"Solution S must be finite and positive, got {sol.S!r}")
+    if not (isinstance(sol.final_metric, (int, float)) and math.isfinite(sol.final_metric) and sol.final_metric > 0.0):
+        raise ValueError(f"Solution final_metric must be finite and positive, got {sol.final_metric!r}")
+    for idx, v in enumerate(sol.values):
+        if not (isinstance(v, (int, float)) and math.isfinite(v)):
+            raise ValueError(f"Non-finite coordinate at index {idx}: {v!r}")
+
+
 def load_solution(path: str) -> "Solution":
     """
     Load solution JSON into a typed Solution.
@@ -109,7 +123,7 @@ def load_solution(path: str) -> "Solution":
         S = float(sol["S"])
         final_metric = float(sol["final_metric"])
         values = [float(v) for v in sol["values"]]
-        return Solution(
+        loaded = Solution(
             path=path,
             N=N,
             inner_token=inner_token,
@@ -118,6 +132,8 @@ def load_solution(path: str) -> "Solution":
             final_metric=final_metric,
             values=values,
         )
+        _validate_solution_fields(loaded)
+        return loaded
 
     # B) positions-style
     if "positions" in sol:
@@ -453,11 +469,12 @@ def _verify_overlap(
     sol: Solution,
     polygons: List[Any],
     tolerance: float,
+    fast_fail: bool = False,
 ) -> List[str]:
     """Verify pairwise overlap among all inner shapes using circle distance or SAT."""
     errors: List[str] = []
     N = sol.N
-    is_inner_circle = sol.inner_token.upper() in ("CIRCLE", "CIR")
+    is_inner_circle = normalize_token(sol.inner_token) == "CIRCLE"
 
     if is_inner_circle:
         for i in range(N):
@@ -469,6 +486,8 @@ def _verify_overlap(
                 dist = math.hypot(posxi - posxj, posyi - posyj)
                 if dist < 2.0 - tolerance:
                     errors.append(f"Shapes {i} and {j} overlap (circle)! Depth: {2.0 - dist}")
+                    if fast_fail:
+                        return errors
         return errors
 
     parts = get_shape_convex_parts(sol.inner_token)
@@ -493,6 +512,8 @@ def _verify_overlap(
                         overlap, depth = sat_check_overlap(p1_v, p2_v, p1_n, p2_n)
                         if overlap and depth > tolerance:
                             errors.append(f"Shapes {i} and {j} overlap! Depth: {depth}")
+                            if fast_fail:
+                                return errors
         return errors
 
     base_n = parts[0][1] if parts else None
@@ -516,6 +537,8 @@ def _verify_overlap(
                 errors.append(
                     f"Shapes {i} and {j} overlap! Depth: {depth}"
                 )
+                if fast_fail:
+                    return errors
     return errors
 
 
@@ -538,24 +561,17 @@ def _check_new_record(
 # --------------- Verification ---------------
 
 
-def verify_solution(
-    sol_path: str,
+def verify_solution_obj(
+    sol: "Solution",
     problem_str: Optional[str] = None,
     tolerance: float = TOLERANCE,
     check_record: bool = True,
     reference_path: str = "PACKING_REFERENCE.tsv",
     min_improvement: float = RECORD_MIN_IMPROVEMENT,
+    fast_fail: bool = False,
 ) -> "VerifyResult":
-    """
-    Verify a solution JSON:
-      - metric scaling consistency
-      - container bounds
-      - pairwise overlap (SAT)
-      - optional record comparison
-
-    Returns a VerifyResult.
-    """
-    sol = load_solution(sol_path)
+    """Verify an already-loaded Solution instance in memory (no disk I/O)."""
+    _validate_solution_fields(sol)
     i_norm = normalize_token(sol.inner_token)
     c_norm = normalize_token(sol.container_token)
     if c_norm in CURVED_CIRCLE_CONTAINERS and i_norm != "CIRCLE":
@@ -573,12 +589,18 @@ def verify_solution(
 
     errors: List[str] = []
     errors.extend(_verify_metric_scaling(sol, calc_metric))
+    if fast_fail and errors:
+        return VerifyResult(valid=False, metric=calc_metric, errors=errors, new_record=False, message="; ".join(errors))
+
     errors.extend(
         _verify_container_bounds(
             sol, polygons, unit_container_vectors, unit_container_radii, tolerance
         )
     )
-    errors.extend(_verify_overlap(sol, polygons, tolerance))
+    if fast_fail and errors:
+        return VerifyResult(valid=False, metric=calc_metric, errors=errors[:1], new_record=False, message=errors[0])
+
+    errors.extend(_verify_overlap(sol, polygons, tolerance, fast_fail=fast_fail))
 
     valid = len(errors) == 0
     new_record = (
@@ -603,6 +625,36 @@ def verify_solution(
         errors=errors,
         new_record=new_record,
         message=message,
+    )
+
+
+def verify_solution(
+    sol_path: str,
+    problem_str: Optional[str] = None,
+    tolerance: float = TOLERANCE,
+    check_record: bool = True,
+    reference_path: str = "PACKING_REFERENCE.tsv",
+    min_improvement: float = RECORD_MIN_IMPROVEMENT,
+    fast_fail: bool = False,
+) -> "VerifyResult":
+    """
+    Verify a solution JSON:
+      - metric scaling consistency
+      - container bounds
+      - pairwise overlap (SAT)
+      - optional record comparison
+
+    Returns a VerifyResult.
+    """
+    sol = load_solution(sol_path)
+    return verify_solution_obj(
+        sol,
+        problem_str=problem_str,
+        tolerance=tolerance,
+        check_record=check_record,
+        reference_path=reference_path,
+        min_improvement=min_improvement,
+        fast_fail=fast_fail,
     )
 
 
