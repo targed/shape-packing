@@ -162,6 +162,10 @@ describe('Volunteer Contributor Cockpit (Task 6)', () => {
     assert.ok(contributeContent.includes('validateCoordinatorUrl'), 'contribute.astro validates coordinator URL');
     assert.ok(contributeContent.includes("client_type: 'wasm'"), 'contribute.astro registers as wasm client');
     assert.ok(workerContent.includes("authHeaders['Authorization']"), 'wasm worker attaches Bearer auth header');
+    assert.ok(
+      workerContent.includes("heartbeat") && workerContent.includes("...authHeaders") && workerContent.includes("if (!hbRes.ok)"),
+      'wasm worker attaches Bearer auth header on heartbeat and checks response status'
+    );
     assert.ok(layoutContent.includes('http-equiv="Content-Security-Policy"'), 'BaseLayout defines CSP meta tag');
     assert.ok(layoutContent.includes('name="referrer"'), 'BaseLayout defines referrer policy meta tag');
   });

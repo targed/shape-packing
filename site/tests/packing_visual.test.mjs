@@ -121,5 +121,23 @@ describe('Architectural Visualization Plate (Task 2)', () => {
       inner_token: 'CIRCLE',
     });
     assert.ok(rhomRes && rhomRes.containerVertices && rhomRes.containerVertices.length === 4, 'Rhombus has 4 vertices');
+
+    const frontierQuadRes = generatePackingSvgElements({
+      N: 1,
+      S: 4.0,
+      final_metric: 4.0,
+      values: [0, 0, 0],
+      container_token: 'TRAPEZOID',
+      inner_token: 'PARALLELOGRAM',
+    });
+    assert.ok(frontierQuadRes && frontierQuadRes.containerVertices?.length === 4 && frontierQuadRes.shapes[0].vertices?.length === 4, 'Frontier quad pair renders 4-vertex inner and container polygons');
+  });
+
+  it('PackingVisual.astro offers Export JSON alongside Export SVG', () => {
+    const visualPath = path.join(siteDir, 'src', 'components', 'PackingVisual.astro');
+    const content = fs.readFileSync(visualPath, 'utf-8');
+    assert.ok(content.includes('export-json-btn'), 'Has export-json-btn class');
+    assert.ok(content.includes('Export JSON'), 'Button text Export JSON');
+    assert.ok(content.includes('data-json='), 'Serializes JSON payload attribute');
   });
 });

@@ -187,3 +187,174 @@ def test_payload_limits_rate_limits_cors_and_verifier_bounds(tmp_path, monkeypat
         verify_solution_obj(Solution("<t>", 0, "3", "4", 1.0, 1.0, []), check_record=False)
     with pytest.raises(ValueError):
         verify_solution_obj(Solution("<t>", 1, "3", "4", float("nan"), 1.0, [0.0, 0.0, 0.0]), check_record=False)
+
+
+def test_e2e_worker_lifecycle_stats_leaderboard_and_frontier(tmp_path, monkeypatch):
+    """End-to-end authenticated workflow: benchmark vs frontier, heartbeat credits, SAT solution commit, and stats/leaderboard."""
+    monkeypatch.chdir(tmp_path)
+    from src.shape_packing.server.app import create_app
+    from src.shape_packing.server.database import init_db, seed_frontier_problems
+
+    db_path = str(tmp_path / "e2e_sec.db")
+    conn = init_db(db_path)
+    conn.execute(
+        """
+        INSERT INTO problems (id, inner_token, container_token, n, best_s, reference_s, status, tier, density_rank)
+        VALUES ('3_3_in_circle', '3', 'CIRCLE', 3, 3.0, 3.0, 'best_known', 'benchmark', 0.90)
+        """
+    )
+    conn.commit()
+    seed_frontier_problems(conn, max_n=1)
+    conn.close()
+
+    app = create_app(db_path=db_path)
+
+    # 1. Register worker A (wasm) & worker B (native)
+    st_a, _, raw_a = asyncio.run(
+        _asgi_call(app, "POST", "/api/v1/workers/register", {"username": "alice_web", "client_type": "wasm", "cores": 1})
+    )
+    assert st_a == 200
+    reg_a = json.loads(raw_a)
+    wid_a, auth_a = reg_a["worker_id"], {"Authorization": f"Bearer {reg_a['worker_secret']}"}
+
+    st_b, _, raw_b = asyncio.run(
+        _asgi_call(app, "POST", "/api/v1/workers/register", {"username": "bob_rust", "client_type": "native", "cores": 4})
+    )
+    assert st_b == 200
+    reg_b = json.loads(raw_b)
+    wid_b, auth_b = reg_b["worker_id"], {"Authorization": f"Bearer {reg_b['worker_secret']}"}
+
+    # 2. Default queue prioritizes benchmark; explicit tier=frontier leases frontier
+    st_bench, _, raw_bench = asyncio.run(_asgi_call(app, "GET", f"/api/v1/work?worker_id={wid_a}", headers=auth_a))
+    assert st_bench == 200
+    work_a = json.loads(raw_bench)
+    assert work_a["problem"] == "3_3_in_circle"
+
+    st_front, _, raw_front = asyncio.run(_asgi_call(app, "GET", f"/api/v1/work?worker_id={wid_b}&tier=frontier", headers=auth_b))
+    assert st_front == 200
+    work_front = json.loads(raw_front)
+    assert work_front["problem"] != "3_3_in_circle"
+
+    # 3. Cross-worker heartbeat spoofing (worker B using worker A's work_id) is ignored
+    st_spoof, _, raw_spoof = asyncio.run(
+        _asgi_call(
+            app,
+            "POST",
+            "/api/v1/heartbeat",
+            {"worker_id": wid_b, "work_id": work_a["work_id"], "attempts_completed": 500},
+            headers=auth_b,
+        )
+    )
+    assert st_spoof == 200
+    assert json.loads(raw_spoof)["status"] == "ignored"
+    assert json.loads(raw_spoof)["total_worker_attempts"] == 0
+
+    # 4. Authenticated heartbeat for own lease credits attempts
+    st_hb, _, raw_hb = asyncio.run(
+        _asgi_call(
+            app,
+            "POST",
+            "/api/v1/heartbeat",
+            {"worker_id": wid_a, "work_id": work_a["work_id"], "attempts_completed": 500, "best_local_s": 2.5},
+            headers=auth_a,
+        )
+    )
+    assert st_hb == 200
+    assert json.loads(raw_hb) == {"status": "recorded", "total_worker_attempts": 500}
+
+    # 5. Overlapping / invalid solution rejected with 400
+    st_bad, _, raw_bad = asyncio.run(
+        _asgi_call(
+            app,
+            "POST",
+            "/api/v1/solutions",
+            {"work_id": work_a["work_id"], "worker_id": wid_a, "problem": "3_3_in_circle", "s": 2.5, "coordinates": [0.0] * 9},
+            headers=auth_a,
+        )
+    )
+    assert st_bad == 400
+    assert json.loads(raw_bad)["verified"] is False
+
+    # 6. Valid non-overlapping improvement accepted and reflected in stats, leaderboard, and recent_solutions
+    valid_coords = [-2.0, -1.0, 0.0, 0.0, 1.5, 0.0, 2.0, -1.0, 0.0]
+    st_ok, _, raw_ok = asyncio.run(
+        _asgi_call(
+            app,
+            "POST",
+            "/api/v1/solutions",
+            {"work_id": work_a["work_id"], "worker_id": wid_a, "problem": "3_3_in_circle", "s": 2.5, "coordinates": valid_coords},
+            headers=auth_a,
+        )
+    )
+    assert st_ok == 200
+    sol_ok = json.loads(raw_ok)
+    assert sol_ok["verified"] is True
+    assert sol_ok["is_new_record"] is True
+
+    st_lb, _, raw_lb = asyncio.run(_asgi_call(app, "GET", "/api/v1/leaderboard"))
+    assert st_lb == 200
+    lb = json.loads(raw_lb)
+    alice_entry = next(r for r in lb if r["username"] == "alice_web")
+    assert alice_entry["total_attempts"] == 500
+    assert alice_entry["records_broken"] == 1
+
+    st_stats, _, raw_stats = asyncio.run(_asgi_call(app, "GET", "/api/v1/stats"))
+    assert st_stats == 200
+    stats = json.loads(raw_stats)
+    assert stats["total_attempts"] == 500
+    assert stats["records_broken"] == 1
+    assert stats["verified_solutions"] == 1
+
+    st_rec, _, raw_rec = asyncio.run(_asgi_call(app, "GET", "/api/v1/recent_solutions"))
+    assert st_rec == 200
+    rec = json.loads(raw_rec)
+    assert len(rec) == 1 and rec[0]["problem_id"] == "3_3_in_circle" and rec[0]["worker_username"] == "alice_web"
+
+    # 7. Authenticated deregister succeeds
+    st_dereg, _, _ = asyncio.run(_asgi_call(app, "POST", "/api/v1/workers/deregister", {"worker_id": wid_a}, headers=auth_a))
+    assert st_dereg == 200
+
+
+def test_native_worker_e2e_against_asgi(tmp_path, monkeypatch):
+    """Verify Python native_worker registration, work cycle, heartbeat, and deregister work end-to-end with Bearer auth."""
+    from unittest import mock
+    import urllib.parse
+    from src.shape_packing.client import native_worker as nw
+
+    app, _ = _setup_app(tmp_path, monkeypatch)
+    conn = sqlite3.connect(str(tmp_path / "sec_coord.db"))
+    conn.execute(
+        "INSERT INTO problems (id, inner_token, container_token, n, best_s, reference_s, status, tier, density_rank) VALUES ('3_3_in_circle', '3', 'CIRCLE', 3, 3.0, 3.0, 'best_known', 'benchmark', 0.99)"
+    )
+    conn.commit()
+    conn.close()
+
+    def asgi_bridge(url: str, method: str = "GET", payload=None, headers=None, timeout: float = 10.0, data=None, **_kwargs):
+        parsed = urllib.parse.urlparse(url)
+        path = parsed.path + (f"?{parsed.query}" if parsed.query else "")
+        body = payload if payload is not None else data
+        st, _, raw = asyncio.run(_asgi_call(app, method, path, body=body, headers=headers))
+        assert st in (200, 204), f"Unexpected status {st} on {method} {path}: {raw}"
+        if st == 204 or not raw:
+            return {}
+        return json.loads(raw)
+
+    valid_coords = [-2.0, -1.0, 0.0, 0.0, 1.5, 0.0, 2.0, -1.0, 0.0]
+
+    def mock_solver(**_kwargs):
+        return {"success": True, "best_s": 2.5, "values": valid_coords}
+
+    with mock.patch.object(nw, "send_request", side_effect=asgi_bridge):
+        wid = nw.register_with_server("http://localhost:8000", "py_tester")
+        secret = nw._WORKER_SECRETS[wid]
+        cfg = nw.WorkerConfig(server_url="http://localhost:8000", username="py_tester", worker_id=wid, worker_secret=secret, cores=1)
+        res = nw.run_worker_cycle(cfg, solver_fn=mock_solver, request_fn=asgi_bridge)
+        assert res["status"] == "completed"
+        assert res["found_improvement"] is True
+        assert nw.deregister_with_server(cfg, request_fn=asgi_bridge) is True
+
+    _, _, raw_lb = asyncio.run(_asgi_call(app, "GET", "/api/v1/leaderboard"))
+    lb = json.loads(raw_lb)
+    assert lb[0]["username"] == "py_tester"
+    assert lb[0]["records_broken"] == 1
+    assert lb[0]["total_attempts"] == res["attempts_completed"] == 1000

@@ -466,23 +466,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
     for (let i = 0; i < cores; i++) {
       const threadId = cores === 1 ? baseWorkerId : `${baseWorkerId}-t${i + 1}`;
-      activeWorkerIds.push(threadId);
 
-      // Spawn Web Worker immediately and update with workerSecret once registered
-      let workerInstance: Worker | null = null;
+      // Spawn Web Worker and register before starting work loop so Bearer token is attached
       try {
         const w = new Worker(new URL('../lib/workers/wasm_packer_worker.ts', import.meta.url), {
           type: 'module',
         });
-        workerInstance = w;
 
-        // Register with coordinator before starting work loop so Bearer token is attached
         const pingStart = performance.now();
-        let workerSecret: string | undefined;
+        let assignedWorkerId = threadId;
+        let workerSecret: string | undefined = workerSecrets[threadId];
         try {
+          const regHeaders: Record<string, string> = { 'Content-Type': 'application/json' };
+          if (workerSecret) {
+            regHeaders['Authorization'] = `Bearer ${workerSecret}`;
+          }
           const regRes = await fetch(`${serverUrl}/api/v1/workers/register`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: regHeaders,
             body: JSON.stringify({
               worker_id: threadId,
               username: username,
@@ -494,12 +495,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           if (metricPing) metricPing.textContent = `${pingElapsed} ms`;
           if (regRes.ok) {
             const reg = await regRes.json();
+            if (typeof reg.worker_id === 'string' && reg.worker_id) {
+              assignedWorkerId = reg.worker_id;
+            }
             if (typeof reg.worker_secret === 'string' && reg.worker_secret) {
               workerSecret = reg.worker_secret;
-              workerSecrets[threadId] = reg.worker_secret;
+              workerSecrets[assignedWorkerId] = reg.worker_secret;
             }
             if (i === 0) {
-              appendLog(`Registered with cluster (Assigned ID: ${reg.worker_id})`);
+              appendLog(`Registered with cluster (Assigned ID: ${assignedWorkerId})`);
             }
           }
         } catch (err: unknown) {
@@ -509,12 +513,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             appendLog(`Note: Register endpoint unavailable (${errMsg}). Proceeding directly.`);
           }
         }
+        activeWorkerIds.push(assignedWorkerId);
 
         w.postMessage({
           command: 'start',
           serverUrl,
           username,
-          workerId: threadId,
+          workerId: assignedWorkerId,
           workerSecret,
           wasmUrl: wasmPath,
           batchSize,

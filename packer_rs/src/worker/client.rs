@@ -811,4 +811,58 @@ mod tests {
         let err = res.unwrap_err();
         assert!(err.contains("Network error"));
     }
+
+    #[test]
+    fn test_client_bearer_secret_captured_and_sent_across_endpoints() {
+        let seen_auth = Arc::new(std::sync::Mutex::new(Vec::<(String, Option<String>)>::new()));
+        let seen_clone = Arc::clone(&seen_auth);
+
+        let agent = ureq::AgentBuilder::new()
+            .middleware(move |req: ureq::Request, _next: ureq::MiddlewareNext| {
+                let auth = req.header("Authorization").map(|s| s.to_string());
+                seen_clone
+                    .lock()
+                    .unwrap()
+                    .push((req.url().to_string(), auth));
+                if req.url().ends_with("/workers/register") {
+                    ureq::Response::new(
+                        200,
+                        "OK",
+                        r#"{"worker_id":"wid-auth","worker_secret":"sec-123"}"#,
+                    )
+                } else if req.url().contains("/api/v1/work?") {
+                    ureq::Response::new(204, "No Content", "")
+                } else if req.url().ends_with("/solutions") {
+                    ureq::Response::new(
+                        200,
+                        "OK",
+                        r#"{"status":"accepted","verified":true,"is_new_record":true}"#,
+                    )
+                } else {
+                    ureq::Response::new(200, "OK", r#"{"status":"ok"}"#)
+                }
+            })
+            .build();
+
+        let client = CoordinatorClient::with_agent("http://coordinator.test".to_string(), agent);
+        let wid = client.register("alice", None, 2).unwrap();
+        assert_eq!(wid, "wid-auth");
+        assert_eq!(client.worker_secret().as_deref(), Some("sec-123"));
+
+        assert_eq!(client.lease_work(&wid, 2, 300).unwrap(), None);
+        client
+            .send_heartbeat(&wid, "work-1", 100, Some(1.5))
+            .unwrap();
+        client
+            .submit_solution(&wid, Some("work-1"), "3_3_in_circle", 2.5, &[0.0; 9])
+            .unwrap();
+        client.deregister(&wid).unwrap();
+
+        let calls = seen_auth.lock().unwrap();
+        assert_eq!(calls.len(), 5);
+        assert_eq!(calls[0].1, None);
+        for call in &calls[1..] {
+            assert_eq!(call.1.as_deref(), Some("Bearer sec-123"));
+        }
+    }
 }

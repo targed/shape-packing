@@ -19,6 +19,20 @@ const mergedSolution = {
 
 const svgData = generatePackingSvgElements(mergedSolution);
 const displayTitle = title || (solution as any).problem_id || (solution.N !== undefined ? `N=${solution.N}` : 'Solution');
+const fileStem = displayTitle.toLowerCase().replace(/[^a-z0-9_-]/g, '_');
+const exportJsonPayload = JSON.stringify(
+  {
+    ...(solution as any).problem_id ? { problem_id: (solution as any).problem_id } : {},
+    N: solution.N ?? svgData?.shapes.length ?? 0,
+    S: svgData?.S ?? solution.S ?? null,
+    final_metric: svgData?.finalMetric ?? solution.final_metric ?? null,
+    inner_token: mergedSolution.inner_token,
+    container_token: mergedSolution.container_token,
+    values: solution.values ?? [],
+  },
+  null,
+  2
+);
 ---
 
 {svgData ? (
@@ -133,19 +147,35 @@ const displayTitle = title || (solution as any).problem_id || (solution.N !== un
         <span class="text-slate-600">&bull;</span>
         <span>s = <strong class="text-verify-light font-semibold">{svgData.finalMetric.toFixed(4)}</strong></span>
       </div>
-      <button
-        type="button"
-        class="export-svg-btn text-[10px] font-mono px-2 py-0.5 rounded-md bg-surface-elevated hover:bg-surface-hover text-slate-300 border border-hairline transition-colors flex items-center gap-1.5 cursor-pointer"
-        data-filename={`packing-${displayTitle.toLowerCase().replace(/[^a-z0-9_-]/g, '_')}.svg`}
-        title="Export SVG"
-      >
-        <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-          <polyline points="7 10 12 15 17 10" />
-          <line x1="12" y1="15" x2="12" y2="3" />
-        </svg>
-        <span>Export SVG</span>
-      </button>
+      <div class="flex items-center gap-1.5">
+        <button
+          type="button"
+          class="export-svg-btn text-[10px] font-mono px-2 py-0.5 rounded-md bg-surface-elevated hover:bg-surface-hover text-slate-300 border border-hairline transition-colors flex items-center gap-1.5 cursor-pointer"
+          data-filename={`packing-${fileStem}.svg`}
+          title="Export SVG"
+        >
+          <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span>Export SVG</span>
+        </button>
+        <button
+          type="button"
+          class="export-json-btn text-[10px] font-mono px-2 py-0.5 rounded-md bg-surface-elevated hover:bg-surface-hover text-slate-300 border border-hairline transition-colors flex items-center gap-1.5 cursor-pointer"
+          data-filename={`packing-${fileStem}.json`}
+          data-json={exportJsonPayload}
+          title="Export JSON"
+        >
+          <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span>Export JSON</span>
+        </button>
+      </div>
     </div>
   </div>
 ) : (
@@ -155,6 +185,17 @@ const displayTitle = title || (solution as any).problem_id || (solution.N !== un
 )}
 
 <script>
+  function triggerBlobDownload(blob: Blob, filename: string) {
+    const downloadUrl = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(downloadUrl);
+  }
+
   function setupPackingExportButtons() {
     document.querySelectorAll<HTMLButtonElement>('.export-svg-btn').forEach((btn) => {
       if (btn.dataset.hasExportHandler === 'true') return;
@@ -195,16 +236,23 @@ const displayTitle = title || (solution as any).problem_id || (solution.N !== un
         const svgSerializer = new XMLSerializer();
         const svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgSerializer.serializeToString(clone);
         const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
-        const downloadUrl = URL.createObjectURL(svgBlob);
-
         const filename = btn.getAttribute('data-filename') || 'packing.svg';
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(downloadUrl);
+        triggerBlobDownload(svgBlob, filename);
+      });
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('.export-json-btn').forEach((btn) => {
+      if (btn.dataset.hasExportHandler === 'true') return;
+      btn.dataset.hasExportHandler = 'true';
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const jsonPayload = btn.getAttribute('data-json');
+        if (!jsonPayload) return;
+        const jsonBlob = new Blob([jsonPayload], { type: 'application/json;charset=utf-8' });
+        const filename = btn.getAttribute('data-filename') || 'packing.json';
+        triggerBlobDownload(jsonBlob, filename);
       });
     });
   }

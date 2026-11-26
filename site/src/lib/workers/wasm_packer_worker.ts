@@ -137,10 +137,10 @@ async function runLoop(
         }
       }
 
-      // 4. Heartbeat
-      await fetch(`${serverUrl}/api/v1/heartbeat`, {
+      // 4. Heartbeat (must include Bearer authHeaders so coordinator credits attempts)
+      const hbRes = await fetchWithTimeout(`${serverUrl}/api/v1/heartbeat`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...authHeaders },
         body: JSON.stringify({
           worker_id: workerId,
           work_id: work.work_id,
@@ -148,6 +148,9 @@ async function runLoop(
           best_local_s: typeof metric_s === 'number' && metric_s > 0 ? metric_s : null,
         }),
       });
+      if (!hbRes.ok) {
+        throw new Error(`Heartbeat failed (${hbRes.status})`);
+      }
 
       self.postMessage({ type: 'attempts_completed', count: attemptsToRun });
       await new Promise((r) => setTimeout(r, Math.max(50, pacingDelay)));
